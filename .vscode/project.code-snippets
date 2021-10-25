@@ -1,0 +1,10 @@
+{
+	"tailwindStyleBlock": {
+		"scope": "typescriptreact",
+		"prefix": "makestyle",
+		"body": [
+			" style={[tailwind('$1')$2]}"
+		],
+		"description": "tailwind Style Basic Block"
+	},
+}
