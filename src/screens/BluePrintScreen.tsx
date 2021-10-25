@@ -5,6 +5,7 @@ import tailwind from '../../tailwind';
 import { useNavigation, useRoute, CommonActions } from '@react-navigation/native';
 // import assets from 'assets';
 // import {TopBar} from 'components';
+// import Icon from 'react-native-vector-icons/Ionicons';
 import { useQuery } from 'react-query';
 const log = console.log
 

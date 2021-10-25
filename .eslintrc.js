@@ -20,6 +20,13 @@ module.exports = {
         "react",
         "@typescript-eslint"
     ],
-    "rules": {
-    }
+    "rules": {},
+    "overrides": [
+        {
+          "files": ["*-test.js","*.spec.js","*.tsx"],
+          "rules": {
+            "no-unused-vars": "off",
+          }
+        }
+      ]
 };

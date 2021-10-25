@@ -18,7 +18,7 @@ if (__DEV__ === false) {
 const App: React.FC = (): JSX.Element | null => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <StatusBar barStyle={'dark-content'} backgroundColor="green" />
+      <StatusBar barStyle={'light-content'} backgroundColor="#0c1320" />
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <RootNavigation />

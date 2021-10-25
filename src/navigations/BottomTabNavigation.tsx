@@ -15,7 +15,7 @@ export default function BottomTabNavigation() {
       screenOptions={config}
       tabBar={props => <CustomBottomTab {...props} />}>
       <BottomTab.Screen name="Home" component={HomeScreen} />
-      <BottomTab.Screen name="Matches" component={BluePrintScreen} />
+      <BottomTab.Screen name="My Contest" component={BluePrintScreen} />
       <BottomTab.Screen name="LeaderBoard" component={BluePrintScreen} />
       <BottomTab.Screen name="More" component={BluePrintScreen} />
     </BottomTab.Navigator>

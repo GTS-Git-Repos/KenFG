@@ -1,36 +1,39 @@
 {
-	"appRegularFont": {
+	"font-regular": {
 		"fontFamily": "Lexend-Regular"
 	},
-	"appSemiBoldFont": {
+	"font-semibold": {
 		"fontFamily": "Lexend-SemiBold"
 	},
-	"appMediumFont": {
+	"font-medium": {
 		"fontFamily": "Lexend-Medium"
 	},
-	"appBoldFont": {
+	"font-bold": {
 		"fontFamily": "Lexend-Bold"
 	},
-	"backgroundPrimary": {
-		"backgroundColor": "#E93732"
+	"bg-primary": {
+		"backgroundColor": "#172339"
 	},
-	"backgroundSecondary": {
-		"backgroundColor": "#4BAF4F"
+	"bg-secondary": {
+		"backgroundColor": "#d1b45a"
 	},
-	"backgroundPurple": {
-		"backgroundColor": "#51308B"
+	"bg-dark": {
+		"backgroundColor": "#0c1320"
 	},
 	"BackgroundGray": {
 		"backgroundColor": "#444343"
 	},
-	"appPrimaryColor": {
-		"color": "#E93732"
+	"text-primary": {
+		"color": "#0c1320"
+	}, 
+	"text-secondary": {
+		"color": "#7e6b2d"
 	},
-	"appSecondaryColor": {
-		"color": "#4BAF4F"
+	"app-white":{
+		"color":"#f5feff"
 	},
-	"appPurpleColor": {
-		"color": "#51308B"
+	"app-red": {
+		"color": "##d80203"
 	},
 	"appGrayColor": {
 		"color": "#444343"
@@ -56,9 +59,6 @@
 	},
 	"font-10": {
 		"fontSize": 10
-	},
-	"font-11": {
-		"fontSize": 11
 	},
 	"font-11": {
 		"fontSize": 11
@@ -177,8 +177,8 @@
 	"app-w-39": {
 		"width": 39
 	},
-	"app-w-30": {
-		"width": 30
+	"app-w-40": {
+		"width": 40
 	},
 	"app-h-10": {
 		"height": 10
@@ -267,8 +267,8 @@
 	"app-h-39": {
 		"height": 39
 	},
-	"app-h-30": {
-		"height": 30
+	"app-h-40": {
+		"height": 40
 	},
 	"container": {
 		"width": "100%"
@@ -1824,15 +1824,6 @@
 	},
 	"font-normal": {
 		"fontWeight": "400"
-	},
-	"font-medium": {
-		"fontWeight": "500"
-	},
-	"font-semibold": {
-		"fontWeight": "600"
-	},
-	"font-bold": {
-		"fontWeight": "700"
 	},
 	"font-extrabold": {
 		"fontWeight": "800"

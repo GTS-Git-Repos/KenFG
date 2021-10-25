@@ -1,6 +1,7 @@
-import React from "react";
-import tailwind from 'tailwind';
+import React from 'react';
+import tailwind from '../../tailwind';
 import {View, Text} from 'react-native';
+// import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
   text?: string;
@@ -9,7 +10,7 @@ interface PropTypes {
 export default function BluePrintComponent(props: PropTypes) {
   return (
     <View>
-      <Text>Hello</Text>
+      <Text style={[tailwind('font-regular font-15')]}>HEllo</Text>
     </View>
   );
 }
