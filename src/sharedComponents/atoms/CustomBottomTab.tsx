@@ -2,8 +2,8 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import tailwind from '../../../tailwind';
 import assets from '../../constants/assets_manifest';
-//@ts-ignore
 import Icon from 'react-native-vector-icons/Ionicons';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function CustomBottomTab({state, descriptors, navigation}: any) {
   const focusedOptions = descriptors[state.routes[state.index].key].options;
@@ -13,7 +13,12 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
   }
 
   return (
-    <View style={tailwind('flex flex-row py-1 bg-secondary items-center')}>
+    <LinearGradient
+      start={{x: 0.0, y: 3.0}}
+      end={{x: 0.7, y: 0.1}}
+      locations={[0, 0.8, 0.8]}
+      colors={['#c5a959', '#c5a959', '#bea14f']}
+      style={tailwind('flex flex-row py-1 bg-secondary items-center')}>
       {state.routes.map((route: any, index: number) => {
         const {options} = descriptors[route.key];
         const label =
@@ -50,10 +55,7 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
             testID={options.tabBarTestID}
             onPress={onPress}
             style={{flex: 1, paddingVertical: 2}}>
-            <View
-              style={tailwind(
-                'flex flex-col justify-center items-center',
-              )}>
+            <View style={tailwind('flex flex-col justify-center items-center')}>
               {index === 0 ? (
                 <Icon
                   name="home-sharp"
@@ -96,6 +98,14 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
           </TouchableOpacity>
         );
       })}
-    </View>
+    </LinearGradient>
   );
+}
+
+{
+  /* <LinearGradient
+start={{x: 0.0, y: 0.1}}
+end={{x: 0.7, y: 2.0}}
+locations={[0, 0.8, 0.7]}
+colors={['#4c669f', '#3b5998', '#192f6a']} */
 }

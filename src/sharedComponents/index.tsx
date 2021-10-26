@@ -1,5 +1,4 @@
-import TopBar from "./atoms/TopBar"
+import TopBar from './atoms/TopBar';
+import ContestCard from './atoms/ContestCard';
 
-export{
-    TopBar
-}
+export {TopBar, ContestCard};

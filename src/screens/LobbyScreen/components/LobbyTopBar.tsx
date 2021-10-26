@@ -9,8 +9,23 @@ interface PropTypes {
 
 export default function LobbyTopBar(props: PropTypes) {
   return (
-    <View style={[tailwind('bg-secondary flex-row justify-between')]}>
-      <View style={[tailwind('pt-3 bg-primary px-5 pb-3')]}>
+    <View style={[tailwind('flex-row justify-between')]}>
+      <View
+        style={[
+          tailwind('pt-3 bg-primary px-5 pb-3'),
+          {
+            borderStyle: 'solid',
+            borderLeftWidth: 0,
+            borderRightWidth: 0,
+            borderTopWidth: 0,
+            borderBottomWidth: 0,
+            borderRightColor: 'blue',
+            borderLeftColor: 'green',
+            borderTopColor: 'red',
+            borderBottomColor: 'pink',
+            transform: [{rotate: '0deg'}],
+          },
+        ]}>
         <View style={[tailwind('flex flex-row items-center')]}>
           <Text style={[tailwind('font-bold app-white'), {fontSize: 24}]}>
             KEN

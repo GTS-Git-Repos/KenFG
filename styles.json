@@ -29,6 +29,9 @@
 	"text-secondary": {
 		"color": "#7e6b2d"
 	},
+	"text-light-dark": {
+		"color": "#d1b45a"
+	},
 	"app-white":{
 		"color":"#f5feff"
 	},
