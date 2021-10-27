@@ -12,10 +12,11 @@ export default function ContestCard(props: PropTypes) {
   return (
     <View style={[tailwind('pb-2')]}>
       <LinearGradient
-        colors={['#172336', '#172239']}
-        start={{x: 0.0, y: 0.25}}
-        end={{x: 0.5, y: 1.0}}
-        locations={[0, 0.5]}
+        colors={['#131e30', '#172239']}
+        // colors={['red', 'green']}
+        start={{x: 0, y: 0}}
+        end={{x: 2.3, y: 0.6}}
+        locations={[0.25, 0.1]}
         style={[
           tailwind('bg-primary  border border-gray-800 rounded px-2 pt-1'),
         ]}>
@@ -53,7 +54,7 @@ export default function ContestCard(props: PropTypes) {
                 tailwind('font-bold font-13 text-center'),
                 {color: '#D3D3D5'},
               ]}>
-              AUS
+              PAK
             </Text>
           </View>
 
@@ -72,7 +73,7 @@ export default function ContestCard(props: PropTypes) {
                 tailwind('font-bold font-13 text-center'),
                 {color: '#D3D3D5'},
               ]}>
-              SA
+              IN
             </Text>
           </View>
         </View>

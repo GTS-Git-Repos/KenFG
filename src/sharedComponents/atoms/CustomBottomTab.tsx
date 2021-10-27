@@ -60,6 +60,14 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
               // transform: [{scale: isFocused ? 2 : 1}],
             }}>
             <View style={tailwind('flex flex-col justify-center items-center')}>
+              {/* <View
+                style={[
+                  tailwind(
+                    'bg-green-500 h-20 w-10 border-2 border-red-400  absolute top-0 rounded-full',
+                  ),
+                  {transform: [{scaleY: 2}, {scaleX: 2}]},
+                  // {backgroundColor: 'transparent'},
+                ]}></View> */}
               {index === 0 ? (
                 <Image
                   resizeMode="contain"
@@ -85,6 +93,7 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
                   style={[tailwind('w-8 h-8')]}
                 />
               )}
+
               <Text
                 style={[
                   tailwind(
