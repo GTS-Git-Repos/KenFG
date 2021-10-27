@@ -73,6 +73,9 @@
 		<string>Lexend-Medium.ttf</string>
 		<string>Lexend-Regular.ttf</string>
 		<string>Lexend-SemiBold.ttf</string>
+		<string>gadugi-bold.ttf</string>
+		<string>gadugi-gras.ttf</string>
+		<string>gadugi-normal.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -17,37 +17,53 @@ export default function TeamsMyMatchCard(props: PropTypes) {
       ]}>
       <View style={[tailwind('')]}>
         <View style={[tailwind('flex-row items-center')]}>
-          <View style={[tailwind('bg-blue-800 h-5 w-3')]}></View>
+          <View
+            style={[
+              tailwind('mb-2'),
+              {backgroundColor: '#FB7700', height: 50 / 2, width: 10},
+            ]}></View>
           <Image
-            resizeMode="contain"
+            resizeMode="cover"
             source={assets.australia_flag}
             style={[tailwind(''), {width: 50, height: 50}]}
           />
         </View>
         <Text
-          style={[tailwind('font-regular font-12 text-gray-400 text-center')]}>
-          AUS
+          style={[
+            tailwind('font-regular font-12 ml-3 text-center'),
+            {color: '#8797B1'},
+          ]}>
+          IN
         </Text>
       </View>
 
       <View style={[tailwind('flex flex-row items-center')]}>
-        <Icon name="timer" color="white" size={16} />
-        <Text style={[tailwind('font-bold text-white px-1 mb-1')]}>
-          2h:23:32
-        </Text>
+        <Image
+          resizeMode="contain"
+          source={assets.running_clock}
+          style={[tailwind(''), {width: 16, height: 16}]}
+        />
+        <Text style={[tailwind('font-bold text-white px-1')]}>2h:23:32</Text>
       </View>
       <View style={[tailwind('')]}>
         <View style={[tailwind('flex-row items-center')]}>
           <Image
-            resizeMode="contain"
+            resizeMode="cover"
             source={assets.south_africa_flag}
             style={[tailwind(''), {width: 50, height: 50}]}
           />
-          <View style={[tailwind('bg-green-800 h-5 w-3')]}></View>
+          <View
+            style={[
+              tailwind('mb-2'),
+              {backgroundColor: '#01411B', height: 50 / 2, width: 10},
+            ]}></View>
         </View>
         <Text
-          style={[tailwind('font-regular font-12 text-gray-400 text-center')]}>
-          AUS
+          style={[
+            tailwind('font-regular font-12 mr-3 text-gray-400 text-center'),
+            {color: '#8797B1'},
+          ]}>
+          PAK
         </Text>
       </View>
     </View>

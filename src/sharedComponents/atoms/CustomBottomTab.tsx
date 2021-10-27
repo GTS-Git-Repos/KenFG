@@ -54,31 +54,35 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
             onPress={onPress}
-            style={{flex: 1, paddingVertical: 2}}>
+            style={{
+              flex: 1,
+              paddingVertical: 2,
+              // transform: [{scale: isFocused ? 2 : 1}],
+            }}>
             <View style={tailwind('flex flex-col justify-center items-center')}>
               {index === 0 ? (
-                <Icon
-                  name="home-sharp"
-                  color={isFocused ? '#172339' : '#7e6b2d'}
-                  size={isFocused ? 25 : 20}
+                <Image
+                  resizeMode="contain"
+                  source={assets.home_tab}
+                  style={[tailwind('w-8 h-8')]}
                 />
               ) : index === 1 ? (
-                <Icon
-                  name="trophy-sharp"
-                  color={isFocused ? '#172339' : '#7e6b2d'}
-                  size={isFocused ? 25 : 20}
+                <Image
+                  resizeMode="contain"
+                  source={assets.contest_tab}
+                  style={[tailwind('w-8 h-8')]}
                 />
               ) : index === 2 ? (
-                <Icon
-                  name="medal-sharp"
-                  color={isFocused ? '#172339' : '#7e6b2d'}
-                  size={isFocused ? 25 : 20}
+                <Image
+                  resizeMode="contain"
+                  source={assets.leader_tab}
+                  style={[tailwind('w-8 h-8')]}
                 />
               ) : (
-                <Icon
-                  name="ellipsis-horizontal-sharp"
-                  color={isFocused ? '#172339' : '#7e6b2d'}
-                  size={isFocused ? 25 : 20}
+                <Image
+                  resizeMode="contain"
+                  source={assets.more_tab}
+                  style={[tailwind('w-8 h-8')]}
                 />
               )}
               <Text
@@ -94,6 +98,19 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
                 ]}>
                 {label}
               </Text>
+              {/* {isFocused && (
+                <View
+                  style={[
+                    tailwind(
+                      'rounded-full absolute w-24 h-24 flex-col items-center justify-center',
+                    ),
+                    {
+                      backgroundColor: 'transparent',
+                      borderTopColor: '#C4A958',
+                      borderTopWidth: 25,
+                    },
+                  ]}></View>
+              )} */}
             </View>
           </TouchableOpacity>
         );

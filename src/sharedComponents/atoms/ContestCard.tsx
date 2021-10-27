@@ -21,7 +21,11 @@ export default function ContestCard(props: PropTypes) {
         ]}>
         <View
           style={[tailwind('absolute right-0 flex flex-row justify-end p-1')]}>
-          <Icon name="notifications-outline" size={15} color="white" />
+          <Image
+            resizeMode="contain"
+            source={assets.bell}
+            style={[tailwind(''), {width: 15, height: 15}]}
+          />
         </View>
         <View style={[tailwind('flex flex-row pt-4')]}>
           <Text
@@ -29,7 +33,8 @@ export default function ContestCard(props: PropTypes) {
             allowFontScaling={true}
             adjustsFontSizeToFit={true}
             style={[
-              tailwind('font-regular text-center font-12 text-gray-400'),
+              tailwind('font-regular text-center font-12'),
+              {color: '#F6F7F4'},
             ]}>
             World T20 Championship
           </Text>
@@ -45,13 +50,14 @@ export default function ContestCard(props: PropTypes) {
             />
             <Text
               style={[
-                tailwind('font-regular font-10 text-gray-400 text-center'),
+                tailwind('font-bold font-13 text-center'),
+                {color: '#D3D3D5'},
               ]}>
               AUS
             </Text>
           </View>
 
-          <Text style={[tailwind('font-regular text-gray-400 font-10')]}>
+          <Text style={[tailwind('font-bold font-13'), {color: '#D3D3D5'}]}>
             VS
           </Text>
 
@@ -63,9 +69,10 @@ export default function ContestCard(props: PropTypes) {
             />
             <Text
               style={[
-                tailwind('font-regular font-10 text-gray-400 text-center'),
+                tailwind('font-bold font-13 text-center'),
+                {color: '#D3D3D5'},
               ]}>
-              AS
+              SA
             </Text>
           </View>
         </View>
@@ -75,13 +82,14 @@ export default function ContestCard(props: PropTypes) {
           <Text
             allowFontScaling={true}
             adjustsFontSizeToFit={true}
-            style={[tailwind('font-regular font-10 text-gray-400')]}>
+            style={[tailwind('font-regular font-10'), {color: '#9AABC6'}]}>
             T20 WorldCup
           </Text>
-          <Text style={[tailwind('font-regular px-1 font-10 text-gray-400')]}>
+          <Text
+            style={[tailwind('font-regular px-1 font-10'), {color: '#9AABC6'}]}>
             |
           </Text>
-          <Text style={[tailwind('font-regular font-10'), {color: '#c4b76a'}]}>
+          <Text style={[tailwind('font-regular font-10'), {color: '#DBC872'}]}>
             $ 20,000
           </Text>
         </View>
@@ -90,12 +98,20 @@ export default function ContestCard(props: PropTypes) {
         <View
           style={[
             tailwind(
-              'flex flex-row items-center mx-4 mt-2 rounded-t-full justify-center',
+              'flex flex-row items-center mx-5 mt-2 py-1 rounded-t-2xl justify-center',
             ),
-            {backgroundColor: '#01694c'},
+            {backgroundColor: '#006046'},
           ]}>
+          <Image
+            resizeMode="contain"
+            source={assets.running_clock}
+            style={[tailwind(''), {width: 13, height: 13}]}
+          />
           <Text
-            style={[tailwind('font-bold text-gray-100 text-center font-12')]}>
+            style={[
+              tailwind('font-bold text-center pl-1 font-12'),
+              {color: '#FEFEFF'},
+            ]}>
             3h:40:23
           </Text>
         </View>

@@ -15,8 +15,8 @@ export default function MyMatchCardTopSection(props: PropTypes) {
         allowFontScaling={true}
         adjustsFontSizeToFit={true}
         style={[
-          tailwind('font-regular text-center text-gray-400'),
-          {width: width / 3, fontSize: 9},
+          tailwind('font-regular text-center'),
+          {width: width / 3, fontSize: 10, color: '#8797B1'},
         ]}>
         World T20 Championship
       </Text>
@@ -24,18 +24,21 @@ export default function MyMatchCardTopSection(props: PropTypes) {
         style={[tailwind('flex flex-1 flex-row justify-center items-center')]}>
         <Text
           style={[
-            tailwind('font-regular text-center pr-1 font-10 text-gray-400'),
-            {fontSize: 9},
+            tailwind('font-regular text-center pr-1 font-10'),
+            {fontSize: 14, color: '#8797B1'},
           ]}>
           LIVE
         </Text>
-        {/* <Text style={[tailwind('font-regular font-20 text-red-500')]}>.</Text> */}
-        <Icon name="radio-button-on" size={9} color="red" />
+        <View
+          style={[
+            tailwind('rounded-full'),
+            {backgroundColor: 'green', width: 5, height: 5},
+          ]}></View>
       </View>
       <Text
         style={[
-          tailwind('font-regular text-center font-10 text-gray-400'),
-          {width: width / 3},
+          tailwind('font-regular text-center font-10'),
+          {width: width / 3, color: '#8797B1'},
         ]}>
         <Text style={[tailwind('font-bold text-white')]}>2</Text> Team |
         <Text style={[tailwind('font-bold text-white')]}> 1 </Text>

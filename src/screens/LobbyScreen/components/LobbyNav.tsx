@@ -1,8 +1,8 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, useWindowDimensions} from 'react-native';
+import {View, Text, Image, useWindowDimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import assets from '../../../constants/assets_manifest';
 interface PropTypes {
   text?: string;
 }
@@ -17,7 +17,11 @@ export default function LobbyNav(props: PropTypes) {
           tailwind('flex-col items-center justify-end py-1'),
           {width: width / 5.5},
         ]}>
-        <Icon name="person" size={20} color="#172339" />
+        <Image
+          resizeMode="contain"
+          source={assets.profile_round}
+          style={[tailwind('w-7 h-7')]}
+        />
         <Text style={[tailwind('font-regular text-primary font-10')]}>
           Hi, Naveen
         </Text>
@@ -27,15 +31,18 @@ export default function LobbyNav(props: PropTypes) {
         <View style={[tailwind('flex-row items-center justify-around ')]}>
           <View
             style={[
-              tailwind(
-                'flex flex-col items-center border-b-2 mb-0.5 border-blue-800',
-              ),
+              tailwind('flex flex-col items-center border-b-2 mb-0.5'),
+              {borderBottomColor: '#162238'},
             ]}>
-            <Icon name="tennisball-sharp" size={15} color="#7e6b2d" />
+            <Image
+              resizeMode="contain"
+              source={assets.cricket_icon}
+              style={[tailwind('w-5 h-5')]}
+            />
             <Text
               style={[
                 tailwind(
-                  'font-semibold text-center uppercase text-xs font-11 tracking-widest',
+                  'font-bold text-center px-2 uppercase text-xs font-11 tracking-widest',
                 ),
               ]}>
               Cricket
@@ -43,11 +50,15 @@ export default function LobbyNav(props: PropTypes) {
           </View>
 
           <View style={[tailwind('flex flex-col items-center mb-0.5')]}>
-            <Icon name="football-sharp" size={15} color="#7e6b2d" />
+            <Image
+              resizeMode="contain"
+              source={assets.football_icon}
+              style={[tailwind('w-5 h-5')]}
+            />
             <Text
               style={[
                 tailwind(
-                  'font-semibold text-center text-secondary uppercase text-xs font-11 tracking-widest',
+                  'font-bold text-center px-2 text-secondary uppercase text-xs font-11 tracking-widest',
                 ),
               ]}>
               FootBall
@@ -79,7 +90,19 @@ export default function LobbyNav(props: PropTypes) {
           tailwind('flex-col items-center justify-end py-2 '),
           {width: width / 5.5},
         ]}>
-        <Icon name="notifications-outline" size={25} color="#172339" />
+        <View style={[tailwind('relative')]}>
+          <Image
+            resizeMode="contain"
+            source={assets.topBarbell}
+            style={[tailwind('w-7 h-7')]}
+          />
+          <View
+            style={[
+              tailwind(
+                'w-3 h-3 absolute right-0 top-0 rounded-full bg-red-500',
+              ),
+            ]}></View>
+        </View>
       </View>
     </View>
   );

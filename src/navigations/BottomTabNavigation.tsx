@@ -4,20 +4,24 @@ import CustomBottomTab from '../sharedComponents/atoms/CustomBottomTab';
 
 import LobbyScreen from '../screens/LobbyScreen';
 import BluePrintScreen from '../screens/BluePrintScreen';
+import ContainerScreen from '../screens/ContainerScreen';
 
 const BottomTab = createBottomTabNavigator();
 
-const config = {headerShown: false};
+const config = {
+  headerShown: false,
+};
 
 export default function BottomTabNavigation() {
   return (
     <BottomTab.Navigator
       screenOptions={config}
+      initialRouteName="More"
       tabBar={props => <CustomBottomTab {...props} />}>
       <BottomTab.Screen name="Home" component={LobbyScreen} />
       <BottomTab.Screen name="My Contest" component={BluePrintScreen} />
       <BottomTab.Screen name="LeaderBoard" component={BluePrintScreen} />
-      <BottomTab.Screen name="More" component={BluePrintScreen} />
+      <BottomTab.Screen name="More" component={ContainerScreen} />
     </BottomTab.Navigator>
   );
 }

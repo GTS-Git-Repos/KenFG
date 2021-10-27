@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation, useRoute, CommonActions} from '@react-navigation/native';
 import assets from '../../constants/assets_manifest';
 import {ContestCard} from '../../sharedComponents';
+import LinearGradient from 'react-native-linear-gradient';
 
 import {useQuery} from 'react-query';
 import {initialRemote} from '../../remote/appRemote';
@@ -14,7 +15,7 @@ import LobbyTopBar from './components/LobbyTopBar';
 import LobbyNav from './components/LobbyNav';
 import SubTitle from './components/SubTitle';
 import MyMatchCard from './components/molecules/MyMatchCard';
-import LinearGradient from 'react-native-linear-gradient';
+import ImageSlider from './components/molecules/ImageSlider';
 
 const log = console.log;
 
@@ -22,6 +23,8 @@ export default function LobbyScreen() {
   const navigation = useNavigation();
   const route = useRoute();
   const dispatch = useDispatch();
+
+  // console.log(ImageSlider());
 
   return (
     <View style={tailwind('bg-dark h-full')}>
@@ -41,6 +44,9 @@ export default function LobbyScreen() {
         <View style={[tailwind('px-2')]}>
           <MyMatchCard />
         </View>
+
+        <ImageSlider />
+
         <View style={[tailwind('px-4 py-1')]}>
           <SubTitle text={'Upcomming'} />
         </View>

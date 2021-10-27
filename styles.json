@@ -1,15 +1,12 @@
 {
 	"font-regular": {
-		"fontFamily": "Lexend-Regular"
+		"fontFamily": "gadugi-normal"
 	},
 	"font-semibold": {
-		"fontFamily": "Lexend-SemiBold"
-	},
-	"font-medium": {
-		"fontFamily": "Lexend-Medium"
+		"fontFamily": "gadugi-gras"
 	},
 	"font-bold": {
-		"fontFamily": "Lexend-Bold"
+		"fontFamily": "gadugi-bold"
 	},
 	"bg-primary": {
 		"backgroundColor": "#172339"
@@ -23,7 +20,7 @@
 	"BackgroundGray": {
 		"backgroundColor": "#444343"
 	},
-	"text-primary": {
+	"text-primary": {	
 		"color": "#0c1320"
 	}, 
 	"text-secondary": {

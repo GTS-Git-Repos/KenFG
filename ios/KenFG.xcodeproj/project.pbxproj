@@ -34,6 +34,9 @@
 		64677017355E4D4D8293735D /* Lexend-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BD4ECA363FB4B17A0A6E7F2 /* Lexend-Medium.ttf */; };
 		C085CE6DA2F8478A83004ED1 /* Lexend-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFD0870D55C645F4A90CC27C /* Lexend-Regular.ttf */; };
 		5BCE4F78D87E4AA7ABD526B1 /* Lexend-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79B3B3CBC7C04B4C83BED42A /* Lexend-SemiBold.ttf */; };
+		8F998C6DFFD24862B6A6E539 /* gadugi-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10F50DEE5C3544969AAC1B0E /* gadugi-bold.ttf */; };
+		F196C274418541B0A4B0A292 /* gadugi-gras.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80EB74F68C8F49D0A4A2125A /* gadugi-gras.ttf */; };
+		AB89FEF670934239AA3C27BE /* gadugi-normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 165C64A99F244C42B4012E5B /* gadugi-normal.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,9 @@
 		6BD4ECA363FB4B17A0A6E7F2 /* Lexend-Medium.ttf */ = {isa = PBXFileReference; name = "Lexend-Medium.ttf"; path = "../assets/fonts/Lexend-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		DFD0870D55C645F4A90CC27C /* Lexend-Regular.ttf */ = {isa = PBXFileReference; name = "Lexend-Regular.ttf"; path = "../assets/fonts/Lexend-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		79B3B3CBC7C04B4C83BED42A /* Lexend-SemiBold.ttf */ = {isa = PBXFileReference; name = "Lexend-SemiBold.ttf"; path = "../assets/fonts/Lexend-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		10F50DEE5C3544969AAC1B0E /* gadugi-bold.ttf */ = {isa = PBXFileReference; name = "gadugi-bold.ttf"; path = "../src/assets/fonts/gadugi-bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		80EB74F68C8F49D0A4A2125A /* gadugi-gras.ttf */ = {isa = PBXFileReference; name = "gadugi-gras.ttf"; path = "../src/assets/fonts/gadugi-gras.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		165C64A99F244C42B4012E5B /* gadugi-normal.ttf */ = {isa = PBXFileReference; name = "gadugi-normal.ttf"; path = "../src/assets/fonts/gadugi-normal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +219,9 @@
 				6BD4ECA363FB4B17A0A6E7F2 /* Lexend-Medium.ttf */,
 				DFD0870D55C645F4A90CC27C /* Lexend-Regular.ttf */,
 				79B3B3CBC7C04B4C83BED42A /* Lexend-SemiBold.ttf */,
+				10F50DEE5C3544969AAC1B0E /* gadugi-bold.ttf */,
+				80EB74F68C8F49D0A4A2125A /* gadugi-gras.ttf */,
+				165C64A99F244C42B4012E5B /* gadugi-normal.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -334,6 +343,9 @@
 				64677017355E4D4D8293735D /* Lexend-Medium.ttf in Resources */,
 				C085CE6DA2F8478A83004ED1 /* Lexend-Regular.ttf in Resources */,
 				5BCE4F78D87E4AA7ABD526B1 /* Lexend-SemiBold.ttf in Resources */,
+				8F998C6DFFD24862B6A6E539 /* gadugi-bold.ttf in Resources */,
+				F196C274418541B0A4B0A292 /* gadugi-gras.ttf in Resources */,
+				AB89FEF670934239AA3C27BE /* gadugi-normal.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
