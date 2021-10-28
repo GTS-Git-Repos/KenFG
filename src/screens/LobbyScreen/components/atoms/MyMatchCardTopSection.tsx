@@ -25,7 +25,7 @@ export default function MyMatchCardTopSection(props: PropTypes) {
         <Text
           style={[
             tailwind('font-regular text-center pr-1 font-10'),
-            {fontSize: 14, color: '#8797B1'},
+            {fontSize: 14, color: '#FEFEFF'},
           ]}>
           LIVE
         </Text>

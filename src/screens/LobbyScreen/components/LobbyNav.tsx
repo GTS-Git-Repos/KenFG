@@ -58,8 +58,9 @@ export default function LobbyNav(props: PropTypes) {
             <Text
               style={[
                 tailwind(
-                  'font-bold text-center px-2 text-secondary uppercase text-xs font-11 tracking-widest',
+                  'font-bold text-center px-2 uppercase text-xs font-11 tracking-widest',
                 ),
+                {color: '#695023'},
               ]}>
               FootBall
             </Text>

@@ -30,11 +30,12 @@ export default function LobbyScreen() {
     <View style={tailwind('bg-dark h-full')}>
       <ScrollView>
         <LinearGradient
-          start={{x: 0.5, y: 0.7}}
-          end={{x: 0.6, y: 0.3}}
-          locations={[0, 0.8, 0.7]}
+          start={{x: 0.49, y: 1.1}}
+          end={{x: 1, y: 0.1}}
+          locations={[0.4, 0.3, 0]}
+          // colors={['red', 'green', 'blue']}
           colors={['#c5a959', '#c5a959', '#bea14f']}>
-          <LobbyTopBar amount={1000} />
+          <LobbyTopBar amount={'10,000'} />
           <LobbyNav />
         </LinearGradient>
 

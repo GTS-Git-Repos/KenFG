@@ -27,7 +27,8 @@ export default function ContestCard(props: PropTypes) {
             style={[tailwind(''), {width: 15, height: 15}]}
           />
         </View>
-        <View style={[tailwind('flex flex-row pt-4')]}>
+
+        <View style={[tailwind('pt-4')]}>
           <Text
             numberOfLines={1}
             allowFontScaling={true}
@@ -38,6 +39,14 @@ export default function ContestCard(props: PropTypes) {
             ]}>
             World T20 Championship
           </Text>
+
+          <LinearGradient
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 0}}
+            style={[tailwind('mx-2 mt-1')]}
+            colors={['#162339', '#29344B', '#162339']}>
+            <View style={[tailwind(''), {height: 2}]}></View>
+          </LinearGradient>
         </View>
 
         <View
