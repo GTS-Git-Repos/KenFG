@@ -48,7 +48,7 @@ export default function LobbyScreen() {
 
         <ImageSlider />
 
-        <View style={[tailwind('px-4 py-1')]}>
+        <View style={[tailwind('px-4 pb-2')]}>
           <SubTitle text={'Upcomming'} />
         </View>
 

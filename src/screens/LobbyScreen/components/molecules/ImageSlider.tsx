@@ -30,12 +30,14 @@ const ImageSlider = (props: any) => {
       loop={true}
       showsButtons={false}
       autoplay={false}
-      showsPagination={false}
+      showsPagination={true}
       loadMinimal={true}
-      loadMinimalSize={1}
+      loadMinimalSize={2}
       removeClippedSubviews={false}
-      style={[tailwind('my-2'), {height: height}]}>
-      <TouchableOpacity style={[tailwind('mx-2'), {}]}>
+      activeDotColor={'#d1b45a'}
+      dotColor="#172339"
+      style={[tailwind('my-1'), {height: height + 20}]}>
+      <TouchableOpacity style={[tailwind('mx-2')]}>
         <Image
           resizeMode="contain"
           source={assets.banner1}
