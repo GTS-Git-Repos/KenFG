@@ -11,10 +11,10 @@ import tailwind from '../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import {TopBar} from '../sharedComponents';
 
-export default function BluePrintScreen() {
+export default function ContainerScreen() {
   const navigation = useNavigation();
 
-  const SCREENS = ['Home', 'ContestScreen'];
+  const SCREENS = ['Home', 'ContestListScreen', 'LoginScreen','SignupScreen'];
 
   return (
     <View style={tailwind('bg-dark h-full')}>

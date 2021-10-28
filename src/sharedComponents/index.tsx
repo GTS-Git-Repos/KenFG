@@ -1,4 +1,6 @@
 import TopBar from './atoms/TopBar';
-import ContestCard from './atoms/ContestCard';
+import UpcommingMatches from './atoms/UpcommingMatches';
 
-export {TopBar, ContestCard};
+import ContestCard from './molecules/ContestCard';
+
+export {TopBar, UpcommingMatches, ContestCard};

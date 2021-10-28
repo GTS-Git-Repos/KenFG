@@ -19,7 +19,7 @@
 		"scope": "typescriptreact",
 		"prefix": "rnview",
 		"body": [
-			"<View style={[tailwind(\"flex flex-row\")]}>",
+			"<View style={[tailwind(\"flex-row justify-between items-center\")]}>",
 			"   ",
 			"</View>"
 		],

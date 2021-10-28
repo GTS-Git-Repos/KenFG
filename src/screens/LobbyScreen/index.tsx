@@ -4,12 +4,12 @@ import tailwind from '../../../tailwind';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation, useRoute, CommonActions} from '@react-navigation/native';
 import assets from '../../constants/assets_manifest';
-import {ContestCard} from '../../sharedComponents';
+import {UpcommingMatches} from '../../sharedComponents';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {useQuery} from 'react-query';
-import {initialRemote} from '../../remote/appRemote';
-import {saveIpAction} from '../../store/actions/appActions';
+// import {useQuery} from 'react-query';
+// import {initialRemote} from '../../remote/appRemote';
+// import {saveIpAction} from '../../store/actions/appActions';
 
 import LobbyTopBar from './components/LobbyTopBar';
 import LobbyNav from './components/LobbyNav';
@@ -32,9 +32,9 @@ export default function LobbyScreen() {
         <LinearGradient
           start={{x: 0.49, y: 1.1}}
           end={{x: 1, y: 0.1}}
-          locations={[0.4, 0.3, 0]}
+          locations={[0.4, 0.3, 0, 0.1, 0]}
           // colors={['red', 'green', 'blue']}
-          colors={['#c5a959', '#c5a959', '#bea14f']}>
+          colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}>
           <LobbyTopBar amount={'10,000'} />
           <LobbyNav />
         </LinearGradient>
@@ -48,19 +48,21 @@ export default function LobbyScreen() {
 
         <ImageSlider />
 
-        <View style={[tailwind('px-4 pb-2')]}>
-          <SubTitle text={'Upcomming'} />
+        <View style={[tailwind('px-4 pb-1')]}>
+          <SubTitle text={'Upcoming'} />
         </View>
 
         <View style={[tailwind('flex flex-row flex-wrap px-2')]}>
-          {[1, 2, 3, 4, 6].map(item => {
+          {[1, 2, 3, 4].map(item => {
             return (
               <View key={item} style={[tailwind('w-6/12 px-1 bg-dark')]}>
-                <ContestCard />
+                <UpcommingMatches />
               </View>
             );
           })}
         </View>
+
+        <View style={[tailwind('h-10')]}></View>
       </ScrollView>
     </View>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
   title: string;
@@ -9,13 +10,17 @@ interface PropTypes {
 }
 
 export default function TopBarContest(props: PropTypes) {
+  const navigation = useNavigation();
   return (
     <View
       style={[
         tailwind('bg-primary p-3 flex-row items-center justify-between'),
       ]}>
       <View style={[tailwind('flex flex-row items-center')]}>
-        <Icon name="arrow-back" size={20} color="white" />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="arrow-back" size={20} color="white" />
+        </TouchableOpacity>
+
         <View style={[tailwind('px-7')]}>
           <Text style={[tailwind('font-bold text-gray-200 font-15')]}>
             {props.title}

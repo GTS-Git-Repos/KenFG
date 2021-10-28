@@ -8,14 +8,14 @@ interface PropTypes {
   text?: string;
 }
 
-export default function ContestCard(props: PropTypes) {
+export default function UpcommingMatches(props: PropTypes) {
   return (
     <View style={[tailwind('pb-2')]}>
       <LinearGradient
         colors={['#131e30', '#172239']}
         // colors={['red', 'green']}
-        start={{x: 0, y: 0}}
-        end={{x: 2.3, y: 0.6}}
+        start={{x: 0, y: 1.4}}
+        end={{x: 2.6, y: 0.6}}
         locations={[0.25, 0.1]}
         style={[
           tailwind('bg-primary  border border-gray-800 rounded px-2 pt-1'),

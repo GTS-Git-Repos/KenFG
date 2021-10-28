@@ -35,7 +35,8 @@ const ImageSlider = (props: any) => {
       loadMinimalSize={2}
       removeClippedSubviews={false}
       activeDotColor={'#d1b45a'}
-      dotColor="#172339"
+      activeDot={<ActiveDot />}
+      dotColor="#F3F3F3"
       style={[tailwind('my-1'), {height: height + 20}]}>
       <TouchableOpacity style={[tailwind('mx-2')]}>
         <Image
@@ -51,7 +52,31 @@ const ImageSlider = (props: any) => {
           style={{width: '100%', height: height}}
         />
       </TouchableOpacity>
+      <TouchableOpacity style={[tailwind('mx-2')]}>
+        <Image
+          resizeMode="contain"
+          source={assets.banner1}
+          style={{width: '100%', height: height}}
+        />
+      </TouchableOpacity>
     </Swiper>
+  );
+};
+
+const ActiveDot = () => {
+  return (
+    <View
+      style={{
+        backgroundColor: '#D0B55B',
+        width: 14,
+        height: 7,
+        borderRadius: 4,
+        marginLeft: 3,
+        marginRight: 3,
+        marginTop: 1,
+        marginBottom: 1,
+      }}
+    />
   );
 };
 
