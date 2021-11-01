@@ -14,7 +14,14 @@ import {TopBar} from '../sharedComponents';
 export default function ContainerScreen() {
   const navigation = useNavigation();
 
-  const SCREENS = ['Home', 'ContestListScreen', 'LoginScreen','SignupScreen'];
+  const SCREENS = [
+    'Home',
+    'ContestListScreen',
+    'LoginScreen',
+    'SignupScreen',
+    'ContentInfoScreen',
+    'CreateTeamScreen'
+  ];
 
   return (
     <View style={tailwind('bg-dark h-full')}>

@@ -21,10 +21,10 @@ export default function SubTitle(props: PropTypes) {
     <View style={[tailwind('p-2')]}>
       <View style={[tailwind('flex-row items-center')]}>
         <View style={[tailwind('flex-grow')]}>
-          <Text style={[tailwind('font-bold py-1 text-white font-20')]}>
+          <Text style={[tailwind('font-bold py-1 text-gray-300 font-17')]}>
             {props.title}
           </Text>
-          <Text style={[tailwind('font-regular text-white font-15')]}>
+          <Text style={[tailwind('font-regular text-gray-400 font-13')]}>
             {props.subText}
           </Text>
           {props.discount && (
@@ -33,7 +33,7 @@ export default function SubTitle(props: PropTypes) {
               <Text
                 adjustsFontSizeToFit={true}
                 allowFontScaling={true}
-                style={[tailwind('font-semibold text-center font-14')]}>
+                style={[tailwind('font-semibold text-center font-11')]}>
                 Discount
               </Text>
             </TouchableOpacity>

@@ -1,5 +1,5 @@
 import React from 'react';
-import tailwind from '../../../../../tailwind';
+import tailwind from '../../../tailwind';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';

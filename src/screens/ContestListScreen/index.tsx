@@ -17,12 +17,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useQuery} from 'react-query';
 const log = console.log;
 
-import TopBarContest from './components/atoms/TopbarContest';
+import TopBarContest from '../../sharedComponents/atoms/TopbarContest';
 import Tabs from './components/molecules/TabsContest';
 import FilterTab from './components/molecules/Filtertab';
 import ContestSubTitle from './components/atoms/ContestSubTitle';
 import {ContestCard} from '../../sharedComponents';
-
 
 export default function ContestScreen() {
   const navigation = useNavigation();
@@ -42,44 +41,50 @@ export default function ContestScreen() {
           subText={'Ready for One more match'}
         />
         <View style={[tailwind('mx-2')]}>
-          <ContestCard
-            name={'Prize Pool'}
-            title="10 Crores"
-            left_spot={10}
-            total_spot={100}
-            first_reward={'1 Crore'}
-            gaurantee={true}
-            practice={false}
-            demo_entry_amount={56}
-            entry_amount={20}
-          />
+          <View style={[tailwind('my-2 border border-gray-800 rounded')]}>
+            <ContestCard
+              name={'Prize Pool'}
+              title="10 Crores"
+              left_spot={10}
+              total_spot={100}
+              first_reward={'1 Crore'}
+              gaurantee={true}
+              practice={false}
+              demo_entry_amount={56}
+              entry_amount={20}
+            />
+          </View>
+
           <ContestSubTitle
             title={'Big Winnings Lower Entry'}
             subText={'Ready for One more match'}
           />
-          <ContestCard
-            name={'Prize Pool'}
-            title="3 Crores"
-            left_spot={432}
-            total_spot={1000}
-            first_reward={'1 Crore'}
-            gaurantee={true}
-            practice={false}
-            demo_entry_amount={17}
-            entry_amount={10}
-          />
-
-          <ContestCard
-            name={'Prize Pool'}
-            title="10 Croes"
-            left_spot={10}
-            total_spot={100}
-            first_reward={'1 Crore'}
-            gaurantee={true}
-            practice={false}
-            demo_entry_amount={17}
-            entry_amount={10}
-          />
+          <View style={[tailwind('my-2 border border-gray-800 rounded')]}>
+            <ContestCard
+              name={'Prize Pool'}
+              title="3 Crores"
+              left_spot={432}
+              total_spot={1000}
+              first_reward={'1 Crore'}
+              gaurantee={true}
+              practice={false}
+              demo_entry_amount={17}
+              entry_amount={10}
+            />
+          </View>
+          <View style={[tailwind('my-2 border border-gray-800 rounded')]}>
+            <ContestCard
+              name={'Prize Pool'}
+              title="10 Croes"
+              left_spot={10}
+              total_spot={100}
+              first_reward={'1 Crore'}
+              gaurantee={true}
+              practice={false}
+              demo_entry_amount={17}
+              entry_amount={10}
+            />
+          </View>
         </View>
       </ScrollView>
     </View>

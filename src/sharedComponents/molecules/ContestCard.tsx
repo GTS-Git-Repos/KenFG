@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Text, TouchableOpacityBase, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -16,21 +16,21 @@ interface PropTypes {
   entry_amount: number;
 }
 
-const PROGRESS_BAR_HEIGHT = 5;
+const PROGRESS_BAR_HEIGHT = 3;
 
 export default function ContestCard(props: PropTypes) {
   return (
-    <View style={[tailwind('rounded border my-2  border-gray-800 ')]}>
-      <View style={[tailwind('px-2 py-2 bg-primary')]}>
-        <View style={[tailwind('flex-row items-center   justify-between ')]}>
+    <View>
+      <View style={[tailwind('px-2 py-1 bg-primary')]}>
+        <View style={[tailwind('flex-row items-center justify-between ')]}>
           <View style={[tailwind('')]}>
-            <Text style={[tailwind('font-regular font-15 text-gray-400')]}>
+            <Text style={[tailwind('font-regular font-10 text-gray-400')]}>
               {props.name}
             </Text>
             <Text
               style={[
-                tailwind('font-bold text-gray-200 py-1'),
-                {fontSize: 25},
+                tailwind('font-bold text-gray-300 py-1'),
+                {fontSize: 20},
               ]}>
               {'\u20B9 '}
               {props.title}
@@ -42,7 +42,7 @@ export default function ContestCard(props: PropTypes) {
               <Text
                 style={[
                   tailwind(
-                    'font-regular text-right py-1 text-gray-200 font-15',
+                    'font-regular text-right py-1 text-gray-400 font-10',
                   ),
                 ]}>
                 Entry
@@ -60,7 +60,7 @@ export default function ContestCard(props: PropTypes) {
               </Text>
               <TouchableOpacity
                 style={[tailwind('bg-secondary rounded py-2 w-20')]}>
-                <Text style={[tailwind('font-bold text-center font-15')]}>
+                <Text style={[tailwind('font-bold text-center font-13')]}>
                   {'\u20B9'}
                   {props.entry_amount}
                 </Text>
@@ -85,10 +85,10 @@ export default function ContestCard(props: PropTypes) {
         </View>
 
         <View style={[tailwind('flex-row justify-between items-center')]}>
-          <Text style={[tailwind('font-regular text-red-500 font-15')]}>
+          <Text style={[tailwind('font-regular text-red-500 font-10')]}>
             {props.left_spot} spots left
           </Text>
-          <Text style={[tailwind('font-regular text-gray-400 font-15')]}>
+          <Text style={[tailwind('font-regular text-gray-400 font-10  ')]}>
             {props.total_spot} spots
           </Text>
         </View>
@@ -100,16 +100,16 @@ export default function ContestCard(props: PropTypes) {
         <View style={[tailwind('flex-row justify-between items-center')]}>
           <View style={[tailwind('flex-row items-center')]}>
             <Icon name="medal-outline" size={1} color="white" />
-            <Text style={[tailwind('font-regular text-gray-300 font-15')]}>
+            <Text style={[tailwind('font-regular text-gray-300 font-12')]}>
               {'\u20B9 '}
               {props.first_reward}
             </Text>
           </View>
           {props.gaurantee && (
             <View style={[tailwind('flex-row items-center')]}>
-              <Icon name="trophy-outline" size={18} color="white" />
+              <Icon name="trophy-outline" size={15} color="white" />
               <Text
-                style={[tailwind('font-regular text-gray-400 pl-2 font-15')]}>
+                style={[tailwind('font-regular text-gray-400 pl-2 font-12')]}>
                 Gauranteed
               </Text>
             </View>

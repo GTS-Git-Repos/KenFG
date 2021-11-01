@@ -1,38 +1,40 @@
 import React, {useState, useEffect} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {View} from 'react-native';
 import {
-  createNativeStackNavigator,
+  NavigationContainer,
+  DefaultTheme,
   DarkTheme,
-} from '@react-navigation/native-stack';
+} from '@react-navigation/native';
+
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import BottomTabNavigation from './BottomTabNavigation';
 
 import ContestListScreen from '../screens/ContestListScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
+import ContentInfoScreen from '../screens/ContentInfoScreen';
+import CreateTeamScreen from '../screens/CreateTeamScreen';
 
 const RootNavigator = createNativeStackNavigator();
 
 const StackConfig = {
   headerShown: false,
-  cardStyle: {backgroundColor: 'black'},
-  cardStyleInterpolator: ({current: {progress}}) => ({
-    cardStyle: {
-      opacity: progress.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 1],
-      }),
-    },
-    overlayStyle: {
-      opacity: progress.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 0.5],
-        extrapolate: 'clamp',
-      }),
-    },
-  }),
 };
+
+// const MyTheme = {
+//   ...DefaultTheme,
+//   colors: {
+//     background: 'rgb(0, 0, 0)',
+//     border: 'rgb(0, 0, 0)',
+//     card: 'rgb(0, 0, 0)',
+//     notification: 'rgb(0, 0, 0)',
+//     primary: 'rgb(0, 0, 0)',
+//     text: 'rgb(0, 0, 0)',
+//   },
+//   dark: true,
+// };
+
+// console.log('DarkTheme', DarkTheme);
 
 export default function RootNavigation() {
   return (
@@ -44,10 +46,20 @@ export default function RootNavigation() {
           component={BottomTabNavigation}
           name="BottomTabNavigation"
         />
-        <RootNavigator.Screen component={ContestListScreen} name="ContestListScreen" />
+        <RootNavigator.Screen
+          component={ContestListScreen}
+          name="ContestListScreen"
+        />
         <RootNavigator.Screen component={LoginScreen} name="LoginScreen" />
         <RootNavigator.Screen component={SignupScreen} name="SignupScreen" />
-        
+        <RootNavigator.Screen
+          component={ContentInfoScreen}
+          name="ContentInfoScreen"
+        />
+        <RootNavigator.Screen
+          component={CreateTeamScreen}
+          name="CreateTeamScreen"
+        />
       </RootNavigator.Navigator>
     </NavigationContainer>
   );
