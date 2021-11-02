@@ -12,6 +12,9 @@ import {useQuery} from 'react-query';
 const log = console.log;
 import TopBarCreateTeam from './atoms/TopBarCreateTeam';
 import MatchStatus from './atoms/MatchStatus';
+import TeamInfo from './atoms/TeamInfo';
+import SelectionIndicator from './atoms/SelectionIndicator';
+import Tabs from './atoms/Tabs';
 
 export default function CreateTeamScreen() {
   const navigation = useNavigation();
@@ -25,12 +28,18 @@ export default function CreateTeamScreen() {
         colors={['#C2A554', '#BB9C49', '#BB9C49']}>
         <TopBarCreateTeam />
         <MatchStatus />
-        <View
-          style={[
-            tailwind('flex-row py-4 justify-between items-center'),
-          ]}></View>
+        <TeamInfo
+          teamname1={'IND'}
+          teamname2={'PAK'}
+          teamcount1={7}
+          teamcount2={4}
+          credits_left={2.5}
+        />
+        <SelectionIndicator count={11} />
       </LinearGradient>
-
+      <View>
+        <Tabs />
+      </View>
       <Text>Hello</Text>
     </View>
   );

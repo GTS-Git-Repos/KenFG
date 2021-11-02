@@ -15,14 +15,13 @@ export default function TopBarCreateTeam(props: PropTypes) {
     navigation.goBack();
   }
   return (
-    <View
-      style={[
-        tailwind('flex-row items-center justify-between py-2 px-2'),
-      ]}>
+    <View style={[tailwind('flex-row items-center justify-between py-2 px-2')]}>
       <TouchableOpacity onPress={goBack}>
         <Icon name="arrow-back-outline" size={25} color="white" />
       </TouchableOpacity>
-      <Text style={[tailwind('font-regular text-primary font-15')]}>15h 54m 76s Left</Text>
+      <Text style={[tailwind('font-regular text-primary'), {fontSize: 18}]}>
+        15h 54m 76s Left
+      </Text>
       <TouchableOpacity>
         <Icon name="help-outline" size={25} color="white" />
       </TouchableOpacity>
