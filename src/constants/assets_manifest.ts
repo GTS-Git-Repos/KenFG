@@ -17,6 +17,10 @@ export default {
   logo: require('../assets/images/logo.png'),
   wallet: require('../assets/images/wallet.png'),
   logo_back_rectangle: require('../assets/images/logo_back_rectangle.png'),
+  ground: require('../assets/images/ground.jpeg'),
 
   banner1: require('../assets/temp/banner1.png'),
+  playerImage: require('../assets/temp/playerimage.png'),
+  indianflag: require('../assets/temp/indianflag.png'),
+  aus_flag: require('../assets/temp/aus_flag.jpeg'),
 };

@@ -20,7 +20,9 @@ export default function ContainerScreen() {
     'LoginScreen',
     'SignupScreen',
     'ContentInfoScreen',
-    'CreateTeamScreen'
+    'CreateTeamScreen',
+    'MatchGroundScreen',
+    'TeamReviewScreen'
   ];
 
   return (

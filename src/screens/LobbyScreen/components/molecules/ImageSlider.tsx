@@ -33,11 +33,11 @@ const ImageSlider = (props: any) => {
       showsPagination={true}
       loadMinimal={true}
       loadMinimalSize={2}
-      removeClippedSubviews={false}
+      removeClippedSubviews={true}
       activeDotColor={'#d1b45a'}
       activeDot={<ActiveDot />}
       dotColor="#F3F3F3"
-      style={[tailwind('my-1'), {height: height + 20}]}>
+      style={[tailwind('my-1'), {height: height}]}>
       <TouchableOpacity style={[tailwind('mx-2')]}>
         <Image
           resizeMode="contain"
@@ -67,6 +67,8 @@ const ActiveDot = () => {
   return (
     <View
       style={{
+        position: 'relative',
+        top: 20,
         backgroundColor: '#D0B55B',
         width: 14,
         height: 7,

@@ -14,6 +14,8 @@ import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import ContentInfoScreen from '../screens/ContentInfoScreen';
 import CreateTeamScreen from '../screens/CreateTeamScreen';
+import MatchGroundScreen from '../screens/MatchGroundScreen';
+import TeamReviewScreen from '../screens/TeamReviewScreen';
 
 const RootNavigator = createNativeStackNavigator();
 
@@ -60,6 +62,15 @@ export default function RootNavigation() {
           component={CreateTeamScreen}
           name="CreateTeamScreen"
         />
+        <RootNavigator.Screen
+          component={MatchGroundScreen}
+          name="MatchGroundScreen"
+        />
+         <RootNavigator.Screen
+          component={TeamReviewScreen}
+          name="TeamReviewScreen"
+        />
+        
       </RootNavigator.Navigator>
     </NavigationContainer>
   );

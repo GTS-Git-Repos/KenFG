@@ -12,28 +12,24 @@ export default function SelectionTabs(props: PropTypes) {
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      style={[tailwind('bg-primary')]}>
+      style={[tailwind('bg-primary py-1')]}>
       <View style={[{width: 100}, tailwind('py-2')]}>
-        <Text
-          style={[tailwind('font-regular text-gray-400 text-center font-15')]}>
+        <Text style={[tailwind('font-regular text-light text-center font-15')]}>
           WK (1)
         </Text>
       </View>
       <View style={[{width: 100}, tailwind('py-2')]}>
-        <Text
-          style={[tailwind('font-regular text-gray-400 text-center font-15')]}>
+        <Text style={[tailwind('font-regular text-light text-center font-15')]}>
           BAT (4)
         </Text>
       </View>
       <View style={[{width: 100}, tailwind('py-2')]}>
-        <Text
-          style={[tailwind('font-regular text-gray-400 text-center font-15')]}>
+        <Text style={[tailwind('font-regular text-light text-center font-15')]}>
           AR (1)
         </Text>
       </View>
       <View style={[{width: 100}, tailwind('py-2')]}>
-        <Text
-          style={[tailwind('font-regular text-gray-400 text-center font-15')]}>
+        <Text style={[tailwind('font-regular text-light text-center font-15')]}>
           BOWL (5)
         </Text>
       </View>

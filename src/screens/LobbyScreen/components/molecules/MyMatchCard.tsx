@@ -15,7 +15,7 @@ export default function MyMatchCard(props: PropTypes) {
   const {width} = useWindowDimensions();
   return (
     <View style={[tailwind('bg-primary rounded border border-gray-800')]}>
-      <View style={[tailwind('p-1')]}>
+      <View style={[tailwind('py-1')]}>
         <MyMatchCardTopSection />
         <LinearGradient
           start={{x: 0, y: 0}}

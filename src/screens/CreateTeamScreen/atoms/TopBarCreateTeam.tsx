@@ -20,7 +20,7 @@ export default function TopBarCreateTeam(props: PropTypes) {
         <Icon name="arrow-back-outline" size={25} color="white" />
       </TouchableOpacity>
       <Text style={[tailwind('font-regular text-primary'), {fontSize: 18}]}>
-        15h 54m 76s Left
+        15h 54m 36s Left
       </Text>
       <TouchableOpacity>
         <Icon name="help-outline" size={25} color="white" />

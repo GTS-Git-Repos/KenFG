@@ -12,18 +12,18 @@ export default function LobbyTopBar(props: PropTypes) {
   return (
     <View>
       <View style={[tailwind('flex-row  justify-between')]}>
-        <View style={[tailwind('relative bottom-1 right-1')]}>
+        <View style={[tailwind('relative right-1'), {bottom: 7}]}>
           <Image
             resizeMode="cover"
             source={assets.logo_back_rectangle}
             style={[{width: 167, height: 73}]}
           />
         </View>
-        <View style={[tailwind('absolute left-3 top-3'), {width: 90}]}>
+        <View style={[tailwind('absolute left-2 top-2'), {width: 100}]}>
           <Image
             resizeMode="contain"
             source={assets.logo}
-            style={[tailwind('w-full'), {height: 50}]}
+            style={[tailwind('w-full'), {height: 45}]}
           />
         </View>
 
@@ -37,7 +37,8 @@ export default function LobbyTopBar(props: PropTypes) {
               Cash Balance
             </Text>
             <Text style={[tailwind('font-regular text-primary font-16')]}>
-              Rs. {props.amount}
+              {'\u20B9 '}
+              {props.amount}
             </Text>
           </View>
           <Image

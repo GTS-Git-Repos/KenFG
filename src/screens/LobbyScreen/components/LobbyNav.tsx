@@ -14,7 +14,7 @@ export default function LobbyNav(props: PropTypes) {
     <View style={[tailwind('pt-1 flex-row justify-between')]}>
       <View
         style={[
-          tailwind('flex-col items-center justify-end py-1'),
+          tailwind('flex-col items-center relative bottom-1 py-1'),
           {width: width / 5.5},
         ]}>
         <Image
@@ -91,7 +91,7 @@ export default function LobbyNav(props: PropTypes) {
           tailwind('flex-col items-center justify-end py-2 '),
           {width: width / 5.5},
         ]}>
-        <View style={[tailwind('relative')]}>
+        <View style={[tailwind('relative bottom-1'), {left: 4}]}>
           <Image
             resizeMode="contain"
             source={assets.topBarbell}

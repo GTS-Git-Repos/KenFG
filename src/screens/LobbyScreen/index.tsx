@@ -28,7 +28,7 @@ export default function LobbyScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <ScrollView>
+      <ScrollView fadingEdgeLength={150}>
         <LinearGradient
           start={{x: 0.49, y: 1.1}}
           end={{x: 1, y: 0.1}}
@@ -64,6 +64,23 @@ export default function LobbyScreen() {
 
         <View style={[tailwind('h-10')]}></View>
       </ScrollView>
+      {/* <View>
+        <LinearGradient
+          colors={['transparent', 'transparent', 'transparent', '#000']}>
+          <View
+            style={[
+              tailwind('flex-row justify-between items-center h-3'),
+            ]}></View>
+        </LinearGradient>
+      </View> */}
+
+      {/* <View
+        style={[
+          tailwind('h-5'),
+          {
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          },
+        ]}></View> */}
     </View>
   );
 }
