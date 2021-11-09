@@ -1,10 +1,18 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, Image, useWindowDimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  useWindowDimensions,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 interface PropTypes {
   text?: string;
+  cricket: boolean;
+  setCricket(arg: boolean): void;
 }
 
 export default function LobbyNav(props: PropTypes) {
@@ -20,7 +28,7 @@ export default function LobbyNav(props: PropTypes) {
         <Image
           resizeMode="contain"
           source={assets.profile_round}
-          style={[tailwind('w-7 h-7')]}
+          style={[tailwind('w-7 h-7 relative bottom-1')]}
         />
         <Text style={[tailwind('font-regular text-primary font-10')]}>
           Hi, Naveen
@@ -29,30 +37,37 @@ export default function LobbyNav(props: PropTypes) {
 
       <View style={[tailwind('flex-1')]}>
         <View style={[tailwind('flex-row items-center justify-around ')]}>
-          <View
+          <TouchableOpacity
+            onPress={() => props.setCricket(true)}
             style={[
               tailwind('flex flex-col items-center border-b-2 mb-0.5'),
-              {borderBottomColor: '#162238'},
+              {borderBottomColor: props.cricket ? '#162238' : 'transparent'},
             ]}>
             <Image
               resizeMode="contain"
-              source={assets.cricket_icon}
+              source={props.cricket ? assets.cricket_icon : assets.cricket_off}
               style={[tailwind('w-5 h-5')]}
             />
             <Text
               style={[
                 tailwind(
-                  'font-bold text-center px-2 uppercase text-xs font-11 tracking-widest',
+                  `font-bold text-center px-2 uppercase text-xs font-11 tracking-widest`,
                 ),
+                {color: props.cricket ? '#172339' : '#695023'},
               ]}>
               Cricket
             </Text>
-          </View>
+          </TouchableOpacity>
 
-          <View style={[tailwind('flex flex-col items-center mb-0.5')]}>
+          <TouchableOpacity
+            onPress={() => props.setCricket(false)}
+            style={[
+              tailwind('flex flex-col items-center border-b-2 mb-0.5'),
+              {borderBottomColor: !props.cricket ? '#162238' : 'transparent'},
+            ]}>
             <Image
               resizeMode="contain"
-              source={assets.football_icon}
+              source={props.cricket ? assets.football_icon : assets.footbal_on}
               style={[tailwind('w-5 h-5')]}
             />
             <Text
@@ -60,11 +75,11 @@ export default function LobbyNav(props: PropTypes) {
                 tailwind(
                   'font-bold text-center px-2 uppercase text-xs font-11 tracking-widest',
                 ),
-                {color: '#695023'},
+                {color: !props.cricket ? '#172339' : '#695023'},
               ]}>
               FootBall
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={[tailwind('flex-row')]}>
           <View
@@ -91,7 +106,7 @@ export default function LobbyNav(props: PropTypes) {
           tailwind('flex-col items-center justify-end py-2 '),
           {width: width / 5.5},
         ]}>
-        <View style={[tailwind('relative bottom-1'), {left: 4}]}>
+        <View style={[tailwind('relative bottom-2'), {left: 4}]}>
           <Image
             resizeMode="contain"
             source={assets.topBarbell}

@@ -71,25 +71,27 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
               {index === 0 ? (
                 <Image
                   resizeMode="contain"
-                  source={assets.home_tab}
+                  source={isFocused ? assets.home_tab : assets.home_tab_off}
                   style={[tailwind('w-8 h-8')]}
                 />
               ) : index === 1 ? (
                 <Image
                   resizeMode="contain"
-                  source={assets.contest_tab}
+                  source={
+                    isFocused ? assets.contest_tab_on : assets.contest_tab
+                  }
                   style={[tailwind('w-8 h-8')]}
                 />
               ) : index === 2 ? (
                 <Image
                   resizeMode="contain"
-                  source={assets.leader_tab}
+                  source={isFocused ? assets.leader_tab_on : assets.leader_tab}
                   style={[tailwind('w-8 h-8')]}
                 />
               ) : (
                 <Image
                   resizeMode="contain"
-                  source={assets.more_tab}
+                  source={isFocused ? assets.more_tab_on : assets.more_tab}
                   style={[tailwind('w-8 h-8')]}
                 />
               )}
@@ -99,7 +101,7 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
                   tailwind(
                     `text-white text-center uppercase pt-1  font-bold  ${
                       isFocused
-                        ? 'text-red-600 font-11'
+                        ? 'text-red-600 font-10'
                         : 'text-secondary font-10'
                     }`,
                   ),

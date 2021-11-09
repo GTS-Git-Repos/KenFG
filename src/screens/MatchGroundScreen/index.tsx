@@ -27,15 +27,15 @@ export default function MathchGroundScreen() {
         teamcount2={6}
         creditsLeft={3.5}
       />
-      <ScrollView>
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <ImageBackground
           source={assets.ground}
-          style={[tailwind('w-full')]}
+          style={[tailwind('w-full'), {flexGrow: 1}]}
           resizeMode="cover">
           <CategoryPlayers title={'WICKET-KEEPERS'} players={[1, 2]} />
-          <CategoryPlayers title={'BATTERS'} players={[1, 2, 3, 4]} />
-          <CategoryPlayers title={'ALL ROUNDERS'} players={[1, 2]} />
-          <CategoryPlayers title={'BOWLERS'} players={[1, 2, 3]} />
+          <CategoryPlayers title={'WICKET-KEEPERS'} players={[1, 2, 5]} />
+          <CategoryPlayers title={'WICKET-KEEPERS'} players={[1, 2]} />
+          <CategoryPlayers title={'WICKET-KEEPERS'} players={[1, 2, 3]} />
         </ImageBackground>
       </ScrollView>
     </View>

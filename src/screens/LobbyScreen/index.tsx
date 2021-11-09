@@ -13,9 +13,8 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import LobbyTopBar from './components/LobbyTopBar';
 import LobbyNav from './components/LobbyNav';
-import SubTitle from './components/SubTitle';
-import MyMatchCard from './components/molecules/MyMatchCard';
-import ImageSlider from './components/molecules/ImageSlider';
+
+import CricketPage from './components/molecules/CricketPage';
 
 const log = console.log;
 
@@ -24,11 +23,11 @@ export default function LobbyScreen() {
   const route = useRoute();
   const dispatch = useDispatch();
 
-  // console.log(ImageSlider());
+  const [cricket, setCricket] = useState(true);
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <ScrollView fadingEdgeLength={150}>
+      <ScrollView fadingEdgeLength={50}>
         <LinearGradient
           start={{x: 0.49, y: 1.1}}
           end={{x: 1, y: 0.1}}
@@ -36,51 +35,24 @@ export default function LobbyScreen() {
           // colors={['red', 'green', 'blue']}
           colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}>
           <LobbyTopBar amount={'10,000'} />
-          <LobbyNav />
+          <LobbyNav cricket={cricket} setCricket={setCricket} />
         </LinearGradient>
-
-        <View style={[tailwind('px-4 py-1')]}>
-          <SubTitle text={'My Matches'} actiontext="View all" />
-        </View>
-        <View style={[tailwind('px-2')]}>
-          <MyMatchCard />
-        </View>
-
-        <ImageSlider />
-
-        <View style={[tailwind('px-4 pb-1')]}>
-          <SubTitle text={'Upcoming'} />
-        </View>
-
-        <View style={[tailwind('flex flex-row flex-wrap px-2')]}>
-          {[1, 2, 3, 4].map(item => {
-            return (
-              <View key={item} style={[tailwind('w-6/12 px-1 bg-dark')]}>
-                <UpcommingMatches />
-              </View>
-            );
-          })}
-        </View>
+        {cricket ? (
+          <CricketPage />
+        ) : (
+          <View style={[tailwind('py-10')]}>
+            <Text
+              style={[
+                tailwind('font-semibold text-center uppercase font-17'),
+                {color: '#8797B1'},
+              ]}>
+              Coming Soon ...
+            </Text>
+          </View>
+        )}
 
         <View style={[tailwind('h-10')]}></View>
       </ScrollView>
-      {/* <View>
-        <LinearGradient
-          colors={['transparent', 'transparent', 'transparent', '#000']}>
-          <View
-            style={[
-              tailwind('flex-row justify-between items-center h-3'),
-            ]}></View>
-        </LinearGradient>
-      </View> */}
-
-      {/* <View
-        style={[
-          tailwind('h-5'),
-          {
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          },
-        ]}></View> */}
     </View>
   );
 }
