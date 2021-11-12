@@ -21,11 +21,14 @@ export default function TopBar(props: Props) {
         tailwind('flex flex-row justify-between bg-primary items-center p-3'),
       ]}>
       <View style={[tailwind('flex-row items-center')]}>
-        {navigation.canGoBack() ? (
+        {/* {navigation.canGoBack() ? (
           <TouchableOpacity onPress={goBack}>
             <Icon name="arrow-back-outline" size={25} color="white" />
           </TouchableOpacity>
-        ) : null}
+        ) : null} */}
+        <TouchableOpacity onPress={goBack}>
+          <Icon name="arrow-back-outline" size={25} color="white" />
+        </TouchableOpacity>
 
         <Text style={[tailwind('font-semibold text-white px-3 font-16')]}>
           {props.text}

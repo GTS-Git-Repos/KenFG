@@ -36,7 +36,7 @@ export default function BottomTabNavigation() {
   return (
     <BottomTab.Navigator
       screenOptions={config}
-      initialRouteName="Home"
+      initialRouteName="More"
       tabBar={props => <CustomBottomTab {...props} />}>
       <BottomTab.Screen name="Home" component={LobbyScreen} />
       <BottomTab.Screen name="My Contest" component={ContestListScreen} />
