@@ -7,10 +7,13 @@ import {
   ImageBackground,
   Dimensions,
   ScrollView,
+  Touchable,
+  TouchableOpacity,
+  ToastAndroid,
 } from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
-import {useNavigation, useRoute, CommonActions} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {TopBar} from '../../sharedComponents';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import {useQuery} from 'react-query';
@@ -48,8 +51,7 @@ export default function AccountProfileScreen() {
             following={'432'}
             friends={'3'}
           />
-          <LevelCard />
-         
+          <LevelCard currentLevel={4} />
         </ScrollView>
       </ImageBackground>
     </View>

@@ -4,7 +4,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
-  text?: string;
+  currentLevel: number;
 }
 
 export default function LevelCard(props: PropTypes) {
@@ -14,10 +14,12 @@ export default function LevelCard(props: PropTypes) {
         <View style={[tailwind(''), {flex: 1}]}></View>
 
         <View style={[tailwind('flex-col'), {flex: 9}]}>
-          <Text style={[tailwind('font-bold text-secondary')]}>Level 4</Text>
+          <Text style={[tailwind('font-bold text-secondary')]}>
+            Level {props.currentLevel}
+          </Text>
           <View style={[tailwind('py-2')]}>
             <Text style={[tailwind('text-light font-13')]}>
-              To reach Level 5, play:
+              To reach Level {props.currentLevel + 1}, play:
             </Text>
 
             <View

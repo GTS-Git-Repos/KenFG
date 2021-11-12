@@ -18,7 +18,7 @@ export default function TopBar(props: Props) {
   return (
     <View
       style={[
-        tailwind('flex flex-row justify-between bg-primary items-center p-3'),
+        tailwind('flex flex-row justify-between bg-secondary items-center p-3'),
       ]}>
       <View style={[tailwind('flex-row items-center')]}>
         {/* {navigation.canGoBack() ? (
@@ -27,10 +27,10 @@ export default function TopBar(props: Props) {
           </TouchableOpacity>
         ) : null} */}
         <TouchableOpacity onPress={goBack}>
-          <Icon name="arrow-back-outline" size={25} color="white" />
+          <Icon name="arrow-back-outline" size={25} color="#172339" />
         </TouchableOpacity>
 
-        <Text style={[tailwind('font-semibold text-white px-3 font-16')]}>
+        <Text style={[tailwind('font-semibold text-primary px-3 font-16')]}>
           {props.text}
         </Text>
       </View>
