@@ -1,6 +1,6 @@
+import 'react-native-reanimated';
 import React from 'react';
 import {LogBox, SafeAreaView, StatusBar} from 'react-native';
-import tailwind from 'tailwind';
 import {Provider} from 'react-redux';
 import {QueryClient, QueryClientProvider} from 'react-query';
 

@@ -1,12 +1,12 @@
 import React, {useState, useRef} from 'react';
-import {View, Text, Image, useWindowDimensions, ScrollView} from 'react-native';
+import {View, Text, useWindowDimensions} from 'react-native';
 import tailwind from '../../../tailwind';
-import {useNavigation, useRoute, CommonActions} from '@react-navigation/native';
-import {useQuery} from 'react-query';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {TopbarContest, ContestCard} from '../../sharedComponents/';
 import TabsContestInfo from './atoms/TabsContestInfo';
 const log = console.log;
 import LearderBoard from './molecules/LeaderBoardList';
+import Animated, {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 
 export default function ContestInfoScreen() {
@@ -14,11 +14,11 @@ export default function ContestInfoScreen() {
   const route = useRoute();
   const {width} = useWindowDimensions();
   // const [tabOffset, setTabOffset] = useState(0);
-  const tabOffset = useRef(0);
+  const tabOffset = useSharedValue(0);
 
-  function onScrollEnded(e) {
-    tabOffset.current = e.nativeEvent.contentOffset.x;
-  }
+  const onScrollAction = e => {
+    tabOffset.value = e.nativeEvent.contentOffset.x;
+  };
 
   return (
     <View style={tailwind('bg-dark h-full')}>
@@ -37,22 +37,23 @@ export default function ContestInfoScreen() {
         />
       </View>
       <TabsContestInfo
-        tabOffset={tabOffset.current}
+        tabOffset={tabOffset}
         tabs={['Winnings', 'LeaderBoard']}
       />
-      <ScrollView
+      <Animated.ScrollView
+        onScroll={onScrollAction}
         horizontal={true}
         pagingEnabled={true}
+        bounces={false}
         scrollEnabled={true}
         decelerationRate={'normal'}
         disableIntervalMomentum={true}
         snapToAlignment="center"
         snapToInterval={width}
-        scrollEventThrottle={16}
-        onMomentumScrollEnd={onScrollEnded}>
+        scrollEventThrottle={16}>
         <WinningsList />
         <LearderBoard />
-      </ScrollView>
+      </Animated.ScrollView>
     </View>
   );
 }

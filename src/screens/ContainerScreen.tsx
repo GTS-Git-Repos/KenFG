@@ -25,6 +25,8 @@ export default function ContainerScreen() {
     'TeamReviewScreen',
     'AccountProfileScreen',
     'TeamsListScreen',
+    'LiveMatchScreen',
+    'CompareTeamsScreen',
   ];
 
   return (

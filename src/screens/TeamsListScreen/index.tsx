@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, Pressable} from 'react-native';
+import {View, Text, Image, Pressable, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
@@ -10,6 +10,7 @@ import {TopBar} from '../../sharedComponents/';
 const log = console.log;
 
 import TeamsCard from './molecules/TeamsCard';
+import TeamSwitch from './molecules/TeamSwitch';
 
 export default function TeamsListScreen() {
   const navigation = useNavigation();
@@ -24,7 +25,10 @@ export default function TeamsListScreen() {
       <Text style={[tailwind('font-bold text-light p-4 font-15')]}>
         Already Joined
       </Text>
-      <TeamsCard />
+      <ScrollView>
+        <TeamsCard />
+      </ScrollView>
+      <TeamSwitch current={'Team 1'} />
     </View>
   );
 }

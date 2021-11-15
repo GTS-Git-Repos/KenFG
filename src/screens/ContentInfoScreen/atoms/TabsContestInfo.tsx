@@ -1,13 +1,8 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {
-  View,
-  TouchableOpacity,
-  Animated,
-  Text,
-  useWindowDimensions,
-} from 'react-native';
+import {View, TouchableOpacity, Text, useWindowDimensions} from 'react-native';
 // import Icon from 'react-native-vector-icons/Ionicons';
+import Animated, {useAnimatedStyle} from 'react-native-reanimated';
 
 interface PropTypes {
   tabs: Array<string>;
@@ -16,6 +11,13 @@ interface PropTypes {
 
 export default function TabsContestInfo(props: PropTypes) {
   const {width} = useWindowDimensions();
+
+  const rstyle = useAnimatedStyle(() => {
+    return {
+      transform: [{translateX: props.tabOffset.value / 2}],
+    };
+  });
+
   return (
     <View style={[tailwind('relative')]}>
       <View style={[tailwind('flex-row items-center')]}>
@@ -39,19 +41,8 @@ export default function TabsContestInfo(props: PropTypes) {
           style={[
             tailwind('bg-secondary absolute bottom-0'),
             {width: width / 2, height: 2},
-            {transform: [{translateX: props.tabOffset}]},
+            rstyle,
           ]}></Animated.View>
-
-        {/* {props.tabOffset ? (
-          
-        ) : (
-          <View
-            style={[
-              tailwind('bg-secondary absolute bottom-0'),
-              {width: width / 2, height: 2},
-              {transform: [{translateX: width / width}]},
-            ]}></View>
-        )} */}
       </View>
     </View>
   );
