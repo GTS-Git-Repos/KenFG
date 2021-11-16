@@ -7,6 +7,7 @@ import Animated, {useAnimatedStyle} from 'react-native-reanimated';
 interface PropTypes {
   tabs: Array<string>;
   tabOffset: number;
+  onTabPress(index: number): void;
 }
 
 export default function TabsContestInfo(props: PropTypes) {
@@ -21,9 +22,10 @@ export default function TabsContestInfo(props: PropTypes) {
   return (
     <View style={[tailwind('relative')]}>
       <View style={[tailwind('flex-row items-center')]}>
-        {props.tabs.map(item => {
+        {props.tabs.map((item, index) => {
           return (
             <TouchableOpacity
+              onPress={() => props.onTabPress(index)}
               key={item}
               style={[tailwind('w-6/12'), {paddingVertical: 12}]}>
               <Text

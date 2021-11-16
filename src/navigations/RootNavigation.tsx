@@ -20,6 +20,7 @@ import AccountProfileScreen from '../screens/AccountProfileScreen';
 import TeamsListScreen from '../screens/TeamsListScreen';
 import LiveMatchScreen from '../screens/LiveMatchScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
+import MyContestPlayersInfo from '../screens/MyContestPlayersInfo';
 
 const RootNavigator = createNativeStackNavigator();
 
@@ -46,7 +47,7 @@ export default function RootNavigation() {
   return (
     <NavigationContainer theme={DarkTheme}>
       <RootNavigator.Navigator
-        initialRouteName="ContentInfoScreen"
+        initialRouteName="MyContestPlayersInfo"
         screenOptions={StackConfig}>
         <RootNavigator.Screen
           component={BottomTabNavigation}
@@ -90,7 +91,10 @@ export default function RootNavigation() {
           component={CompareTeamsScreen}
           name="CompareTeamsScreen"
         />
-        
+        <RootNavigator.Screen
+          component={MyContestPlayersInfo}
+          name="MyContestPlayersInfo"
+        />
       </RootNavigator.Navigator>
     </NavigationContainer>
   );

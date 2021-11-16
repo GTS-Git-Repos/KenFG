@@ -15,9 +15,18 @@ export default function ContestInfoScreen() {
   const {width} = useWindowDimensions();
   // const [tabOffset, setTabOffset] = useState(0);
   const tabOffset = useSharedValue(0);
+  const scrollRef = useRef(null);
 
   const onScrollAction = e => {
     tabOffset.value = e.nativeEvent.contentOffset.x;
+  };
+
+  const onTabPress = (index: number) => {
+    if (index === 0) {
+      scrollRef?.current?.scrollTo({x: 0, y: 0, animated: true});
+    } else {
+      scrollRef?.current?.scrollTo({x: width, y: 0, animated: true});
+    }
   };
 
   return (
@@ -39,8 +48,10 @@ export default function ContestInfoScreen() {
       <TabsContestInfo
         tabOffset={tabOffset}
         tabs={['Winnings', 'LeaderBoard']}
+        onTabPress={onTabPress}
       />
       <Animated.ScrollView
+        ref={scrollRef}
         onScroll={onScrollAction}
         horizontal={true}
         pagingEnabled={true}

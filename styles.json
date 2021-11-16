@@ -1,4 +1,13 @@
 {
+  "box": {
+    "borderWidth": 2,
+    "borderStyle": "solid",
+    "--tw-border-opacity": 1,
+    "borderTopColor": "rgba(239, 68, 68, var(--tw-border-opacity))",
+    "borderRightColor": "rgba(239, 68, 68, var(--tw-border-opacity))",
+    "borderBottomColor": "rgba(239, 68, 68, var(--tw-border-opacity))",
+    "borderLeftColor": "rgba(239, 68, 68, var(--tw-border-opacity))"
+  },
   "font-regular": {
     "fontFamily": "gadugi-normal"
   },

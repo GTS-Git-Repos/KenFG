@@ -1,59 +1,49 @@
 {
-	"tailwindStyleBlock": {
-		"scope": "typescriptreact",
-		"prefix": "makestyle",
-		"body": [
-			" style={[tailwind('$1')$2]}"
-		],
-		"description": "tailwind Style Basic Block"
-	},
-	"LocalImage": {
-		"scope": "typescriptreact",
-		"prefix": "rnimage",
-		"body": [
-			"<Image resizeMode=\"contain\" source={assets.${1}} style={[tailwind(\"w-10 h-10\")]}/>"
-		],
-		"description": "Basic Local Image"
-	},
-	"BasicView": {
-		"scope": "typescriptreact",
-		"prefix": "rnview",
-		"body": [
-			"<View style={[tailwind(\"flex-row justify-between items-center\")]}>",
-			"   ",
-			"</View>"
-		],
-		"description": "Basic Local Image"
-	},
-	"BasicText": {
-		"scope": "typescriptreact",
-		"prefix": "rntext",
-		"body": [
-			"<Text style={[tailwind(\"font-regular font-15\")]}>${1}</Text>",
-		],
-		"description": "Basic Local Image"
-	},
-	"JS Function": {
-		"prefix": "jsfun",
-		"body": [
-			"const ${1} = async () =>{",
-			"  ${2}",
-			"}"
-		],
-		"description": "JS Function"
-	},
-	"React Use State": {
-		"prefix": "rstate",
-		"body": [
-			"const [${1}, ${2}] = useState(${3})",
-		],
-		"description": "React Use State"
-	},
-	"Redux UseSelector": {
-		"prefix": "rdxselect",
-		"body": [
-			"const ${1}State = useSelector(state => state.user.${1})",
-		],
-		"description": "Redux UseSelector"
-	},
+  "tailwindStyleBlock": {
+    "scope": "typescriptreact",
+    "prefix": "makestyle",
+    "body": [" style={[tailwind('$1')$2]}"],
+    "description": "tailwind Style Basic Block"
+  },
+  "LocalImage": {
+    "scope": "typescriptreact",
+    "prefix": "rnimage",
+    "body": [
+      "<Image resizeMode=\"contain\" source={assets.${1}} style={[tailwind(\"w-10 h-10\")]}/>"
+    ],
+    "description": "Basic Local Image"
+  },
+  "BasicView": {
+    "scope": "typescriptreact",
+    "prefix": "rnview",
+    "body": [
+      "<View style={[tailwind(\"flex-row box justify-between items-center\")]}>",
+      "   ",
+      "</View>"
+    ],
+    "description": "Basic Local Image"
+  },
+  "BasicText": {
+    "scope": "typescriptreact",
+    "prefix": "rntext",
+    "body": [
+      "<Text style={[tailwind(\"font-regular text-light font-15\")]}>${1}</Text>"
+    ],
+    "description": "Basic Local Image"
+  },
+  "JS Function": {
+    "prefix": "jsfun",
+    "body": ["const ${1} = async () =>{", "  ${2}", "}"],
+    "description": "JS Function"
+  },
+  "React Use State": {
+    "prefix": "rstate",
+    "body": ["const [${1}, ${2}] = useState(${3})"],
+    "description": "React Use State"
+  },
+  "Redux UseSelector": {
+    "prefix": "rdxselect",
+    "body": ["const ${1}State = useSelector(state => state.user.${1})"],
+    "description": "Redux UseSelector"
+  }
 }
