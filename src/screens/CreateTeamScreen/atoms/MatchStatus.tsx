@@ -10,7 +10,11 @@ interface PropTypes {
 export default function MatchStatus(props: PropTypes) {
   return (
     <View style={[tailwind('py-3')]}>
-      <Text style={[tailwind('font-regular text-center text-primary'),{fontSize:15}]}>
+      <Text
+        style={[
+          tailwind('font-regular text-center text-primary'),
+          {fontSize: 14, letterSpacing: 0.4},
+        ]}>
         India elected to field first
       </Text>
     </View>

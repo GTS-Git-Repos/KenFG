@@ -47,7 +47,7 @@ export default function RootNavigation() {
   return (
     <NavigationContainer theme={DarkTheme}>
       <RootNavigator.Navigator
-        initialRouteName="MyContestPlayersInfo"
+        initialRouteName="BottomTabNavigation"
         screenOptions={StackConfig}>
         <RootNavigator.Screen
           component={BottomTabNavigation}

@@ -18,7 +18,8 @@ export default function TeamInfo(props: PropTypes) {
   return (
     <View style={[tailwind('p-2 flex-row justify-between')]}>
       <View style={[tailwind('flex-col justify-between')]}>
-        <Text style={[tailwind('font-regular font-13 text-gray-900')]}>
+        <Text
+          style={[tailwind('font-regular uppercase font-11 text-gray-900')]}>
           Players
         </Text>
         <View style={[tailwind('flex-row justify-between items-center')]}>
@@ -34,13 +35,13 @@ export default function TeamInfo(props: PropTypes) {
           <Image
             resizeMode="cover"
             source={assets.indianflag}
-            style={[{width: 45, height: 45, borderRadius: 100}]}
+            style={[{width: 50, height: 50, borderRadius: 100}]}
           />
           <View style={[tailwind('px-2')]}>
-            <Text style={[tailwind('font-regular font-13 text-gray-900')]}>
+            <Text style={[tailwind('font-regular font-14 text-gray-900')]}>
               {props.teamname1}
             </Text>
-            <Text style={[tailwind('font-bold font-15')]}>
+            <Text style={[tailwind('font-bold font-17')]}>
               {props.teamcount1}
             </Text>
           </View>
@@ -49,10 +50,10 @@ export default function TeamInfo(props: PropTypes) {
         {/* team 2 */}
         <View style={[tailwind('flex-row items-center px-2')]}>
           <View style={[tailwind('px-2')]}>
-            <Text style={[tailwind('font-regular font-13 text-gray-900')]}>
+            <Text style={[tailwind('font-regular font-14 text-gray-900')]}>
               {props.teamname2}
             </Text>
-            <Text style={[tailwind('font-bold font-15')]}>
+            <Text style={[tailwind('font-bold font-17')]}>
               {props.teamcount2}
             </Text>
           </View>
@@ -65,7 +66,8 @@ export default function TeamInfo(props: PropTypes) {
       </View>
 
       <View style={[tailwind('flex-col justify-between')]}>
-        <Text style={[tailwind('font-regular font-13 text-gray-900')]}>
+        <Text
+          style={[tailwind('font-regular font-11 uppercase text-gray-900')]}>
           Credits left
         </Text>
         <View style={[tailwind('')]}>

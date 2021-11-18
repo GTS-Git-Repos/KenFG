@@ -25,7 +25,7 @@ export default function TeamsMyMatchCard(props: PropTypes) {
           <Image
             resizeMode="cover"
             source={assets.australia_flag}
-            style={[tailwind(''), {width: 50, height: 50}]}
+            style={[tailwind('relative'), {width: 50, height: 50, right: 1}]}
           />
         </View>
         <Text
@@ -50,7 +50,7 @@ export default function TeamsMyMatchCard(props: PropTypes) {
           <Image
             resizeMode="cover"
             source={assets.south_africa_flag}
-            style={[tailwind(''), {width: 50, height: 50}]}
+            style={[tailwind('relative'), {width: 50, height: 50, right: 1}]}
           />
           <View
             style={[

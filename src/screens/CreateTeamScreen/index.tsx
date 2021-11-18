@@ -24,9 +24,21 @@ export default function CreateTeamScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <LinearGradient colors={['#C2A554', '#BB9C49', '#BB9C49']}>
+      <LinearGradient
+        start={{x: 0.49, y: 1.1}}
+        end={{x: 1, y: 0.1}}
+        locations={[0.4, 0.3, 0, 0.1, 0]}
+        colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}>
         <TopBarCreateTeam />
+
         <MatchStatus />
+        <LinearGradient
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          style={[tailwind('mx-4')]}
+          colors={['#C4A858', '#D8BE71', '#BFA14E']}>
+          <View style={[tailwind(''), {height: 3}]}></View>
+        </LinearGradient>
         <TeamInfo
           teamname1={'IND'}
           teamname2={'PAK'}
@@ -36,7 +48,7 @@ export default function CreateTeamScreen() {
         />
         <SelectionIndicator count={8} />
       </LinearGradient>
-      <View style={[tailwind('bg-primary')]}>
+      <View style={[tailwind('bg-dark')]}>
         <Tabs />
         <TabCondtion text={'Select 3-6 Better'} />
         <SortTabs />
