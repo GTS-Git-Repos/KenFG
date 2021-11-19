@@ -15,6 +15,7 @@ export default function ContainerScreen() {
   const navigation = useNavigation();
 
   const SCREENS = [
+    'PlayerProfileScreen',
     'Home',
     'ContestListScreen',
     'LoginScreen',

@@ -1,9 +1,12 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, FlatList, Dimensions, TouchableOpacity} from 'react-native';
 // import Icon from 'react-native-vector-icons/Ionicons';
+const log = console.log;
 
 interface PropTypes {
+  selectedTab: number;
+  onTabPressed(index: number): void;
   text?: string;
 }
 
@@ -23,38 +26,50 @@ const TABS = [
     name: 'My Teams',
     active: false,
   },
-  {
-    id: '4',
-    name: 'Commentry',
-    active: false,
-  },
 ];
+
+const TABSWIDTH = Dimensions.get('window').width * 0.25;
 
 export default function Tabs(props: PropTypes) {
   return (
-    <FlatList
-      contentContainerStyle={[tailwind('')]}
-      data={TABS}
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}
-      renderItem={({item}) => {
-        return (
-          <TouchableOpacity
-            style={[
-              tailwind(
-                `flex flex-col items-center  bg-primary p-2 ${
-                  item.active ? 'border-b-2 border-red-500' : ''
-                }`,
-              ),
-              {height: 40, width: 120},
-            ]}>
-            <Text style={[tailwind('font-regular font-15 text-white')]}>
-              {item.name}
-            </Text>
-          </TouchableOpacity>
-        );
-      }}
-      keyExtractor={item => item.id}
-    />
+    <View>
+      <FlatList
+        contentContainerStyle={[tailwind('')]}
+        data={TABS}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({item, index}) => {
+          return (
+            <>
+              <TouchableOpacity
+                onPress={() => props.onTabPressed(index)}
+                style={[
+                  tailwind(
+                    `flex flex-col items-center bg-primary p-2 ${
+                      props.selectedTab === index
+                        ? 'border-b-2 border-white'
+                        : ''
+                    }`,
+                  ),
+                  {height: 40, width: 120},
+                ]}>
+                <Text style={[tailwind('font-regular font-15 text-white')]}>
+                  {item.name}
+                </Text>
+              </TouchableOpacity>
+            </>
+          );
+        }}
+        keyExtractor={item => item.id}
+      />
+      {/* <View
+        style={[
+          tailwind('h-1 bg-secondary'),
+          {width: 120},
+          // {
+          //   transform: [{translateX: 240}],
+          // },
+        ]}></View> */}
+    </View>
   );
 }

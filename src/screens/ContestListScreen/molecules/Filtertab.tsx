@@ -49,7 +49,7 @@ export default function FilterTabs(props: PropTypes) {
           return (
             <TouchableOpacity
               style={[
-                tailwind(`flex flex-col items-center  bg-primary py-2 px-4`),
+                tailwind(`flex flex-col items-center   py-2 px-4`),
                 {height: BUTTON_HEIGHT},
               ]}>
               <Text style={[tailwind('font-regular font-15 text-white')]}>

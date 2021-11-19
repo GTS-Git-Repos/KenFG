@@ -3,13 +3,12 @@ import {View, Text, Image, Pressable, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import {TopBar} from '../../sharedComponents/';
+import {TopBar, TeamsCard} from '../../sharedComponents/';
 // import assets from 'assets';
 // import {TopBar} from 'components';
 // import Icon from 'react-native-vector-icons/Ionicons';
 const log = console.log;
 
-import TeamsCard from './molecules/TeamsCard';
 import TeamSwitch from './molecules/TeamSwitch';
 
 export default function TeamsListScreen() {

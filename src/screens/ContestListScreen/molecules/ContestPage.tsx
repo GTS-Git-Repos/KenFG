@@ -19,17 +19,17 @@ export default function ContestPage(props: PropTypes) {
       />
       <View style={[tailwind('mx-2')]}>
         <View style={[tailwind('my-2 border border-gray-800 rounded')]}>
-          <ContestCard
-            name={'Prize Pool'}
-            title="10 Crores"
-            left_spot={10}
-            total_spot={100}
-            first_reward={'1 Crore'}
-            gaurantee={true}
-            practice={false}
-            demo_entry_amount={56}
-            entry_amount={20}
-          />
+            <ContestCard
+              name={'Prize Pool'}
+              title="10 Crores"
+              left_spot={10}
+              total_spot={100}
+              first_reward={'1 Crore'}
+              gaurantee={true}
+              practice={false}
+              demo_entry_amount={56}
+              entry_amount={20}
+            />
         </View>
 
         <ContestSubTitle

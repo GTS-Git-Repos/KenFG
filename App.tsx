@@ -3,6 +3,7 @@ import React from 'react';
 import {LogBox, SafeAreaView, StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import {QueryClient, QueryClientProvider} from 'react-query';
+import { Host, Portal } from 'react-native-portalize';
 
 import RootNavigation from './src/navigations/RootNavigation';
 import store from './src/store';

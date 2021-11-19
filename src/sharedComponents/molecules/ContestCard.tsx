@@ -14,6 +14,7 @@ interface PropTypes {
   practice: boolean;
   demo_entry_amount: number;
   entry_amount: number;
+  joined?: [];
 }
 
 const PROGRESS_BAR_HEIGHT = 3;
@@ -21,7 +22,7 @@ const PROGRESS_BAR_HEIGHT = 3;
 export default function ContestCard(props: PropTypes) {
   return (
     <View>
-      <View style={[tailwind('px-2 py-1 bg-primary')]}>
+      <View style={[tailwind('px-2 py-1 rounded-t bg-primary')]}>
         <View style={[tailwind('flex-row items-center justify-between ')]}>
           <View style={[tailwind('')]}>
             <Text style={[tailwind('font-regular font-10 text-gray-400')]}>
@@ -116,6 +117,32 @@ export default function ContestCard(props: PropTypes) {
           )}
         </View>
       </LinearGradient>
+      {/* joined with */}
+
+      {props.joined ? (
+        <View style={[tailwind(' bg-primary px-1 rounded-b')]}>
+          <Text style={[tailwind('font-regular text-light font-15')]}>
+            Joined with
+          </Text>
+
+          <View style={[tailwind('flex-row items-center flex-wrap  py-2')]}>
+            {props.joined.map(item => {
+              return (
+                <View
+                  key={item}
+                  style={[
+                    tailwind('rounded bg-secondary mr-2'),
+                    {paddingHorizontal: 5},
+                  ]}>
+                  <Text style={[tailwind('font-regular text-primary font-13')]}>
+                    {item}
+                  </Text>
+                </View>
+              );
+            })}
+          </View>
+        </View>
+      ) : null}
     </View>
   );
 }

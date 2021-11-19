@@ -6,6 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 
 interface Props {
   text: string;
+  closeicon: boolean;
 }
 
 export default function TopBar(props: Props) {
@@ -27,7 +28,11 @@ export default function TopBar(props: Props) {
           </TouchableOpacity>
         ) : null} */}
         <TouchableOpacity onPress={goBack}>
-          <Icon name="arrow-back-outline" size={25} color="#172339" />
+          <Icon
+            name={props.closeicon ? 'close-outline' : 'arrow-back-outline'}
+            size={25}
+            color="#172339"
+          />
         </TouchableOpacity>
 
         <Text style={[tailwind('font-semibold text-primary px-3 font-16')]}>
