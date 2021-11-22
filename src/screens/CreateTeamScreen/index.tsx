@@ -19,6 +19,7 @@ import TabCondtion from './atoms/TabCondtions';
 import SortTabs from './atoms/SortTabs';
 import Player from './molecules/Players';
 import Line from './atoms/Line';
+import BottomAction from './molecules/BottomAction';
 
 export default function CreateTeamScreen() {
   const navigation = useNavigation();
@@ -73,7 +74,20 @@ export default function CreateTeamScreen() {
           credits={10.0}
           isSelected={false}
         />
+        <Player
+          player_id={'1'}
+          teamname={'IND'}
+          image={''}
+          name={'R Sharma'}
+          info={'Sel by 97.45%'}
+          anounced={true}
+          points={3}
+          credits={10.0}
+          isSelected={false}
+        />
+        <View style={[tailwind('h-20')]}></View>
       </ScrollView>
+      <BottomAction />
     </View>
   );
 }

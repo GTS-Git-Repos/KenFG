@@ -3,10 +3,11 @@ import tailwind from '../../../tailwind';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface Props {
   text: string;
-  closeicon: boolean;
+  closeicon?: boolean;
 }
 
 export default function TopBar(props: Props) {
@@ -17,29 +18,26 @@ export default function TopBar(props: Props) {
   }
 
   return (
-    <View
-      style={[
-        tailwind('flex flex-row justify-between bg-secondary items-center p-3'),
-      ]}>
-      <View style={[tailwind('flex-row items-center')]}>
-        {/* {navigation.canGoBack() ? (
+    <LinearGradient colors={['#B2933D', '#C5A858']}>
+      <View
+        style={[
+          tailwind('flex-row items-center justify-between px-2'),
+          {paddingVertical: 16},
+        ]}>
+        <View style={[tailwind('flex-row items-center')]}>
           <TouchableOpacity onPress={goBack}>
-            <Icon name="arrow-back-outline" size={25} color="white" />
+            <Icon
+              name={props.closeicon ? 'close-outline' : 'arrow-back-outline'}
+              size={25}
+              color="#172339"
+            />
           </TouchableOpacity>
-        ) : null} */}
-        <TouchableOpacity onPress={goBack}>
-          <Icon
-            name={props.closeicon ? 'close-outline' : 'arrow-back-outline'}
-            size={25}
-            color="#172339"
-          />
-        </TouchableOpacity>
-
-        <Text style={[tailwind('font-semibold text-primary px-3 font-16')]}>
-          {props.text}
-        </Text>
+          <Text style={[tailwind('font-bold text-brown-4 px-2 font-18')]}>
+            {props.text}
+          </Text>
+          <Text style={[tailwind('font-regular font-15')]}></Text>
+        </View>
       </View>
-      <Text style={[tailwind('font-regular font-15')]}></Text>
-    </View>
+    </LinearGradient>
   );
 }

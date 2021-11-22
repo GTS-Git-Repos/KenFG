@@ -30,6 +30,7 @@ export default {
   ground: require('../assets/images/ground.png'),
   cricket_off: require('../assets/images/cricket_off.png'),
   footbal_on: require('../assets/images/footbal_on.png'),
+  flash: require('../assets/images/flash.png'),
 
   banner1: require('../assets/temp/banner1.png'),
   playerImage: require('../assets/temp/playerimage.png'),
