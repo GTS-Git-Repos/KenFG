@@ -18,9 +18,9 @@ export default function CurrentLiveStats(props: PropTypes) {
           player1={'Player 1'}
           player2={'Player 2'}
           player1_runs={'23'}
-          player1_balls={'12'}
+          player1_balls={'8'}
           player2_runs={'43'}
-          player2_balls={'12'}
+          player2_balls={'23'}
           active={0}
         />
       </View>

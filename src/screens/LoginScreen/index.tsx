@@ -16,7 +16,7 @@ export default function LoginScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopBar text={'LOG IN'} />
+      <TopBar text={'Log in'} />
       <View
         style={[
           tailwind('bg-primary rounded border border-gray-700  px-3 py-6 m-2'),

@@ -12,31 +12,40 @@ export default function MatchStat(props: PropTypes) {
   return (
     <View style={[tailwind('flex-row items-center justify-between')]}>
       <View style={[tailwind('flex-col'), {flex: 4}]}>
-        <Text style={[tailwind('font-regular text-secondary font-15')]}>
+        <Text style={[tailwind('font-regular text-brown-5 font-16')]}>
           {props.teamName1}
         </Text>
         <View style={[tailwind('flex-row items-center py-2')]}>
-          <Text style={[tailwind('font-bold text-light font-17')]}>43/5</Text>
-          <Text style={[tailwind('font-regular text-light px-2 font-15')]}>
+          <Text style={[tailwind('font-bold text-brown-4 font-20')]}>43/1</Text>
+          <Text style={[tailwind('font-regular text-brown-5 px-2 font-14')]}>
             (12.3)
           </Text>
         </View>
       </View>
 
-      <View style={[tailwind('flex-row items-center'), {flex: 2}]}>
-        <View style={[tailwind('w-2 h-2 rounded-full bg-red-500')]}></View>
-        <Text style={[tailwind('font-bold uppercase text-light font-13 px-1')]}>
+      <View
+        style={[tailwind('flex-row justify-center items-center'), {flex: 2}]}>
+        <View
+          style={[
+            tailwind('rounded-full'),
+            {backgroundColor: '#EB5757', width: 6, height: 6},
+          ]}></View>
+        <Text
+          style={[tailwind('font-bold uppercase text-brown-4 font-13 px-1')]}>
           LIVE
         </Text>
       </View>
 
       <View style={[tailwind('flex-col items-end'), {flex: 4}]}>
-        <Text style={[tailwind('font-regular text-secondary font-15')]}>
+        <Text style={[tailwind('font-regular text-brown-5 font-16')]}>
           {props.teamName2}
         </Text>
         <View style={[tailwind('flex-row items-center py-2')]}>
-          <Text style={[tailwind('font-regular text-light font-15')]}>
-            Yet to Bat
+          <Text style={[tailwind('font-bold text-brown-4 font-20')]}>
+            183/6
+          </Text>
+          <Text style={[tailwind('font-regular text-brown-4 px-2 font-14')]}>
+            (20)
           </Text>
         </View>
       </View>

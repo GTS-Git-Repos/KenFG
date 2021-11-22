@@ -17,9 +17,6 @@ export default function OverStats() {
         <BallStats info={3} />
         <BallStats info={0} />
         <BallStats info={4} />
-        <BallStats info={3} />
-        <BallStats info={0} />
-        <BallStats info={4} />
       </ScrollView>
     </View>
   );
@@ -33,10 +30,10 @@ const BallStats = ({info}) => {
         {
           width: 20,
           height: 20,
-          backgroundColor: 'rgba(189, 195, 199,0.3)',
+          backgroundColor: 'rgba(129, 109, 46,0.2)',
         },
       ]}>
-      <Text style={[tailwind('font-regular text-center text-white font-15')]}>
+      <Text style={[tailwind('font-bold text-center text-brown-4 font-15')]}>
         {info}
       </Text>
     </View>
