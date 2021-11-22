@@ -34,6 +34,7 @@
     "react-native-modalize": "^2.0.12",
     "react-native-pager-view": "^5.4.9",
     "react-native-portalize": "^1.0.7",
+    "react-native-ratings": "^8.1.0",
     "react-native-razorpay": "^2.2.7",
     "react-native-reanimated": "^2.2.3",
     "react-native-restart": "^0.0.22",

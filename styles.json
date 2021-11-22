@@ -42,10 +42,37 @@
     "color": "#f5feff"
   },
   "app-red": {
-    "color": "##d80203"
+    "color": "#d80203"
   },
   "appGrayColor": {
     "color": "#444343"
+  },
+  "text-brown-1": {
+    "color": "#C5A858"
+  },
+  "text-brown-2": {
+    "color": "#B2933D"
+  },
+  "text-brown-3": {
+    "color": "#816D2E"
+  },
+  "text-brown-4": {
+    "color": "#614920"
+  },
+  "text-dark-1": {
+    "color": "#8797B1"
+  },
+  "bg-dark-1": {
+    "backgroundColor": "#8797B1"
+  },
+  "bg-dark-2": {
+    "backgroundColor": "#25385A"
+  },
+  "bg-dark-3": {
+    "backgroundColor": "#172338"
+  },
+  "bg-dark-4": {
+    "backgroundColor": "#0D1320"
   },
   "shadow": {
     "shadowColor": "#000",

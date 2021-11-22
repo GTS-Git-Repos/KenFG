@@ -1,6 +1,7 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text} from 'react-native';
+import {View, Image, Text} from 'react-native';
+import assets from '../../../constants/assets_manifest';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
@@ -9,22 +10,15 @@ interface PropTypes {
 
 export default function TopConditions(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center justify-between p-2')]}>
-      <Text style={[tailwind('font-regular font-15 text-light')]}>
+    <View style={[tailwind('flex-row items-center justify-between px-4 py-3')]}>
+      <Text style={[tailwind('font-regular font-13 text-dark-1')]}>
         {props.text}
       </Text>
       <View style={[tailwind('flex-row items-center')]}>
-        <Icon
-          name="rocket-outline"
-          style={[tailwind('px-2')]}
-          size={20}
-          color="white"
-        />
-        <Icon
-          name="options-outline"
-          style={[tailwind('px-2')]}
-          size={20}
-          color="white"
+        <Image
+          resizeMode="contain"
+          source={assets.filter}
+          style={[tailwind(''), {width: 24, height: 24}]}
         />
       </View>
     </View>

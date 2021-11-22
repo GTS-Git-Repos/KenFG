@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
-  text?: string;
+  text: string;
 }
 
 export default function MatchStatus(props: PropTypes) {
@@ -12,10 +12,10 @@ export default function MatchStatus(props: PropTypes) {
     <View style={[tailwind('py-3')]}>
       <Text
         style={[
-          tailwind('font-regular text-center text-primary'),
-          {fontSize: 14, letterSpacing: 0.4},
+          tailwind('font-bold text-center text-brown-4 font-12'),
+          {letterSpacing: 0.5},
         ]}>
-        India elected to field first
+        {props.text}
       </Text>
     </View>
   );

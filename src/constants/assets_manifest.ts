@@ -9,6 +9,11 @@ export default {
   leader_tab_on: require('../assets/icons/leader_tab_on.png'),
   home_tab_off: require('../assets/icons/home_tab_off.png'),
   more_tab_on: require('../assets/icons/more_tab_on.png'),
+  fantasy_points: require('../assets/icons/fantasy_points.png'),
+  Info_Square: require('../assets/icons/Info_Square.png'),
+  indicator: require('../assets/icons/indicator.png'),
+  minus: require('../assets/icons/minus.png'),
+  filter: require('../assets/icons/filter.png'),
 
   running_clock: require('../assets/icons/running_clock.png'),
   bell: require('../assets/icons/bell.png'),
@@ -22,7 +27,7 @@ export default {
   logo: require('../assets/images/logo.png'),
   wallet: require('../assets/images/wallet.png'),
   logo_back_rectangle: require('../assets/images/logo_back_rectangle.png'),
-  ground: require('../assets/images/ground.jpeg'),
+  ground: require('../assets/images/ground.png'),
   cricket_off: require('../assets/images/cricket_off.png'),
   footbal_on: require('../assets/images/footbal_on.png'),
 
@@ -30,4 +35,6 @@ export default {
   playerImage: require('../assets/temp/playerimage.png'),
   indianflag: require('../assets/temp/indianflag.png'),
   aus_flag: require('../assets/temp/aus_flag.jpeg'),
+  teamIndia: require('../assets/temp/teamIndia.png'),
+  player: require('../assets/temp/player.png'),
 };

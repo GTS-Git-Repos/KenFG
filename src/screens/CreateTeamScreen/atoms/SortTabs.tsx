@@ -9,21 +9,33 @@ interface PropTypes {
 
 export default function SortTabs(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center justify-between py-1')]}>
-      <Text style={[tailwind('font-regular font-15')]}></Text>
-      <View style={[tailwind('flex-row justify-between items-center')]}>
-        <Text style={[tailwind('font-regular font-13 px-2 text-light')]}>
+    <View style={[tailwind('flex-row items-center py-2')]}>
+      <View style={[{flex: 2}]}></View>
+      <View style={[{flex: 4}]}>
+        <Text
+          style={[tailwind('font-bold  font-12 px-2 text-dark-1 uppercase')]}>
           SELECTED BY
         </Text>
-        <Text style={[tailwind('font-regular font-13 px-2 text-light')]}>
+      </View>
+      <View style={[{flex: 2}]}>
+        <Text
+          style={[
+            tailwind(
+              'font-bold text-center font-12 px-2 text-dark-1 uppercase',
+            ),
+          ]}>
           POINTS
         </Text>
-        <View style={[tailwind('flex-row items-center px-2')]}>
-          <Text style={[tailwind('font-regular font-13 text-light')]}>
-            CREDITS
-          </Text>
-          <Icon name="arrow-up" color="green" size={20} />
-        </View>
+      </View>
+      <View style={[{flex: 2}]}>
+        <Text
+          style={[
+            tailwind(
+              'font-bold font-12 text-center px-2 text-dark-1 uppercase',
+            ),
+          ]}>
+          CREDITS
+        </Text>
       </View>
     </View>
   );

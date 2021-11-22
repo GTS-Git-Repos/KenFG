@@ -17,8 +17,8 @@ export default function MathchGroundScreen() {
   const route = useRoute();
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
-      <MatchGroundTopBar name={'The Player'} />
+    <View style={tailwind('h-full bg-dark-4')}>
+      <MatchGroundTopBar name={'Team Name'} />
       <MatchStats
         playersCount={0}
         teamname1={'IND'}
@@ -33,10 +33,23 @@ export default function MathchGroundScreen() {
           style={[tailwind('w-full'), {flexGrow: 1}]}
           resizeMode="cover">
           <CategoryPlayers title={'WICKET-KEEPERS'} players={[1, 2]} />
-          <CategoryPlayers title={'WICKET-KEEPERS'} players={[1, 2, 5]} />
-          <CategoryPlayers title={'WICKET-KEEPERS'} players={[1, 2]} />
-          <CategoryPlayers title={'WICKET-KEEPERS'} players={[1, 2, 3]} />
+          <CategoryPlayers title={'BATS MEN'} players={[1, 2, 5]} />
+          <CategoryPlayers title={'ALL ROUNDERS'} players={[1, 2]} />
+          <CategoryPlayers title={'BOWLERS'} players={[1, 2, 3]} />
         </ImageBackground>
+        <Image
+          resizeMode="contain"
+          source={assets.logo}
+          style={[
+            tailwind('w-20 h-20 absolute right-0 top-10'),
+            {opacity: 0.7},
+          ]}
+        />
+        <Image
+          resizeMode="contain"
+          source={assets.logo}
+          style={[tailwind('w-20 h-20 absolute left-0 top-10'), {opacity: 0.7}]}
+        />
       </ScrollView>
     </View>
   );

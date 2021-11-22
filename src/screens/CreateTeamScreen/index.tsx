@@ -12,45 +12,42 @@ import {useQuery} from 'react-query';
 const log = console.log;
 import TopBarCreateTeam from './atoms/TopBarCreateTeam';
 import MatchStatus from './atoms/MatchStatus';
-import TeamInfo from './atoms/TeamInfo';
+import TeamInfo from './molecules/TeamInfo';
 import SelectionIndicator from './atoms/SelectionIndicator';
 import Tabs from './atoms/Tabs';
 import TabCondtion from './atoms/TabCondtions';
 import SortTabs from './atoms/SortTabs';
 import Player from './molecules/Players';
+import Line from './atoms/Line';
+
 export default function CreateTeamScreen() {
   const navigation = useNavigation();
   const route = useRoute();
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <LinearGradient
-        start={{x: 0.49, y: 1.1}}
-        end={{x: 1, y: 0.1}}
-        locations={[0.4, 0.3, 0, 0.1, 0]}
-        colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}>
-        <TopBarCreateTeam />
-
-        <MatchStatus />
+      <TopBarCreateTeam />
+      <LinearGradient colors={['#C5A858', '#B2933D']}>
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
-          style={[tailwind('mx-4')]}
-          colors={['#C4A858', '#D8BE71', '#BFA14E']}>
-          <View style={[tailwind(''), {height: 3}]}></View>
+          colors={['#C5A858', '#B2933D']}>
+          <MatchStatus text={'MAX 7 PLAYERS FROM A TEAM'} />
+          <Line />
+          <TeamInfo
+            teamname1={'IND'}
+            teamname2={'PAK'}
+            teamcount1={7}
+            teamcount2={4}
+            credits_left={2.5}
+          />
         </LinearGradient>
-        <TeamInfo
-          teamname1={'IND'}
-          teamname2={'PAK'}
-          teamcount1={7}
-          teamcount2={4}
-          credits_left={2.5}
-        />
+        <Line />
         <SelectionIndicator count={8} />
       </LinearGradient>
       <View style={[tailwind('bg-dark')]}>
         <Tabs />
-        <TabCondtion text={'Select 3-6 Better'} />
+        <TabCondtion text={'Select 1-4 Wicket Keepers'} />
         <SortTabs />
       </View>
       <ScrollView style={[tailwind('')]}>
@@ -76,29 +73,12 @@ export default function CreateTeamScreen() {
           credits={10.0}
           isSelected={false}
         />
-        <Player
-          player_id={'1'}
-          teamname={'NZ'}
-          image={''}
-          name={'K Williamson'}
-          info={'Sel by 97.45%'}
-          anounced={true}
-          points={3}
-          credits={10.0}
-          isSelected={false}
-        />
-        <Player
-          player_id={'1'}
-          teamname={'IND'}
-          image={''}
-          name={'R Sharma'}
-          info={'Sel by 97.45%'}
-          anounced={true}
-          points={3}
-          credits={10.0}
-          isSelected={false}
-        />
       </ScrollView>
     </View>
   );
 }
+
+// start={{x: 0.2, y: 1.1}}
+// end={{x: 1, y: 0.1}}
+// locations={[0.4, 0]}
+// colors={['#C5A858', '#B2933D']}>
