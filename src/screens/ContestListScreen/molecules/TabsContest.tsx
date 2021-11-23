@@ -47,7 +47,7 @@ export default function Tabs(props: PropTypes) {
                   tailwind(
                     `flex flex-col items-center bg-dark-2 p-2 ${
                       props.selectedTab === index
-                        ? 'border-b-2 border-white'
+                        ? 'border-b-2 border-yellow-300'
                         : 'border-b-2'
                     }`,
                   ),

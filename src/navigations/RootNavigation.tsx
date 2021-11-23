@@ -51,7 +51,7 @@ export default function RootNavigation() {
     <NavigationContainer theme={DarkTheme}>
       <Host>
         <RootNavigator.Navigator
-          initialRouteName="LiveMatchScreen"
+          initialRouteName="BottomTabNavigation"
           screenOptions={StackConfig}>
           <RootNavigator.Screen
             component={BottomTabNavigation}
@@ -67,14 +67,7 @@ export default function RootNavigation() {
             component={ContentInfoScreen}
             name="ContentInfoScreen"
           />
-          <RootNavigator.Screen
-            component={CreateTeamScreen}
-            name="CreateTeamScreen"
-          />
-          <RootNavigator.Screen
-            component={MatchGroundScreen}
-            name="MatchGroundScreen"
-          />
+
           <RootNavigator.Screen
             component={TeamReviewScreen}
             name="TeamReviewScreen"

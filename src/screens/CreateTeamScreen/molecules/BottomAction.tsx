@@ -18,7 +18,7 @@ export default function BottomAction(props: PropTypes) {
         locations={[0.6, 0.5]}
         style={[tailwind('flex-row  m-2 rounded')]}
         colors={['#1C2B46', '#172338']}>
-        <TouchableOpacity style={[tailwind('px-8 py-3')]}>
+        <TouchableOpacity  style={[tailwind('px-8 py-3')]}>
           <Text style={[tailwind('font-bold uppercase text-light font-12')]}>
             Team Preview
           </Text>

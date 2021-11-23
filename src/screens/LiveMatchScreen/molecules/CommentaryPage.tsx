@@ -10,22 +10,23 @@ interface PropTypes {
 }
 
 export default function CommentaryPage(props: PropTypes) {
-  const {width} = Dimensions.get('window').width;
-
   return (
-    <ScrollView>
-      <View style={[tailwind('my-3'), {width}]}>
-        <CommentryByOvers title={4} over={2.3} hasPlayer={true} />
-        <View style={[tailwind('bg-dark-4 mx-4 my-3')]}>
-          <Text style={[tailwind('font-bold text-dark-1 font-12')]}>
-            End of Over 2
-          </Text>
+    <View>
+      <ScrollView>
+        <View style={[tailwind('my-3')]}>
+          <CommentryByOvers title={4} over={2.3} hasPlayer={true} />
+          <View style={[tailwind('bg-dark-4 mx-4 my-3')]}>
+            <Text style={[tailwind('font-bold text-dark-1 font-12')]}>
+              End of Over 2
+            </Text>
+          </View>
+          <CommentryByOvers title={10} over={2.3} hasPlayer={true} />
+          <CommentryByOvers title={'W'} over={2.3} hasPlayer={false} />
+          <CommentryByOvers title={'1'} over={2.3} hasPlayer={true} />
         </View>
-        <CommentryByOvers title={10} over={2.3} hasPlayer={true} />
-        <CommentryByOvers title={'W'} over={2.3} hasPlayer={false} />
-        <CommentryByOvers title={'1'} over={2.3} hasPlayer={true} />
-      </View>
-    </ScrollView>
+        <View style={[tailwind('h-10')]}></View>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -66,7 +67,7 @@ const Line = () => {
   );
 };
 
-const Title = ({title}) => {
+const Title = (props: any) => {
   return (
     <View
       style={[
@@ -90,7 +91,7 @@ const Title = ({title}) => {
           },
         ]}>
         {' '}
-        {title}
+        {props.title}
       </Text>
     </View>
   );

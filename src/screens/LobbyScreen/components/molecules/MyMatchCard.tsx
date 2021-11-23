@@ -1,11 +1,12 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, useWindowDimensions} from 'react-native';
+import {View, Text, useWindowDimensions, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyMatchCardTopSection from '../atoms/MyMatchCardTopSection';
 import TeamsMyMatchCard from '../atoms/TeamsMyMatchCard';
 import SlideAddMyMatchCard from '../atoms/SlideAddMyMatchCard';
 import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
   text?: string;
@@ -13,8 +14,11 @@ interface PropTypes {
 
 export default function MyMatchCard(props: PropTypes) {
   const {width} = useWindowDimensions();
+  const navigation = useNavigation();
   return (
-    <View style={[tailwind('bg-primary rounded border border-gray-800')]}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('LiveMatchScreen')}
+      style={[tailwind('bg-primary rounded border border-gray-800')]}>
       <View style={[tailwind('py-1')]}>
         <MyMatchCardTopSection />
         <LinearGradient
@@ -27,6 +31,6 @@ export default function MyMatchCard(props: PropTypes) {
         <TeamsMyMatchCard />
       </View>
       <SlideAddMyMatchCard />
-    </View>
+    </TouchableOpacity>
   );
 }

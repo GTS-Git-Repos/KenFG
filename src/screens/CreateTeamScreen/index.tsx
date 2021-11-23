@@ -2,14 +2,11 @@ import React, {useRef, useState} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
+import {useIsScreenReady} from '../../utils/customHoooks';
 import {useNavigation, useRoute} from '@react-navigation/native';
+import {FullScreenLoading} from '../../sharedComponents/';
 import LinearGradient from 'react-native-linear-gradient';
 import PagerView from 'react-native-pager-view';
-
-// import assets from 'assets';
-// import {TopBar} from 'components';
-// import Icon from 'react-native-vector-icons/Ionicons';
-import {useQuery} from 'react-query';
 const log = console.log;
 import TopBarCreateTeam from './atoms/TopBarCreateTeam';
 import MatchStatus from './atoms/MatchStatus';
@@ -25,6 +22,7 @@ export default function CreateTeamScreen() {
   const navigation = useNavigation();
   const route = useRoute();
   const pageRef = useRef();
+  const isScreenReady = useIsScreenReady();
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -34,6 +32,10 @@ export default function CreateTeamScreen() {
   const onTabPressed = (index: number) => {
     pageRef.current?.setPage(index);
   };
+
+  if (isScreenReady === false) {
+    return <FullScreenLoading title="Loading..." />;
+  }
 
   return (
     <View style={tailwind('bg-dark h-full')}>

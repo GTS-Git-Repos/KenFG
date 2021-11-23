@@ -1,8 +1,16 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Dimensions, Image, Text, ImageBackground} from 'react-native';
+import {
+  View,
+  Dimensions,
+  Image,
+  TouchableOpacity,
+  Text,
+  ImageBackground,
+} from 'react-native';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../constants/assets_manifest';
+import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   text?: string;
@@ -15,12 +23,12 @@ interface TeamContInfoTypes {
 const CARDWIDTH = Dimensions.get('window').width;
 
 export default function TeamsCard(props: PropTypes) {
+  const navigation = useNavigation();
   return (
-    <View
-      style={[
-        tailwind('ml-4 my-2 rounded-lg'),
-        {width: CARDWIDTH / 1.2},
-      ]}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() => navigation.navigate('MatchGroundScreen')}
+      style={[tailwind('ml-4 my-2 rounded-lg'), {width: CARDWIDTH / 1.2}]}>
       <ImageBackground
         imageStyle={{borderTopLeftRadius: 5, borderTopRightRadius: 5}}
         style={[tailwind('w-full')]}
@@ -55,7 +63,7 @@ export default function TeamsCard(props: PropTypes) {
         </View>
       </ImageBackground>
       <BottomStats />
-    </View>
+    </TouchableOpacity>
   );
 }
 

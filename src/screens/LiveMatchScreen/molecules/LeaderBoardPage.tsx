@@ -12,52 +12,55 @@ interface PropTypes {
 
 export default function LeaderBoardPage(props: PropTypes) {
   return (
-    <ScrollView>
-      <View style={[tailwind('')]}>
-        <LastUpdatedAt updatedAt={'1.3'} />
-        <Tabs />
-        <HorizontalProfile
-          image={assets.player}
-          name={'Naveen'}
-          teamCode={'T6'}
-          points={22}
-          rank={88}
-          up={false}
-        />
-        <HorizontalProfile
-          image={assets.player}
-          name={'The Fantasy'}
-          teamCode={'T6'}
-          points={22}
-          rank={88}
-          up={false}
-        />
-        <HorizontalProfile
-          image={assets.player}
-          name={'The Long name of the user'}
-          teamCode={'T6'}
-          points={22}
-          rank={88}
-          up={false}
-        />
-        <HorizontalProfile
-          image={assets.player}
-          name={'Naveen'}
-          teamCode={'T6'}
-          points={22}
-          rank={88}
-          up={false}
-        />
-        <HorizontalProfile
-          image={assets.player}
-          name={'Naveen'}
-          teamCode={'T6'}
-          points={22}
-          rank={88}
-          up={false}
-        />
-      </View>
-    </ScrollView>
+    <View>
+      <ScrollView>
+        <View style={[tailwind('')]}>
+          <LastUpdatedAt updatedAt={'1.3'} />
+          <Tabs />
+          <HorizontalProfile
+            image={assets.player}
+            name={'Naveen'}
+            teamCode={'T6'}
+            points={22}
+            rank={88}
+            up={false}
+          />
+          <HorizontalProfile
+            image={assets.player}
+            name={'The Fantasy'}
+            teamCode={'T6'}
+            points={22}
+            rank={88}
+            up={false}
+          />
+          <HorizontalProfile
+            image={assets.player}
+            name={'The Long name of the user'}
+            teamCode={'T6'}
+            points={22}
+            rank={88}
+            up={false}
+          />
+          <HorizontalProfile
+            image={assets.player}
+            name={'Naveen'}
+            teamCode={'T6'}
+            points={22}
+            rank={88}
+            up={false}
+          />
+          <HorizontalProfile
+            image={assets.player}
+            name={'Naveen'}
+            teamCode={'T6'}
+            points={22}
+            rank={88}
+            up={false}
+          />
+        </View>
+        <View style={[tailwind('h-10')]}></View>
+      </ScrollView>
+    </View>
   );
 }
 

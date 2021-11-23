@@ -50,27 +50,36 @@ const ImageSlider = (props: any) => {
       dot={<Dot />}
       width={width}
       style={[tailwind('my-1'), {height: height, overflow: 'visible'}]}>
-      <View style={[tailwind('flex-row mx-2 justify-center items-center')]}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => navigation.navigate('ContestListScreen')}
+        style={[tailwind('flex-row mx-2 justify-center items-center')]}>
         <Image
           resizeMode="contain"
           source={assets.banner1}
           style={{width: '100%', height: height}}
         />
-      </View>
-      <View style={[tailwind('flex-row mx-2 justify-center items-center')]}>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => navigation.navigate('ContestListScreen')}
+        style={[tailwind('flex-row mx-2 justify-center items-center')]}>
         <Image
           resizeMode="contain"
           source={assets.banner1}
           style={{width: '100%', height: height}}
         />
-      </View>
-      <View style={[tailwind('mx-2')]}>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => navigation.navigate('ContestListScreen')}
+        style={[tailwind('flex-row mx-2 justify-center items-center')]}>
         <Image
           resizeMode="contain"
           source={assets.banner1}
           style={{width: '100%', height: height}}
         />
-      </View>
+      </TouchableOpacity>
     </Swiper>
   );
 };

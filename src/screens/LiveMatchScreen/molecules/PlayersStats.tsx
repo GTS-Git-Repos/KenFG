@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Image, Text, TouchableOpacity} from 'react-native';
+import {View, Image, Text, TouchableOpacity, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
@@ -12,15 +12,18 @@ interface PropTypes {
 
 export default function PlayersStats(props: PropTypes) {
   return (
-    <View style={[tailwind('')]}>
-      <Filter />
-      <TableRow />
-      <PlayerStats name="Virat Kohli" />
-      <PlayerStats name="R Sharma" />
-      <PlayerStats name="M Dhoni" />
-      <PlayerStats name="Virat Kohli" />
-      <PlayerStats name="R Sharma" />
-      <PlayerStats name="M Dhoni" />
+    <View>
+      <ScrollView style={[tailwind('')]}>
+        <Filter />
+        <TableRow />
+        <PlayerStats name="Virat Kohli" />
+        <PlayerStats name="R Sharma" />
+        <PlayerStats name="M Dhoni" />
+        <PlayerStats name="Virat Kohli" />
+        <PlayerStats name="R Sharma" />
+        <PlayerStats name="M Dhoni" />
+        <View style={[tailwind('h-10')]}></View>
+      </ScrollView>
     </View>
   );
 }

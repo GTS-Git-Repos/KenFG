@@ -1,16 +1,16 @@
 import React, {useRef, useState} from 'react';
 import {View, Text, Dimensions, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 // import assets from 'assets';
-import {TopBar, ContestCard, BottomLine} from '../../sharedComponents/';
+import {TopBar, FullScreenLoading} from '../../sharedComponents/';
 import MatchStat from './atoms/MatchStat';
 import Projection from './atoms/Projection';
 import PagerView from 'react-native-pager-view';
 import CurrentLiveStats from './molecules/CurrentLiveStatus';
-import MyContestCard from './molecules/MyContestCard';
 import LinearGradient from 'react-native-linear-gradient';
 import LiveMatchSeparator from './atoms/LiveMatchSeparator';
+import {useIsScreenReady} from '../../utils/customHoooks';
 import LiveMatchTabs from './atoms/LiveMatchTabs';
 
 import ScrollBoardPage from './molecules/ScrollBoardPage';
@@ -24,7 +24,7 @@ const log = console.log;
 export default function LiveMatchScreen() {
   const navigation = useNavigation();
   const pageRef = useRef(null);
-
+  const isScreenReady = useIsScreenReady();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const onPageSelectedAction = (e: any) => {
@@ -34,6 +34,10 @@ export default function LiveMatchScreen() {
   const onTabPressed = (index: number) => {
     pageRef.current?.setPage(index);
   };
+
+  if (isScreenReady === false) {
+    return <FullScreenLoading title={'IND vs NZ'} />;
+  }
 
   return (
     <View style={tailwind('bg-dark h-full')}>

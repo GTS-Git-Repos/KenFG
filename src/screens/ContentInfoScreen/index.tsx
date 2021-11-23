@@ -1,11 +1,23 @@
 import React, {useState, useRef} from 'react';
-import {View, Text, useWindowDimensions} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Pressable,
+  StyleSheet,
+  useWindowDimensions,
+} from 'react-native';
 import tailwind from '../../../tailwind';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {TopbarContest, ContestCard} from '../../sharedComponents/';
+import {
+  TopbarContest,
+  ContestCard,
+  FullScreenLoading,
+} from '../../sharedComponents/';
 import TabsContestInfo from './atoms/TabsContestInfo';
 const log = console.log;
 import LearderBoard from './molecules/LeaderBoardList';
+import {useIsScreenReady} from '../../utils/customHoooks';
+
 import Animated, {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 
@@ -16,6 +28,7 @@ export default function ContestInfoScreen() {
   // const [tabOffset, setTabOffset] = useState(0);
   const tabOffset = useSharedValue(0);
   const scrollRef = useRef(null);
+  const isScreenReady = useIsScreenReady();
 
   const onScrollAction = e => {
     tabOffset.value = e.nativeEvent.contentOffset.x;
@@ -28,6 +41,10 @@ export default function ContestInfoScreen() {
       scrollRef?.current?.scrollTo({x: width, y: 0, animated: true});
     }
   };
+
+  if (isScreenReady === false) {
+    return <FullScreenLoading title={'AUS vs SA'} />;
+  }
 
   return (
     <View style={tailwind('bg-dark h-full')}>

@@ -1,16 +1,21 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Text, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/core';
 import assets from '../../constants/assets_manifest';
+
 interface PropTypes {
   text?: string;
 }
 
 export default function UpcommingMatches(props: PropTypes) {
+  const navigation = useNavigation();
   return (
-    <View style={[tailwind('pb-2')]}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('My Contest')}
+      style={[tailwind('pb-2')]}>
       <LinearGradient
         colors={['#131e30', '#172239']}
         // colors={['red', 'green']}
@@ -126,6 +131,6 @@ export default function UpcommingMatches(props: PropTypes) {
           </Text>
         </View>
       </LinearGradient>
-    </View>
+    </TouchableOpacity>
   );
 }
