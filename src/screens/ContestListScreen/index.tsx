@@ -29,7 +29,7 @@ export default function ContestScreen() {
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarContest title={'AUS vs SA'} subtitle={'18h 11m left'} />
-      <View style={[tailwind('bg-primary')]}>
+      <View style={[tailwind('')]}>
         <Tabs selectedTab={selectedTab} onTabPressed={onTabPressed} />
       </View>
       <PagerView

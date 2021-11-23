@@ -17,7 +17,7 @@ export default function TeamsListScreen() {
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBar text={'My Teams'} />
-      <Text style={[tailwind('font-bold text-light p-4 bg-primary')]}>
+      <Text style={[tailwind('font-bold text-light p-4 bg-dark-3 font-15')]}>
         Choose a Team to Replace Team 1
       </Text>
 

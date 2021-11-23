@@ -33,7 +33,7 @@ const BUTTON_HEIGHT = 40;
 
 export default function FilterTabs(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center')]}>
+    <View style={[tailwind('flex-row bg-dark-3 pt-1 items-center')]}>
       <View style={[tailwind('flex-col px-4  justify-center')]}>
         <Text
           style={[tailwind('font-regular uppercase text-gray-400 font-15')]}>

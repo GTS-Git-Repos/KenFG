@@ -18,7 +18,7 @@ export default function TeamsCard(props: PropTypes) {
   return (
     <View
       style={[
-        tailwind('ml-4 my-2 bg-red-300 rounded-lg'),
+        tailwind('ml-4 my-2 rounded-lg'),
         {width: CARDWIDTH / 1.2},
       ]}>
       <ImageBackground
@@ -103,7 +103,7 @@ const BottomStats = () => {
     <View
       style={[
         tailwind(
-          'bg-primary rounded-b-lg p-3 flex-row items-center justify-between',
+          'bg-dark-3 rounded-b-lg p-3 flex-row items-center justify-between',
         ),
       ]}>
       <View

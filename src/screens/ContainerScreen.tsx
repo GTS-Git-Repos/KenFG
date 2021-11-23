@@ -19,6 +19,7 @@ export default function ContainerScreen() {
     'Home',
     'ContestListScreen',
     'LoginScreen',
+    'OTPScreen',
     'SignupScreen',
     'ContentInfoScreen',
     'CreateTeamScreen',

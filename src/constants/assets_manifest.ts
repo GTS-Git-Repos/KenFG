@@ -14,6 +14,10 @@ export default {
   indicator: require('../assets/icons/indicator.png'),
   minus: require('../assets/icons/minus.png'),
   filter: require('../assets/icons/filter.png'),
+  walletIcon: require('../assets/icons/walletIcon.png'),
+  money: require('../assets/icons/money.png'),
+  cup: require('../assets/icons/cup.png'),
+  M: require('../assets/icons/M.png'),
 
   running_clock: require('../assets/icons/running_clock.png'),
   bell: require('../assets/icons/bell.png'),

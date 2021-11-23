@@ -23,6 +23,7 @@ import LiveMatchScreen from '../screens/LiveMatchScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
 import MyContestPlayersInfo from '../screens/MyContestPlayersInfo';
 import PlayerProfileScreen from '../screens/PlayerProfileScreen';
+import OTPScreen from '../screens/OTPScreen';
 
 const RootNavigator = createNativeStackNavigator();
 
@@ -102,6 +103,7 @@ export default function RootNavigation() {
             component={PlayerProfileScreen}
             name="PlayerProfileScreen"
           />
+          <RootNavigator.Screen component={OTPScreen} name="OTPScreen" />
         </RootNavigator.Navigator>
       </Host>
     </NavigationContainer>

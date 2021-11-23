@@ -45,10 +45,10 @@ export default function Tabs(props: PropTypes) {
                 onPress={() => props.onTabPressed(index)}
                 style={[
                   tailwind(
-                    `flex flex-col items-center bg-primary p-2 ${
+                    `flex flex-col items-center bg-dark-2 p-2 ${
                       props.selectedTab === index
                         ? 'border-b-2 border-white'
-                        : ''
+                        : 'border-b-2'
                     }`,
                   ),
                   {height: 40, width: 120},

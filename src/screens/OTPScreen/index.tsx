@@ -1,33 +1,31 @@
 import React, {useState} from 'react';
-import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
-import {useNavigation, useRoute} from '@react-navigation/native';
-// import assets from 'assets';
-// import {TopBar} from 'components';
-// import Icon from 'react-native-vector-icons/Ionicons';
-import {errorBox} from '../../utils/snakBars';
-import {useQuery} from 'react-query';
 import {TopBar} from '../../sharedComponents';
+import {useNavigation} from '@react-navigation/native';
+import {errorBox} from '../../utils/snakBars';
+import OTPInput from './molecules/OTPInput';
+
 import LinearGradient from 'react-native-linear-gradient';
+// import assets from 'assets';
 const log = console.log;
 
-export default function LoginScreen() {
+export default function OTPScreen() {
   const navigation = useNavigation();
-  const route = useRoute();
 
-  const [number, setNumber] = useState('');
+  const [otp, setOTP] = useState('');
 
   const navigate = () => {
-    if (number.length === 10) {
+    if (otp.length === 4) {
     } else {
       errorBox('Invalid number');
     }
   };
 
   return (
-    <View style={tailwind('bg-dark h-full')}>
-      <TopBar text={'Log in'} />
+    <View style={tailwind('h-full bg-dark')}>
+      <TopBar text={'OTP'} />
       <View
         style={[
           tailwind(
@@ -36,31 +34,24 @@ export default function LoginScreen() {
         ]}>
         <View
           style={[
-            tailwind('bg-dark-2 border-b-2 mb-3 rounded p-1'),
+            tailwind('bg-dark-2 mb-0 rounded p-1'),
             {borderBottomColor: '#B2933D'},
           ]}>
-          <TextInput
-            maxLength={10}
-            value={number}
-            onChangeText={r => setNumber(e)}
-            placeholder="Email or Mobile Number"
-            placeholderTextColor="lightgray"
-            style={[tailwind('font-bold text-light p-2')]}
-          />
+          <OTPInput value={otp} onChangeText={setOTP} />
         </View>
         <LinearGradient
           end={{x: 0.0, y: 0.5}}
           start={{x: 0.8, y: 2.0}}
           locations={[0.6, 0.5]}
           style={[
-            tailwind('flex-row  items-center justify-center my-2 rounded p-2'),
+            tailwind('flex-row  items-center justify-center mt-5 rounded p-2'),
           ]}
           colors={['#B2933D', '#C5A858']}>
           <TouchableOpacity
             onPress={navigate}
             style={[tailwind('rounded p-1')]}>
             <Text style={[tailwind('font-bold text-brown-4 px-2 font-18')]}>
-              NEXT
+              CONTINUE
             </Text>
           </TouchableOpacity>
         </LinearGradient>
@@ -68,8 +59,8 @@ export default function LoginScreen() {
 
       <Text
         style={[tailwind('font-regular text-gray-400 text-center font-15')]}>
-        Not a Memeber ?{' '}
-        <Text style={[tailwind('text-green-500 underline')]}>Register</Text>
+        did't receive an OTP ?{' '}
+        <Text style={[tailwind('text-green-500 underline')]}>Resend</Text>
       </Text>
     </View>
   );

@@ -20,7 +20,7 @@ export default function TabsContestInfo(props: PropTypes) {
   });
 
   return (
-    <View style={[tailwind('relative')]}>
+    <View style={[tailwind('relative bg-dark-2')]}>
       <View style={[tailwind('flex-row items-center')]}>
         {props.tabs.map((item, index) => {
           return (
@@ -41,8 +41,9 @@ export default function TabsContestInfo(props: PropTypes) {
         })}
         <Animated.View
           style={[
-            tailwind('bg-secondary absolute bottom-0'),
+            tailwind('absolute bottom-0'),
             {width: width / 2, height: 2},
+            {backgroundColor: '#816D2E'},
             rstyle,
           ]}></Animated.View>
       </View>

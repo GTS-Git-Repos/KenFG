@@ -10,9 +10,7 @@ interface PropTypes {
 export default function TeamSwitch(props: PropTypes) {
   return (
     <View
-      style={[
-        tailwind('bg-primary p-3 flex-row items-center justify-between'),
-      ]}>
+      style={[tailwind('bg-dark-3 p-3 flex-row items-center justify-between')]}>
       <View style={[tailwind('flex-col')]}>
         <Text style={[tailwind('font-regular py-0.5 text-light font-15')]}>
           Current
