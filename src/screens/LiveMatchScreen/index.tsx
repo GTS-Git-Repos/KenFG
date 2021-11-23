@@ -1,53 +1,76 @@
-import React from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {View, Text, Dimensions, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
 import {useNavigation, useRoute} from '@react-navigation/native';
 // import assets from 'assets';
 import {TopBar, ContestCard, BottomLine} from '../../sharedComponents/';
 import MatchStat from './atoms/MatchStat';
 import Projection from './atoms/Projection';
-import Separator from './atoms/Separator';
+import PagerView from 'react-native-pager-view';
 import CurrentLiveStats from './molecules/CurrentLiveStatus';
 import MyContestCard from './molecules/MyContestCard';
 import LinearGradient from 'react-native-linear-gradient';
 import LiveMatchSeparator from './atoms/LiveMatchSeparator';
 import LiveMatchTabs from './atoms/LiveMatchTabs';
+
 import ScrollBoardPage from './molecules/ScrollBoardPage';
 import LeaderBoardPage from './molecules/LeaderBoardPage';
 import CommentaryPage from './molecules/CommentaryPage';
+import PlayersStats from './molecules/PlayersStats';
 
 // import Icon from 'react-native-vector-icons/Ionicons';
 const log = console.log;
 
 export default function LiveMatchScreen() {
   const navigation = useNavigation();
+  const pageRef = useRef(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const onPageSelectedAction = (e: any) => {
+    setActiveIndex(e.nativeEvent.position);
+  };
+
+  const onTabPressed = (index: number) => {
+    pageRef.current?.setPage(index);
+  };
 
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBar text={'IND vs NZ'} />
-      <ScrollView>
-        <LinearGradient colors={['#B2933D', '#C5A858']}>
-          <View style={[tailwind('px-3 py-7')]}>
-            <MatchStat teamName1={'India'} teamName2={'New Zeland'} />
-            <Projection />
 
-            <View style={[tailwind('my-2')]}>
-              <LiveMatchSeparator />
-            </View>
-            <CurrentLiveStats />
+      <LinearGradient colors={['#B2933D', '#C5A858']}>
+        <View style={[tailwind('px-3 pt-6 pb-3')]}>
+          <MatchStat teamName1={'India'} teamName2={'New Zeland'} />
+          <Projection />
+
+          <View style={[tailwind('my-2')]}>
+            <LiveMatchSeparator />
           </View>
-        </LinearGradient>
-        <View>
-          <LiveMatchTabs />
+          <CurrentLiveStats />
         </View>
-        {/* Pages */}
+      </LinearGradient>
+      <View>
+        <LiveMatchTabs activeIndex={activeIndex} onTabPressed={onTabPressed} />
+      </View>
+
+      <PagerView
+        ref={pageRef}
+        onPageSelected={onPageSelectedAction}
+        style={{flex: 1}}>
         <View>
-          {/* <LeaderBoardPage /> */}
-          {/* <ScrollBoardPage /> */}
+          <LeaderBoardPage />
+        </View>
+        <View>
+          <ScrollBoardPage />
+        </View>
+        <View>
           <CommentaryPage />
         </View>
-        <View style={[tailwind('h-20')]}></View>
-      </ScrollView>
+        <View>
+          <PlayersStats />
+        </View>
+      </PagerView>
     </View>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Image, Text} from 'react-native';
+import {View, Image, Dimensions, ScrollView, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
@@ -10,19 +10,22 @@ interface PropTypes {
 }
 
 export default function CommentaryPage(props: PropTypes) {
-  return (
-    <View style={[tailwind('my-3')]}>
-      <CommentryByOvers title={4} over={2.3} hasPlayer={true} />
-      <View style={[tailwind('bg-dark-4 mx-4 my-3')]}>
-        <Text style={[tailwind('font-bold text-dark-1 font-12')]}>
-          End of Over 2
-        </Text>
-      </View>
-      <CommentryByOvers title={10} over={2.3} hasPlayer={true} />
+  const {width} = Dimensions.get('window').width;
 
-      <CommentryByOvers title={'W'} over={2.3} hasPlayer={false} />
-      <CommentryByOvers title={'1'} over={2.3} hasPlayer={true} />
-    </View>
+  return (
+    <ScrollView>
+      <View style={[tailwind('my-3'), {width}]}>
+        <CommentryByOvers title={4} over={2.3} hasPlayer={true} />
+        <View style={[tailwind('bg-dark-4 mx-4 my-3')]}>
+          <Text style={[tailwind('font-bold text-dark-1 font-12')]}>
+            End of Over 2
+          </Text>
+        </View>
+        <CommentryByOvers title={10} over={2.3} hasPlayer={true} />
+        <CommentryByOvers title={'W'} over={2.3} hasPlayer={false} />
+        <CommentryByOvers title={'1'} over={2.3} hasPlayer={true} />
+      </View>
+    </ScrollView>
   );
 }
 

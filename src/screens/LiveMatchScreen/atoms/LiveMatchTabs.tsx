@@ -1,11 +1,13 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
   text?: string;
+  activeIndex: number;
+  onTabPressed(index: number): any;
 }
 
 export default function LiveMatchTabs(props: PropTypes) {
@@ -14,17 +16,39 @@ export default function LiveMatchTabs(props: PropTypes) {
       horizontal
       showsHorizontalScrollIndicator={false}
       style={[tailwind('bg-dark-3')]}>
-      <TabItem tabName="Leaderboard" active={false} />
-      <TabItem tabName="Scrollboard" active={true} />
-      <TabItem tabName="Commentry" active={false} />
-      <TabItem tabName="Winnings" active={false} />
+      <TabItem
+        tabName="Leaderboard"
+        index={0}
+        active={0 === props.activeIndex}
+        onTabPressed={props.onTabPressed}
+      />
+      <TabItem
+        tabName="Scrollboard"
+        index={1}
+        active={1 === props.activeIndex}
+        onTabPressed={props.onTabPressed}
+      />
+      <TabItem
+        tabName="Commentry"
+        index={2}
+        active={2 === props.activeIndex}
+        onTabPressed={props.onTabPressed}
+      />
+      <TabItem
+        tabName="Stats"
+        index={3}
+        active={3 === props.activeIndex}
+        onTabPressed={props.onTabPressed}
+      />
     </ScrollView>
   );
 }
 
-const TabItem = ({tabName, active}) => {
+const TabItem = ({tabName, active, index, onTabPressed}) => {
   return (
-    <View style={[{width: 120}, tailwind('')]}>
+    <TouchableOpacity
+      onPress={() => onTabPressed(index)}
+      style={[{width: 120}, tailwind('')]}>
       <View style={[tailwind('pt-3')]}>
         <Text
           style={[
@@ -44,6 +68,6 @@ const TabItem = ({tabName, active}) => {
             colors={['#816D2E', '#614920']}></LinearGradient>
         )}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
