@@ -8,6 +8,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import {useQuery} from 'react-query';
 import {TopBar} from '../../sharedComponents';
+import LinearGradient from 'react-native-linear-gradient';
 const log = console.log;
 
 export default function SignupScreen() {
@@ -17,48 +18,56 @@ export default function SignupScreen() {
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBar text={'Register & Play'} />
-      <View
-        style={[
-          tailwind('bg-primary rounded border border-gray-700  px-3 py-6 m-2'),
-        ]}>
+      <View style={[tailwind('bg-dark-3 rounded  px-3 py-6 mx-3 my-7')]}>
         <View
           style={[
-            tailwind('bg-gray-700 border-b-2 border-gray-400 mb-3 rounded p-1'),
+            tailwind('bg-dark-2 border-b-2 mb-3 rounded p-1'),
+            {borderBottomColor: '#B2933D'},
           ]}>
           <TextInput
             placeholder="Enter or Invite Code"
-            placeholderTextColor="lightgray"
-            style={[tailwind('font-regular text-gray-400 p-2')]}
+            placeholderTextColor="#8797B1"
+            style={[tailwind('font-bold text-light p-2')]}
           />
         </View>
 
         <View
           style={[
-            tailwind('bg-gray-700 border-b-2 border-gray-400 mb-2 rounded p-1'),
+            tailwind('bg-dark-2 border-b-2 mb-3 rounded p-1'),
+            {borderBottomColor: '#B2933D'},
           ]}>
           <TextInput
             placeholder="Mobile Number"
-            placeholderTextColor="lightgray"
-            style={[tailwind('font-regular text-gray-400 p-2')]}
+            placeholderTextColor="#8797B1"
+            style={[tailwind('font-bold text-light p-2')]}
           />
         </View>
 
-        <Text style={[tailwind('font-regular text-gray-400 font-12')]}>
+        <Text style={[tailwind('font-regular text-dark-1 font-12 py-1')]}>
           You will Receive an OTP for Verification
         </Text>
 
-        <TouchableOpacity style={[tailwind('bg-secondary rounded p-3 my-3')]}>
-          <Text
-            style={[
-              tailwind('font-semibold font-15 text-primary text-center'),
-              {letterSpacing: 2},
-            ]}>
-            REGISTER
-          </Text>
-        </TouchableOpacity>
+        <LinearGradient
+          end={{x: 0.0, y: 0.5}}
+          start={{x: 0.8, y: 2.0}}
+          locations={[0.6, 0.5]}
+          style={[
+            tailwind('flex-row  items-center justify-center my-2 rounded p-2'),
+          ]}
+          colors={['#B2933D', '#C5A858']}>
+          <TouchableOpacity
+            // onPress={navigate}
+            style={[tailwind('rounded p-1')]}>
+            <Text style={[tailwind('font-bold text-brown-4 px-2 font-18')]}>
+              REGISTER
+            </Text>
+          </TouchableOpacity>
+        </LinearGradient>
 
         <Text
-          style={[tailwind('font-regular text-gray-400 text-center font-12')]}>
+          style={[
+            tailwind('font-regular text-dark-1 pt-2 text-center font-12'),
+          ]}>
           By Registering, I agree to KenFG's{' '}
           <Text style={[tailwind('text-green-500 underline')]}>T&Cs</Text>
         </Text>

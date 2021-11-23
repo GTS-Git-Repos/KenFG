@@ -1,11 +1,11 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-// import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
-  text?: string;
+  activeIndex: number;
+  onTabPressed(index: number): any;
 }
 
 export default function SelectionTabs(props: PropTypes) {
@@ -14,17 +14,54 @@ export default function SelectionTabs(props: PropTypes) {
       horizontal
       showsHorizontalScrollIndicator={false}
       style={[tailwind('bg-dark-3')]}>
-      <TabItem tabName="WK" count={2} active={true} />
-      <TabItem tabName="BAT" count={0} active={false} />
+      {[
+        {
+          tabName: 'WK',
+          count: 2,
+          active: props.activeIndex,
+        },
+        {
+          tabName: 'BAT',
+          count: 5,
+          active: props.activeIndex,
+        },
+        {
+          tabName: 'AR',
+          count: 2,
+          active: props.activeIndex,
+        },
+        {
+          tabName: 'BOWL',
+          count: 0,
+          active: props.activeIndex,
+        },
+      ].map((item, index) => {
+        return (
+          <TabItem
+            key={item.tabName}
+            tabName={item.tabName}
+            count={item.count}
+            active={item.active === index}
+            onTabPressed={props.onTabPressed}
+            index={index}
+          />
+        );
+      })}
+
+      {/* <TabItem tabName="BAT" count={0} active={false} />
       <TabItem tabName="AR" count={0} active={false} />
-      <TabItem tabName="BOWL" count={0} active={false} />
+      <TabItem tabName="BOWL" count={0} active={false} /> */}
     </ScrollView>
   );
 }
 
-const TabItem = ({tabName, count, active}) => {
+const TabItem = ({tabName, count, active, index, onTabPressed}) => {
   return (
-    <View style={[{width: 100}, tailwind('')]}>
+    <TouchableOpacity
+      onPress={() => {
+        onTabPressed(index);
+      }}
+      style={[{width: 100}, tailwind('')]}>
       <View style={[tailwind('pt-3')]}>
         <Text
           style={[
@@ -43,6 +80,6 @@ const TabItem = ({tabName, count, active}) => {
             colors={['#816D2E', '#614920']}></LinearGradient>
         )}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };

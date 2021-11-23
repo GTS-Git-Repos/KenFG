@@ -10,7 +10,7 @@ interface PropTypes {
 
 export default function BluePrintComponent(props: PropTypes) {
   return (
-    <View>
+    <View  style={[tailwind('box')]}>
       <Text style={[tailwind('font-regular font-15')]}>HEllo</Text>
     </View>
   );

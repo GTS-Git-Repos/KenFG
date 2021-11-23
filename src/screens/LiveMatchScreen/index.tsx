@@ -13,6 +13,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import LiveMatchSeparator from './atoms/LiveMatchSeparator';
 import LiveMatchTabs from './atoms/LiveMatchTabs';
 import ScrollBoardPage from './molecules/ScrollBoardPage';
+import LeaderBoardPage from './molecules/LeaderBoardPage';
+import CommentaryPage from './molecules/CommentaryPage';
 
 // import Icon from 'react-native-vector-icons/Ionicons';
 const log = console.log;
@@ -40,7 +42,9 @@ export default function LiveMatchScreen() {
         </View>
         {/* Pages */}
         <View>
-          <ScrollBoardPage />
+          {/* <LeaderBoardPage /> */}
+          {/* <ScrollBoardPage /> */}
+          <CommentaryPage />
         </View>
         <View style={[tailwind('h-20')]}></View>
       </ScrollView>

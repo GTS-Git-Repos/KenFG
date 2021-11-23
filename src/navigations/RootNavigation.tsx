@@ -51,7 +51,7 @@ export default function RootNavigation() {
     <NavigationContainer theme={DarkTheme}>
       <Host>
         <RootNavigator.Navigator
-          initialRouteName="BottomTabNavigation"
+          initialRouteName="LiveMatchScreen"
           screenOptions={StackConfig}>
           <RootNavigator.Screen
             component={BottomTabNavigation}

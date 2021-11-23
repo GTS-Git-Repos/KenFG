@@ -18,6 +18,9 @@ export default {
   money: require('../assets/icons/money.png'),
   cup: require('../assets/icons/cup.png'),
   M: require('../assets/icons/M.png'),
+  comparePlayer: require('../assets/icons/comparePlayer.png'),
+  vs: require('../assets/icons/vs.png'),
+  download: require('../assets/icons/download.png'),
 
   running_clock: require('../assets/icons/running_clock.png'),
   bell: require('../assets/icons/bell.png'),

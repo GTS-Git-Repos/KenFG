@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
+import PagerView from 'react-native-pager-view';
 
 // import assets from 'assets';
 // import {TopBar} from 'components';
@@ -15,15 +16,24 @@ import MatchStatus from './atoms/MatchStatus';
 import TeamInfo from './molecules/TeamInfo';
 import SelectionIndicator from './atoms/SelectionIndicator';
 import Tabs from './atoms/Tabs';
-import TabCondtion from './atoms/TabCondtions';
-import SortTabs from './atoms/SortTabs';
-import Player from './molecules/Players';
+
 import Line from './atoms/Line';
 import BottomAction from './molecules/BottomAction';
+import Page from './molecules/Page';
 
 export default function CreateTeamScreen() {
   const navigation = useNavigation();
   const route = useRoute();
+  const pageRef = useRef();
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const onPageSelectedAction = (e: any) => {
+    setActiveIndex(e.nativeEvent.position);
+  };
+  const onTabPressed = (index: number) => {
+    pageRef.current?.setPage(index);
+  };
 
   return (
     <View style={tailwind('bg-dark h-full')}>
@@ -46,47 +56,33 @@ export default function CreateTeamScreen() {
         <Line />
         <SelectionIndicator count={8} />
       </LinearGradient>
-      <View style={[tailwind('bg-dark')]}>
-        <Tabs />
-        <TabCondtion text={'Select 1-4 Wicket Keepers'} />
-        <SortTabs />
+
+      {/* Tabs */}
+      <View>
+        <Tabs activeIndex={activeIndex} onTabPressed={onTabPressed} />
       </View>
-      <ScrollView style={[tailwind('')]}>
-        <Player
-          player_id={'1'}
-          teamname={'IND'}
-          image={''}
-          name={'V Kohli'}
-          info={'Sel by 97.45%'}
-          anounced={true}
-          points={3}
-          credits={10.0}
-          isSelected={false}
-        />
-        <Player
-          player_id={'1'}
-          teamname={'IND'}
-          image={''}
-          name={'R Sharma'}
-          info={'Sel by 97.45%'}
-          anounced={true}
-          points={3}
-          credits={10.0}
-          isSelected={false}
-        />
-        <Player
-          player_id={'1'}
-          teamname={'IND'}
-          image={''}
-          name={'R Sharma'}
-          info={'Sel by 97.45%'}
-          anounced={true}
-          points={3}
-          credits={10.0}
-          isSelected={false}
-        />
-        <View style={[tailwind('h-20')]}></View>
-      </ScrollView>
+
+      <PagerView
+        ref={pageRef}
+        onPageSelected={onPageSelectedAction}
+        style={{flex: 1}}
+        initialPage={0}>
+        <View>
+          <Page title={'Select 1-2 Wicket Keepers'} />
+        </View>
+        <View>
+          <Page title={'Select 4-3 Bats Man'} />
+        </View>
+        <View>
+          <Page title={'Select 1-3 All Rounders'} />
+        </View>
+        <View>
+          <Page title={'Select 5-3 Bowlers'} />
+        </View>
+      </PagerView>
+
+      {/* Pages */}
+
       <BottomAction />
     </View>
   );

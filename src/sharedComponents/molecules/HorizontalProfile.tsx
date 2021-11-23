@@ -1,8 +1,9 @@
 import React from 'react';
-import tailwind from '../../../../tailwind';
+import tailwind from '../../../tailwind';
 import {View, Image, TouchableOpacity, Text, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {BottomLine} from '../../../sharedComponents';
+import {BottomLine} from '..';
+import assets from '../../constants/assets_manifest';
 
 interface PropTypes {
   image: string;
@@ -31,7 +32,8 @@ export default function HorizontalProfile(props: PropTypes) {
           <View style={[tailwind('flex-1 px-1 flex-row items-center')]}>
             <Image
               resizeMode="cover"
-              source={{uri: props.image}}
+              // source={{uri: props.image}}
+              source={assets.player}
               style={{borderRadius: 2, height: 36, width: 36}}
             />
             <View

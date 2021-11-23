@@ -2,7 +2,7 @@ import React from 'react';
 import tailwind from '../../../../tailwind';
 import {View, useWindowDimensions, Text, ScrollView} from 'react-native';
 import HeaderLeaderBoard from '../atoms/HeaderLeaderBoard';
-import HorizontalProfile from '../atoms/HorizontalProfile';
+import {HorizontalProfile} from '../../../sharedComponents/';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {

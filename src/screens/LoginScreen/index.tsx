@@ -29,11 +29,8 @@ export default function LoginScreen() {
     <View style={tailwind('bg-dark h-full')}>
       <TopBar text={'Log in'} />
       <View
-        style={[
-          tailwind(
-            'bg-dark-3 rounded border border-gray-700  px-3 py-6 mx-3 my-7',
-          ),
-        ]}>
+        elevation={5}
+        style={[tailwind('bg-dark-3 rounded  px-3 py-6 mx-3 my-7')]}>
         <View
           style={[
             tailwind('bg-dark-2 border-b-2 mb-3 rounded p-1'),
@@ -42,9 +39,11 @@ export default function LoginScreen() {
           <TextInput
             maxLength={10}
             value={number}
-            onChangeText={r => setNumber(e)}
-            placeholder="Email or Mobile Number"
-            placeholderTextColor="lightgray"
+            keyboardAppearance="dark"
+            keyboardType="decimal-pad"
+            onChangeText={e => setNumber(e)}
+            placeholder="Mobile Number"
+            placeholderTextColor="#8797B1"
             style={[tailwind('font-bold text-light p-2')]}
           />
         </View>
@@ -66,8 +65,7 @@ export default function LoginScreen() {
         </LinearGradient>
       </View>
 
-      <Text
-        style={[tailwind('font-regular text-gray-400 text-center font-15')]}>
+      <Text style={[tailwind('font-regular text-dark-1 text-center font-15')]}>
         Not a Memeber ?{' '}
         <Text style={[tailwind('text-green-500 underline')]}>Register</Text>
       </Text>

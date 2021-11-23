@@ -5,6 +5,7 @@ import BottomLine from './atoms/BottomLine';
 
 import ContestCard from './molecules/ContestCard';
 import TeamsCard from './molecules/TeamsCard';
+import HorizontalProfile from './molecules/HorizontalProfile';
 
 export {
   TopBar,
@@ -13,4 +14,5 @@ export {
   UpcommingMatches,
   ContestCard,
   TeamsCard,
+  HorizontalProfile,
 };
