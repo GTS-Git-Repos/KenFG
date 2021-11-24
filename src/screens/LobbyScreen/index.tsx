@@ -27,16 +27,16 @@ export default function LobbyScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
+      <LinearGradient
+        start={{x: 0.49, y: 1.1}}
+        end={{x: 1, y: 0.1}}
+        locations={[0.4, 0.3, 0, 0.1, 0]}
+        // colors={['red', 'green', 'blue']}
+        colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}>
+        <LobbyTopBar amount={'10,000'} />
+        <LobbyNav cricket={cricket} setCricket={setCricket} />
+      </LinearGradient>
       <ScrollView fadingEdgeLength={50}>
-        <LinearGradient
-          start={{x: 0.49, y: 1.1}}
-          end={{x: 1, y: 0.1}}
-          locations={[0.4, 0.3, 0, 0.1, 0]}
-          // colors={['red', 'green', 'blue']}
-          colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}>
-          <LobbyTopBar amount={'10,000'} />
-          <LobbyNav cricket={cricket} setCricket={setCricket} />
-        </LinearGradient>
         {cricket ? (
           <CricketPage />
         ) : (
