@@ -19,7 +19,7 @@ interface PropTypes {
 
 export default function LobbyNav(props: PropTypes) {
   const {width, height} = useWindowDimensions();
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   return (
     <View style={[tailwind('pt-1 flex-row justify-between')]}>
@@ -114,7 +114,9 @@ export default function LobbyNav(props: PropTypes) {
           tailwind('flex-col items-center justify-end py-2 '),
           {width: width / 5.5},
         ]}>
-        <View style={[tailwind('relative bottom-2'), {left: 4}]}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('NotificationScreen')}
+          style={[tailwind('relative bottom-2'), {left: 4}]}>
           <Image
             resizeMode="contain"
             source={assets.topBarbell}
@@ -126,7 +128,7 @@ export default function LobbyNav(props: PropTypes) {
                 'w-3 h-3 absolute right-0 top-0 rounded-full bg-red-500',
               ),
             ]}></View>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

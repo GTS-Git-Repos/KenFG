@@ -35,8 +35,7 @@ export default function FilterTabs(props: PropTypes) {
   return (
     <View style={[tailwind('flex-row bg-dark-3 pt-1 items-center')]}>
       <View style={[tailwind('flex-col px-4  justify-center')]}>
-        <Text
-          style={[tailwind('font-regular uppercase text-gray-400 font-15')]}>
+        <Text style={[tailwind('font-regular uppercase text-dark-1 font-13')]}>
           Sort By
         </Text>
       </View>
@@ -49,10 +48,13 @@ export default function FilterTabs(props: PropTypes) {
           return (
             <TouchableOpacity
               style={[
-                tailwind(`flex flex-col items-center   py-2 px-4`),
+                tailwind(
+                  `flex flex-col items-center justify-center   py-2 px-4`,
+                ),
                 {height: BUTTON_HEIGHT},
               ]}>
-              <Text style={[tailwind('font-regular font-15 text-white')]}>
+              <Text
+                style={[tailwind('font-bold font-12 uppercase text-dark-1')]}>
                 {item.name}
               </Text>
             </TouchableOpacity>

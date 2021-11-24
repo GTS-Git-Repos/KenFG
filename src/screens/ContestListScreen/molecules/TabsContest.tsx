@@ -34,7 +34,7 @@ export default function Tabs(props: PropTypes) {
   return (
     <View>
       <FlatList
-        contentContainerStyle={[tailwind('')]}
+        contentContainerStyle={[tailwind('pt-1 bg-dark-2')]}
         data={TABS}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -45,15 +45,16 @@ export default function Tabs(props: PropTypes) {
                 onPress={() => props.onTabPressed(index)}
                 style={[
                   tailwind(
-                    `flex flex-col items-center bg-dark-2 p-2 ${
+                    `flex flex-col items-center bg-dark-2 pt-3 pb-2 ${
                       props.selectedTab === index
                         ? 'border-b-2 border-yellow-300'
-                        : 'border-b-2'
+                        : ''
                     }`,
                   ),
                   {height: 40, width: 120},
                 ]}>
-                <Text style={[tailwind('font-regular font-15 text-white')]}>
+                <Text
+                  style={[tailwind('font-bold font-13 uppercase text-dark-1')]}>
                   {item.name}
                 </Text>
               </TouchableOpacity>

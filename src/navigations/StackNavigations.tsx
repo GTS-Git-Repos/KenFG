@@ -8,6 +8,9 @@ import LiveMatchScreen from '../screens/LiveMatchScreen';
 import MatchGroundScreen from '../screens/MatchGroundScreen';
 import AccountProfileScreen from '../screens/AccountProfileScreen';
 import CapSelectionScreen from '../screens/CapSelectionScreen';
+import TeamsListScreen from '../screens/TeamsListScreen';
+import NotificationScreen from '../screens/NotificationScreen';
+import WalletScreen from '../screens/WalletScreen';
 
 import CreateTeamScreen from '../screens/CreateTeamScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
@@ -36,6 +39,12 @@ export function Home(props: any) {
         name="AccountProfileScreen"
         component={AccountProfileScreen}
       />
+      <HomeStack.Screen
+        name="NotificationScreen"
+        component={NotificationScreen}
+      />
+      <HomeStack.Screen name="LiveMatchScreen" component={LiveMatchScreen} />
+      <HomeStack.Screen name="WalletScreen" component={WalletScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -68,6 +77,7 @@ export function Contest(props: any) {
         name="CompareTeamsScreen"
         component={CompareTeamsScreen}
       />
+      <ContestStack.Screen name="TeamsListScreen" component={TeamsListScreen} />
     </ContestStack.Navigator>
   );
 }

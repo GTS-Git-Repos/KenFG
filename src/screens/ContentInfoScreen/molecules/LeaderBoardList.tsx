@@ -21,6 +21,7 @@ export default function LearderBoard(props: PropTypes) {
         points={876}
         rank={37}
         up={true}
+        currentUser={true}
       />
       <HorizontalProfile
         image={'https:picsum.photos/300'}
@@ -29,6 +30,7 @@ export default function LearderBoard(props: PropTypes) {
         points={34}
         rank={45}
         up={false}
+        currentUser={false}
       />
       <HorizontalProfile
         image={'https:picsum.photos/100'}
@@ -37,6 +39,7 @@ export default function LearderBoard(props: PropTypes) {
         points={34}
         rank={45}
         up={true}
+        currentUser={false}
       />
       <HorizontalProfile
         image={'https://t.ly/ZGWf'}
@@ -45,6 +48,7 @@ export default function LearderBoard(props: PropTypes) {
         points={876}
         rank={37}
         up={false}
+        currentUser={false}
       />
       <HorizontalProfile
         image={'https:picsum.photos/300'}

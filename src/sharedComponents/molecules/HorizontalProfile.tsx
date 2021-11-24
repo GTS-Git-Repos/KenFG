@@ -13,6 +13,7 @@ interface PropTypes {
   points: number;
   rank: number;
   up: boolean;
+  currentUser: boolean;
 }
 const PROFILEWIDTH = Dimensions.get('window').width / 2;
 const SUBTABWIDTH = PROFILEWIDTH / 2;
@@ -79,6 +80,17 @@ export default function HorizontalProfile(props: PropTypes) {
             <Icon name="arrow-down" color="red" size={20} />
           ) : (
             <Icon name="arrow-up" color="green" size={20} />
+          )}
+
+          {/* Switch */}
+          {props.currentUser ? (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('TeamsListScreen')}
+              style={[tailwind('px-2')]}>
+              <Icon name="swap-horizontal-outline" size={20} color="#8797B1" />
+            </TouchableOpacity>
+          ) : (
+            <View style={[tailwind('px-2')]}></View>
           )}
         </View>
       </View>

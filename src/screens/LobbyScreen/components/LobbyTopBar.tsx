@@ -1,14 +1,16 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/core';
 interface PropTypes {
   amount: string;
 }
 
 export default function LobbyTopBar(props: PropTypes) {
+  const navigation = useNavigation();
   return (
     <View>
       <View style={[tailwind('flex-row  justify-between')]}>
@@ -27,7 +29,9 @@ export default function LobbyTopBar(props: PropTypes) {
           />
         </View>
 
-        <View style={[tailwind('flex-row items-end justify-end px-2')]}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('WalletScreen')}
+          style={[tailwind('flex-row items-end justify-end px-2')]}>
           <View style={[tailwind('px-2')]}>
             <Text
               style={[
@@ -46,7 +50,7 @@ export default function LobbyTopBar(props: PropTypes) {
             source={assets.wallet}
             style={[tailwind(''), {width: 35, height: 33}]}
           />
-        </View>
+        </TouchableOpacity>
       </View>
 
       <LinearGradient
