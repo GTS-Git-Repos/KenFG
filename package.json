@@ -45,6 +45,7 @@
     "react-native-shape": "^1.1.2",
     "react-native-snackbar": "^2.4.0",
     "react-native-snap-carousel": "^3.9.1",
+    "react-native-splash-screen": "^3.2.0",
     "react-native-svg": "^12.1.1",
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^8.1.0",

@@ -52,7 +52,11 @@ const ImageSlider = (props: any) => {
       style={[tailwind('my-1'), {height: height, overflow: 'visible'}]}>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => navigation.navigate('My Contest')}
+        onPress={() =>
+          navigation.navigate('My Contest', {
+            screen: 'ContestListScreen',
+          })
+        }
         style={[tailwind('flex-row mx-2 justify-center items-center')]}>
         <Image
           resizeMode="contain"
@@ -62,7 +66,11 @@ const ImageSlider = (props: any) => {
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => navigation.navigate('My Contest')}
+        onPress={() =>
+          navigation.navigate('My Contest', {
+            screen: 'ContestListScreen',
+          })
+        }
         style={[tailwind('flex-row mx-2 justify-center items-center')]}>
         <Image
           resizeMode="contain"
@@ -72,7 +80,11 @@ const ImageSlider = (props: any) => {
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => navigation.navigate('My Contest')}
+        onPress={() =>
+          navigation.navigate('My Contest', {
+            screen: 'ContestListScreen',
+          })
+        }
         style={[tailwind('flex-row mx-2 justify-center items-center')]}>
         <Image
           resizeMode="contain"

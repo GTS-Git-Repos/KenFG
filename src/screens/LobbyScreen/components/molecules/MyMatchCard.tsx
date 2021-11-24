@@ -14,10 +14,14 @@ interface PropTypes {
 
 export default function MyMatchCard(props: PropTypes) {
   const {width} = useWindowDimensions();
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('LiveMatchScreen')}
+      onPress={() => {
+        navigation.navigate('LeaderBoard', {
+          screen: 'LiveMatchScreen',
+        });
+      }}
       style={[tailwind('bg-primary rounded border border-gray-800')]}>
       <View style={[tailwind('py-1')]}>
         <MyMatchCardTopSection />

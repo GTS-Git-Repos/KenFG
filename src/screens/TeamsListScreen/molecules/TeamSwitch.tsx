@@ -37,10 +37,12 @@ export default function TeamSwitch(props: PropTypes) {
         start={{x: 0.8, y: 2.0}}
         locations={[0.6, 0.5]}
         style={[tailwind('flex-row rounded')]}
-        colors={['#1C2B46', '#172338']}>
+        colors={['#B2933D', '#C5A858']}>
         <TouchableOpacity style={[tailwind('px-3 py-2 rounded')]}>
           <Text
-            style={[tailwind('font-regular text-center uppercase font-15')]}>
+            style={[
+              tailwind('font-bold text-center text-brown-5 uppercase font-12'),
+            ]}>
             Switch Team
           </Text>
         </TouchableOpacity>
