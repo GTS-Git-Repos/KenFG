@@ -1,8 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
 import {View, TouchableOpacity, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
 
@@ -10,7 +8,7 @@ interface PropTypes {
   text?: string;
 }
 
-export default function BottomAction(props: PropTypes) {
+export default function CapSelectionAction(props: PropTypes) {
   const navigation = useNavigation<any>();
   return (
     <View style={[tailwind('flex-row items-center justify-center')]}>
@@ -36,10 +34,10 @@ export default function BottomAction(props: PropTypes) {
         style={[tailwind('flex-row  m-2 rounded')]}
         colors={['#00513B', '#006A4D']}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('CapSelectionScreen')}
+          onPress={() => navigation.navigate('LeaderBoard')}
           style={[tailwind('px-8 py-3')]}>
           <Text style={[tailwind('font-bold uppercase text-light font-12')]}>
-            Continue
+            Save Team
           </Text>
         </TouchableOpacity>
       </LinearGradient>

@@ -6,13 +6,22 @@ import ContestListScreen from '../screens/ContestListScreen';
 import ContentInfoScreen from '../screens/ContentInfoScreen';
 import LiveMatchScreen from '../screens/LiveMatchScreen';
 import MatchGroundScreen from '../screens/MatchGroundScreen';
+import AccountProfileScreen from '../screens/AccountProfileScreen';
+import CapSelectionScreen from '../screens/CapSelectionScreen';
 
 import CreateTeamScreen from '../screens/CreateTeamScreen';
+import CompareTeamsScreen from '../screens/CompareTeamsScreen';
+
+import SignupScreen from '../screens/SignupScreen';
+import LoginScreen from '../screens/LoginScreen';
+import OTPScreen from '../screens/OTPScreen';
 
 const StackConfig = {headerShown: false};
 
 const HomeStack = createNativeStackNavigator();
 const ContestStack = createNativeStackNavigator();
+const MatchStack = createNativeStackNavigator();
+const AuthStack = createNativeStackNavigator();
 
 export function Home(props: any) {
   return (
@@ -23,7 +32,10 @@ export function Home(props: any) {
         name="MatchGroundScreen"
         component={MatchGroundScreen}
       />
-      <HomeStack.Screen name="CreateTeamScreen" component={CreateTeamScreen} />
+      <HomeStack.Screen
+        name="AccountProfileScreen"
+        component={AccountProfileScreen}
+      />
     </HomeStack.Navigator>
   );
 }
@@ -43,6 +55,41 @@ export function Contest(props: any) {
         name="CreateTeamScreen"
         component={CreateTeamScreen}
       />
+      <ContestStack.Screen
+        name="CapSelectionScreen"
+        component={CapSelectionScreen}
+      />
+
+      <ContestStack.Screen
+        name="MatchGroundScreen"
+        component={MatchGroundScreen}
+      />
+      <ContestStack.Screen
+        name="CompareTeamsScreen"
+        component={CompareTeamsScreen}
+      />
     </ContestStack.Navigator>
+  );
+}
+
+export function Match(props: any) {
+  return (
+    <MatchStack.Navigator screenOptions={StackConfig}>
+      <MatchStack.Screen name="LiveMatchScreen" component={LiveMatchScreen} />
+      <MatchStack.Screen
+        name="CompareTeamsScreen"
+        component={CompareTeamsScreen}
+      />
+    </MatchStack.Navigator>
+  );
+}
+
+export function Auth(props: any) {
+  return (
+    <AuthStack.Navigator screenOptions={StackConfig}>
+      <AuthStack.Screen name="SignupScreen" component={SignupScreen} />
+      <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
+      <AuthStack.Screen name="OTPScreen" component={OTPScreen} />
+    </AuthStack.Navigator>
   );
 }

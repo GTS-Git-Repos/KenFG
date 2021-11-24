@@ -82,10 +82,10 @@ export default function CreateTeamScreen() {
           <Page title={'Select 5-3 Bowlers'} />
         </View>
       </PagerView>
-
-      {/* Pages */}
-
-      <BottomAction />
+      <View
+        style={[tailwind('absolute bottom-0 w-full flex-row justify-center')]}>
+        <BottomAction />
+      </View>
     </View>
   );
 }

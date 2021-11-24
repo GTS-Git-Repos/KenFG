@@ -11,10 +11,14 @@ interface PropTypes {
 }
 
 export default function UpcommingMatches(props: PropTypes) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('My Contest')}
+      onPress={() =>
+        navigation.navigate('My Contest', {
+          screen: 'ContestListScreen',
+        })
+      }
       style={[tailwind('pb-2')]}>
       <LinearGradient
         colors={['#131e30', '#172239']}

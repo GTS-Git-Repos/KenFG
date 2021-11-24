@@ -4,6 +4,7 @@ import {View, Image, TouchableOpacity, Text, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {BottomLine} from '..';
 import assets from '../../constants/assets_manifest';
+import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   image: string;
@@ -17,8 +18,9 @@ const PROFILEWIDTH = Dimensions.get('window').width / 2;
 const SUBTABWIDTH = PROFILEWIDTH / 2;
 
 export default function HorizontalProfile(props: PropTypes) {
+  const navigation = useNavigation();
   return (
-    <View>
+    <TouchableOpacity onPress={() => navigation.navigate('CompareTeamsScreen')}>
       <View
         style={[
           tailwind('border-b border-gray-800 flex-row bg-dark-3 items-center'),
@@ -83,6 +85,6 @@ export default function HorizontalProfile(props: PropTypes) {
       <View>
         <BottomLine />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }

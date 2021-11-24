@@ -12,14 +12,15 @@ import LinearGradient from 'react-native-linear-gradient';
 const log = console.log;
 
 export default function OTPScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const [otp, setOTP] = useState('');
 
   const navigate = () => {
     if (otp.length === 4) {
+      navigation.navigate('Home');
     } else {
-      errorBox('Invalid number');
+      errorBox('Invalid OTP');
     }
   };
 
@@ -32,6 +33,10 @@ export default function OTPScreen() {
             'bg-dark-3 rounded border border-gray-700  px-3 py-6 mx-3 my-7',
           ),
         ]}>
+        <Text style={[tailwind('font-regular pb-3 text-dark-1 font-13')]}>
+          OTP Will be received in shortly
+        </Text>
+
         <View
           style={[
             tailwind('bg-dark-2 mb-0 rounded p-1'),
@@ -43,13 +48,13 @@ export default function OTPScreen() {
           end={{x: 0.0, y: 0.5}}
           start={{x: 0.8, y: 2.0}}
           locations={[0.6, 0.5]}
-          style={[
-            tailwind('flex-row  items-center justify-center mt-5 rounded p-2'),
-          ]}
+          style={[tailwind('mt-5 rounded p-2')]}
           colors={['#B2933D', '#C5A858']}>
           <TouchableOpacity
             onPress={navigate}
-            style={[tailwind('rounded p-1')]}>
+            style={[
+              tailwind('flex-row  items-center justify-center  rounded p-1'),
+            ]}>
             <Text style={[tailwind('font-bold text-brown-4 px-2 font-18')]}>
               CONTINUE
             </Text>

@@ -4,7 +4,9 @@ import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 // import assets from 'assets';
-import {TopBar} from '../../sharedComponents/';
+import {TopBar, FullScreenLoading} from '../../sharedComponents/';
+import {useIsScreenReady} from '../../utils/customHoooks';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useQuery} from 'react-query';
 import FantasyPlayer from './atoms/FantasyPlayer';
@@ -17,6 +19,12 @@ const log = console.log;
 
 export default function CompareTeamScreen() {
   const navigation = useNavigation();
+
+  const isScreenReady = useIsScreenReady();
+
+  if (isScreenReady === false) {
+    return <FullScreenLoading title={'Compare Teams'} />;
+  }
 
   return (
     <View style={tailwind('bg-dark-4 h-full')}>

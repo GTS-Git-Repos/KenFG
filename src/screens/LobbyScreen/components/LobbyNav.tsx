@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
+import {useNavigation} from '@react-navigation/core';
+
 interface PropTypes {
   text?: string;
   cricket: boolean;
@@ -17,10 +19,16 @@ interface PropTypes {
 
 export default function LobbyNav(props: PropTypes) {
   const {width, height} = useWindowDimensions();
+  const navigation = useNavigation();
 
   return (
     <View style={[tailwind('pt-1 flex-row justify-between')]}>
-      <View
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('User', {
+            screen: 'SignupScreen',
+          })
+        }
         style={[
           tailwind('flex-col items-center relative bottom-1 py-1'),
           {width: width / 5.5},
@@ -33,7 +41,7 @@ export default function LobbyNav(props: PropTypes) {
         <Text style={[tailwind('font-regular text-primary font-10')]}>
           Hi, Naveen
         </Text>
-      </View>
+      </TouchableOpacity>
 
       <View style={[tailwind('flex-1')]}>
         <View style={[tailwind('flex-row items-center justify-around ')]}>

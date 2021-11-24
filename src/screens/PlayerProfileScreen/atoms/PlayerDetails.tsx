@@ -15,7 +15,7 @@ interface PropTypes {
 export default function PlayerDetails(props: PropTypes) {
   return (
     <View style={[tailwind('p-3 bg-primary')]}>
-      <Text style={[tailwind('font-bold text-light font-18')]}>
+      <Text style={[tailwind('font-bold text-light font-20')]}>
         {props.name}
       </Text>
       <View style={[tailwind('flex-row items-center py-1')]}>
@@ -39,11 +39,13 @@ export default function PlayerDetails(props: PropTypes) {
       </View>
 
       <View style={[tailwind('flex-row flex-wrap items-center')]}>
-        <Text style={[tailwind('font-bold text-secondary font-10')]}>
+        <View style={[tailwind('w-1 h-1 rounded-full bg-secondary')]}></View>
+        <Text style={[tailwind('font-bold text-secondary pl-2 font-10')]}>
           {props.info}
         </Text>
 
-        <Text style={[tailwind('font-regular text-light px-2 font-8')]}>
+        <Text
+          style={[tailwind('font-regular px-2 font-9'), {color: '#8797B1'}]}>
           ( Indicated Information as per official sources (T&C) )
         </Text>
       </View>

@@ -4,7 +4,7 @@ import {View, Text, Dimensions, Image, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Circle, Triangle} from 'react-native-shape';
 import assets from '../../../constants/assets_manifest';
-import Svg, {Path, Polygon} from 'react-native-svg';
+import Svg, {Defs, LinearGradient, Path, Polygon, Stop} from 'react-native-svg';
 import {Rating, AirbnbRating} from 'react-native-ratings';
 
 interface PropTypes {
@@ -19,7 +19,7 @@ export default function SelectionIndicator(props: PropTypes) {
       </View>
       {/* 11 Indicator */}
       <View style={[tailwind('flex-row items-center'), {flex: 7}]}>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item, index) => {
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item, index) => {
           return (
             <View
               key={item}
@@ -27,11 +27,32 @@ export default function SelectionIndicator(props: PropTypes) {
                 tailwind('flex-row items-center'),
                 {flex: 1, height: 20},
               ]}>
-              <Svg style={[tailwind(''), {flex: 1}]} width="100%" height="17">
+              <Svg width="100%" height="24" viewBox="0 0 29 24" fill="none">
                 <Path
-                  d="M20 0.5L14.4444 10.5H0L5.1634 0.5H20Z"
-                  fill={index > 7 ? '#FFFFFF' : '#00513B'}
+                  d="M0 0H24L29 24H5L0 0Z"
+                  fill={item < 7 ? '#006A4D' : 'white'}
                 />
+                <Defs>
+                  <LinearGradient
+                    id="paint0_linear_225_964"
+                    x1="14.5"
+                    y1="0"
+                    x2="14.5"
+                    y2="24"
+                    gradientUnits="userSpaceOnUse">
+                    <Stop stop-color="#006A4D" />
+                    <Stop offset="1" stop-color="#00513B" />
+                  </LinearGradient>
+                </Defs>
+                {item === 6 && (
+                  <Text
+                    style={[
+                      tailwind('font-bold text-center text-light font-12'),
+                      {top: 4},
+                    ]}>
+                    6
+                  </Text>
+                )}
               </Svg>
             </View>
           );

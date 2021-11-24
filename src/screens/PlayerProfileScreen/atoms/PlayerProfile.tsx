@@ -12,7 +12,7 @@ interface PropTypes {
 
 export default function PlayerProfile(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center')]}>
+    <View style={[tailwind('flex-row pt-2 items-center')]}>
       <View style={[tailwind(''), {flex: 3}]}>
         <Image
           resizeMode="contain"
@@ -35,7 +35,11 @@ export default function PlayerProfile(props: PropTypes) {
           <Text style={[tailwind('font-regular text-light font-15')]}>
             Points
           </Text>
-          <Text style={[tailwind('font-bold text-light py-1 font-20')]}>
+          <Text
+            style={[
+              tailwind('font-bold text-light py-1 font-20'),
+              {fontSize: 25},
+            ]}>
             {props.points}
           </Text>
         </View>
@@ -43,7 +47,11 @@ export default function PlayerProfile(props: PropTypes) {
           <Text style={[tailwind('font-regular text-light font-15')]}>
             Credits
           </Text>
-          <Text style={[tailwind('font-bold text-light py-1 font-20')]}>
+          <Text
+            style={[
+              tailwind('font-bold text-light py-1 font-20'),
+              {fontSize: 25},
+            ]}>
             {props.credit}
           </Text>
         </View>

@@ -31,7 +31,8 @@ export default function Player(props: PropTypes) {
       locations={[0.6, 0.5]}
       style={[tailwind('pt-5 flex-row')]}
       // colors={['red', 'green']}>
-      colors={['#1C2B46', '#172338']}>
+      colors={['#1C2B46', '#172338']}
+      >
       {/* colors={['#172338', '#1C2B46']}> */}
       {/* Image */}
       <View style={[tailwind(''), {flex: 2}]}>

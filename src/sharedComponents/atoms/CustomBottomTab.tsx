@@ -1,14 +1,32 @@
-import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, Text, Image, TouchableOpacity, Keyboard} from 'react-native';
 import tailwind from '../../../tailwind';
 import assets from '../../constants/assets_manifest';
-import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default function CustomBottomTab({state, descriptors, navigation}: any) {
+  const [showTab, setShowTab] = useState(true);
+
+  useEffect(() => {
+    const show = Keyboard.addListener('keyboardDidShow', () => {
+      setShowTab(false);
+    });
+    const close = Keyboard.addListener('keyboardDidHide', () => {
+      setShowTab(true);
+    });
+    return () => {
+      show.remove();
+      close.remove();
+    };
+  }, []);
+
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
   if (focusedOptions.tabBarVisible === false) {
+    return null;
+  }
+
+  if (showTab === false) {
     return null;
   }
 

@@ -43,7 +43,12 @@ export default function LiveMatchScreen() {
     <View style={tailwind('bg-dark h-full')}>
       <TopBar text={'IND vs NZ'} />
 
-      <LinearGradient colors={['#B2933D', '#C5A858']}>
+      <LinearGradient
+        colors={['#B2933D', '#bea14f']}
+        // colors={['red', 'blue']}
+        end={{x: 0.0, y: 1.8}}
+        start={{x: 1.6, y: 0.5}}
+        locations={[0.6, 0.5]}>
         <View style={[tailwind('px-3 pt-6 pb-3')]}>
           <MatchStat teamName1={'India'} teamName2={'New Zeland'} />
           <Projection />
@@ -54,6 +59,7 @@ export default function LiveMatchScreen() {
           <CurrentLiveStats />
         </View>
       </LinearGradient>
+
       <View>
         <LiveMatchTabs activeIndex={activeIndex} onTabPressed={onTabPressed} />
       </View>

@@ -52,7 +52,7 @@ export default function Page(props: PropTypes) {
           credits={10.0}
           isSelected={false}
         />
-        <View style={[tailwind('h-20')]}></View>
+        <View style={[tailwind('h-40')]}></View>
       </ScrollView>
     </View>
   );

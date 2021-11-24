@@ -33,7 +33,7 @@ export default function MathchGroundScreen() {
           style={[tailwind('w-full'), {flexGrow: 1}]}
           resizeMode="cover">
           <CategoryPlayers title={'WICKET-KEEPERS'} players={[1, 2]} />
-          <CategoryPlayers title={'BATS MEN'} players={[1, 2, 5]} />
+          <CategoryPlayers title={'BATS MEN'} players={[1, 4, 5]} />
           <CategoryPlayers title={'ALL ROUNDERS'} players={[1, 2]} />
           <CategoryPlayers title={'BOWLERS'} players={[1, 2, 3]} />
         </ImageBackground>

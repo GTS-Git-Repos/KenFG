@@ -1,29 +1,16 @@
-import React, {useState, useEffect} from 'react';
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from '@react-navigation/native';
+import React from 'react';
+import {NavigationContainer, DarkTheme} from '@react-navigation/native';
 import {Host} from 'react-native-portalize';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import BottomTabNavigation from './BottomTabNavigation';
 
-import ContestListScreen from '../screens/ContestListScreen';
-import LoginScreen from '../screens/LoginScreen';
-import SignupScreen from '../screens/SignupScreen';
-import ContentInfoScreen from '../screens/ContentInfoScreen';
-import CreateTeamScreen from '../screens/CreateTeamScreen';
-import MatchGroundScreen from '../screens/MatchGroundScreen';
-import TeamReviewScreen from '../screens/TeamReviewScreen';
 import AccountProfileScreen from '../screens/AccountProfileScreen';
 import TeamsListScreen from '../screens/TeamsListScreen';
-import LiveMatchScreen from '../screens/LiveMatchScreen';
-import CompareTeamsScreen from '../screens/CompareTeamsScreen';
+
 import MyContestPlayersInfo from '../screens/MyContestPlayersInfo';
 import PlayerProfileScreen from '../screens/PlayerProfileScreen';
-import OTPScreen from '../screens/OTPScreen';
 
 const RootNavigator = createNativeStackNavigator();
 
@@ -57,21 +44,7 @@ export default function RootNavigation() {
             component={BottomTabNavigation}
             name="BottomTabNavigation"
           />
-          <RootNavigator.Screen
-            component={ContestListScreen}
-            name="ContestListScreen"
-          />
-          <RootNavigator.Screen component={LoginScreen} name="LoginScreen" />
-          <RootNavigator.Screen component={SignupScreen} name="SignupScreen" />
-          <RootNavigator.Screen
-            component={ContentInfoScreen}
-            name="ContentInfoScreen"
-          />
 
-          <RootNavigator.Screen
-            component={TeamReviewScreen}
-            name="TeamReviewScreen"
-          />
           <RootNavigator.Screen
             component={AccountProfileScreen}
             name="AccountProfileScreen"
@@ -80,14 +53,7 @@ export default function RootNavigation() {
             component={TeamsListScreen}
             name="TeamsListScreen"
           />
-          <RootNavigator.Screen
-            component={LiveMatchScreen}
-            name="LiveMatchScreen"
-          />
-          <RootNavigator.Screen
-            component={CompareTeamsScreen}
-            name="CompareTeamsScreen"
-          />
+
           <RootNavigator.Screen
             component={MyContestPlayersInfo}
             name="MyContestPlayersInfo"
@@ -96,7 +62,6 @@ export default function RootNavigation() {
             component={PlayerProfileScreen}
             name="PlayerProfileScreen"
           />
-          <RootNavigator.Screen component={OTPScreen} name="OTPScreen" />
         </RootNavigator.Navigator>
       </Host>
     </NavigationContainer>

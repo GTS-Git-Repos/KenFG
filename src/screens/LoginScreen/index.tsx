@@ -13,15 +13,16 @@ import LinearGradient from 'react-native-linear-gradient';
 const log = console.log;
 
 export default function LoginScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const route = useRoute();
 
   const [number, setNumber] = useState('');
 
   const navigate = () => {
-    if (number.length === 10) {
+    if (number.length > 1) {
+      navigation.navigate('OTPScreen');
     } else {
-      errorBox('Invalid number');
+      errorBox('Invalid Mobile number');
     }
   };
 
@@ -51,13 +52,13 @@ export default function LoginScreen() {
           end={{x: 0.0, y: 0.5}}
           start={{x: 0.8, y: 2.0}}
           locations={[0.6, 0.5]}
-          style={[
-            tailwind('flex-row  items-center justify-center my-2 rounded p-2'),
-          ]}
+          style={[tailwind('my-2 rounded p-2')]}
           colors={['#B2933D', '#C5A858']}>
           <TouchableOpacity
             onPress={navigate}
-            style={[tailwind('rounded p-1')]}>
+            style={[
+              tailwind('rounded p-1 flex-row  items-center justify-center '),
+            ]}>
             <Text style={[tailwind('font-bold text-brown-4 px-2 font-18')]}>
               NEXT
             </Text>

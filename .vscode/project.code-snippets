@@ -45,5 +45,10 @@
     "prefix": "rdxselect",
     "body": ["const ${1}State = useSelector(state => state.user.${1})"],
     "description": "Redux UseSelector"
+  },
+  "use_nav": {
+    "prefix": "use_nav",
+    "body": ["const navigation = useNavigation()"],
+    "description": "Redux Use Navigation"
   }
 }

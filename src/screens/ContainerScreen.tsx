@@ -24,7 +24,7 @@ export default function ContainerScreen() {
     'ContentInfoScreen',
     'CreateTeamScreen',
     'MatchGroundScreen',
-    'TeamReviewScreen',
+    'CapSelectionScreen',
     'AccountProfileScreen',
     'TeamsListScreen',
     'LiveMatchScreen',

@@ -15,6 +15,10 @@ export default function SignupScreen() {
   const navigation = useNavigation();
   const route = useRoute();
 
+  const navigate = () => {
+    navigation.navigate('LoginScreen');
+  };
+
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBar text={'Register & Play'} />
@@ -51,13 +55,13 @@ export default function SignupScreen() {
           end={{x: 0.0, y: 0.5}}
           start={{x: 0.8, y: 2.0}}
           locations={[0.6, 0.5]}
-          style={[
-            tailwind('flex-row  items-center justify-center my-2 rounded p-2'),
-          ]}
+          style={[tailwind('my-2 rounded p-2')]}
           colors={['#B2933D', '#C5A858']}>
           <TouchableOpacity
-            // onPress={navigate}
-            style={[tailwind('rounded p-1')]}>
+            onPress={navigate}
+            style={[
+              tailwind('flex-row  items-center justify-center  rounded p-1'),
+            ]}>
             <Text style={[tailwind('font-bold text-brown-4 px-2 font-18')]}>
               REGISTER
             </Text>

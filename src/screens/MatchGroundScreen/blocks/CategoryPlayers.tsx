@@ -14,6 +14,7 @@ interface PlayerPropTypes {
   image: string;
   name: string;
   amount: string;
+  team1: boolean;
 }
 
 export default function CategoryPlayers(props: PropTypes) {
@@ -41,6 +42,7 @@ export default function CategoryPlayers(props: PropTypes) {
           return (
             <PlayerProfile
               key={item}
+              team1={item % 2 === 0}
               image={''}
               name={'V. Kholi'}
               amount={'8.4 crore'}
@@ -60,7 +62,7 @@ const PlayerProfile = (props: PlayerPropTypes) => {
         source={assets.player}
         style={[tailwind(''), {width: 72, height: 72}]}
       />
-      <Name name="R.Pant" />
+      <Name team1={props.team1} name="R.Pant" />
       <Text style={[tailwind('font-regular font-13 text-light')]}>
         {props.amount}
       </Text>
