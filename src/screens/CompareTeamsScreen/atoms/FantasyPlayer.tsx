@@ -1,12 +1,13 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import assets from '../../../constants/assets_manifest';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
   player1?: string;
   player2?: string;
+  selectSheet: any;
 }
 
 export default function FantasyPlayer(props: PropTypes) {
@@ -17,7 +18,9 @@ export default function FantasyPlayer(props: PropTypes) {
           <Text numberOfLines={1} style={TEXTSTYLE}>
             {props.player1}
           </Text>
-          <View
+
+          <TouchableOpacity
+            onPress={() => props.selectSheet?.current?.open()}
             style={[
               tailwind(
                 'border border-gray-500 p-1 flex-row items-center justify-between rounded-2xl',
@@ -27,7 +30,7 @@ export default function FantasyPlayer(props: PropTypes) {
               Team 1
             </Text>
             <Icon name="chevron-down-outline" size={20} color="gray" />
-          </View>
+          </TouchableOpacity>
 
           <Text
             style={[

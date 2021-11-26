@@ -51,8 +51,8 @@ export default function LiveMatchScreen() {
         locations={[0.6, 0.5]}>
         <View style={[tailwind('px-3 pt-6 pb-3')]}>
           <MatchStat teamName1={'India'} teamName2={'New Zeland'} />
-          <Projection />
 
+          <Projection />
           <View style={[tailwind('my-2')]}>
             <LiveMatchSeparator />
           </View>

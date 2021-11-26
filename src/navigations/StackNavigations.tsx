@@ -11,6 +11,8 @@ import CapSelectionScreen from '../screens/CapSelectionScreen';
 import TeamsListScreen from '../screens/TeamsListScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import WalletScreen from '../screens/WalletScreen';
+import TransactionListScreen from '../screens/TransactionListScreen';
+import ReferralScreen from '../screens/ReferralScreen';
 
 import CreateTeamScreen from '../screens/CreateTeamScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
@@ -45,6 +47,11 @@ export function Home(props: any) {
       />
       <HomeStack.Screen name="LiveMatchScreen" component={LiveMatchScreen} />
       <HomeStack.Screen name="WalletScreen" component={WalletScreen} />
+      <HomeStack.Screen
+        name="TransactionListScreen"
+        component={TransactionListScreen}
+      />
+      <HomeStack.Screen name="ReferralScreen" component={ReferralScreen} />
     </HomeStack.Navigator>
   );
 }

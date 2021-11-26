@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../utils/customHoooks';
@@ -7,21 +7,23 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {FullScreenLoading} from '../../sharedComponents/';
 import LinearGradient from 'react-native-linear-gradient';
 import PagerView from 'react-native-pager-view';
-const log = console.log;
 import TopBarCreateTeam from './atoms/TopBarCreateTeam';
 import MatchStatus from './atoms/MatchStatus';
 import TeamInfo from './molecules/TeamInfo';
 import SelectionIndicator from './atoms/SelectionIndicator';
 import Tabs from './atoms/Tabs';
-
 import Line from './atoms/Line';
 import BottomAction from './molecules/BottomAction';
 import Page from './molecules/Page';
+import {Modalize} from 'react-native-modalize';
+
+const log = console.log;
 
 export default function CreateTeamScreen() {
   const navigation = useNavigation();
   const route = useRoute();
   const pageRef = useRef();
+  const clearRef = useRef(null);
   const isScreenReady = useIsScreenReady();
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -56,7 +58,7 @@ export default function CreateTeamScreen() {
           />
         </LinearGradient>
         <Line />
-        <SelectionIndicator count={8} />
+        <SelectionIndicator clearRef={clearRef} count={8} />
       </LinearGradient>
 
       {/* Tabs */}
@@ -86,6 +88,65 @@ export default function CreateTeamScreen() {
         style={[tailwind('absolute bottom-0 w-full flex-row justify-center')]}>
         <BottomAction />
       </View>
+
+      <Modalize
+        ref={clearRef}
+        useNativeDriver={true}
+        modalTopOffset={200}
+        adjustToContentHeight={true}
+        disableScrollIfPossible={false}
+        closeOnOverlayTap={true}>
+        <View style={[tailwind('bg-dark-4 px-3 py-5')]}>
+          <Text
+            style={[tailwind('font-bold pb-4 text-light text-center font-16')]}>
+            Clear Team ?
+          </Text>
+          <Text
+            style={[
+              tailwind(
+                'font-regular pb-2 text-light text-center mx-10 font-12',
+              ),
+            ]}>
+            Are you sure you want to clear your player selections ?
+          </Text>
+
+          <LinearGradient
+            start={{x: 0.8, y: 2.0}}
+            end={{x: 0.3, y: 0.5}}
+            locations={[0.6, 0.5]}
+            style={[tailwind('flex-row  m-2 rounded')]}
+            colors={['#00513B', '#006A4D']}>
+            <TouchableOpacity style={[tailwind('flex-grow py-3')]}>
+              <Text
+                style={[
+                  tailwind(
+                    'font-bold uppercase text-light flex-grow text-center font-12',
+                  ),
+                ]}>
+                Yes Clear
+              </Text>
+            </TouchableOpacity>
+          </LinearGradient>
+
+          <LinearGradient
+            start={{x: 0.8, y: 2.0}}
+            end={{x: 0.3, y: 0.5}}
+            locations={[0.6, 0.5]}
+            style={[tailwind('flex-row  m-2 rounded')]}
+            colors={['#1C2B46', '#172338']}>
+            <TouchableOpacity style={[tailwind('flex-grow py-3')]}>
+              <Text
+                style={[
+                  tailwind(
+                    'font-bold uppercase text-light text-center font-12',
+                  ),
+                ]}>
+                Cancel
+              </Text>
+            </TouchableOpacity>
+          </LinearGradient>
+        </View>
+      </Modalize>
     </View>
   );
 }

@@ -1,6 +1,13 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, Dimensions, Image, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Dimensions,
+  Image,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Circle, Triangle} from 'react-native-shape';
 import assets from '../../../constants/assets_manifest';
@@ -9,6 +16,7 @@ import {Rating, AirbnbRating} from 'react-native-ratings';
 
 interface PropTypes {
   count: number;
+  clearRef: any;
 }
 
 export default function SelectionIndicator(props: PropTypes) {
@@ -58,14 +66,15 @@ export default function SelectionIndicator(props: PropTypes) {
           );
         })}
       </View>
-      <View
+      <TouchableOpacity
+        onPress={() => props.clearRef?.current?.open()}
         style={[tailwind('flex-row items-center justify-center'), {flex: 2}]}>
         <Image
           resizeMode="contain"
           source={assets.minus}
           style={[tailwind(''), {width: 24, height: 24}]}
         />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }

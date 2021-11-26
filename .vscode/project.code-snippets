@@ -17,7 +17,7 @@
     "scope": "typescriptreact",
     "prefix": "rnview",
     "body": [
-      "<View style={[tailwind(\"flex-row box justify-between items-center\")]}>",
+      "<View style={[tailwind(\"flex-row box items-center\")]}>",
       "   ",
       "</View>"
     ],
