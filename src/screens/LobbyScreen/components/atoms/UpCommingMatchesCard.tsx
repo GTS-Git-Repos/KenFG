@@ -1,13 +1,19 @@
 import React from 'react';
-import tailwind from '../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
-import assets from '../../constants/assets_manifest';
+import assets from '../../../../constants/assets_manifest';
 
 interface PropTypes {
-  matc: string;
+  tournament_name: string;
+  team_a_name: string;
+  team_a_flag: string;
+  team_b_name: string;
+  team_b_flag: string;
+  tournament_shortName: string;
+  price: string;
 }
 
 export default function UpcommingMatches(props: PropTypes) {
@@ -19,7 +25,7 @@ export default function UpcommingMatches(props: PropTypes) {
           screen: 'ContestListScreen',
         })
       }
-      style={[tailwind('pb-2')]}>
+      style={[tailwind('p-2'), {flex: 6}]}>
       <LinearGradient
         colors={['#131e30', '#172239']}
         // colors={['red', 'green']}
@@ -47,7 +53,7 @@ export default function UpcommingMatches(props: PropTypes) {
               tailwind('font-regular text-center font-12'),
               {color: '#F6F7F4'},
             ]}>
-            World T20 Championship
+            {props.tournament_name}
           </Text>
 
           <LinearGradient
@@ -72,7 +78,7 @@ export default function UpcommingMatches(props: PropTypes) {
                 tailwind('font-bold font-13 text-center'),
                 {color: '#D3D3D5'},
               ]}>
-              PAK
+              {props.team_a_name}
             </Text>
           </View>
 
@@ -91,7 +97,7 @@ export default function UpcommingMatches(props: PropTypes) {
                 tailwind('font-bold font-13 text-center'),
                 {color: '#D3D3D5'},
               ]}>
-              IN
+              {props.team_b_name}
             </Text>
           </View>
         </View>
@@ -99,17 +105,18 @@ export default function UpcommingMatches(props: PropTypes) {
         {/* Contest Prize Info */}
         <View style={[tailwind('flex flex-row items-center justify-between')]}>
           <Text
+            numberOfLines={1}
             allowFontScaling={true}
             adjustsFontSizeToFit={true}
             style={[tailwind('font-regular font-10'), {color: '#9AABC6'}]}>
-            T20 WorldCup
+            {props.tournament_shortName}
           </Text>
           <Text
             style={[tailwind('font-regular px-1 font-10'), {color: '#9AABC6'}]}>
             |
           </Text>
           <Text style={[tailwind('font-regular font-10'), {color: '#DBC872'}]}>
-            $ 20,000
+            {'\u20B9'} {props.price}
           </Text>
         </View>
 

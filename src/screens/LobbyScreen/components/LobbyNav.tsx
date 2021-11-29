@@ -22,7 +22,10 @@ export default function LobbyNav(props: PropTypes) {
   const navigation = useNavigation<any>();
 
   return (
-    <View style={[tailwind('pt-1 flex-row justify-between')]}>
+    <View
+      style={[
+        tailwind('bg-dark-3 pt-3 rounded-t-2xl  flex-row justify-between'),
+      ]}>
       <TouchableOpacity
         onPress={() =>
           navigation.navigate('User', {
@@ -30,38 +33,45 @@ export default function LobbyNav(props: PropTypes) {
           })
         }
         style={[
-          tailwind('flex-col items-center relative bottom-1 py-1'),
-          {width: width / 5.5},
+          tailwind('flex-col items-center'),
+          {width: width / 5.5, left: 12},
         ]}>
         <Image
           resizeMode="contain"
           source={assets.profile_round}
           style={[tailwind('w-7 h-7 relative bottom-1')]}
         />
-        <Text style={[tailwind('font-regular text-primary font-10')]}>
-          Hi, Naveen
+        <Text
+          numberOfLines={1}
+          style={[tailwind('font-regular text-light font-10')]}>
+          Hi, Sathya
         </Text>
       </TouchableOpacity>
 
       <View style={[tailwind('flex-1')]}>
-        <View style={[tailwind('flex-row items-center justify-around ')]}>
+        <View style={[tailwind('flex-row items-center')]}>
           <TouchableOpacity
             onPress={() => props.setCricket(true)}
             style={[
               tailwind('flex flex-col items-center border-b-2 mb-0.5'),
-              {borderBottomColor: props.cricket ? '#162238' : 'transparent'},
+              {
+                borderBottomColor: props.cricket ? '#162238' : 'transparent',
+                flex: 6,
+              },
             ]}>
             <Image
               resizeMode="contain"
               source={props.cricket ? assets.cricket_icon : assets.cricket_off}
-              style={[tailwind('w-5 h-5')]}
+              style={[{width: 20, height: 20}]}
             />
             <Text
               style={[
                 tailwind(
-                  `font-bold text-center px-2 uppercase text-xs font-11 tracking-widest`,
+                  `font-bold text-center px-2 uppercase text-xs font-11 tracking-widest ${
+                    props.cricket ? 'text-brown-2' : 'text-dark-1'
+                  }`,
                 ),
-                {color: props.cricket ? '#172339' : '#695023'},
+                {letterSpacing: 1.3},
               ]}>
               Cricket
             </Text>
@@ -71,52 +81,38 @@ export default function LobbyNav(props: PropTypes) {
             onPress={() => props.setCricket(false)}
             style={[
               tailwind('flex flex-col items-center border-b-2 mb-0.5'),
-              {borderBottomColor: !props.cricket ? '#162238' : 'transparent'},
+              {
+                borderBottomColor: !props.cricket ? '#162238' : 'transparent',
+                flex: 6,
+              },
             ]}>
             <Image
               resizeMode="contain"
               source={props.cricket ? assets.football_icon : assets.footbal_on}
-              style={[tailwind('w-5 h-5')]}
+              style={[{width: 20, height: 20}]}
             />
             <Text
               style={[
                 tailwind(
-                  'font-bold text-center px-2 uppercase text-xs font-11 tracking-widest',
+                  `font-bold text-center px-2 uppercase text-xs font-11 tracking-widest ${
+                    props.cricket ? 'text-dark-1' : 'text-brown-3'
+                  }`,
                 ),
-                {color: !props.cricket ? '#172339' : '#695023'},
               ]}>
               FootBall
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={[tailwind('flex-row')]}>
-          <View
-            style={[
-              tailwind('w-full bg-dark'),
-              {
-                height: 10,
-                borderStyle: 'solid',
-                borderLeftWidth: 20,
-                borderRightWidth: 20,
-                borderTopWidth: 0,
-                borderBottomWidth: 10,
-                borderRightColor: '#BCA14D',
-                borderLeftColor: '#C5A959',
-                borderTopColor: 'transparent',
-                borderBottomColor: '#0c1320',
-              },
-            ]}></View>
-        </View>
       </View>
 
       <View
         style={[
-          tailwind('flex-col items-center justify-end py-2 '),
+          tailwind('flex-col items-center justify-center py-2 '),
           {width: width / 5.5},
         ]}>
         <TouchableOpacity
           onPress={() => navigation.navigate('NotificationScreen')}
-          style={[tailwind('relative bottom-2'), {left: 4}]}>
+          style={[tailwind('relative bottom-2')]}>
           <Image
             resizeMode="contain"
             source={assets.topBarbell}

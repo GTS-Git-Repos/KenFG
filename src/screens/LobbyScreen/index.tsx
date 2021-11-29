@@ -53,6 +53,16 @@ export default function LobbyScreen() {
 
         <View style={[tailwind('h-10')]}></View>
       </ScrollView>
+
+      {/* <View
+        style={[
+          tailwind('w-80 bg-red-600 absolute'),
+          {
+            height: 2,
+            left: 182,
+            transform: [{rotate: '90deg'}],
+          },
+        ]}></View> */}
     </View>
   );
 }

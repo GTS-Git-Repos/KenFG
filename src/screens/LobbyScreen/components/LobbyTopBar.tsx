@@ -13,25 +13,28 @@ export default function LobbyTopBar(props: PropTypes) {
   const navigation = useNavigation();
   return (
     <View>
-      <View style={[tailwind('flex-row  justify-between')]}>
-        <View style={[tailwind('relative right-1'), {bottom: 7}]}>
+      <View style={[tailwind('flex-row justify-between')]}>
+        <View style={[tailwind('relative'), {bottom: 0, right: 1}]}>
           <Image
             resizeMode="cover"
             source={assets.logo_back_rectangle}
-            style={[{width: 167, height: 73}]}
+            style={[{width: 177, height: 63}]}
           />
         </View>
-        <View style={[tailwind('absolute left-2 top-2'), {width: 100}]}>
+        <View style={[tailwind('absolute'), {width: 100, left: 23, top: 10}]}>
           <Image
             resizeMode="contain"
-            source={assets.logo}
-            style={[tailwind('w-full'), {height: 45}]}
+            source={assets.logo_new}
+            style={[{height: 50, width: '80%'}]}
           />
         </View>
 
         <TouchableOpacity
           onPress={() => navigation.navigate('WalletScreen')}
-          style={[tailwind('flex-row items-end justify-end px-2')]}>
+          style={[
+            tailwind('flex-row items-end justify-end  px-2'),
+            {position: 'relative', right: 16},
+          ]}>
           <View style={[tailwind('px-2')]}>
             <Text
               style={[
@@ -48,7 +51,7 @@ export default function LobbyTopBar(props: PropTypes) {
           <Image
             resizeMode="contain"
             source={assets.wallet}
-            style={[tailwind(''), {width: 35, height: 33}]}
+            style={[tailwind(''), {width: 28, height: 28}]}
           />
         </TouchableOpacity>
       </View>
@@ -56,7 +59,7 @@ export default function LobbyTopBar(props: PropTypes) {
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
-        style={[tailwind('mx-4 my-2')]}
+        style={[tailwind('mx-4')]}
         colors={['#C4A858', '#D8BE71', '#BFA14E']}>
         <View style={[tailwind(''), {height: 3}]}></View>
       </LinearGradient>

@@ -26,6 +26,7 @@ export default function ContestCard(props: PropTypes) {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
+      style={[tailwind('rounded')]}
       onPress={() => navigation.navigate('ContentInfoScreen')}>
       <LinearGradient
         end={{x: 0.0, y: 0.5}}

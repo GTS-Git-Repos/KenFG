@@ -21,10 +21,14 @@ import SignupScreen from '../screens/SignupScreen';
 import LoginScreen from '../screens/LoginScreen';
 import OTPScreen from '../screens/OTPScreen';
 
+import MyMatchesScreen from '../screens/MyMatchesScreen';
+
+
 const StackConfig = {headerShown: false};
 
 const HomeStack = createNativeStackNavigator();
 const ContestStack = createNativeStackNavigator();
+const MyMatch = createNativeStackNavigator();
 const MatchStack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
 
@@ -53,6 +57,15 @@ export function Home(props: any) {
       />
       <HomeStack.Screen name="ReferralScreen" component={ReferralScreen} />
     </HomeStack.Navigator>
+  );
+}
+
+export function MyMatches(props: any) {
+  return (
+    <MyMatch.Navigator screenOptions={StackConfig}>
+      <MyMatch.Screen name="MyMatchesScreen" component={MyMatchesScreen} />
+      
+    </MyMatch.Navigator>
   );
 }
 

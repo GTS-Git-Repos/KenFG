@@ -12,9 +12,7 @@ export default function TeamsMyMatchCard(props: PropTypes) {
   const {width} = useWindowDimensions();
   return (
     <View
-      style={[
-        tailwind('flex-row items-center items-center justify-between py-2'),
-      ]}>
+      style={[tailwind('flex-row items-center items-center justify-between')]}>
       <View style={[tailwind('')]}>
         <View style={[tailwind('flex-row items-center')]}>
           <View
@@ -37,7 +35,7 @@ export default function TeamsMyMatchCard(props: PropTypes) {
         </Text>
       </View>
 
-      <View style={[tailwind('flex flex-row items-center')]}>
+      <View style={[tailwind('flex-row items-center')]}>
         <Image
           resizeMode="contain"
           source={assets.running_clock}

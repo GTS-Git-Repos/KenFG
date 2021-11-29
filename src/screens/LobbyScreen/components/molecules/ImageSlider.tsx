@@ -57,7 +57,7 @@ const ImageSlider = (props: any) => {
             screen: 'ContestListScreen',
           })
         }
-        style={[tailwind('flex-row mx-2 justify-center items-center')]}>
+        style={[tailwind('flex-row mx-5 justify-center items-center')]}>
         <Image
           resizeMode="contain"
           source={assets.banner1}
@@ -71,7 +71,7 @@ const ImageSlider = (props: any) => {
             screen: 'ContestListScreen',
           })
         }
-        style={[tailwind('flex-row mx-2 justify-center items-center')]}>
+        style={[tailwind('flex-row mx-5 justify-center items-center')]}>
         <Image
           resizeMode="contain"
           source={assets.banner1}
@@ -85,7 +85,7 @@ const ImageSlider = (props: any) => {
             screen: 'ContestListScreen',
           })
         }
-        style={[tailwind('flex-row mx-2 justify-center items-center')]}>
+        style={[tailwind('flex-row mx-5 justify-center items-center')]}>
         <Image
           resizeMode="contain"
           source={assets.banner1}
