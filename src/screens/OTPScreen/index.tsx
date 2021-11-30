@@ -1,28 +1,53 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
-import {TopBar} from '../../sharedComponents';
-import {useNavigation} from '@react-navigation/native';
+import {TopBar, BlockScreenByLoading} from '../../sharedComponents';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {errorBox} from '../../utils/snakBars';
 import OTPInput from './molecules/OTPInput';
-
+import {otpVerifyRemote} from '../../remote/authRemote';
+import {saveToken} from '../../utils/authTokenUtils';
 import LinearGradient from 'react-native-linear-gradient';
 // import assets from 'assets';
 const log = console.log;
 
 export default function OTPScreen() {
   const navigation = useNavigation<any>();
+  const route = useRoute<any>();
 
   const [otp, setOTP] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const navigate = () => {
-    if (otp.length === 4) {
-      navigation.navigate('Home');
-    } else {
-      errorBox('Invalid OTP');
+  const onPressAction = async () => {
+    try {
+      setLoading(true);
+      if (otp.length < 4) {
+        throw 'Invalid OTP';
+      }
+      const response = await otpVerifyRemote({
+        mobile: route?.params?.mobile,
+        otp: otp,
+      });
+      log(response);
+      if (response) {
+        await saveToken(response.jwt);
+        navigation.navigate('DrawerNav');
+      } else {
+        throw 'Invalid Response';
+      }
+    } catch (err) {
+      setTimeout(() => {
+        errorBox('Invalid OTP');
+      }, 500);
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    log(route.params);
+  }, []);
 
   return (
     <View style={tailwind('h-full bg-dark')}>
@@ -34,7 +59,7 @@ export default function OTPScreen() {
           ),
         ]}>
         <Text style={[tailwind('font-regular pb-3 text-dark-1 font-13')]}>
-          OTP Will be received in shortly
+          OTP Will be received in shortly {route?.params?.otp}
         </Text>
 
         <View
@@ -51,7 +76,7 @@ export default function OTPScreen() {
           style={[tailwind('mt-5 rounded p-2')]}
           colors={['#B2933D', '#C5A858']}>
           <TouchableOpacity
-            onPress={navigate}
+            onPress={onPressAction}
             style={[
               tailwind('flex-row  items-center justify-center  rounded p-1'),
             ]}>
@@ -67,6 +92,8 @@ export default function OTPScreen() {
         did't receive an OTP ?{' '}
         <Text style={[tailwind('text-green-500 underline')]}>Resend</Text>
       </Text>
+
+      {loading && <BlockScreenByLoading />}
     </View>
   );
 }

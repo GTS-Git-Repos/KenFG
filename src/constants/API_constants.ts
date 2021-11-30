@@ -1,4 +1,4 @@
-export const BASE_URL = "http://ip-api.com/json/"
+export const BASE_URL = "http://kenfg.com/api"
 
 export const METHODS = {
     GET: "GET",

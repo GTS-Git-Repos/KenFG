@@ -12,7 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 const log = console.log;
 
 export default function SignupScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const route = useRoute();
 
   const navigate = () => {

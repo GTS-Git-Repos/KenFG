@@ -8,7 +8,7 @@ import {
 } from 'react-native-confirmation-code-field';
 import tailwind from 'tailwind-rn';
 
-const CELL_COUNT = 4;
+const CELL_COUNT = 6;
 
 const App = ({value, onChangeText}) => {
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});

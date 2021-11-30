@@ -5,8 +5,11 @@ const requestServer = function (
   url: string,
   payload?: any,
 ): any {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
   return new Promise((resolve, reject) => {
-    const options: any = {
+    let options: any = {
+      signal: controller.signal,
       method: method,
       headers: {
         'Content-Type': 'application/json',
@@ -18,29 +21,45 @@ const requestServer = function (
 
     fetch(url, options)
       .then(serverResponse => {
+        clearTimeout(timeoutId);
         if (serverResponse.ok) {
-          console.log(
-            `\x1b[32m  Request ${url} : ${JSON.stringify(payload)} \x1b[0m`,
-          );
-          serverResponse
-            .json()
-            .then(data => {
-              resolve(data);
-            })
-            .catch(err => {
-              console.log('Parse Failed', err);
-              reject('Parse Failed');
-            });
+          logRequest(url, payload);
+          if (serverResponse.headers.get('content-length') === '0') {
+            resolve({status: serverResponse.status});
+          } else {
+            serverResponse
+              .json()
+              .then(data => {
+                resolve({status: serverResponse.status, data});
+              })
+              .catch(err => {
+                ErrorRequest(url, payload);
+                reject('Parse Failed');
+              });
+          }
         } else {
-          console.log('Status Code:', serverResponse.status);
+          console.log('>> Status: ', serverResponse.status);
+          ErrorRequest(url, payload);
           reject('Invalid Response');
         }
       })
       .catch(err => {
-        console.log('Failed Request', err);
+        clearTimeout(timeoutId);
+
+        console.log(err);
+        ErrorRequest(url, payload);
         reject('Failed Request');
       });
   });
 };
 
 export default requestServer;
+
+const logRequest = (url: string, payload: any) => {
+  console.log(`\x1b[32m  Request ${url} : ${JSON.stringify(payload)} \x1b[0m`);
+};
+const ErrorRequest = (url: string, payload: any) => {
+  console.log(
+    `\x1b[33m [*ERROR*] Request ${url} : ${JSON.stringify(payload)} \x1b[0m`,
+  );
+};

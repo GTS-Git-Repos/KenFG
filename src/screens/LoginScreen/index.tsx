@@ -1,37 +1,47 @@
 import React, {useState} from 'react';
-import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import tailwind from '../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation, useRoute} from '@react-navigation/native';
-// import assets from 'assets';
-// import {TopBar} from 'components';
-// import Icon from 'react-native-vector-icons/Ionicons';
 import {errorBox} from '../../utils/snakBars';
-import {useQuery} from 'react-query';
-import {TopBar} from '../../sharedComponents';
+import {TopBar, BlockScreenByLoading} from '../../sharedComponents';
+
+import {useMutation} from 'react-query';
 import LinearGradient from 'react-native-linear-gradient';
+import {loginRemote} from '../../remote/authRemote';
 const log = console.log;
 
 export default function LoginScreen() {
   const navigation = useNavigation<any>();
-  const route = useRoute();
 
-  const [number, setNumber] = useState('');
+  const [mobile, setMobile] = useState('9867543210');
+  const [loading, setLoading] = useState(false);
 
-  const navigate = () => {
-    if (number.length > 1) {
-      navigation.navigate('OTPScreen');
-    } else {
-      errorBox('Invalid Mobile number');
+  const onPressAction = async () => {
+    try {
+      setLoading(true);
+      if (mobile.length === 10) {
+        const response = await loginRemote({mobile});
+        if (response) {
+          log(response);
+          navigation.navigate('OTPScreen', {
+            mobile,
+            otp: response.otp,
+          });
+        }
+      } else {
+        errorBox('Invalid Mobile Number');
+      }
+    } catch (err) {
+      errorBox("Can't Proceed ");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBar text={'Log in'} />
-      <View
-        elevation={5}
-        style={[tailwind('bg-dark-3 rounded  px-3 py-6 mx-3 my-7')]}>
+      <View style={[tailwind('bg-dark-3 rounded  px-3 py-6 mx-3 my-7 shadow')]}>
         <View
           style={[
             tailwind('bg-dark-2 border-b-2 mb-3 rounded p-1'),
@@ -39,10 +49,10 @@ export default function LoginScreen() {
           ]}>
           <TextInput
             maxLength={10}
-            value={number}
+            value={mobile}
             keyboardAppearance="dark"
             keyboardType="decimal-pad"
-            onChangeText={e => setNumber(e)}
+            onChangeText={e => setMobile(e)}
             placeholder="Mobile Number"
             placeholderTextColor="#8797B1"
             style={[tailwind('font-bold text-light p-2')]}
@@ -55,7 +65,7 @@ export default function LoginScreen() {
           style={[tailwind('my-2 rounded p-2')]}
           colors={['#B2933D', '#C5A858']}>
           <TouchableOpacity
-            onPress={navigate}
+            onPress={onPressAction}
             style={[
               tailwind('rounded p-1 flex-row  items-center justify-center '),
             ]}>
@@ -70,6 +80,7 @@ export default function LoginScreen() {
         Not a Memeber ?{' '}
         <Text style={[tailwind('text-green-500 underline')]}>Register</Text>
       </Text>
+      {loading && <BlockScreenByLoading />}
     </View>
   );
 }
