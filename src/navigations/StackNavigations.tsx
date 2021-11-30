@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import LobbyScreen from '../screens/LobbyScreen';
 import ContestListScreen from '../screens/ContestListScreen';
 import ContentInfoScreen from '../screens/ContentInfoScreen';
 import LiveMatchScreen from '../screens/LiveMatchScreen';
@@ -35,7 +34,6 @@ const AuthStack = createNativeStackNavigator();
 export function Home(props: any) {
   return (
     <HomeStack.Navigator screenOptions={StackConfig}>
-      <HomeStack.Screen name="LobbyScreen" component={LobbyScreen} />
 
       <HomeStack.Screen
         name="MatchGroundScreen"

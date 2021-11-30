@@ -4,13 +4,18 @@ import {Host} from 'react-native-portalize';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import BottomTabNavigation from './BottomTabNavigation';
+import {DrawerNav} from './DrawerNavigation';
 
-import AccountProfileScreen from '../screens/AccountProfileScreen';
+import NotificationScreen from '../screens/NotificationScreen';
+import ContestListScreen from '../screens/ContestListScreen';
+import WalletScreen from '../screens/WalletScreen';
+import ProfileEditScreen from '../screens/ProfileEditScreen';
 import TeamsListScreen from '../screens/TeamsListScreen';
 
 import MyContestPlayersInfo from '../screens/MyContestPlayersInfo';
 import PlayerProfileScreen from '../screens/PlayerProfileScreen';
+
+import {Home} from './StackNavigations';
 
 const RootNavigator = createNativeStackNavigator();
 
@@ -38,29 +43,21 @@ export default function RootNavigation() {
     <NavigationContainer theme={DarkTheme}>
       <Host>
         <RootNavigator.Navigator
-          initialRouteName="BottomTabNavigation"
+          initialRouteName="ProfileEditScreen"
           screenOptions={StackConfig}>
+          <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
           <RootNavigator.Screen
-            component={BottomTabNavigation}
-            name="BottomTabNavigation"
-          />
-
-          <RootNavigator.Screen
-            component={AccountProfileScreen}
-            name="AccountProfileScreen"
+            component={NotificationScreen}
+            name="NotificationScreen"
           />
           <RootNavigator.Screen
-            component={TeamsListScreen}
-            name="TeamsListScreen"
+            component={ContestListScreen}
+            name="ContestListScreen"
           />
-
+          <RootNavigator.Screen component={WalletScreen} name="WalletScreen" />
           <RootNavigator.Screen
-            component={MyContestPlayersInfo}
-            name="MyContestPlayersInfo"
-          />
-          <RootNavigator.Screen
-            component={PlayerProfileScreen}
-            name="PlayerProfileScreen"
+            component={ProfileEditScreen}
+            name="ProfileEditScreen"
           />
         </RootNavigator.Navigator>
       </Host>

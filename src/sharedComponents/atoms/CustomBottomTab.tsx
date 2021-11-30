@@ -7,18 +7,18 @@ import LinearGradient from 'react-native-linear-gradient';
 export default function CustomBottomTab({state, descriptors, navigation}: any) {
   const [showTab, setShowTab] = useState(true);
 
-  useEffect(() => {
-    const show = Keyboard.addListener('keyboardDidShow', () => {
-      setShowTab(false);
-    });
-    const close = Keyboard.addListener('keyboardDidHide', () => {
-      setShowTab(true);
-    });
-    return () => {
-      show.remove();
-      close.remove();
-    };
-  }, []);
+  // useEffect(() => {
+  //   const show = Keyboard.addListener('keyboardDidShow', () => {
+  //     setShowTab(false);
+  //   });
+  //   const close = Keyboard.addListener('keyboardDidHide', () => {
+  //     setShowTab(true);
+  //   });
+  //   return () => {
+  //     show.remove();
+  //     close.remove();
+  //   };
+  // }, []);
 
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 

@@ -28,11 +28,11 @@ export default function ContestCard(props: PropTypes) {
       activeOpacity={0.7}
       style={[tailwind('rounded')]}
       onPress={() => navigation.navigate('ContentInfoScreen')}>
-      <LinearGradient
+      {/* <LinearGradient
         end={{x: 0.0, y: 0.5}}
         start={{x: 0.8, y: 2.0}}
         locations={[0.6, 0.5]}
-        colors={['#172338', '#25385A']}>
+        colors={['#172338', '#25385A']}> */}
         <View style={[tailwind('px-2 pt-4 pb-3 rounded-t')]}>
           <View style={[tailwind('flex-row items-center justify-between ')]}>
             <View style={[tailwind('')]}>
@@ -173,7 +173,10 @@ export default function ContestCard(props: PropTypes) {
               </View>
             )}
           </View>
-        </LinearGradient>
+
+        {/* </LinearGradient> */}
+
+        
         {/* joined with */}
 
         {props.joined ? (

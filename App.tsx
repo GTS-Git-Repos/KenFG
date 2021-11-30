@@ -1,7 +1,14 @@
 import 'react-native-reanimated';
+import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
-import {LogBox, SafeAreaView, StatusBar} from 'react-native';
+import {
+  LogBox,
+  SafeAreaView,
+  StatusBar,
+  NativeModule,
+  NativeModules,
+} from 'react-native';
 import {Provider} from 'react-redux';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import {Host, Portal} from 'react-native-portalize';
@@ -28,6 +35,8 @@ if (__DEV__ === false) {
 
 const App: React.FC = (): JSX.Element | null => {
   useEffect(() => {
+ 
+
     SplashScreen.hide();
     // Test Db Actions
     // (async () => {

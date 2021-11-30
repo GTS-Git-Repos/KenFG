@@ -28,9 +28,7 @@ export default function LobbyNav(props: PropTypes) {
       ]}>
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate('User', {
-            screen: 'SignupScreen',
-          })
+          navigation.openDrawer()
         }
         style={[
           tailwind('flex-col items-center'),

@@ -4,7 +4,11 @@ import CustomBottomTab from '../sharedComponents/atoms/CustomBottomTab';
 
 import {Contest, Home, Auth, Match, MyMatches} from './StackNavigations';
 
+import LobbyScreen from '../screens/LobbyScreen';
+import MyMatchesScreen from '../screens/MyMatchesScreen';
 import LiveMatchScreen from '../screens/LiveMatchScreen';
+import LoginScreen from '../screens/LoginScreen';
+import MoreScreen from '../screens/MoreScreen';
 
 import BluePrintScreen from '../screens/BluePrintScreen';
 import ContainerScreen from '../screens/ContainerScreen';
@@ -37,10 +41,26 @@ export default function BottomTabNavigation() {
       screenOptions={config}
       initialRouteName="Home"
       tabBar={props => <CustomBottomTab {...props} />}>
-      <BottomTab.Screen name="Home" component={Home} />
-      <BottomTab.Screen name="My Contest" component={MyMatches} />
-      <BottomTab.Screen name="LeaderBoard" component={Match} />
-      <BottomTab.Screen name="User" component={Auth} />
+      <BottomTab.Screen
+        name="LobbyScreen"
+        options={{tabBarLabel: 'Home'}}
+        component={LobbyScreen}
+      />
+      <BottomTab.Screen
+        name="MyMatchesScreen"
+        options={{tabBarLabel: 'My Matches'}}
+        component={MyMatchesScreen}
+      />
+      <BottomTab.Screen
+        name="LiveMatchScreen"
+        options={{tabBarLabel: 'LeaderBoard'}}
+        component={LiveMatchScreen}
+      />
+      <BottomTab.Screen
+        name="MoreScreen"
+        options={{tabBarLabel: 'More'}}
+        component={MoreScreen}
+      />
     </BottomTab.Navigator>
   );
 }

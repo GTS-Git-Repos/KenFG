@@ -1,5 +1,4 @@
 import TopBar from './atoms/TopBar';
-import UpcommingMatches from './atoms/UpcommingMatches';
 import TopbarContest from './atoms/TopbarContest';
 import BottomLine from './atoms/BottomLine';
 import FullScreenLoading from './atoms/FullScreenLoading';
@@ -15,7 +14,6 @@ export {
   ButtonComponent,
   BottomLine,
   FullScreenLoading,
-  UpcommingMatches,
   ContestCard,
   TeamsCard,
   HorizontalProfile,

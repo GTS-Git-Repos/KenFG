@@ -20,11 +20,7 @@ export default function UpcommingMatches(props: PropTypes) {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
-      onPress={() =>
-        navigation.navigate('My Contest', {
-          screen: 'ContestListScreen',
-        })
-      }
+      onPress={() => navigation.navigate('ContestListScreen')}
       style={[tailwind('p-2'), {flex: 6}]}>
       <LinearGradient
         colors={['#131e30', '#172239']}
