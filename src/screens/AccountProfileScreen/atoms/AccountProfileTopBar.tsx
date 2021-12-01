@@ -1,7 +1,8 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import assets from '../../../constants/assets_manifest';
 
 interface PropTypes {
   text?: string;
@@ -9,26 +10,21 @@ interface PropTypes {
 
 export default function AccountProfileTopBar(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center justify-between p-3')]}>
+    
+    <View
+      style={[
+        tailwind('flex-row items-center bg-secondary justify-between p-3'),
+      ]}>
       <TouchableOpacity>
-        <Icon name="arrow-back-outline" size={25} color="white" />
+        <Icon name="chevron-back-outline" size={25} color="#614920" />
       </TouchableOpacity>
-      <View style={[tailwind('flex-row justify-between items-center')]}>
-        <View style={[tailwind('flex flex-row items-center')]}>
-          <Icon
-            name="trophy-outline"
-            style={[tailwind('px-2')]}
-            size={25}
-            color="white"
-          />
-          <Icon
-            style={[tailwind('px-2')]}
-            name="notifications-outline"
-            size={25}
-            color="white"
-          />
-        </View>
-      </View>
+      <TouchableOpacity>
+        <Image
+          resizeMode="contain"
+          source={assets.vdot}
+          style={[tailwind(''), {width: 20, height: 20}]}
+        />
+      </TouchableOpacity>
     </View>
   );
 }

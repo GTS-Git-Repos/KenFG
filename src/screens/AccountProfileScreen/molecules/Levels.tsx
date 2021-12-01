@@ -2,79 +2,39 @@ import React from 'react';
 import tailwind from '../../../../tailwind';
 import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {BottomLine} from '../../../sharedComponents';
 
 interface PropTypes {
-  currentLevel: number;
+  nextReward: string;
 }
 
 export default function LevelCard(props: PropTypes) {
   return (
-    <View style={[tailwind('rounded bg-primary p-3 '), styles.shadow]}>
-      <View style={[tailwind('flex-row ')]}>
-        <View style={[tailwind(''), {flex: 1}]}></View>
-
-        <View style={[tailwind('flex-col'), {flex: 9}]}>
-          <Text style={[tailwind('font-bold text-secondary')]}>
-            Level {props.currentLevel}
-          </Text>
-          <View style={[tailwind('py-2')]}>
-            <Text style={[tailwind('text-light font-13')]}>
-              To reach Level {props.currentLevel + 1}, play:
-            </Text>
-
-            <View
-              style={[tailwind('flex-row py-1 justify-between items-center')]}>
-              <View style={[tailwind('flex-row items-center')]}>
-                {/* <Icon name="compass-outline" size={20} color="white" /> */}
-                <View>
-                  <Text
-                    style={[tailwind('font-bold text-secondary px-1 font-17')]}>
-                    {'\u20B9'} 5
-                  </Text>
-                  <Text style={[tailwind('font-regular text-light font-15')]}>
-                    Entry Amount
-                  </Text>
-                </View>
-              </View>
-
-              <Text style={[tailwind('font-bold text-white font-15')]}>&</Text>
-
-              <View
-                style={[
-                  tailwind('flex-row py-1 justify-between items-center'),
-                ]}>
-                <View style={[tailwind('flex-row items-center')]}>
-                  {/* <Icon name="compass-outline" size={20} color="white" /> */}
-                  <View>
-                    <Text
-                      style={[
-                        tailwind('font-bold text-secondary px-1 font-17'),
-                      ]}>
-                      {'\u20B9'} 5
-                    </Text>
-                    <Text style={[tailwind('font-regular text-light font-15')]}>
-                      Cash Contest
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-
-          {/* Next Level */}
-          <Text style={[tailwind('font-bold text-secondary font-15')]}>
-            Level 5
-          </Text>
-
-          <Text
-            style={[
-              tailwind(
-                'font-bold text-primary bg-secondary p-2 rounded my-2 font-15',
-              ),
-            ]}>
-            Level 10: {'\u20B9'}10 Cash Bonus Available
-          </Text>
-        </View>
+    <View style={[tailwind('rounded bg-dark-3 my-2 py-3 px-4 ')]}>
+      <View style={[tailwind('flex-row items-center')]}>
+        <View
+          style={[
+            tailwind('bg-blue-500 rounded-full'),
+            {width: 15, height: 15},
+          ]}></View>
+        <Text style={[tailwind('font-regular px-2 text-light font-13')]}>
+          Next Rewards :
+        </Text>
+        <Text style={[tailwind('font-bold text-brown-4 pr-2 font-14')]}>
+          {props.nextReward}
+        </Text>
+        <Text style={[tailwind('font-bold text-white font-14')]}>
+          Cash Bonus
+        </Text>
+      </View>
+      <View style={[tailwind('py-2')]}>
+        <BottomLine />
+      </View>
+      <View style={[tailwind('flex-row justify-between items-center')]}>
+        <Text style={[tailwind('font-regular text-light font-12')]}>
+          View Upcomming Rewards and Levels
+        </Text>
+        <Icon name="chevron-forward-outline" size={17} color="white" />
       </View>
     </View>
   );

@@ -22,12 +22,42 @@ import AccountProfileTopBar from './atoms/AccountProfileTopBar';
 import UserProfileCard from './atoms/UserProfileCard';
 import LevelCard from './molecules/Levels';
 import LinearGradient from 'react-native-linear-gradient';
+import AccountSubTitle from './atoms/AccountSubTitle';
+import Career from './molecules/Career';
 const log = console.log;
 
 const WIDTH = Dimensions.get('window').width;
 
 export default function AccountProfileScreen() {
   const navigation = useNavigation();
+
+  return (
+    <View style={[tailwind('h-full bg-dark')]}>
+      <AccountProfileTopBar />
+      <View style={[tailwind('bg-secondary'), {height: 15}]}></View>
+
+      <View
+        style={[
+          tailwind('bg-dark-4 rounded-2xl'),
+          {position: 'relative', bottom: 15},
+        ]}>
+        <ScrollView contentContainerStyle={tailwind('px-2')}>
+          <UserProfileCard
+            image={''}
+            name={'Naveen Gray 204312'}
+            username={'naveen gtech'}
+            level={'4'}
+          />
+          <AccountSubTitle text={'Achivements and reward'} />
+          <LevelCard nextReward={'\u20B9 10000'} />
+          <View style={[tailwind('my-2')]}>
+            <AccountSubTitle text={'Career Stats'} />
+          </View>
+          <Career/>
+        </ScrollView>
+      </View>
+    </View>
+  );
 
   return (
     <View style={tailwind('h-full bg-primary')}>

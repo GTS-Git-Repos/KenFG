@@ -1,26 +1,34 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Image, Text} from 'react-native';
+import {View, Image, Text, Touchable} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../constants/assets_manifest';
 import {BottomLine} from '../';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/core';
 
 export default function CustomDrawer(props: any) {
   return (
-    <View style={[tailwind('h-full bg-dark rounded-r-xl')]}>
+    <View style={[tailwind('h-full bg-dark-3 rounded-r-xl')]}>
       <UserInfo />
       <Links
+        to="WalletScreen"
         icon={assets.walletIcon}
         text="My Balance"
         children={
-          <Text style={[tailwind('font-regular text-light font-15')]}>
+          <Text style={[tailwind('font-regular text-brown-1 font-13')]}>
             {'\u20B9'}322.03
           </Text>
         }
       />
-      <Links icon={assets.walletIcon} text="How to Play" />
-      <Links icon={assets.walletIcon} text="Leader board" />
-      <Links icon={assets.walletIcon} text="More" />
+      <Links to="WalletScreen" icon={assets.walletIcon} text="How to Play" />
+      <Links to="WalletScreen" icon={assets.walletIcon} text="Leaderboard" />
+      <Links
+        to="ProfileEditScreen"
+        icon={assets.walletIcon}
+        text="My Info Settings"
+      />
+      <Links to="WalletScreen" icon={assets.walletIcon} text="More" />
       <BottomLine />
       <AppVersion version="4.24.4" />
       <BottomLine />
@@ -30,43 +38,67 @@ export default function CustomDrawer(props: any) {
 }
 
 const UserInfo = (props: any) => {
+  const navigation = useNavigation<any>();
   return (
-    <View style={[tailwind('px-4 flex-row items-stretch pt-3')]}>
-      {/* Image */}
-      <View style={[tailwind('box'), {flex: 3}]}></View>
-      <View style={[tailwind(''), {flex: 7}]}>
-        <Text style={[tailwind('font-regular text-light font-15')]}>
-          Kai Ro
-        </Text>
-        <Text
-          numberOfLines={1}
-          style={[tailwind('font-bold text-light font-15')]}>
-          Karthikeyan
-        </Text>
-        <View style={[tailwind('flex-row items-center')]}>
-          <Image
-            resizeMode="contain"
-            source={props.icon}
-            style={[tailwind(''), {width: 10, height: 20}]}
-          />
-          <Text style={[tailwind('font-regular text-light font-15')]}>
-            Level 231
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={() => navigation.navigate('AccountProfileScreen')}
+      style={[tailwind('px-4 flex-row items-center bg-dark-4 py-2 pt-3')]}>
+      <View style={[tailwind('flex-row items-center'), {flex: 9}]}>
+        <View style={[tailwind(''), {flex: 3}]}>
+          <View
+            style={[
+              tailwind('bg-blue-600 rounded-full'),
+              {width: 60, height: 60},
+            ]}></View>
+        </View>
+
+        <View style={[tailwind(''), {flex: 7}]}>
+          <Text
+            numberOfLines={1}
+            style={[tailwind('font-bold text-light font-15')]}>
+            Kai Ro
           </Text>
+          <Text
+            numberOfLines={1}
+            style={[tailwind('font-regular text-light py-1 font-12')]}>
+            Karthikeyan
+          </Text>
+          <View style={[tailwind('flex-row items-center')]}>
+            <View
+              style={[
+                tailwind('bg-red-500 rounded-full'),
+                {width: 18, height: 18},
+              ]}></View>
+            <Text style={[tailwind('font-regular px-1 text-light font-15')]}>
+              Level 231
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
+
+      <View style={[tailwind(''), {flex: 1}]}>
+        <TouchableOpacity>
+          <Icon name="arrow-forward" size={20} color="white" />
+        </TouchableOpacity>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const Links = (props: any) => {
+  const navigation = useNavigation<any>();
+
   return (
-    <View style={[tailwind('flex-row items-center py-3 mx-4')]}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate(props.to)}
+      style={[tailwind('flex-row items-center py-3 mx-4')]}>
       <View style={[tailwind(''), {flex: 3}]}>
-        <Image
-          resizeMode="contain"
-          source={assets.walletIcon}
-          style={[tailwind(''), {width: 32, height: 32}]}
-        />
+        <View
+          style={[
+            tailwind('bg-blue-700 rounded-full'),
+            {width: 30, height: 30},
+          ]}></View>
       </View>
       <View style={[tailwind(''), {flex: 6}]}>
         <Text style={[tailwind('font-regular text-light font-15')]}>
@@ -76,7 +108,7 @@ const Links = (props: any) => {
       <View style={[tailwind(''), {flex: 3}]}>
         {props.children && props.children}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -104,14 +136,26 @@ const Support = () => {
   return (
     <View style={[tailwind('flex-row items-center py-3 px-4')]}>
       <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
-        <View style={[tailwind(''), {flex: 3}]}></View>
+        <View style={[tailwind(''), {flex: 3}]}>
+          <View
+            style={[
+              tailwind('bg-red-500 rounded-full'),
+              {width: 20, height: 20},
+            ]}></View>
+        </View>
         <Text style={[tailwind('font-regular text-light font-15'), {flex: 7}]}>
           Helpdesk
         </Text>
       </View>
 
       <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
-        <View style={[tailwind(''), {flex: 3}]}></View>
+        <View style={[tailwind(''), {flex: 3}]}>
+          <View
+            style={[
+              tailwind('bg-red-500 rounded-full'),
+              {width: 20, height: 20},
+            ]}></View>
+        </View>
         <Text style={[tailwind('font-regular text-light font-15'), {flex: 7}]}>
           Chat With Us
         </Text>

@@ -1,4 +1,4 @@
-import React,{useEffect}from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer, DarkTheme} from '@react-navigation/native';
 import {Host} from 'react-native-portalize';
 
@@ -7,10 +7,13 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {DrawerNav} from './DrawerNavigation';
 import {Home, Auth} from './StackNavigations';
 
+import InitialScreen from '../screens/InitialScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import ContestListScreen from '../screens/ContestListScreen';
 import WalletScreen from '../screens/WalletScreen';
 import ProfileEditScreen from '../screens/ProfileEditScreen';
+import AccountProfileScreen from '../screens/AccountProfileScreen';
+
 import TeamsListScreen from '../screens/TeamsListScreen';
 
 import MyContestPlayersInfo from '../screens/MyContestPlayersInfo';
@@ -37,14 +40,17 @@ const StackConfig = {
 
 // console.log('DarkTheme', DarkTheme);
 
-
 export default function RootNavigation() {
   return (
     <NavigationContainer theme={DarkTheme}>
       <Host>
         <RootNavigator.Navigator
-          initialRouteName="Auth"
+          initialRouteName="InitialScreen"
           screenOptions={StackConfig}>
+          <RootNavigator.Screen
+            component={InitialScreen}
+            name="InitialScreen"
+          />
           <RootNavigator.Screen component={Auth} name="Auth" />
           <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
           <RootNavigator.Screen
@@ -59,6 +65,10 @@ export default function RootNavigation() {
           <RootNavigator.Screen
             component={ProfileEditScreen}
             name="ProfileEditScreen"
+          />
+          <RootNavigator.Screen
+            component={AccountProfileScreen}
+            name="AccountProfileScreen"
           />
         </RootNavigator.Navigator>
       </Host>

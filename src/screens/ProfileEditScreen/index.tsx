@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
@@ -10,17 +10,23 @@ import InputBox from './molecules/InputBox';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import GenderSelection from './molecules/GenderSelection';
 import LogOut from './atoms/Logout';
+import {format} from 'date-fns';
 import ErrorHint from './atoms/ErrorHint';
 import {useForm, Controller} from 'react-hook-form';
-import {ButtonComponent} from '../../sharedComponents/';
-// import assets from 'assets';
-// import {TopBar} from 'components';
-// import Icon from 'react-native-vector-icons/Ionicons';
+import Dob from './molecules/Dob';
+import {ButtonComponent, BlockScreenByLoading} from '../../sharedComponents/';
+import {updateUserRemote} from '../../remote/userRemote';
+import {errorBox, infoBox} from '../../utils/snakBars';
 
 const log = console.log;
 
 export default function ProfileEditScreen() {
   const navigation = useNavigation();
+
+  const [bday, setBday] = useState(new Date());
+  const [isMale, setIsMale] = useState<any>(null);
+  const [openDate, setOpenDate] = useState<any>(false);
+  const [loading, setLoading] = useState<any>(false);
 
   const {
     control,
@@ -29,25 +35,51 @@ export default function ProfileEditScreen() {
     formState: {errors},
   } = useForm({
     defaultValues: {
-      name: '',
-      email: '',
-      password: '',
-      dob: '',
-      mobile_number: '',
-      address: '',
-      city: '',
-      pincode: '',
-      state: '',
-      country: '',
+      name: 'name',
+      email: 'name@name.com',
+      password: 'password',
+      mobile_number: '9876543210',
+      address: 'Address',
+      city: 'City',
+      pincode: '622222',
+      state: 'Tamil Nadu',
+      country: 'India',
     },
   });
 
-  useEffect(() => {
-    console.log('formState');
-    // setFocus('name');
-  }, [setFocus]);
-
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = async (data: any) => {
+    try {
+      if (bday) {
+        if (isMale) {
+          setLoading(true);
+          const response = await updateUserRemote({
+            ...data,
+            allow_sms: 1,
+            make_me_visible: 0,
+            dob: format(bday, 'dd-MM-yyyy'),
+            gender: isMale ? 1 : 0,
+          });
+          if (response) {
+            infoBox('User information is updated');
+            setTimeout(() => {
+              navigation.goBack();
+            }, 1000);
+          } else {
+            errorBox('Failed to update User');
+          }
+          console.log(response);
+        } else {
+          errorBox('Please select your gender');
+        }
+      } else {
+        errorBox('invalid Birthday');
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <View style={tailwind('h-full bg-dark')}>
@@ -110,9 +142,15 @@ export default function ProfileEditScreen() {
         )}
 
         <InputTitle text={'Date of Birth'} />
-        {/* <InputBox /> */}
+        <Dob
+          openDate={openDate}
+          setOpenDate={setOpenDate}
+          bday={bday}
+          setBday={setBday}
+        />
+
         <InputTitle text={'Gender'} />
-        <GenderSelection />
+        <GenderSelection isMale={isMale} setIsMale={setIsMale} />
 
         <InputTitle text={'Address'} />
         <Controller
@@ -205,6 +243,8 @@ export default function ProfileEditScreen() {
           <ButtonComponent text={'Update User'} />
         </TouchableOpacity>
       </KeyboardAwareScrollView>
+
+      {loading && <BlockScreenByLoading />}
     </View>
   );
 }

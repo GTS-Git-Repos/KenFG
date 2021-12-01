@@ -11,64 +11,37 @@ interface PropTypes {
   name: string;
   username: string;
   level: string;
-  followers: string;
-  following: string;
-  friends: string;
 }
 
 export default function UserProfileCard(props: PropTypes) {
   return (
-    <View style={[tailwind('rounded p-1')]}>
-      <View style={[tailwind('flex-row')]}>
-        <View style={{flex: 1}}>
-          <Image source={assets.playerImage} style={[styles.image]} />
-        </View>
-        <View style={[tailwind('flex-col justify-between px-2'), {flex: 3}]}>
-          <View>
-            <Text
-              numberOfLines={1}
-              style={[tailwind('font-semibold pt-2 pb-1 text-light font-16')]}>
-              {props.name}
-            </Text>
-            <Text style={[tailwind('font-regular text-gray-300 font-14')]}>
-              {props.username}
-            </Text>
-          </View>
-
-          <View style={[tailwind('py-2 flex-row items-center')]}>
-            <Icon name="medal" size={18} color="#d1b45a" />
-            <Text style={[tailwind('font-regular px-2 text-light font-15')]}>
-              Level {props.level}
-            </Text>
-          </View>
-        </View>
+    <View style={[tailwind('p-3 mt-2 mb-3 flex-row items-center')]}>
+      <View style={[tailwind(''), {flex: 2}]}>
+        <View
+          style={[
+            tailwind('bg-blue-500 rounded-full'),
+            {width: 60, height: 60},
+          ]}></View>
       </View>
-      {/* Followers Section */}
-      <View style={[tailwind('flex-row p-3 items-center')]}>
+      <View style={[tailwind(''), {flex: 7}]}>
+        <Text
+          numberOfLines={1}
+          style={[tailwind('font-bold text-light font-16')]}>
+          Kai Ro
+        </Text>
+        <Text
+          numberOfLines={1}
+          style={[tailwind('font-regular text-dark-1 py-1 font-12')]}>
+          Karthikeyan
+        </Text>
         <View style={[tailwind('flex-row items-center')]}>
-          <Text style={[tailwind('font-bold text-light font-16')]}>
-            {props.followers}
-          </Text>
+          <View
+            style={[
+              tailwind('bg-red-500 rounded-full'),
+              {width: 18, height: 18},
+            ]}></View>
           <Text style={[tailwind('font-regular px-1 text-light font-15')]}>
-            Followers
-          </Text>
-        </View>
-
-        <View style={[tailwind('flex-row px-3 items-center')]}>
-          <Text style={[tailwind('font-bold text-light font-16')]}>
-            {props.following}
-          </Text>
-          <Text style={[tailwind('font-regular px-1 text-light font-15')]}>
-            Following
-          </Text>
-        </View>
-
-        <View style={[tailwind('flex-row items-center')]}>
-          <Text style={[tailwind('font-bold text-light font-16')]}>
-            {props.friends}
-          </Text>
-          <Text style={[tailwind('font-regular px-1 text-light font-15')]}>
-            Friends
+            Level 231
           </Text>
         </View>
       </View>
