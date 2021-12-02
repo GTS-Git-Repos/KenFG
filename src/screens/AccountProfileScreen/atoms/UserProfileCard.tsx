@@ -17,11 +17,13 @@ export default function UserProfileCard(props: PropTypes) {
   return (
     <View style={[tailwind('p-3 mt-2 mb-3 flex-row items-center')]}>
       <View style={[tailwind(''), {flex: 2}]}>
-        <View
-          style={[
-            tailwind('bg-blue-500 rounded-full'),
-            {width: 60, height: 60},
-          ]}></View>
+        <View style={[tailwind('rounded-full'), {width: 60, height: 60}]}>
+          <Image
+            resizeMode="contain"
+            source={assets.user_temp_profile}
+            style={[tailwind('w-full h-full')]}
+          />
+        </View>
       </View>
       <View style={[tailwind(''), {flex: 7}]}>
         <Text
@@ -39,7 +41,13 @@ export default function UserProfileCard(props: PropTypes) {
             style={[
               tailwind('bg-red-500 rounded-full'),
               {width: 18, height: 18},
-            ]}></View>
+            ]}>
+            <Image
+              resizeMode="contain"
+              source={assets.levels}
+              style={[tailwind('w-full h-full')]}
+            />
+          </View>
           <Text style={[tailwind('font-regular px-1 text-light font-15')]}>
             Level 231
           </Text>

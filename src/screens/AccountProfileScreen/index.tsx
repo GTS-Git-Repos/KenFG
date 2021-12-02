@@ -24,6 +24,7 @@ import LevelCard from './molecules/Levels';
 import LinearGradient from 'react-native-linear-gradient';
 import AccountSubTitle from './atoms/AccountSubTitle';
 import Career from './molecules/Career';
+import PlayerContests from './molecules/PlayerContests';
 const log = console.log;
 
 const WIDTH = Dimensions.get('window').width;
@@ -53,37 +54,19 @@ export default function AccountProfileScreen() {
           <View style={[tailwind('my-2')]}>
             <AccountSubTitle text={'Career Stats'} />
           </View>
-          <Career/>
+          <Career />
+          <View style={[tailwind('py-3')]}>
+            <AccountSubTitle text={'Recently Played'} />
+          </View>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <PlayerContests />
+            <PlayerContests />
+            <PlayerContests />
+          </ScrollView>
+
+          <View style={[tailwind('h-40')]}></View>
         </ScrollView>
       </View>
-    </View>
-  );
-
-  return (
-    <View style={tailwind('h-full bg-primary')}>
-      <ImageBackground
-        style={[tailwind('w-full'), {flexGrow: 1}]}
-        resizeMode="cover"
-        source={assets_manifest.ground}>
-        <AccountProfileTopBar />
-        <View style={[tailwind('h-10')]} />
-        <ScrollView
-          contentContainerStyle={[
-            tailwind('bg-dark rounded-t-3xl p-2'),
-            {flex: 1},
-          ]}>
-          <UserProfileCard
-            image={''}
-            name={'Naveen Gray 204312'}
-            username={'naveen gtech'}
-            level={'4'}
-            followers={'3'}
-            following={'432'}
-            friends={'3'}
-          />
-          <LevelCard currentLevel={4} />
-        </ScrollView>
-      </ImageBackground>
     </View>
   );
 }

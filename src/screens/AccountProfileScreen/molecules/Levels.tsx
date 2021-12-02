@@ -1,8 +1,9 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {BottomLine} from '../../../sharedComponents';
+import assets from '../../../constants/assets_manifest';
 
 interface PropTypes {
   nextReward: string;
@@ -12,15 +13,17 @@ export default function LevelCard(props: PropTypes) {
   return (
     <View style={[tailwind('rounded bg-dark-3 my-2 py-3 px-4 ')]}>
       <View style={[tailwind('flex-row items-center')]}>
-        <View
-          style={[
-            tailwind('bg-blue-500 rounded-full'),
-            {width: 15, height: 15},
-          ]}></View>
+        <View style={[tailwind('rounded-full'), {width: 15, height: 15}]}>
+          <Image
+            resizeMode="contain"
+            source={assets.levels}
+            style={[tailwind('w-full h-full')]}
+          />
+        </View>
         <Text style={[tailwind('font-regular px-2 text-light font-13')]}>
           Next Rewards :
         </Text>
-        <Text style={[tailwind('font-bold text-brown-4 pr-2 font-14')]}>
+        <Text style={[tailwind('font-bold text-brown-3 pr-2 font-14')]}>
           {props.nextReward}
         </Text>
         <Text style={[tailwind('font-bold text-white font-14')]}>

@@ -13,7 +13,7 @@ export default function CustomDrawer(props: any) {
       <UserInfo />
       <Links
         to="WalletScreen"
-        icon={assets.walletIcon}
+        icon={assets.drawer_wallet}
         text="My Balance"
         children={
           <Text style={[tailwind('font-regular text-brown-1 font-13')]}>
@@ -21,14 +21,14 @@ export default function CustomDrawer(props: any) {
           </Text>
         }
       />
-      <Links to="WalletScreen" icon={assets.walletIcon} text="How to Play" />
-      <Links to="WalletScreen" icon={assets.walletIcon} text="Leaderboard" />
+      <Links to="WalletScreen" icon={assets.cash_icon} text="How to Play" />
+      <Links to="WalletScreen" icon={assets.joystick} text="Leaderboard" />
       <Links
         to="ProfileEditScreen"
-        icon={assets.walletIcon}
+        icon={assets.settings_icon}
         text="My Info Settings"
       />
-      <Links to="WalletScreen" icon={assets.walletIcon} text="More" />
+      <Links to="WalletScreen" icon={assets.more_icon} text="More" />
       <BottomLine />
       <AppVersion version="4.24.4" />
       <BottomLine />
@@ -46,11 +46,13 @@ const UserInfo = (props: any) => {
       style={[tailwind('px-4 flex-row items-center bg-dark-4 py-2 pt-3')]}>
       <View style={[tailwind('flex-row items-center'), {flex: 9}]}>
         <View style={[tailwind(''), {flex: 3}]}>
-          <View
-            style={[
-              tailwind('bg-blue-600 rounded-full'),
-              {width: 60, height: 60},
-            ]}></View>
+          <View style={[tailwind('rounded-full'), {width: 60, height: 60}]}>
+            <Image
+              resizeMode="contain"
+              source={assets.user_temp_profile}
+              style={[tailwind('w-full h-full')]}
+            />
+          </View>
         </View>
 
         <View style={[tailwind(''), {flex: 7}]}>
@@ -65,11 +67,13 @@ const UserInfo = (props: any) => {
             Karthikeyan
           </Text>
           <View style={[tailwind('flex-row items-center')]}>
-            <View
-              style={[
-                tailwind('bg-red-500 rounded-full'),
-                {width: 18, height: 18},
-              ]}></View>
+            <View style={[tailwind('rounded-full'), {width: 18, height: 18}]}>
+              <Image
+                resizeMode="contain"
+                source={assets.levels}
+                style={[tailwind('w-full h-full')]}
+              />
+            </View>
             <Text style={[tailwind('font-regular px-1 text-light font-15')]}>
               Level 231
             </Text>
@@ -94,11 +98,13 @@ const Links = (props: any) => {
       onPress={() => navigation.navigate(props.to)}
       style={[tailwind('flex-row items-center py-3 mx-4')]}>
       <View style={[tailwind(''), {flex: 3}]}>
-        <View
-          style={[
-            tailwind('bg-blue-700 rounded-full'),
-            {width: 30, height: 30},
-          ]}></View>
+        <View style={[tailwind('rounded-full'), {width: 30, height: 30}]}>
+          <Image
+            resizeMode="contain"
+            source={props.icon}
+            style={[tailwind('w-full h-full')]}
+          />
+        </View>
       </View>
       <View style={[tailwind(''), {flex: 6}]}>
         <Text style={[tailwind('font-regular text-light font-15')]}>
@@ -137,11 +143,13 @@ const Support = () => {
     <View style={[tailwind('flex-row items-center py-3 px-4')]}>
       <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
         <View style={[tailwind(''), {flex: 3}]}>
-          <View
-            style={[
-              tailwind('bg-red-500 rounded-full'),
-              {width: 20, height: 20},
-            ]}></View>
+          <View style={[tailwind('rounded-full'), {width: 20, height: 20}]}>
+            <Image
+              resizeMode="contain"
+              source={assets.question_icon}
+              style={[tailwind('w-full h-full')]}
+            />
+          </View>
         </View>
         <Text style={[tailwind('font-regular text-light font-15'), {flex: 7}]}>
           Helpdesk
@@ -150,11 +158,13 @@ const Support = () => {
 
       <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
         <View style={[tailwind(''), {flex: 3}]}>
-          <View
-            style={[
-              tailwind('bg-red-500 rounded-full'),
-              {width: 20, height: 20},
-            ]}></View>
+          <View style={[tailwind('rounded-full'), {width: 20, height: 20}]}>
+            <Image
+              resizeMode="contain"
+              source={assets.chat_icon}
+              style={[tailwind('w-full h-full')]}
+            />
+          </View>
         </View>
         <Text style={[tailwind('font-regular text-light font-15'), {flex: 7}]}>
           Chat With Us

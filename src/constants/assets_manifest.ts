@@ -22,7 +22,16 @@ export default {
   vs: require('../assets/icons/vs.png'),
   download: require('../assets/icons/download.png'),
   vdot: require('../assets/icons/vdot.png'),
-
+  levels: require('../assets/icons/levels.png'),
+  drawer_wallet: require('../assets/icons/drawer_wallet.png'),
+  cash_icon: require('../assets/icons/cash_icon.png'),
+  joystick: require('../assets/icons/joystick.png'),
+  more_icon: require('../assets/icons/more_icon.png'),
+  settings_icon: require('../assets/icons/settings_icon.png'),
+  question_icon: require('../assets/icons/question_icon.png'),
+  chat_icon: require('../assets/icons/chat_icon.png'),
+  winning_cup: require('../assets/icons/winning_cup.png'),
+  
   running_clock: require('../assets/icons/running_clock.png'),
   bell: require('../assets/icons/bell.png'),
 
@@ -41,6 +50,7 @@ export default {
   footbal_on: require('../assets/images/footbal_on.png'),
   flash: require('../assets/images/flash.png'),
   logoWrapper: require('../assets/images/logoWrapper.png'),
+  user_temp_profile: require('../assets/images/user_temp_profile.png'),
 
   banner1: require('../assets/temp/banner1.png'),
   playerImage: require('../assets/temp/playerimage.png'),
@@ -48,4 +58,6 @@ export default {
   aus_flag: require('../assets/temp/aus_flag.jpeg'),
   teamIndia: require('../assets/temp/teamIndia.png'),
   player: require('../assets/temp/player.png'),
+  s_flag1: require('../assets/temp/s_flag1.png'),
+  s_flag2: require('../assets/temp/s_flag2.png'),
 };
