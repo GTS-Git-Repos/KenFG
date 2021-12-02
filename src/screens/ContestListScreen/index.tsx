@@ -4,6 +4,7 @@ import tailwind from '../../../tailwind';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
 const log = console.log;
+import {contestListRemote} from '../../remote/serviceRemote';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import TopBarContest from '../../sharedComponents/atoms/TopbarContest';
 import {FullScreenLoading} from '../../sharedComponents';
@@ -11,14 +12,17 @@ import Tabs from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
+import {useQuery} from 'react-query';
 
 export default function ContestScreen() {
   const navigation = useNavigation();
   const {width} = useWindowDimensions();
-  const pagerRef = useRef();
+  const pagerRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
 
   const [selectedTab, setSelectedTab] = useState(0);
+
+  const contests = useQuery('contests', contestListRemote);
 
   const onPageSelectedAction = (e: any) => {
     setSelectedTab(e.nativeEvent.position);
@@ -44,7 +48,7 @@ export default function ContestScreen() {
         style={[{flex: 1}]}
         initialPage={selectedTab}>
         <View style={{width: width}}>
-          <ContestPage />
+          <ContestPage status={contests.status} data={contests.data} />
         </View>
         <View style={{width: width}}>
           <MyContestPage />

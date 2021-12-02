@@ -34,7 +34,7 @@ export default function Tabs(props: PropTypes) {
   return (
     <View style={[tailwind('')]}>
       <FlatList
-        contentContainerStyle={[tailwind('pt-1 bg-dark-2')]}
+        contentContainerStyle={[tailwind('pt-1 bg-dark-3')]}
         data={TABS}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -45,7 +45,7 @@ export default function Tabs(props: PropTypes) {
                 onPress={() => props.onTabPressed(index)}
                 style={[
                   tailwind(
-                    `flex flex-col items-center w-6/12 bg-dark-2 pt-3 pb-2 ${
+                    `flex flex-col items-center w-6/12 pt-3 pb-2 ${
                       props.selectedTab === index
                         ? 'border-b-2 border-yellow-300'
                         : ''
