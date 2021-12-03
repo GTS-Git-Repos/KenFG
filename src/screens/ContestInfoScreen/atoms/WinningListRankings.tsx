@@ -7,7 +7,7 @@ import {BottomLine} from '../../../sharedComponents/';
 
 interface PropTypes {
   rank: string;
-  amount: string;
+  value: string;
 }
 
 export default function WinningListRankings(props: PropTypes) {
@@ -28,7 +28,7 @@ export default function WinningListRankings(props: PropTypes) {
               tailwind('font-semibold text-right text-gray-200 font-15'),
             ]}>
             {'\u20B9 '}
-            {props.amount}
+            {props.value}
           </Text>
         </View>
       </View>

@@ -1,9 +1,9 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   TouchableOpacity,
-  Pressable,
   StyleSheet,
+  Text,
   useWindowDimensions,
 } from 'react-native';
 import tailwind from '../../../tailwind';
@@ -14,23 +14,36 @@ import {
   FullScreenLoading,
 } from '../../sharedComponents/';
 import TabsContestInfo from './atoms/TabsContestInfo';
+import {useQuery} from 'react-query';
 const log = console.log;
 import LearderBoard from './molecules/LeaderBoardList';
 import {useIsScreenReady} from '../../utils/customHoooks';
+import {contestListsTypes} from '../../types/api';
+
+import {contestInfoRemote} from '../../remote/serviceRemote';
 
 import Animated, {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
+import CreateTeamButton from './atoms/CreateTeamButton';
 
 export default function ContestInfoScreen() {
   const navigation = useNavigation();
-  const route = useRoute();
+  const route = useRoute<any>();
   const {width} = useWindowDimensions();
-  // const [tabOffset, setTabOffset] = useState(0);
-  const tabOffset = useSharedValue(0);
-  const scrollRef = useRef(null);
+  const tabOffset = useSharedValue<any>(0);
+  const scrollRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
 
-  const onScrollAction = e => {
+  useEffect(() => {
+    // log(route.params);
+  }, []);
+
+  const contest = useQuery(
+    ['contest', route.params.contest_id],
+    contestInfoRemote,
+  );
+
+  const onScrollAction = (e: any) => {
     tabOffset.value = e.nativeEvent.contentOffset.x;
   };
 
@@ -46,20 +59,31 @@ export default function ContestInfoScreen() {
     return <FullScreenLoading title={'AUS vs SA'} />;
   }
 
+  if (!contest.data) {
+    return (
+      <Text style={[tailwind('font-regular text-light font-15')]}>
+        No Contest Found
+      </Text>
+    );
+  }
+
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopbarContest title={'AUS vs SA'} subtitle={'18h 11m left'} />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
-          name={'Prize Pool'}
-          title="10 Crores"
-          left_spot={10}
-          total_spot={100}
-          first_reward={'1 Crore'}
-          gaurantee={true}
-          practice={false}
-          demo_entry_amount={56}
-          entry_amount={20}
+          contest_key={contest.data.key}
+          match_key={contest.data.match_key}
+          title={contest.data.title}
+          total_joined={contest.data.total_joined}
+          total_spots={contest.data.total_spots}
+          amount_letters={contest.data.prize.amount_letters}
+          amount={contest.data.prize.amount}
+          guaranteed={contest.data.guaranteed}
+          entry={contest.data.entry}
+          max_entry={contest.data.max_entry}
+          bonus={contest.data.bonus}
+          is_practice={contest.data.is_practice}
         />
       </View>
       <TabsContestInfo
@@ -79,9 +103,21 @@ export default function ContestInfoScreen() {
         snapToAlignment="center"
         snapToInterval={width}
         scrollEventThrottle={16}>
-        <WinningsList />
+        <WinningsList data={contest.data.prize.winnings} />
         <LearderBoard />
       </Animated.ScrollView>
+      <View
+        style={[
+          tailwind(
+            'absolute bottom-0 w-full flex-row items-center justify-center',
+          ),
+        ]}>
+        <CreateTeamButton />
+      </View>
     </View>
   );
 }
+
+/**
+ * contest_id  [Route params is mandatory]
+ */

@@ -31,7 +31,13 @@ export default {
   question_icon: require('../assets/icons/question_icon.png'),
   chat_icon: require('../assets/icons/chat_icon.png'),
   winning_cup: require('../assets/icons/winning_cup.png'),
-  
+  plus: require('../assets/icons/plus.png'),
+  cricket_off: require('../assets/icons/cricket_off.png'),
+  cricket_on: require('../assets/icons/cricket_on.png'),
+  football_on: require('../assets/icons/football_on.png'),
+  football_off: require('../assets/icons/football_off.png'),
+  notify: require('../assets/icons/notify.png'),
+
   running_clock: require('../assets/icons/running_clock.png'),
   bell: require('../assets/icons/bell.png'),
 

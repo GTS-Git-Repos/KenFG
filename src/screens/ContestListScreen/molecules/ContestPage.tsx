@@ -3,8 +3,17 @@ import tailwind from '../../../../tailwind';
 import {View, Text, ScrollView} from 'react-native';
 import {ContestCard} from '../../../sharedComponents';
 import FilterTab from './Filtertab';
+import {contestListsTypes} from '../../../types/api';
 import ContestSubTitle from '../atoms/ContestSubTitle';
 const log = console.log;
+import Svg, {
+  Path,
+  Defs,
+  LinearGradient,
+  Stop,
+  Ellipse,
+  Rect,
+} from 'react-native-svg';
 
 interface PropTypes {
   status: string;
@@ -27,32 +36,33 @@ export default function ContestPage(props: PropTypes) {
     );
   }
 
-  log(props.data);
-
   return (
     <ScrollView>
       <FilterTab />
       <ContestSubTitle
-        title={'Your Favorite Contests'}
+        title={'Big Winnings, Lower Entry!'}
         subText={'Ready for One more match'}
       />
       <View style={[tailwind('mx-2')]}>
         <View style={[tailwind('')]}>
-          {props.data.map((item: any) => {
+          {props.data.map((item: contestListsTypes) => {
             return (
               <View
                 key={item.key}
                 style={[tailwind('my-2 border border-gray-800 rounded')]}>
                 <ContestCard
-                  name={'Prize Pool'}
-                  title="10 Crores"
-                  left_spot={10}
-                  total_spot={100}
-                  first_reward={'1 Crore'}
-                  gaurantee={true}
-                  practice={false}
-                  demo_entry_amount={56}
-                  entry_amount={20}
+                  contest_key={item.key}
+                  match_key={item.match_key}
+                  title={item.title}
+                  total_joined={item.total_joined}
+                  total_spots={item.total_spots}
+                  entry={item.entry}
+                  amount_letters={item.prize.amount_letters}
+                  amount={item.prize.amount}
+                  guaranteed={item.guaranteed}
+                  max_entry={item.max_entry}
+                  bonus={item.bonus}
+                  is_practice={item.is_practice}
                 />
               </View>
             );

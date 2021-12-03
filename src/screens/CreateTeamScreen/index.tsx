@@ -4,7 +4,7 @@ import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {FullScreenLoading} from '../../sharedComponents/';
+import {FullScreenLoading, BlockScreenByLoading} from '../../sharedComponents/';
 import LinearGradient from 'react-native-linear-gradient';
 import PagerView from 'react-native-pager-view';
 import TopBarCreateTeam from './atoms/TopBarCreateTeam';
@@ -20,11 +20,14 @@ import {Modalize} from 'react-native-modalize';
 const log = console.log;
 
 export default function CreateTeamScreen() {
-  const navigation = useNavigation();
-  const route = useRoute();
-  const pageRef = useRef();
-  const clearRef = useRef(null);
+  const navigation = useNavigation<any>();
+  const route = useRoute<any>();
+  const pageRef = useRef<PagerView>(null);
+  const clearRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
+
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -44,6 +47,10 @@ export default function CreateTeamScreen() {
       <TopBarCreateTeam />
       <LinearGradient colors={['#C5A858', '#B2933D']}>
         <LinearGradient
+          // start={{x: 0.0, y: 0.7}}
+          // end={{x: 1.0, y: 0.0}}
+          // locations={[0.6, 0.5]}
+          // colors={['#172338', '#25385A']}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           colors={['#C5A858', '#B2933D']}>
@@ -147,6 +154,8 @@ export default function CreateTeamScreen() {
           </LinearGradient>
         </View>
       </Modalize>
+
+      {loading && <BlockScreenByLoading />}
     </View>
   );
 }

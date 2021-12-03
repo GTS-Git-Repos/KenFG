@@ -13,6 +13,12 @@ import ContestListScreen from '../screens/ContestListScreen';
 import WalletScreen from '../screens/WalletScreen';
 import ProfileEditScreen from '../screens/ProfileEditScreen';
 import AccountProfileScreen from '../screens/AccountProfileScreen';
+import ContestInfoScreen from '../screens/ContestInfoScreen';
+import CreateTeamScreen from '../screens/CreateTeamScreen';
+import LiveMatchScreen from '../screens/LiveMatchScreen';
+import MatchGroundScreen from '../screens/MatchGroundScreen';
+import CapSelectionScreen from '../screens/CapSelectionScreen';
+import CompareTeamsScreen from '../screens/CompareTeamsScreen';
 
 import TeamsListScreen from '../screens/TeamsListScreen';
 
@@ -69,6 +75,30 @@ export default function RootNavigation() {
           <RootNavigator.Screen
             component={AccountProfileScreen}
             name="AccountProfileScreen"
+          />
+          <RootNavigator.Screen
+            component={ContestInfoScreen}
+            name="ContestInfoScreen"
+          />
+          <RootNavigator.Screen
+            component={CreateTeamScreen}
+            name="CreateTeamScreen"
+          />
+          <RootNavigator.Screen
+            component={LiveMatchScreen}
+            name="LiveMatchScreen"
+          />
+          <RootNavigator.Screen
+            component={MatchGroundScreen}
+            name="MatchGroundScreen"
+          />
+          <RootNavigator.Screen
+            component={CapSelectionScreen}
+            name="CapSelectionScreen"
+          />
+          <RootNavigator.Screen
+            component={CompareTeamsScreen}
+            name="CompareTeamsScreen"
           />
         </RootNavigator.Navigator>
       </Host>

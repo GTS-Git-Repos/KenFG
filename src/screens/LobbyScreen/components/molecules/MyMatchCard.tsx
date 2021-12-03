@@ -18,9 +18,7 @@ export default function MyMatchCard(props: PropTypes) {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('LeaderBoard', {
-          screen: 'LiveMatchScreen',
-        });
+        navigation.navigate('LiveMatchScreen');
       }}
       style={[tailwind('bg-primary rounded border border-gray-800')]}>
       <View style={[tailwind('py-1')]}>

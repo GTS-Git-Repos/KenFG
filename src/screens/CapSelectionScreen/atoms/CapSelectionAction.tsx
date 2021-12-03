@@ -34,7 +34,7 @@ export default function CapSelectionAction(props: PropTypes) {
         style={[tailwind('flex-row  m-2 rounded')]}
         colors={['#00513B', '#006A4D']}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('LeaderBoard')}
+          onPress={() => navigation.navigate('LiveMatchScreen')}
           style={[tailwind('px-8 py-3')]}>
           <Text style={[tailwind('font-bold uppercase text-light font-12')]}>
             Save Team

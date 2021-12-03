@@ -12,7 +12,10 @@ interface PropTypes {
 export default function MyContestPage(props: PropTypes) {
   return (
     <View style={[tailwind('m-3')]}>
-      <ContestCard
+      <Text style={[tailwind('font-regular text-light font-15')]}>
+        Comming Soon !
+      </Text>
+      {/* <ContestCard
         name={'Prize Pool'}
         title="10 Crores"
         left_spot={10}
@@ -23,7 +26,7 @@ export default function MyContestPage(props: PropTypes) {
         demo_entry_amount={56}
         entry_amount={20}
         joined={['T1', 'T2', 'T3']}
-      />
+      /> */}
     </View>
   );
 }

@@ -27,9 +27,7 @@ export default function LobbyNav(props: PropTypes) {
         tailwind('bg-dark-3 pt-3 rounded-t-2xl  flex-row justify-between'),
       ]}>
       <TouchableOpacity
-        onPress={() =>
-          navigation.openDrawer()
-        }
+        onPress={() => navigation.openDrawer()}
         style={[
           tailwind('flex-col items-center'),
           {width: width / 5.5, left: 12},
@@ -59,13 +57,13 @@ export default function LobbyNav(props: PropTypes) {
             ]}>
             <Image
               resizeMode="contain"
-              source={props.cricket ? assets.cricket_icon : assets.cricket_off}
+              source={props.cricket ? assets.cricket_on : assets.cricket_off}
               style={[{width: 20, height: 20}]}
             />
             <Text
               style={[
                 tailwind(
-                  `font-bold text-center px-2 uppercase text-xs font-11 tracking-widest ${
+                  `font-bold text-center px-2 py-0.5 uppercase text-xs font-11 tracking-widest ${
                     props.cricket ? 'text-brown-2' : 'text-dark-1'
                   }`,
                 ),
@@ -86,13 +84,13 @@ export default function LobbyNav(props: PropTypes) {
             ]}>
             <Image
               resizeMode="contain"
-              source={props.cricket ? assets.football_icon : assets.footbal_on}
+              source={props.cricket ? assets.football_off : assets.football_on}
               style={[{width: 20, height: 20}]}
             />
             <Text
               style={[
                 tailwind(
-                  `font-bold text-center px-2 uppercase text-xs font-11 tracking-widest ${
+                  `font-bold text-center px-2 uppercase  py-0.5  text-xs font-11 tracking-widest ${
                     props.cricket ? 'text-dark-1' : 'text-brown-3'
                   }`,
                 ),
@@ -113,8 +111,8 @@ export default function LobbyNav(props: PropTypes) {
           style={[tailwind('relative bottom-2')]}>
           <Image
             resizeMode="contain"
-            source={assets.topBarbell}
-            style={[tailwind('w-7 h-7')]}
+            source={assets.notify}
+            style={[tailwind('w-6 h-6')]}
           />
           <View
             style={[

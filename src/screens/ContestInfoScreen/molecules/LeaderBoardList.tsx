@@ -58,6 +58,9 @@ export default function LearderBoard(props: PropTypes) {
         rank={45}
         up={true}
       />
+      <View style={[tailwind("h-20")]}>
+         
+      </View>
     </ScrollView>
   );
 }

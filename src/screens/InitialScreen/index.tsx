@@ -21,7 +21,7 @@ export default function InitialScreen() {
       if (token) {
         resetDrawerNavigation(navigation);
       } else {
-        resetAuthNavigation(navigation);
+        resetDrawerNavigation(navigation);
       }
     })();
   }, []);

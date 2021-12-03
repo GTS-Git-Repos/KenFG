@@ -4,9 +4,16 @@ import {View, Text, useWindowDimensions, ScrollView} from 'react-native';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import HeaderWinningList from '../atoms/HeaderWinningList';
 import WinningListRankings from '../atoms/WinningListRankings';
-import {sampleLeaderBoardData} from '../../../constants/mockAPIData';
+import CreateTeamButton from '../atoms/CreateTeamButton';
+const log = console.log;
+
+interface itemTypes {
+  key: string;
+  value: string;
+}
+
 interface PropTypes {
-  text?: string;
+  data: Array<itemTypes>;
 }
 
 export default function WinningsList(props: PropTypes) {
@@ -14,15 +21,17 @@ export default function WinningsList(props: PropTypes) {
   return (
     <ScrollView contentContainerStyle={{width: width}}>
       <HeaderWinningList />
-      {sampleLeaderBoardData.map(item => {
+      {props.data.map((item: any) => {
         return (
           <WinningListRankings
-            key={item.rank}
-            rank={item.rank}
-            amount={item.price}
+            key={item.key}
+            rank={item.key}
+            value={item.value}
           />
         );
       })}
+
+      <View style={[tailwind('h-20')]}></View>
     </ScrollView>
   );
 }
