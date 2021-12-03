@@ -21,7 +21,7 @@ export default function InitialScreen() {
       if (token) {
         resetDrawerNavigation(navigation);
       } else {
-        resetDrawerNavigation(navigation);
+        resetAuthNavigation(navigation);
       }
     })();
   }, []);
@@ -32,7 +32,7 @@ export default function InitialScreen() {
       <View style={[tailwind('')]}>
         <Image
           resizeMode="contain"
-          source={assets.logo}
+          source={assets.logo_new}
           style={[{width: 250, height: 250}]}
         />
       </View>

@@ -59,7 +59,7 @@ export default function OTPScreen() {
           ),
         ]}>
         <Text style={[tailwind('font-regular pb-3 text-dark-1 font-13')]}>
-          OTP Will be received in shortly {route?.params?.otp}
+          Your OTP is : {route?.params?.otp}
         </Text>
 
         <View

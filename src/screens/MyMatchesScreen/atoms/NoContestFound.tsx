@@ -4,12 +4,15 @@ import {View, Image, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import {ButtonComponent} from '../../../sharedComponents';
+import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   text: string;
 }
 
 export default function NoContestFound(props: PropTypes) {
+  const navigation = useNavigation();
+
   return (
     <View style={[tailwind(''), {flex: 1}]}>
       <View
@@ -18,7 +21,9 @@ export default function NoContestFound(props: PropTypes) {
           {props.text}
         </Text>
       </View>
-      <TouchableOpacity style={[tailwind('m-3')]}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('ContestListScreen')}
+        style={[tailwind('m-3')]}>
         <ButtonComponent text={'View Upcomming Matches'} />
       </TouchableOpacity>
     </View>

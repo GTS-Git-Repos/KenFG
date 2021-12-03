@@ -23,11 +23,10 @@ export default function UpcommingMatches(props: PropTypes) {
       onPress={() => navigation.navigate('ContestListScreen')}
       style={[tailwind('p-2'), {flex: 6}]}>
       <LinearGradient
+        start={{x: 0.0, y: 0.5}}
+        end={{x: 0.5, y: 0.0}}
+        locations={[0.6, 0.5]}
         colors={['#172338', '#172338']}
-        // colors={['red', 'green']}
-        // start={{x: 0, y: 1.4}}
-        // end={{x: 2.6, y: 0.6}}
-        // locations={[0.25, 0.1]}
         style={[
           tailwind('bg-primary  border border-gray-800 rounded px-2 pt-1'),
         ]}>
