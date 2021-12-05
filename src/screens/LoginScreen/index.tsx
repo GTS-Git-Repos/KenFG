@@ -22,7 +22,7 @@ export default function LoginScreen() {
       if (mobile.length === 10) {
         const response = await loginRemote({mobile});
         if (response) {
-          log(response);
+          // log(response);
           navigation.navigate('OTPScreen', {
             mobile,
             otp: response.otp,

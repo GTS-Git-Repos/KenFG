@@ -11,6 +11,7 @@ import {
 // import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
+import MyTeamsTopSection from '../atoms/MyTeamTopSection';
 
 interface PropTypes {
   text?: string;
@@ -23,7 +24,7 @@ interface TeamContInfoTypes {
 const CARDWIDTH = Dimensions.get('window').width;
 
 export default function TeamsCard(props: PropTypes) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -34,12 +35,10 @@ export default function TeamsCard(props: PropTypes) {
         style={[tailwind('w-full')]}
         source={assets.ground}>
         {/* Header */}
-        <View style={{backgroundColor: 'rgba(0,0,0,0.3)'}}>
-          <Text style={[tailwind('font-bold p-3  text-light font-16')]}>
-            Team 1{' '}
-            <Text style={[tailwind('font-regular font-15')]}>(Current)</Text>
-          </Text>
-        </View>
+
+      <MyTeamsTopSection/>
+
+
         {/* Player Info */}
         <View style={[tailwind('flex-row justify-between items-center p-3')]}>
           {/* Count */}
@@ -86,18 +85,24 @@ const PlayerProfile = () => {
     <View style={[tailwind('flex-col')]}>
       <Image
         resizeMode="contain"
-        source={assets.playerImage}
+        source={assets.player}
         style={[tailwind(''), {width: 80, height: 60}]}
       />
-      <View style={[tailwind('p-0.5 bg-gray-200 rounded')]}>
-        <Text style={[tailwind('font-regular text-center font-13')]}>
+      <View style={[tailwind('p-0.5 bg-gray-200 rounded'), {width: 80}]}>
+        <Text
+          allowFontScaling={true}
+          numberOfLines={1}
+          style={[
+            tailwind('font-regular text-center overflow-hidden font-13'),
+          ]}>
           M.Dhoni
         </Text>
       </View>
+
       <View
         style={[
           tailwind(
-            'absolute border-2 rounded-full p-0.5 border-gray-800 bg-gray-100 top-0 left-0',
+            'absolute border-2 rounded-full p-0.5 w-6 h-6 border-gray-800 flex-row items-center justify-center bg-gray-100 top-0 left-0',
           ),
         ]}>
         <Text style={[tailwind('font-regular font-12')]}>VC</Text>

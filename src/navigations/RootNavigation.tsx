@@ -19,11 +19,14 @@ import LiveMatchScreen from '../screens/LiveMatchScreen';
 import MatchGroundScreen from '../screens/MatchGroundScreen';
 import CapSelectionScreen from '../screens/CapSelectionScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
+import HowToPlayScreen from '../screens/HowToPlayScreen';
+import LeaderBoard from '../screens/LeaderBoard';
 
 import TeamsListScreen from '../screens/TeamsListScreen';
 
 import MyContestPlayersInfo from '../screens/MyContestPlayersInfo';
 import PlayerProfileScreen from '../screens/PlayerProfileScreen';
+import MoreScreen from '../screens/MoreScreen';
 
 const RootNavigator = createNativeStackNavigator();
 
@@ -100,6 +103,12 @@ export default function RootNavigation() {
             component={CompareTeamsScreen}
             name="CompareTeamsScreen"
           />
+          <RootNavigator.Screen
+            component={HowToPlayScreen}
+            name="HowToPlayScreen"
+          />
+          <RootNavigator.Screen component={MoreScreen} name="MoreScreen" />
+          <RootNavigator.Screen component={LeaderBoard} name="LeaderBoard" />
         </RootNavigator.Navigator>
       </Host>
     </NavigationContainer>

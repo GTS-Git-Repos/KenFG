@@ -40,8 +40,7 @@ export default function ContestCard(props: PropTypes) {
         start={{x: 0.0, y: 0.7}}
         end={{x: 1.0, y: 0.0}}
         locations={[0.6, 0.5]}
-        colors={['#172338', '#25385A']}
-        >
+        colors={['#172338', '#25385A']}>
         <View style={[tailwind('p-4 rounded-t')]}>
           <View style={[tailwind('flex-row justify-between items-center')]}>
             <View style={[tailwind('py-2')]}>
@@ -139,7 +138,7 @@ export default function ContestCard(props: PropTypes) {
                 <Text
                   style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
                   {'\u20B9 '}
-                  {props.amount}
+                  {props.amount_letters}
                 </Text>
               </View>
 
@@ -151,7 +150,7 @@ export default function ContestCard(props: PropTypes) {
                 />
                 <Text
                   style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
-                  61%
+                  {props.bonus}
                 </Text>
               </View>
 
@@ -163,7 +162,7 @@ export default function ContestCard(props: PropTypes) {
                 />
                 <Text
                   style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
-                  upto 20
+                  upto {props.max_entry}
                 </Text>
               </View>
             </View>

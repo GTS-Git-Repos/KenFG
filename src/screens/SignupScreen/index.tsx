@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation, useRoute} from '@react-navigation/native';
-// import assets from 'assets';
-// import {TopBar} from 'components';
+import {errorBox, infoBox} from '../../utils/snakBars';
+import {signupRemote} from '../../remote/authRemote';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import {useQuery} from 'react-query';
-import {TopBar} from '../../sharedComponents';
+
+import {TopBar, BlockScreenByLoading} from '../../sharedComponents';
 import LinearGradient from 'react-native-linear-gradient';
 const log = console.log;
 
@@ -15,8 +16,31 @@ export default function SignupScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute();
 
-  const navigate = () => {
-    navigation.navigate('LoginScreen');
+  const [mobile, setMobile] = useState('9876543210');
+  const [ref, setRef] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const navigate = async () => {
+    try {
+      setLoading(true);
+      const response = await signupRemote({
+        mobile,
+        ref,
+      });
+      if (response) {
+        navigation.navigate('OTPScreen', {
+          mobile,
+          otp: response.otp,
+        });
+      } else {
+        errorBox('Failed to create a User, Please check your input');
+      }
+    } catch (err) {
+      errorBox('Failed to create a User');
+      log(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -29,6 +53,8 @@ export default function SignupScreen() {
             {borderBottomColor: '#B2933D'},
           ]}>
           <TextInput
+            value={ref}
+            onChangeText={e => setRef(e)}
             placeholder="Enter or Invite Code"
             placeholderTextColor="#8797B1"
             style={[tailwind('font-bold text-light p-2')]}
@@ -41,6 +67,8 @@ export default function SignupScreen() {
             {borderBottomColor: '#B2933D'},
           ]}>
           <TextInput
+            value={mobile}
+            onChangeText={e => setMobile(e)}
             placeholder="Mobile Number"
             placeholderTextColor="#8797B1"
             style={[tailwind('font-bold text-light p-2')]}
@@ -76,6 +104,8 @@ export default function SignupScreen() {
           <Text style={[tailwind('text-green-500 underline')]}>T&Cs</Text>
         </Text>
       </View>
+
+      {loading && <BlockScreenByLoading />}
     </View>
   );
 }

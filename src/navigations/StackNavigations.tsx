@@ -115,7 +115,7 @@ export function Match(props: any) {
 export function Auth(props: any) {
   return (
     <AuthStack.Navigator screenOptions={StackConfig}>
-      {/* <AuthStack.Screen name="SignupScreen" component={SignupScreen} /> */}
+      <AuthStack.Screen name="SignupScreen" component={SignupScreen} />
       <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
       <AuthStack.Screen name="OTPScreen" component={OTPScreen} />
     </AuthStack.Navigator>

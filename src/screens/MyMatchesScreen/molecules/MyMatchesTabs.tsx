@@ -20,7 +20,7 @@ export default function Tabs(props: PropTypes) {
             style={[
               tailwind(
                 `py-4 ${
-                  props.active === index ? 'border-b-2 border-red-500' : ''
+                  props.active === index ? 'border-b-2 border-yellow-400' : ''
                 }`,
               ),
               {flex: 4},

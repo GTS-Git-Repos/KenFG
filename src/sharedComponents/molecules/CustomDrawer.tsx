@@ -21,14 +21,14 @@ export default function CustomDrawer(props: any) {
           </Text>
         }
       />
-      <Links to="WalletScreen" icon={assets.cash_icon} text="How to Play" />
-      <Links to="WalletScreen" icon={assets.joystick} text="Leaderboard" />
+      <Links to="HowToPlayScreen" icon={assets.cash_icon} text="How to Play" />
+      <Links to="LeaderBoard" icon={assets.joystick} text="Leaderboard" />
       <Links
         to="ProfileEditScreen"
         icon={assets.settings_icon}
         text="My Info Settings"
       />
-      <Links to="WalletScreen" icon={assets.more_icon} text="More" />
+      <Links to="MoreScreen" icon={assets.more_icon} text="More" />
       <BottomLine />
       <AppVersion version="4.24.4" />
       <BottomLine />

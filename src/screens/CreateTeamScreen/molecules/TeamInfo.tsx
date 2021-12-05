@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import tailwind from '../../../../tailwind';
 import {View, Text, Image} from 'react-native';
 import assets from '../../../constants/assets_manifest';
 import SelectedIndicator from '../atoms/SelectedIndicator';
 import Team1 from '../atoms/TeamOne';
 import CreditsLeft from '../atoms/CreditsLeft';
+
+const log = console.log;
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
