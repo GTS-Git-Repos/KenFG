@@ -36,7 +36,9 @@ export default function CreateTeamScreen() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const players = useQuery('players', getMatchPlayersRemote);
+  const players = useQuery('players', getMatchPlayersRemote, {
+    cacheTime: 0,
+  });
 
   const onPageSelectedAction = (e: any) => {
     // dispatch({type: 'team_a', payload: 100});
@@ -47,6 +49,10 @@ export default function CreateTeamScreen() {
   };
 
   // Create Team Logic
+
+  const onPlayerSelect = ()=>{
+    
+  }
 
   if (isScreenReady === false) {
     return <FullScreenLoading title="Loading..." />;
@@ -86,16 +92,24 @@ export default function CreateTeamScreen() {
         style={{flex: 1}}
         initialPage={0}>
         <View>
-          <Page title={'Select 1-2 Wicket Keepers'} />
+          <Page
+            id={'wkt'}
+            title={'Select 1-2 Wicket Keepers'}
+            data={players.data}
+          />
         </View>
         <View>
-          <Page title={'Select 4-3 Bats Man'} />
+          <Page id={'bat'} title={'Select 4-3 Bats Man'} data={players.data} />
         </View>
         <View>
-          <Page title={'Select 1-3 All Rounders'} />
+          <Page
+            id={'ar'}
+            title={'Select 1-3 All Rounders'}
+            data={players.data}
+          />
         </View>
         <View>
-          <Page title={'Select 5-3 Bowlers'} />
+          <Page id={'bwl'} title={'Select 5-3 Bowlers'} data={players.data} />
         </View>
       </PagerView>
       <View

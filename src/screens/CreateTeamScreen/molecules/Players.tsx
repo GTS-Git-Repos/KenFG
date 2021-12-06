@@ -13,7 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {BottomLine} from '../../../sharedComponents';
 
 interface PropTypes {
-  player_id: string;
+  id: string;
   teamname: string;
   image: string;
   name: string;
@@ -22,17 +22,23 @@ interface PropTypes {
   points: number;
   credits: number;
   isSelected: boolean;
+  canBeSelected: boolean;
 }
 
 export default function Player(props: PropTypes) {
   return (
-    <View>
+    <TouchableOpacity activeOpacity={0.5} onPress={() => {}}>
       <LinearGradient
-        // start={{x: 0.0, y: 0.7}}
-        // end={{x: 1.0, y: 0.0}}
-        // locations={[0.6, 0.5]}
-        colors={['#172338', '#0D1320']}
-        style={[tailwind('pt-5 flex-row')]}>
+        start={{x: 0.0, y: 1.0}}
+        end={{x: 1.0, y: 0.0}}
+        locations={[0.6, 0.5]}
+        colors={
+          props.isSelected ? ['#3C362C', '#4D3F26'] : ['#172338', '#1B2A44']
+        }
+        style={[
+          tailwind('pt-5 flex-row'),
+          {opacity: props.canBeSelected ? 1 : 0.3},
+        ]}>
         {/* Image */}
         <View style={[tailwind(''), {flex: 2}]}>
           <InfoIcon />
@@ -41,7 +47,7 @@ export default function Player(props: PropTypes) {
             source={assets.player}
             style={[tailwind(''), {height: 72, width: 72}]}
           />
-          <TeamBadge team1={true} name="IND" />
+          <TeamBadge team1={true} name={props.teamname} />
         </View>
         <View style={[tailwind('pl-4'), {flex: 4}]}>
           <Text
@@ -54,7 +60,7 @@ export default function Player(props: PropTypes) {
             style={[
               tailwind('font-regular text-light font-12 text-dark-1 py-1'),
             ]}>
-            Sel by 33.4%
+            {props.info}
           </Text>
           <View style={[tailwind('flex-row items-center')]}>
             <View
@@ -85,7 +91,7 @@ export default function Player(props: PropTypes) {
         </View>
       </LinearGradient>
       <BottomLine />
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -96,7 +102,7 @@ const TeamBadge = (props: any) => {
         tailwind('absolute bottom-0 rounded-t'),
         {backgroundColor: props.team1 ? '#244785' : '#70211E', padding: 3},
       ]}>
-      <Text style={[tailwind('font-bold text-light font-9')]}>
+      <Text style={[tailwind('font-bold uppercase text-light font-9')]}>
         {props.name}
       </Text>
     </View>

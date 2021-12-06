@@ -8,10 +8,16 @@ import SortTabs from '../atoms/SortTabs';
 import Player from '../molecules/Players';
 
 interface PropTypes {
+  id: string;
   title: string;
+  data: [];
 }
 
 export default function Page(props: PropTypes) {
+  if (!props.data) {
+    return null;
+  }
+
   return (
     <View>
       <View style={[tailwind('bg-dark')]}>
@@ -19,17 +25,24 @@ export default function Page(props: PropTypes) {
         <SortTabs />
       </View>
       <ScrollView style={[tailwind('')]}>
-        <Player
-          player_id={'1'}
-          teamname={'IND'}
-          image={''}
-          name={'V Kohli'}
-          info={'Sel by 97.45%'}
-          anounced={true}
-          points={3}
-          credits={10.0}
-          isSelected={false}
-        />
+        {props.data.map((item: any) => {
+          return (
+            <Player
+              key={item.key}
+              id={item.key}
+              teamname={item.nationality_short_code}
+              image={''}
+              name={item.name}
+              info={`Sel by ${item.selected_by}`}
+              anounced={true}
+              points={item.points}
+              credits={item.credits}
+              isSelected={false}
+              canBeSelected={true}
+            />
+          );
+        })}
+
         <Player
           player_id={'1'}
           teamname={'IND'}
