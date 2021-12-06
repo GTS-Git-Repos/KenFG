@@ -4,6 +4,9 @@ import {contestListsTypes} from '../types/api';
 
 //@ts-ignore
 import contestListJson from '../constants/mocks/contestList.json';
+//@ts-ignore
+import playersListJson from '../constants/mocks/mockplayersList.json';
+
 // API Routes
 const req_get_all_users = '/init';
 
@@ -25,6 +28,15 @@ export const contestInfoRemote = async (params: any) => {
       throw 'not found';
     }
     return contest;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const getMatchPlayersRemote = async (params: any) => {
+  try {
+    return playersListJson;
   } catch (err) {
     console.log(err);
     return false;
