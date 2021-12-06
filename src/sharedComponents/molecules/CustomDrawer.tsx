@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import tailwind from '../../../tailwind';
 import {View, Image, Text, Touchable} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -6,11 +6,18 @@ import assets from '../../constants/assets_manifest';
 import {BottomLine} from '../';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
-
+import {useSelector} from 'react-redux';
+const log = console.log;
 export default function CustomDrawer(props: any) {
+  const userInfoState: any = useSelector<any>(state => state.user.user_info);
+
+  useEffect(() => {
+    // log(userInfoState);
+  }, []);
+
   return (
     <View style={[tailwind('h-full bg-dark-3 rounded-r-xl')]}>
-      <UserInfo />
+      <UserInfo name={userInfoState?.name} />
       <Links
         to="WalletScreen"
         icon={assets.drawer_wallet}
@@ -59,15 +66,15 @@ const UserInfo = (props: any) => {
           <Text
             numberOfLines={1}
             style={[tailwind('font-bold text-light font-15')]}>
-            Kai Ro
+            {props.name}
           </Text>
           <Text
             numberOfLines={1}
             style={[tailwind('font-regular text-light py-1 font-12')]}>
-            Karthikeyan
+            {props.name}
           </Text>
-          <View style={[tailwind('flex-row items-center')]}>
-            <View style={[tailwind('rounded-full'), {width: 18, height: 18}]}>
+          <View style={[tailwind('flex-row items-center py-0.5')]}>
+            <View style={[tailwind('rounded-full'), {width: 16, height: 16}]}>
               <Image
                 resizeMode="contain"
                 source={assets.levels}
@@ -75,7 +82,7 @@ const UserInfo = (props: any) => {
               />
             </View>
             <Text style={[tailwind('font-regular px-1 text-light font-15')]}>
-              Level 231
+              Level 001
             </Text>
           </View>
         </View>

@@ -29,18 +29,18 @@ export default function UserProfileCard(props: PropTypes) {
         <Text
           numberOfLines={1}
           style={[tailwind('font-bold text-light font-16')]}>
-          Kai Ro
+          {props.username}
         </Text>
         <Text
           numberOfLines={1}
           style={[tailwind('font-regular text-dark-1 py-1 font-12')]}>
-          Karthikeyan
+          {props.name}
         </Text>
         <View style={[tailwind('flex-row items-center')]}>
           <View
             style={[
               tailwind('bg-red-500 rounded-full'),
-              {width: 18, height: 18},
+              {width: 16, height: 16},
             ]}>
             <Image
               resizeMode="contain"
@@ -49,7 +49,7 @@ export default function UserProfileCard(props: PropTypes) {
             />
           </View>
           <Text style={[tailwind('font-regular px-1 text-light font-15')]}>
-            Level 231
+            Level {props.level}
           </Text>
         </View>
       </View>

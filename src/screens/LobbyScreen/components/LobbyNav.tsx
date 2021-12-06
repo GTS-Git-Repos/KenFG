@@ -12,6 +12,7 @@ import assets from '../../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
+  name: string;
   text?: string;
   cricket: boolean;
   setCricket(arg: boolean): void;
@@ -40,7 +41,7 @@ export default function LobbyNav(props: PropTypes) {
         <Text
           numberOfLines={1}
           style={[tailwind('font-regular text-light font-10')]}>
-          Hi, Sathya
+          Hi, {props.name}
         </Text>
       </TouchableOpacity>
 

@@ -29,10 +29,12 @@ export default function OTPScreen() {
         mobile: route?.params?.mobile,
         otp: otp,
       });
-      log(response);
+      // log(response);
       if (response) {
         await saveToken(response.jwt);
-        navigation.navigate('DrawerNav');
+        navigation.navigate('FantasyTeamNameScreen', {
+          mobile: route?.params?.mobile,
+        });
       } else {
         throw 'Invalid Response';
       }

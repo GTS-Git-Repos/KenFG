@@ -10,23 +10,45 @@ import InputBox from './molecules/InputBox';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import GenderSelection from './molecules/GenderSelection';
 import LogOut from './atoms/Logout';
-import {format} from 'date-fns';
+import {format, parseISO} from 'date-fns';
 import ErrorHint from './atoms/ErrorHint';
 import {useForm, Controller} from 'react-hook-form';
 import Dob from './molecules/Dob';
 import {ButtonComponent, BlockScreenByLoading} from '../../sharedComponents/';
-import {updateUserRemote} from '../../remote/userRemote';
+import {getUserRemote, updateUserRemote} from '../../remote/userRemote';
 import {errorBox, infoBox} from '../../utils/snakBars';
+import {useDispatch, useSelector} from 'react-redux';
+import {decodeJwt} from '../../utils/formatters';
+import {updateUserInfoAction} from '../../store/actions/userAction';
 
 const log = console.log;
 
 export default function ProfileEditScreen() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const [bday, setBday] = useState(new Date());
   const [isMale, setIsMale] = useState<any>(null);
   const [openDate, setOpenDate] = useState<any>(false);
   const [loading, setLoading] = useState<any>(false);
+
+  const userInfoState: any = useSelector<any>(state => state.user.user_info);
+
+  useEffect((): any => {
+    try {
+      const formatedDate = parseISO(userInfoState.dob);
+      if (formatedDate) {
+        setBday(formatedDate);
+      }
+      if (userInfoState.gender === '1') {
+        setIsMale(true);
+      } else if (userInfoState.gender === '0') {
+        setIsMale(false);
+      }
+    } catch (err) {
+      return false;
+    }
+  }, []);
 
   const {
     control,
@@ -35,46 +57,54 @@ export default function ProfileEditScreen() {
     formState: {errors},
   } = useForm({
     defaultValues: {
-      name: 'name',
-      email: 'name@name.com',
-      password: 'password',
-      mobile_number: '9876543210',
-      address: 'Address',
-      city: 'City',
-      pincode: '622222',
-      state: 'Tamil Nadu',
-      country: 'India',
+      ...userInfoState,
+      // name: 'name',
+      // email: 'name@name.com',
+      // password: 'password',
+      // mobile: '9876543210',
+      // address: 'Address',
+      // city: 'City',
+      // pincode: '622222',
+      // state: 'Tamil Nadu',
+      // country: 'India',
     },
   });
 
   const onSubmit = async (data: any) => {
     try {
-      if (bday) {
-        if (isMale) {
-          setLoading(true);
-          const response = await updateUserRemote({
-            ...data,
-            allow_sms: 1,
-            make_me_visible: 0,
-            dob: format(bday, 'dd-MM-yyyy'),
-            gender: isMale ? 1 : 0,
-          });
-          if (response) {
-            infoBox('User information is updated');
-            setTimeout(() => {
-              navigation.goBack();
-            }, 1000);
-          } else {
-            errorBox('Failed to update User');
-          }
-          console.log(response);
-        } else {
-          errorBox('Please select your gender');
-        }
-      } else {
-        errorBox('invalid Birthday');
+      if (!bday) {
+        throw 'Invalid Bday';
       }
-    } catch (err) {
+      if (isMale === null) {
+        throw 'Please select your gender';
+      }
+      const updateresponse = await updateUserRemote({
+        ...data,
+        allow_sms: 1,
+        make_me_visible: 0,
+        dob: format(bday, 'dd-MM-yyyy'),
+        gender: isMale ? 1 : 0,
+      });
+      if (!updateresponse) {
+        throw 'Failed to Update user !';
+      }
+      const userResponse = await getUserRemote({mobile: userInfoState.mobile});
+      if (!userResponse) {
+        throw 'Failed to get Updated user Information';
+      }
+      const userInfo: any = decodeJwt(userResponse.jwt);
+      if (!userInfo) {
+        throw 'Failed to get Updated user response';
+      }
+
+      dispatch(updateUserInfoAction(userInfo.data));
+      infoBox('User information is updated');
+      setTimeout(() => {
+        setLoading(false);
+        navigation.goBack();
+      }, 500);
+    } catch (err: any) {
+      errorBox(err);
       console.log(err);
     } finally {
       setLoading(false);
@@ -122,7 +152,7 @@ export default function ProfileEditScreen() {
         />
 
         {errors.email && <ErrorHint text="valid Email is required" />}
-
+        {/* 
         <InputTitle text={'Password'} />
 
         <Controller
@@ -139,7 +169,7 @@ export default function ProfileEditScreen() {
         />
         {errors.password && (
           <ErrorHint text="Password is required and length should be 4 to 50" />
-        )}
+        )} */}
 
         <InputTitle text={'Date of Birth'} />
         <Dob

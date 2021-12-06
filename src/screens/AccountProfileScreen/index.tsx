@@ -25,12 +25,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import AccountSubTitle from './atoms/AccountSubTitle';
 import Career from './molecules/Career';
 import PlayerContests from './molecules/PlayerContests';
+import {useSelector} from 'react-redux';
 const log = console.log;
 
 const WIDTH = Dimensions.get('window').width;
 
 export default function AccountProfileScreen() {
   const navigation = useNavigation();
+  const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
   return (
     <View style={[tailwind('h-full bg-dark')]}>
@@ -45,9 +47,9 @@ export default function AccountProfileScreen() {
         <ScrollView contentContainerStyle={tailwind('px-2')}>
           <UserProfileCard
             image={''}
-            name={'Naveen Gray 204312'}
-            username={'naveen gtech'}
-            level={'4'}
+            name={userInfoState?.name}
+            username={userInfoState?.name}
+            level={'0'}
           />
           <AccountSubTitle text={'Achivements and reward'} />
           <LevelCard nextReward={'\u20B9 10000'} />

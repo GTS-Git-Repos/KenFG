@@ -4,7 +4,7 @@ import tailwind from '../../../tailwind';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation, useRoute, CommonActions} from '@react-navigation/native';
 import assets from '../../constants/assets_manifest';
-import {UpcommingMatches} from '../../sharedComponents';
+
 import LinearGradient from 'react-native-linear-gradient';
 
 // import {useQuery} from 'react-query';
@@ -25,16 +25,21 @@ export default function LobbyScreen() {
 
   const [cricket, setCricket] = useState(true);
 
+  const userInfoState: any = useSelector<any>(state => state.user.user_info);
+
   return (
     <View style={tailwind('bg-dark h-full')}>
       <LinearGradient
         start={{x: 0.49, y: 1.1}}
         end={{x: 1, y: 0.1}}
         locations={[0.4, 0.3, 0, 0.1, 0]}
-        // colors={['red', 'green', 'blue']}
         colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}>
         <LobbyTopBar amount={'10,000'} />
-        <LobbyNav cricket={cricket} setCricket={setCricket} />
+        <LobbyNav
+          cricket={cricket}
+          setCricket={setCricket}
+          name={userInfoState?.name}
+        />
       </LinearGradient>
       <ScrollView fadingEdgeLength={50}>
         {cricket ? (
@@ -53,16 +58,6 @@ export default function LobbyScreen() {
 
         <View style={[tailwind('h-10')]}></View>
       </ScrollView>
-
-      {/* <View
-        style={[
-          tailwind('w-80 bg-red-600 absolute'),
-          {
-            height: 2,
-            left: 182,
-            transform: [{rotate: '90deg'}],
-          },
-        ]}></View> */}
     </View>
   );
 }

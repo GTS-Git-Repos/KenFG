@@ -55,6 +55,7 @@ export default function RootNavigation() {
       <Host>
         <RootNavigator.Navigator
           initialRouteName="InitialScreen"
+          
           screenOptions={StackConfig}>
           <RootNavigator.Screen
             component={InitialScreen}

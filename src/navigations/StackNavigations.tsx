@@ -11,17 +11,18 @@ import TeamsListScreen from '../screens/TeamsListScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import WalletScreen from '../screens/WalletScreen';
 import TransactionListScreen from '../screens/TransactionListScreen';
+import SignupScreen from '../screens/SignupScreen';
+import FantasyTeamNameScreen from '../screens/FantasyTeamNameScreen';
+
 import ReferralScreen from '../screens/ReferralScreen';
 
 import CreateTeamScreen from '../screens/CreateTeamScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
 
-import SignupScreen from '../screens/SignupScreen';
 import LoginScreen from '../screens/LoginScreen';
 import OTPScreen from '../screens/OTPScreen';
 
 import MyMatchesScreen from '../screens/MyMatchesScreen';
-
 
 const StackConfig = {headerShown: false};
 
@@ -34,7 +35,6 @@ const AuthStack = createNativeStackNavigator();
 export function Home(props: any) {
   return (
     <HomeStack.Navigator screenOptions={StackConfig}>
-
       <HomeStack.Screen
         name="MatchGroundScreen"
         component={MatchGroundScreen}
@@ -62,7 +62,6 @@ export function MyMatches(props: any) {
   return (
     <MyMatch.Navigator screenOptions={StackConfig}>
       <MyMatch.Screen name="MyMatchesScreen" component={MyMatchesScreen} />
-      
     </MyMatch.Navigator>
   );
 }
@@ -118,6 +117,10 @@ export function Auth(props: any) {
       <AuthStack.Screen name="SignupScreen" component={SignupScreen} />
       <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
       <AuthStack.Screen name="OTPScreen" component={OTPScreen} />
+      <AuthStack.Screen
+        name="FantasyTeamNameScreen"
+        component={FantasyTeamNameScreen}
+      />
     </AuthStack.Navigator>
   );
 }

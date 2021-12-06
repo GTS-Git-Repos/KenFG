@@ -5,6 +5,25 @@ import requestServer from '../workers/requestServer';
 const req_update_user = '/update-profile.php';
 const req_login = '/login.php';
 const req_verify = '/verify.php';
+const req_getProfile = '/view-profile.php';
+
+export const getUserRemote = async (payload: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_getProfile,
+      payload,
+    );
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      failedLog('getUserRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
 
 export const updateUserRemote = async (payload: any) => {
   try {

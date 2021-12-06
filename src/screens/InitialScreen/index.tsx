@@ -7,6 +7,10 @@ import {useNavigation} from '@react-navigation/native';
 import {resetDrawerNavigation, resetAuthNavigation} from '../../utils/resetNav';
 import assets from '../../constants/assets_manifest';
 import {getToken} from '../../utils/authTokenUtils';
+import {decodeJwt} from '../../utils/formatters';
+import {getUserRemote} from '../../remote/userRemote';
+import {useDispatch} from 'react-redux';
+import {updateUserInfoAction} from '../../store/actions/userAction';
 // import {TopBar} from 'components';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -14,12 +18,23 @@ const log = console.log;
 
 export default function InitialScreen() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
       const token = await getToken();
+
       if (token) {
-        resetDrawerNavigation(navigation);
+        const {data} = decodeJwt(token);
+        //  log(data)
+        const userResponse = await getUserRemote({mobile: data.mobile});
+        if (userResponse) {
+          const userInfo: any = decodeJwt(userResponse.jwt);
+          dispatch(updateUserInfoAction(userInfo.data));
+          resetDrawerNavigation(navigation);
+        } else {
+          resetAuthNavigation(navigation);
+        }
       } else {
         resetAuthNavigation(navigation);
       }

@@ -40,7 +40,7 @@ export default function LoginScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopBar text={'Log in'} />
+      {/* <TopBar text={'Log in'} /> */}
       <View style={[tailwind('bg-dark-3 rounded  px-3 py-6 mx-3 my-7 shadow')]}>
         <View
           style={[
@@ -76,10 +76,22 @@ export default function LoginScreen() {
         </LinearGradient>
       </View>
 
-      <Text style={[tailwind('font-regular text-dark-1 text-center font-15')]}>
-        Not a Memeber ?{' '}
-        <Text style={[tailwind('text-green-500 underline')]}>Register</Text>
-      </Text>
+      <View style={[tailwind('flex-row justify-center items-center')]}>
+        <Text
+          style={[tailwind('font-regular text-dark-1 text-center font-15')]}>
+          Not a Memeber ?{' '}
+          {/* <TouchableOpacity
+            style={[tailwind('')]}
+            > */}
+          <Text
+            onPress={() => navigation.navigate('SignupScreen')}
+            style={[tailwind('text-green-500 font-15 underline')]}>
+            Register
+          </Text>
+          {/* </TouchableOpacity> */}
+        </Text>
+      </View>
+
       {loading && <BlockScreenByLoading />}
     </View>
   );
