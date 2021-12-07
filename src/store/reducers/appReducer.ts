@@ -13,6 +13,7 @@ interface actionShape {
 const App = (state = initialState, action: actionShape): any => {
   switch (action.type) {
     case HANDLE_ERROR:
+      console.log('State anomoly -->',action.payload)
       return {
         ...state,
         error: action.payload,

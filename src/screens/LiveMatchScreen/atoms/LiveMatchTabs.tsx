@@ -23,7 +23,7 @@ export default function LiveMatchTabs(props: PropTypes) {
         onTabPressed={props.onTabPressed}
       />
       <TabItem
-        tabName="Scrollboard"
+        tabName="ScoreBoard"
         index={1}
         active={1 === props.activeIndex}
         onTabPressed={props.onTabPressed}

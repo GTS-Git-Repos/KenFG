@@ -6,7 +6,7 @@ import assets from '../../../constants/assets_manifest';
 import TabCondtion from '../atoms/TabCondtions';
 import SortTabs from '../atoms/SortTabs';
 import Player from '../molecules/Players';
-import {isPlayerSelected} from '../store/decisions';
+import {isPlayerSelected} from '../../../store/store_utils';
 
 interface PropTypes {
   id: string;

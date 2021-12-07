@@ -16,16 +16,12 @@ import Line from './atoms/Line';
 import BottomAction from './molecules/BottomAction';
 import Page from './molecules/Page';
 import {Modalize} from 'react-native-modalize';
-import {reducer, initialState} from './store/reducer';
+import {updatePlayerAction} from '../../store/actions/teamActions';
 import {getMatchPlayersRemote} from '../../remote/serviceRemote';
 import {useQuery} from 'react-query';
-import {
-  isPlayerCanBeSelectable,
-  prepareToUpdatePlayer,
-} from './store/decisions';
-import {creditLeft, playersCountByTeams} from './store/selectors';
-import {ADD_PLAYERS} from './store/actions';
-// import {team_a_select} from '../../store/selectors';
+
+import {useSelector, useDispatch} from 'react-redux';
+import {creditLeft, playersCountByTeams} from '../../store/selectors';
 
 const log = console.log;
 
@@ -35,18 +31,17 @@ export default function CreateTeamScreen() {
   const pageRef = useRef<PagerView>(null);
   const clearRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
+  const dispatch = useDispatch();
+
+  const playersState = useSelector<any>(state => state.team.players);
+  const availableCredits = useSelector(creditLeft);
+  const playersCount = useSelector(playersCountByTeams);
+
+  console.log('playersCount', playersCount);
 
   const [loading, setLoading] = useState<boolean>(false);
 
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  console.log("Players --->",state.players)
-
-  // calculated selectors
-  const availableCredits: number = creditLeft(state);
-  const playersCount: any = playersCountByTeams(state);
 
   // remote sevice query
   const players = useQuery('players', getMatchPlayersRemote, {
@@ -68,9 +63,8 @@ export default function CreateTeamScreen() {
     // const canBeSelected = isPlayerCanBeSelectable(player_key);
     // log(canBeSelected)
     const player = players.data.find((item: any) => item.key === player_key);
-    const updatedPlayerState = prepareToUpdatePlayer(player);
-    console.log('updatedPlayerState', updatedPlayerState);
-    dispatch({type: ADD_PLAYERS, payload: updatedPlayerState});
+
+    dispatch(updatePlayerAction(player));
   };
 
   if (isScreenReady === false) {
