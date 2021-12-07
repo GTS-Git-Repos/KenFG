@@ -19,8 +19,12 @@ import {Modalize} from 'react-native-modalize';
 import {reducer, initialState} from './store/reducer';
 import {getMatchPlayersRemote} from '../../remote/serviceRemote';
 import {useQuery} from 'react-query';
-import {isPlayerCanBeSelectable} from './store/decisions';
+import {
+  isPlayerCanBeSelectable,
+  prepareToUpdatePlayer,
+} from './store/decisions';
 import {creditLeft, playersCountByTeams} from './store/selectors';
+import {ADD_PLAYERS} from './store/actions';
 // import {team_a_select} from '../../store/selectors';
 
 const log = console.log;
@@ -38,22 +42,20 @@ export default function CreateTeamScreen() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  console.log("Players --->",state.players)
+
   // calculated selectors
   const availableCredits: number = creditLeft(state);
   const playersCount: any = playersCountByTeams(state);
-
-  log(playersCount['PAK'].length);
-  // const availableCredits = creditLeft(state);
 
   // remote sevice query
   const players = useQuery('players', getMatchPlayersRemote, {
     cacheTime: 0,
   });
 
-  // business logics
+  // business logic
 
   const onPageSelectedAction = (e: any) => {
-    // dispatch({type: 'team_a', payload: 100});
     setActiveIndex(e.nativeEvent.position);
   };
   const onTabPressed = (index: number) => {
@@ -63,11 +65,12 @@ export default function CreateTeamScreen() {
   // Create Team Logic
 
   const checkPlayerSelection = (player_key: string) => {
-    const canBeSelected = isPlayerCanBeSelectable(player_key);
+    // const canBeSelected = isPlayerCanBeSelectable(player_key);
     // log(canBeSelected)
-
     const player = players.data.find((item: any) => item.key === player_key);
-    // log(player);
+    const updatedPlayerState = prepareToUpdatePlayer(player);
+    console.log('updatedPlayerState', updatedPlayerState);
+    dispatch({type: ADD_PLAYERS, payload: updatedPlayerState});
   };
 
   if (isScreenReady === false) {

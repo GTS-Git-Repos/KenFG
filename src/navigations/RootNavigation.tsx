@@ -21,6 +21,7 @@ import CapSelectionScreen from '../screens/CapSelectionScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
 import HowToPlayScreen from '../screens/HowToPlayScreen';
 import LeaderBoard from '../screens/LeaderBoard';
+import TransactionListScreen from '../screens/TransactionListScreen';
 
 import TeamsListScreen from '../screens/TeamsListScreen';
 
@@ -54,13 +55,13 @@ export default function RootNavigation() {
     <NavigationContainer theme={DarkTheme}>
       <Host>
         <RootNavigator.Navigator
-          initialRouteName="CreateTeamScreen"
-          
+          initialRouteName="InitialScreen"
           screenOptions={StackConfig}>
           <RootNavigator.Screen
             component={InitialScreen}
             name="InitialScreen"
           />
+
           <RootNavigator.Screen component={Auth} name="Auth" />
           <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
           <RootNavigator.Screen
@@ -110,6 +111,22 @@ export default function RootNavigation() {
           />
           <RootNavigator.Screen component={MoreScreen} name="MoreScreen" />
           <RootNavigator.Screen component={LeaderBoard} name="LeaderBoard" />
+          <RootNavigator.Screen
+            component={TransactionListScreen}
+            name="TransactionListScreen"
+          />
+          <RootNavigator.Screen
+            component={TeamsListScreen}
+            name="TeamsListScreen"
+          />
+          <RootNavigator.Screen
+            component={MyContestPlayersInfo}
+            name="MyContestPlayersInfo"
+          />
+          <RootNavigator.Screen
+            component={PlayerProfileScreen}
+            name="PlayerProfileScreen"
+          />
         </RootNavigator.Navigator>
       </Host>
     </NavigationContainer>

@@ -1,37 +1,19 @@
-import {UPDATE_TEAM_A, UPDATE_TEAM_B} from './actions';
+import {UPDATE_TEAM_A, UPDATE_TEAM_B, ADD_PLAYERS} from './actions';
 
 export const initialState = {
   teams: ['AUS', 'PAK'],
-  players: [
-    {
-      key: 'f_0',
-      name: 'Player 1',
-      jersey_name: 'Ball',
-      legal_name: 'Jake Ball',
-      gender: 'male',
-      nationality_short_code: 'PAK',
-      team_key: 'eng',
-      seasonal_role: 'bowler',
-      selected_by: '96%',
-      points: 3,
-      credits: 9,
-    },
-  ],
+  players: [],
 };
 
 export const reducer = function (state: any, action: any) {
   switch (action.type) {
-    case UPDATE_TEAM_A: {
+    case ADD_PLAYERS: {
       return {
         ...state,
-        team_a: action.payload,
+        players: action.payload,
       };
     }
-    case UPDATE_TEAM_B: {
-      return {
-        ...state,
-        team_b: action.payload,
-      };
-    }
+    default:
+      return state;
   }
 };

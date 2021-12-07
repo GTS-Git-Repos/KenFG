@@ -1,7 +1,7 @@
 [
     {
         "key": "f_0",
-        "name": "Player 1",
+        "name": "Player 0",
         "jersey_name": "Ball",
         "legal_name": "Jake Ball",
         "gender": "male",
@@ -14,7 +14,7 @@
     },
     {
         "key": "f_1",
-        "name": "Player 2",
+        "name": "Player 1",
         "jersey_name": "Ball",
         "legal_name": "Jake Ball",
         "gender": "male",
@@ -28,6 +28,19 @@
     {
         "key": "f_2",
         "name": "Player 2",
+        "jersey_name": "Ball",
+        "legal_name": "Jake Ball",
+        "gender": "male",
+        "nationality_short_code": "AUS",
+        "team_key": "eng",
+        "seasonal_role": "keeper",
+        "selected_by": "86%",
+        "points": 3,
+        "credits": 8.5
+    },
+    {
+        "key": "f_3",
+        "name": "Player 3",
         "jersey_name": "Ball",
         "legal_name": "Jake Ball",
         "gender": "male",
