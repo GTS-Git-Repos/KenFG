@@ -13,7 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {BottomLine} from '../../../sharedComponents';
 
 interface PropTypes {
-  id: string;
+  player_key: string;
   teamname: string;
   image: string;
   name: string;
@@ -23,11 +23,14 @@ interface PropTypes {
   credits: number;
   isSelected: boolean;
   canBeSelected: boolean;
+  checkPlayerSelection(player_key: string): void;
 }
 
 export default function Player(props: PropTypes) {
   return (
-    <TouchableOpacity activeOpacity={0.5} onPress={() => {}}>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={() => props.checkPlayerSelection(props.player_key)}>
       <LinearGradient
         start={{x: 0.0, y: 1.0}}
         end={{x: 1.0, y: 0.0}}

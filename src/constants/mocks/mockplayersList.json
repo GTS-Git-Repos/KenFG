@@ -1,11 +1,11 @@
 [
     {
-        "key": "j_ball",
-        "name": "Jake Ball",
+        "key": "f_0",
+        "name": "Player 1",
         "jersey_name": "Ball",
         "legal_name": "Jake Ball",
         "gender": "male",
-        "nationality_short_code": "GBR",
+        "nationality_short_code": "PAK",
         "team_key": "eng",
         "seasonal_role": "bowler",
         "selected_by": "96%",
@@ -13,12 +13,12 @@
         "credits": 9
     },
     {
-        "key": "j_ball1",
-        "name": "Jake Ball2",
+        "key": "f_1",
+        "name": "Player 2",
         "jersey_name": "Ball",
         "legal_name": "Jake Ball",
         "gender": "male",
-        "nationality_short_code": "GBR",
+        "nationality_short_code": "AUS",
         "team_key": "eng",
         "seasonal_role": "batsman",
         "selected_by": "36%",
@@ -26,12 +26,12 @@
         "credits": 9.5
     },
     {
-        "key": "j_ball2",
-        "name": "Jake Ball",
+        "key": "f_2",
+        "name": "Player 2",
         "jersey_name": "Ball",
         "legal_name": "Jake Ball",
         "gender": "male",
-        "nationality_short_code": "GBR",
+        "nationality_short_code": "AUS",
         "team_key": "eng",
         "seasonal_role": "keeper",
         "selected_by": "86%",

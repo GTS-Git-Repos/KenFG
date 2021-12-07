@@ -50,14 +50,8 @@ export default function CreateTeamScreen() {
         const userResponse = await getUserRemote({
           mobile: route.params?.mobile,
         });
-        const userInfo: any = decodeJwt(userResponse.jwt);
-        if (userInfo) {
-          // log(userInfo.data);
-          dispatch(updateUserInfoAction(userInfo.data));
-          resetDrawerNavigation(navigation);
-        } else {
-          errorBox('Failed to get user Details');
-        }
+        dispatch(updateUserInfoAction(userResponse.data));
+        resetDrawerNavigation(navigation);
       } else {
         setTimeout(() => {
           errorBox('Invalid Name');

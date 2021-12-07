@@ -92,12 +92,7 @@ export default function ProfileEditScreen() {
       if (!userResponse) {
         throw 'Failed to get Updated user Information';
       }
-      const userInfo: any = decodeJwt(userResponse.jwt);
-      if (!userInfo) {
-        throw 'Failed to get Updated user response';
-      }
-
-      dispatch(updateUserInfoAction(userInfo.data));
+      dispatch(updateUserInfoAction(userResponse.data));
       infoBox('User information is updated');
       setTimeout(() => {
         setLoading(false);

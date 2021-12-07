@@ -29,8 +29,7 @@ export default function InitialScreen() {
         //  log(data)
         const userResponse = await getUserRemote({mobile: data.mobile});
         if (userResponse) {
-          const userInfo: any = decodeJwt(userResponse.jwt);
-          dispatch(updateUserInfoAction(userInfo.data));
+          dispatch(updateUserInfoAction(userResponse.data));
           resetDrawerNavigation(navigation);
         } else {
           resetAuthNavigation(navigation);

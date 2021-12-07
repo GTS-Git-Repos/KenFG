@@ -6,11 +6,13 @@ import assets from '../../../constants/assets_manifest';
 import TabCondtion from '../atoms/TabCondtions';
 import SortTabs from '../atoms/SortTabs';
 import Player from '../molecules/Players';
+import {isPlayerSelected} from '../store/decisions';
 
 interface PropTypes {
   id: string;
   title: string;
   data: [];
+  checkPlayerSelection(player_key: string): void;
 }
 
 export default function Page(props: PropTypes) {
@@ -29,7 +31,7 @@ export default function Page(props: PropTypes) {
           return (
             <Player
               key={item.key}
-              id={item.key}
+              player_key={item.key}
               teamname={item.nationality_short_code}
               image={''}
               name={item.name}
@@ -37,34 +39,13 @@ export default function Page(props: PropTypes) {
               anounced={true}
               points={item.points}
               credits={item.credits}
-              isSelected={false}
+              isSelected={isPlayerSelected(item.key)}
               canBeSelected={true}
+              checkPlayerSelection={props.checkPlayerSelection}
             />
           );
         })}
 
-        <Player
-          player_id={'1'}
-          teamname={'IND'}
-          image={''}
-          name={'R Sharma'}
-          info={'Sel by 97.45%'}
-          anounced={true}
-          points={3}
-          credits={10.0}
-          isSelected={false}
-        />
-        <Player
-          player_id={'1'}
-          teamname={'IND'}
-          image={''}
-          name={'R Sharma'}
-          info={'Sel by 97.45%'}
-          anounced={true}
-          points={3}
-          credits={10.0}
-          isSelected={false}
-        />
         <View style={[tailwind('h-40')]}></View>
       </ScrollView>
     </View>

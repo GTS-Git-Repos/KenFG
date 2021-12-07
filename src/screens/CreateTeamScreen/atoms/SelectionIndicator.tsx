@@ -38,7 +38,7 @@ export default function SelectionIndicator(props: PropTypes) {
               <Svg width="100%" height="24" viewBox="0 0 29 24" fill="none">
                 <Path
                   d="M0 0H24L29 24H5L0 0Z"
-                  fill={item < 7 ? '#006A4D' : 'white'}
+                  fill={item <= props.count ? '#006A4D' : 'white'}
                 />
                 <Defs>
                   <LinearGradient
@@ -52,13 +52,13 @@ export default function SelectionIndicator(props: PropTypes) {
                     <Stop offset="1" stop-color="#00513B" />
                   </LinearGradient>
                 </Defs>
-                {item === 6 && (
+                {item === props.count && (
                   <Text
                     style={[
                       tailwind('font-bold text-center text-light font-12'),
                       {top: 4},
                     ]}>
-                    6
+                    {props.count}
                   </Text>
                 )}
               </Svg>

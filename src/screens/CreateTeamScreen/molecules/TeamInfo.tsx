@@ -23,12 +23,20 @@ export default function TeamInfo(props: PropTypes) {
   return (
     <View style={[tailwind('flex-row'), {padding: 17}]}>
       <View style={[tailwind('flex-row'), {flex: 6}]}>
-        <SelectedIndicator count={3} />
-        <Team1 teamname={'IND'} teamcount={'2'} reverseUI={false} />
+        <SelectedIndicator count={props.teamcount1 + props.teamcount2} />
+        <Team1
+          teamname={props.teamname1}
+          teamcount={props.teamcount1}
+          reverseUI={false}
+        />
       </View>
       <View style={[tailwind('flex-row'), {flex: 6}]}>
-        <Team1 teamname={'NZ'} teamcount={'2'} reverseUI={true} />
-        <CreditsLeft left={80.0} />
+        <Team1
+          teamname={props.teamname2}
+          teamcount={props.teamcount2}
+          reverseUI={true}
+        />
+        <CreditsLeft left={props.credits_left} />
       </View>
     </View>
   );

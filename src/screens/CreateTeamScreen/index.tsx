@@ -19,6 +19,8 @@ import {Modalize} from 'react-native-modalize';
 import {reducer, initialState} from './store/reducer';
 import {getMatchPlayersRemote} from '../../remote/serviceRemote';
 import {useQuery} from 'react-query';
+import {isPlayerCanBeSelectable} from './store/decisions';
+import {creditLeft, playersCountByTeams} from './store/selectors';
 // import {team_a_select} from '../../store/selectors';
 
 const log = console.log;
@@ -36,9 +38,19 @@ export default function CreateTeamScreen() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // calculated selectors
+  const availableCredits: number = creditLeft(state);
+  const playersCount: any = playersCountByTeams(state);
+
+  log(playersCount['PAK'].length);
+  // const availableCredits = creditLeft(state);
+
+  // remote sevice query
   const players = useQuery('players', getMatchPlayersRemote, {
     cacheTime: 0,
   });
+
+  // business logics
 
   const onPageSelectedAction = (e: any) => {
     // dispatch({type: 'team_a', payload: 100});
@@ -50,9 +62,13 @@ export default function CreateTeamScreen() {
 
   // Create Team Logic
 
-  const onPlayerSelect = ()=>{
-    
-  }
+  const checkPlayerSelection = (player_key: string) => {
+    const canBeSelected = isPlayerCanBeSelectable(player_key);
+    // log(canBeSelected)
+
+    const player = players.data.find((item: any) => item.key === player_key);
+    // log(player);
+  };
 
   if (isScreenReady === false) {
     return <FullScreenLoading title="Loading..." />;
@@ -70,15 +86,18 @@ export default function CreateTeamScreen() {
           <Line />
 
           <TeamInfo
-            teamname1={'IND'}
+            teamname1={'AUS'}
             teamname2={'PAK'}
-            teamcount1={7}
-            teamcount2={4}
-            credits_left={2.5}
+            teamcount1={playersCount['AUS'].length}
+            teamcount2={playersCount['PAK'].length}
+            credits_left={availableCredits}
           />
         </LinearGradient>
         <Line />
-        <SelectionIndicator clearRef={clearRef} count={8} />
+        <SelectionIndicator
+          clearRef={clearRef}
+          count={playersCount['AUS'].length + playersCount['PAK'].length}
+        />
       </LinearGradient>
 
       {/* Tabs */}
@@ -93,23 +112,35 @@ export default function CreateTeamScreen() {
         initialPage={0}>
         <View>
           <Page
+            checkPlayerSelection={checkPlayerSelection}
             id={'wkt'}
             title={'Select 1-2 Wicket Keepers'}
             data={players.data}
           />
         </View>
         <View>
-          <Page id={'bat'} title={'Select 4-3 Bats Man'} data={players.data} />
+          <Page
+            checkPlayerSelection={checkPlayerSelection}
+            id={'bat'}
+            title={'Select 4-3 Bats Man'}
+            data={players.data}
+          />
         </View>
         <View>
           <Page
+            checkPlayerSelection={checkPlayerSelection}
             id={'ar'}
             title={'Select 1-3 All Rounders'}
             data={players.data}
           />
         </View>
         <View>
-          <Page id={'bwl'} title={'Select 5-3 Bowlers'} data={players.data} />
+          <Page
+            checkPlayerSelection={checkPlayerSelection}
+            id={'bwl'}
+            title={'Select 5-3 Bowlers'}
+            data={players.data}
+          />
         </View>
       </PagerView>
       <View

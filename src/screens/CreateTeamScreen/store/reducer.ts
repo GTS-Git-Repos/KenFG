@@ -1,18 +1,20 @@
 import {UPDATE_TEAM_A, UPDATE_TEAM_B} from './actions';
 
 export const initialState = {
+  teams: ['AUS', 'PAK'],
   players: [
     {
-      name: 't 1',
-      team: 'a',
-    },
-    {
-      name: 't 2',
-      team: 'b',
-    },
-    {
-      name: 't 3',
-      team: 'a',
+      key: 'f_0',
+      name: 'Player 1',
+      jersey_name: 'Ball',
+      legal_name: 'Jake Ball',
+      gender: 'male',
+      nationality_short_code: 'PAK',
+      team_key: 'eng',
+      seasonal_role: 'bowler',
+      selected_by: '96%',
+      points: 3,
+      credits: 9,
     },
   ],
 };
