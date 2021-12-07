@@ -1,8 +1,14 @@
-import {UPDATE_PLAYERS} from '../actions/actionTypes';
+import {
+  UPDATE_PLAYERS,
+  UPDATE_TEAM_COUNT,
+  UPDATE_CREDITS,
+} from '../actions/actionTypes';
 
 const initialState = {
   teams: ['AUS', 'PAK'],
   players: [],
+  credits_left: 100,
+  teams_count: null,
 };
 
 interface actionShape {
@@ -16,6 +22,16 @@ const Team = (state = initialState, action: actionShape): any => {
       return {
         ...state,
         players: action.payload,
+      };
+    case UPDATE_TEAM_COUNT:
+      return {
+        ...state,
+        team_count: action.payload,
+      };
+    case UPDATE_CREDITS:
+      return {
+        ...state,
+        credits_left: action.payload,
       };
 
     default:

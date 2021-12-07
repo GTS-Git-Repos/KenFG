@@ -1,12 +1,23 @@
 import store from '../';
-import {UPDATE_PLAYERS, HANDLE_ERROR} from './actionTypes';
+import {
+  UPDATE_PLAYERS,
+  HANDLE_ERROR,
+  UPDATE_CREDITS,
+  UPDATE_TEAM_COUNT,
+} from './actionTypes';
 
 export const updatePlayer = (payload: any) => ({
   type: UPDATE_PLAYERS,
   payload,
 });
-export const handleError = (payload: string) => ({
-  type: HANDLE_ERROR,
+
+export const updateTeamCountAction = (payload: any) => ({
+  type: UPDATE_TEAM_COUNT,
+  payload,
+});
+
+export const updateCreditsAction = (payload: number) => ({
+  type: UPDATE_CREDITS,
   payload,
 });
 

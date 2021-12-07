@@ -1,4 +1,10 @@
-import React, {useRef, useState, createContext, useReducer} from 'react';
+import React, {
+  useRef,
+  useState,
+  createContext,
+  useReducer,
+  useEffect,
+} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
@@ -16,12 +22,17 @@ import Line from './atoms/Line';
 import BottomAction from './molecules/BottomAction';
 import Page from './molecules/Page';
 import {Modalize} from 'react-native-modalize';
-import {updatePlayerAction} from '../../store/actions/teamActions';
+import {
+  updateCreditsAction,
+  updatePlayerAction,
+  updateTeamCountAction,
+} from '../../store/actions/teamActions';
 import {getMatchPlayersRemote} from '../../remote/serviceRemote';
 import {useQuery} from 'react-query';
 
 import {useSelector, useDispatch} from 'react-redux';
 import {creditLeft, playersCountByTeams} from '../../store/selectors';
+import {isPlayerCanBeSelectable} from '../../workers/decision';
 
 const log = console.log;
 
@@ -34,14 +45,23 @@ export default function CreateTeamScreen() {
   const dispatch = useDispatch();
 
   const playersState = useSelector<any>(state => state.team.players);
+  const s = useSelector<any>(state => state.team);
+
+  // log(s)
+
   const availableCredits = useSelector(creditLeft);
   const playersCount = useSelector(playersCountByTeams);
-
-  console.log('playersCount', playersCount);
 
   const [loading, setLoading] = useState<boolean>(false);
 
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // side effects
+
+  useEffect(() => {
+    dispatch(updateTeamCountAction(playersCount));
+    dispatch(updateCreditsAction(availableCredits));
+  }, [playersState]);
 
   // remote sevice query
   const players = useQuery('players', getMatchPlayersRemote, {
@@ -60,11 +80,13 @@ export default function CreateTeamScreen() {
   // Create Team Logic
 
   const checkPlayerSelection = (player_key: string) => {
-    // const canBeSelected = isPlayerCanBeSelectable(player_key);
-    // log(canBeSelected)
     const player = players.data.find((item: any) => item.key === player_key);
+    if (player) {
+      const canBeSelected = isPlayerCanBeSelectable(players.data, player);
+      // log(canBeSelected);
+    }
 
-    dispatch(updatePlayerAction(player));
+    // dispatch(updatePlayerAction(player));
   };
 
   if (isScreenReady === false) {
