@@ -14,14 +14,19 @@ import ProgressBar from './atoms/ProgressBar';
 import RowHeader from './atoms/RowHeader';
 import PlayerProfile from './molecules/PlayerProfile';
 import CapSelectionAction from './atoms/CapSelectionAction';
+import {useSelector} from 'react-redux';
+import {allPlayers, playersCountByTeams} from '../../store/selectors';
 
 export default function CapSelectionScreen() {
   const navigation = useNavigation();
 
+  const TeamsSelector = useSelector(playersCountByTeams);
+  const AllPlayers = useSelector(allPlayers);
+
+
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={'15h 33m Left'} />
-      <ProgressBar />
+      <TopBar text={'15h 33m Left'} teams={Object.keys(TeamsSelector)} />
       <ScrollView>
         <View style={[tailwind('bg-dark-3 py-4')]}>
           <Text
@@ -36,46 +41,22 @@ export default function CapSelectionScreen() {
           </Text>
         </View>
         <RowHeader />
-        <PlayerProfile
-          name={'V Kohli'}
-          points={'343'}
-          teamname={'IND'}
-          title={'BAT'}
-          c={'43.3%'}
-          vc={'8.3%'}
-        />
-        <PlayerProfile
-          name={'R Sharma'}
-          points={'232'}
-          teamname={'IND'}
-          title={'BAT'}
-          c={'33.3%'}
-          vc={'8.3%'}
-        />
-        <PlayerProfile
-          name={'R Sharma'}
-          points={'232'}
-          teamname={'IND'}
-          title={'BAT'}
-          c={'33.3%'}
-          vc={'8.3%'}
-        />
-        <PlayerProfile
-          name={'R Sharma'}
-          points={'232'}
-          teamname={'IND'}
-          title={'BAT'}
-          c={'33.3%'}
-          vc={'8.3%'}
-        />
-        <PlayerProfile
-          name={'R Sharma'}
-          points={'232'}
-          teamname={'IND'}
-          title={'BAT'}
-          c={'33.3%'}
-          vc={'8.3%'}
-        />
+        {AllPlayers.map((item: any) => {
+          return (
+            <PlayerProfile
+              key={item.key}
+              name={item.name}
+              points={item.points}
+              teamname={item.team_key}
+              title={'BAT'}
+              c={'43.3%'}
+              vc={'8.3%'}
+              captain={item.cap}
+              vice_captain={item.vc}
+            />
+          );
+        })}
+
         <View style={[tailwind('h-16')]}></View>
       </ScrollView>
       <View

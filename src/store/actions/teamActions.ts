@@ -40,7 +40,8 @@ export const updatePlayerAction = (payload: any) => {
         dispatch(updatePlayer(newPlayerState));
       } else {
         const newPlayerState = [...oldPlayerState];
-        newPlayerState.push(payload);
+        const newObj = {...payload, cap: false, vc: false};
+        newPlayerState.push(newObj);
         dispatch(updatePlayer(newPlayerState));
       }
     } catch (err) {

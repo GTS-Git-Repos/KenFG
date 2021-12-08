@@ -9,6 +9,9 @@ interface PropTypes {
 }
 
 export default function SelectionTabs(props: PropTypes) {
+
+  
+
   return (
     <ScrollView
       horizontal

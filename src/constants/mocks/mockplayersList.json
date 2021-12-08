@@ -119,7 +119,7 @@
     {
         "key": "f_12",
         "name": "Player 12",
-        "team_key": "eng",
+        "team_key": "aus",
         "seasonal_role": "all_rounder",
         "selected_by": "96%",
         "points": 3,
@@ -173,7 +173,7 @@
     {
         "key": "f_18",
         "name": "Player 18",
-        "team_key": "eng",
+        "team_key": "aus",
         "seasonal_role": "bowler",
         "selected_by": "96%",
         "points": 3,
@@ -182,7 +182,7 @@
     {
         "key": "f_19",
         "name": "Player 19",
-        "team_key": "eng",
+        "team_key": "aus",
         "seasonal_role": "bowler",
         "selected_by": "96%",
         "points": 3,
@@ -200,7 +200,7 @@
     {
         "key": "f_22",
         "name": "Player 22",
-        "team_key": "eng",
+        "team_key": "aus",
         "seasonal_role": "bowler",
         "selected_by": "96%",
         "points": 3,

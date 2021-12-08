@@ -12,8 +12,8 @@ interface PropTypes {
   points: string;
   teamname: string;
   title: string;
-  c: string;
-  vc: string;
+  cap: boolean;
+  vc: boolean;
 }
 
 export default function PlayerProfile(props: PropTypes) {
@@ -40,14 +40,16 @@ export default function PlayerProfile(props: PropTypes) {
             style={[tailwind('absolute bottom-1  px-3 flex-row items-center')]}>
             <Text
               style={[
-                tailwind('font-regular font-12 rounded text-light bg-primary'),
+                tailwind(
+                  'font-regular uppercase font-10 rounded-l  text-light bg-primary',
+                ),
                 {paddingHorizontal: 2, paddingVertical: 1},
               ]}>
               {props.teamname}
             </Text>
             <Text
               style={[
-                tailwind('font-regular font-12 rounded bg-secondary'),
+                tailwind('font-regular font-10 rounded-r bg-secondary'),
                 {paddingHorizontal: 2, paddingVertical: 1},
               ]}>
               {props.title}
@@ -77,9 +79,22 @@ export default function PlayerProfile(props: PropTypes) {
             ]}>
             <View
               style={[
-                tailwind('border border-gray-400 px-4 py-3 rounded-3xl'),
+                tailwind(
+                  `border border-gray-400 px-4 py-3 rounded-3xl ${
+                    props.cap ? 'bg-secondary' : ''
+                  }`,
+                ),
               ]}>
-              <Text style={[tailwind('font-bold font-12 text-light')]}>C</Text>
+              <Text
+                style={[
+                  tailwind(
+                    `font-bold font-12 ${
+                      props.cap ? 'text-brown-5' : 'text-light'
+                    }`,
+                  ),
+                ]}>
+                C
+              </Text>
             </View>
             <Text style={[tailwind('font-regular  text-dark-1 py-1 font-15')]}>
               {props.c}

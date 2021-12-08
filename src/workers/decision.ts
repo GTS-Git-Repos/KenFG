@@ -34,7 +34,7 @@ export function isPlayerCanBeSelectable(allplayers: any, player: any) {
       throw 'Not Enough Credits';
     }
     // is player team have a slot
-    if (teamState.team_count[player['team_key']].length > 7) {
+    if (teamState.team_count[player['team_key']].length >= 7) {
       throw 'Maximum 7 members per team only';
     }
     // is player role have a slot
