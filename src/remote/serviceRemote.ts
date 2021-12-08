@@ -36,7 +36,20 @@ export const contestInfoRemote = async (params: any) => {
 
 export const getMatchPlayersRemote = async (params: any) => {
   try {
-    return playersListJson;
+    const keeper = playersListJson.filter(
+      (item: any) => item.seasonal_role === 'keeper',
+    );
+    const batsman = playersListJson.filter(
+      (item: any) => item.seasonal_role === 'batsman',
+    );
+    const all_rounder = playersListJson.filter(
+      (item: any) => item.seasonal_role === 'all_rounder',
+    );
+    const bowler = playersListJson.filter(
+      (item: any) => item.seasonal_role === 'bowler',
+    );
+
+    return [{keeper, batsman, all_rounder, bowler}];
   } catch (err) {
     console.log(err);
     return false;

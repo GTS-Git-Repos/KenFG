@@ -52,7 +52,6 @@ export default {
   wallet: require('../assets/images/wallet.png'),
   logo_back_rectangle: require('../assets/images/logo_back_rectangle.png'),
   ground: require('../assets/images/ground.png'),
-  cricket_off: require('../assets/images/cricket_off.png'),
   footbal_on: require('../assets/images/footbal_on.png'),
   flash: require('../assets/images/flash.png'),
   logoWrapper: require('../assets/images/logoWrapper.png'),

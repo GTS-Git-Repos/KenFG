@@ -17,20 +17,21 @@ interface PropTypes {
   teamname: string;
   image: string;
   name: string;
+  role: string;
   info: string;
   anounced: boolean;
   points: number;
   credits: number;
   isSelected: boolean;
   canBeSelected: boolean;
-  checkPlayerSelection(player_key: string): void;
+  checkPlayerSelection(player_key: string, player_role: string): void;
 }
 
 export default function Player(props: PropTypes) {
   return (
     <TouchableOpacity
       activeOpacity={0.5}
-      onPress={() => props.checkPlayerSelection(props.player_key)}>
+      onPress={() => props.checkPlayerSelection(props.player_key, props.role)}>
       <LinearGradient
         start={{x: 0.0, y: 1.0}}
         end={{x: 1.0, y: 0.0}}

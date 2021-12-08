@@ -33,6 +33,7 @@ import {useQuery} from 'react-query';
 import {useSelector, useDispatch} from 'react-redux';
 import {creditLeft, playersCountByTeams} from '../../store/selectors';
 import {isPlayerCanBeSelectable} from '../../workers/decision';
+import {errorBox} from '../../utils/snakBars';
 
 const log = console.log;
 
@@ -56,18 +57,23 @@ export default function CreateTeamScreen() {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // remote sevice query
+  const players: any = useQuery('players', getMatchPlayersRemote, {
+    cacheTime: 0,
+  });
+
   // side effects
 
   useEffect(() => {
-
     dispatch(updateTeamCountAction(playersCount));
     dispatch(updateCreditsAction(availableCredits));
   }, [playersState]);
 
-  // remote sevice query
-  const players = useQuery('players', getMatchPlayersRemote, {
-    cacheTime: 0,
-  });
+  useEffect(() => {
+    if (players.data) {
+      // log(players.data[0].keepers);
+    }
+  }, [players.data]);
 
   // business logic
 
@@ -80,19 +86,22 @@ export default function CreateTeamScreen() {
 
   // Create Team Logic
 
-  const checkPlayerSelection = (player_key: string) => {
-    const player = players.data.find((item: any) => item.key === player_key);
+  const checkPlayerSelection = (player_key: string, player_role: string) => {
+    const player = players.data[0][player_role].find(
+      (item: any) => item.key === player_key,
+    );
     if (player) {
-      const canBeSelected = isPlayerCanBeSelectable(players.data, player);
-      if (canBeSelected) {
+      const canBeSelected: any = isPlayerCanBeSelectable(players.data, player);
+      if (canBeSelected.result) {
         dispatch(updatePlayerAction(player));
       } else {
+        errorBox(canBeSelected.message);
         log(canBeSelected);
       }
     }
   };
 
-  if (isScreenReady === false) {
+  if (isScreenReady === false || !players.data) {
     return <FullScreenLoading title="Loading..." />;
   }
 
@@ -137,7 +146,7 @@ export default function CreateTeamScreen() {
             checkPlayerSelection={checkPlayerSelection}
             id={'wkt'}
             title={'Select 1-4 Wicket Keepers'}
-            data={players.data}
+            data={players.data[0]?.keeper}
           />
         </View>
         <View>
@@ -145,7 +154,7 @@ export default function CreateTeamScreen() {
             checkPlayerSelection={checkPlayerSelection}
             id={'bat'}
             title={'Select 3-6 Batters'}
-            data={players.data}
+            data={players.data[0]?.batsman}
           />
         </View>
         <View>
@@ -153,7 +162,7 @@ export default function CreateTeamScreen() {
             checkPlayerSelection={checkPlayerSelection}
             id={'ar'}
             title={'Select 1-4 All Rounders'}
-            data={players.data}
+            data={players.data[0]?.all_rounder}
           />
         </View>
         <View>
@@ -161,7 +170,7 @@ export default function CreateTeamScreen() {
             checkPlayerSelection={checkPlayerSelection}
             id={'bwl'}
             title={'Select 3-6 Bowlers'}
-            data={players.data}
+            data={players.data[0]?.bowler}
           />
         </View>
       </PagerView>

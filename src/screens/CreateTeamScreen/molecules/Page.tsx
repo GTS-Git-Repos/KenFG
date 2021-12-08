@@ -12,7 +12,7 @@ interface PropTypes {
   id: string;
   title: string;
   data: [];
-  checkPlayerSelection(player_key: string): void;
+  checkPlayerSelection(player_key: string,player_role:string): void;
 }
 
 export default function Page(props: PropTypes) {
@@ -33,6 +33,7 @@ export default function Page(props: PropTypes) {
               key={item.key}
               player_key={item.key}
               teamname={item.team_key}
+              role={item.seasonal_role}
               image={''}
               name={item.name}
               info={`Sel by ${item.selected_by}`}

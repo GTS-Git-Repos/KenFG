@@ -19,12 +19,22 @@ export function isPlayerCanBeSelectable(allplayers: any, player: any) {
 
   //   console.log('TeamState', teamState);
   try {
+    // is user already selected allowed to add, because redux action remove that
+    const isExist = teamState.players.find(
+      (item: any) => item.key === player.key,
+    );
+    if (isExist) {
+      return {
+        result: true,
+      };
+    }
+
     // is user have enough credits
     if (teamState.credits_left < player.credits) {
       throw 'Not Enough Credits';
     }
     // is player team have a slot
-    if (teamState.team_count[player['nationality_short_code']].length > 7) {
+    if (teamState.team_count[player['team_key']].length > 7) {
       throw 'Maximum 7 members per team only';
     }
     // is player role have a slot
@@ -36,12 +46,15 @@ export function isPlayerCanBeSelectable(allplayers: any, player: any) {
         maxRoles[player.seasonal_role]
       }`;
     } else {
-      return true;
+      return {
+        result: true,
+      };
     }
   } catch (err) {
+    console.log(err);
     return {
       result: false,
-      message: typeof err === 'string' ? err : 'failed',
+      message: typeof err === 'string' ? err : 'unhandled error',
     };
   }
 }
