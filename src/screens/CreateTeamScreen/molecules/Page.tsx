@@ -32,7 +32,7 @@ export default function Page(props: PropTypes) {
             <Player
               key={item.key}
               player_key={item.key}
-              teamname={item.nationality_short_code}
+              teamname={item.team_key}
               image={''}
               name={item.name}
               info={`Sel by ${item.selected_by}`}

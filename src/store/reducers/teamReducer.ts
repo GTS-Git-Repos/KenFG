@@ -5,7 +5,7 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-  teams: ['AUS', 'PAK'],
+  teams: ['aus', 'eng'],
   players: [],
   credits_left: 100,
   teams_count: null,

@@ -59,6 +59,7 @@ export default function CreateTeamScreen() {
   // side effects
 
   useEffect(() => {
+
     dispatch(updateTeamCountAction(playersCount));
     dispatch(updateCreditsAction(availableCredits));
   }, [playersState]);
@@ -108,16 +109,16 @@ export default function CreateTeamScreen() {
 
           <TeamInfo
             teamname1={'AUS'}
-            teamname2={'PAK'}
-            teamcount1={playersCount['AUS'].length}
-            teamcount2={playersCount['PAK'].length}
+            teamname2={'ENG'}
+            teamcount1={playersCount['aus'].length}
+            teamcount2={playersCount['eng'].length}
             credits_left={availableCredits}
           />
         </LinearGradient>
         <Line />
         <SelectionIndicator
           clearRef={clearRef}
-          count={playersCount['AUS'].length + playersCount['PAK'].length}
+          count={playersCount['aus'].length + playersCount['eng'].length}
         />
       </LinearGradient>
 

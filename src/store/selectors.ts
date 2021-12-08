@@ -22,13 +22,8 @@ export const playersCountByTeams = createSelector(
   playersState,
   TeamsState,
   (players, teams) => {
-    // console.log("teams",teams)
-    const team_a = players.filter(
-      (item: any) => item.nationality_short_code === teams[0],
-    );
-    const team_b = players.filter(
-      (item: any) => item.nationality_short_code === teams[1],
-    );
+    const team_a = players.filter((item: any) => item.team_key === teams[0]);
+    const team_b = players.filter((item: any) => item.team_key === teams[1]);
     return {[teams[0]]: team_a, [teams[1]]: team_b};
     // return {team_a};
   },
