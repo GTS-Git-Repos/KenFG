@@ -83,10 +83,12 @@ export default function CreateTeamScreen() {
     const player = players.data.find((item: any) => item.key === player_key);
     if (player) {
       const canBeSelected = isPlayerCanBeSelectable(players.data, player);
-      // log(canBeSelected);
+      if (canBeSelected) {
+        dispatch(updatePlayerAction(player));
+      } else {
+        log(canBeSelected);
+      }
     }
-
-    // dispatch(updatePlayerAction(player));
   };
 
   if (isScreenReady === false) {
@@ -133,7 +135,7 @@ export default function CreateTeamScreen() {
           <Page
             checkPlayerSelection={checkPlayerSelection}
             id={'wkt'}
-            title={'Select 1-2 Wicket Keepers'}
+            title={'Select 1-4 Wicket Keepers'}
             data={players.data}
           />
         </View>
@@ -141,7 +143,7 @@ export default function CreateTeamScreen() {
           <Page
             checkPlayerSelection={checkPlayerSelection}
             id={'bat'}
-            title={'Select 4-3 Bats Man'}
+            title={'Select 3-6 Batters'}
             data={players.data}
           />
         </View>
@@ -149,7 +151,7 @@ export default function CreateTeamScreen() {
           <Page
             checkPlayerSelection={checkPlayerSelection}
             id={'ar'}
-            title={'Select 1-3 All Rounders'}
+            title={'Select 1-4 All Rounders'}
             data={players.data}
           />
         </View>
@@ -157,7 +159,7 @@ export default function CreateTeamScreen() {
           <Page
             checkPlayerSelection={checkPlayerSelection}
             id={'bwl'}
-            title={'Select 5-3 Bowlers'}
+            title={'Select 3-6 Bowlers'}
             data={players.data}
           />
         </View>

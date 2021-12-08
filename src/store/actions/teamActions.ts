@@ -20,6 +20,9 @@ export const updateCreditsAction = (payload: number) => ({
   type: UPDATE_CREDITS,
   payload,
 });
+export const handleError = (payload: string) => ({
+  type: HANDLE_ERROR,
+});
 
 export const updatePlayerAction = (payload: any) => {
   return async (dispatch: any) => {
