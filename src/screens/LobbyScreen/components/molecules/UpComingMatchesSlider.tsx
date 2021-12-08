@@ -12,7 +12,7 @@ interface PropTypes {
 }
 
 export default function UpComingMatchesSlider(props: PropTypes) {
-  if (props.status.isLoading) {
+  if (props.status === 'loading') {
     return (
       <Text
         style={[
@@ -22,7 +22,7 @@ export default function UpComingMatchesSlider(props: PropTypes) {
       </Text>
     );
   }
-  if (!props.status.isLoading && !props.data) {
+  if (props.status === 'success' && !props.data) {
     return (
       <Text
         style={[
@@ -35,19 +35,21 @@ export default function UpComingMatchesSlider(props: PropTypes) {
 
   return (
     <View style={[tailwind('flex-row flex-wrap')]}>
-      {props.data.map((item: any) => (
-        <View key={item.key} style={[tailwind('w-6/12')]}>
-          <UpCommingMatchesCard
-            tournament_name={item?.tournament?.name}
-            team_a_name={item?.teams?.a?.code}
-            team_a_flag={''}
-            team_b_name={item?.teams?.b?.code}
-            team_b_flag={''}
-            tournament_shortName={item?.tournament?.short_name}
-            price={item.price}
-          />
-        </View>
-      ))}
+      {props.data.map((item: any) => {
+        return (
+          <View key={item.key} style={[tailwind('w-6/12')]}>
+            <UpCommingMatchesCard
+              tournament_name={item?.teams?.tournament?.name}
+              team_a_name={item?.teams?.a?.code}
+              team_a_flag={''}
+              team_b_name={item?.teams?.b?.code}
+              team_b_flag={''}
+              tournament_shortName={item?.teams?.tournament?.short_name}
+              price={item?.teams?.price}
+            />
+          </View>
+        );
+      })}
     </View>
   );
 }

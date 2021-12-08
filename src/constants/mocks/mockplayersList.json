@@ -36,6 +36,15 @@
         "credits": 8
     },
     {
+        "key": "f_3w1",
+        "name": "Player extra keeper",
+        "team_key": "eng",
+        "seasonal_role": "keeper",
+        "selected_by": "96%",
+        "points": 3,
+        "credits": 8
+    },
+    {
         "key": "f_4",
         "name": "Player 4",
         "team_key": "eng",

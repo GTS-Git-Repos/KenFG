@@ -8,7 +8,7 @@ export function isPlayerCanBeSelectable(allplayers: any, player: any) {
   //   keeper: 4,
   //   all_rounder: 6,
   // };
-  const maxRoles = {
+  const maxRoles: any = {
     bowler: 4,
     batsman: 6,
     keeper: 4,
@@ -41,7 +41,8 @@ export function isPlayerCanBeSelectable(allplayers: any, player: any) {
     const occupaid_role_slots = teamState.players.filter(
       (item: any) => item.seasonal_role === player.seasonal_role,
     );
-    if (occupaid_role_slots.length > maxRoles[player.seasonal_role]) {
+
+    if (occupaid_role_slots.length >= maxRoles[player.seasonal_role]) {
       throw `${player.seasonal_role} can't higher than ${
         maxRoles[player.seasonal_role]
       }`;

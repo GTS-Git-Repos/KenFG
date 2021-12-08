@@ -15,8 +15,8 @@ import FastImage from 'react-native-fast-image';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 interface PropTypes {
-  images: [];
-  location: number;
+  data: [];
+  status: string;
 }
 
 const ImageSlider = (props: any) => {
@@ -35,6 +35,10 @@ const ImageSlider = (props: any) => {
     return 0;
   };
 
+  if (!props.data) {
+    return null;
+  }
+
   return (
     <Swiper
       loop={true}
@@ -50,36 +54,31 @@ const ImageSlider = (props: any) => {
       dot={<Dot />}
       width={width}
       style={[tailwind('my-1'), {height: height, overflow: 'visible'}]}>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => navigation.navigate('ContestListScreen')}
-        style={[tailwind('flex-row mx-5 justify-center items-center')]}>
-        <Image
-          resizeMode="contain"
-          source={assets.banner1}
-          style={{width: '100%', height: height}}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => navigation.navigate('ContestListScreen')}
-        style={[tailwind('flex-row mx-5 justify-center items-center')]}>
-        <Image
-          resizeMode="contain"
-          source={assets.banner1}
-          style={{width: '100%', height: height}}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        onPress={() => navigation.navigate('ContestListScreen')}
-        style={[tailwind('flex-row mx-5 justify-center items-center')]}>
-        <Image
-          resizeMode="contain"
-          source={assets.banner1}
-          style={{width: '100%', height: height}}
-        />
-      </TouchableOpacity>
+      {props.data.map((item: any) => {
+        return (
+          <TouchableOpacity
+            key={item.banner_key}
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('ContestListScreen')}
+            style={[tailwind('flex-row mx-5 justify-center items-center')]}>
+            <FastImage
+              fallback={true}
+              resizeMode={FastImage.resizeMode.contain}
+              source={{
+                uri: item.banner_url,
+                priority: FastImage.priority.low,
+                cache: FastImage.cacheControl.immutable,
+              }}
+              style={{
+                width: '100%',
+                borderRadius: 10,
+                aspectRatio: 2 / 1,
+                height: height,
+              }}
+            />
+          </TouchableOpacity>
+        );
+      })}
     </Swiper>
   );
 };

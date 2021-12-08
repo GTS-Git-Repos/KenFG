@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text} from 'react-native';
 import SubTitle from '../SubTitle';
@@ -6,15 +6,22 @@ import MyMatchCard from './MyMatchCard';
 import ImageSlider from './ImageSlider';
 import UpComingMatchesSlider from './UpComingMatchesSlider';
 
-import {upcomingMatchesRemote} from '../../../../remote/matchesRemote';
+import {upcommingMatchesandBannersRemote} from '../../../../remote/matchesRemote';
 import {useQuery} from 'react-query';
+import {useSelector} from 'react-redux';
+import {userInfo} from '../../../../store/selectors';
 
 interface PropTypes {
   text?: string;
 }
 
 export default function CricketPage(props: PropTypes) {
-  const upcommingMatches = useQuery('upcomingMatches', upcomingMatchesRemote);
+  const userInfoSelector = useSelector(userInfo);
+
+  const upcommingMatches = useQuery(
+    ['upcomingMatches', userInfoSelector?.mobile],
+    upcommingMatchesandBannersRemote,
+  );
 
   return (
     <View>
@@ -25,22 +32,18 @@ export default function CricketPage(props: PropTypes) {
         <MyMatchCard />
       </View>
 
-      <ImageSlider />
+      <ImageSlider
+        data={upcommingMatches?.data?.banners}
+        status={upcommingMatches.status}
+      />
 
       <View style={[tailwind('px-5 pb-1')]}>
         <SubTitle text={'Upcoming'} />
       </View>
-
       <UpComingMatchesSlider
-        data={upcommingMatches.data}
+        data={upcommingMatches?.data?.matches}
         status={upcommingMatches.status}
       />
-
-      {/* {[1, 2, 3, 4].map(item => {
-          return (
-           
-          );
-        })} */}
     </View>
   );
 }

@@ -2,8 +2,13 @@ import {createSelector} from 'reselect';
 
 // const LocationState = (state: any): any => state.app.locationState;
 
+const UserState = (state: any) => state.user.user_info;
 const playersState = (state: any) => state.team.players;
 const TeamsState = (state: any) => state.team.teams;
+
+export const userInfo = createSelector(UserState, userInfo => {
+  return userInfo;
+});
 
 export const creditLeft = createSelector(playersState, players => {
   try {
@@ -28,3 +33,19 @@ export const playersCountByTeams = createSelector(
     // return {team_a};
   },
 );
+
+export const rolesCount = createSelector(playersState, players => {
+  const keeper = players.filter(
+    (item: any) => item.seasonal_role === 'keeper',
+  ).length;
+  const batsman = players.filter(
+    (item: any) => item.seasonal_role === 'batsman',
+  ).length;
+  const all_rounder = players.filter(
+    (item: any) => item.seasonal_role === 'all_rounder',
+  ).length;
+  const bowler = players.filter(
+    (item: any) => item.seasonal_role === 'bowler',
+  ).length;
+  return {keeper, batsman, all_rounder, bowler};
+});

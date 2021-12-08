@@ -18,6 +18,8 @@ interface PropTypes {
 
 export default function UpcommingMatches(props: PropTypes) {
   const navigation = useNavigation<any>();
+
+
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('ContestListScreen')}
@@ -70,7 +72,7 @@ export default function UpcommingMatches(props: PropTypes) {
             />
             <Text
               style={[
-                tailwind('font-bold font-13 text-center'),
+                tailwind('font-bold uppercase font-13 text-center'),
                 {color: '#D3D3D5'},
               ]}>
               {props.team_a_name}
@@ -89,7 +91,7 @@ export default function UpcommingMatches(props: PropTypes) {
             />
             <Text
               style={[
-                tailwind('font-bold font-13 text-center'),
+                tailwind('font-bold uppercase font-13 text-center'),
                 {color: '#D3D3D5'},
               ]}>
               {props.team_b_name}
@@ -98,21 +100,30 @@ export default function UpcommingMatches(props: PropTypes) {
         </View>
 
         {/* Contest Prize Info */}
-        <View style={[tailwind('flex flex-row items-center justify-between')]}>
+        <View style={[tailwind('flex-row items-center')]}>
+          <View style={[tailwind(''), {flex: 6}]}>
+            <Text
+              numberOfLines={1}
+              allowFontScaling={true}
+              adjustsFontSizeToFit={true}
+              style={[tailwind('font-regular font-10'), {color: '#9AABC6'}]}>
+              {props.tournament_shortName}
+            </Text>
+          </View>
+
           <Text
-            numberOfLines={1}
-            allowFontScaling={true}
-            adjustsFontSizeToFit={true}
-            style={[tailwind('font-regular font-10'), {color: '#9AABC6'}]}>
-            {props.tournament_shortName}
-          </Text>
-          <Text
-            style={[tailwind('font-regular px-1 font-10'), {color: '#9AABC6'}]}>
+            style={[
+              tailwind('font-regular px-1 font-10'),
+              {color: '#9AABC6', flex: 1},
+            ]}>
             |
           </Text>
-          <Text style={[tailwind('font-regular font-10'), {color: '#DBC872'}]}>
-            {'\u20B9'} {props.price}
-          </Text>
+          <View style={[tailwind(''), {flex: 3}]}>
+            <Text
+              style={[tailwind('font-regular font-10'), {color: '#DBC872'}]}>
+              {'\u20B9'} {props.price}
+            </Text>
+          </View>
         </View>
 
         {/* Count Down */}

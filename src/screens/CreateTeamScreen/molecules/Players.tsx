@@ -40,7 +40,7 @@ export default function Player(props: PropTypes) {
           props.isSelected ? ['#3C362C', '#4D3F26'] : ['#172338', '#1B2A44']
         }
         style={[
-          tailwind('pt-5 flex-row'),
+          tailwind('pt-3 flex-row'),
           {opacity: props.canBeSelected ? 1 : 0.3},
         ]}>
         {/* Image */}
@@ -49,20 +49,20 @@ export default function Player(props: PropTypes) {
           <Image
             resizeMode="contain"
             source={assets.player}
-            style={[tailwind(''), {height: 72, width: 72}]}
+            style={[tailwind(''), {height: 65, width: 65}]}
           />
           <TeamBadge team1={true} name={props.teamname} />
         </View>
         <View style={[tailwind('pl-4'), {flex: 4}]}>
           <Text
             numberOfLines={1}
-            style={[tailwind('font-bold text-light font-15 pb-0.5')]}>
+            style={[tailwind('font-bold text-light font-14 pb-0.5')]}>
             {props.name}
           </Text>
           <Text
             numberOfLines={1}
             style={[
-              tailwind('font-regular text-light font-12 text-dark-1 py-1'),
+              tailwind('font-regular text-light font-11 text-dark-1 py-1'),
             ]}>
             {props.info}
           </Text>
@@ -74,7 +74,7 @@ export default function Player(props: PropTypes) {
               ]}></View>
             <Text
               numberOfLines={1}
-              style={[tailwind('font-regular text-secondary font-10')]}>
+              style={[tailwind('font-regular text-secondary font-9')]}>
               Played Last Match
             </Text>
           </View>

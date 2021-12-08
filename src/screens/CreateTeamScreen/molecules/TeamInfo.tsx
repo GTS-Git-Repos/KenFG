@@ -19,7 +19,7 @@ interface PropTypes {
   credits_left: number;
 }
 
-export default function TeamInfo(props: PropTypes) {
+function TeamInfo(props: PropTypes) {
   return (
     <View style={[tailwind('flex-row'), {padding: 17}]}>
       <View style={[tailwind('flex-row'), {flex: 6}]}>
@@ -41,3 +41,5 @@ export default function TeamInfo(props: PropTypes) {
     </View>
   );
 }
+
+export default React.memo(TeamInfo);

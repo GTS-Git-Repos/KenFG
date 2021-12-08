@@ -67,7 +67,7 @@ export default function CreateTeamScreen() {
   };
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
+    <View style={tailwind('h-full bg-dark-4')}>
       <TopBar text={'Tell us your Name'} />
       <KeyboardAwareScrollView>
         <View

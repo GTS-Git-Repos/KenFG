@@ -2,11 +2,21 @@ import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import {upCommingMatchesMock} from '../constants/mockAPIData';
 // API Routes
-const req_get_all_users = '/init';
 
-export const upcomingMatchesRemote = async () => {
+const req_upcomming_mathces_banner = '/upcoming-matches.php';
+
+export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
-    return upCommingMatchesMock;
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_upcomming_mathces_banner,
+      {player_key: params.queryKey[1]},
+    );
+    if (response.status === 200) {
+      return response.data.data;
+    } else {
+      failedLog('upcommingMatchesandBannersRemote()', response);
+    }
   } catch (err) {
     console.log(err);
     return false;

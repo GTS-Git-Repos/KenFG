@@ -5,7 +5,7 @@ import React, {
   useReducer,
   useEffect,
 } from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../utils/customHoooks';
@@ -31,9 +31,14 @@ import {getMatchPlayersRemote} from '../../remote/serviceRemote';
 import {useQuery} from 'react-query';
 
 import {useSelector, useDispatch} from 'react-redux';
-import {creditLeft, playersCountByTeams} from '../../store/selectors';
+import {
+  creditLeft,
+  playersCountByTeams,
+  rolesCount,
+} from '../../store/selectors';
 import {isPlayerCanBeSelectable} from '../../workers/decision';
 import {errorBox} from '../../utils/snakBars';
+import TabItem from './atoms/TabItem';
 
 const log = console.log;
 
@@ -56,6 +61,10 @@ export default function CreateTeamScreen() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // selectors
+
+  const rolesCountSelector: any = useSelector(rolesCount);
 
   // remote sevice query
   const players: any = useQuery('players', getMatchPlayersRemote, {
@@ -133,7 +142,42 @@ export default function CreateTeamScreen() {
 
       {/* Tabs */}
       <View>
-        <Tabs activeIndex={activeIndex} onTabPressed={onTabPressed} />
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={[tailwind('bg-dark-3')]}>
+          {[
+            {
+              tab_key: 'keeper',
+              tab_name: 'WK',
+            },
+            {
+              tab_key: 'batsman',
+              tab_name: 'BAT',
+            },
+            {
+              tab_key: 'all_rounder',
+              tab_name: 'AR',
+            },
+            {
+              tab_key: 'bowler',
+              tab_name: 'BOWL',
+            },
+          ].map((item: any, index: number) => {
+            return (
+              <TabItem
+                key={item.tab_key}
+                tabName={item.tab_name}
+                count={rolesCountSelector[item.tab_key]}
+                active={activeIndex === index}
+                onTabPressed={onTabPressed}
+                index={index}
+              />
+            );
+          })}
+        </ScrollView>
+
+        {/* <Tabs activeIndex={activeIndex} onTabPressed={onTabPressed} /> */}
       </View>
 
       <PagerView

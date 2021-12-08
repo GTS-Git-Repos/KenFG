@@ -55,7 +55,7 @@ export default function RootNavigation() {
     <NavigationContainer theme={DarkTheme}>
       <Host>
         <RootNavigator.Navigator
-          initialRouteName="CreateTeamScreen"
+          initialRouteName="InitialScreen"
           screenOptions={StackConfig}>
           <RootNavigator.Screen
             component={InitialScreen}
