@@ -18,6 +18,7 @@ interface PropTypes {
   is_captain: boolean;
   is_vice_captain: boolean;
   captainSelectAction(player_key: string): any;
+  viceCaptainSelect(player_key: string): any;
 }
 
 export default function PlayerProfile(props: PropTypes) {
@@ -105,14 +106,33 @@ export default function PlayerProfile(props: PropTypes) {
               {props.c}
             </Text>
           </View>
+
           <View
             style={[
-              tailwind('flex-col justify-center items-center'),
+              tailwind(`flex-col justify-center items-center`),
               {flex: 5},
             ]}>
-            <View style={[tailwind('border border-gray-400 p-3 rounded-3xl')]}>
-              <Text style={[tailwind('font-bold font-12 text-light')]}>VC</Text>
-            </View>
+            <TouchableOpacity
+              onPress={() => props.viceCaptainSelect(props.player_key)}
+              style={[
+                tailwind(
+                  `border border-gray-400 p-3 rounded-3xl ${
+                    props.is_vice_captain ? 'bg-secondary' : ''
+                  }`,
+                ),
+              ]}>
+              <Text
+                style={[
+                  tailwind(
+                    `font-bold font-12 text-light  ${
+                      props.is_vice_captain ? 'text-brown-5' : 'text-light'
+                    }`,
+                  ),
+                ]}>
+                VC
+              </Text>
+            </TouchableOpacity>
+
             <Text style={[tailwind('font-regular text-dark-1 py-1 font-15')]}>
               {props.vc}
             </Text>

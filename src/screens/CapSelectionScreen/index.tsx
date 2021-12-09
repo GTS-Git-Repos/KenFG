@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, Image, Pressable, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
@@ -16,7 +16,11 @@ import PlayerProfile from './molecules/PlayerProfile';
 import CapSelectionAction from './atoms/CapSelectionAction';
 import {useDispatch, useSelector} from 'react-redux';
 import {allPlayers, playersCountByTeams} from '../../store/selectors';
-import {captainSelection} from '../../store/actions/teamActions';
+import {
+  captainSelection,
+  vicecaptainSelectionAction,
+} from '../../store/actions/teamActions';
+import {isPlayerCaptain, isPlayerViceCaptain} from '../../store/store_utils';
 
 export default function CapSelectionScreen() {
   const navigation = useNavigation();
@@ -24,11 +28,28 @@ export default function CapSelectionScreen() {
 
   const TeamsSelector = useSelector(playersCountByTeams);
   const AllPlayers = useSelector(allPlayers);
+  const captain_key = useSelector(state => state.team.cap_key);
+  const vc_key = useSelector(state => state.team.vc_key);
 
-  // log(AllPlayers)
+  // useEffect(() => {
+  //   log('cap --->', cap);
+  // }, [cap]);
 
   const captainSelectAction = (player_key: string) => {
-    dispatch(captainSelection(player_key));
+    if (vc_key === player_key) {
+      dispatch(vicecaptainSelectionAction(null));
+      dispatch(captainSelection(player_key));
+    } else {
+      dispatch(captainSelection(player_key));
+    }
+  };
+  const viceCaptainSelect = (player_key: string) => {
+    if (captain_key === player_key) {
+      dispatch(captainSelection(null));
+      dispatch(vicecaptainSelectionAction(player_key));
+    } else {
+      dispatch(vicecaptainSelectionAction(player_key));
+    }
   };
 
   return (
@@ -59,9 +80,10 @@ export default function CapSelectionScreen() {
               title={'BAT'}
               c={'43.3%'}
               vc={'8.3%'}
-              is_captain={item.cap}
-              is_vice_captain={item.vc}
+              is_captain={isPlayerCaptain(item.key)}
+              is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
+              viceCaptainSelect={viceCaptainSelect}
             />
           );
         })}

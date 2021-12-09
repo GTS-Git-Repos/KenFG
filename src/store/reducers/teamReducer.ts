@@ -2,6 +2,8 @@ import {
   UPDATE_PLAYERS,
   UPDATE_TEAM_COUNT,
   UPDATE_CREDITS,
+  UPDATE_CAPTAIN,
+  UPDATE_VC_CAPTAIN,
 } from '../actions/actionTypes';
 
 const PRELOAD_PLAYERS = [
@@ -131,6 +133,8 @@ const PRELOAD_PLAYERS = [
 const initialState = {
   teams: ['aus', 'eng'],
   players: PRELOAD_PLAYERS,
+  cap_key: null,
+  vc_key: null,
   credits_left: 100,
   teams_count: null,
 };
@@ -156,6 +160,16 @@ const Team = (state = initialState, action: actionShape): any => {
       return {
         ...state,
         credits_left: action.payload,
+      };
+    case UPDATE_CAPTAIN:
+      return {
+        ...state,
+        cap_key: action.payload,
+      };
+    case UPDATE_VC_CAPTAIN:
+      return {
+        ...state,
+        vc_key: action.payload,
       };
 
     default:
