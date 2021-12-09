@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
   View,
   Text,
@@ -26,17 +26,24 @@ import AccountSubTitle from './atoms/AccountSubTitle';
 import Career from './molecules/Career';
 import PlayerContests from './molecules/PlayerContests';
 import {useSelector} from 'react-redux';
+import {Modalize} from 'react-native-modalize';
+import MoreSheet from './atoms/MoreSheet';
 const log = console.log;
 
 const WIDTH = Dimensions.get('window').width;
 
 export default function AccountProfileScreen() {
+  const moreRef = useRef<Modalize>(null);
   const navigation = useNavigation();
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
+  const openSheet = () => {
+    moreRef?.current?.open();
+  };
+
   return (
     <View style={[tailwind('h-full bg-dark')]}>
-      <AccountProfileTopBar />
+      <AccountProfileTopBar openSheet={openSheet} />
       <View style={[tailwind('bg-secondary'), {height: 15}]}></View>
 
       <View
@@ -69,6 +76,16 @@ export default function AccountProfileScreen() {
           <View style={[tailwind('h-40')]}></View>
         </ScrollView>
       </View>
+
+      <Modalize
+        ref={moreRef}
+        useNativeDriver={true}
+        modalTopOffset={200}
+        adjustToContentHeight={true}
+        disableScrollIfPossible={false}
+        closeOnOverlayTap={true}>
+        <MoreSheet />
+      </Modalize>
     </View>
   );
 }

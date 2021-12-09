@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Image, Pressable, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation, useRoute} from '@react-navigation/native';
 
 // import assets from 'assets';
-import {TopBar} from '../../sharedComponents';
+import {TopBar, BlockScreenByLoading} from '../../sharedComponents';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import {useQuery} from 'react-query';
 const log = console.log;
@@ -21,10 +21,18 @@ import {
   vicecaptainSelectionAction,
 } from '../../store/actions/teamActions';
 import {isPlayerCaptain, isPlayerViceCaptain} from '../../store/store_utils';
+import {errorBox} from '../../utils/snakBars';
+import {createTeamRemote} from '../../remote/matchesRemote';
+import {createTeamObjCreator} from '../../workers/objCreators';
+import {resetContestListNavigation} from '../../utils/resetNav';
 
 export default function CapSelectionScreen() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(false);
+
+  // const teamsState = useSelector<any>(state => state.team);
 
   const TeamsSelector = useSelector(playersCountByTeams);
   const AllPlayers = useSelector(allPlayers);
@@ -49,6 +57,30 @@ export default function CapSelectionScreen() {
       dispatch(vicecaptainSelectionAction(player_key));
     } else {
       dispatch(vicecaptainSelectionAction(player_key));
+    }
+  };
+
+  const saveTeam = async () => {
+    try {
+      if (captain_key && vc_key) {
+        setLoading(true);
+        const createTeamObj = createTeamObjCreator();
+        const response = await createTeamRemote(createTeamObj);
+        if (response) {
+          resetContestListNavigation(navigation);
+          return;
+        } else {
+          setTimeout(() => {
+            errorBox('Failed to create a Team');
+          }, 500);
+        }
+      } else {
+        errorBox('Please select captain and vice captain');
+      }
+    } catch (err) {
+      log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -92,8 +124,10 @@ export default function CapSelectionScreen() {
       </ScrollView>
       <View
         style={[tailwind('absolute bottom-0 w-full flex-row justify-center')]}>
-        <CapSelectionAction />
+        <CapSelectionAction saveTeam={saveTeam} />
       </View>
+
+      {loading && <BlockScreenByLoading />}
     </View>
   );
 }

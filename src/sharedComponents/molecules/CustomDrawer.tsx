@@ -105,7 +105,7 @@ const Links = (props: any) => {
       onPress={() => navigation.navigate(props.to)}
       style={[tailwind('flex-row items-center py-3 mx-4')]}>
       <View style={[tailwind(''), {flex: 3}]}>
-        <View style={[tailwind('rounded-full'), {width: 30, height: 30}]}>
+        <View style={[tailwind('rounded-full'), {width: 26, height: 26}]}>
           <Image
             resizeMode="contain"
             source={props.icon}
@@ -114,7 +114,7 @@ const Links = (props: any) => {
         </View>
       </View>
       <View style={[tailwind(''), {flex: 6}]}>
-        <Text style={[tailwind('font-regular text-light font-15')]}>
+        <Text style={[tailwind('font-regular text-light font-13')]}>
           {props.text}
         </Text>
       </View>
@@ -129,15 +129,15 @@ const AppVersion = (props: any) => {
   return (
     <View style={[tailwind('flex-row items-center px-4 py-3')]}>
       <View style={[tailwind(''), {flex: 7}]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+        <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
           Version {props.version}
         </Text>
-        <Text style={[tailwind('font-regular py-1 text-dark-1 font-12')]}>
+        <Text style={[tailwind('font-regular py-1 text-dark-1 font-11')]}>
           App upto date
         </Text>
       </View>
       <View style={[tailwind(''), {flex: 3}]}>
-        <Text style={[tailwind('font-regular text-dark-1 uppercase font-14')]}>
+        <Text style={[tailwind('font-regular text-dark-1 uppercase font-13')]}>
           UPDATE
         </Text>
       </View>
@@ -150,7 +150,7 @@ const Support = () => {
     <View style={[tailwind('flex-row items-center py-3 px-4')]}>
       <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
         <View style={[tailwind(''), {flex: 3}]}>
-          <View style={[tailwind('rounded-full'), {width: 20, height: 20}]}>
+          <View style={[tailwind('rounded-full'), {width: 18, height: 18}]}>
             <Image
               resizeMode="contain"
               source={assets.question_icon}
@@ -158,14 +158,14 @@ const Support = () => {
             />
           </View>
         </View>
-        <Text style={[tailwind('font-regular text-light font-15'), {flex: 7}]}>
+        <Text style={[tailwind('font-regular text-light font-12'), {flex: 7}]}>
           Helpdesk
         </Text>
       </View>
 
       <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
         <View style={[tailwind(''), {flex: 3}]}>
-          <View style={[tailwind('rounded-full'), {width: 20, height: 20}]}>
+          <View style={[tailwind('rounded-full'), {width: 18, height: 18}]}>
             <Image
               resizeMode="contain"
               source={assets.chat_icon}
@@ -173,7 +173,7 @@ const Support = () => {
             />
           </View>
         </View>
-        <Text style={[tailwind('font-regular text-light font-15'), {flex: 7}]}>
+        <Text style={[tailwind('font-regular text-light font-12'), {flex: 7}]}>
           Chat With Us
         </Text>
       </View>

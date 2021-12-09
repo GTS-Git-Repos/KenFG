@@ -10,8 +10,9 @@ interface PropTypes {
 export default function MyMatchCardTopSection(props: PropTypes) {
   const {width} = useWindowDimensions();
   return (
-    <View style={[tailwind('px-1 flex flex-row items-center justify-between')]}>
+    <View style={[tailwind('px-1 flex-row items-center justify-between')]}>
       <Text
+        numberOfLines={1}
         allowFontScaling={true}
         adjustsFontSizeToFit={true}
         style={[

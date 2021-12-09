@@ -6,6 +6,7 @@ import {
   UPDATE_TEAM_COUNT,
   UPDATE_CAPTAIN,
   UPDATE_VC_CAPTAIN,
+  CLEAR_TEAM,
 } from './actionTypes';
 const log = console.log;
 
@@ -34,6 +35,10 @@ export const updateVCaptain = (key: string) => ({
   payload: key,
 });
 
+export const clearTeamAction = () => ({
+  type: CLEAR_TEAM,
+});
+
 export const handleError = (payload: string) => ({
   type: HANDLE_ERROR,
   payload: payload,
@@ -55,7 +60,7 @@ export const updatePlayerAction = (payload: any) => {
         dispatch(updatePlayer(newPlayerState));
       } else {
         const newPlayerState = [...oldPlayerState];
-        const newObj = {...payload, cap: false, vc: false};
+        const newObj = {...payload};
         newPlayerState.push(newObj);
         dispatch(updatePlayer(newPlayerState));
       }
@@ -84,53 +89,3 @@ export const vicecaptainSelectionAction = (player_key: any) => {
     }
   };
 };
-
-// export const captainSelection = (player_key: any) => {
-//   return async (dispatch: any) => {
-//     try {
-//       const playersState = store.getState().team.players;
-//       const oldPlayerState = [...playersState];
-//       const isPlayerExist = oldPlayerState.find(
-//         (item: any) => item.key === player_key,
-//       );
-//       if (isPlayerExist) {
-//         // is cap already selected
-//         const isCapSelected = isPlayerExist.cap === true;
-//         console.log(isCapSelected);
-//         if (isCapSelected) {
-//           // remove captain ship
-//           let newObj = {...isPlayerExist};
-//           newObj.cap = false;
-//           newObj.vc = false;
-//           const index = oldPlayerState.findIndex(
-//             (item: any) => item.key === player_key,
-//           );
-//           if (index >= 0) {
-//             oldPlayerState.splice(index, 1, newObj);
-//             dispatch(updatePlayer(oldPlayerState));
-//           } else {
-//             throw 'not found';
-//           }
-//         } else {
-//           // add captain ship
-//           let newObj = {...isPlayerExist};
-//           newObj.cap = true;
-//           newObj.vc = false;
-//           const index = oldPlayerState.findIndex(
-//             (item: any) => item.key === player_key,
-//           );
-//           if (index >= 0) {
-//             oldPlayerState.splice(index, 1, newObj);
-//             dispatch(updatePlayer(oldPlayerState));
-//           } else {
-//             throw 'not found';
-//           }
-//         }
-//       } else {
-//         throw 'No Player found';
-//       }
-//     } catch (err) {
-//       dispatch(handleError(`updatePlayerAction()`));
-//     }
-//   };
-// };

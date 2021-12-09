@@ -17,7 +17,7 @@ export function isPlayerCanBeSelectable(allplayers: any, player: any) {
 
   const teamState = store.getState().team;
 
-  //   console.log('TeamState', teamState);
+  //console.log('TeamState', teamState);
   try {
     // is user already selected allowed to add, because redux action remove that
     const isExist = teamState.players.find(
@@ -27,6 +27,10 @@ export function isPlayerCanBeSelectable(allplayers: any, player: any) {
       return {
         result: true,
       };
+    }
+    // is max 11 all are selected
+    if (teamState.players.length === 11) {
+      throw '11 players only for a team';
     }
 
     // is user have enough credits

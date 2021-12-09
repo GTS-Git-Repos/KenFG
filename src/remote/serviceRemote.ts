@@ -8,27 +8,7 @@ import contestListJson from '../constants/mocks/contestList.json';
 import playersListJson from '../constants/mocks/mockplayersList.json';
 
 // API Routes
-const req_upcomming_mathces_banner = '/upcoming-matches.php';
-
-export const upcommingMatchesandBannersRemote = async (payload: any) => {
-  try {
-    const response = await requestServer(
-      METHODS.POST,
-      BASE_URL + req_upcomming_mathces_banner,
-      payload,
-    );
-    // console.log(response);
-    return response;
-    if (response.status === 'success') {
-      return response.query;
-    } else {
-      failedLog('initialRemote()', response);
-    }
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
+const req_test = '/test.php';
 
 export const contestListRemote = async () => {
   try {

@@ -94,7 +94,7 @@ const App: React.FC = (): JSX.Element | null => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <StatusBar barStyle={'light-content'} backgroundColor="#0c1320" />
+      <StatusBar barStyle={'light-content'} backgroundColor="#B2933D" />
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <GestureHandlerRootView style={{flex: 1}}>

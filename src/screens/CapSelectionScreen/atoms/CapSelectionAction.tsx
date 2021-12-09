@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
-  text?: string;
+  saveTeam(): any;
 }
 
 export default function CapSelectionAction(props: PropTypes) {
@@ -34,7 +34,7 @@ export default function CapSelectionAction(props: PropTypes) {
         style={[tailwind('flex-row  m-2 rounded')]}
         colors={['#00513B', '#006A4D']}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('LiveMatchScreen')}
+          onPress={props.saveTeam}
           style={[tailwind('px-8 py-3')]}>
           <Text style={[tailwind('font-bold uppercase text-light font-12')]}>
             Save Team

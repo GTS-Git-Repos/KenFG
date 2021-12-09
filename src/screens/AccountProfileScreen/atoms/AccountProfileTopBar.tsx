@@ -6,7 +6,7 @@ import assets from '../../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
-  text?: string;
+  openSheet(): any;
 }
 
 export default function AccountProfileTopBar(props: PropTypes) {
@@ -19,7 +19,7 @@ export default function AccountProfileTopBar(props: PropTypes) {
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Icon name="chevron-back-outline" size={25} color="#614920" />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={props.openSheet}>
         <Image
           resizeMode="contain"
           source={assets.vdot}

@@ -26,6 +26,7 @@ import {
   updateCreditsAction,
   updatePlayerAction,
   updateTeamCountAction,
+  clearTeamAction,
 } from '../../store/actions/teamActions';
 import {getMatchPlayersRemote} from '../../remote/serviceRemote';
 import {useQuery} from 'react-query';
@@ -39,6 +40,7 @@ import {
 import {isPlayerCanBeSelectable} from '../../workers/decision';
 import {errorBox} from '../../utils/snakBars';
 import TabItem from './atoms/TabItem';
+import ClearTeamSheet from './atoms/ClearTeamSheet';
 
 const log = console.log;
 
@@ -108,6 +110,11 @@ export default function CreateTeamScreen() {
         log(canBeSelected);
       }
     }
+  };
+
+  const clearTeam = () => {
+    dispatch(clearTeamAction());
+    clearRef?.current?.close();
   };
 
   const navigateToCapSelection = () => {
@@ -238,65 +245,10 @@ export default function CreateTeamScreen() {
         adjustToContentHeight={true}
         disableScrollIfPossible={false}
         closeOnOverlayTap={true}>
-        <View style={[tailwind('bg-dark-4 px-3 py-5')]}>
-          <Text
-            style={[tailwind('font-bold pb-4 text-light text-center font-16')]}>
-            Clear Team ?
-          </Text>
-          <Text
-            style={[
-              tailwind(
-                'font-regular pb-2 text-light text-center mx-10 font-12',
-              ),
-            ]}>
-            Are you sure you want to clear your player selections ?
-          </Text>
-
-          <LinearGradient
-            start={{x: 0.8, y: 2.0}}
-            end={{x: 0.3, y: 0.5}}
-            locations={[0.6, 0.5]}
-            style={[tailwind('flex-row  m-2 rounded')]}
-            colors={['#00513B', '#006A4D']}>
-            <TouchableOpacity style={[tailwind('flex-grow py-3')]}>
-              <Text
-                style={[
-                  tailwind(
-                    'font-bold uppercase text-light flex-grow text-center font-12',
-                  ),
-                ]}>
-                Yes Clear
-              </Text>
-            </TouchableOpacity>
-          </LinearGradient>
-
-          <LinearGradient
-            start={{x: 0.8, y: 2.0}}
-            end={{x: 0.3, y: 0.5}}
-            locations={[0.6, 0.5]}
-            style={[tailwind('flex-row  m-2 rounded')]}
-            colors={['#1C2B46', '#172338']}>
-            <TouchableOpacity style={[tailwind('flex-grow py-3')]}>
-              <Text
-                style={[
-                  tailwind(
-                    'font-bold uppercase text-light text-center font-12',
-                  ),
-                ]}>
-                Cancel
-              </Text>
-            </TouchableOpacity>
-          </LinearGradient>
-        </View>
+        <ClearTeamSheet clearTeam={clearTeam} />
       </Modalize>
 
       {loading && <BlockScreenByLoading />}
     </View>
-    // </MyContext.Provider>
   );
 }
-
-// start={{x: 0.2, y: 1.1}}
-// end={{x: 1, y: 0.1}}
-// locations={[0.4, 0]}
-// colors={['#C5A858', '#B2933D']}>

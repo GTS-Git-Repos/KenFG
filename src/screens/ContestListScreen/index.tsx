@@ -1,10 +1,10 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {View, useWindowDimensions, ScrollView, FlatList} from 'react-native';
 import tailwind from '../../../tailwind';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
-const log = console.log;
 import {contestListRemote} from '../../remote/serviceRemote';
+import {joinedTeamsRemote} from '../../remote/matchesRemote';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import TopBarContest from '../../sharedComponents/atoms/TopbarContest';
 import {FullScreenLoading} from '../../sharedComponents';
@@ -13,6 +13,9 @@ import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
 import {useQuery} from 'react-query';
+import {useSelector} from 'react-redux';
+import {userInfo} from '../../store/selectors';
+const log = console.log;
 
 export default function ContestScreen() {
   const navigation = useNavigation();
@@ -22,7 +25,22 @@ export default function ContestScreen() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
+  const userInfoSelector = useSelector(userInfo);
+
   const contests = useQuery('contests', contestListRemote);
+
+  const teams = useQuery(
+    ['teams', userInfoSelector?.mobile],
+    joinedTeamsRemote,
+  );
+
+  // Side effects
+
+  useEffect(() => {
+    if (teams.data) {
+      log(teams.data);
+    }
+  }, [teams.data]);
 
   const onPageSelectedAction = (e: any) => {
     setSelectedTab(e.nativeEvent.position);
@@ -54,7 +72,7 @@ export default function ContestScreen() {
           <MyContestPage />
         </View>
         <View style={{width: width}}>
-          <MyTeamsPage />
+          <MyTeamsPage teams={teams.data} status={teams.status} />
         </View>
       </PagerView>
     </View>

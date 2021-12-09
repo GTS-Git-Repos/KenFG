@@ -29,6 +29,7 @@ export const playersCountByTeams = createSelector(
   (players, teams) => {
     const team_a = players.filter((item: any) => item.team_key === teams[0]);
     const team_b = players.filter((item: any) => item.team_key === teams[1]);
+
     return {[teams[0]]: team_a, [teams[1]]: team_b};
   },
 );

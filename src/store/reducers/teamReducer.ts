@@ -4,11 +4,11 @@ import {
   UPDATE_CREDITS,
   UPDATE_CAPTAIN,
   UPDATE_VC_CAPTAIN,
+  CLEAR_TEAM,
 } from '../actions/actionTypes';
 
 const PRELOAD_PLAYERS = [
   {
-    cap: false,
     credits: 9,
     key: 'f_0',
     name: 'Player 0',
@@ -16,10 +16,8 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'keeper',
     selected_by: '96%',
     team_key: 'eng',
-    vc: false,
   },
   {
-    cap: false,
     credits: 8,
     key: 'f_1',
     name: 'Player 1',
@@ -27,10 +25,8 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'keeper',
     selected_by: '96%',
     team_key: 'aus',
-    vc: false,
   },
   {
-    cap: false,
     credits: 8.5,
     key: 'f_2',
     name: 'Player 2',
@@ -38,10 +34,8 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'keeper',
     selected_by: '96%',
     team_key: 'aus',
-    vc: false,
   },
   {
-    cap: false,
     credits: 8,
     key: 'f_3',
     name: 'Player 3',
@@ -49,10 +43,8 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'keeper',
     selected_by: '96%',
     team_key: 'eng',
-    vc: false,
   },
   {
-    cap: false,
     credits: 9,
     key: 'f_4',
     name: 'Player 4',
@@ -60,10 +52,8 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'batsman',
     selected_by: '96%',
     team_key: 'eng',
-    vc: false,
   },
   {
-    cap: false,
     credits: 8,
     key: 'f_5',
     name: 'Player 5',
@@ -71,10 +61,8 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'batsman',
     selected_by: '96%',
     team_key: 'eng',
-    vc: false,
   },
   {
-    cap: false,
     credits: 8,
     key: 'f_9',
     name: 'Player 9',
@@ -82,10 +70,8 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'batsman',
     selected_by: '96%',
     team_key: 'aus',
-    vc: false,
   },
   {
-    cap: false,
     credits: 9,
     key: 'f_12',
     name: 'Player 12',
@@ -93,10 +79,8 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'all_rounder',
     selected_by: '96%',
     team_key: 'aus',
-    vc: false,
   },
   {
-    cap: false,
     credits: 7,
     key: 'f_13',
     name: 'Player 13',
@@ -104,10 +88,8 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'all_rounder',
     selected_by: '96%',
     team_key: 'eng',
-    vc: false,
   },
   {
-    cap: false,
     credits: 9,
     key: 'f_22',
     name: 'Player 22',
@@ -115,10 +97,8 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'bowler',
     selected_by: '96%',
     team_key: 'aus',
-    vc: false,
   },
   {
-    cap: false,
     credits: 9,
     key: 'f_19',
     name: 'Player 19',
@@ -126,17 +106,15 @@ const PRELOAD_PLAYERS = [
     seasonal_role: 'bowler',
     selected_by: '96%',
     team_key: 'aus',
-    vc: false,
   },
 ];
 
 const initialState = {
   teams: ['aus', 'eng'],
-  players: PRELOAD_PLAYERS,
+  players: [],
   cap_key: null,
   vc_key: null,
   credits_left: 100,
-  teams_count: null,
 };
 
 interface actionShape {
@@ -171,6 +149,15 @@ const Team = (state = initialState, action: actionShape): any => {
         ...state,
         vc_key: action.payload,
       };
+    case CLEAR_TEAM: {
+      return {
+        ...state,
+        players: [],
+        cap_key: null,
+        vc_key: null,
+        credits_left: 100,
+      };
+    }
 
     default:
       return state;

@@ -19,7 +19,6 @@ interface PropTypes {
 export default function UpcommingMatches(props: PropTypes) {
   const navigation = useNavigation<any>();
 
-
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('ContestListScreen')}
@@ -46,10 +45,7 @@ export default function UpcommingMatches(props: PropTypes) {
             numberOfLines={1}
             allowFontScaling={true}
             adjustsFontSizeToFit={true}
-            style={[
-              tailwind('font-regular text-center font-12'),
-              {color: '#F6F7F4'},
-            ]}>
+            style={[tailwind('font-regular  font-10'), {color: '#F6F7F4'}]}>
             {props.tournament_name}
           </Text>
 
@@ -104,8 +100,8 @@ export default function UpcommingMatches(props: PropTypes) {
           <View style={[tailwind(''), {flex: 6}]}>
             <Text
               numberOfLines={1}
-              allowFontScaling={true}
-              adjustsFontSizeToFit={true}
+              // allowFontScaling={true}
+              // adjustsFontSizeToFit={true}
               style={[tailwind('font-regular font-10'), {color: '#9AABC6'}]}>
               {props.tournament_shortName}
             </Text>
@@ -141,7 +137,7 @@ export default function UpcommingMatches(props: PropTypes) {
           />
           <Text
             style={[
-              tailwind('font-bold text-center pl-1 font-12'),
+              tailwind('font-bold text-center pl-1 font-11'),
               {color: '#FEFEFF'},
             ]}>
             3h:40:23

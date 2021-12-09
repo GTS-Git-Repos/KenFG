@@ -25,3 +25,19 @@ export const resetAuthNavigation = async (navigation: any) => {
     }),
   );
 };
+
+export const resetContestListNavigation = async (navigation: any) => {
+  navigation.dispatch(
+    CommonActions.reset({
+      index: 0,
+      routes: [
+        {
+          name: 'DrawerNav',
+        },
+        {
+          name: 'ContestListScreen',
+        },
+      ],
+    }),
+  );
+};

@@ -5,13 +5,31 @@ import {TeamsCard} from '../../../sharedComponents';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
-  text?: string;
+  teams: any;
+  status: string;
 }
 
 export default function MyTeamsPage(props: PropTypes) {
+  if (props.status === 'loading') {
+    return (
+      <Text style={[tailwind('font-regular text-light font-15')]}>
+        Loading...
+      </Text>
+    );
+  }
+  if (props.status === 'success' && !props?.teams?.teams) {
+    return (
+      <Text style={[tailwind('font-regular text-light font-15')]}>
+        No Teams Found
+      </Text>
+    );
+  }
+
   return (
     <View style={[tailwind('m-3')]}>
-      <TeamsCard />
+      {props.teams.teams.map((item: any) => {
+        return <TeamsCard key={item.teams_key} />;
+      })}
     </View>
   );
 }

@@ -4,6 +4,8 @@ import {upCommingMatchesMock} from '../constants/mockAPIData';
 // API Routes
 
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
+const req_team_create = '/create-team.php';
+const req_view_team = '/view-team.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -16,6 +18,42 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
       return response.data.data;
     } else {
       failedLog('upcommingMatchesandBannersRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const createTeamRemote = async (payload: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_team_create,
+      payload,
+    );
+    if (response.status === 200) {
+      return response.data.data;
+    } else {
+      failedLog('createTeamRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const joinedTeamsRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_view_team,
+      {player_key: params.queryKey[1], match_key: 123},
+    );
+    if (response.status === 200) {
+      return response.data.data;
+    } else {
+      failedLog('joinedTeamsRemote()', response);
     }
   } catch (err) {
     console.log(err);
