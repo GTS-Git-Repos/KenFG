@@ -23,7 +23,7 @@ const TABS = [
   },
   {
     id: '3',
-    name: 'My Teams (1)',
+    name: 'My Teams (2)',
     active: false,
   },
 ];

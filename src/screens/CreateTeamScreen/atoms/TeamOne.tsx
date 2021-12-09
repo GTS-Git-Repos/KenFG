@@ -26,7 +26,7 @@ export default function Team1(props: PropTypes) {
         <Image
           resizeMode="contain"
           source={assets.teamIndia}
-          style={[tailwind(''), {width: '100%', height: 48}]}
+          style={[tailwind(''), {width: '100%', height: 40}]}
         />
       </View>
       <View style={[tailwind('px-1'), {flex: 4}]}>
@@ -34,7 +34,7 @@ export default function Team1(props: PropTypes) {
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           colors={
-            props.reverseUI ? ['#872525', '#B2933D'] : ['#C5A858', '#172338']
+            props.reverseUI ? ['#872525', '#0D1320'] : ['#172338', '#254987']
           }
           style={[tailwind('rounded-full p-0.5')]}>
           <Text
@@ -44,7 +44,7 @@ export default function Team1(props: PropTypes) {
             {props.teamname}
           </Text>
         </LinearGradient>
-        <Text style={[tailwind('font-bold text-right text-brown-4 font-20')]}>
+        <Text style={[tailwind('font-bold text-white text-right font-20')]}>
           {props.teamcount}
         </Text>
       </View>

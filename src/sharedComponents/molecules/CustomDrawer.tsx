@@ -24,7 +24,7 @@ export default function CustomDrawer(props: any) {
         text="My Balance"
         children={
           <Text style={[tailwind('font-regular text-brown-1 font-13')]}>
-            {'\u20B9'}322.03
+            {'\u20B9'}00.00
           </Text>
         }
       />
@@ -50,7 +50,7 @@ const UserInfo = (props: any) => {
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={() => navigation.navigate('AccountProfileScreen')}
-      style={[tailwind('px-4 flex-row items-center bg-dark-4 py-2 pt-3')]}>
+      style={[tailwind('px-4 flex-row items-center bg-dark-4 py-2 pt-6')]}>
       <View style={[tailwind('flex-row items-center'), {flex: 9}]}>
         <View style={[tailwind(''), {flex: 3}]}>
           <View style={[tailwind('rounded-full'), {width: 60, height: 60}]}>

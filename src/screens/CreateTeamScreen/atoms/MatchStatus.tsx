@@ -12,7 +12,7 @@ export default function MatchStatus(props: PropTypes) {
     <View style={[tailwind('py-3')]}>
       <Text
         style={[
-          tailwind('font-bold text-center text-brown-4 font-12'),
+          tailwind('font-bold text-center text-dark-1 font-12'),
           {letterSpacing: 0.5},
         ]}>
         {props.text}

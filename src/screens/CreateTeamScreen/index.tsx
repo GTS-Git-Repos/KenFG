@@ -132,11 +132,11 @@ export default function CreateTeamScreen() {
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarCreateTeam />
-      <LinearGradient colors={['#C5A858', '#B2933D']}>
+      <LinearGradient colors={['#172338', '#0D1320']}>
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
-          colors={['#C5A858', '#B2933D']}>
+          colors={['#172338', '#0D1320']}>
           <MatchStatus text={'MAX 7 PLAYERS FROM A TEAM'} />
           <Line />
 
@@ -245,7 +245,7 @@ export default function CreateTeamScreen() {
         adjustToContentHeight={true}
         disableScrollIfPossible={false}
         closeOnOverlayTap={true}>
-        <ClearTeamSheet clearTeam={clearTeam} />
+        <ClearTeamSheet clearTeam={clearTeam} clearRef={clearRef} />
       </Modalize>
 
       {loading && <BlockScreenByLoading />}

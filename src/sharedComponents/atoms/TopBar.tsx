@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface Props {
-  teams: Array<string>;
+  teams?: Array<string>;
   text: string;
   closeicon?: boolean;
 }
@@ -19,7 +19,7 @@ export default function TopBar(props: Props) {
   }
 
   return (
-    <LinearGradient colors={['#B2933D', '#C5A858']}>
+    <LinearGradient colors={['#BCA04D', '#D8C872']}>
       <View
         style={[
           tailwind('flex-row items-center justify-between px-2'),

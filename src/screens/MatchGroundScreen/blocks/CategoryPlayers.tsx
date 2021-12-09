@@ -41,10 +41,10 @@ export default function CategoryPlayers(props: PropTypes) {
         {props.players.map(item => {
           return (
             <PlayerProfile
-              key={item}
-              team1={item % 2 === 0}
+              key={item.key}
+              team1={item.team_key === 'eng'}
               image={''}
-              name={'V. Kholi'}
+              name={item.name}
               amount={'8.4 crore'}
             />
           );
@@ -60,10 +60,10 @@ const PlayerProfile = (props: PlayerPropTypes) => {
       <Image
         resizeMode="contain"
         source={assets.player}
-        style={[tailwind(''), {width: 72, height: 72}]}
+        style={[tailwind(''), {width: 60, height: 60}]}
       />
-      <Name team1={props.team1} name="R.Pant" />
-      <Text style={[tailwind('font-regular font-13 text-light')]}>
+      <Name team1={props.team1} name={props.name} />
+      <Text style={[tailwind('font-regular font-9 text-light')]}>
         {props.amount}
       </Text>
     </View>
@@ -79,7 +79,7 @@ const Name = (props: any) => {
         tailwind('rounded-xl px-2 bottom-1 py-1 border-2 border-green-600'),
       ]}
       colors={props.team1 ? ['#172338', '#254987'] : ['#73221D', '#172338']}>
-      <Text style={[tailwind('font-bold text-light text-center font-12')]}>
+      <Text style={[tailwind('font-bold text-light text-center font-10')]}>
         {props.name}
       </Text>
     </LinearGradient>

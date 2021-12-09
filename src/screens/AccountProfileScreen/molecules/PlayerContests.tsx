@@ -30,7 +30,7 @@ const TopSection = () => {
               source={assets.s_flag1}
               style={[tailwind(''), {width: 40, height: 20}]}
             />
-            <Text style={[tailwind('font-bold px-2 text-light font-15 py-2')]}>
+            <Text style={[tailwind('font-bold px-2 text-light font-13 py-2')]}>
               AUS
             </Text>
           </View>
@@ -38,7 +38,7 @@ const TopSection = () => {
           <Text
             style={[
               tailwind(
-                'font-bold px-2 text-light font-15 py-2 relative bottom-2',
+                'font-bold px-2 text-light font-13 py-2 relative bottom-2',
               ),
             ]}>
             VS
@@ -50,12 +50,12 @@ const TopSection = () => {
               source={assets.s_flag2}
               style={[tailwind(''), {width: 40, height: 20}]}
             />
-            <Text style={[tailwind('font-bold px-2 text-light font-15 py-2')]}>
+            <Text style={[tailwind('font-bold px-2 text-light font-13 py-2')]}>
               ENG
             </Text>
           </View>
         </View>
-        <Text style={[tailwind('font-regular py-2 text-dark-1 font-14')]}>
+        <Text style={[tailwind('font-regular py-2 text-dark-1 font-10')]}>
           Aus Beat Eng by 98 Runs
         </Text>
         <View style={[tailwind('mr-8')]}>
@@ -72,14 +72,14 @@ const TopSection = () => {
           />
           <Text
             style={[
-              tailwind('font-regular px-2 text-secondary uppercase font-12'),
+              tailwind('font-regular px-2 text-secondary uppercase font-10'),
             ]}>
             You won
           </Text>
         </View>
         <Text
           style={[
-            tailwind('font-regular px-2 text-light uppercase font-16 pt-0.5'),
+            tailwind('font-regular px-2 text-light uppercase font-14 pt-0.5'),
           ]}>
           {'\u20B9'}19,002
         </Text>
@@ -92,19 +92,19 @@ const Points = () => {
   return (
     <View style={[tailwind('flex-row items-center py-2')]}>
       <View style={[tailwind('border-r border-gray-400'), {flex: 6}]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+        <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
           Highest Point
         </Text>
-        <Text style={[tailwind('font-regular  pt-3 text-secondary font-16')]}>
+        <Text style={[tailwind('font-regular  pt-3 text-secondary font-13')]}>
           808.4 (T1)
         </Text>
       </View>
       <View style={[tailwind(''), {flex: 6}]}>
-        <Text style={[tailwind('font-regular text-right text-dark-1 font-13')]}>
+        <Text style={[tailwind('font-regular text-right text-dark-1 font-12')]}>
           Teams Created
         </Text>
         <Text
-          style={[tailwind('font-regular text-right pt-3 text-light font-16')]}>
+          style={[tailwind('font-regular text-right pt-3 text-light font-13')]}>
           20
         </Text>
       </View>
@@ -114,8 +114,8 @@ const Points = () => {
 
 const Footer = () => {
   return (
-    <View style={[tailwind('flex-row bg-dark-3 py-1 items-center')]}>
-      <Text style={[tailwind('font-regular text-light font-15')]}>
+    <View style={[tailwind('flex-row bg-dark-3 py-2 items-center')]}>
+      <Text style={[tailwind('font-regular text-light font-13')]}>
         Ken Team: 929pts
       </Text>
     </View>

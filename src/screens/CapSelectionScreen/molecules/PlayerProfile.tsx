@@ -86,8 +86,10 @@ export default function PlayerProfile(props: PropTypes) {
               onPress={() => props.captainSelectAction(props.player_key)}
               style={[
                 tailwind(
-                  `border border-gray-400 px-4 py-3 rounded-3xl ${
-                    props.is_captain ? 'bg-secondary' : ''
+                  `rounded-3xl ${
+                    props.is_captain
+                      ? 'bg-secondary p-3 '
+                      : 'px-4 py-3 border border-gray-400 '
                   }`,
                 ),
               ]}>
@@ -99,7 +101,7 @@ export default function PlayerProfile(props: PropTypes) {
                     }`,
                   ),
                 ]}>
-                C
+                {props.is_captain ? '2x' : 'C'}
               </Text>
             </TouchableOpacity>
             <Text style={[tailwind('font-regular  text-dark-1 py-1 font-15')]}>
@@ -116,20 +118,24 @@ export default function PlayerProfile(props: PropTypes) {
               onPress={() => props.viceCaptainSelect(props.player_key)}
               style={[
                 tailwind(
-                  `border border-gray-400 p-3 rounded-3xl ${
-                    props.is_vice_captain ? 'bg-secondary' : ''
+                  `rounded-3xl ${
+                    props.is_vice_captain
+                      ? 'bg-secondary px-2 py-3'
+                      : ' p-3 border border-gray-400'
                   }`,
                 ),
               ]}>
               <Text
                 style={[
                   tailwind(
-                    `font-bold font-12 text-light  ${
-                      props.is_vice_captain ? 'text-brown-5' : 'text-light'
+                    `font-bold  text-light  ${
+                      props.is_vice_captain
+                        ? 'text-brown-5 font-10'
+                        : 'text-light font-10'
                     }`,
                   ),
                 ]}>
-                VC
+                {props.is_vice_captain ? '1.5x' : 'VC'}
               </Text>
             </TouchableOpacity>
 

@@ -33,7 +33,7 @@ export default function SignupScreen() {
           otp: response.otp,
         });
       } else {
-        errorBox('Failed to create a User, Please check your input');
+        errorBox('Failed to create a User, Please check your Internet');
       }
     } catch (err) {
       errorBox('Failed to create a User');

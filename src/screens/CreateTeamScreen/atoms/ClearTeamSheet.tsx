@@ -7,6 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useDispatch} from 'react-redux';
 
 interface PropTypes {
+  clearRef(): any;
   clearTeam(): any;
 }
 
@@ -51,7 +52,9 @@ export default function ClearTeamSheet(props: PropTypes) {
         locations={[0.6, 0.5]}
         style={[tailwind('flex-row  m-2 rounded')]}
         colors={['#1C2B46', '#172338']}>
-        <TouchableOpacity style={[tailwind('flex-grow py-3')]}>
+        <TouchableOpacity
+          onPress={() => props.clearRef?.current?.close()}
+          style={[tailwind('flex-grow py-3')]}>
           <Text
             style={[
               tailwind('font-bold uppercase text-light text-center font-12'),

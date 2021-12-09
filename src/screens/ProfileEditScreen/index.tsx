@@ -92,6 +92,7 @@ export default function ProfileEditScreen() {
       if (!userResponse) {
         throw 'Failed to get Updated user Information';
       }
+      // console.log(userResponse)
       dispatch(updateUserInfoAction(userResponse.data));
       infoBox('User information is updated');
       setTimeout(() => {
@@ -107,8 +108,8 @@ export default function ProfileEditScreen() {
   };
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={'My Info'} />
+    <View style={tailwind('h-full bg-dark-3')}>
+      <TopBar text={'My Info & Settings'} />
       <KeyboardAwareScrollView
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={tailwind('px-3 py-3')}>

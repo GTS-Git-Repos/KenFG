@@ -14,7 +14,7 @@ import {useNavigation} from '@react-navigation/core';
 import MyTeamsTopSection from '../atoms/MyTeamTopSection';
 
 interface PropTypes {
-  text?: string;
+  teams_key: string;
 }
 interface TeamContInfoTypes {
   name: string;
@@ -36,8 +36,7 @@ export default function TeamsCard(props: PropTypes) {
         source={assets.ground}>
         {/* Header */}
 
-      <MyTeamsTopSection/>
-
+        <MyTeamsTopSection teams_key={props.teams_key} />
 
         {/* Player Info */}
         <View style={[tailwind('flex-row justify-between items-center p-3')]}>
@@ -47,8 +46,8 @@ export default function TeamsCard(props: PropTypes) {
               tailwind('flex-row justify-around items-center'),
               {flex: 4},
             ]}>
-            <TeamCountInfo name={'NZ'} count={6} />
-            <TeamCountInfo name={'IN'} count={4} />
+            <TeamCountInfo name={'AUS'} count={6} />
+            <TeamCountInfo name={'ENG'} count={4} />
           </View>
           {/* Players */}
           <View
@@ -56,8 +55,8 @@ export default function TeamsCard(props: PropTypes) {
               tailwind('flex-row justify-around items-center'),
               {flex: 6},
             ]}>
-            <PlayerProfile />
-            <PlayerProfile />
+            <PlayerProfile cap="C" name="Player 1" />
+            <PlayerProfile cap="VC" name="Player 2" />
           </View>
         </View>
       </ImageBackground>
@@ -80,7 +79,7 @@ const TeamCountInfo = (props: TeamContInfoTypes) => {
   );
 };
 
-const PlayerProfile = () => {
+const PlayerProfile = (props: any) => {
   return (
     <View style={[tailwind('flex-col')]}>
       <Image
@@ -95,7 +94,7 @@ const PlayerProfile = () => {
           style={[
             tailwind('font-regular text-center overflow-hidden font-13'),
           ]}>
-          M.Dhoni
+          {props.name}
         </Text>
       </View>
 
@@ -105,7 +104,12 @@ const PlayerProfile = () => {
             'absolute border-2 rounded-full p-0.5 w-6 h-6 border-gray-800 flex-row items-center justify-center bg-gray-100 top-0 left-0',
           ),
         ]}>
-        <Text style={[tailwind('font-regular font-12')]}>VC</Text>
+        <Text
+          allowFontScaling={true}
+          adjustsFontSizeToFit={true}
+          style={[tailwind('font-regular font-12')]}>
+          {props.cap}
+        </Text>
       </View>
     </View>
   );
@@ -121,26 +125,26 @@ const BottomStats = () => {
       ]}>
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
-        <Text style={[tailwind('font-regular text-light font-16')]}>WK</Text>
-        <Text style={[tailwind('font-bold text-light px-2 font-16')]}>1</Text>
+        <Text style={[tailwind('font-regular text-light font-13')]}>WK</Text>
+        <Text style={[tailwind('font-bold text-light px-2 font-13')]}>1</Text>
       </View>
 
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
-        <Text style={[tailwind('font-regular text-light font-16')]}>BAT</Text>
-        <Text style={[tailwind('font-bold text-light px-2 font-16')]}>3</Text>
+        <Text style={[tailwind('font-regular text-light font-13')]}>BAT</Text>
+        <Text style={[tailwind('font-bold text-light px-2 font-13')]}>3</Text>
       </View>
 
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
-        <Text style={[tailwind('font-regular text-light font-16')]}>AR</Text>
-        <Text style={[tailwind('font-bold text-light px-2 font-16')]}>2</Text>
+        <Text style={[tailwind('font-regular text-light font-13')]}>AR</Text>
+        <Text style={[tailwind('font-bold text-light px-2 font-13')]}>2</Text>
       </View>
 
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
-        <Text style={[tailwind('font-regular text-light font-16')]}>BOWL</Text>
-        <Text style={[tailwind('font-bold text-light px-2 font-16')]}>5</Text>
+        <Text style={[tailwind('font-regular text-light font-13')]}>BOWL</Text>
+        <Text style={[tailwind('font-bold text-light px-2 font-13')]}>5</Text>
       </View>
     </View>
   );

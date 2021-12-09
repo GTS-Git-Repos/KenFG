@@ -91,7 +91,7 @@ export default function Player(props: PropTypes) {
             style={[tailwind('font-bold px-2 text-center text-light font-17')]}>
             {props.credits}
           </Text>
-          <AddButton />
+          {props.isSelected ? <AddedButton /> : <AddButton />}
         </View>
       </LinearGradient>
       <BottomLine />
@@ -123,6 +123,20 @@ const AddButton = (props: any) => {
         ),
       ]}>
       <Icon name="add" color="white" size={24} />
+    </LinearGradient>
+  );
+};
+
+const AddedButton = (props: any) => {
+  return (
+    <LinearGradient
+      colors={['#816D2E', '#614920']}
+      style={[
+        tailwind(
+          'flex-col items-center justify-center absolute rounded-l-lg py-2 right-0',
+        ),
+      ]}>
+      <Icon name="remove" color="white" size={24} />
     </LinearGradient>
   );
 };
