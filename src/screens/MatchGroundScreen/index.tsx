@@ -11,21 +11,30 @@ const log = console.log;
 import MatchGroundTopBar from './atoms/MatchGroundTopar';
 import MatchStats from './atoms/MatchStats';
 import CategoryPlayers from './blocks/CategoryPlayers';
+import {useSelector} from 'react-redux';
+import {creditLeft, playersCountByTeams} from '../../store/selectors';
 
 export default function MathchGroundScreen() {
   const navigation = useNavigation();
   const route = useRoute();
 
+  const playersState = useSelector<any>(state => state.team.players);
+  const TeamState: any = useSelector<any>(state => state.team.teams);
+
+  const availableCredits = useSelector(creditLeft);
+  const playersCount = useSelector(playersCountByTeams);
+
+
   return (
     <View style={tailwind('h-full bg-dark-4')}>
       <MatchGroundTopBar name={'Team Name'} />
       <MatchStats
-        playersCount={0}
-        teamname1={'IND'}
-        teamname2={'AUS'}
-        teamcount1={7}
-        teamcount2={6}
-        creditsLeft={3.5}
+        playersCount={playersCount[TeamState[0]].length + playersCount[TeamState[1]].length}
+        teamname1={TeamState[0]}
+        teamname2={TeamState[1]}
+        teamcount1={playersCount[TeamState[0]].length}
+        teamcount2={playersCount[TeamState[1]].length}
+        creditsLeft={availableCredits}
       />
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <ImageBackground
@@ -39,16 +48,16 @@ export default function MathchGroundScreen() {
         </ImageBackground>
         <Image
           resizeMode="contain"
-          source={assets.logo}
+          source={assets.logo_new}
           style={[
-            tailwind('w-20 h-20 absolute right-0 top-10'),
+            tailwind('w-20 h-20 absolute right-5 top-10'),
             {opacity: 0.7},
           ]}
         />
         <Image
           resizeMode="contain"
-          source={assets.logo}
-          style={[tailwind('w-20 h-20 absolute left-0 top-10'), {opacity: 0.7}]}
+          source={assets.logo_new}
+          style={[tailwind('w-20 h-20 absolute left-5 top-10'), {opacity: 0.7}]}
         />
       </ScrollView>
     </View>
