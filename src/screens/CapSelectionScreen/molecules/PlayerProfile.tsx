@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Image, Text} from 'react-native';
+import {View, Image, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import {BottomLine} from '../../../sharedComponents/';
@@ -8,12 +8,16 @@ import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   image?: string;
+  player_key: string;
   name: string;
   points: string;
   teamname: string;
   title: string;
-  cap: boolean;
-  vc: boolean;
+  c: string;
+  vc: string;
+  is_captain: boolean;
+  is_vice_captain: boolean;
+  captainSelectAction(player_key: string): any;
 }
 
 export default function PlayerProfile(props: PropTypes) {
@@ -77,11 +81,12 @@ export default function PlayerProfile(props: PropTypes) {
               tailwind('flex-col justify-center items-center'),
               {flex: 5},
             ]}>
-            <View
+            <TouchableOpacity
+              onPress={() => props.captainSelectAction(props.player_key)}
               style={[
                 tailwind(
                   `border border-gray-400 px-4 py-3 rounded-3xl ${
-                    props.cap ? 'bg-secondary' : ''
+                    props.is_captain ? 'bg-secondary' : ''
                   }`,
                 ),
               ]}>
@@ -89,13 +94,13 @@ export default function PlayerProfile(props: PropTypes) {
                 style={[
                   tailwind(
                     `font-bold font-12 ${
-                      props.cap ? 'text-brown-5' : 'text-light'
+                      props.is_captain ? 'text-brown-5' : 'text-light'
                     }`,
                   ),
                 ]}>
                 C
               </Text>
-            </View>
+            </TouchableOpacity>
             <Text style={[tailwind('font-regular  text-dark-1 py-1 font-15')]}>
               {props.c}
             </Text>

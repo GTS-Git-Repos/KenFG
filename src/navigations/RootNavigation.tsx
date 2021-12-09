@@ -50,12 +50,14 @@ const StackConfig = {
 
 // console.log('DarkTheme', DarkTheme);
 
+
+
 export default function RootNavigation() {
   return (
     <NavigationContainer theme={DarkTheme}>
       <Host>
         <RootNavigator.Navigator
-          initialRouteName="InitialScreen"
+          initialRouteName="CreateTeamScreen"
           screenOptions={StackConfig}>
           <RootNavigator.Screen
             component={InitialScreen}

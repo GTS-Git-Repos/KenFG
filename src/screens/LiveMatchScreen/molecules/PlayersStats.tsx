@@ -88,7 +88,7 @@ const Filter = () => {
           {flex: 6},
         ]}>
         <TouchableOpacity
-          style={[tailwind('bg-secondary rounded-l-3xl py-3 px-2')]}>
+          style={[tailwind('bg-secondary flex-grow rounded-l-3xl py-3 px-2')]}>
           <Text
             style={[
               tailwind('font-bold uppercase text-center text-brown-5 font-12'),
@@ -97,7 +97,7 @@ const Filter = () => {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[tailwind('')]}>
+        <TouchableOpacity style={[tailwind('flex-grow')]}>
           <Text
             style={[
               tailwind(
@@ -108,7 +108,7 @@ const Filter = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <View style={[tailwind(''), {flex: 6}]}></View>
+      <View style={[tailwind(''), {flex: 4}]}></View>
     </View>
   );
 };

@@ -12,3 +12,13 @@ export function isPlayerSelected(player_key: string) {
     return false;
   }
 }
+
+// export function isPlayerCaptain(player_key: string) {
+//   const state = store.getState().team;
+//   const player = state.players.find((item: any) => item.cap === );
+//   if (player) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }

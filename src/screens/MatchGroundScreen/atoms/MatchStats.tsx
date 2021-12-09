@@ -66,7 +66,7 @@ export const TeamTag = (props: any) => {
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       colors={props.team1 ? ['#172338', '#254987'] : ['#73221D', '#172338']}
-      style={[tailwind('rounded-full px-2 py-1 w-12')]}>
+      style={[tailwind('rounded-full px-2 py-1')]}>
       <Text
         allowFontScaling={true}
         adjustsFontSizeToFit={true}

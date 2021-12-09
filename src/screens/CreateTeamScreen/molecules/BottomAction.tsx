@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
-  text?: string;
+  navigateToCapSelection(): any;
 }
 
 export default function BottomAction(props: PropTypes) {
@@ -36,7 +36,7 @@ export default function BottomAction(props: PropTypes) {
         style={[tailwind('flex-row  m-2 rounded')]}
         colors={['#00513B', '#006A4D']}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('CapSelectionScreen')}
+          onPress={props.navigateToCapSelection}
           style={[tailwind('px-8 py-3')]}>
           <Text style={[tailwind('font-bold uppercase text-light font-12')]}>
             Continue

@@ -27,7 +27,7 @@ export default function MathchGroundScreen() {
 
   return (
     <View style={tailwind('h-full bg-dark-4')}>
-      <MatchGroundTopBar name={'Team Name'} />
+      <MatchGroundTopBar name={'Your Team'} />
       <MatchStats
         playersCount={playersCount[TeamState[0]].length + playersCount[TeamState[1]].length}
         teamname1={TeamState[0]}

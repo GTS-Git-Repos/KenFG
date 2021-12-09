@@ -14,15 +14,22 @@ import ProgressBar from './atoms/ProgressBar';
 import RowHeader from './atoms/RowHeader';
 import PlayerProfile from './molecules/PlayerProfile';
 import CapSelectionAction from './atoms/CapSelectionAction';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {allPlayers, playersCountByTeams} from '../../store/selectors';
+import {captainSelection} from '../../store/actions/teamActions';
 
 export default function CapSelectionScreen() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const TeamsSelector = useSelector(playersCountByTeams);
   const AllPlayers = useSelector(allPlayers);
 
+  // log(AllPlayers)
+
+  const captainSelectAction = (player_key: string) => {
+    dispatch(captainSelection(player_key));
+  };
 
   return (
     <View style={tailwind('h-full bg-dark')}>
@@ -45,14 +52,16 @@ export default function CapSelectionScreen() {
           return (
             <PlayerProfile
               key={item.key}
+              player_key={item.key}
               name={item.name}
               points={item.points}
               teamname={item.team_key}
               title={'BAT'}
               c={'43.3%'}
               vc={'8.3%'}
-              captain={item.cap}
-              vice_captain={item.vc}
+              is_captain={item.cap}
+              is_vice_captain={item.vc}
+              captainSelectAction={captainSelectAction}
             />
           );
         })}

@@ -50,7 +50,7 @@ export default function CreateTeamScreen() {
   const isScreenReady = useIsScreenReady();
   const dispatch = useDispatch();
 
-  const playersState = useSelector<any>(state => state.team.players);
+  const playersState: any = useSelector<any>(state => state.team.players);
   const s = useSelector<any>(state => state.team);
 
   // log(s)
@@ -107,6 +107,14 @@ export default function CreateTeamScreen() {
         errorBox(canBeSelected.message);
         log(canBeSelected);
       }
+    }
+  };
+
+  const navigateToCapSelection = () => {
+    if (playersState.length === 11) {
+      navigation.navigate('CapSelectionScreen');
+    } else {
+      errorBox('Team requires total 11 players');
     }
   };
 
@@ -220,7 +228,7 @@ export default function CreateTeamScreen() {
       </PagerView>
       <View
         style={[tailwind('absolute bottom-0 w-full flex-row justify-center')]}>
-        <BottomAction />
+        <BottomAction navigateToCapSelection={navigateToCapSelection} />
       </View>
 
       <Modalize

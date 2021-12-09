@@ -91,9 +91,6 @@ export default function Player(props: PropTypes) {
             style={[tailwind('font-bold px-2 text-center text-light font-17')]}>
             {props.credits}
           </Text>
-          {
-            
-          }
           <AddButton />
         </View>
       </LinearGradient>
