@@ -19,6 +19,7 @@ import {allPlayers, playersCountByTeams} from '../../store/selectors';
 import {
   captainSelection,
   vicecaptainSelectionAction,
+  clearTeamAction,
 } from '../../store/actions/teamActions';
 import {isPlayerCaptain, isPlayerViceCaptain} from '../../store/store_utils';
 import {errorBox} from '../../utils/snakBars';
@@ -73,12 +74,13 @@ export default function CapSelectionScreen() {
         const createTeamObj = createTeamObjCreator();
         const response = await createTeamRemote(createTeamObj);
         if (response) {
+          dispatch(clearTeamAction());
           // log(selected_contest);
           resetContestListNavigation(navigation, {
             match_key: selected_match.match_key,
             contest_key: selected_contest,
             // team_key: response.teams[1].teams_key,
-            team_key: 't2',
+            team_key: 't1',
           });
           return;
         } else {

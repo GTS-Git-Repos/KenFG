@@ -37,7 +37,7 @@
     },
     {
         "key": "f_3w1",
-        "name": "Player extra keeper",
+        "name": "Player 76",
         "team_key": "eng",
         "seasonal_role": "keeper",
         "selected_by": "96%",
@@ -128,7 +128,7 @@
     {
         "key": "f_13",
         "name": "Player 13",
-        "team_key": "eng",
+        "team_key": "aus",
         "seasonal_role": "all_rounder",
         "selected_by": "96%",
         "points": 3,

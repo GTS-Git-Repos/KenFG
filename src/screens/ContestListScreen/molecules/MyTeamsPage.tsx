@@ -10,8 +10,6 @@ interface PropTypes {
 }
 
 export default function MyTeamsPage(props: PropTypes) {
-  console.log('teams', props.teams);
-
   if (props.status === 'loading') {
     return (
       <Text style={[tailwind('font-regular text-light font-15')]}>

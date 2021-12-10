@@ -111,7 +111,7 @@ const PRELOAD_PLAYERS = [
 
 const initialState = {
   teams: ['aus', 'eng'],
-  players: PRELOAD_PLAYERS,
+  players: [],
   cap_key: null,
   vc_key: null,
   credits_left: 100,
