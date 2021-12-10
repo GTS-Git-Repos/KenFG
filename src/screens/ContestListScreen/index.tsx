@@ -26,6 +26,7 @@ import CreateTeamButton from './atoms/CreateTeamButton';
 import {updateSelectedContestAction} from '../../store/actions/appActions';
 import JoinContestModal from './molecules/JoinContestModal';
 import Modal from 'react-native-modal';
+import {errorBox} from '../../utils/snakBars';
 
 const log = console.log;
 
@@ -99,13 +100,18 @@ export default function ContestListScreen() {
         player_key: userInfoSelector.mobile,
       };
       console.log('payload', payload);
+      setLoading(true);
       const response = await joinContestRemote(payload);
       if (response) {
+        setShowJoinModal(false);
+        pagerRef.current?.setPage(1);
       } else {
+        errorBox('Failed to join Contest');
       }
     } catch (err) {
       log('join_err', err);
     } finally {
+      setLoading(false);
     }
   };
 

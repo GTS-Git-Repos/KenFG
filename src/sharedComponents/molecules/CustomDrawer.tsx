@@ -12,7 +12,6 @@ import {removeToken} from '../../utils/authTokenUtils';
 import RNRestart from 'react-native-restart';
 const log = console.log;
 export default function CustomDrawer(props: any) {
-  
   const [logoutModal, setLogoutModal] = useState(false);
 
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
@@ -83,7 +82,7 @@ export default function CustomDrawer(props: any) {
         hideModalContentWhileAnimating={true}
         backdropTransitionOutTiming={0}
         scrollHorizontal={true}>
-        <View style={[tailwind('bg-white p-6 bg-dark-3 rounded')]}>
+        <View style={[tailwind('bg-white px-6 pt-6 pb-3 bg-dark-3 rounded')]}>
           <Text style={[tailwind('font-bold text-light font-18')]}>
             Do you want to Logout ?
           </Text>

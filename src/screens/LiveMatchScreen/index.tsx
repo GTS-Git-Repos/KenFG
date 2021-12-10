@@ -36,21 +36,16 @@ export default function LiveMatchScreen() {
   };
 
   if (isScreenReady === false) {
-    return <FullScreenLoading title={'IND vs NZ'} />;
+    return <FullScreenLoading title={'AUS vs ENG'} />;
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopBar text={'IND vs NZ'} />
+      <TopBar text={'AUS vs ENG'} />
 
-      <LinearGradient
-        colors={['#B2933D', '#bea14f']}
-        // colors={['red', 'blue']}
-        end={{x: 0.0, y: 1.8}}
-        start={{x: 1.6, y: 0.5}}
-        locations={[0.6, 0.5]}>
+      <LinearGradient colors={['#172338', '#172338']}>
         <View style={[tailwind('px-3 pt-6 pb-3')]}>
-          <MatchStat teamName1={'India'} teamName2={'New Zeland'} />
+          <MatchStat teamName1={'Australia'} teamName2={'England'} />
 
           <Projection />
           <View style={[tailwind('my-2')]}>

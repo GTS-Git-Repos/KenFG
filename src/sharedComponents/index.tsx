@@ -8,6 +8,7 @@ import BlockScreenByLoading from './atoms/BlockScreenByLoading';
 import ContestCard from './molecules/ContestCard';
 import TeamsCard from './molecules/TeamsCard';
 import HorizontalProfile from './molecules/HorizontalProfile';
+import JoinedContestCard from './molecules/JoinedContestCard';
 
 export {
   TopBar,
@@ -19,4 +20,5 @@ export {
   ContestCard,
   TeamsCard,
   HorizontalProfile,
+  JoinedContestCard,
 };

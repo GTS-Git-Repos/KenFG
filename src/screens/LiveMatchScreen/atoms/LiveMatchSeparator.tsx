@@ -10,7 +10,7 @@ export default function LiveMatchSeparator() {
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       style={[tailwind('mx-7')]}
-      colors={['#C5A858', '#816D2E', '#C5A858']}>
+      colors={['#172338', '#816D2E', '#172338']}>
       <View style={[tailwind(''), {height: 1}]}></View>
     </LinearGradient>
   );

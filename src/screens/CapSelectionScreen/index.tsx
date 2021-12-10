@@ -77,7 +77,8 @@ export default function CapSelectionScreen() {
           resetContestListNavigation(navigation, {
             match_key: selected_match.match_key,
             contest_key: selected_contest,
-            team_key: response.teams[1].teams_key,
+            // team_key: response.teams[1].teams_key,
+            team_key: 't2',
           });
           return;
         } else {
