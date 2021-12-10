@@ -70,9 +70,9 @@ export default function ContestListScreen() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   console.log('From Store >>>', selectedContestState);
-  // }, [selectedContestState]);
+  useEffect(() => {
+    // console.log('contests', contests);
+  }, [contests]);
 
   // Business logic
 
@@ -158,7 +158,9 @@ export default function ContestListScreen() {
             'absolute bottom-0 w-full flex-row items-center justify-center',
           ),
         ]}>
-        <CreateTeamButton />
+
+
+        <CreateTeamButton contests={contests} />
       </View>
 
       <Modal

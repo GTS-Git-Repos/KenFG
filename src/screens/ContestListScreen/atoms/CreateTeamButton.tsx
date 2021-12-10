@@ -8,7 +8,7 @@ import {useNavigation} from '@react-navigation/core';
 import {useDispatch} from 'react-redux';
 import {updateSelectedContestAction} from '../../../store/actions/appActions';
 
-export default function CreateTeamButtom() {
+export default function CreateTeamButtom(props: any) {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch<any>();
 
@@ -16,6 +16,14 @@ export default function CreateTeamButtom() {
     dispatch(updateSelectedContestAction(null));
     navigation.navigate('CreateTeamScreen');
   };
+
+  if (!props.contests?.data) {
+    return null;
+  }
+
+  if (props.contests?.data?.length === 0) {
+    return null;
+  }
 
   return (
     <View style={[tailwind('w-6/12')]}>
