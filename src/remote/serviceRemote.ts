@@ -10,7 +10,7 @@ import playersListJson from '../constants/mocks/mockplayersList.json';
 // API Routes
 const req_test = '/test.php';
 
-export const contestListRemote = async () => {
+export const ___contestListRemote = async () => {
   try {
     return contestListJson;
   } catch (err) {
@@ -19,7 +19,7 @@ export const contestListRemote = async () => {
   }
 };
 
-export const contestInfoRemote = async (params: any) => {
+export const ___contestInfoRemote = async (params: any) => {
   try {
     const contest = contestListJson.find(
       (item: contestListsTypes) => item.key === params.queryKey[1],

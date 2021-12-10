@@ -31,8 +31,24 @@ import MoreScreen from '../screens/MoreScreen';
 
 const RootNavigator = createNativeStackNavigator();
 
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 1000,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
+
 const StackConfig = {
   headerShown: false,
+  transitionSpec: {
+    open: config,
+    close: config,
+  },
 };
 
 // const MyTheme = {
@@ -56,7 +72,8 @@ export default function RootNavigation() {
       <Host>
         <RootNavigator.Navigator
           initialRouteName="InitialScreen"
-          screenOptions={StackConfig}>
+          screenOptions={StackConfig}
+        >
           <RootNavigator.Screen
             component={InitialScreen}
             name="InitialScreen"

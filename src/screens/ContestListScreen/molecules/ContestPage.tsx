@@ -59,7 +59,7 @@ export default function ContestPage(props: PropTypes) {
                   entry={item.entry}
                   amount_letters={item.prize.amount_letters}
                   amount={item.prize.amount}
-                  guaranteed={item.guaranteed}
+                  guaranteed={item.guaranteed === "yes"}
                   max_entry={item.max_entry}
                   bonus={item.bonus}
                   is_practice={item.is_practice}
@@ -69,6 +69,7 @@ export default function ContestPage(props: PropTypes) {
           })}
         </View>
       </View>
+      <View style={[tailwind('h-20')]}></View>
     </ScrollView>
   );
 }

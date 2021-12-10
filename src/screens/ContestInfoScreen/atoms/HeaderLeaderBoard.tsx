@@ -25,15 +25,15 @@ export default function HeaderLeaderBoard(props: PropTypes) {
 
       <View style={[tailwind('flex-row items-center'), {width: ALLTEAMSWIDTH}]}>
         <View style={[tailwind(''), {width: SUBITEMSWIDTH}]}>
-          <Text style={[tailwind('font-bold text-dark-1 font-13 text-center')]}>
+          {/* <Text style={[tailwind('font-bold text-dark-1 font-13 text-center')]}>
             Points
-          </Text>
+          </Text> */}
         </View>
 
         <View style={[tailwind(''), {width: SUBITEMSWIDTH}]}>
-          <Text style={[tailwind('font-bold text-dark-1 text-center font-13')]}>
+          {/* <Text style={[tailwind('font-bold text-dark-1 text-center font-13')]}>
             # Rank
-          </Text>
+          </Text> */}
         </View>
       </View>
     </View>

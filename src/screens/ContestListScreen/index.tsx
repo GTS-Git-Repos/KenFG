@@ -3,7 +3,7 @@ import {View, useWindowDimensions, ScrollView, FlatList} from 'react-native';
 import tailwind from '../../../tailwind';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
-import {contestListRemote} from '../../remote/serviceRemote';
+import {contestListsRemote} from '../../remote/matchesRemote';
 import {joinedTeamsRemote} from '../../remote/matchesRemote';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import TopBarContest from '../../sharedComponents/atoms/TopbarContest';
@@ -15,6 +15,7 @@ import MyTeamsPage from './molecules/MyTeamsPage';
 import {useQuery} from 'react-query';
 import {useSelector} from 'react-redux';
 import {userInfo} from '../../store/selectors';
+import CreateTeamButton from './atoms/CreateTeamButton';
 const log = console.log;
 
 export default function ContestScreen() {
@@ -27,7 +28,7 @@ export default function ContestScreen() {
 
   const userInfoSelector = useSelector(userInfo);
 
-  const contests = useQuery('contests', contestListRemote);
+  const contests = useQuery('contests', contestListsRemote);
 
   const teams = useQuery(
     ['teams', userInfoSelector?.mobile],
@@ -37,10 +38,10 @@ export default function ContestScreen() {
   // Side effects
 
   useEffect(() => {
-    if (teams.data) {
-      log(teams.data);
+    if (contests.data) {
+      // log(contests.data);
     }
-  }, [teams.data]);
+  }, [contests.data]);
 
   const onPageSelectedAction = (e: any) => {
     setSelectedTab(e.nativeEvent.position);
@@ -75,6 +76,15 @@ export default function ContestScreen() {
           <MyTeamsPage teams={teams.data} status={teams.status} />
         </View>
       </PagerView>
+
+      <View
+        style={[
+          tailwind(
+            'absolute bottom-0 w-full flex-row items-center justify-center',
+          ),
+        ]}>
+        <CreateTeamButton />
+      </View>
     </View>
   );
 }

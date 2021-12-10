@@ -20,7 +20,7 @@ import LearderBoard from './molecules/LeaderBoardList';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import {contestListsTypes} from '../../types/api';
 
-import {contestInfoRemote} from '../../remote/serviceRemote';
+import {contestInfoRemote} from '../../remote/matchesRemote';
 
 import Animated, {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
@@ -34,14 +34,18 @@ export default function ContestInfoScreen() {
   const scrollRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
 
-  useEffect(() => {
-    // log(route.params);
-  }, []);
-
   const contest = useQuery(
     ['contest', route.params.contest_id],
     contestInfoRemote,
   );
+
+  useEffect(() => {
+    // log(route.params.contest_id)
+  }, []);
+
+  useEffect(() => {
+    log(contest.data);
+  }, [contest]);
 
   const onScrollAction = (e: any) => {
     tabOffset.value = e.nativeEvent.contentOffset.x;
@@ -56,27 +60,23 @@ export default function ContestInfoScreen() {
   };
 
   if (isScreenReady === false) {
-    return <FullScreenLoading title={'AUS vs SA'} />;
+    return <FullScreenLoading title={'AUS vs ENG'} />;
   }
 
   if (!contest.data) {
-    return (
-      <Text style={[tailwind('font-regular text-light font-15')]}>
-        No Contest Found
-      </Text>
-    );
+    return <FullScreenLoading title={'AUS vs ENG'} />;
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopbarContest title={'AUS vs SA'} subtitle={'18h 11m left'} />
+      <TopbarContest title={'AUS vs ENG'} subtitle={'18h 11m left'} />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
           contest_key={contest.data.key}
           match_key={contest.data.match_key}
           title={contest.data.title}
-          total_joined={contest.data.total_joined}
-          total_spots={contest.data.total_spots}
+          total_joined={200}
+          total_spots={1000}
           amount_letters={contest.data.prize.amount_letters}
           amount={contest.data.prize.amount}
           guaranteed={contest.data.guaranteed}
@@ -103,7 +103,7 @@ export default function ContestInfoScreen() {
         snapToAlignment="center"
         snapToInterval={width}
         scrollEventThrottle={16}>
-        <WinningsList data={contest.data.prize.winnings} />
+        {/* <WinningsList data={contest.data.prize.winnings} /> */}
         <LearderBoard />
       </Animated.ScrollView>
       <View

@@ -38,6 +38,8 @@ export default {
   football_off: require('../assets/icons/football_off.png'),
   notify: require('../assets/icons/notify.png'),
   added: require('../assets/icons/added.png'),
+  newWallet: require('../assets/icons/newWallet.png'),
+  back: require('../assets/icons/back.png'),
 
   running_clock: require('../assets/icons/running_clock.png'),
   bell: require('../assets/icons/bell.png'),

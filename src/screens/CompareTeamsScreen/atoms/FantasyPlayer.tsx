@@ -44,7 +44,7 @@ export default function FantasyPlayer(props: PropTypes) {
           <Image
             resizeMode="contain"
             source={assets.teamIndia}
-            style={{width: '100%', height: 48}}
+            style={{width: '100%', height: 40}}
           />
         </View>
       </View>
@@ -56,7 +56,7 @@ export default function FantasyPlayer(props: PropTypes) {
           <Image
             resizeMode="contain"
             source={assets.teamIndia}
-            style={{width: '100%', height: 48}}
+            style={{width: '100%', height: 40}}
           />
         </View>
         <View style={[tailwind(''), {flex: 7}]}>

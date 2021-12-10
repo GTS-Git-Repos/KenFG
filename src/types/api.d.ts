@@ -12,7 +12,7 @@ export interface contestListsTypes {
   };
   total_spots: number;
   total_joined: number;
-  guaranteed: number;
+  guaranteed: string;
   max_entry: number;
   bonus: string;
   is_practice: false;

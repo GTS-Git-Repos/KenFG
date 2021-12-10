@@ -6,6 +6,7 @@ import {upCommingMatchesMock} from '../constants/mockAPIData';
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
 const req_team_create = '/create-team.php';
 const req_view_team = '/view-team.php';
+const req_contest_list = '/contests.php?m=bblt20_2021_g8';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -18,6 +19,50 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
       return response.data.data;
     } else {
       failedLog('upcommingMatchesandBannersRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const contestListsRemote = async () => {
+  try {
+    const response = await requestServer(
+      METHODS.GET,
+      BASE_URL + req_contest_list,
+    );
+    if (response.status === 200) {
+      return response.data.data;
+    } else {
+      failedLog('contestsListsRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const contestInfoRemote = async (params: any) => {
+  console.log(params);
+
+  try {
+    const response = await requestServer(
+      METHODS.GET,
+      BASE_URL + req_contest_list,
+    );
+    if (response.status === 200) {
+      let contest = response.data.data.find(
+        (item: any) => item.key === params.queryKey[1],
+      );
+
+      if (contest) {
+        return contest;
+      } else {
+        failedLog('No contest Found', '0');
+      }
+    } else {
+      failedLog('contestInfoRemote', response);
     }
   } catch (err) {
     console.log(err);

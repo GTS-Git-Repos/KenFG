@@ -16,9 +16,9 @@ export default function SelectTeamHeader(props: PropTypes) {
       start={{x: 0.8, y: 2.0}}
       style={[tailwind('flex-row rounded-t-xl')]}
       colors={['#B2933D', '#bea14f']}>
-      <View style={[tailwind('flex-row items-center py-3')]}>
+      <View style={[tailwind('flex-row items-center p-3')]}>
         <View style={[tailwind('flex-row items-center')]}>
-          <Icon name="close" size={24} color="#614920" />
+          {/* <Icon name="close" size={24} color="#614920" /> */}
           <Text style={[tailwind('font-bold text-brown-5 font-16')]}>
             Slect your Team
           </Text>

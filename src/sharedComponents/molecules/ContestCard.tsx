@@ -5,6 +5,7 @@ import assets from '../../constants/assets_manifest';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
+const log = console.log;
 
 interface PropTypes {
   contest_key: string;
@@ -14,7 +15,7 @@ interface PropTypes {
   total_spots: number;
   amount_letters: string;
   amount: string;
-  guaranteed: number;
+  guaranteed: boolean;
   entry: string;
   max_entry: number;
   bonus: string;
@@ -25,6 +26,7 @@ interface PropTypes {
 const PROGRESS_BAR_HEIGHT = 3;
 
 export default function ContestCard(props: PropTypes) {
+  
   const navigation = useNavigation<any>();
 
   return (
@@ -58,24 +60,25 @@ export default function ContestCard(props: PropTypes) {
             </View>
 
             <View style={[tailwind('')]}>
-              {!props.is_practice && (
+              {/* {!props.is_practice && (
                 <Text
                   style={[
                     tailwind('font-regular font-14 text-white text-right'),
                   ]}>
                   Entry
                 </Text>
-              )}
+              )} */}
               <View
                 style={[tailwind('flex-row justify-end py-2 items-center')]}>
-                <Text
+                {/* <Text
                   style={[
                     tailwind('font-semibold px-3 line-through font-14'),
                     {color: '#006A4D'},
                   ]}>
                   {'\u20B9 '}
                   {parseInt(props.entry) + 10}
-                </Text>
+                </Text> */}
+
                 <TouchableOpacity
                   onPress={() => navigation.navigate('CreateTeamScreen')}
                   style={[
@@ -88,8 +91,9 @@ export default function ContestCard(props: PropTypes) {
                     style={[
                       tailwind('font-bold text-center text-light font-14'),
                     ]}>
-                    {'\u20B9'}
-                    {props.entry}
+                    {/* {'\u20B9'}
+                    {props.entry} */}
+                    Join
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -167,7 +171,7 @@ export default function ContestCard(props: PropTypes) {
               </View>
             </View>
 
-            {props.guaranteed === 1 && (
+            {props.guaranteed && (
               <View style={[tailwind('flex-row items-center')]}>
                 <Image
                   resizeMode="contain"

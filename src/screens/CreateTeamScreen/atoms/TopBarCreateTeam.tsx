@@ -17,7 +17,7 @@ export default function TopBarCreateTeam(props: PropTypes) {
     navigation.goBack();
   }
   return (
-    <LinearGradient colors={['#B2933D', '#C5A858']}>
+    <LinearGradient colors={['#BCA04D', '#D8C872']}>
       <View
         style={[
           tailwind('flex-row items-center justify-between px-2'),
@@ -25,7 +25,14 @@ export default function TopBarCreateTeam(props: PropTypes) {
         ]}>
         <View style={[tailwind('flex-row items-center')]}>
           <TouchableOpacity onPress={goBack} style={[tailwind('px-4')]}>
-            <Icon name="arrow-back-outline" size={25} color="#614920" />
+            <Image
+              resizeMode="contain"
+              source={assets.back}
+              style={[
+                tailwind('px-1'),
+                {width: 15, height: 15, transform: [{rotate: '180deg'}]},
+              ]}
+            />
           </TouchableOpacity>
           <Text style={[tailwind('font-bold text-brown-4 font-18')]}>
             15h 54m 36s Left

@@ -27,6 +27,7 @@ export default function MyContestPage(props: PropTypes) {
         entry_amount={20}
         joined={['T1', 'T2', 'T3']}
       /> */}
+      <View style={[tailwind('h-20')]}></View>
     </View>
   );
 }

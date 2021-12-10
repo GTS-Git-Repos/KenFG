@@ -15,11 +15,18 @@ export default function TopBarContest(props: PropTypes) {
   const navigation = useNavigation();
   return (
     <LinearGradient
-      colors={['#B2933D', '#C5A858']}
+      colors={['#BCA04D', '#D8C872']}
       style={[tailwind('p-3 flex-row items-center justify-between')]}>
       <View style={[tailwind('flex flex-row items-center')]}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Icon name="arrow-back-outline" size={25} color="#172339" />
+          <Image
+            resizeMode="contain"
+            source={assets.back}
+            style={[
+              tailwind('px-2'),
+              {width: 15, height: 15, transform: [{rotate: '180deg'}]},
+            ]}
+          />
         </TouchableOpacity>
 
         <View style={[tailwind('px-4')]}>
@@ -35,7 +42,7 @@ export default function TopBarContest(props: PropTypes) {
       <View style={[tailwind('flex flex-row items-center')]}>
         <Image
           resizeMode="contain"
-          source={assets.walletIcon}
+          source={assets.newWallet}
           style={[tailwind(''), {width: 24, height: 24}]}
         />
       </View>

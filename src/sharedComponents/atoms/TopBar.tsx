@@ -1,9 +1,10 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
+import assets from '../../constants/assets_manifest';
 
 interface Props {
   teams?: Array<string>;
@@ -27,10 +28,13 @@ export default function TopBar(props: Props) {
         ]}>
         <View style={[tailwind('flex-row items-center')]}>
           <TouchableOpacity onPress={goBack}>
-            <Icon
-              name={props.closeicon ? 'close-outline' : 'arrow-back-outline'}
-              size={25}
-              color="#172339"
+            <Image
+              resizeMode="contain"
+              source={assets.back}
+              style={[
+                tailwind('px-4'),
+                {width: 15, height: 15, transform: [{rotate: '180deg'}]},
+              ]}
             />
           </TouchableOpacity>
           <View style={[tailwind('px-2')]}>

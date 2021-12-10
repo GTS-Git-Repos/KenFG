@@ -10,10 +10,11 @@ interface PropTypes {
   image: string;
   name: string;
   teamCode: string;
-  points: number;
-  rank: number;
-  up: boolean;
+  points?: number;
+  rank?: number;
+  up?: boolean;
   currentUser: boolean;
+  hasStatus: boolean;
 }
 const PROFILEWIDTH = Dimensions.get('window').width / 2;
 const SUBTABWIDTH = PROFILEWIDTH / 2;
@@ -76,11 +77,13 @@ export default function HorizontalProfile(props: PropTypes) {
               {props.rank}
             </Text>
           </View>
-          {props.up ? (
-            <Icon name="arrow-down" color="red" size={20} />
-          ) : (
-            <Icon name="arrow-up" color="green" size={20} />
-          )}
+          {props.hasStatus ? (
+            props.up ? (
+              <Icon name="arrow-down" color="red" size={20} />
+            ) : (
+              <Icon name="arrow-up" color="green" size={20} />
+            )
+          ) : null}
 
           {/* Switch */}
           {props.currentUser ? (
