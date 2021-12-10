@@ -18,6 +18,7 @@ import Svg, {
 interface PropTypes {
   status: string;
   data: any;
+  teams: string;
 }
 
 export default function ContestPage(props: PropTypes) {
@@ -30,9 +31,15 @@ export default function ContestPage(props: PropTypes) {
       </>
     );
   }
+
   if (props.status === 'success' && !props.data) {
+    return null;
+  }
+
+  if (props.status === 'success' && props.data.length === 0) {
     return (
-      <Text style={[tailwind('font-regular text-light font-15')]}>
+      <Text
+        style={[tailwind('font-regular text-center p-7 text-dark-1  font-15')]}>
         No Contests Found
       </Text>
     );
@@ -53,6 +60,7 @@ export default function ContestPage(props: PropTypes) {
                 key={item.key}
                 style={[tailwind('my-2 border border-gray-800 rounded')]}>
                 <ContestCard
+                  teams={props.teams}
                   contest_key={item.key}
                   match_key={item.match_key}
                   title={item.title}

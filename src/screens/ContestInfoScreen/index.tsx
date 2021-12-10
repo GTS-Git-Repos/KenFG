@@ -35,7 +35,7 @@ export default function ContestInfoScreen() {
   const isScreenReady = useIsScreenReady();
 
   const contest = useQuery(
-    ['contest', route.params.contest_id],
+    ['contest', route.params.match_key, route.params.contest_id],
     contestInfoRemote,
   );
 
@@ -60,18 +60,19 @@ export default function ContestInfoScreen() {
   };
 
   if (isScreenReady === false) {
-    return <FullScreenLoading title={'AUS vs ENG'} />;
+    return <FullScreenLoading title={route.params?.teams} />;
   }
 
   if (!contest.data) {
-    return <FullScreenLoading title={'AUS vs ENG'} />;
+    return <FullScreenLoading title={route.params?.teams} />;
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopbarContest title={'AUS vs ENG'} subtitle={'18h 11m left'} />
+      <TopbarContest title={route.params?.teams} subtitle={'18h 11m left'} />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
+          teams={route.params?.teams}
           contest_key={contest.data.key}
           match_key={contest.data.match_key}
           title={contest.data.title}
@@ -119,5 +120,6 @@ export default function ContestInfoScreen() {
 }
 
 /**
- * contest_id  [Route params is mandatory]
+ * match_key:
+ * contest_key:  [Route params is mandatory]
  */

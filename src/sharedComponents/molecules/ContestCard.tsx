@@ -8,6 +8,7 @@ import {useNavigation} from '@react-navigation/native';
 const log = console.log;
 
 interface PropTypes {
+  teams: string;
   contest_key: string;
   match_key: string;
   title: string;
@@ -26,7 +27,6 @@ interface PropTypes {
 const PROGRESS_BAR_HEIGHT = 3;
 
 export default function ContestCard(props: PropTypes) {
-  
   const navigation = useNavigation<any>();
 
   return (
@@ -36,6 +36,8 @@ export default function ContestCard(props: PropTypes) {
       onPress={() =>
         navigation.navigate('ContestInfoScreen', {
           contest_id: props.contest_key,
+          match_key: props.match_key,
+          teams: props.teams.toUpperCase(),
         })
       }>
       <LinearGradient

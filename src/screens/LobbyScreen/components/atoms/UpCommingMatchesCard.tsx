@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/core';
 import assets from '../../../../constants/assets_manifest';
 
 interface PropTypes {
+  match_key: string;
   tournament_name: string;
   team_a_name: string;
   team_a_flag: string;
@@ -21,7 +22,13 @@ export default function UpcommingMatches(props: PropTypes) {
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('ContestListScreen')}
+      onPress={() =>
+        navigation.navigate('ContestListScreen', {
+          match_key: props.match_key,
+          team_a: props.team_a_name,
+          team_b: props.team_b_name,
+        })
+      }
       style={[tailwind('p-2'), {flex: 6}]}>
       <LinearGradient
         start={{x: 0.0, y: 0.5}}

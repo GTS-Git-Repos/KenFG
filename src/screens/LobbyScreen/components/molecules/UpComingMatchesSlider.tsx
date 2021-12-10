@@ -39,6 +39,7 @@ export default function UpComingMatchesSlider(props: PropTypes) {
         return (
           <View key={item.key} style={[tailwind('w-6/12')]}>
             <UpCommingMatchesCard
+              match_key={item.key}
               tournament_name={item?.teams?.tournament?.name}
               team_a_name={item?.teams?.a?.code}
               team_a_flag={''}

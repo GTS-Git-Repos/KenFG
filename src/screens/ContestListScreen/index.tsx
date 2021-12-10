@@ -18,8 +18,10 @@ import {userInfo} from '../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
 const log = console.log;
 
-export default function ContestScreen() {
+export default function ContestListScreen() {
   const navigation = useNavigation();
+  const route = useRoute<any>();
+
   const {width} = useWindowDimensions();
   const pagerRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
@@ -28,18 +30,23 @@ export default function ContestScreen() {
 
   const userInfoSelector = useSelector(userInfo);
 
-  const contests = useQuery('contests', contestListsRemote);
+  const contests = useQuery(
+    ['contests', route.params?.match_key],
+    contestListsRemote,
+  );
 
   const teams = useQuery(
-    ['teams', userInfoSelector?.mobile],
+    ['teams', userInfoSelector?.mobile, route.params?.match_key],
     joinedTeamsRemote,
   );
 
   // Side effects
 
+  useEffect(() => {}, []);
+
   useEffect(() => {
     if (contests.data) {
-      // log(contests.data);
+      log(contests.data);
     }
   }, [contests.data]);
 
@@ -52,12 +59,19 @@ export default function ContestScreen() {
   };
 
   if (isScreenReady === false) {
-    return <FullScreenLoading title="AUS vs SA" />;
+    return (
+      <FullScreenLoading
+        title={`${route.params?.team_a} VS ${route.params?.team_b}`.toUpperCase()}
+      />
+    );
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopBarContest title={'AUS vs SA'} subtitle={'18h 11m left'} />
+      <TopBarContest
+        title={`${route.params?.team_a} VS ${route.params?.team_b}`}
+        subtitle={'18h 11m left'}
+      />
       <View style={[tailwind('')]}>
         <Tabs selectedTab={selectedTab} onTabPressed={onTabPressed} />
       </View>
@@ -67,7 +81,11 @@ export default function ContestScreen() {
         style={[{flex: 1}]}
         initialPage={selectedTab}>
         <View style={{width: width}}>
-          <ContestPage status={contests.status} data={contests.data} />
+          <ContestPage
+            teams={`${route.params?.team_a} VS ${route.params?.team_b}`}
+            status={contests.status}
+            data={contests.data}
+          />
         </View>
         <View style={{width: width}}>
           <MyContestPage />
@@ -88,3 +106,7 @@ export default function ContestScreen() {
     </View>
   );
 }
+
+/**
+ * match_key is a mandatory params
+ */

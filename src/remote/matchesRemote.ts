@@ -6,7 +6,7 @@ import {upCommingMatchesMock} from '../constants/mockAPIData';
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
 const req_team_create = '/create-team.php';
 const req_view_team = '/view-team.php';
-const req_contest_list = '/contests.php?m=bblt20_2021_g8';
+const req_contest_list = '/contests.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -26,11 +26,11 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
   }
 };
 
-export const contestListsRemote = async () => {
+export const contestListsRemote = async (params: any) => {
   try {
     const response = await requestServer(
       METHODS.GET,
-      BASE_URL + req_contest_list,
+      BASE_URL + `${req_contest_list}?m=${params.queryKey[1]}`,
     );
     if (response.status === 200) {
       return response.data.data;
@@ -44,18 +44,15 @@ export const contestListsRemote = async () => {
 };
 
 export const contestInfoRemote = async (params: any) => {
-  console.log(params);
-
   try {
     const response = await requestServer(
       METHODS.GET,
-      BASE_URL + req_contest_list,
+      BASE_URL + `${req_contest_list}?m=${params.queryKey[1]}`,
     );
     if (response.status === 200) {
       let contest = response.data.data.find(
-        (item: any) => item.key === params.queryKey[1],
+        (item: any) => item.key === params.queryKey[2],
       );
-
       if (contest) {
         return contest;
       } else {
@@ -93,7 +90,7 @@ export const joinedTeamsRemote = async (params: any) => {
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_view_team,
-      {player_key: params.queryKey[1], match_key: 123},
+      {player_key: params.queryKey[1], match_key: params.queryKey[2]},
     );
     if (response.status === 200) {
       return response.data.data;

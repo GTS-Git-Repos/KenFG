@@ -11,9 +11,17 @@ interface PropTypes {
 
 export default function MyContestPage(props: PropTypes) {
   return (
+    <Text
+      style={[tailwind('font-regular text-center p-7 text-dark-1  font-15')]}>
+      No Joined Contests Found
+    </Text>
+  );
+
+  return (
     <View style={[tailwind('m-3')]}>
-      <Text style={[tailwind('font-regular text-light font-15')]}>
-        Comming Soon !
+      <Text
+        style={[tailwind('font-regular text-center p-7 text-dark-1  font-15')]}>
+        No Joined Contests Found
       </Text>
       {/* <ContestCard
         name={'Prize Pool'}

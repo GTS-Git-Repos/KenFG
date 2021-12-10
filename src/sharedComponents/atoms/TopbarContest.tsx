@@ -30,7 +30,7 @@ export default function TopBarContest(props: PropTypes) {
         </TouchableOpacity>
 
         <View style={[tailwind('px-4')]}>
-          <Text style={[tailwind('font-bold text-brown-4 font-18')]}>
+          <Text style={[tailwind('font-bold uppercase text-brown-4 font-17')]}>
             {props.title}
           </Text>
           <Text style={[tailwind('font-regular text-brown-5 pt-1 font-12')]}>

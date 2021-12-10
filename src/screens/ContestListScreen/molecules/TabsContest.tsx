@@ -18,12 +18,12 @@ const TABS = [
   },
   {
     id: '2',
-    name: 'My Contests (0)',
+    name: 'My Contests',
     active: false,
   },
   {
     id: '3',
-    name: 'My Teams (2)',
+    name: 'My Teams',
     active: false,
   },
 ];
