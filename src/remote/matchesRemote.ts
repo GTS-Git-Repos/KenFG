@@ -8,6 +8,7 @@ const req_team_create = '/create-team.php';
 const req_view_team = '/view-team.php';
 const req_contest_list = '/contests.php';
 const req_join_contest = '/join-contest.php';
+const req_players = '/fantasy-player.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -79,6 +80,35 @@ export const createTeamRemote = async (payload: any) => {
       return response.data.data;
     } else {
       failedLog('createTeamRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const getMatchPlayersRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + `${req_players}?match_key=${params.queryKey[1]}`,
+    );
+    if (response.status === 200) {
+      const keeper = response.data.filter(
+        (item: any) => item.seasonal_role === 'keeper',
+      );
+      const batsman = response.data.filter(
+        (item: any) => item.seasonal_role === 'batsman',
+      );
+      const all_rounder = response.data.filter(
+        (item: any) => item.seasonal_role === 'all_rounder',
+      );
+      const bowler = response.data.filter(
+        (item: any) => item.seasonal_role === 'bowler',
+      );
+      return [{keeper, batsman, all_rounder, bowler}];
+    } else {
+      failedLog('getMatchPlayersRemote()', response);
     }
   } catch (err) {
     console.log(err);

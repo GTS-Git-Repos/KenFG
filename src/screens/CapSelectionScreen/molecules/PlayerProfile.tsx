@@ -52,17 +52,21 @@ export default function PlayerProfile(props: PropTypes) {
               ]}>
               {props.teamname}
             </Text>
-            <Text
+            {/* <Text
               style={[
                 tailwind('font-regular font-10 rounded-r bg-secondary'),
                 {paddingHorizontal: 2, paddingVertical: 1},
               ]}>
               {props.title}
-            </Text>
+            </Text> */}
           </View>
 
-          <View style={[tailwind('flex-col justify-center')]}>
-            <Text style={[tailwind('font-semibold font-16 text-light')]}>
+          <View style={[tailwind('flex-col justify-center'), {flex: 1}]}>
+            <Text
+              numberOfLines={1}
+              style={[
+                tailwind('font-semibold font-16 overflow-hidden text-light'),
+              ]}>
               {props.name}
             </Text>
             <Text style={[tailwind('font-regular py-1 font-13 text-dark-1')]}>

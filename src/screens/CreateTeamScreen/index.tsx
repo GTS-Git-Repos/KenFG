@@ -28,7 +28,8 @@ import {
   updateTeamCountAction,
   clearTeamAction,
 } from '../../store/actions/teamActions';
-import {getMatchPlayersRemote} from '../../remote/serviceRemote';
+// import {getMatchPlayersRemote} from '../../remote/serviceRemote';
+import {getMatchPlayersRemote} from '../../remote/matchesRemote';
 import {useQuery} from 'react-query';
 
 import {useSelector, useDispatch} from 'react-redux';
@@ -53,12 +54,10 @@ export default function CreateTeamScreen() {
   const dispatch = useDispatch();
 
   const playersState: any = useSelector<any>(state => state.team.players);
-  const s = useSelector<any>(state => state.team);
-
-  // log(s)
 
   const availableCredits = useSelector(creditLeft);
   const playersCount = useSelector(playersCountByTeams);
+  const SelectedMatchState = useSelector(state => state.app.selected_match);
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -69,9 +68,13 @@ export default function CreateTeamScreen() {
   const rolesCountSelector: any = useSelector(rolesCount);
 
   // remote sevice query
-  const players: any = useQuery('players', getMatchPlayersRemote, {
-    cacheTime: 0,
-  });
+  const players: any = useQuery(
+    ['players', SelectedMatchState.match_key],
+    getMatchPlayersRemote,
+    {
+      cacheTime: 0,
+    },
+  );
 
   // side effects
 
@@ -112,13 +115,49 @@ export default function CreateTeamScreen() {
   };
 
   const navigateToCapSelection = () => {
-    if (playersState.length === 11) {
-      navigation.navigate('CapSelectionScreen'),
-        {
-          match_key: !route?.params?.match_key,
+    try {
+      if (playersState.length === 11) {
+        // check is all minimum roles are satisfied
+        const minRoles: any = {
+          bowler: 3,
+          batsman: 3,
+          keeper: 1,
+          all_rounder: 1,
         };
-    } else {
-      errorBox('Team requires total 11 players');
+        const keepersSlots = playersState.filter(
+          (item: any) => item.seasonal_role === 'keeper',
+        );
+        const batsmanSlots = playersState.filter(
+          (item: any) => item.seasonal_role === 'batsman',
+        );
+        const all_roundedSlots = playersState.filter(
+          (item: any) => item.seasonal_role === 'all_rounder',
+        );
+        const bowler_Slots = playersState.filter(
+          (item: any) => item.seasonal_role === 'bowler',
+        );
+
+        if (keepersSlots.length < minRoles.keeper) {
+          throw 'Minimum 1 keeper required';
+        }
+        if (batsmanSlots.length < minRoles.batsman) {
+          throw 'Minimum 3 batsmans required';
+        }
+        if (all_roundedSlots.length < minRoles.all_rounder) {
+          throw 'Minimum 1 All Rounder required';
+        }
+        if (bowler_Slots.length < minRoles.bowler) {
+          throw 'Minimum 3 bowlers required';
+        }
+        navigation.navigate('CapSelectionScreen'),
+          {
+            match_key: !route?.params?.match_key,
+          };
+      } else {
+        throw 'Team requires total 11 players';
+      }
+    } catch (err: any) {
+      errorBox(err);
     }
   };
 
