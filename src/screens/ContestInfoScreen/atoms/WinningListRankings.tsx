@@ -12,9 +12,8 @@ interface PropTypes {
 
 export default function WinningListRankings(props: PropTypes) {
   return (
-    <LinearGradient colors={['#25385A', '#172338']} style={[tailwind('pt-3')]}>
-      <View
-        style={[tailwind('flex-row items-center border-b border-gray-800')]}>
+    <LinearGradient colors={['#172338', '#0D1320']} style={[tailwind('pt-3')]}>
+      <View style={[tailwind('flex-row items-center')]}>
         <View style={[tailwind('pl-4 text-left w-6/12')]}>
           <Text style={[tailwind('font-semibold text-dark-1 font-14')]}>
             <Text style={[tailwind('font-regular font-14 text-white')]}>#</Text>

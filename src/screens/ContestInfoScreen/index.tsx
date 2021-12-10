@@ -103,7 +103,7 @@ export default function ContestInfoScreen() {
         snapToAlignment="center"
         snapToInterval={width}
         scrollEventThrottle={16}>
-        {/* <WinningsList data={contest.data.prize.winnings} /> */}
+        <WinningsList data={contest.data.prize.winnings} />
         <LearderBoard />
       </Animated.ScrollView>
       <View

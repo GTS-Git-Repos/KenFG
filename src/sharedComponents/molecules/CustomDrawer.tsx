@@ -1,45 +1,110 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import tailwind from '../../../tailwind';
-import {View, Image, Text, Touchable} from 'react-native';
+import {View, Image, Text, TouchableOpacity, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../constants/assets_manifest';
 import {BottomLine} from '../';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
 import {useSelector} from 'react-redux';
+import Modal from 'react-native-modal';
+import {removeToken} from '../../utils/authTokenUtils';
+//@ts-expect-error
+import RNRestart from 'react-native-restart';
 const log = console.log;
 export default function CustomDrawer(props: any) {
+  const [logoutModal, setLogoutModal] = useState(false);
+
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
   useEffect(() => {
     // log(userInfoState);
   }, []);
 
+  const logout = async () => {
+    setLogoutModal(false);
+    await removeToken();
+    RNRestart.Restart();
+  };
+
   return (
     <View style={[tailwind('h-full bg-dark-3 rounded-r-xl')]}>
-      <UserInfo name={userInfoState?.name} />
-      <Links
-        to="WalletScreen"
-        icon={assets.drawer_wallet}
-        text="My Balance"
-        children={
-          <Text style={[tailwind('font-regular text-brown-1 font-13')]}>
-            {'\u20B9'}00.00
+      <ScrollView>
+        <UserInfo name={userInfoState?.name} />
+        <Links
+          to="WalletScreen"
+          icon={assets.drawer_wallet}
+          text="My Balance"
+          children={
+            <Text style={[tailwind('font-regular text-brown-1 font-13')]}>
+              {'\u20B9'}00.00
+            </Text>
+          }
+        />
+        <Links
+          to="HowToPlayScreen"
+          icon={assets.cash_icon}
+          text="How to Play"
+        />
+        <Links to="LeaderBoard" icon={assets.joystick} text="Leaderboard" />
+        <Links
+          to="ProfileEditScreen"
+          icon={assets.settings_icon}
+          text="My Info Settings"
+        />
+        <Links to="MoreScreen" icon={assets.more_icon} text="More" />
+        <BottomLine />
+        <AppVersion version="4.24.4" />
+        <BottomLine />
+        <Support />
+      </ScrollView>
+      <TouchableOpacity
+        onPress={() => setLogoutModal(true)}
+        style={[
+          tailwind('p-4'),
+          {
+            backgroundColor: 'rgba(255,0,0,0.2)',
+          },
+        ]}>
+        <Text
+          style={[
+            tailwind('font-bold text-center text-light uppercase font-15'),
+          ]}>
+          Logout
+        </Text>
+      </TouchableOpacity>
+
+      <Modal
+        isVisible={logoutModal}
+        animationInTiming={150}
+        animationOutTiming={150}
+        useNativeDriver={true}
+        useNativeDriverForBackdrop={true}
+        hideModalContentWhileAnimating={true}
+        backdropTransitionOutTiming={0}
+        scrollHorizontal={true}>
+        <View style={[tailwind('bg-white p-6 bg-dark-3 rounded')]}>
+          <Text style={[tailwind('font-bold text-light font-18')]}>
+            Do you want to Logout ?
           </Text>
-        }
-      />
-      <Links to="HowToPlayScreen" icon={assets.cash_icon} text="How to Play" />
-      <Links to="LeaderBoard" icon={assets.joystick} text="Leaderboard" />
-      <Links
-        to="ProfileEditScreen"
-        icon={assets.settings_icon}
-        text="My Info Settings"
-      />
-      <Links to="MoreScreen" icon={assets.more_icon} text="More" />
-      <BottomLine />
-      <AppVersion version="4.24.4" />
-      <BottomLine />
-      <Support />
+
+          <View style={[tailwind('flex-row items-center mt-4')]}>
+            <TouchableOpacity onPress={logout} style={[tailwind('py-4 pr-7')]}>
+              <Text
+                style={[tailwind('font-regular uppercase text-light font-15')]}>
+                Yes
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setLogoutModal(false)}
+              style={[tailwind('px-4 py-4')]}>
+              <Text
+                style={[tailwind('font-regular uppercase text-light font-15')]}>
+                No
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }

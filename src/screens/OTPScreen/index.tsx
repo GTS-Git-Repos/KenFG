@@ -9,12 +9,17 @@ import OTPInput from './molecules/OTPInput';
 import {otpVerifyRemote} from '../../remote/authRemote';
 import {saveToken} from '../../utils/authTokenUtils';
 import LinearGradient from 'react-native-linear-gradient';
+import {getUserRemote} from '../../remote/userRemote';
+import {resetDrawerNavigation} from '../../utils/resetNav';
+import {updateUserInfoAction} from '../../store/actions/userAction';
+import {useDispatch} from 'react-redux';
 // import assets from 'assets';
 const log = console.log;
 
 export default function OTPScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
+  const dispatch = useDispatch();
 
   const [otp, setOTP] = useState('');
   const [loading, setLoading] = useState(false);
@@ -32,9 +37,18 @@ export default function OTPScreen() {
       // log(response);
       if (response) {
         await saveToken(response.jwt);
-        navigation.navigate('FantasyTeamNameScreen', {
-          mobile: route?.params?.mobile,
+        // is user is existing ?
+        const userResponse = await getUserRemote({
+          mobile: route.params?.mobile,
         });
+        if (userResponse?.data?.name) {
+          dispatch(updateUserInfoAction(userResponse.data));
+          resetDrawerNavigation(navigation);
+        } else {
+          navigation.navigate('FantasyTeamNameScreen', {
+            mobile: route?.params?.mobile,
+          });
+        }
       } else {
         throw 'Invalid Response';
       }

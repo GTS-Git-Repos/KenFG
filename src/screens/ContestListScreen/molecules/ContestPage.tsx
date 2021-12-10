@@ -1,7 +1,7 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
 import {View, Text, ScrollView} from 'react-native';
-import {ContestCard} from '../../../sharedComponents';
+import {ContestCard, FullScreenLoading} from '../../../sharedComponents';
 import FilterTab from './Filtertab';
 import {contestListsTypes} from '../../../types/api';
 import ContestSubTitle from '../atoms/ContestSubTitle';
@@ -23,9 +23,11 @@ interface PropTypes {
 export default function ContestPage(props: PropTypes) {
   if (props.status === 'loading') {
     return (
-      <Text style={[tailwind('font-regular text-light font-15')]}>
-        Loading...
-      </Text>
+      <>
+        <View style={[tailwind('h-28 m-2 bg-dark-3')]} />
+        <View style={[tailwind('h-28 m-2 bg-dark-3')]} />
+        <View style={[tailwind('h-28 m-2 bg-dark-3')]} />
+      </>
     );
   }
   if (props.status === 'success' && !props.data) {
@@ -59,7 +61,7 @@ export default function ContestPage(props: PropTypes) {
                   entry={item.entry}
                   amount_letters={item.prize.amount_letters}
                   amount={item.prize.amount}
-                  guaranteed={item.guaranteed === "yes"}
+                  guaranteed={item.guaranteed === 'yes'}
                   max_entry={item.max_entry}
                   bonus={item.bonus}
                   is_practice={item.is_practice}

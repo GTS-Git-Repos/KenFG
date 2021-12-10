@@ -24,3 +24,15 @@ export const getToken = async () => {
     return false;
   }
 };
+
+export const removeToken = async () => {
+  try {
+    const token = await SInfo.deleteItem('jwt_token', {
+      sharedPreferencesName: 'KenFg',
+      keychainService: 'KenFg',
+    });
+    return true;
+  } catch {
+    return false;
+  }
+};

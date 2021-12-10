@@ -67,6 +67,7 @@ export default function SignupScreen() {
             {borderBottomColor: '#B2933D'},
           ]}>
           <TextInput
+            keyboardType="number-pad"
             value={mobile}
             onChangeText={e => setMobile(e)}
             placeholder="Mobile Number"

@@ -93,7 +93,7 @@ const App: React.FC = (): JSX.Element | null => {
   }, []);
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
       <StatusBar barStyle={'light-content'} backgroundColor="#B2933D" />
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>

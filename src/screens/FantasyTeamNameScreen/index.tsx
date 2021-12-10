@@ -50,7 +50,9 @@ export default function CreateTeamScreen() {
         const userResponse = await getUserRemote({
           mobile: route.params?.mobile,
         });
-        dispatch(updateUserInfoAction(userResponse.data));
+        if (userResponse) {
+          dispatch(updateUserInfoAction(userResponse.data));
+        }
         resetDrawerNavigation(navigation);
       } else {
         setTimeout(() => {
