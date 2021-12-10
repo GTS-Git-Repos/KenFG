@@ -5,7 +5,7 @@ import React, {
   useReducer,
   useEffect,
 } from 'react';
-import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView, Alert} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../utils/customHoooks';
@@ -80,12 +80,6 @@ export default function CreateTeamScreen() {
     dispatch(updateCreditsAction(availableCredits));
   }, [playersState]);
 
-  useEffect(() => {
-    if (players.data) {
-      // log(players.data[0].keepers);
-    }
-  }, [players.data]);
-
   // business logic
 
   const onPageSelectedAction = (e: any) => {
@@ -119,7 +113,10 @@ export default function CreateTeamScreen() {
 
   const navigateToCapSelection = () => {
     if (playersState.length === 11) {
-      navigation.navigate('CapSelectionScreen');
+      navigation.navigate('CapSelectionScreen'),
+        {
+          match_key: !route?.params?.match_key,
+        };
     } else {
       errorBox('Team requires total 11 players');
     }

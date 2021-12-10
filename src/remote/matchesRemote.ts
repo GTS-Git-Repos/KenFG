@@ -7,6 +7,7 @@ const req_upcomming_mathces_banner = '/upcoming-matches.php';
 const req_team_create = '/create-team.php';
 const req_view_team = '/view-team.php';
 const req_contest_list = '/contests.php';
+const req_join_contest = '/join-contest.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -96,6 +97,24 @@ export const joinedTeamsRemote = async (params: any) => {
       return response.data.data;
     } else {
       failedLog('joinedTeamsRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const joinContestRemote = async (payload: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_join_contest,
+      payload,
+    );
+    if (response.status === 200) {
+      return response.data?.data;
+    } else {
+      failedLog('joinContestRemote()', response);
     }
   } catch (err) {
     console.log(err);

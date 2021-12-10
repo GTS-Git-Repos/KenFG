@@ -16,9 +16,9 @@ import Svg, {
 } from 'react-native-svg';
 
 interface PropTypes {
+  navigate(contest_key:string): any;
   status: string;
   data: any;
-  teams: string;
 }
 
 export default function ContestPage(props: PropTypes) {
@@ -60,12 +60,13 @@ export default function ContestPage(props: PropTypes) {
                 key={item.key}
                 style={[tailwind('my-2 border border-gray-800 rounded')]}>
                 <ContestCard
-                  teams={props.teams}
+                  navigate={props.navigate}
                   contest_key={item.key}
                   match_key={item.match_key}
                   title={item.title}
-                  total_joined={item.total_joined}
-                  total_spots={item.total_spots}
+                  total_joined={100}
+                  total_spots={1000}
+                  // total_spots={item.total_spots}
                   entry={item.entry}
                   amount_letters={item.prize.amount_letters}
                   amount={item.prize.amount}

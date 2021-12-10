@@ -29,15 +29,21 @@ import {resetContestListNavigation} from '../../utils/resetNav';
 export default function CapSelectionScreen() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-
+  const route = useRoute<any>();
   const [loading, setLoading] = useState(false);
 
   // const teamsState = useSelector<any>(state => state.team);
 
   const TeamsSelector = useSelector(playersCountByTeams);
   const AllPlayers = useSelector(allPlayers);
-  const captain_key = useSelector(state => state.team.cap_key);
-  const vc_key = useSelector(state => state.team.vc_key);
+  const captain_key = useSelector<any>(state => state.team.cap_key);
+  const vc_key = useSelector<any>(state => state.team.vc_key);
+  const selected_match: any = useSelector<any>(
+    state => state.app.selected_match,
+  );
+  const selected_contest: any = useSelector<any>(
+    state => state.app.selected_contest,
+  );
 
   // useEffect(() => {
   //   log('cap --->', cap);
@@ -67,7 +73,12 @@ export default function CapSelectionScreen() {
         const createTeamObj = createTeamObjCreator();
         const response = await createTeamRemote(createTeamObj);
         if (response) {
-          resetContestListNavigation(navigation);
+          // log(selected_contest);
+          resetContestListNavigation(navigation, {
+            match_key: selected_match.match_key,
+            contest_key: selected_contest,
+            team_key: response.teams[1].teams_key,
+          });
           return;
         } else {
           setTimeout(() => {

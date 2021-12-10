@@ -5,6 +5,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
 import assets from '../../../../constants/assets_manifest';
+import {useDispatch} from 'react-redux';
+import {
+  updateSelectedContestAction,
+  updateSelectedMatchAction,
+} from '../../../../store/actions/appActions';
 
 interface PropTypes {
   match_key: string;
@@ -19,16 +24,26 @@ interface PropTypes {
 
 export default function UpcommingMatches(props: PropTypes) {
   const navigation = useNavigation<any>();
+  const dispatch = useDispatch();
+
+  const navigateToContestList = () => {
+    dispatch(updateSelectedContestAction(null));
+    dispatch(
+      updateSelectedMatchAction({
+        match_key: props.match_key,
+        team_a: props.team_a_name,
+        team_b: props.team_b_name,
+      }),
+    );
+
+    navigation.navigate('ContestListScreen',{
+      
+    });
+  };
 
   return (
     <TouchableOpacity
-      onPress={() =>
-        navigation.navigate('ContestListScreen', {
-          match_key: props.match_key,
-          team_a: props.team_a_name,
-          team_b: props.team_b_name,
-        })
-      }
+      onPress={navigateToContestList}
       style={[tailwind('p-2'), {flex: 6}]}>
       <LinearGradient
         start={{x: 0.0, y: 0.5}}

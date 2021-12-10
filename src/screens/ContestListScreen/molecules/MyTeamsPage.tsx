@@ -10,6 +10,8 @@ interface PropTypes {
 }
 
 export default function MyTeamsPage(props: PropTypes) {
+  console.log('teams', props.teams);
+
   if (props.status === 'loading') {
     return (
       <Text style={[tailwind('font-regular text-light font-15')]}>
@@ -19,7 +21,8 @@ export default function MyTeamsPage(props: PropTypes) {
   }
   if (props.status === 'success' && !props?.teams?.teams) {
     return (
-      <Text style={[tailwind('font-regular text-center p-7 text-dark-1  font-15')]}>
+      <Text
+        style={[tailwind('font-regular text-center p-7 text-dark-1  font-15')]}>
         No Teams Found
       </Text>
     );

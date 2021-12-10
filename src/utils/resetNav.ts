@@ -26,7 +26,10 @@ export const resetAuthNavigation = async (navigation: any) => {
   );
 };
 
-export const resetContestListNavigation = async (navigation: any) => {
+export const resetContestListNavigation = async (
+  navigation: any,
+  params: any,
+) => {
   navigation.dispatch(
     CommonActions.reset({
       index: 0,
@@ -36,6 +39,7 @@ export const resetContestListNavigation = async (navigation: any) => {
         },
         {
           name: 'ContestListScreen',
+          params: params,
         },
       ],
     }),

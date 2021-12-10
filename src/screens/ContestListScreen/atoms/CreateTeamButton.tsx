@@ -5,9 +5,18 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
+import {useDispatch} from 'react-redux';
+import {updateSelectedContestAction} from '../../../store/actions/appActions';
 
 export default function CreateTeamButtom() {
   const navigation = useNavigation<any>();
+  const dispatch = useDispatch<any>();
+
+  const navigateByButton = () => {
+    dispatch(updateSelectedContestAction(null));
+    navigation.navigate('CreateTeamScreen');
+  };
+
   return (
     <View style={[tailwind('w-6/12')]}>
       <LinearGradient
@@ -17,7 +26,7 @@ export default function CreateTeamButtom() {
         style={[tailwind('flex-row  m-2 rounded')]}
         colors={['#00513B', '#00513B']}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('CreateTeamScreen')}
+          onPress={navigateByButton}
           style={[
             tailwind('py-3 flex-grow flex-row items-center justify-center'),
           ]}>

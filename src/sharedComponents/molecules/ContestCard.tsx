@@ -8,7 +8,7 @@ import {useNavigation} from '@react-navigation/native';
 const log = console.log;
 
 interface PropTypes {
-  teams: string;
+  navigate(contest_key: string): any;
   contest_key: string;
   match_key: string;
   title: string;
@@ -33,13 +33,7 @@ export default function ContestCard(props: PropTypes) {
     <TouchableOpacity
       activeOpacity={0.7}
       style={[tailwind('rounded')]}
-      onPress={() =>
-        navigation.navigate('ContestInfoScreen', {
-          contest_id: props.contest_key,
-          match_key: props.match_key,
-          teams: props.teams.toUpperCase(),
-        })
-      }>
+      onPress={() => props.navigate(props.contest_key)}>
       <LinearGradient
         start={{x: 0.0, y: 0.7}}
         end={{x: 1.0, y: 0.0}}
@@ -81,8 +75,7 @@ export default function ContestCard(props: PropTypes) {
                   {parseInt(props.entry) + 10}
                 </Text> */}
 
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('CreateTeamScreen')}
+                <View
                   style={[
                     tailwind('rounded px-4 py-0.5'),
                     {
@@ -97,7 +90,7 @@ export default function ContestCard(props: PropTypes) {
                     {props.entry} */}
                     Join
                   </Text>
-                </TouchableOpacity>
+                </View>
               </View>
             </View>
           </View>

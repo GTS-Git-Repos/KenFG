@@ -12,6 +12,7 @@ import {removeToken} from '../../utils/authTokenUtils';
 import RNRestart from 'react-native-restart';
 const log = console.log;
 export default function CustomDrawer(props: any) {
+  
   const [logoutModal, setLogoutModal] = useState(false);
 
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
@@ -62,7 +63,7 @@ export default function CustomDrawer(props: any) {
         style={[
           tailwind('p-4'),
           {
-            backgroundColor: 'rgba(255,0,0,0.2)',
+            backgroundColor: '#816D2E',
           },
         ]}>
         <Text

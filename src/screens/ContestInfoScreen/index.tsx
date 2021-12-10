@@ -25,27 +25,35 @@ import {contestInfoRemote} from '../../remote/matchesRemote';
 import Animated, {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 import CreateTeamButton from './atoms/CreateTeamButton';
+import {useSelector} from 'react-redux';
 
 export default function ContestInfoScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const route = useRoute<any>();
   const {width} = useWindowDimensions();
   const tabOffset = useSharedValue<any>(0);
   const scrollRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
 
+  const selectedMatchState: any = useSelector<any>(
+    state => state.app.selected_match,
+  );
+
+  const selectedContestState: any = useSelector<any>(
+    state => state.app.selected_contest,
+  );
+
   const contest = useQuery(
-    ['contest', route.params.match_key, route.params.contest_id],
+    ['contest', selectedMatchState?.match_key, route.params.contest_key],
     contestInfoRemote,
   );
 
-  useEffect(() => {
-    // log(route.params.contest_id)
-  }, []);
+  // Bussiness logic
 
-  useEffect(() => {
-    log(contest.data);
-  }, [contest]);
+  const navigate = () => {
+    // navigation.navigate('CreateTeamScreen');
+    log('selectedContestState', selectedContestState);
+  };
 
   const onScrollAction = (e: any) => {
     tabOffset.value = e.nativeEvent.contentOffset.x;
@@ -59,20 +67,23 @@ export default function ContestInfoScreen() {
     }
   };
 
-  if (isScreenReady === false) {
-    return <FullScreenLoading title={route.params?.teams} />;
-  }
-
-  if (!contest.data) {
-    return <FullScreenLoading title={route.params?.teams} />;
+  if (isScreenReady === false || !contest.data) {
+    return (
+      <FullScreenLoading
+        title={`${selectedMatchState.team_a?.toUpperCase()} VS ${selectedMatchState.team_b?.toUpperCase()}`}
+      />
+    );
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopbarContest title={route.params?.teams} subtitle={'18h 11m left'} />
+      <TopbarContest
+        title={`${selectedMatchState.team_a?.toUpperCase()} VS ${selectedMatchState.team_b?.toUpperCase()}`}
+        subtitle={'18h 11m left'}
+      />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
-          teams={route.params?.teams}
+          navigate={navigate}
           contest_key={contest.data.key}
           match_key={contest.data.match_key}
           title={contest.data.title}

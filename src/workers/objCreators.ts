@@ -3,6 +3,9 @@ export const createTeamObjCreator = () => {
   const UserInfo = store.getState().user.user_info;
   const Players = store.getState().team.players;
   const captain = store.getState().team.cap_key;
+  const selected_match = store.getState().app.selected_match;
+  const selected_contest = store.getState().app.selected_contest;
+
   const vc = store.getState().team.vc_key;
 
   let finalPlayers: any = [];
@@ -31,8 +34,8 @@ export const createTeamObjCreator = () => {
   });
 
   return {
-    match_key: '123',
-    contest_key: '123',
+    match_key: selected_match.match_key,
+    contest_key: selected_contest,
     player_key: UserInfo?.mobile ? UserInfo.mobile : '9876543210',
     access_key: UserInfo?.mobile ? UserInfo.mobile : '9876543210',
     players: finalPlayers,

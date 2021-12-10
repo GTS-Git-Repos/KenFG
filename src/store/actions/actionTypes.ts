@@ -1,6 +1,8 @@
 // App
 export const HANDLE_ERROR = 'HANDLE_ERROR';
 export const SAVE_IP = 'SAVE_IP';
+export const UPDATE_SELECTED_MATCH = 'UPDATE_SELECTED_MATCH';
+export const UPDATE_SELECTED_CONTEST = 'UPDATE_SELECTED_CONTEST';
 
 // User
 export const UPDATE_USER_INFO = 'UPDATE_USER_INFO';

@@ -28,7 +28,7 @@ export default function TeamsCard(props: PropTypes) {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={() => navigation.navigate('MatchGroundScreen')}
+      // onPress={() => navigation.navigate('MatchGroundScreen')}
       style={[tailwind('ml-4 my-2 rounded-lg'), {width: CARDWIDTH / 1.2}]}>
       <ImageBackground
         imageStyle={{borderTopLeftRadius: 5, borderTopRightRadius: 5}}

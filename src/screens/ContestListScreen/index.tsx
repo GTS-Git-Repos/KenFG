@@ -1,54 +1,79 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {View, useWindowDimensions, ScrollView, FlatList} from 'react-native';
 import tailwind from '../../../tailwind';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
-import {contestListsRemote} from '../../remote/matchesRemote';
+import {
+  contestListsRemote,
+  joinContestRemote,
+} from '../../remote/matchesRemote';
 import {joinedTeamsRemote} from '../../remote/matchesRemote';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import TopBarContest from '../../sharedComponents/atoms/TopbarContest';
-import {FullScreenLoading} from '../../sharedComponents';
+import {FullScreenLoading, BlockScreenByLoading} from '../../sharedComponents';
 import Tabs from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
 import {useQuery} from 'react-query';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {userInfo} from '../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
+import {updateSelectedContestAction} from '../../store/actions/appActions';
+import JoinContestModal from './molecules/JoinContestModal';
+import Modal from 'react-native-modal';
+
 const log = console.log;
 
 export default function ContestListScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const route = useRoute<any>();
 
   const {width} = useWindowDimensions();
   const pagerRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
+  const dispatch = useDispatch();
 
   const [selectedTab, setSelectedTab] = useState(0);
+  const [showJoinModal, setShowJoinModal] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const userInfoSelector = useSelector(userInfo);
+  const selectedMatchState: any = useSelector<any>(
+    state => state.app.selected_match,
+  );
+
+  const selectedContestState: any = useSelector<any>(
+    state => state.app.selected_contest,
+  );
 
   const contests = useQuery(
-    ['contests', route.params?.match_key],
+    ['contests', selectedMatchState?.match_key],
     contestListsRemote,
   );
 
   const teams = useQuery(
-    ['teams', userInfoSelector?.mobile, route.params?.match_key],
+    ['teams', userInfoSelector?.mobile, selectedMatchState?.match_key],
     joinedTeamsRemote,
   );
 
-  // Side effects
-
-  useEffect(() => {}, []);
-
   useEffect(() => {
-    if (contests.data) {
-      log(contests.data);
+    if (route.params?.contest_key && selectedContestState) {
+      setShowJoinModal(true);
+    } else {
+      setShowJoinModal(false);
     }
-  }, [contests.data]);
+  }, []);
+
+  // useEffect(() => {
+  //   console.log('From Store >>>', selectedContestState);
+  // }, [selectedContestState]);
+
+  // Business logic
 
   const onPageSelectedAction = (e: any) => {
     setSelectedTab(e.nativeEvent.position);
@@ -58,10 +83,36 @@ export default function ContestListScreen() {
     pagerRef.current?.setPage(index);
   };
 
+  const navigate = (contest_key: string) => {
+    dispatch(updateSelectedContestAction(contest_key));
+    navigation.navigate('ContestInfoScreen', {
+      contest_key: contest_key,
+    });
+  };
+
+  const joinContest = async () => {
+    try {
+      let payload = {
+        match_key: selectedMatchState.match_key,
+        contest_key: selectedContestState,
+        team_key: route.params.team_key,
+        player_key: userInfoSelector.mobile,
+      };
+      console.log('payload', payload);
+      const response = await joinContestRemote(payload);
+      if (response) {
+      } else {
+      }
+    } catch (err) {
+      log('join_err', err);
+    } finally {
+    }
+  };
+
   if (isScreenReady === false) {
     return (
       <FullScreenLoading
-        title={`${route.params?.team_a} VS ${route.params?.team_b}`.toUpperCase()}
+        title={`${selectedMatchState.team_a} VS ${selectedMatchState.team_b}`.toUpperCase()}
       />
     );
   }
@@ -69,7 +120,7 @@ export default function ContestListScreen() {
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarContest
-        title={`${route.params?.team_a} VS ${route.params?.team_b}`}
+        title={`${selectedMatchState?.team_a} VS ${selectedMatchState?.team_b}`}
         subtitle={'18h 11m left'}
       />
       <View style={[tailwind('')]}>
@@ -82,7 +133,7 @@ export default function ContestListScreen() {
         initialPage={selectedTab}>
         <View style={{width: width}}>
           <ContestPage
-            teams={`${route.params?.team_a} VS ${route.params?.team_b}`}
+            navigate={navigate}
             status={contests.status}
             data={contests.data}
           />
@@ -103,6 +154,22 @@ export default function ContestListScreen() {
         ]}>
         <CreateTeamButton />
       </View>
+
+      <Modal
+        isVisible={showJoinModal}
+        animationInTiming={150}
+        animationOutTiming={150}
+        useNativeDriver={true}
+        useNativeDriverForBackdrop={true}
+        hideModalContentWhileAnimating={true}
+        backdropTransitionOutTiming={0}
+        scrollHorizontal={true}>
+        <JoinContestModal
+          setShowJoinModal={setShowJoinModal}
+          joinContest={joinContest}
+        />
+      </Modal>
+      {loading && <BlockScreenByLoading />}
     </View>
   );
 }
