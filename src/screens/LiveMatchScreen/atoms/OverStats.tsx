@@ -30,10 +30,11 @@ const BallStats = ({info}) => {
         {
           width: 20,
           height: 20,
-          backgroundColor: 'rgba(255, 255, 255,0.2)',
+          backgroundColor: 'rgba(255, 255, 255,1)',
         },
       ]}>
-      <Text style={[tailwind('font-bold text-center text-white font-13')]}>
+      <Text
+        style={[tailwind('font-bold text-center text-black top-0.5 font-13')]}>
         {info}
       </Text>
     </View>

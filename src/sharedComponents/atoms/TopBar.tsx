@@ -24,17 +24,14 @@ export default function TopBar(props: Props) {
       <View
         style={[
           tailwind('flex-row items-center justify-between px-2'),
-          {paddingVertical: 16},
+          {paddingVertical: 18},
         ]}>
         <View style={[tailwind('flex-row items-center')]}>
           <TouchableOpacity onPress={goBack}>
             <Image
               resizeMode="contain"
-              source={assets.back}
-              style={[
-                tailwind('px-4'),
-                {width: 15, height: 15, transform: [{rotate: '180deg'}]},
-              ]}
+              source={assets.arrow_left}
+              style={[tailwind('px-4'), {width: 20, height: 20}]}
             />
           </TouchableOpacity>
           <View style={[tailwind('px-2')]}>

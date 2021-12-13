@@ -20,7 +20,7 @@ export default function CurrentOverStats() {
           <View
             style={[tailwind('flex-row justify-end items-center'), {flex: 6}]}>
             <Text style={[tailwind('font-bold text-white font-14')]}>2/34</Text>
-            <Text style={[tailwind('font-bold px-1 text-dark-1 font-14')]}>
+            <Text style={[tailwind('font-bold px-1 text-light font-14')]}>
               (3.2)
             </Text>
           </View>

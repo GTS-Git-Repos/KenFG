@@ -9,6 +9,7 @@ import ContestCard from './molecules/ContestCard';
 import TeamsCard from './molecules/TeamsCard';
 import HorizontalProfile from './molecules/HorizontalProfile';
 import JoinedContestCard from './molecules/JoinedContestCard';
+import SocialLogin from './molecules/SocialLogin';
 
 export {
   TopBar,
@@ -21,4 +22,5 @@ export {
   TeamsCard,
   HorizontalProfile,
   JoinedContestCard,
+  SocialLogin,
 };

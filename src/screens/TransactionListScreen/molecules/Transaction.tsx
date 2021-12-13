@@ -4,46 +4,80 @@ import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import {BottomLine} from '../../../sharedComponents/';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   amount: string;
   plus: boolean;
   title: string;
+  open: boolean;
 }
 
 export default function Transaction(props: PropTypes) {
   return (
-    <View style={[tailwind('rounded')]}>
+    <View>
       <View
         style={[
-          tailwind(
-            'flex-row items-center  bg-dark-3 rounded justify-between px-3 py-4',
-          ),
+          tailwind('bg-dark-3 flex-row items-center justify-between'),
+          {marginHorizontal: 5, paddingHorizontal: 16, paddingVertical: 12},
         ]}>
-        <Text
-          style={[
-            tailwind('font-bold font-20'),
-            {
-              color: props.plus ? '#2ecc71' : '#e74c3c',
-              flex: 3,
-            },
-          ]}>
-          {props.plus ? '+' : '-'} {props.amount}
+        <Text style={[tailwind('font-bold text-light font-14')]}>
+          {props.plus ? '+ ' : '- '}
+          {'\u20B9'}
+          {props.amount}
         </Text>
-
-        <Text
-          style={[
-            tailwind('font-bold text-dark-1 text-center uppercase font-13'),
-            {flex: 6},
-          ]}>
+        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
           {props.title}
         </Text>
-        <View
-          style={[tailwind('flex-row items-center justify-center'), {flex: 3}]}>
-          <Icon name="chevron-down" size={20} color="#7f8c8d" />
-        </View>
+        <Icon
+          name={props.open ? 'chevron-up' : 'chevron-down'}
+          size={24}
+          color="#FFFFFF"
+        />
       </View>
-      <BottomLine />
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        style={[tailwind('')]}
+        colors={
+          props.open
+            ? ['#000000', '#000000', '#000000']
+            : ['#172338', '#8797B1', '#172338']
+        }>
+        <View style={[tailwind(''), {height: 0.4}]}></View>
+      </LinearGradient>
+      {props.open && <TransactionInfo />}
     </View>
   );
 }
+
+const TransactionInfo = () => {
+  return (
+    <View
+      style={[
+        tailwind('bg-dark-3 mb-2'),
+        {marginHorizontal: 5, paddingHorizontal: 16, paddingVertical: 12},
+      ]}>
+      <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+        Transaction ID:
+      </Text>
+      <Text style={[tailwind('font-regular text-light py-1 font-14')]}>
+        549372982368264868
+      </Text>
+
+      <Text style={[tailwind('font-regular text-dark-1 font-14 pt-2')]}>
+        Transaction Date:
+      </Text>
+      <Text style={[tailwind('font-regular text-light py-1 font-14')]}>
+        21 October
+      </Text>
+
+      <Text style={[tailwind('font-regular text-dark-1 font-14 pt-2')]}>
+        Team Name
+      </Text>
+      <Text style={[tailwind('font-regular text-light py-1 font-14')]}>
+        Team 1
+      </Text>
+    </View>
+  );
+};

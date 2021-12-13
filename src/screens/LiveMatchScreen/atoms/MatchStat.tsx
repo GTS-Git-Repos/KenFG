@@ -44,7 +44,7 @@ export default function MatchStat(props: PropTypes) {
           <Text style={[tailwind('font-bold text-white font-20')]}>
             183/6
           </Text>
-          <Text style={[tailwind('font-regular text-white px-2 font-14')]}>
+          <Text style={[tailwind('font-regular text-dark-1 px-2 font-14')]}>
             (20)
           </Text>
         </View>

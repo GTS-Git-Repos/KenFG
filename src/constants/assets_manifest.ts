@@ -40,6 +40,11 @@ export default {
   added: require('../assets/icons/added.png'),
   newWallet: require('../assets/icons/newWallet.png'),
   back: require('../assets/icons/back.png'),
+  arrow_left: require('../assets/icons/arrow_left.png'),
+  fb: require('../assets/icons/fb.png'),
+  google: require('../assets/icons/google.png'),
+  chart: require('../assets/icons/chart.png'),
+  notify_more: require('../assets/icons/notify_more.png'),
 
   running_clock: require('../assets/icons/running_clock.png'),
   bell: require('../assets/icons/bell.png'),
@@ -59,6 +64,8 @@ export default {
   flash: require('../assets/images/flash.png'),
   logoWrapper: require('../assets/images/logoWrapper.png'),
   user_temp_profile: require('../assets/images/user_temp_profile.png'),
+  promoNotification: require('../assets/images/promoNotification.png'),
+
 
   banner1: require('../assets/temp/banner1.png'),
   playerImage: require('../assets/temp/playerimage.png'),

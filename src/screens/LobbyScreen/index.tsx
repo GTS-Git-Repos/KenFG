@@ -13,6 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import LobbyTopBar from './components/LobbyTopBar';
 import LobbyNav from './components/LobbyNav';
+import NewLobbyNav from './components/molecules/NewLobbyNav';
 
 import CricketPage from './components/molecules/CricketPage';
 
@@ -34,7 +35,8 @@ export default function LobbyScreen() {
         end={{x: 1, y: 0.1}}
         locations={[0.4, 0.3, 0, 0.1, 0]}
         colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}>
-        <LobbyTopBar amount={'10,000'} />
+        <LobbyTopBar amount={'100,00'} />
+        {/* <NewLobbyNav/> */}
         <LobbyNav
           cricket={cricket}
           setCricket={setCricket}

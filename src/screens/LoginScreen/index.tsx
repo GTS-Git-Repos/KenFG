@@ -1,10 +1,23 @@
-import React, {useState} from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+  Keyboard,
+} from 'react-native';
 import tailwind from '../../../tailwind';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {errorBox} from '../../utils/snakBars';
-import {TopBar, BlockScreenByLoading} from '../../sharedComponents';
-
+import {
+  TopBar,
+  BlockScreenByLoading,
+  ButtonComponent,
+  SocialLogin,
+} from '../../sharedComponents';
+import assets from '../../constants/assets_manifest';
 import {useMutation} from 'react-query';
 import LinearGradient from 'react-native-linear-gradient';
 import {loginRemote} from '../../remote/authRemote';
@@ -15,6 +28,20 @@ export default function LoginScreen() {
 
   const [mobile, setMobile] = useState('9867543210');
   const [loading, setLoading] = useState(false);
+  const [showHint, setShowHint] = useState(true);
+
+  useEffect(() => {
+    const show = Keyboard.addListener('keyboardDidShow', () => {
+      setShowHint(false);
+    });
+    const close = Keyboard.addListener('keyboardDidHide', () => {
+      setShowHint(true);
+    });
+    return () => {
+      show.remove();
+      close.remove();
+    };
+  }, []);
 
   const onPressAction = async () => {
     try {
@@ -40,59 +67,88 @@ export default function LoginScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      {/* <TopBar text={'Log in'} /> */}
-      <View style={[tailwind('bg-dark-3 rounded  px-3 py-6 mx-3 my-7 shadow')]}>
-        <View
-          style={[
-            tailwind('bg-dark-2 border-b-2 mb-3 rounded p-1'),
-            {borderBottomColor: '#B2933D'},
-          ]}>
-          <TextInput
-            maxLength={10}
-            value={mobile}
-            keyboardAppearance="dark"
-            keyboardType="decimal-pad"
-            onChangeText={e => setMobile(e)}
-            placeholder="Mobile Number"
-            placeholderTextColor="#8797B1"
-            style={[tailwind('font-bold text-light p-2')]}
-          />
-        </View>
-        <LinearGradient
-          end={{x: 0.0, y: 0.5}}
-          start={{x: 0.8, y: 2.0}}
-          locations={[0.6, 0.5]}
-          style={[tailwind('my-2 rounded p-2')]}
-          colors={['#B2933D', '#C5A858']}>
-          <TouchableOpacity
-            onPress={onPressAction}
-            style={[
-              tailwind('rounded p-1 flex-row  items-center justify-center '),
-            ]}>
-            <Text style={[tailwind('font-bold text-brown-4 px-2 font-18')]}>
-              NEXT
-            </Text>
-          </TouchableOpacity>
-        </LinearGradient>
-      </View>
+      <ScrollView contentContainerStyle={tailwind('py-9 bg-dark-3 px-4')}>
+        <ScrollView>
+          <View style={[tailwind('flex-row items-center justify-center')]}>
+            <Image
+              resizeMode="contain"
+              source={assets.logo_new}
+              style={[tailwind(''), {width: 92, height: 28}]}
+            />
+          </View>
 
-      <View style={[tailwind('flex-row justify-center items-center')]}>
-        <Text
-          style={[tailwind('font-regular text-dark-1 text-center font-15')]}>
-          Not a Memeber ?{' '}
-          {/* <TouchableOpacity
-            style={[tailwind('')]}
-            > */}
           <Text
-            onPress={() => navigation.navigate('SignupScreen')}
-            style={[tailwind('text-green-500 font-15 underline')]}>
-            Register
+            style={[
+              tailwind('font-bold text-light pt-9 text-center'),
+              {fontSize: 24},
+            ]}>
+            Welcome Back
           </Text>
-          {/* </TouchableOpacity> */}
-        </Text>
-      </View>
+          <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center')]}>
+            Signin to Continue
+          </Text>
+
+          <View style={[tailwind('pt-8 pb-4')]}>
+            <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+              Enter Mobile Number
+            </Text>
+            <TextInput
+              maxLength={13}
+              value={'9876543210'}
+              keyboardAppearance="dark"
+              keyboardType="decimal-pad"
+              style={[
+                tailwind('border-b font-bold text-light font-16'),
+                {borderColor: '#8797B1', height: 40},
+              ]}
+            />
+          </View>
+
+          <TouchableOpacity onPress={onPressAction}>
+            <ButtonComponent text={'NEXT'} />
+          </TouchableOpacity>
+          <OR />
+          <SocialLogin />
+        </ScrollView>
+      </ScrollView>
+      {showHint && <FooterHint />}
 
       {loading && <BlockScreenByLoading />}
     </View>
   );
 }
+
+const OR = () => {
+  return (
+    <View style={[tailwind('flex-row items-center my-4')]}>
+      <View
+        style={[
+          tailwind(''),
+          {flex: 5, backgroundColor: '#8797B14D', height: 1.5},
+        ]}></View>
+      <Text
+        style={[
+          tailwind('font-regular font-bold text-center font-10 text-dark-1'),
+          {flex: 2},
+        ]}>
+        OR
+      </Text>
+      <View
+        style={[
+          tailwind(''),
+          {flex: 5, backgroundColor: '#8797B14D', height: 1.5},
+        ]}></View>
+    </View>
+  );
+};
+
+const FooterHint = () => {
+  return (
+    <View style={[tailwind(' p-2 flex-row items-center justify-center')]}>
+      <Text style={[tailwind('font-regular text-light font-15')]}>
+        Dont't have an account ?{' '}
+      </Text>
+      <Text style={[tailwind('font-bold text-light font-15')]}>Register</Text>
+    </View>
+  );
+};

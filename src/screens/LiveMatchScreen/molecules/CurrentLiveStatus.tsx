@@ -16,8 +16,8 @@ export default function CurrentLiveStats(props: PropTypes) {
       <View style={[tailwind('flex-row')]}>
         <View style={[tailwind(''), {flex: 4.75}]}>
           <CurrentPlayerStats
-            player1={'Player 1'}
-            player2={'Player 2'}
+            player1={'D Warner'}
+            player2={'A Finch'}
             player1_runs={'23'}
             player1_balls={'8'}
             player2_runs={'43'}

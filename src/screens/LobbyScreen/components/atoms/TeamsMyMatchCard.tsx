@@ -35,14 +35,18 @@ export default function TeamsMyMatchCard(props: PropTypes) {
         </Text>
       </View>
 
-      <View style={[tailwind('flex-row items-center')]}>
-        <Image
-          resizeMode="contain"
-          source={assets.running_clock}
-          style={[tailwind(''), {width: 16, height: 16}]}
-        />
-        <Text style={[tailwind('font-bold text-white px-1')]}>2h:23:32</Text>
+      <View style={[tailwind('flex-col justify-between')]}>
+        <View style={[tailwind('flex-row items-center')]}>
+          <Image
+            resizeMode="contain"
+            source={assets.running_clock}
+            style={[tailwind(''), {width: 16, height: 16}]}
+          />
+          <Text style={[tailwind('font-bold text-white px-1')]}>2h:23:32</Text>
+        </View>
+        <IsLive />
       </View>
+
       <View style={[tailwind('')]}>
         <View style={[tailwind('flex-row items-center')]}>
           <Image
@@ -67,3 +71,23 @@ export default function TeamsMyMatchCard(props: PropTypes) {
     </View>
   );
 }
+
+const IsLive = () => {
+  return (
+    <View
+      style={[tailwind('flex flex-1 flex-row justify-center items-center')]}>
+      <Text
+        style={[
+          tailwind('font-regular text-center pr-1 font-10'),
+          {fontSize: 14, color: '#FEFEFF'},
+        ]}>
+        LIVE
+      </Text>
+      <View
+        style={[
+          tailwind('rounded-full'),
+          {backgroundColor: 'green', width: 5, height: 5},
+        ]}></View>
+    </View>
+  );
+};

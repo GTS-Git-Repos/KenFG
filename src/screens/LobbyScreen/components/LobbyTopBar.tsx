@@ -10,7 +10,7 @@ interface PropTypes {
 }
 
 export default function LobbyTopBar(props: PropTypes) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   return (
     <View>
       <View style={[tailwind('flex-row justify-between')]}>
@@ -18,10 +18,10 @@ export default function LobbyTopBar(props: PropTypes) {
           <Image
             resizeMode="cover"
             source={assets.logo_back_rectangle}
-            style={[{width: 177, height: 63}]}
+            style={[{width: 160, height: 63}]}
           />
         </View>
-        <View style={[tailwind('absolute'), {width: 100, left: 23, top: 10}]}>
+        <View style={[tailwind('absolute'), {width: 100, left: 20, top: 10}]}>
           <Image
             resizeMode="contain"
             source={assets.logo_new}
@@ -32,18 +32,21 @@ export default function LobbyTopBar(props: PropTypes) {
         <TouchableOpacity
           onPress={() => navigation.navigate('WalletScreen')}
           style={[
-            tailwind('flex-row items-end justify-end  px-2'),
+            tailwind('flex-row items-end justify-end px-2'),
             {position: 'relative', right: 16},
           ]}>
           <View style={[tailwind('px-2')]}>
             <Text
               style={[
                 tailwind('font-bold uppercase'),
-                {fontSize: 11, color: '#5F401C'},
+                {fontSize: 13, color: '#5F401C'},
               ]}>
               Cash Balance
             </Text>
-            <Text style={[tailwind('font-regular text-primary font-16')]}>
+            <Text
+              style={[
+                tailwind('font-regular text-primary text-right font-16'),
+              ]}>
               {'\u20B9 '}
               {props.amount}
             </Text>
@@ -51,7 +54,7 @@ export default function LobbyTopBar(props: PropTypes) {
           <Image
             resizeMode="contain"
             source={assets.wallet}
-            style={[tailwind(''), {width: 28, height: 28}]}
+            style={[tailwind(''), {width: 33, height: 33}]}
           />
         </TouchableOpacity>
       </View>

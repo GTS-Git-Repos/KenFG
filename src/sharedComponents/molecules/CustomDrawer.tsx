@@ -146,7 +146,7 @@ const UserInfo = (props: any) => {
                 style={[tailwind('w-full h-full')]}
               />
             </View>
-            <Text style={[tailwind('font-regular px-1 text-light font-15')]}>
+            <Text style={[tailwind('font-regular px-1 text-light font-13')]}>
               Level 001
             </Text>
           </View>
@@ -154,9 +154,9 @@ const UserInfo = (props: any) => {
       </View>
 
       <View style={[tailwind(''), {flex: 1}]}>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <Icon name="arrow-forward" size={20} color="white" />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </TouchableOpacity>
   );

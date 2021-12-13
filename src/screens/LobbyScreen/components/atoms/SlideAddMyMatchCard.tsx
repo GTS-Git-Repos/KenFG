@@ -11,7 +11,7 @@ export default function SlideAddMyMatchCard(props: PropTypes) {
   return (
     <LinearGradient
       colors={['#131e30', '#162135']}
-      style={[tailwind('rounded-b py-2')]}>
+      style={[tailwind('rounded-b py-1')]}>
       <Text
         style={[
           tailwind('font-regular text-center font-10'),

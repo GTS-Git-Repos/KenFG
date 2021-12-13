@@ -64,7 +64,7 @@ const TabItem = ({tabName, active, index, onTabPressed}) => {
           <LinearGradient
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
-            style={[tailwind('mx-3 mt-3 rounded h-1')]}
+            style={[tailwind('mx-3 mt-3 rounded'), {height: 2}]}
             colors={['#816D2E', '#614920']}></LinearGradient>
         )}
       </View>

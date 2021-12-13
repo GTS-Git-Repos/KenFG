@@ -20,14 +20,39 @@ export default function TransactionList() {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Recent Transactions'} />
       <View style={[tailwind('')]}>
-        <Date date={'10 December 2021'} />
+        <Date date={'21 October, 2021'} />
 
-        <Transaction amount={'32'} plus={true} title={'Deposited a Cash'} />
-        <Transaction amount={'20'} plus={false} title={'Joined a Contest'} />
-        <Transaction amount={'20'} plus={true} title={'Winning from Contest'} />
-        <Transaction amount={'20'} plus={true} title={'Winning from Contest'} />
-        <Date date={'12 December 2021'} />
-        <Transaction amount={'20'} plus={false} title={'Joined a Contest'} />
+        <Transaction
+          amount={'32'}
+          plus={true}
+          title={'Deposited a Cash'}
+          open={true}
+        />
+        <Transaction
+          amount={'32'}
+          plus={true}
+          title={'Won a Contest'}
+          open={false}
+        />
+      </View>
+
+      <View style={[tailwind(''), {paddingTop: 8}]}></View>
+
+      <View style={[tailwind('')]}>
+        <Date date={'19 October, 2021'} />
+
+        <Transaction
+          amount={'42'}
+          plus={false}
+          title={'Deposited a Cash'}
+          open={false}
+        />
+        <Transaction
+          amount={'32'}
+          plus={true}
+          title={'Won a Contest'}
+          open={false}
+        />
       </View>
     </View>
   );

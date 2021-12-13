@@ -6,11 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 export default function LiveMatchSeparator() {
   return (
-    <LinearGradient
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 0}}
-      style={[tailwind('mx-7')]}
-      colors={['#172338', '#816D2E', '#172338']}>
+    <LinearGradient colors={['#172338', '#8797B1', '#172338']}>
       <View style={[tailwind(''), {height: 1}]}></View>
     </LinearGradient>
   );

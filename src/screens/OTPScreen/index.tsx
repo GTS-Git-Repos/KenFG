@@ -2,7 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
-import {TopBar, BlockScreenByLoading} from '../../sharedComponents';
+import {
+  TopBar,
+  BlockScreenByLoading,
+  ButtonComponent,
+} from '../../sharedComponents';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {errorBox} from '../../utils/snakBars';
 import OTPInput from './molecules/OTPInput';
@@ -85,22 +89,10 @@ export default function OTPScreen() {
           ]}>
           <OTPInput value={otp} onChangeText={setOTP} />
         </View>
-        <LinearGradient
-          end={{x: 0.0, y: 0.5}}
-          start={{x: 0.8, y: 2.0}}
-          locations={[0.6, 0.5]}
-          style={[tailwind('mt-5 rounded p-2')]}
-          colors={['#B2933D', '#C5A858']}>
-          <TouchableOpacity
-            onPress={onPressAction}
-            style={[
-              tailwind('flex-row  items-center justify-center  rounded p-1'),
-            ]}>
-            <Text style={[tailwind('font-bold text-brown-4 px-2 font-18')]}>
-              CONTINUE
-            </Text>
-          </TouchableOpacity>
-        </LinearGradient>
+
+        <TouchableOpacity style={[tailwind('my-4')]} onPress={onPressAction}>
+          <ButtonComponent text={'CONTINUE'} />
+        </TouchableOpacity>
       </View>
 
       <Text

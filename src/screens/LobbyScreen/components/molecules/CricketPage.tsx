@@ -3,6 +3,7 @@ import tailwind from '../../../../../tailwind';
 import {View, Text} from 'react-native';
 import SubTitle from '../SubTitle';
 import MyMatchCard from './MyMatchCard';
+import NewMyMatchesCard from './NewMyMatchesCard';
 import ImageSlider from './ImageSlider';
 import UpComingMatchesSlider from './UpComingMatchesSlider';
 
@@ -25,11 +26,11 @@ export default function CricketPage(props: PropTypes) {
 
   return (
     <View>
-      <View style={[tailwind('px-5 py-1')]}>
+      <View style={[tailwind('px-5 pt-4')]}>
         <SubTitle text={'My Matches'} actiontext="View all" />
       </View>
       <View style={[tailwind('px-5')]}>
-        <MyMatchCard />
+        <NewMyMatchesCard />
       </View>
 
       <ImageSlider

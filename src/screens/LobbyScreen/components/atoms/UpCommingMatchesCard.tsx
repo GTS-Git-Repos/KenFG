@@ -36,61 +36,56 @@ export default function UpcommingMatches(props: PropTypes) {
       }),
     );
 
-    navigation.navigate('ContestListScreen',{
-      
-    });
+    navigation.navigate('ContestListScreen');
   };
 
   return (
     <TouchableOpacity
       onPress={navigateToContestList}
-      style={[tailwind('p-2'), {flex: 6}]}>
+      style={[tailwind('p-1'), {flex: 6}]}>
       <LinearGradient
         start={{x: 0.0, y: 0.5}}
         end={{x: 0.5, y: 0.0}}
         locations={[0.6, 0.5]}
         colors={['#172338', '#172338']}
-        style={[
-          tailwind('bg-primary  border border-gray-800 rounded px-2 pt-1'),
-        ]}>
-        <View
-          style={[tailwind('absolute right-0 flex flex-row justify-end p-1')]}>
-          <Image
-            resizeMode="contain"
-            source={assets.bell}
-            style={[tailwind(''), {width: 15, height: 15}]}
-          />
-        </View>
-
-        <View style={[tailwind('pt-4')]}>
+        style={[tailwind('bg-primary  border border-gray-800 rounded px-2')]}>
+        <View style={[tailwind('flex-row items-center justify-between')]}>
           <Text
             numberOfLines={1}
             allowFontScaling={true}
             adjustsFontSizeToFit={true}
-            style={[tailwind('font-regular  font-10'), {color: '#F6F7F4'}]}>
+            style={[tailwind('font-regular font-10'), {color: '#F6F7F4'}]}>
             {props.tournament_name}
           </Text>
-
-          <LinearGradient
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}
-            style={[tailwind('mx-2 mt-1')]}
-            colors={['#162339', '#29344B', '#162339']}>
-            <View style={[tailwind(''), {height: 2}]}></View>
-          </LinearGradient>
+          <View style={[tailwind('flex-row justify-end pt-0.5')]}>
+            <Image
+              resizeMode="contain"
+              source={assets.bell}
+              style={[tailwind(''), {width: 13, height: 13}]}
+            />
+          </View>
         </View>
 
+        <LinearGradient
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          style={[tailwind('mx-2'), {marginTop: 2}]}
+          colors={['#162339', '#29344B', '#162339']}>
+          <View style={[tailwind(''), {height: 2}]}></View>
+        </LinearGradient>
+
         <View
-          style={[tailwind('flex flex-row justify-between py-2 items-center')]}>
+          style={[tailwind('flex flex-row justify-between py-1 items-center')]}>
           <View style={[tailwind('')]}>
-            <Image
+            {/* <Image
               resizeMode="contain"
               source={assets.south_africa_flag}
               style={[tailwind(''), {width: 40, height: 40}]}
-            />
+            /> */}
+            <PlaceHolderImage color="green" />
             <Text
               style={[
-                tailwind('font-bold uppercase font-13 text-center'),
+                tailwind('font-bold uppercase font-13 pt-0.5 text-center'),
                 {color: '#D3D3D5'},
               ]}>
               {props.team_a_name}
@@ -102,14 +97,10 @@ export default function UpcommingMatches(props: PropTypes) {
           </Text>
 
           <View style={[tailwind('')]}>
-            <Image
-              resizeMode="contain"
-              source={assets.australia_flag}
-              style={[tailwind(''), {width: 40, height: 40}]}
-            />
+            <PlaceHolderImage color="red" />
             <Text
               style={[
-                tailwind('font-bold uppercase font-13 text-center'),
+                tailwind('font-bold uppercase font-13 pt-0.5 text-center'),
                 {color: '#D3D3D5'},
               ]}>
               {props.team_b_name}
@@ -122,10 +113,10 @@ export default function UpcommingMatches(props: PropTypes) {
           <View style={[tailwind(''), {flex: 6}]}>
             <Text
               numberOfLines={1}
-              // allowFontScaling={true}
-              // adjustsFontSizeToFit={true}
+              allowFontScaling={true}
+              adjustsFontSizeToFit={true}
               style={[tailwind('font-regular font-10'), {color: '#9AABC6'}]}>
-              {props.tournament_shortName}
+              Line ups out
             </Text>
           </View>
 
@@ -169,3 +160,15 @@ export default function UpcommingMatches(props: PropTypes) {
     </TouchableOpacity>
   );
 }
+
+const PlaceHolderImage = (props: any) => {
+  return (
+    <View style={{width: 50, height: 30}}>
+      <Image
+        resizeMode="stretch"
+        source={assets.australia_flag}
+        style={[tailwind(''), {width: 50, height: 30}]}
+      />
+    </View>
+  );
+};
