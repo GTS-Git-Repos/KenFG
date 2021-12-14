@@ -49,15 +49,21 @@ export default function UpcommingMatches(props: PropTypes) {
         locations={[0.6, 0.5]}
         colors={['#172338', '#172338']}
         style={[tailwind('bg-primary  border border-gray-800 rounded px-2')]}>
-        <View style={[tailwind('flex-row items-center justify-between')]}>
-          <Text
-            numberOfLines={1}
-            allowFontScaling={true}
-            adjustsFontSizeToFit={true}
-            style={[tailwind('font-regular font-10'), {color: '#F6F7F4'}]}>
-            {props.tournament_name}
-          </Text>
-          <View style={[tailwind('flex-row justify-end pt-0.5')]}>
+        <View style={[tailwind('flex-row items-center')]}>
+          <View style={[tailwind(''), {flex: 9}]}>
+            <Text
+              numberOfLines={1}
+              // allowFontScaling={true}
+              // adjustsFontSizeToFit={true}
+              style={[
+                tailwind('font-regular text-center font-10'),
+                {color: '#F6F7F4'},
+              ]}>
+              {props.tournament_name}
+            </Text>
+          </View>
+
+          <View style={[tailwind('flex-row justify-end pt-0.5'), {flex: 1}]}>
             <Image
               resizeMode="contain"
               source={assets.bell}
@@ -75,7 +81,10 @@ export default function UpcommingMatches(props: PropTypes) {
         </LinearGradient>
 
         <View
-          style={[tailwind('flex flex-row justify-between py-1 items-center')]}>
+          style={[
+            tailwind('flex flex-row justify-between py-1 items-center'),
+            {paddingHorizontal: 16},
+          ]}>
           <View style={[tailwind('')]}>
             {/* <Image
               resizeMode="contain"
@@ -109,7 +118,7 @@ export default function UpcommingMatches(props: PropTypes) {
         </View>
 
         {/* Contest Prize Info */}
-        <View style={[tailwind('flex-row items-center')]}>
+        <View style={[tailwind('flex-row items-center'), {paddingLeft: 10}]}>
           <View style={[tailwind(''), {flex: 6}]}>
             <Text
               numberOfLines={1}

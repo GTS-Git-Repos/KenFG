@@ -2,7 +2,9 @@
   "tailwindStyleBlock": {
     "scope": "typescriptreact",
     "prefix": "makestyle",
-    "body": [" style={[tailwind('$1')$2]}"],
+    "body": [
+      " style={[tailwind('$1')$2]}"
+    ],
     "description": "tailwind Style Basic Block"
   },
   "LocalImage": {
@@ -33,22 +35,41 @@
   },
   "JS Function": {
     "prefix": "jsfun",
-    "body": ["const ${1} = async () =>{", "  ${2}", "}"],
+    "body": [
+      "const ${1} = async () =>{",
+      "  ${2}",
+      "}"
+    ],
     "description": "JS Function"
   },
   "React Use State": {
     "prefix": "rstate",
-    "body": ["const [${1}, ${2}] = useState(${3})"],
+    "body": [
+      "const [${1}, ${2}] = useState(${3})"
+    ],
     "description": "React Use State"
   },
   "Redux UseSelector": {
     "prefix": "rdxselect",
-    "body": ["const ${1}State = useSelector(state => state.user.${1})"],
+    "body": [
+      "const ${1}State = useSelector(state => state.user.${1})"
+    ],
     "description": "Redux UseSelector"
   },
   "use_nav": {
     "prefix": "use_nav",
-    "body": ["const navigation = useNavigation()"],
+    "body": [
+      "const navigation = useNavigation()"
+    ],
     "description": "Redux Use Navigation"
+  },
+  "React native stylesheet": {
+    "prefix": "rnstyles",
+    "body": [
+      "const styles = StyleSheet.create({",
+      "  root:{}",
+      "});"
+    ],
+    "description": "React native stylesheet"
   }
 }

@@ -7,12 +7,10 @@ import {
   useWindowDimensions,
   Text,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import assets from '../../../../constants/assets_manifest';
 import Swiper from 'react-native-swiper';
 import {useNavigation} from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
-import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 interface PropTypes {
   data: [];
@@ -24,7 +22,7 @@ const ImageSlider = (props: any) => {
   const navigation = useNavigation<any>();
   const swiperRef = useRef();
 
-  const [height, setHeight] = useState(150);
+  const [height, setHeight] = useState(104);
 
   const calcHeight = (e: any) => {
     const {height} = e.nativeEvent.layout;
@@ -44,7 +42,7 @@ const ImageSlider = (props: any) => {
       loop={true}
       showsButtons={false}
       autoplay={true}
-      showsPagination={true}
+      showsPagination={false}
       loadMinimal={true}
       loadMinimalSize={2}
       autoplayTimeout={2}
@@ -53,17 +51,22 @@ const ImageSlider = (props: any) => {
       activeDot={<ActiveDot />}
       dot={<Dot />}
       width={width}
-      style={[tailwind('my-1'), {height: height, overflow: 'visible'}]}>
+      style={[tailwind(''), {height: height, overflow: 'visible'}]}>
       {props.data.map((item: any) => {
         return (
           <TouchableOpacity
+            onLayout={calcHeight}
             key={item.banner_key}
             activeOpacity={0.7}
-            onPress={() => navigation.navigate('ContestListScreen')}
+            // onPress={() =>
+            //   navigation.navigate('ContestListScreen', {
+            //     match_key: item.match_key,
+            //   })
+            // }
             style={[tailwind('flex-row mx-5 justify-center items-center')]}>
             <FastImage
               fallback={true}
-              resizeMode={FastImage.resizeMode.contain}
+              resizeMode={FastImage.resizeMode.stretch}
               source={{
                 uri: item.banner_url,
                 priority: FastImage.priority.low,
@@ -72,7 +75,6 @@ const ImageSlider = (props: any) => {
               style={{
                 width: '100%',
                 borderRadius: 10,
-                aspectRatio: 2 / 1,
                 height: height,
               }}
             />

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity, TextInput} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {
@@ -17,7 +17,7 @@ import {getUserRemote} from '../../remote/userRemote';
 import {resetDrawerNavigation} from '../../utils/resetNav';
 import {updateUserInfoAction} from '../../store/actions/userAction';
 import {useDispatch} from 'react-redux';
-// import assets from 'assets';
+import assets from '../../constants/assets_manifest';
 const log = console.log;
 
 export default function OTPScreen() {
@@ -72,19 +72,21 @@ export default function OTPScreen() {
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'OTP'} />
-      <View
-        style={[
-          tailwind(
-            'bg-dark-3 rounded border border-gray-700  px-3 py-6 mx-3 my-7',
-          ),
-        ]}>
-        <Text style={[tailwind('font-regular pb-3 text-dark-1 font-13')]}>
+      <View style={[tailwind('bg-dark-3 rounded px-3 py-6 py-7')]}>
+        <View style={[tailwind('flex-row items-center justify-center')]}>
+          <Image
+            resizeMode="contain"
+            source={assets.logo_new}
+            style={[tailwind(''), {width: 92, height: 28}]}
+          />
+        </View>
+        <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center font-13 pt-4')]}>
           Your OTP is : {route?.params?.otp}
         </Text>
 
         <View
           style={[
-            tailwind('bg-dark-2 mb-0 rounded p-1'),
+            tailwind('mb-0 rounded p-1'),
             {borderBottomColor: '#B2933D'},
           ]}>
           <OTPInput value={otp} onChangeText={setOTP} />
@@ -96,7 +98,7 @@ export default function OTPScreen() {
       </View>
 
       <Text
-        style={[tailwind('font-regular text-gray-400 text-center font-15')]}>
+        style={[tailwind('font-regular text-light py-3 text-center font-15')]}>
         did't receive an OTP ?{' '}
         <Text style={[tailwind('text-green-500 underline')]}>Resend</Text>
       </Text>

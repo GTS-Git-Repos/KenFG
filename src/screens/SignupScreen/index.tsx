@@ -114,8 +114,11 @@ export default function SignupScreen() {
               Mobile No
             </Text>
             <TextInput
-              maxLength={13}
-              value={'9876543210'}
+              maxLength={10}
+              value={mobile}
+              keyboardAppearance="dark"
+              keyboardType="decimal-pad"
+              onChangeText={e => setMobile(e)}
               style={[
                 tailwind('border-b font-bold text-light font-16'),
                 {borderColor: '#8797B1', height: 40},

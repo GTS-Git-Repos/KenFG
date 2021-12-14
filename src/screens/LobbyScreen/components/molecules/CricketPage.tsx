@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import SubTitle from '../SubTitle';
-import MyMatchCard from './MyMatchCard';
+
 import NewMyMatchesCard from './NewMyMatchesCard';
 import ImageSlider from './ImageSlider';
 import UpComingMatchesSlider from './UpComingMatchesSlider';
@@ -32,13 +32,14 @@ export default function CricketPage(props: PropTypes) {
       <View style={[tailwind('px-5')]}>
         <NewMyMatchesCard />
       </View>
+      <View style={[tailwind('pt-3')]}>
+        <ImageSlider
+          data={upcommingMatches?.data?.banners}
+          status={upcommingMatches.status}
+        />
+      </View>
 
-      <ImageSlider
-        data={upcommingMatches?.data?.banners}
-        status={upcommingMatches.status}
-      />
-
-      <View style={[tailwind('px-5 pb-1')]}>
+      <View style={[tailwind('px-5 pt-4')]}>
         <SubTitle text={'Upcoming'} />
       </View>
       <UpComingMatchesSlider
@@ -48,3 +49,7 @@ export default function CricketPage(props: PropTypes) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  root: {},
+});

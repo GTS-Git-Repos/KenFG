@@ -28,7 +28,10 @@ export default function LobbyNav(props: PropTypes) {
       <View style={[tailwind('bg-dark-3 pt-3 rounded-t-2xl  flex-row')]}>
         <TouchableOpacity
           onPress={() => navigation.openDrawer()}
-          style={[tailwind('flex-col items-center'), {width: width / 5.5}]}>
+          style={[
+            tailwind('flex-col items-center'),
+            {width: width / 5.5, left: 16},
+          ]}>
           <Image
             resizeMode="contain"
             source={assets.profile_round}
@@ -103,7 +106,7 @@ export default function LobbyNav(props: PropTypes) {
 
         <View
           style={[
-            tailwind('flex-col items-center justify-center py-2 '),
+            tailwind('flex-col items-center justify-end'),
             {width: width / 5.5},
           ]}>
           <TouchableOpacity
@@ -112,7 +115,7 @@ export default function LobbyNav(props: PropTypes) {
             <Image
               resizeMode="contain"
               source={assets.notify}
-              style={[tailwind('w-6 h-6')]}
+              style={{width: 28, height: 28}}
             />
             <View
               style={[

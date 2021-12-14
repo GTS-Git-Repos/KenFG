@@ -46,6 +46,10 @@ const App = ({value, onChangeText}) => {
 const styles = StyleSheet.create({
   root: {
     padding: 0,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {textAlign: 'center', fontSize: 30},
   codeFieldRoot: {

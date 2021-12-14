@@ -48,13 +48,13 @@ export default function LobbyTopBar(props: PropTypes) {
                 tailwind('font-regular text-primary text-right font-16'),
               ]}>
               {'\u20B9 '}
-              {props.amount}
+              {/* {props.amount} */} 1,00,000
             </Text>
           </View>
           <Image
             resizeMode="contain"
             source={assets.wallet}
-            style={[tailwind(''), {width: 33, height: 33}]}
+            style={[tailwind(''), {width: 37, height: 37}]}
           />
         </TouchableOpacity>
       </View>

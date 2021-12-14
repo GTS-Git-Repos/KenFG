@@ -85,7 +85,7 @@ export default function LoginScreen() {
             Welcome Back
           </Text>
           <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center')]}>
-            Signin to Continue
+            Sign in to Continue
           </Text>
 
           <View style={[tailwind('pt-8 pb-4')]}>
