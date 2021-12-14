@@ -18,7 +18,7 @@ export default function Teams(props: PropTypes) {
             {width: 12, height: 18, top: 33 / 4},
           ]}></View>
         <View>
-          <View style={[tailwind('bg-dark-1'), {width: 55, height: 33}]}></View>
+          <View style={[tailwind('bg-dark-1'), {width: 55, height: 28}]}></View>
           <Text
             style={[
               tailwind('font-bold text-center py-0.5 text-light font-15'),
@@ -44,7 +44,7 @@ export default function Teams(props: PropTypes) {
 
       <View style={[tailwind('flex-row justify-end'), {flex: 4}]}>
         <View>
-          <View style={[tailwind('bg-dark-1'), {width: 55, height: 33}]}></View>
+          <View style={[tailwind('bg-dark-1'), {width: 55, height: 28}]}></View>
           <Text
             style={[
               tailwind('font-bold text-center py-0.5 text-light font-15'),

@@ -22,12 +22,14 @@ import CompareTeamsScreen from '../screens/CompareTeamsScreen';
 import HowToPlayScreen from '../screens/HowToPlayScreen';
 import LeaderBoard from '../screens/LeaderBoard';
 import TransactionListScreen from '../screens/TransactionListScreen';
+import VerifyAccountScreen from '../screens/VerifyAccountScreen';
 
 import TeamsListScreen from '../screens/TeamsListScreen';
 
 import MyContestPlayersInfo from '../screens/MyContestPlayersInfo';
 import PlayerProfileScreen from '../screens/PlayerProfileScreen';
 import MoreScreen from '../screens/MoreScreen';
+import InviteScreen from '../screens/InviteScreen';
 
 const RootNavigator = createNativeStackNavigator();
 
@@ -72,8 +74,7 @@ export default function RootNavigation() {
       <Host>
         <RootNavigator.Navigator
           initialRouteName="InitialScreen"
-          screenOptions={StackConfig}
-        >
+          screenOptions={StackConfig}>
           <RootNavigator.Screen
             component={InitialScreen}
             name="InitialScreen"
@@ -143,6 +144,11 @@ export default function RootNavigation() {
           <RootNavigator.Screen
             component={PlayerProfileScreen}
             name="PlayerProfileScreen"
+          />
+          <RootNavigator.Screen component={InviteScreen} name="InviteScreen" />
+          <RootNavigator.Screen
+            component={VerifyAccountScreen}
+            name="VerifyAccountScreen"
           />
         </RootNavigator.Navigator>
       </Host>

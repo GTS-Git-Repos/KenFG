@@ -12,7 +12,7 @@ export default function MyMatchesTopSection(props: PropTypes) {
   return (
     <View>
       <View
-        style={[tailwind('pt-3 px-3 flex-row items-center justify-between')]}>
+        style={[tailwind('pt-1 px-3 flex-row items-center justify-between')]}>
         <View style={[tailwind('text-left')]}>
           <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
             World T20 Championship

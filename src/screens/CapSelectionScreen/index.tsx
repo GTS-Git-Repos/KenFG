@@ -5,7 +5,7 @@ import tailwind from '../../../tailwind';
 import {useNavigation, useRoute} from '@react-navigation/native';
 
 // import assets from 'assets';
-import {TopBar, BlockScreenByLoading} from '../../sharedComponents';
+import {TopBar, BlockScreenByLoading, BottomLine} from '../../sharedComponents';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import {useQuery} from 'react-query';
 const log = console.log;
@@ -102,18 +102,18 @@ export default function CapSelectionScreen() {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'15h 33m Left'} teams={Object.keys(TeamsSelector)} />
       <ScrollView>
-        <View style={[tailwind('bg-dark-3 py-4')]}>
-          <Text
-            style={[tailwind('font-regular text-center text-dark-1 font-14')]}>
+        <View style={[tailwind(' px-4 py-3')]}>
+          <Text style={[tailwind('font-bold text-center text-dark-1 font-13')]}>
             Choose your Captain and Vice Captain
           </Text>
           <Text
             style={[
-              tailwind('font-regular text-center text-dark-1 py-2 font-13'),
+              tailwind('font-regular text-center text-dark-1 pt-2 font-13'),
             ]}>
             C Gets 2x Points, VC gets 1.5x Points
           </Text>
         </View>
+        <BottomLine/>
         <RowHeader />
         {AllPlayers.map((item: any) => {
           return (

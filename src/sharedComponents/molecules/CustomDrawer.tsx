@@ -1,6 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import tailwind from '../../../tailwind';
-import {View, Image, Text, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../constants/assets_manifest';
 import {BottomLine} from '../';
@@ -10,6 +17,7 @@ import Modal from 'react-native-modal';
 import {removeToken} from '../../utils/authTokenUtils';
 //@ts-expect-error
 import RNRestart from 'react-native-restart';
+import LinearGradient from 'react-native-linear-gradient';
 const log = console.log;
 export default function CustomDrawer(props: any) {
   const [logoutModal, setLogoutModal] = useState(false);
@@ -40,18 +48,23 @@ export default function CustomDrawer(props: any) {
             </Text>
           }
         />
-        <Links
-          to="HowToPlayScreen"
-          icon={assets.cash_icon}
-          text="How to Play"
-        />
+        <ReferaAndEarn />
         <Links to="LeaderBoard" icon={assets.joystick} text="Leaderboard" />
+        <Links to="LeaderBoard" icon={assets.joystick} text="Achievements" />
+        <Links to="LeaderBoard" icon={assets.joystick} text="Affilated" />
+
         <Links
           to="ProfileEditScreen"
           icon={assets.settings_icon}
           text="My Info Settings"
         />
-        <Links to="MoreScreen" icon={assets.more_icon} text="More" />
+        <Links
+          to="HowToPlayScreen"
+          icon={assets.cash_icon}
+          text="How to Play"
+        />
+
+        <Links to="VerifyAccountScreen" icon={assets.more_icon} text="More" />
         <BottomLine />
         <AppVersion version="4.24.4" />
         <BottomLine />
@@ -125,9 +138,16 @@ const UserInfo = (props: any) => {
               style={[tailwind('w-full h-full')]}
             />
           </View>
+          <View style={[tailwind('absolute bottom-0 right-0')]}>
+            <Image
+              resizeMode="contain"
+              source={assets.edit}
+              style={[{width: 18, height: 18}]}
+            />
+          </View>
         </View>
 
-        <View style={[tailwind(''), {flex: 7}]}>
+        <View style={[tailwind('pl-3'), {flex: 7}]}>
           <Text
             numberOfLines={1}
             style={[tailwind('font-bold text-light font-15')]}>
@@ -169,7 +189,7 @@ const Links = (props: any) => {
     <TouchableOpacity
       onPress={() => navigation.navigate(props.to)}
       style={[tailwind('flex-row items-center py-3 mx-4')]}>
-      <View style={[tailwind(''), {flex: 3}]}>
+      <View style={[tailwind(''), {flex: 2}]}>
         <View style={[tailwind('rounded-full'), {width: 26, height: 26}]}>
           <Image
             resizeMode="contain"
@@ -178,12 +198,12 @@ const Links = (props: any) => {
           />
         </View>
       </View>
-      <View style={[tailwind(''), {flex: 6}]}>
+      <View style={[tailwind(''), {flex: 7}]}>
         <Text style={[tailwind('font-regular text-light font-13')]}>
           {props.text}
         </Text>
       </View>
-      <View style={[tailwind(''), {flex: 3}]}>
+      <View style={[tailwind('items-end'), {flex: 3}]}>
         {props.children && props.children}
       </View>
     </TouchableOpacity>
@@ -192,56 +212,112 @@ const Links = (props: any) => {
 
 const AppVersion = (props: any) => {
   return (
-    <View style={[tailwind('flex-row items-center px-4 py-3')]}>
-      <View style={[tailwind(''), {flex: 7}]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
-          Version {props.version}
-        </Text>
-        <Text style={[tailwind('font-regular py-1 text-dark-1 font-11')]}>
-          App upto date
-        </Text>
+    <LinearGradient
+      style={[tailwind('')]}
+      colors={['#0D1320', '#172338', '#172338']}>
+      <View style={[tailwind('flex-row px-4 py-3')]}>
+        <View style={[tailwind(''), {flex: 7}]}>
+          <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+            Version {props.version}
+          </Text>
+          <Text style={[tailwind('font-regular py-1 text-dark-1 font-11')]}>
+            App upto date
+          </Text>
+        </View>
+        <View style={[tailwind('justify-end items-end'), {flex: 3}]}>
+          <Text
+            style={[tailwind('font-regular text-dark-1 uppercase font-13')]}>
+            UPDATE
+          </Text>
+        </View>
       </View>
-      <View style={[tailwind(''), {flex: 3}]}>
-        <Text style={[tailwind('font-regular text-dark-1 uppercase font-13')]}>
-          UPDATE
-        </Text>
-      </View>
-    </View>
+    </LinearGradient>
   );
 };
 
 const Support = () => {
   return (
-    <View style={[tailwind('flex-row items-center py-3 px-4')]}>
-      <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
-        <View style={[tailwind(''), {flex: 3}]}>
-          <View style={[tailwind('rounded-full'), {width: 18, height: 18}]}>
-            <Image
-              resizeMode="contain"
-              source={assets.question_icon}
-              style={[tailwind('w-full h-full')]}
-            />
+    <LinearGradient
+      style={[tailwind('')]}
+      colors={['#0D1320', '#172338', '#172338']}>
+      <View style={[tailwind('flex-row items-center py-4 px-4')]}>
+        <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
+          <View style={[tailwind(''), {flex: 3}]}>
+            <View style={[tailwind('rounded-full'), {width: 18, height: 18}]}>
+              <Image
+                resizeMode="contain"
+                source={assets.question_icon}
+                style={[tailwind('w-full h-full')]}
+              />
+            </View>
           </View>
+          <Text
+            style={[tailwind('font-regular text-light font-12'), {flex: 7}]}>
+            Helpdesk
+          </Text>
         </View>
-        <Text style={[tailwind('font-regular text-light font-12'), {flex: 7}]}>
-          Helpdesk
-        </Text>
-      </View>
 
-      <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
-        <View style={[tailwind(''), {flex: 3}]}>
-          <View style={[tailwind('rounded-full'), {width: 18, height: 18}]}>
-            <Image
-              resizeMode="contain"
-              source={assets.chat_icon}
-              style={[tailwind('w-full h-full')]}
-            />
+        <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
+          <View style={[tailwind(''), {flex: 3}]}>
+            <View style={[tailwind('rounded-full'), {width: 18, height: 18}]}>
+              <Image
+                resizeMode="contain"
+                source={assets.chat_icon}
+                style={[tailwind('w-full h-full')]}
+              />
+            </View>
           </View>
+          <Text
+            style={[tailwind('font-regular text-light font-12'), {flex: 7}]}>
+            Chat With Us
+          </Text>
         </View>
-        <Text style={[tailwind('font-regular text-light font-12'), {flex: 7}]}>
-          Chat With Us
-        </Text>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
+
+const ReferaAndEarn = () => {
+  const navigation = useNavigation<any>();
+  return (
+    <TouchableOpacity
+      onPress={() => navigation.navigate('InviteScreen')}
+      style={[tailwind('flex-row items-center py-3 mx-4')]}>
+      <View style={[tailwind(''), {flex: 2}]}>
+        <View style={[tailwind('rounded-full'), {width: 26, height: 26}]}>
+          <Image
+            resizeMode="contain"
+            source={assets.cash_icon}
+            style={[tailwind('w-full h-full')]}
+          />
+        </View>
+      </View>
+      <View style={[tailwind('flex-row  items-center'), {flex: 7}]}>
+        <Text style={[tailwind('font-regular text-light font-13')]}>
+          Refer and Earn
+        </Text>
+        <Text style={[tailwind('font-regular px-2 text-secondary font-13')]}>
+          {'\u20B9'} 500
+        </Text>
+      </View>
+      <View style={[tailwind('items-end'), {flex: 3}]}>
+        <View style={[tailwind('border px-2 py-1 rounded'), styles.invite]}>
+          <Text
+            style={[
+              tailwind(
+                'font-regular text-secondary text-center uppercase font-13 ',
+              ),
+            ]}>
+            Invite
+          </Text>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
+const styles = StyleSheet.create({
+  invite: {
+    borderColor: '#d1b45a',
+  },
+});

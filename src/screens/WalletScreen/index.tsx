@@ -34,7 +34,7 @@ export default function WalletScreen() {
             subText="Add / Remove Care, Wallets, etc"
             goto="TransactionListScreen"
           /> */}
-          <Actions text={'Refer and Earn'} goto="ReferralScreen" />
+          {/* <Actions text={'Refer and Earn'} goto="ReferralScreen" /> */}
         </View>
       </ScrollView>
       <AddMoneyButton addMoneySheet={addMoneySheet} />

@@ -26,7 +26,7 @@ const ImageSlider = (props: any) => {
 
   const calcHeight = (e: any) => {
     const {height} = e.nativeEvent.layout;
-    setHeight(height);
+    // setHeight(height);
   };
 
   const navigate = (item: any) => {

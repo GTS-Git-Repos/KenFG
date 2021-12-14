@@ -29,23 +29,21 @@ interface PropTypes {
 
 export default function Player(props: PropTypes) {
   return (
-    <TouchableOpacity
-      activeOpacity={0.5}
-      onPress={() => props.checkPlayerSelection(props.player_key, props.role)}>
-      <LinearGradient
-        start={{x: 0.0, y: 1.0}}
-        end={{x: 1.0, y: 0.0}}
-        locations={[0.6, 0.5]}
-        colors={
-          props.isSelected ? ['#3C362C', '#4D3F26'] : ['#172338', '#1B2A44']
-        }
+    <View>
+      <TouchableOpacity
+        activeOpacity={0.5}
         style={[
           tailwind('pt-3 flex-row'),
-          {opacity: props.canBeSelected ? 1 : 0.3},
-        ]}>
+          {
+            backgroundColor: props.isSelected ? '#3C362C' : '#172338',
+            // opacity: !props.canBeSelected ? 1 : 0.3,
+          },
+        ]}
+        onPress={() =>
+          props.checkPlayerSelection(props.player_key, props.role)
+        }>
         {/* Image */}
         <View style={[tailwind(''), {flex: 2}]}>
-          <InfoIcon />
           <Image
             resizeMode="contain"
             source={assets.player}
@@ -93,9 +91,16 @@ export default function Player(props: PropTypes) {
           </Text>
           {props.isSelected ? <AddedButton /> : <AddButton />}
         </View>
+      </TouchableOpacity>
+
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        style={[tailwind('')]}
+        colors={['#172338', '#FFFFFF', '#172338']}>
+        <View style={[tailwind(''), {height: 0.4}]}></View>
       </LinearGradient>
-      <BottomLine />
-    </TouchableOpacity>
+    </View>
   );
 }
 
@@ -138,18 +143,5 @@ const AddedButton = (props: any) => {
       ]}>
       <Icon name="remove" color="white" size={24} />
     </LinearGradient>
-  );
-};
-
-const InfoIcon = () => {
-  return (
-    <View style={[tailwind('absolute left-1 top-1')]}>
-      <Image
-        tintColor="#8797B"
-        resizeMode="contain"
-        source={assets.Info_Square}
-        style={[tailwind(''), {width: 12, height: 12}]}
-      />
-    </View>
   );
 };

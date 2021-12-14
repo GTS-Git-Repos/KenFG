@@ -82,7 +82,7 @@ export default function UpcommingMatches(props: PropTypes) {
 
         <View
           style={[
-            tailwind('flex flex-row justify-between py-1 items-center'),
+            tailwind('flex flex-row justify-between py-0.5 items-center'),
             {paddingHorizontal: 16},
           ]}>
           <View style={[tailwind('')]}>
@@ -94,7 +94,7 @@ export default function UpcommingMatches(props: PropTypes) {
             <PlaceHolderImage color="green" />
             <Text
               style={[
-                tailwind('font-bold uppercase font-13 pt-0.5 text-center'),
+                tailwind('font-bold uppercase font-12 pt-0.5 text-center'),
                 {color: '#D3D3D5'},
               ]}>
               {props.team_a_name}
@@ -109,7 +109,7 @@ export default function UpcommingMatches(props: PropTypes) {
             <PlaceHolderImage color="red" />
             <Text
               style={[
-                tailwind('font-bold uppercase font-13 pt-0.5 text-center'),
+                tailwind('font-bold uppercase font-12 pt-0.5 text-center'),
                 {color: '#D3D3D5'},
               ]}>
               {props.team_b_name}
@@ -148,14 +148,14 @@ export default function UpcommingMatches(props: PropTypes) {
         <View
           style={[
             tailwind(
-              'flex flex-row items-center mx-5 mt-2 py-1 rounded-t-2xl justify-center',
+              'flex flex-row items-center mx-5 mt-1 py-0.5 rounded-t-2xl justify-center',
             ),
             {backgroundColor: '#006046'},
           ]}>
           <Image
             resizeMode="contain"
             source={assets.running_clock}
-            style={[tailwind(''), {width: 13, height: 13}]}
+            style={[tailwind(''), {width: 10, height: 10}]}
           />
           <Text
             style={[
@@ -172,11 +172,11 @@ export default function UpcommingMatches(props: PropTypes) {
 
 const PlaceHolderImage = (props: any) => {
   return (
-    <View style={{width: 50, height: 30}}>
+    <View style={{width: 45, height: 25}}>
       <Image
         resizeMode="stretch"
         source={assets.australia_flag}
-        style={[tailwind(''), {width: 50, height: 30}]}
+        style={[tailwind(''), {width: 45, height: 25}]}
       />
     </View>
   );

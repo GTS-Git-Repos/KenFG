@@ -23,57 +23,29 @@ interface PropTypes {
 
 export default function PlayerProfile(props: PropTypes) {
   return (
-    <LinearGradient
-      colors={['#1C2B46', '#172338']}
-      end={{x: 0.0, y: 0.5}}
-      start={{x: 0.8, y: 3.0}}
-      locations={[0.6, 0.5]}>
+    <View style={[tailwind('bg-dark-3')]}>
       <View style={[tailwind('pt-3 flex-row items-center')]}>
         <View style={[tailwind('flex-row'), {flex: 5}]}>
           <Image
             resizeMode="contain"
             source={assets.player}
-            style={{width: 75, height: 75}}
+            style={{width: 62, height: 62}}
           />
-          <Icon
-            style={[tailwind('absolute mx-1')]}
-            name="information-circle-outline"
-            color="white"
-            size={20}
-          />
-          <View
-            style={[tailwind('absolute bottom-1  px-3 flex-row items-center')]}>
-            <Text
-              style={[
-                tailwind(
-                  'font-regular uppercase font-10 rounded-l  text-light bg-primary',
-                ),
-                {paddingHorizontal: 2, paddingVertical: 1},
-              ]}>
-              {props.teamname}
-            </Text>
-            {/* <Text
-              style={[
-                tailwind('font-regular font-10 rounded-r bg-secondary'),
-                {paddingHorizontal: 2, paddingVertical: 1},
-              ]}>
-              {props.title}
-            </Text> */}
-          </View>
 
-          <View style={[tailwind('flex-col justify-center'), {flex: 1}]}>
+          <View style={[tailwind('flex-col justify-center ml-6'), {flex: 1}]}>
             <Text
               numberOfLines={1}
               style={[
-                tailwind('font-semibold font-16 overflow-hidden text-light'),
+                tailwind('font-semibold font-14 overflow-hidden text-light'),
               ]}>
               {props.name}
             </Text>
-            <Text style={[tailwind('font-regular py-1 font-13 text-dark-1')]}>
+            <Text style={[tailwind('font-regular py-1 font-14 text-dark-1')]}>
               {props.points}
             </Text>
           </View>
         </View>
+        <TeamTag teamname={props.teamname} />
 
         {/* Points */}
         <View
@@ -126,7 +98,9 @@ export default function PlayerProfile(props: PropTypes) {
                     props.is_vice_captain
                       ? 'bg-secondary px-2 py-3'
                       : ' p-3 border border-gray-400'
-                  }`,
+                  }
+                  
+                  `,
                 ),
               ]}>
               <Text
@@ -152,6 +126,40 @@ export default function PlayerProfile(props: PropTypes) {
       <View>
         <BottomLine />
       </View>
-    </LinearGradient>
+    </View>
   );
 }
+
+const TeamTag = (props: any) => {
+  return (
+    <View
+      style={[
+        tailwind('absolute bottom-0 flex-row items-center'),
+        {paddingHorizontal: 3, paddingVertical: 1},
+      ]}>
+      <Text
+        style={[
+          tailwind('font-regular uppercase font-9  text-light'),
+          {
+            paddingHorizontal: 2,
+            paddingVertical: 1,
+            backgroundColor: '#244785',
+          },
+        ]}>
+        {props.teamname}
+      </Text>
+      <Text
+        style={[
+          tailwind('font-regular uppercase font-9  text-light'),
+          {
+            paddingHorizontal: 2,
+            paddingVertical: 1,
+            backgroundColor: '#FFFFFF',
+            color: '#244785',
+          },
+        ]}>
+        BAT
+      </Text>
+    </View>
+  );
+};

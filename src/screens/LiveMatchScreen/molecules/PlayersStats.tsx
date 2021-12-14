@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {BottomLine} from '../../../sharedComponents';
+import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
   text?: string;
@@ -29,13 +30,11 @@ export default function PlayersStats(props: PropTypes) {
 }
 
 const PlayerStats = (props: any) => {
+  const navigation = useNavigation<any>();
   return (
-    <LinearGradient
-      end={{x: 0.0, y: 0.5}}
-      start={{x: 0.9, y: 2.0}}
-      locations={[0.6, 0.5]}
-      colors={['#25385A', '#172338']}>
-      <View style={[tailwind('flex-row py-4 items-center')]}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('PlayerProfileScreen')}>
+      <View style={[tailwind('flex-row py-3 bg-dark-3 items-center')]}>
         <View style={[tailwind('flex-row items-center'), {flex: 4}]}>
           <View style={[tailwind('px-2')]}>
             <Image
@@ -75,7 +74,7 @@ const PlayerStats = (props: any) => {
       <View>
         <BottomLine />
       </View>
-    </LinearGradient>
+    </TouchableOpacity>
   );
 };
 

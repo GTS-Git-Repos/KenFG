@@ -14,7 +14,6 @@ import TransactionListScreen from '../screens/TransactionListScreen';
 import SignupScreen from '../screens/SignupScreen';
 import FantasyTeamNameScreen from '../screens/FantasyTeamNameScreen';
 
-import ReferralScreen from '../screens/ReferralScreen';
 
 import CreateTeamScreen from '../screens/CreateTeamScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
@@ -53,7 +52,6 @@ export function Home(props: any) {
         name="TransactionListScreen"
         component={TransactionListScreen}
       />
-      <HomeStack.Screen name="ReferralScreen" component={ReferralScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -72,10 +70,6 @@ export function Contest(props: any) {
       <ContestStack.Screen
         name="ContestListScreen"
         component={ContestListScreen}
-      />
-      <ContestStack.Screen
-        name="ContentInfoScreen"
-        component={ContentInfoScreen}
       />
       <ContestStack.Screen
         name="CreateTeamScreen"

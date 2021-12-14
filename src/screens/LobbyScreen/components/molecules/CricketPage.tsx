@@ -26,7 +26,7 @@ export default function CricketPage(props: PropTypes) {
 
   return (
     <View>
-      <View style={[tailwind('px-5 pt-4')]}>
+      <View style={[tailwind('px-5 pt-4 pb-0.5')]}>
         <SubTitle text={'My Matches'} actiontext="View all" />
       </View>
       <View style={[tailwind('px-5')]}>

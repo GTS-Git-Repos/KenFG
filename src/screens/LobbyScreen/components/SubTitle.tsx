@@ -13,7 +13,7 @@ export default function SubTitle(props: PropTypes) {
     <View style={[tailwind('flex-row items-center justify-between')]}>
       <Text
         style={[
-          tailwind('font-semibold uppercase font-12'),
+          tailwind('font-bold uppercase font-12'),
           {color: '#8797B1'},
         ]}>
         {props.text}

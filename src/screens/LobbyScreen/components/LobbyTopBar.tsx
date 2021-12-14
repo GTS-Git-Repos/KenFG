@@ -14,11 +14,16 @@ export default function LobbyTopBar(props: PropTypes) {
   return (
     <View>
       <View style={[tailwind('flex-row justify-between')]}>
-        <View style={[tailwind('relative'), {bottom: 0, right: 1}]}>
+        <View style={[tailwind('relative'), {bottom: 1, right: 1.5}]}>
+          <View
+            style={[
+              tailwind('w-8 h-10 absolute'),
+              {backgroundColor: '#172338'},
+            ]}></View>
           <Image
-            resizeMode="cover"
-            source={assets.logo_back_rectangle}
-            style={[{width: 160, height: 63}]}
+            resizeMode="stretch"
+            source={assets.logoWrapper}
+            style={[{width: 160, height: 63, transform: [{rotateZ: '0deg'}]}]}
           />
         </View>
         <View style={[tailwind('absolute'), {width: 100, left: 20, top: 10}]}>
