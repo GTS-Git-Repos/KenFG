@@ -26,12 +26,12 @@ export default function CricketPage(props: PropTypes) {
 
   return (
     <View>
-      <View style={[tailwind('px-5 pt-4 pb-0.5')]}>
+      {/* <View style={[tailwind('px-5 pt-4 pb-0.5')]}>
         <SubTitle text={'My Matches'} actiontext="View all" />
-      </View>
-      <View style={[tailwind('px-5')]}>
+      </View> */}
+      {/* <View style={[tailwind('px-5')]}>
         <NewMyMatchesCard />
-      </View>
+      </View> */}
       <View style={[tailwind('pt-3')]}>
         <ImageSlider
           data={upcommingMatches?.data?.banners}

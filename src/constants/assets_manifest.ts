@@ -60,6 +60,8 @@ export default {
   whatsapp: require('../assets/icons/whatsapp.png'),
   twitter: require('../assets/icons/twitter.png'),
   facebook: require('../assets/icons/facebook.png'),
+  more_share: require('../assets/icons/more_share.png'),
+  friends: require('../assets/icons/friends.png'),
 
   running_clock: require('../assets/icons/running_clock.png'),
   bell: require('../assets/icons/bell.png'),
@@ -90,4 +92,5 @@ export default {
   player: require('../assets/temp/player.png'),
   s_flag1: require('../assets/temp/s_flag1.png'),
   s_flag2: require('../assets/temp/s_flag2.png'),
+  person: require('../assets/temp/person.png'),
 };

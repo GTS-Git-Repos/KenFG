@@ -15,7 +15,7 @@ export default function Teams(props: PropTypes) {
         <View
           style={[
             tailwind('bg-green-700'),
-            {width: 12, height: 18, top: 33 / 4},
+            {width: 10, height: 14, top: 28 / 4},
           ]}></View>
         <View>
           <View style={[tailwind('bg-dark-1'), {width: 55, height: 28}]}></View>
@@ -55,7 +55,7 @@ export default function Teams(props: PropTypes) {
         <View
           style={[
             tailwind('bg-green-700'),
-            {width: 12, height: 18, top: 33 / 4},
+            {width: 10, height: 14, top: 28 / 4},
           ]}></View>
       </View>
     </View>

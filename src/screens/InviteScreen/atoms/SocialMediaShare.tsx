@@ -38,7 +38,7 @@ const Link = (props: any) => {
   return (
     <View
       style={[
-        tailwind('flex-row items-center justify-center'),
+        tailwind('flex-row bg-dark-4 items-center justify-center'),
         {paddingVertical: 10},
         styles.link,
       ]}>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     borderRightColor: '#8797B1',
     borderBottomColor: '#8797B1',
     borderWidth: 1,
-    borderRadius: 1,
+    borderRadius: 2,
   },
   link: {
     borderTopColor: '#8797B1',

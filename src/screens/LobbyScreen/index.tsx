@@ -16,6 +16,8 @@ import LobbyNav from './components/LobbyNav';
 import NewLobbyNav from './components/molecules/NewLobbyNav';
 
 import CricketPage from './components/molecules/CricketPage';
+import NewMyMatchesCard from './components/molecules/NewMyMatchesCard';
+import SubTitle from './components/SubTitle';
 
 const log = console.log;
 
@@ -43,6 +45,14 @@ export default function LobbyScreen() {
           name={userInfoState?.name}
         />
       </LinearGradient>
+
+      {cricket ? (
+        <View style={[tailwind('px-5 py-4 pb-0.5')]}>
+          <SubTitle text={'My Matches'} actiontext="View all" />
+          <NewMyMatchesCard />
+        </View>
+      ) : null}
+
       <ScrollView fadingEdgeLength={50}>
         {cricket ? (
           <CricketPage />

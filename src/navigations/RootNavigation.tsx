@@ -30,6 +30,7 @@ import MyContestPlayersInfo from '../screens/MyContestPlayersInfo';
 import PlayerProfileScreen from '../screens/PlayerProfileScreen';
 import MoreScreen from '../screens/MoreScreen';
 import InviteScreen from '../screens/InviteScreen';
+import ReferredFriendsListScreen from '../screens/ReferredFriendsListScreen';
 
 const RootNavigator = createNativeStackNavigator();
 
@@ -127,6 +128,11 @@ export default function RootNavigation() {
             component={HowToPlayScreen}
             name="HowToPlayScreen"
           />
+          <RootNavigator.Screen
+            component={ReferredFriendsListScreen}
+            name="ReferredFriendsListScreen"
+          />
+
           <RootNavigator.Screen component={MoreScreen} name="MoreScreen" />
           <RootNavigator.Screen component={LeaderBoard} name="LeaderBoard" />
           <RootNavigator.Screen
