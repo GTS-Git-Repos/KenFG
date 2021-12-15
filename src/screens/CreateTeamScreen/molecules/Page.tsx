@@ -7,12 +7,14 @@ import TabCondtion from '../atoms/TabCondtions';
 import SortTabs from '../atoms/SortTabs';
 import Player from '../molecules/Players';
 import {isPlayerSelected} from '../../../store/store_utils';
+import {BottomLine} from '../../../sharedComponents';
 
 interface PropTypes {
+  filterSheet: any;
   id: string;
   title: string;
   data: [];
-  checkPlayerSelection(player_key: string,player_role:string): void;
+  checkPlayerSelection(player_key: string, player_role: string): void;
 }
 
 export default function Page(props: PropTypes) {
@@ -23,7 +25,8 @@ export default function Page(props: PropTypes) {
   return (
     <View>
       <View style={[tailwind('bg-dark')]}>
-        <TabCondtion text={props.title} />
+        <TabCondtion text={props.title} filterSheet={props.filterSheet} />
+        <BottomLine />
         <SortTabs />
       </View>
       <ScrollView style={[tailwind('')]}>

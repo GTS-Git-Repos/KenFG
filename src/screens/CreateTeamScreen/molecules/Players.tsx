@@ -30,8 +30,7 @@ interface PropTypes {
 export default function Player(props: PropTypes) {
   return (
     <View>
-      <TouchableOpacity
-        activeOpacity={0.5}
+      <View
         style={[
           tailwind('pt-3 flex-row'),
           {
@@ -39,18 +38,20 @@ export default function Player(props: PropTypes) {
             // opacity: !props.canBeSelected ? 1 : 0.3,
           },
         ]}
-        onPress={() =>
-          props.checkPlayerSelection(props.player_key, props.role)
-        }>
+        // onPress={() =>
+        //   props.checkPlayerSelection(props.player_key, props.role)
+        // }
+      >
         {/* Image */}
-        <View style={[tailwind(''), {flex: 2}]}>
+        <TouchableOpacity activeOpacity={0.5} style={[tailwind(''), {flex: 2}]}>
           <Image
             resizeMode="contain"
             source={assets.player}
             style={[tailwind(''), {height: 65, width: 65}]}
           />
           <TeamBadge team1={true} name={props.teamname} />
-        </View>
+        </TouchableOpacity>
+
         <View style={[tailwind('pl-4'), {flex: 4}]}>
           <Text
             numberOfLines={1}
@@ -91,7 +92,7 @@ export default function Player(props: PropTypes) {
           </Text>
           {props.isSelected ? <AddedButton /> : <AddButton />}
         </View>
-      </TouchableOpacity>
+      </View>
 
       <LinearGradient
         start={{x: 0, y: 0}}

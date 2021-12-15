@@ -44,11 +44,21 @@ export default function SelectionIndicator(props: PropTypes) {
               {item === props.count && (
                 <Text
                   style={[
-                    tailwind('font-bold text-center text-light font-10'),
+                    tailwind('font-bold text-center text-white font-10'),
                   ]}>
                   {props.count}
                 </Text>
               )}
+
+              {item === 11 && props.count === 0 ? (
+                <Text
+                  style={[
+                    tailwind('font-bold text-center font-10'),
+                    {color: '#614920'},
+                  ]}>
+                  11
+                </Text>
+              ) : null}
             </View>
           );
         })}

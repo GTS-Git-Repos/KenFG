@@ -41,7 +41,8 @@ export default function ContestListScreen() {
 
   const [selectedTab, setSelectedTab] = useState(0);
   const [showJoinModal, setShowJoinModal] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<any>(false);
+  const [selectedFilter, setSelectedFilter] = useState<any>(null);
 
   const userInfoSelector = useSelector(userInfo);
   const selectedMatchState: any = useSelector<any>(
@@ -142,6 +143,8 @@ export default function ContestListScreen() {
             navigate={navigate}
             status={contests.status}
             data={contests.data}
+            selectedFilter={selectedFilter}
+            setSelectedFilter={setSelectedFilter}
           />
         </View>
         <View style={{width: width}}>
@@ -158,8 +161,6 @@ export default function ContestListScreen() {
             'absolute bottom-0 w-full flex-row items-center justify-center',
           ),
         ]}>
-
-
         <CreateTeamButton contests={contests} />
       </View>
 

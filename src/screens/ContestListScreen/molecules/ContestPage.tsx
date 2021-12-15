@@ -6,19 +6,13 @@ import FilterTab from './Filtertab';
 import {contestListsTypes} from '../../../types/api';
 import ContestSubTitle from '../atoms/ContestSubTitle';
 const log = console.log;
-import Svg, {
-  Path,
-  Defs,
-  LinearGradient,
-  Stop,
-  Ellipse,
-  Rect,
-} from 'react-native-svg';
 
 interface PropTypes {
-  navigate(contest_key:string): any;
+  navigate(contest_key: string): any;
   status: string;
   data: any;
+  selectedFilter: null | string;
+  setSelectedFilter(filter: string): any;
 }
 
 export default function ContestPage(props: PropTypes) {
@@ -47,7 +41,10 @@ export default function ContestPage(props: PropTypes) {
 
   return (
     <ScrollView>
-      <FilterTab />
+      <FilterTab
+        selectedFilter={props.selectedFilter}
+        setSelectedFilter={props.setSelectedFilter}
+      />
       <ContestSubTitle
         title={'Big Winnings, Lower Entry!'}
         subText={'Ready for One more match'}

@@ -42,6 +42,8 @@ import {isPlayerCanBeSelectable} from '../../workers/decision';
 import {errorBox} from '../../utils/snakBars';
 import TabItem from './atoms/TabItem';
 import ClearTeamSheet from './atoms/ClearTeamSheet';
+import CreateTeamFilterSheetTitle from './atoms/CreateTeamFilterSheetTitle';
+import PlayerFilterSheet from './molecules/PlayerFilterSheet';
 
 const log = console.log;
 
@@ -52,6 +54,7 @@ export default function CreateTeamScreen() {
   const clearRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
   const dispatch = useDispatch();
+  const filterSheet = useRef<Modalize>();
 
   const playersState: any = useSelector<any>(state => state.team.players);
 
@@ -238,6 +241,7 @@ export default function CreateTeamScreen() {
         initialPage={0}>
         <View>
           <Page
+            filterSheet={filterSheet}
             checkPlayerSelection={checkPlayerSelection}
             id={'wkt'}
             title={'Select 1-4 Wicket Keepers'}
@@ -246,6 +250,7 @@ export default function CreateTeamScreen() {
         </View>
         <View>
           <Page
+            filterSheet={filterSheet}
             checkPlayerSelection={checkPlayerSelection}
             id={'bat'}
             title={'Select 3-6 Batters'}
@@ -254,6 +259,7 @@ export default function CreateTeamScreen() {
         </View>
         <View>
           <Page
+            filterSheet={filterSheet}
             checkPlayerSelection={checkPlayerSelection}
             id={'ar'}
             title={'Select 1-4 All Rounders'}
@@ -262,6 +268,7 @@ export default function CreateTeamScreen() {
         </View>
         <View>
           <Page
+            filterSheet={filterSheet}
             checkPlayerSelection={checkPlayerSelection}
             id={'bwl'}
             title={'Select 3-6 Bowlers'}
@@ -282,6 +289,17 @@ export default function CreateTeamScreen() {
         disableScrollIfPossible={false}
         closeOnOverlayTap={true}>
         <ClearTeamSheet clearTeam={clearTeam} clearRef={clearRef} />
+      </Modalize>
+
+      <Modalize
+        ref={filterSheet}
+        useNativeDriver={true}
+        modalTopOffset={100}
+        adjustToContentHeight={true}
+        HeaderComponent={
+          <CreateTeamFilterSheetTitle filterSheet={filterSheet} />
+        }>
+        <PlayerFilterSheet />
       </Modalize>
 
       {loading && <BlockScreenByLoading />}

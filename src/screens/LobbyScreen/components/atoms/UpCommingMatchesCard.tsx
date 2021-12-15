@@ -94,14 +94,14 @@ export default function UpcommingMatches(props: PropTypes) {
             <PlaceHolderImage color="green" />
             <Text
               style={[
-                tailwind('font-bold uppercase font-12 pt-0.5 text-center'),
+                tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
                 {color: '#D3D3D5'},
               ]}>
               {props.team_a_name}
             </Text>
           </View>
 
-          <Text style={[tailwind('font-bold font-13'), {color: '#D3D3D5'}]}>
+          <Text style={[tailwind('font-bold font-10'), {color: '#D3D3D5'}]}>
             VS
           </Text>
 
@@ -109,7 +109,7 @@ export default function UpcommingMatches(props: PropTypes) {
             <PlaceHolderImage color="red" />
             <Text
               style={[
-                tailwind('font-bold uppercase font-12 pt-0.5 text-center'),
+                tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
                 {color: '#D3D3D5'},
               ]}>
               {props.team_b_name}
@@ -159,7 +159,7 @@ export default function UpcommingMatches(props: PropTypes) {
           />
           <Text
             style={[
-              tailwind('font-bold text-center pl-1 font-11'),
+              tailwind('font-bold text-center pl-1 font-10'),
               {color: '#FEFEFF'},
             ]}>
             3h:40:23

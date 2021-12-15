@@ -15,13 +15,13 @@ export default function Teams(props: PropTypes) {
         <View
           style={[
             tailwind('bg-green-700'),
-            {width: 10, height: 14, top: 28 / 4},
+            {width: 10, height: 14, top: 25 / 4},
           ]}></View>
         <View>
-          <View style={[tailwind('bg-dark-1'), {width: 55, height: 28}]}></View>
+          <View style={[tailwind('bg-dark-1'), {width: 45, height: 25}]}></View>
           <Text
             style={[
-              tailwind('font-bold text-center py-0.5 text-light font-15'),
+              tailwind('font-bold text-center py-0.5 text-light font-12'),
             ]}>
             IND
           </Text>
@@ -37,17 +37,19 @@ export default function Teams(props: PropTypes) {
             source={assets.running_clock}
             style={[tailwind(''), {width: 16, height: 16}]}
           />
-          <Text style={[tailwind('font-bold text-white px-1')]}>2h:23:32</Text>
+          <Text style={[tailwind('font-bold text-white font-13 px-1')]}>
+            2h:23:32
+          </Text>
         </View>
-        <IsLive />
+        {/* <IsLive /> */}
       </View>
 
       <View style={[tailwind('flex-row justify-end'), {flex: 4}]}>
         <View>
-          <View style={[tailwind('bg-dark-1'), {width: 55, height: 28}]}></View>
+          <View style={[tailwind('bg-dark-1'), {width: 45, height: 25}]}></View>
           <Text
             style={[
-              tailwind('font-bold text-center py-0.5 text-light font-15'),
+              tailwind('font-bold text-center py-0.5 text-light font-12'),
             ]}>
             AUS
           </Text>
@@ -55,7 +57,7 @@ export default function Teams(props: PropTypes) {
         <View
           style={[
             tailwind('bg-green-700'),
-            {width: 10, height: 14, top: 28 / 4},
+            {width: 10, height: 14, top: 25 / 4},
           ]}></View>
       </View>
     </View>

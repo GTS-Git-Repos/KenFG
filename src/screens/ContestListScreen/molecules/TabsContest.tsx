@@ -40,33 +40,31 @@ export default function Tabs(props: PropTypes) {
         showsHorizontalScrollIndicator={false}
         renderItem={({item, index}) => {
           return (
-            <>
-              <TouchableOpacity
-                onPress={() => props.onTabPressed(index)}
+            <TouchableOpacity
+              onPress={() => props.onTabPressed(index)}
+              style={[
+                tailwind(
+                  `flex flex-col items-center w-6/12 pt-3 pb-2 ${
+                    props.selectedTab === index
+                      ? 'border-b-2 border-yellow-300'
+                      : ''
+                  }`,
+                ),
+                {height: 40, width: TABSWIDTH},
+              ]}>
+              <Text
                 style={[
                   tailwind(
-                    `flex flex-col items-center w-6/12 pt-3 pb-2 ${
+                    `font-13 ${
                       props.selectedTab === index
-                        ? 'border-b-2 border-yellow-300'
-                        : ''
+                        ? 'text-light font-bold'
+                        : 'font-regular text-dark-1 '
                     }`,
                   ),
-                  {height: 40, width: TABSWIDTH},
                 ]}>
-                <Text
-                  style={[
-                    tailwind(
-                      `font-13 ${
-                        props.selectedTab === index
-                          ? 'text-light font-bold'
-                          : 'font-regular text-dark-1 '
-                      }`,
-                    ),
-                  ]}>
-                  {item.name}
-                </Text>
-              </TouchableOpacity>
-            </>
+                {item.name}
+              </Text>
+            </TouchableOpacity>
           );
         }}
         keyExtractor={item => item.id}

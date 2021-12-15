@@ -22,7 +22,7 @@ const ImageSlider = (props: any) => {
   const navigation = useNavigation<any>();
   const swiperRef = useRef();
 
-  const [height, setHeight] = useState(104);
+  const [height, setHeight] = useState(95);
 
   const calcHeight = (e: any) => {
     const {height} = e.nativeEvent.layout;

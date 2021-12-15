@@ -29,7 +29,7 @@
     "scope": "typescriptreact",
     "prefix": "rntext",
     "body": [
-      "<Text style={[tailwind(\"font-regular text-light font-15\")]}>${1}</Text>"
+      "<Text style={[tailwind(\"font-regular text-white font-15\")]}>${1}</Text>"
     ],
     "description": "Basic Local Image"
   },

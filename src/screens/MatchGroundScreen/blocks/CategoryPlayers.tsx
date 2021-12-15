@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   title: string;
-  players: [];
+  players: any;
 }
 
 interface PlayerPropTypes {
@@ -60,10 +60,10 @@ const PlayerProfile = (props: PlayerPropTypes) => {
       <Image
         resizeMode="contain"
         source={assets.player}
-        style={[tailwind(''), {width: 60, height: 60}]}
+        style={[tailwind(''), {width: 48, height: 48}]}
       />
       <Name team1={props.team1} name={props.name} />
-      <Text style={[tailwind('font-regular font-9 text-light')]}>
+      <Text style={[tailwind('font-regular font-7 text-light')]}>
         {props.amount}
       </Text>
     </View>

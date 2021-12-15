@@ -11,6 +11,15 @@ import HorizontalProfile from './molecules/HorizontalProfile';
 import JoinedContestCard from './molecules/JoinedContestCard';
 import SocialLogin from './molecules/SocialLogin';
 
+import WalletIcon from './icons/WalletIcon';
+import MoneyIcon from './icons/MoneyIcon';
+import Facebook from './icons/Facebook';
+import SwitchIcon from './icons/SwitchIcon';
+import EditIcon from './icons/EditIcon';
+import UserIcon from './icons/UserIcon';
+import GearIcon from './icons/GearIcon';
+import BackIcon from './icons/BackIcon';
+
 export {
   TopBar,
   TopbarContest,
@@ -23,4 +32,12 @@ export {
   HorizontalProfile,
   JoinedContestCard,
   SocialLogin,
+  WalletIcon,
+  MoneyIcon,
+  Facebook,
+  SwitchIcon,
+  EditIcon,
+  UserIcon,
+  BackIcon,
+  GearIcon,
 };

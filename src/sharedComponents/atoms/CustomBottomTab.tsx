@@ -109,7 +109,7 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
               ) : (
                 <Image
                   resizeMode="contain"
-                  source={isFocused ? assets.more_tab_on : assets.more_tab}
+                  source={isFocused ? assets.more_tab : assets.more_tab}
                   style={[tailwind('w-6 h-8')]}
                 />
               )}

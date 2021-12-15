@@ -77,10 +77,10 @@ export default function OTPScreen() {
           <Image
             resizeMode="contain"
             source={assets.logo_new}
-            style={[tailwind(''), {width: 92, height: 28}]}
+            style={[tailwind(''), {width: 91, height: 28}]}
           />
         </View>
-        <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center font-13 pt-4')]}>
+        <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center font-12 pt-4')]}>
           Your OTP is : {route?.params?.otp}
         </Text>
 

@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import assets from '../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
+import {BackIcon, WalletIcon} from '../../sharedComponents';
 
 interface PropTypes {
   title: string;
@@ -19,14 +20,7 @@ export default function TopBarContest(props: PropTypes) {
       style={[tailwind('p-3 flex-row items-center justify-between')]}>
       <View style={[tailwind('flex flex-row items-center')]}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Image
-            resizeMode="contain"
-            source={assets.back}
-            style={[
-              tailwind('px-2'),
-              {width: 15, height: 15, transform: [{rotate: '180deg'}]},
-            ]}
-          />
+          <BackIcon />
         </TouchableOpacity>
 
         <View style={[tailwind('px-4')]}>

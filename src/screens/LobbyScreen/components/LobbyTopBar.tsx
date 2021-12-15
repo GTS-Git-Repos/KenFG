@@ -14,7 +14,11 @@ export default function LobbyTopBar(props: PropTypes) {
   return (
     <View>
       <View style={[tailwind('flex-row justify-between')]}>
-        <View style={[tailwind('relative'), {bottom: 1, right: 1.5}]}>
+        <View
+          style={[
+            tailwind('relative'),
+            {bottom: 1, right: 1.0, transform: [{scaleY: 1.3}]},
+          ]}>
           <View
             style={[
               tailwind('w-8 h-10 absolute'),
@@ -26,7 +30,7 @@ export default function LobbyTopBar(props: PropTypes) {
             style={[{width: 160, height: 63, transform: [{rotateZ: '0deg'}]}]}
           />
         </View>
-        <View style={[tailwind('absolute'), {width: 100, left: 20, top: 10}]}>
+        <View style={[tailwind('absolute'), {width: 100, left: 20, top: 13}]}>
           <Image
             resizeMode="contain"
             source={assets.logo_new}
@@ -44,22 +48,22 @@ export default function LobbyTopBar(props: PropTypes) {
             <Text
               style={[
                 tailwind('font-bold uppercase'),
-                {fontSize: 13, color: '#5F401C'},
+                {fontSize: 11, color: '#5F401C'},
               ]}>
               Cash Balance
             </Text>
             <Text
               style={[
-                tailwind('font-regular text-primary text-right font-16'),
+                tailwind('font-regular text-primary text-right font-13'),
               ]}>
               {'\u20B9 '}
-              {/* {props.amount} */} 1,00,000
+              {/* {props.amount} */}1,00,000
             </Text>
           </View>
           <Image
             resizeMode="contain"
             source={assets.wallet}
-            style={[tailwind(''), {width: 37, height: 37}]}
+            style={[tailwind(''), {width: 28, height: 28, bottom: 3}]}
           />
         </TouchableOpacity>
       </View>

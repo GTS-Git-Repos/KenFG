@@ -91,26 +91,29 @@ export default function SignupScreen() {
             ]}>
             Welcome to KenFG!
           </Text>
-          <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center')]}>
+          <Text
+            style={[
+              tailwind('font-regular text-dark-1 pt-1 text-center font-12'),
+            ]}>
             Register to Continue
           </Text>
           {/* Invite code input */}
           <View style={[tailwind('pt-8 pb-4')]}>
-            <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+            <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
               Enter Invite Code
             </Text>
             <TextInput
               maxLength={7}
               value={'98777'}
               style={[
-                tailwind('border-b font-bold text-light font-16'),
+                tailwind('border-b font-bold text-light font-20'),
                 {borderColor: '#8797B1', height: 40},
               ]}
             />
           </View>
 
           <View style={[tailwind('pt-1 pb-4')]}>
-            <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+            <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
               Mobile No
             </Text>
             <TextInput
@@ -120,11 +123,11 @@ export default function SignupScreen() {
               keyboardType="decimal-pad"
               onChangeText={e => setMobile(e)}
               style={[
-                tailwind('border-b font-bold text-light font-16'),
+                tailwind('border-b font-bold text-light font-20'),
                 {borderColor: '#8797B1', height: 40},
               ]}
             />
-            <Text style={[tailwind('font-regular font-10 text-dark-1 pt-2')]}>
+            <Text style={[tailwind('font-regular font-12 text-dark-1 pt-2')]}>
               You will receive OTP for Verification
             </Text>
           </View>
@@ -134,6 +137,7 @@ export default function SignupScreen() {
           </TouchableOpacity>
           <OR />
           <SocialLogin />
+          <TC />
         </ScrollView>
       </ScrollView>
       {showHint && <FooterHint screen="LoginScreen" />}
@@ -177,6 +181,21 @@ const FooterHint = (props: any) => {
       <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
         <Text style={[tailwind('font-bold text-light font-15')]}>Log in</Text>
       </TouchableOpacity>
+    </View>
+  );
+};
+
+const TC = () => {
+  return (
+    <View style={[tailwind('flex-row justify-center items-center pt-4')]}>
+      <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+        By registering you agree to the
+      </Text>
+      <Text style={[tailwind('font-bold px-1 text-white font-12')]}>T&C</Text>
+      <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+        {' '}
+        of KenFG
+      </Text>
     </View>
   );
 };

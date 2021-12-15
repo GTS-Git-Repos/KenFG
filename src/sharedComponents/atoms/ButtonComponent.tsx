@@ -17,7 +17,7 @@ export default function ButtonComponent(props: PropTypes) {
           backgroundColor: '#00513B',
         },
       ]}>
-      <Text style={[tailwind('font-bold text-light px-2 font-18')]}>
+      <Text style={[tailwind('font-bold text-light px-2 font-14')]}>
         {props.text}
       </Text>
     </View>

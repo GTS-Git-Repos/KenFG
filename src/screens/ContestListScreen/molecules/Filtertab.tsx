@@ -1,11 +1,12 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Svg, {Path} from 'react-native-svg';
+import Svg, {Defs, LinearGradient, Path, Stop} from 'react-native-svg';
 
 interface PropTypes {
-  text?: string;
+  selectedFilter: null | string;
+  setSelectedFilter(filter: string): any;
 }
 
 const TABS = [
@@ -16,31 +17,41 @@ const TABS = [
   },
   {
     id: '2',
-    name: 'Head to Head',
+    name: 'Free',
     active: false,
   },
   {
     id: '3',
-    name: 'Popular',
+    name: 'Mega',
     active: false,
   },
   {
     id: '4',
-    name: 'Premium',
+    name: 'Fireball',
     active: false,
   },
   {
     id: '5',
-    name: 'Practise',
+    name: 'Hard',
     active: false,
   },
   {
     id: '6',
-    name: 'Win All',
+    name: 'Premium',
     active: false,
   },
   {
     id: '7',
+    name: 'Pro',
+    active: false,
+  },
+  {
+    id: '8',
+    name: 'Fortune',
+    active: false,
+  },
+  {
+    id: '9',
     name: '+5',
     active: false,
   },
@@ -50,50 +61,114 @@ const BUTTON_HEIGHT = 40;
 export default function FilterTabs(props: PropTypes) {
   return (
     <View>
-      <View style={[tailwind('flex-row flex-wrap py-3 px-4 items-center')]}>
-        {TABS.map((item: any) => {
-          return (
-            <TouchableOpacity
-              key={item.id}
-              style={[
-                tailwind('border border-gray-600 rounded-2xl py-1 m-1'),
-                {paddingHorizontal: 10},
-              ]}>
-              <Text style={[tailwind('font-regular text-light font-13')]}>
-                {item.name}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
-      {/* Sort by  */}
-      <View
-        style={[
-          tailwind(
-            'flex-row items-center justify-between border-t border-gray-600 border-b py-2 border-gray-500',
-          ),
-        ]}>
-        <TouchableOpacity
-          activeOpacity={0.5}
-          style={[tailwind('flex-row items-center px-6')]}>
-          <ArrrowUp />
-          <Text style={[tailwind('font-regular px-3 text-dark-1 font-13')]}>
-            Total Price
-          </Text>
-        </TouchableOpacity>
+      <View style={[tailwind('pt-4 px-4')]}>
+        <View style={[tailwind('flex-row items-center')]}>
+          <View
+            style={[tailwind('flex-row flex-wrap items-center'), {flex: 7}]}>
+            {TABS.map((item: any) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => props.setSelectedFilter(item.name)}
+                  key={item.id}
+                  style={[
+                    tailwind('border border-gray-600 rounded-2xl py-0.5 m-0.5'),
+                    {paddingHorizontal: 10},
+                    props.selectedFilter === item.name
+                      ? styles.selectedFilter
+                      : {},
+                  ]}>
+                  <Text
+                    style={[
+                      tailwind(
+                        `font-regular font-12 ${
+                          props.selectedFilter === item.name
+                            ? 'text-brown-5'
+                            : 'text-white'
+                        }`,
+                      ),
+                    ]}>
+                    {item.name}
+                  </Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
 
-        <TouchableOpacity
-          activeOpacity={0.5}
-          style={[tailwind('flex-row items-center px-6')]}>
-          <Text style={[tailwind('font-regular px-3 text-dark-1 font-13')]}>
-            Entry Fee
-          </Text>
-          <ArrrowDown />
-        </TouchableOpacity>
+          <View
+            style={[
+              tailwind('flex-row bg-dark-3 items-center'),
+              {flex: 3},
+              styles.privateContestRoot,
+            ]}>
+            <View
+              style={[
+                tailwind('flex-row items-center justify-center'),
+                {flex: 8},
+              ]}>
+              <Text style={[tailwind('font-regular text-secondary font-12')]}>
+                Private Contest
+              </Text>
+            </View>
+            <View style={[tailwind(''), {flex: 2}]}>
+              <Svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+                <Path
+                  d="M1 13.0246L7.05 7.00059L1 0.975586"
+                  stroke="#BCA04D"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <Defs>
+                  <LinearGradient
+                    id="paint0_linear_404_1442"
+                    x1="1"
+                    y1="7.00009"
+                    x2="7.05"
+                    y2="7.00009"
+                    gradientUnits="userSpaceOnUse">
+                    <Stop stop-color="#BCA04D" />
+                    <Stop offset="0.526862" stop-color="#D8C872" />
+                  </LinearGradient>
+                </Defs>
+              </Svg>
+            </View>
+          </View>
+        </View>
+        <SecondInnings />
       </View>
+      {props.selectedFilter !== null ? <SortBy /> : null}
     </View>
   );
 }
+
+const SortBy = () => {
+  return (
+    <View
+      style={[
+        tailwind(
+          'flex-row items-center justify-between border-t border-gray-600 border-b py-2 border-gray-500',
+        ),
+      ]}>
+      <TouchableOpacity
+        activeOpacity={0.5}
+        style={[tailwind('flex-row items-center px-6')]}>
+        <ArrrowUp />
+        <Text style={[tailwind('font-regular px-3 text-dark-1 font-13')]}>
+          Total Price
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        activeOpacity={0.5}
+        style={[tailwind('flex-row items-center px-6')]}>
+        <Text style={[tailwind('font-regular px-3 text-dark-1 font-13')]}>
+          Entry Fee
+        </Text>
+        <ArrrowDown />
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const ArrrowUp = () => {
   return (
@@ -132,3 +207,40 @@ const ArrrowDown = () => {
     </Svg>
   );
 };
+
+const SecondInnings = () => {
+  return (
+    <View style={[tailwind(''), styles.siroot]}>
+      <Text style={[tailwind('font-regular text-center text-white font-12')]}>
+        Second Innings
+      </Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  privateContestRoot: {
+    borderColor: '#BCA04D',
+    borderStyle: 'solid',
+    borderRadius: 7,
+    borderWidth: 1,
+    paddingHorizontal: 8,
+    paddingVertical: 11,
+  },
+  siroot: {
+    borderColor: '#BCA04D',
+    borderStyle: 'solid',
+    borderRadius: 54,
+    borderWidth: 1,
+    paddingVertical: 7,
+    marginVertical: 13,
+  },
+  selectedFilter: {
+    borderColor: '#D8C872',
+    borderStyle: 'solid',
+    borderRadius: 7,
+    borderWidth: 1,
+
+    backgroundColor: '#D8C872',
+  },
+});

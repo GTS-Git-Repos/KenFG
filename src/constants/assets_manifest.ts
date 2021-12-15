@@ -83,6 +83,9 @@ export default {
   user_temp_profile: require('../assets/images/user_temp_profile.png'),
   promoNotification: require('../assets/images/promoNotification.png'),
   verify_account: require('../assets/images/verify_account.png'),
+  ground_two: require('../assets/images/ground_two.png'),
+  trophy: require('../assets/images/trophy.png'),
+  level_box: require('../assets/images/level_box.png'),
 
   banner1: require('../assets/temp/banner1.png'),
   playerImage: require('../assets/temp/playerimage.png'),

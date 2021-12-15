@@ -5,6 +5,7 @@ import assets from '../../../constants/assets_manifest';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
+import {BackIcon} from '../../../sharedComponents/';
 
 interface PropTypes {
   text?: string;
@@ -24,15 +25,8 @@ export default function TopBarCreateTeam(props: PropTypes) {
           {paddingVertical: 16},
         ]}>
         <View style={[tailwind('flex-row items-center')]}>
-          <TouchableOpacity onPress={goBack} style={[tailwind('px-4')]}>
-            <Image
-              resizeMode="contain"
-              source={assets.back}
-              style={[
-                tailwind('px-1'),
-                {width: 15, height: 15, transform: [{rotate: '180deg'}]},
-              ]}
-            />
+          <TouchableOpacity onPress={goBack} style={[tailwind('pl-4 px-2')]}>
+            <BackIcon />
           </TouchableOpacity>
           <Text style={[tailwind('font-bold text-brown-4 font-18')]}>
             15h 54m 36s Left

@@ -31,6 +31,7 @@ import PlayerProfileScreen from '../screens/PlayerProfileScreen';
 import MoreScreen from '../screens/MoreScreen';
 import InviteScreen from '../screens/InviteScreen';
 import ReferredFriendsListScreen from '../screens/ReferredFriendsListScreen';
+import UserGoalsScreen from '../screens/UserGoalsScreen';
 
 const RootNavigator = createNativeStackNavigator();
 
@@ -143,6 +144,11 @@ export default function RootNavigation() {
             component={TeamsListScreen}
             name="TeamsListScreen"
           />
+          <RootNavigator.Screen
+            component={UserGoalsScreen}
+            name="UserGoalsScreen"
+          />
+
           <RootNavigator.Screen
             component={MyContestPlayersInfo}
             name="MyContestPlayersInfo"

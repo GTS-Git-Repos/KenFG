@@ -12,9 +12,9 @@ export default function MyMatchesTopSection(props: PropTypes) {
   return (
     <View>
       <View
-        style={[tailwind('pt-1 px-3 flex-row items-center justify-between')]}>
+        style={[tailwind('pt-2 px-3 flex-row items-center justify-between')]}>
         <View style={[tailwind('text-left')]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+          <Text style={[tailwind('font-regular text-dark-1 font-11')]}>
             World T20 Championship
           </Text>
         </View>
@@ -23,16 +23,16 @@ export default function MyMatchesTopSection(props: PropTypes) {
           <Text style={[tailwind('font-regular text-light px-0.5 font-13')]}>
             2
           </Text>
-          <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+          <Text style={[tailwind('font-regular text-dark-1 font-11')]}>
             Team
           </Text>
-          <Text style={[tailwind('font-regular text-dark-1 px-0.5 font-13')]}>
+          <Text style={[tailwind('font-regular text-dark-1 px-0.5 font-11')]}>
             |
           </Text>
-          <Text style={[tailwind('font-regular text-light px-0.5 font-13')]}>
+          <Text style={[tailwind('font-regular text-light px-0.5 font-11')]}>
             1
           </Text>
-          <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+          <Text style={[tailwind('font-regular text-dark-1 font-11')]}>
             Contest
           </Text>
         </View>
@@ -40,7 +40,7 @@ export default function MyMatchesTopSection(props: PropTypes) {
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
-        style={[tailwind('mx-4 my-1')]}
+        style={[tailwind('mx-4 mb-1')]}
         colors={['#162339', '#29344B', '#162339']}>
         <View style={[tailwind(''), {height: 2}]}></View>
       </LinearGradient>

@@ -15,6 +15,7 @@ export default function LeaderBoardPage(props: PropTypes) {
     <View>
       <ScrollView>
         <View style={[tailwind('')]}>
+          <View style={[tailwind('h-3')]}></View>
           <LastUpdatedAt updatedAt={'1.3'} />
           <Tabs />
           <HorizontalProfile

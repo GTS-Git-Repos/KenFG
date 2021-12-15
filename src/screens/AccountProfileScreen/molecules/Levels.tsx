@@ -1,15 +1,17 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {BottomLine} from '../../../sharedComponents';
 import assets from '../../../constants/assets_manifest';
+import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   nextReward: string;
 }
 
 export default function LevelCard(props: PropTypes) {
+  const navigation = useNavigation<any>();
   return (
     <View style={[tailwind('rounded bg-dark-3 my-2 py-3 px-4 ')]}>
       <View style={[tailwind('flex-row items-center')]}>
@@ -33,12 +35,15 @@ export default function LevelCard(props: PropTypes) {
       <View style={[tailwind('py-2')]}>
         <BottomLine />
       </View>
-      <View style={[tailwind('flex-row justify-between items-center')]}>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => navigation.navigate('UserGoalsScreen')}
+        style={[tailwind('flex-row justify-between items-center')]}>
         <Text style={[tailwind('font-regular text-light font-12')]}>
           View Upcomming Rewards and Levels
         </Text>
         <Icon name="chevron-forward-outline" size={17} color="white" />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }

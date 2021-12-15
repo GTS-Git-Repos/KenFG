@@ -20,7 +20,7 @@ const PROFILEWIDTH = Dimensions.get('window').width / 2;
 const SUBTABWIDTH = PROFILEWIDTH / 2;
 
 export default function HorizontalProfile(props: PropTypes) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   return (
     <TouchableOpacity onPress={() => navigation.navigate('CompareTeamsScreen')}>
       <View
