@@ -11,6 +11,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import {BottomLine} from '../../../sharedComponents';
+import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   player_key: string;
@@ -28,6 +29,7 @@ interface PropTypes {
 }
 
 export default function Player(props: PropTypes) {
+  const navigation = useNavigation<any>();
   return (
     <View>
       <View
@@ -36,14 +38,12 @@ export default function Player(props: PropTypes) {
           {
             backgroundColor: props.isSelected ? '#3C362C' : '#172338',
             // opacity: !props.canBeSelected ? 1 : 0.3,
+            opacity: 0.4,
           },
-        ]}
-        // onPress={() =>
-        //   props.checkPlayerSelection(props.player_key, props.role)
-        // }
-      >
+        ]}>
         {/* Image */}
         <TouchableOpacity
+          onPress={() => navigation.navigate('PlayerProfileScreen')}
           activeOpacity={0.5}
           style={[tailwind('ml-2'), {flex: 2}]}>
           <Image
@@ -54,48 +54,63 @@ export default function Player(props: PropTypes) {
           <TeamBadge team1={true} name={props.teamname} />
         </TouchableOpacity>
 
-        <View style={[tailwind('pl-4'), {flex: 4}]}>
-          <Text
-            numberOfLines={1}
-            style={[tailwind('font-bold text-light font-14 pb-0.5')]}>
-            {props.name}
-          </Text>
-          <Text
-            numberOfLines={1}
-            style={[
-              tailwind('font-regular text-light font-11 text-dark-1 py-1'),
-            ]}>
-            {props.info}
-          </Text>
-          <View style={[tailwind('flex-row items-center')]}>
-            <View
-              style={[
-                tailwind('w-1 h-1 mr-2 rounded-full'),
-                {backgroundColor: '#B2933D'},
-              ]}></View>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          onPress={() =>
+            props.checkPlayerSelection(props.player_key, props.role)
+          }
+          style={[tailwind('flex-row'), {flex: 8}]}>
+          {/* name */}
+          <View style={[tailwind('pl-4'), {flex: 4}]}>
             <Text
               numberOfLines={1}
-              style={[tailwind('font-regular text-secondary font-9')]}>
-              Played Last Match
+              style={[tailwind('font-bold text-light font-14 pb-0.5')]}>
+              {props.name}
+            </Text>
+            <Text
+              numberOfLines={1}
+              style={[
+                tailwind('font-regular text-light font-11 text-dark-1 py-1'),
+              ]}>
+              {props.info}
+            </Text>
+            <View style={[tailwind('flex-row items-center')]}>
+              <View
+                style={[
+                  tailwind('w-1 h-1 mr-2 rounded-full'),
+                  {backgroundColor: '#B2933D'},
+                ]}></View>
+              <Text
+                numberOfLines={1}
+                style={[tailwind('font-regular text-secondary font-9')]}>
+                Played Last Match
+              </Text>
+            </View>
+          </View>
+
+          {/* Points */}
+          <View
+            style={[
+              tailwind('flex-col items-center  justify-center'),
+              {flex: 2},
+            ]}>
+            <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+              {props.points}
             </Text>
           </View>
-        </View>
-        <View
-          style={[
-            tailwind('flex-col items-center  justify-center'),
-            {flex: 2},
-          ]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-            {props.points}
-          </Text>
-        </View>
-        <View style={[tailwind('flex-row items-center'), {flex: 2}]}>
-          <Text
-            style={[tailwind('font-bold px-2 text-white text-right font-13')]}>
-            {props.credits}
-          </Text>
-          {props.isSelected ? <AddedButton /> : <AddButton />}
-        </View>
+
+          {/* credits */}
+
+          <View style={[tailwind('flex-row items-center'), {flex: 2}]}>
+            <Text
+              style={[
+                tailwind('font-bold px-2 text-white text-right font-13'),
+              ]}>
+              {props.credits}
+            </Text>
+            {props.isSelected ? <AddedButton /> : <AddButton />}
+          </View>
+        </TouchableOpacity>
       </View>
 
       <LinearGradient

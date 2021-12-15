@@ -57,7 +57,7 @@ export default function AccountProfileScreen() {
             <Text
               style={[
                 tailwind('font-bold text-light font-20'),
-                {fontSize: 25},
+                {fontSize: 23},
               ]}>
               Chris Gayle
             </Text>
@@ -68,7 +68,7 @@ export default function AccountProfileScreen() {
           <TableData title={'Overs Bowled'} actual={'0'} points={''} />
           <TableData title={'Wickets'} actual={'0'} points={''} />
           <TableData title={'LBW / Bowled Bonus'} actual={'0'} points={'N/A'} />
-          {/* <TableData title={'2/3/4 Wicket Bonus'} actual={'0'} points={''} /> */}
+          <TableData title={'2/3/4 Wicket Bonus'} actual={'0'} points={''} />
           <TableData title={'Maiden Over'} actual={'0'} points={'0'} />
           <TableData title={'E / R'} actual={'0'} points={'-'} />
           <View style={[tailwind('flex-row items-center justify-center')]}>
@@ -85,7 +85,7 @@ export default function AccountProfileScreen() {
               </TouchableOpacity>
             </LinearGradient>
           </View>
-          <View style={[tailwind('h-40')]}></View>
+          <View style={[tailwind('h-20')]}></View>
         </ScrollView>
       </View>
     </View>

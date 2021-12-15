@@ -17,19 +17,19 @@ export default function TableData(props: PropTypes) {
       <View style={[tailwind('flex-row px-5 py-3 ')]}>
         <View style={[tailwind(''), {flex: 4}]}>
           <Text
-            style={[tailwind('font-regular text-left text-dark-1 font-15')]}>
+            style={[tailwind('font-regular text-left text-dark-1 font-13')]}>
             {props.title}
           </Text>
         </View>
         <View style={[tailwind(''), {flex: 4}]}>
           <Text
-            style={[tailwind('font-regular text-center text-light font-18')]}>
+            style={[tailwind('font-regular text-center text-light font-16')]}>
             {props.actual}
           </Text>
         </View>
         <View style={[tailwind(''), {flex: 4}]}>
           <Text
-            style={[tailwind('font-regular text-right text-light font-18')]}>
+            style={[tailwind('font-regular text-right text-light font-16')]}>
             {props.points}
           </Text>
         </View>

@@ -21,7 +21,7 @@ export default function TableHeader(props: PropTypes) {
           {flex: 10 / 4},
         ]}>
         <Text
-          style={[tailwind('font-regular text-light uppercase py-2 font-16')]}>
+          style={[tailwind('font-regular text-light uppercase py-2 font-14')]}>
           Event
         </Text>
       </View>
@@ -31,14 +31,14 @@ export default function TableHeader(props: PropTypes) {
           {flex: 10 / 4},
         ]}>
         <Text
-          style={[tailwind('font-regular text-light uppercase py-2 font-16')]}>
+          style={[tailwind('font-regular text-light uppercase py-2 font-14')]}>
           Actual
         </Text>
       </View>
       <View
         style={[tailwind('flex-row items-center justify-end'), {flex: 10 / 4}]}>
         <Text
-          style={[tailwind('font-regular text-light uppercase py-2 font-16')]}>
+          style={[tailwind('font-regular text-light uppercase py-2 font-14')]}>
           Points
         </Text>
       </View>
