@@ -43,11 +43,13 @@ export default function Player(props: PropTypes) {
         // }
       >
         {/* Image */}
-        <TouchableOpacity activeOpacity={0.5} style={[tailwind(''), {flex: 2}]}>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          style={[tailwind('ml-2'), {flex: 2}]}>
           <Image
             resizeMode="contain"
             source={assets.player}
-            style={[tailwind(''), {height: 65, width: 65}]}
+            style={[tailwind(''), {height: 62, width: 70}]}
           />
           <TeamBadge team1={true} name={props.teamname} />
         </TouchableOpacity>
@@ -79,15 +81,17 @@ export default function Player(props: PropTypes) {
           </View>
         </View>
         <View
-          style={[tailwind('flex-col items-center justify-center'), {flex: 2}]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-15')]}>
+          style={[
+            tailwind('flex-col items-center  justify-center'),
+            {flex: 2},
+          ]}>
+          <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
             {props.points}
           </Text>
         </View>
-        <View
-          style={[tailwind('flex-row justify-start items-center'), {flex: 2}]}>
+        <View style={[tailwind('flex-row items-center'), {flex: 2}]}>
           <Text
-            style={[tailwind('font-bold px-2 text-center text-light font-17')]}>
+            style={[tailwind('font-bold px-2 text-white text-right font-13')]}>
             {props.credits}
           </Text>
           {props.isSelected ? <AddedButton /> : <AddButton />}
@@ -125,7 +129,7 @@ const AddButton = (props: any) => {
       colors={['#006A4D', '#00513B']}
       style={[
         tailwind(
-          'flex-col items-center justify-center absolute rounded-l-lg py-2 right-0',
+          'flex-col items-center justify-center absolute rounded-l-lg py-2 px-1 right-0',
         ),
       ]}>
       <Icon name="add" color="white" size={24} />
