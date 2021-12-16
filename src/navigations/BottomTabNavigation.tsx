@@ -7,7 +7,7 @@ import {Contest, Home, Auth, Match, MyMatches} from './StackNavigations';
 import LobbyScreen from '../screens/LobbyScreen';
 import MyMatchesScreen from '../screens/MyMatchesScreen';
 import LiveMatchScreen from '../screens/LiveMatchScreen';
-import LeaderBoard from '../screens/LeaderBoard';
+import LeaderBoardScreen from '../screens/LeaderBoardScreen';
 import LoginScreen from '../screens/LoginScreen';
 import MoreScreen from '../screens/MoreScreen';
 
@@ -53,9 +53,9 @@ export default function BottomTabNavigation() {
         component={MyMatchesScreen}
       />
       <BottomTab.Screen
-        name="LeaderBoard"
+        name="LeaderBoardScreen"
         options={{tabBarLabel: 'LeaderBoard'}}
-        component={LeaderBoard}
+        component={LeaderBoardScreen}
       />
       <BottomTab.Screen
         name="MoreScreen"

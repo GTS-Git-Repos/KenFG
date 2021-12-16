@@ -49,9 +49,17 @@ export default function CustomDrawer(props: any) {
           }
         />
         <ReferaAndEarn />
-        <Links to="LeaderBoard" icon={assets.joystick} text="Leaderboard" />
-        <Links to="LeaderBoard" icon={assets.joystick} text="Achievements" />
-        <Links to="LeaderBoard" icon={assets.joystick} text="Affilated" />
+        <Links
+          to="LeaderBoardScreen"
+          icon={assets.joystick}
+          text="Leaderboard"
+        />
+        <Links
+          to="LeaderBoardScreen"
+          icon={assets.joystick}
+          text="Achievements"
+        />
+        <Links to="LeaderBoardScreen" icon={assets.joystick} text="Affilated" />
 
         <Links
           to="ProfileEditScreen"
