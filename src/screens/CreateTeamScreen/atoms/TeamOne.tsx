@@ -44,7 +44,14 @@ export default function Team1(props: PropTypes) {
             {props.teamname}
           </Text>
         </LinearGradient>
-        <Text style={[tailwind('font-bold text-white text-right font-20')]}>
+        <Text
+          style={[
+            tailwind(
+              `font-bold text-white  font-20 ${
+                props.reverseUI ? 'text-left' : 'text-right'
+              }`,
+            ),
+          ]}>
           {props.teamcount}
         </Text>
       </View>

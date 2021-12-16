@@ -4,6 +4,7 @@ import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../constants/assets_manifest';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import EditIcon from '../icons/EditIcon';
 
 interface PropTypes {
   teams_key: string;
@@ -26,11 +27,8 @@ export default function MyTeamsTopSection(props: PropTypes) {
       </View>
 
       <View style={[tailwind('flex-row items-center px-2')]}>
-        <TouchableOpacity style={[tailwind('px-2')]}>
-          <Icon name="copy-outline" size={18} color="white" />
-        </TouchableOpacity>
         <TouchableOpacity onPress={() => {}} style={[tailwind('px-2')]}>
-          <Icon name="build-outline" size={18} color="white" />
+          <EditIcon />
         </TouchableOpacity>
       </View>
     </View>

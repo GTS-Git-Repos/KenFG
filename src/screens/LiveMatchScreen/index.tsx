@@ -17,6 +17,8 @@ import ScrollBoardPage from './molecules/ScrollBoardPage';
 import LeaderBoardPage from './molecules/LeaderBoardPage';
 import CommentaryPage from './molecules/CommentaryPage';
 import PlayersStats from './molecules/PlayersStats';
+import WinningsPage from './molecules/WinningsPage';
+import ExpertStats from './atoms/ExpertsStats';
 
 // import Icon from 'react-native-vector-icons/Ionicons';
 const log = console.log;
@@ -43,17 +45,16 @@ export default function LiveMatchScreen() {
     <View style={tailwind('bg-dark h-full')}>
       <TopBar text={'AUS vs ENG'} />
 
-      <LinearGradient colors={['#172338', '#172338']}>
-        <View style={[tailwind('px-3 pt-6 pb-3')]}>
-          <MatchStat teamName1={'Australia'} teamName2={'England'} />
+      <View style={[tailwind('px-3 pt-6 pb-3 bg-dark-3')]}>
+        <MatchStat teamName1={'Australia'} teamName2={'England'} />
 
-          <Projection />
-          <View style={[tailwind('my-2')]}>
-            <LiveMatchSeparator />
-          </View>
-          <CurrentLiveStats />
+        <Projection />
+        <View style={[tailwind('my-2')]}>
+          <LiveMatchSeparator />
         </View>
-      </LinearGradient>
+        <CurrentLiveStats />
+        <ExpertStats />
+      </View>
 
       <View>
         <LiveMatchTabs activeIndex={activeIndex} onTabPressed={onTabPressed} />
@@ -63,6 +64,9 @@ export default function LiveMatchScreen() {
         ref={pageRef}
         onPageSelected={onPageSelectedAction}
         style={{flex: 1}}>
+        <View>
+          <WinningsPage />
+        </View>
         <View>
           <LeaderBoardPage />
         </View>

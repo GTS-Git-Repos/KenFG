@@ -72,8 +72,8 @@ export default function ContestListScreen() {
   }, []);
 
   useEffect(() => {
-    // console.log('contests', contests);
-  }, [contests]);
+    // console.log('teams', teams.data);
+  }, [teams]);
 
   // Business logic
 
@@ -131,7 +131,7 @@ export default function ContestListScreen() {
         subtitle={'18h 11m left'}
       />
       <View style={[tailwind('')]}>
-        <Tabs selectedTab={selectedTab} onTabPressed={onTabPressed} />
+        <Tabs selectedTab={selectedTab} teamsCount={teams?.data} onTabPressed={onTabPressed} />
       </View>
       <PagerView
         ref={pagerRef}

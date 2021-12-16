@@ -17,27 +17,33 @@ export default function LiveMatchTabs(props: PropTypes) {
       showsHorizontalScrollIndicator={false}
       style={[tailwind('bg-dark-3')]}>
       <TabItem
-        tabName="Leaderboard"
+        tabName="Winnings"
         index={0}
         active={0 === props.activeIndex}
         onTabPressed={props.onTabPressed}
       />
       <TabItem
-        tabName="ScoreBoard"
+        tabName="Leaderboard"
         index={1}
         active={1 === props.activeIndex}
         onTabPressed={props.onTabPressed}
       />
       <TabItem
-        tabName="Commentry"
+        tabName="ScoreBoard"
         index={2}
         active={2 === props.activeIndex}
         onTabPressed={props.onTabPressed}
       />
       <TabItem
-        tabName="Stats"
+        tabName="Commentry"
         index={3}
         active={3 === props.activeIndex}
+        onTabPressed={props.onTabPressed}
+      />
+      <TabItem
+        tabName="Stats"
+        index={4}
+        active={4 === props.activeIndex}
         onTabPressed={props.onTabPressed}
       />
     </ScrollView>

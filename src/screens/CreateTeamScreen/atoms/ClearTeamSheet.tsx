@@ -26,43 +26,33 @@ export default function ClearTeamSheet(props: PropTypes) {
         Are you sure you want to clear your player selections ?
       </Text>
 
-      <LinearGradient
-        start={{x: 0.8, y: 2.0}}
-        end={{x: 0.3, y: 0.5}}
-        locations={[0.6, 0.5]}
-        style={[tailwind('flex-row  m-2 rounded')]}
-        colors={['#00513B', '#006A4D']}>
-        <TouchableOpacity
-          onPress={props.clearTeam}
-          style={[tailwind('flex-grow py-3')]}>
-          <Text
-            style={[
-              tailwind(
-                'font-bold uppercase text-light flex-grow text-center font-12',
-              ),
-            ]}>
-            Yes Clear
-          </Text>
-        </TouchableOpacity>
-      </LinearGradient>
+      <TouchableOpacity
+        onPress={props.clearTeam}
+        style={[tailwind('flex-grow bg-green m-2 rounded py-3')]}>
+        <Text
+          style={[
+            tailwind(
+              'font-bold uppercase text-light flex-grow text-center font-12',
+            ),
+          ]}>
+          Yes Clear
+        </Text>
+      </TouchableOpacity>
 
-      <LinearGradient
-        start={{x: 0.8, y: 2.0}}
-        end={{x: 0.3, y: 0.5}}
-        locations={[0.6, 0.5]}
-        style={[tailwind('flex-row  m-2 rounded')]}
-        colors={['#1C2B46', '#172338']}>
-        <TouchableOpacity
-          onPress={() => props.clearRef?.current?.close()}
-          style={[tailwind('flex-grow py-3')]}>
-          <Text
-            style={[
-              tailwind('font-bold uppercase text-light text-center font-12'),
-            ]}>
-            Cancel
-          </Text>
-        </TouchableOpacity>
-      </LinearGradient>
+      <TouchableOpacity
+        onPress={() => props.clearRef?.current?.close()}
+        style={[
+          tailwind(
+            'flex-grow py-3 m-2 rounded bg-dark-3 border border-gray-700',
+          ),
+        ]}>
+        <Text
+          style={[
+            tailwind('font-bold uppercase text-light text-center font-12'),
+          ]}>
+          Cancel
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }

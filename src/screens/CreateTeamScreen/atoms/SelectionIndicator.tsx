@@ -50,7 +50,7 @@ export default function SelectionIndicator(props: PropTypes) {
                 </Text>
               )}
 
-              {item === 11 && props.count === 0 ? (
+              {item === 11 && props.count !== 11 ? (
                 <Text
                   style={[
                     tailwind('font-bold text-center font-10'),

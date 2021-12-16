@@ -12,6 +12,7 @@ import {
 import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
 import MyTeamsTopSection from '../atoms/MyTeamTopSection';
+import Svg, {Path, Rect} from 'react-native-svg';
 
 interface PropTypes {
   teams_key: string;
@@ -38,17 +39,7 @@ export default function TeamsCard(props: PropTypes) {
 
         <MyTeamsTopSection teams_key={props.teams_key} />
 
-        {/* Player Info */}
         <View style={[tailwind('flex-row justify-between items-center p-3')]}>
-          {/* Count */}
-          <View
-            style={[
-              tailwind('flex-row justify-around items-center'),
-              {flex: 4},
-            ]}>
-            <TeamCountInfo name={'AUS'} count={6} />
-            <TeamCountInfo name={'ENG'} count={4} />
-          </View>
           {/* Players */}
           <View
             style={[
@@ -57,6 +48,12 @@ export default function TeamsCard(props: PropTypes) {
             ]}>
             <PlayerProfile cap="C" name="Player 1" />
             <PlayerProfile cap="VC" name="Player 2" />
+          </View>
+
+          {/* Count */}
+          <View style={[tailwind('items-end'), {flex: 4}]}>
+            <TeamCountInfo name={'AUS'} count={6} />
+            <TeamCountInfo name={'ENG'} count={4} />
           </View>
         </View>
       </ImageBackground>
@@ -67,12 +64,20 @@ export default function TeamsCard(props: PropTypes) {
 
 const TeamCountInfo = (props: TeamContInfoTypes) => {
   return (
-    <View style={[tailwind('')]}>
-      <Text style={[tailwind('font-bold text-light text-center font-15')]}>
+    <View style={[tailwind('flex-row mb-0.5 items-center')]}>
+      <Text
+        style={[tailwind('font-regular text-white text-center px-4 font-12')]}>
         {props.name}
       </Text>
       <Text
-        style={[tailwind('font-bold text-center  py-1 text-light font-20')]}>
+        style={[
+          tailwind(
+            'font-bold bg-gray-100 rounded px-2 text-center  py-1 text-light font-20',
+          ),
+          {
+            backgroundColor: 'rgba(0,0,0,0.3)',
+          },
+        ]}>
         {props.count}
       </Text>
     </View>
@@ -82,35 +87,31 @@ const TeamCountInfo = (props: TeamContInfoTypes) => {
 const PlayerProfile = (props: any) => {
   return (
     <View style={[tailwind('flex-col')]}>
-      <Image
-        resizeMode="contain"
-        source={assets.player}
-        style={[tailwind(''), {width: 80, height: 60}]}
-      />
-      <View style={[tailwind('p-0.5 bg-gray-200 rounded'), {width: 80}]}>
-        <Text
-          allowFontScaling={true}
-          numberOfLines={1}
-          style={[
-            tailwind('font-regular text-center overflow-hidden font-13'),
-          ]}>
-          {props.name}
-        </Text>
+      <View style={[tailwind(''), {width: 55, height: 55}]}>
+        <View style={[tailwind('absolute inset-0'), {}]}>
+          {/* <VCIcon /> */}
+          <CIcon />
+        </View>
+        <Image
+          resizeMode="contain"
+          source={assets.player}
+          style={[tailwind(''), {width: 55, height: 50}]}
+        />
+        <PlayerName name="M Wade" />
       </View>
+    </View>
+  );
+};
 
-      <View
-        style={[
-          tailwind(
-            'absolute border-2 rounded-full p-0.5 w-6 h-6 border-gray-800 flex-row items-center justify-center bg-gray-100 top-0 left-0',
-          ),
-        ]}>
-        <Text
-          allowFontScaling={true}
-          adjustsFontSizeToFit={true}
-          style={[tailwind('font-regular font-12')]}>
-          {props.cap}
-        </Text>
-      </View>
+const PlayerName = (props: any) => {
+  return (
+    <View style={[tailwind('bg-blue-500')]}>
+      <Text
+        allowFontScaling={true}
+        adjustsFontSizeToFit={true}
+        style={[tailwind('font-regular text-center text-white font-9')]}>
+        {props.name}
+      </Text>
     </View>
   );
 };
@@ -125,27 +126,65 @@ const BottomStats = () => {
       ]}>
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
-        <Text style={[tailwind('font-regular text-light font-13')]}>WK</Text>
-        <Text style={[tailwind('font-bold text-light px-2 font-13')]}>1</Text>
+        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>WK</Text>
+        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>1</Text>
       </View>
 
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
-        <Text style={[tailwind('font-regular text-light font-13')]}>BAT</Text>
-        <Text style={[tailwind('font-bold text-light px-2 font-13')]}>3</Text>
+        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>BAT</Text>
+        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>3</Text>
       </View>
 
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
-        <Text style={[tailwind('font-regular text-light font-13')]}>AR</Text>
-        <Text style={[tailwind('font-bold text-light px-2 font-13')]}>2</Text>
+        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>AR</Text>
+        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>2</Text>
       </View>
 
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
-        <Text style={[tailwind('font-regular text-light font-13')]}>BOWL</Text>
-        <Text style={[tailwind('font-bold text-light px-2 font-13')]}>5</Text>
+        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>BOWL</Text>
+        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>5</Text>
       </View>
     </View>
+  );
+};
+
+const VCIcon = () => {
+  return (
+    <Svg
+      width="17"
+      height="17"
+      viewBox="0 0 17 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <Path
+        d="M9.15281 5.34668L7.02016 11.6484H5.44009L3.33334 5.34668H4.8357L6.12651 9.73242C6.19559 9.96973 6.23732 10.1792 6.25171 10.3608H6.27761C6.29776 10.1646 6.34237 9.94922 6.41144 9.71484L7.69363 5.34668H9.15281Z"
+        fill="white"
+      />
+      <Path
+        d="M14.3333 11.4243C13.8815 11.647 13.2915 11.7583 12.5633 11.7583C11.6136 11.7583 10.8667 11.4741 10.3227 10.9058C9.77879 10.3374 9.50681 9.58008 9.50681 8.63379C9.50681 7.62598 9.81189 6.80859 10.422 6.18164C11.0351 5.55469 11.8294 5.24121 12.8051 5.24121C13.4095 5.24121 13.9189 5.31885 14.3333 5.47412V6.84082C13.9189 6.58887 13.4469 6.46289 12.9173 6.46289C12.336 6.46289 11.8668 6.64893 11.51 7.021C11.1531 7.39307 10.9746 7.89697 10.9746 8.53271C10.9746 9.14209 11.143 9.62842 11.4797 9.9917C11.8165 10.3521 12.2698 10.5322 12.8396 10.5322C13.3836 10.5322 13.8815 10.3975 14.3333 10.1279V11.4243Z"
+        fill="white"
+      />
+      <Rect x="1.33334" y="1" width="15" height="15" rx="7.5" stroke="white" />
+    </Svg>
+  );
+};
+
+const CIcon = () => {
+  return (
+    <Svg
+      width="17"
+      height="17"
+      viewBox="0 0 17 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <Path
+        d="M11.2065 11.4243C10.7466 11.647 10.146 11.7583 9.40479 11.7583C8.43799 11.7583 7.67773 11.4741 7.12402 10.9058C6.57031 10.3374 6.29346 9.58008 6.29346 8.63379C6.29346 7.62598 6.604 6.80859 7.2251 6.18164C7.84912 5.55469 8.65771 5.24121 9.65088 5.24121C10.2661 5.24121 10.7847 5.31885 11.2065 5.47412V6.84082C10.7847 6.58887 10.3042 6.46289 9.76514 6.46289C9.17334 6.46289 8.6958 6.64893 8.33252 7.021C7.96924 7.39307 7.7876 7.89697 7.7876 8.53271C7.7876 9.14209 7.95898 9.62842 8.30176 9.9917C8.64453 10.3521 9.10596 10.5322 9.68604 10.5322C10.2397 10.5322 10.7466 10.3975 11.2065 10.1279V11.4243Z"
+        fill="white"
+      />
+      <Rect x="1.25" y="1" width="15" height="15" rx="7.5" stroke="white" />
+    </Svg>
   );
 };

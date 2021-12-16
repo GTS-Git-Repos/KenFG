@@ -5,6 +5,7 @@ import assets from '../../constants/assets_manifest';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
+import {BottomLine, CupIcon, EditIcon, MIcon, ShareIcon, SwitchIcon} from '../';
 const log = console.log;
 
 interface PropTypes {
@@ -30,174 +31,184 @@ export default function ContestCard(props: PropTypes) {
   const navigation = useNavigation<any>();
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      style={[tailwind('rounded')]}
-      onPress={() => props.navigate(props.contest_key)}>
-      <LinearGradient
-        start={{x: 0.0, y: 0.7}}
-        end={{x: 1.0, y: 0.0}}
-        locations={[0.6, 0.5]}
-        colors={['#172338', '#25385A']}>
-        <View style={[tailwind('p-4 rounded-t')]}>
-          <View style={[tailwind('flex-row justify-between items-center')]}>
-            <View style={[tailwind('py-2')]}>
-              <Text
-                style={[
-                  tailwind('font-regular capitalize font-14 text-white'),
-                ]}>
-                {props.title}
-              </Text>
-              <Text
-                style={[tailwind('font-bold text-white py-2'), {fontSize: 14}]}>
-                {'\u20B9 '}
-                {props.amount_letters}
-              </Text>
-            </View>
+    <View style={[tailwind('rounded bg-dark-3')]}>
+      <TopSection />
+      <Footer />
+      <View style={[tailwind('p-2')]}>
+        <View style={[tailwind('flex-row items-center justify-between')]}>
+          <Text style={[tailwind('font-regular text-white font-14')]}>
+            Joined with 20 teams
+          </Text>
+          <Icon name="chevron-up-outline" size={16} color="white" />
+        </View>
 
-            <View style={[tailwind('')]}>
-              <View
-                style={[tailwind('flex-row justify-end py-2 items-center')]}>
-                <View
-                  style={[
-                    tailwind('rounded px-4 py-0.5'),
-                    {
-                      backgroundColor: '#006A4D',
-                    },
-                  ]}>
-                  <Text
-                    style={[
-                      tailwind('font-bold text-center text-light font-14'),
-                    ]}>
-                    Joined
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
+        <JoinedTeams />
+        <View style={[tailwind('box rounded border-gray-700 px-2 bg-dark-4')]}>
+          <TeamInfo />
+          <BottomLine />
+          <TeamInfo />
+          <BottomLine />
+          <TeamInfo />
+        </View>
+      </View>
+      <ShareContest />
+    </View>
+  );
+}
 
-          {/* Progress bar */}
+const TopSection = () => {
+  return (
+    <View style={[tailwind('p-2')]}>
+      <View style={[tailwind('flex-row items-center justify-between')]}>
+        <View>
+          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+            Prize Pool
+          </Text>
+          <Text style={[tailwind('font-bold pt-1 text-white font-15')]}>
+            {'\u20B9'} 12.40 Lacks
+          </Text>
+        </View>
+
+        <View>
+          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+            Entry
+          </Text>
+          <Text style={[tailwind('font-regular pt-1 text-dark-1 font-15')]}>
+            {'\u20B9'} 125
+          </Text>
+        </View>
+      </View>
+      {/* Progress bar */}
+      <View style={[tailwind('mt-3 mb-2')]}>
+        <View style={[{backgroundColor: '#8797B1', height: 2}]}>
           <View
             style={[
-              tailwind('w-full bg-dark-1 rounded'),
-              {height: PROGRESS_BAR_HEIGHT},
-            ]}>
-            <View
-              style={[
-                tailwind('w-full'),
-                {
-                  backgroundColor: '#B2933D',
-                  width: `10%`,
-                  height: PROGRESS_BAR_HEIGHT,
-                },
-              ]}></View>
-          </View>
-          {/* Spots left */}
+              tailwind(''),
+              {backgroundColor: '#BCA04D', height: 2, width: '60%'},
+            ]}></View>
+        </View>
+      </View>
+      <View style={[tailwind('flex-row items-center justify-between')]}>
+        <Text style={[tailwind('font-regular text-secondary font-12')]}>
+          16,000 Spots left
+        </Text>
+        <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+          20,000 Spots
+        </Text>
+      </View>
+    </View>
+  );
+};
+
+const Footer = () => {
+  return (
+    <View
+      style={[tailwind('flex-row items-center justify-between bg-dark-4 p-2')]}>
+      <View style={[tailwind('flex-row items-center')]}>
+        <View style={[tailwind('flex-row items-center')]}>
+          <CupIcon />
+          <Text style={[tailwind('font-regular px-0.5 text-dark-1 font-12')]}>
+            Winnings
+          </Text>
+        </View>
+
+        <View style={[tailwind('flex-row items-center px-2')]}>
+          <MIcon />
+          <Text style={[tailwind('font-regular px-0.5 text-dark-1 font-12')]}>
+            upto 20
+          </Text>
+        </View>
+      </View>
+      <View style={[tailwind('flex-row items-center')]}>
+        <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+          Guaranteed
+        </Text>
+      </View>
+    </View>
+  );
+};
+
+const JoinedTeams = () => {
+  return (
+    <View style={[tailwind('flex-row items-center flex-wrap py-2')]}>
+      {[
+        'T1',
+        'T1',
+        'T3',
+        'T1',
+        'T1',
+        'T3',
+        'T1',
+        'T1',
+        'T3',
+        'T1',
+        'T1',
+        'T3',
+      ].map((item: any, index: number) => {
+        return (
           <View
-            style={[tailwind('flex-row justify-between items-center pt-3')]}>
-            <Text style={[tailwind('font-regular text-secondary font-14')]}>
-              {props.total_joined} spots left
+            style={[tailwind('py-1 rounded px-2 mr-1 mb-1 bg-dark-4')]}
+            key={index}>
+            <Text style={[tailwind('font-regular text-dark-1 font-12  ')]}>
+              {item}
             </Text>
-            <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-              {props.total_spots} spots
+          </View>
+        );
+      })}
+    </View>
+  );
+};
+
+const TeamInfo = () => {
+  return (
+    <View style={[tailwind('flex-row items-center py-2 justify-between')]}>
+      <View style={[tailwind('flex-row items-center')]}>
+        <Text
+          style={[
+            tailwind(
+              'font-regular text-white font-12 py-1 px-2 mr-1 mb-1 bg-dark-3',
+            ),
+          ]}>
+          T2
+        </Text>
+        <View style={[tailwind('px-2')]}>
+          <View style={[tailwind('flex-row items-center')]}>
+            <Text style={[tailwind('font-regular text-white font-14')]}>
+              Virat kohli
+            </Text>
+          </View>
+          <View style={[tailwind('flex-row pt-1 items-center')]}>
+            <Text style={[tailwind('font-regular text-white font-14')]}>
+              Rohit sharma
             </Text>
           </View>
         </View>
+      </View>
 
-        <LinearGradient
-          colors={['#131e30', '#162135']}
-          style={[tailwind('p-3')]}>
-          <View style={[tailwind('flex-row justify-between items-center')]}>
-            <View style={[tailwind('flex-row items-center')]}>
-              <View style={[tailwind('flex-row items-center')]}>
-                <Image
-                  resizeMode="contain"
-                  source={assets.money}
-                  style={[tailwind('app-w-17 app-h-17')]}
-                />
-                <Text
-                  style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
-                  {'\u20B9 '}
-                  {props.amount_letters}
-                </Text>
-              </View>
-
-              <View style={[tailwind('flex-row items-center')]}>
-                <Image
-                  resizeMode="contain"
-                  source={assets.cup}
-                  style={[tailwind('app-w-17 app-h-17')]}
-                />
-                <Text
-                  style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
-                  {props.bonus}
-                </Text>
-              </View>
-
-              <View style={[tailwind('flex-row items-center')]}>
-                <Image
-                  resizeMode="contain"
-                  source={assets.M}
-                  style={[tailwind('app-w-17 app-h-17')]}
-                />
-                <Text
-                  style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
-                  upto {props.max_entry}
-                </Text>
-              </View>
-            </View>
-
-            {props.guaranteed && (
-              <View style={[tailwind('flex-row items-center')]}>
-                <Image
-                  resizeMode="contain"
-                  source={assets.M}
-                  style={[tailwind('app-w-17 app-h-17')]}
-                />
-                <Text
-                  style={[
-                    tailwind('font-regular text-dark-1 pl-2    font-13'),
-                  ]}>
-                  Gauranteed
-                </Text>
-              </View>
-            )}
-          </View>
-        </LinearGradient>
-
-        {/* joined with */}
-
-        {props.joined ? (
-          <View style={[tailwind(' bg-dark-3 px-2')]}>
-            <Text
-              style={[
-                tailwind('font-regular text-dark-1 py-1 uppercase font-13'),
-              ]}>
-              Joined with
-            </Text>
-
-            <View style={[tailwind('flex-row items-center flex-wrap  py-2')]}>
-              {props.joined.map(item => {
-                return (
-                  <View
-                    key={item}
-                    style={[
-                      tailwind('rounded bg-dark-4 py-1 mr-2'),
-                      {paddingHorizontal: 16},
-                    ]}>
-                    <Text
-                      style={[
-                        tailwind('font-bold text-center text-light font-13'),
-                      ]}>
-                      {item}
-                    </Text>
-                  </View>
-                );
-              })}
-            </View>
-          </View>
-        ) : null}
-      </LinearGradient>
-    </TouchableOpacity>
+      <View style={[tailwind('flex-row items-center')]}>
+        <TouchableOpacity style={[tailwind('mx-1')]}>
+          <EditIcon />
+        </TouchableOpacity>
+        <TouchableOpacity style={[tailwind('mx-1')]}>
+          <SwitchIcon />
+        </TouchableOpacity>
+      </View>
+    </View>
   );
-}
+};
+
+const ShareContest = () => {
+  return (
+    <View
+      style={[
+        tailwind(
+          'bg-green p-2 rounded-b-lg flex-row items-center justify-between',
+        ),
+      ]}>
+      <Text style={[tailwind('font-regular text-white font-14')]}>
+        Share this contest with your friends
+      </Text>
+      <ShareIcon />
+    </View>
+  );
+};

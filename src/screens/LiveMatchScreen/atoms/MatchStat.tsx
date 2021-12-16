@@ -12,12 +12,12 @@ export default function MatchStat(props: PropTypes) {
   return (
     <View style={[tailwind('flex-row items-center justify-between')]}>
       <View style={[tailwind('flex-col'), {flex: 4}]}>
-        <Text style={[tailwind('font-regular text-white font-16')]}>
+        <Text style={[tailwind('font-regular text-white font-14')]}>
           {props.teamName1}
         </Text>
         <View style={[tailwind('flex-row items-center py-2')]}>
           <Text style={[tailwind('font-bold text-white font-20')]}>43/1</Text>
-          <Text style={[tailwind('font-regular text-dark-1 px-2 font-14')]}>
+          <Text style={[tailwind('font-regular text-dark-1 pl-2 font-14')]}>
             (3)
           </Text>
         </View>
@@ -37,14 +37,12 @@ export default function MatchStat(props: PropTypes) {
       </View>
 
       <View style={[tailwind('flex-col items-end'), {flex: 4}]}>
-        <Text style={[tailwind('font-regular text-white font-16')]}>
+        <Text style={[tailwind('font-regular text-white font-14')]}>
           {props.teamName2}
         </Text>
         <View style={[tailwind('flex-row items-center py-2')]}>
-          <Text style={[tailwind('font-bold text-white font-20')]}>
-            183/6
-          </Text>
-          <Text style={[tailwind('font-regular text-dark-1 px-2 font-14')]}>
+          <Text style={[tailwind('font-bold text-white font-20')]}>183/6</Text>
+          <Text style={[tailwind('font-regular text-dark-1 pl-2 font-14')]}>
             (20)
           </Text>
         </View>

@@ -114,6 +114,7 @@ const initialState = {
   players: [],
   cap_key: null,
   vc_key: null,
+  blocklist:[],
   credits_left: 100,
 };
 

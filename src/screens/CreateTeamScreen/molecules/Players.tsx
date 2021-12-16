@@ -38,7 +38,7 @@ export default function Player(props: PropTypes) {
           {
             backgroundColor: props.isSelected ? '#3C362C' : '#172338',
             // opacity: !props.canBeSelected ? 1 : 0.3,
-            opacity: 0.4,
+            // opacity: 0.4,
           },
         ]}>
         {/* Image */}

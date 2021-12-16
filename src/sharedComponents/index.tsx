@@ -19,6 +19,11 @@ import EditIcon from './icons/EditIcon';
 import UserIcon from './icons/UserIcon';
 import GearIcon from './icons/GearIcon';
 import BackIcon from './icons/BackIcon';
+import DownArrowIcon from './icons/DownArrowIcon';
+import RankIcon from './icons/RankIcon';
+import CupIcon from './icons/CupIcon';
+import MIcon from './icons/MIcon';
+import ShareIcon from './icons/ShareIcon';
 
 export {
   TopBar,
@@ -40,4 +45,9 @@ export {
   UserIcon,
   BackIcon,
   GearIcon,
+  DownArrowIcon,
+  RankIcon,
+  CupIcon,
+  MIcon,
+  ShareIcon,
 };

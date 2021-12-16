@@ -1,82 +1,95 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, FlatList, Dimensions, TouchableOpacity} from 'react-native';
-// import Icon from 'react-native-vector-icons/Ionicons';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 const log = console.log;
 
 interface PropTypes {
   selectedTab: number;
   onTabPressed(index: number): void;
-  text?: string;
+  teamsCount: any;
 }
-
-const TABS = [
-  {
-    id: '1',
-    name: 'Contests',
-    active: true,
-  },
-  {
-    id: '2',
-    name: 'My Contests',
-    active: false,
-  },
-  {
-    id: '3',
-    name: 'My Teams',
-    active: false,
-  },
-];
-
-const TABSWIDTH = Dimensions.get('window').width / 3;
 
 export default function Tabs(props: PropTypes) {
   return (
-    <View style={[tailwind('')]}>
-      <FlatList
-        contentContainerStyle={[tailwind('pt-1 bg-dark-3')]}
-        data={TABS}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        renderItem={({item, index}) => {
-          return (
-            <TouchableOpacity
-              onPress={() => props.onTabPressed(index)}
-              style={[
-                tailwind(
-                  `flex flex-col items-center w-6/12 pt-3 pb-2 ${
-                    props.selectedTab === index
-                      ? 'border-b-2 border-yellow-300'
-                      : ''
-                  }`,
-                ),
-                {height: 40, width: TABSWIDTH},
-              ]}>
-              <Text
-                style={[
-                  tailwind(
-                    `font-13 ${
-                      props.selectedTab === index
-                        ? 'text-light font-bold'
-                        : 'font-regular text-dark-1 '
-                    }`,
-                  ),
-                ]}>
-                {item.name}
-              </Text>
-            </TouchableOpacity>
-          );
-        }}
-        keyExtractor={item => item.id}
-      />
-      {/* <View
+    <View style={[tailwind('flex-row items-center')]}>
+      <TouchableOpacity
+        onPress={() => props.onTabPressed(0)}
         style={[
-          tailwind('h-1 bg-secondary'),
-          {width: 120},
-          // {
-          //   transform: [{translateX: 240}],
-          // },
-        ]}></View> */}
+          tailwind('w-4/12'),
+          styles.tabContainer,
+          props.selectedTab === 0 ? styles.activeTab : {},
+        ]}>
+        <Text
+          style={[
+            tailwind(
+              `font-regular text-dark-1 text-center font-13 ${
+                props.selectedTab === 0 ? 'font-bold text-white' : ''
+              }`,
+            ),
+          ]}>
+          Contests
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => props.onTabPressed(1)}
+        style={[
+          tailwind('w-4/12'),
+          styles.tabContainer,
+          props.selectedTab === 1 ? styles.activeTab : {},
+        ]}>
+        <Text
+          style={[
+            tailwind(
+              `font-regular text-dark-1 text-center font-13 ${
+                props.selectedTab === 1 ? 'font-bold text-white' : ''
+              }`,
+            ),
+          ]}>
+          My Contests
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => props.onTabPressed(2)}
+        style={[
+          tailwind('w-4/12'),
+          styles.tabContainer,
+          props.selectedTab === 2 ? styles.activeTab : {},
+        ]}>
+        <Text
+          style={[
+            tailwind(
+              `font-regular text-dark-1 text-center font-13 ${
+                props.selectedTab === 2 ? 'font-bold text-white' : ''
+              }`,
+            ),
+          ]}>
+          My Teams ({props?.teamsCount?.length})
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  tabContainer: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderColor: '#172338',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+  activeTab: {
+    borderColor: '#BCA04D',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+});

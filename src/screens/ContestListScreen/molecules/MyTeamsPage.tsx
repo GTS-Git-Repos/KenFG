@@ -10,6 +10,13 @@ interface PropTypes {
 }
 
 export default function MyTeamsPage(props: PropTypes) {
+  return (
+    <View style={[tailwind('m-3')]}>
+      <TeamsCard teams_key={''} key={''} />
+      <View style={[tailwind('h-20')]}></View>
+    </View>
+  );
+
   if (props.status === 'loading') {
     return (
       <Text style={[tailwind('font-regular text-light font-15')]}>
