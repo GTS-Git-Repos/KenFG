@@ -33,7 +33,7 @@ const PlayerStats = (props: any) => {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('PlayerProfileScreen')}>
+      onPress={() => navigation.navigate('MyContestPlayersScreen')}>
       <View style={[tailwind('flex-row pt-3 bg-dark-3 items-center')]}>
         <View style={[tailwind('flex-row items-center'), {flex: 4}]}>
           <View style={[tailwind('px-2')]}>

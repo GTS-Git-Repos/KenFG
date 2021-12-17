@@ -74,13 +74,13 @@ export default function AccountProfileScreen() {
           {/* 
           <View style={[tailwind('h-20')]}></View> */}
         </ScrollView>
-        <View style={[tailwind('flex-row items-center justify-center')]}>
+        {/* <View style={[tailwind('flex-row items-center justify-center')]}>
           <TouchableOpacity style={[tailwind('rounded bg-green p-2 m-3')]}>
             <Text style={[tailwind('font-bold uppercase text-white font-15')]}>
               Add to Team
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </View>
   );
