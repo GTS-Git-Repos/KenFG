@@ -133,7 +133,7 @@ const Points = () => {
         return (
           <LinearGradient
             key={item}
-            start={{x: 0.8, y: 2.0}}
+            start={{x: 1.1, y: 2.0}}
             end={{x: 0.0, y: 0.5}}
             locations={[0.6, 0.5]}
             style={[
@@ -141,11 +141,11 @@ const Points = () => {
                 'flex-row mr-3 border border-gray-900 items-center justify-between rounded py-1',
               ),
             ]}
-            colors={['#25385A', '#172338']}>
-            <Text style={[tailwind('font-regular px-1 text-dark-1 font-15')]}>
+            colors={['#FFFFFF', '#25385A']}>
+            <Text style={[tailwind('font-bold px-1 text-dark-1 font-13')]}>
               T17
             </Text>
-            <Text style={[tailwind('font-regular px-1 text-dark-1 font-15')]}>
+            <Text style={[tailwind('font-bold px-1 text-black font-13')]}>
               +5
             </Text>
           </LinearGradient>

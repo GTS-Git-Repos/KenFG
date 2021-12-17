@@ -71,22 +71,16 @@ export default function AccountProfileScreen() {
           <TableData title={'2/3/4 Wicket Bonus'} actual={'0'} points={''} />
           <TableData title={'Maiden Over'} actual={'0'} points={'0'} />
           <TableData title={'E / R'} actual={'0'} points={'-'} />
-          <View style={[tailwind('flex-row items-center justify-center')]}>
-            <LinearGradient
-              style={[tailwind('p-2 m-3 rounded')]}
-              colors={['#D8C872', '#C2A954']}>
-              <TouchableOpacity style={[tailwind('rounded')]}>
-                <Text
-                  style={[
-                    tailwind('font-bold uppercase text-brown-4 font-15'),
-                  ]}> 
-                  Add to Team
-                </Text>
-              </TouchableOpacity>
-            </LinearGradient>
-          </View>
-          <View style={[tailwind('h-20')]}></View>
+          {/* 
+          <View style={[tailwind('h-20')]}></View> */}
         </ScrollView>
+        <View style={[tailwind('flex-row items-center justify-center')]}>
+          <TouchableOpacity style={[tailwind('rounded bg-green p-2 m-3')]}>
+            <Text style={[tailwind('font-bold uppercase text-white font-15')]}>
+              Add to Team
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
