@@ -11,7 +11,9 @@ interface PropTypes {
 export default function WeeklyPage(props: PropTypes) {
   return (
     <View style={[tailwind('')]}>
-      <Text style={[tailwind('font-regular font-15')]}>HEllo</Text>
+      <Text style={[tailwind('font-regular text-white font-15')]}>
+        Comming Soon
+      </Text>
     </View>
   );
 }

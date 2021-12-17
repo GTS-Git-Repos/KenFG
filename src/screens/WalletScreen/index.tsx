@@ -29,12 +29,17 @@ export default function WalletScreen() {
             text={'My Recent Transactions'}
             goto={'TransactionListScreen'}
           />
-          {/* <Actions
+          <Actions
             text={'Manage Payments'}
             subText="Add / Remove Care, Wallets, etc"
             goto="TransactionListScreen"
-          /> */}
-          {/* <Actions text={'Refer and Earn'} goto="ReferralScreen" /> */}
+          />
+          <Actions
+            text={'Verify Account'}
+            subText="To eligable to withdrawal"
+            goto="VerifyAccountScreen"
+          />
+          <Actions text={'Refer and Earn'} goto="InviteScreen" />
         </View>
       </ScrollView>
       <AddMoneyButton addMoneySheet={addMoneySheet} />

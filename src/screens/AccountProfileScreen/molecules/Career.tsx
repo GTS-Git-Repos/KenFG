@@ -83,7 +83,7 @@ const MatchStat = (props: any) => {
       <Text
         style={[
           tailwind(
-            `font-regular text-dark-1 font-16 ${
+            `font-regular text-dark-1 font-13 ${
               props.index === 2 ? 'text-right' : ''
             }
             ${props.index === 1 ? 'text-center ' : ''}

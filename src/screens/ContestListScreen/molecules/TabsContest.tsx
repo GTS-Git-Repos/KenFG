@@ -52,7 +52,7 @@ export default function Tabs(props: PropTypes) {
               }`,
             ),
           ]}>
-          My Contests
+          My Contests (1)
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
