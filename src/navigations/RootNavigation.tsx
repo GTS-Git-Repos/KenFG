@@ -26,7 +26,7 @@ import VerifyAccountScreen from '../screens/VerifyAccountScreen';
 
 import TeamsListScreen from '../screens/TeamsListScreen';
 
-import MyContestPlayersInfo from '../screens/MyContestPlayersInfo';
+import MyContestPlayersScreen from '../screens/MyContestPlayersScreen';
 import PlayerProfileScreen from '../screens/PlayerProfileScreen';
 import MoreScreen from '../screens/MoreScreen';
 import InviteScreen from '../screens/InviteScreen';
@@ -75,7 +75,7 @@ export default function RootNavigation() {
     <NavigationContainer theme={DarkTheme}>
       <Host>
         <RootNavigator.Navigator
-          initialRouteName="InitialScreen"
+          initialRouteName="UserGoalsScreen"
           screenOptions={StackConfig}>
           <RootNavigator.Screen
             component={InitialScreen}
@@ -153,8 +153,8 @@ export default function RootNavigation() {
           />
 
           <RootNavigator.Screen
-            component={MyContestPlayersInfo}
-            name="MyContestPlayersInfo"
+            component={MyContestPlayersScreen}
+            name="MyContestPlayersScreen"
           />
           <RootNavigator.Screen
             component={PlayerProfileScreen}

@@ -14,13 +14,13 @@ export default function UserName(props: PropTypes) {
     <View
       style={[
         tailwind(
-          'bg-dark-4 rounded-t-xl py-4 px-4 flex-row items-center justify-between',
+          'bg-dark-4 rounded-t-xl py-2 px-4 flex-row items-center justify-between',
         ),
       ]}>
-      <Text style={[tailwind('font-regular text-white font-13')]}>
+      <Text style={[tailwind('font-regular text-white font-11')]}>
         {props.name}
       </Text>
-      <Text style={[tailwind('font-regular text-white uppercase font-13')]}>
+      <Text style={[tailwind('font-regular text-white uppercase font-11')]}>
         Level {props.level}
       </Text>
     </View>

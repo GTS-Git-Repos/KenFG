@@ -43,7 +43,7 @@ export default function Player(props: PropTypes) {
         ]}>
         {/* Image */}
         <TouchableOpacity
-          onPress={() => navigation.navigate('PlayerProfileScreen')}
+          onPress={() => navigation.navigate('MyContestPlayersScreen')}
           activeOpacity={0.5}
           style={[tailwind('ml-2'), {flex: 2}]}>
           <Image

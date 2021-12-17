@@ -25,7 +25,7 @@ export default function TopBar(props: Props) {
       <View
         style={[
           tailwind('flex-row items-center justify-between px-4'),
-          {paddingVertical: 18},
+          {paddingVertical: 16},
         ]}>
         <View style={[tailwind('flex-row items-center')]}>
           <TouchableOpacity onPress={goBack}>

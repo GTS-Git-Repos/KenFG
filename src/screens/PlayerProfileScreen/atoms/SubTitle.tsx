@@ -10,8 +10,8 @@ interface PropTypes {
 
 export default function SubTitle(props: PropTypes) {
   return (
-    <View style={[tailwind('px-4 py-3')]}>
-      <Text style={[tailwind('font-bold text-dark-1 uppercase font-12')]}>
+    <View style={[tailwind('px-6 py-2')]}>
+      <Text style={[tailwind('font-bold uppercase text-dark-1 font-11')]}>
         {props.text}
       </Text>
     </View>

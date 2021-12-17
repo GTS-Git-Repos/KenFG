@@ -86,6 +86,8 @@ export default {
   ground_two: require('../assets/images/ground_two.png'),
   trophy: require('../assets/images/trophy.png'),
   level_box: require('../assets/images/level_box.png'),
+  myTeamsBackground: require('../assets/images/myTeamsBackground.png'),
+  goal_money: require('../assets/images/goal_money.png'),
 
   banner1: require('../assets/temp/banner1.png'),
   playerImage: require('../assets/temp/playerimage.png'),

@@ -20,7 +20,7 @@ export default function LevelSince(props: PropTypes) {
           </Text>
           <Text
             style={[
-              tailwind('font-regular text-white text-light font-12'),
+              tailwind('font-regular text-white text-light font-11'),
               {flex: 2},
             ]}>
             1-42
@@ -34,7 +34,7 @@ export default function LevelSince(props: PropTypes) {
           </Text>
           <Text
             style={[
-              tailwind('font-regular text-white text-right font-12'),
+              tailwind('font-regular text-white text-right font-11'),
               {flex: 6},
             ]}>
             2/3/2021

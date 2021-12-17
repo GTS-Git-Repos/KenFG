@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 
 interface PropTypes {
+  title: string;
   actual: number;
   points: number;
 }
@@ -23,7 +24,7 @@ export default function TableData(props: PropTypes) {
         ]}>
         <Text
           style={[tailwind('font-regular text-dark-1 uppercase py-2 font-16')]}>
-          Duck
+          {props.title}
         </Text>
       </View>
       <View
@@ -33,14 +34,14 @@ export default function TableData(props: PropTypes) {
         ]}>
         <Text
           style={[tailwind('font-regular text-light uppercase py-2 font-16')]}>
-          Actual
+          {props.actual}
         </Text>
       </View>
       <View
         style={[tailwind('flex-row items-center justify-end'), {flex: 10 / 4}]}>
         <Text
           style={[tailwind('font-regular text-light uppercase py-2 font-16')]}>
-          Points
+          {props.points}
         </Text>
       </View>
     </View>
