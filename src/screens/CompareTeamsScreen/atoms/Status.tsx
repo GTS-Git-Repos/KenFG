@@ -11,7 +11,7 @@ interface PropTypes {
 export default function Status(props: PropTypes) {
   return (
     <View style={[tailwind('pt-3 pb-5 flex-row items-center justify-center')]}>
-      <Text style={[tailwind('font-bold text-center text-light font-15')]}>
+      <Text style={[tailwind('font-regular text-center text-light font-15')]}>
         Your opponent is leading by
       </Text>
       <Text

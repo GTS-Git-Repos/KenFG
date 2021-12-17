@@ -18,7 +18,7 @@ interface PropTypes {
 
 export default function Tabs(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center')]}>
+    <View style={[tailwind('flex-row bg-dark-3 items-center')]}>
       <TouchableOpacity
         onPress={() => props.onTabPressed(0)}
         style={[

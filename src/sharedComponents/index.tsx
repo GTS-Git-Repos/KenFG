@@ -24,6 +24,12 @@ import RankIcon from './icons/RankIcon';
 import CupIcon from './icons/CupIcon';
 import MIcon from './icons/MIcon';
 import ShareIcon from './icons/ShareIcon';
+import CapWithVSIcon from './icons/CapWithVSIcon';
+import ContestBellIcon from './icons/ContestBellIcon';
+import CopyIcon from './icons/CopyIcon';
+import MaleIcon from './icons/MaleIcon';
+import FemaleIcon from './icons/FemaleIcon';
+import PointsIcon from './icons/PointsIcon';
 
 export {
   TopBar,
@@ -50,4 +56,10 @@ export {
   CupIcon,
   MIcon,
   ShareIcon,
+  ContestBellIcon,
+  CapWithVSIcon,
+  CopyIcon,
+  MaleIcon,
+  FemaleIcon,
+  PointsIcon,
 };

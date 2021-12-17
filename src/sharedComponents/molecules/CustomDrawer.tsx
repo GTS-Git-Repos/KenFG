@@ -72,7 +72,7 @@ export default function CustomDrawer(props: any) {
           text="How to Play"
         />
 
-        <Links to="VerifyAccountScreen" icon={assets.more_icon} text="More" />
+        <Links to="MoreScreen" icon={assets.more_icon} text="More" />
         <BottomLine />
         <AppVersion version="4.24.4" />
         <BottomLine />

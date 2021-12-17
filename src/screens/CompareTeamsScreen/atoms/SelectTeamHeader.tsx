@@ -6,7 +6,7 @@ import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
-  text?: string;
+  text: string;
 }
 
 export default function SelectTeamHeader(props: PropTypes) {
@@ -20,7 +20,7 @@ export default function SelectTeamHeader(props: PropTypes) {
         <View style={[tailwind('flex-row items-center')]}>
           {/* <Icon name="close" size={24} color="#614920" /> */}
           <Text style={[tailwind('font-bold text-brown-5 font-16')]}>
-            Slect your Team
+            {props.text}
           </Text>
         </View>
       </View>

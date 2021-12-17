@@ -1,6 +1,13 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Image, TouchableOpacity, Text, Dimensions} from 'react-native';
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  Dimensions,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {BottomLine} from '..';
 import assets from '../../constants/assets_manifest';
@@ -22,12 +29,11 @@ const SUBTABWIDTH = PROFILEWIDTH / 2;
 export default function HorizontalProfile(props: PropTypes) {
   const navigation = useNavigation<any>();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('CompareTeamsScreen')}>
+    <TouchableOpacity
+      style={[tailwind('px-4 bg-dark-3 '), styles.root]}
+      onPress={() => navigation.navigate('CompareTeamsScreen')}>
       <View
-        style={[
-          tailwind('border-b border-gray-800 flex-row bg-dark-3 items-center'),
-          {paddingVertical: 14},
-        ]}>
+        style={[tailwind('border-b border-gray-800 flex-row items-center')]}>
         <View
           style={[
             tailwind('flex-row justify-between items-center'),
@@ -97,9 +103,17 @@ export default function HorizontalProfile(props: PropTypes) {
           )}
         </View>
       </View>
-      <View>
-        <BottomLine />
-      </View>
     </TouchableOpacity>
   );
 }
+
+const styles = StyleSheet.create({
+  root: {
+    borderTopColor: '#8797B180',
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderWidth: 1,
+    borderStyle: 'solid',
+  },
+});

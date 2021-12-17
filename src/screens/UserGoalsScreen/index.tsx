@@ -14,6 +14,7 @@ import CareerStats from './molecules/CareerStats';
 import LockedReward from './molecules/LockedReward';
 import PlayerSince from './atoms/PlayerSince';
 import KeepPlaying from './atoms/KeepPlaying';
+import Svg, {Line} from 'react-native-svg';
 
 const log = console.log;
 
@@ -40,6 +41,16 @@ export default function UserGoalsScreen() {
                 <View
                   style={[tailwind('flex-row items-center pt-3 flex-wrap ')]}>
                   <LevelCard amount={'10,000'} isSuccess={false} level={21} />
+                  {/* <Svg style={[tailwind('absolute box bottom-0')]}>
+                      <Line
+                        x1="0"
+                        y1="0"
+                        x2="80"
+                        y2="0"
+                        stroke="green"
+                        strokeWidth="7"
+                      />
+                    </Svg> */}
                   <LevelCard amount={'70,000'} isSuccess={true} level={22} />
                   <LevelCard amount={'10,000'} isSuccess={false} level={23} />
                   <LevelCard amount={'8,000'} isSuccess={false} level={23} />

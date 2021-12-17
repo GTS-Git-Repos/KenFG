@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import {useNavigation} from '@react-navigation/native';
-import {TopBar} from '../../sharedComponents';
+import {TopBar, MoneyIcon} from '../../sharedComponents';
+import Links from './atoms/Links';
+
 // import assets from 'assets';
 // import {TopBar} from 'components';
 // import Icon from 'react-native-vector-icons/Ionicons';
@@ -17,7 +19,14 @@ export default function MoreScreen() {
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'More'} />
-      <Text style={[tailwind("font-regular text-light font-15")]}>Comming Soon</Text>
+      <ScrollView>
+        <Links icon={<MoneyIcon />} text={'Fair Play Guidelines'} />
+        <Links icon={<MoneyIcon />} text={'Privacy Contest Code'} />
+        <Links icon={<MoneyIcon />} text={'About Us'} />
+        <Links icon={<MoneyIcon />} text={'Legality'} />
+        <Links icon={<MoneyIcon />} text={'T&C'} />
+        <Links icon={<MoneyIcon />} text={'Join with us'} />
+      </ScrollView>
     </View>
   );
 }

@@ -10,8 +10,10 @@ interface PropTypes {
 
 export default function InputTitle(props: PropTypes) {
   return (
-    <View  style={[tailwind('pt-4 pb-2')]}>
-      <Text style={[tailwind('font-regular text-dark-1 font-13')]}>{props.text}</Text>
+    <View style={[tailwind('pt-4')]}>
+      <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+        {props.text}
+      </Text>
     </View>
   );
 }

@@ -15,8 +15,8 @@ export default function OverStats() {
         <BallStats info={0} />
         <BallStats info={4} />
         <BallStats info={3} />
-        <BallStats info={0} />
-        <BallStats info={4} />
+        <EmptyBall />
+        <EmptyBall />
       </ScrollView>
     </View>
   );
@@ -38,5 +38,22 @@ const BallStats = ({info}) => {
         {info}
       </Text>
     </View>
+  );
+};
+
+const EmptyBall = ({}) => {
+  return (
+    <View
+      style={[
+        tailwind('rounded-full mr-1'),
+        {
+          width: 20,
+          height: 20,
+          borderColor: 'white',
+          borderRadius: 10,
+          borderStyle: 'dashed',
+          borderWidth: 1,
+        },
+      ]}></View>
   );
 };

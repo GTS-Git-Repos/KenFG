@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Image, Text, Touchable} from 'react-native';
+import {View, Image, Text, StyleSheet, Touchable} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import assets from '../../../constants/assets_manifest';
@@ -31,19 +31,8 @@ export default function Dob(props: PropTypes) {
     <View>
       <TouchableOpacity
         onPress={() => props.setOpenDate(true)}
-        style={[
-          tailwind('flex-row bg-dark-3 items-center'),
-          {
-            borderTopColor: 'transparent',
-            borderLeftColor: 'transparent',
-            borderRightColor: 'transparent',
-            borderBottomColor: '#B2933D',
-            borderWidth: 1,
-            borderStyle: 'solid',
-            height: 50,
-          },
-        ]}>
-        <Text style={[tailwind('font-regular text-light font-15')]}>
+        style={[tailwind('flex-row bg-dark-3 items-center'), styles.root]}>
+        <Text style={[tailwind('font-regular text-light font-14')]}>
           {format(props.bday, 'dd-MM-yyyy')}
         </Text>
       </TouchableOpacity>
@@ -60,3 +49,15 @@ export default function Dob(props: PropTypes) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  root: {
+    borderTopColor: 'transparent',
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: '#8797B1',
+    paddingTop: 3,
+    borderWidth: 1,
+    borderStyle: 'solid',
+  },
+});

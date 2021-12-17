@@ -34,7 +34,7 @@ const PlayerStats = (props: any) => {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('PlayerProfileScreen')}>
-      <View style={[tailwind('flex-row py-3 bg-dark-3 items-center')]}>
+      <View style={[tailwind('flex-row pt-3 bg-dark-3 items-center')]}>
         <View style={[tailwind('flex-row items-center'), {flex: 4}]}>
           <View style={[tailwind('px-2')]}>
             <Image
@@ -55,6 +55,7 @@ const PlayerStats = (props: any) => {
             </Text>
           </View>
         </View>
+
         <View style={[tailwind(''), {flex: 2}]}>
           <Text style={[tailwind('font-regular text-dark-1 font-14 py-2')]}>
             34.3%
@@ -84,10 +85,10 @@ const Filter = () => {
       <View
         style={[
           tailwind('flex-row rounded-3xl border border-gray-600'),
-          {flex: 6},
+          {flex: 8},
         ]}>
         <TouchableOpacity
-          style={[tailwind('bg-secondary flex-grow rounded-l-3xl py-3 px-2')]}>
+          style={[tailwind('bg-secondary rounded-l-3xl p-2 flex-grow')]}>
           <Text
             style={[
               tailwind('font-bold uppercase text-center text-brown-5 font-12'),
@@ -95,19 +96,25 @@ const Filter = () => {
             By Contest
           </Text>
         </TouchableOpacity>
-
-        <TouchableOpacity style={[tailwind('flex-grow')]}>
+        <TouchableOpacity
+          style={[tailwind('p-2 flex-grow border-gray-600 border-r')]}>
           <Text
             style={[
-              tailwind(
-                'font-bold uppercase text-center text-light font-12 py-3 px-2',
-              ),
+              tailwind('font-bold uppercase text-center text-white font-12'),
             ]}>
             By Match
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity style={[tailwind('p-2 flex-grow')]}>
+          <Text
+            style={[
+              tailwind('font-bold uppercase text-center text-white font-12'),
+            ]}>
+            By Teams
+          </Text>
+        </TouchableOpacity>
       </View>
-      <View style={[tailwind(''), {flex: 4}]}></View>
+      <View style={[tailwind(''), {flex: 2}]}></View>
     </View>
   );
 };

@@ -3,6 +3,7 @@ import tailwind from '../../../../tailwind';
 import {BottomLine} from '../../../sharedComponents';
 import {View, Image, Text} from 'react-native';
 import assets from '../../../constants/assets_manifest';
+import Svg, {Line} from 'react-native-svg';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
@@ -32,11 +33,16 @@ export default function Points(props: PropTypes) {
           </Text>
         </View>
         <View style={[tailwind('flex-row justify-center'), {flex: 1}]}>
-          <Image
-            resizeMode="contain"
-            source={assets.flash}
-            style={[tailwind('px-4'), {width: 15, height: 24}]}
-          />
+          <Svg width={'1'} height={'26'}>
+            <Line
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="100"
+              stroke="#FFFFFF"
+              strokeWidth="2"
+            />
+          </Svg>
         </View>
 
         <View style={[tailwind(''), {flex: 10 / 3}]}>

@@ -14,12 +14,7 @@ interface PropTypes {
 
 export default function PlayerStats(props: PropTypes) {
   return (
-    <LinearGradient
-      start={{x: 0.8, y: 1.6}}
-      end={{x: 0.0, y: 0.5}}
-      locations={[0.6, 0.5]}
-      style={[tailwind('py-3')]}
-      colors={['#1C2B46', '#172338']}>
+    <View style={[tailwind('py-3 bg-dark-3')]}>
       <Text style={[tailwind('font-bold text-center pt-1 text-light font-16')]}>
         {props.title}
       </Text>
@@ -87,6 +82,6 @@ export default function PlayerStats(props: PropTypes) {
           />
         </View>
       </View>
-    </LinearGradient>
+    </View>
   );
 }

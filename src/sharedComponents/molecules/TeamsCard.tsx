@@ -34,7 +34,7 @@ export default function TeamsCard(props: PropTypes) {
       <ImageBackground
         imageStyle={{borderTopLeftRadius: 5, borderTopRightRadius: 5}}
         style={[tailwind('w-full')]}
-        source={assets.ground}>
+        source={assets.myTeamsBackground}>
         {/* Header */}
 
         <MyTeamsTopSection teams_key={props.teams_key} />
@@ -46,8 +46,8 @@ export default function TeamsCard(props: PropTypes) {
               tailwind('flex-row justify-around items-center'),
               {flex: 6},
             ]}>
-            <PlayerProfile cap="C" name="Player 1" />
-            <PlayerProfile cap="VC" name="Player 2" />
+            <PlayerProfile cap={true} name="Player 1" />
+            <PlayerProfile cap={false} name="Player 2" />
           </View>
 
           {/* Count */}
@@ -89,15 +89,14 @@ const PlayerProfile = (props: any) => {
     <View style={[tailwind('flex-col')]}>
       <View style={[tailwind(''), {width: 55, height: 55}]}>
         <View style={[tailwind('absolute inset-0'), {}]}>
-          {/* <VCIcon /> */}
-          <CIcon />
+          {props.cap ? <CIcon /> : <VCIcon />}
         </View>
         <Image
           resizeMode="contain"
           source={assets.player}
           style={[tailwind(''), {width: 55, height: 50}]}
         />
-        <PlayerName name="M Wade" />
+        <PlayerName name={props.name} />
       </View>
     </View>
   );
@@ -105,7 +104,7 @@ const PlayerProfile = (props: any) => {
 
 const PlayerName = (props: any) => {
   return (
-    <View style={[tailwind('bg-blue-500')]}>
+    <View style={[tailwind('bg-blue-500'), {padding: 2, borderRadius: 3}]}>
       <Text
         allowFontScaling={true}
         adjustsFontSizeToFit={true}

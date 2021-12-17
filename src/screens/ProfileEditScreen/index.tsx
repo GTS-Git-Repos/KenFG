@@ -20,7 +20,6 @@ import {errorBox, infoBox} from '../../utils/snakBars';
 import {useDispatch, useSelector} from 'react-redux';
 import {decodeJwt} from '../../utils/formatters';
 import {updateUserInfoAction} from '../../store/actions/userAction';
-
 const log = console.log;
 
 export default function ProfileEditScreen() {
@@ -112,7 +111,7 @@ export default function ProfileEditScreen() {
       <TopBar text={'My Info & Settings'} />
       <KeyboardAwareScrollView
         keyboardShouldPersistTaps="handled"
-        contentContainerStyle={tailwind('px-3 py-3')}>
+        contentContainerStyle={tailwind('p-3')}>
         <InputTitle text={'Name'} />
 
         <Controller
@@ -265,7 +264,9 @@ export default function ProfileEditScreen() {
 
         {/* <LogOut /> */}
 
-        <TouchableOpacity onPress={handleSubmit(onSubmit)}>
+        <TouchableOpacity
+          style={[tailwind('my-2')]}
+          onPress={handleSubmit(onSubmit)}>
           <ButtonComponent text={'Update User'} />
         </TouchableOpacity>
       </KeyboardAwareScrollView>

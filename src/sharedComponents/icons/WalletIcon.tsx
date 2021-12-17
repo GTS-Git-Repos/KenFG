@@ -7,14 +7,13 @@ import Svg, {
   Stop,
 } from 'react-native-svg';
 
-function Icon(props: SvgProps) {
+interface PropTypes {
+  darkColor: boolean;
+}
+
+function Icon(props: PropTypes) {
   return (
-    <Svg
-      width={22}
-      height={20}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}>
+    <Svg width={22} height={20} fill="none" {...props}>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -35,8 +34,11 @@ function Icon(props: SvgProps) {
           x2={11}
           y2={20}
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor="#D8C872" />
-          <Stop offset={1} stopColor="#BCA04D" />
+          <Stop stopColor={props.darkColor ? '#3A2B13' : '#D8C872'} />
+          <Stop
+            offset={1}
+            stopColor={props.darkColor ? '#3A2B13' : '#D8C872'}
+          />
         </LinearGradient>
         <LinearGradient
           id="prefix__paint1_linear_296_1387"
@@ -45,8 +47,11 @@ function Icon(props: SvgProps) {
           x2={16.028}
           y2={13.295}
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor="#D8C872" />
-          <Stop offset={1} stopColor="#BCA04D" />
+          <Stop stopColor={props.darkColor ? '#816D2E' : '#D8C872'} />
+          <Stop
+            offset={1}
+            stopColor={props.darkColor ? '#816D2E' : '#D8C872'}
+          />
         </LinearGradient>
       </Defs>
     </Svg>

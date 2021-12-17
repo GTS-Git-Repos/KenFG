@@ -73,7 +73,7 @@ const TopSection = () => {
           <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
             Entry
           </Text>
-          <Text style={[tailwind('font-regular pt-1 text-dark-1 font-15')]}>
+          <Text style={[tailwind('font-bold pt-1 text-dark-1 font-14')]}>
             {'\u20B9'} 125
           </Text>
         </View>
@@ -103,7 +103,10 @@ const TopSection = () => {
 const Footer = () => {
   return (
     <View
-      style={[tailwind('flex-row items-center justify-between bg-dark-4 p-2')]}>
+      style={[
+        tailwind('flex-row items-center justify-between p-2'),
+        {backgroundColor: '#121C2F'},
+      ]}>
       <View style={[tailwind('flex-row items-center')]}>
         <View style={[tailwind('flex-row items-center')]}>
           <CupIcon />

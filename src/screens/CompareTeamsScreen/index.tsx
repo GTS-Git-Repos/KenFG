@@ -17,12 +17,14 @@ import Status from './atoms/Status';
 import PlayerStats from './molecules/PlayersStats';
 import {Modalize} from 'react-native-modalize';
 import SelectTeamHeader from './atoms/SelectTeamHeader';
+import TopBarCompareTeam from './atoms/TopBarCompareTeam';
 
 const log = console.log;
 
 export default function CompareTeamScreen() {
   const navigation = useNavigation();
   const selectSheet = useRef(null);
+  const selectOpponentSheet = useRef(null);
 
   const isScreenReady = useIsScreenReady();
 
@@ -32,21 +34,18 @@ export default function CompareTeamScreen() {
 
   return (
     <View style={tailwind('bg-dark-4 h-full')}>
-      <TopBar text={'Compare Teams'} />
+      <TopBarCompareTeam text={'Compare Teams'} />
       <ScrollView>
-        <LinearGradient
-          start={{x: 0.8, y: 1.6}}
-          end={{x: 0.0, y: 0.5}}
-          locations={[0.6, 0.5]}
-          colors={['#1C2B46', '#172338']}>
+        <View style={[tailwind('bg-dark-3')]}>
           <FantasyPlayer
             player1="Fantasy Player"
             player2="The Another Player name"
             selectSheet={selectSheet}
+            selectOpponentSheet={selectOpponentSheet}
           />
           <Points />
           <Status />
-        </LinearGradient>
+        </View>
         <View style={[tailwind('h-2 bg-dark-4')]}></View>
         <PlayerStats title={'Diffrent Players'} points={150} ahead={false} />
         <View style={[tailwind('h-2 bg-dark-4')]}></View>
@@ -63,7 +62,24 @@ export default function CompareTeamScreen() {
         modalTopOffset={200}
         adjustToContentHeight={true}
         HeaderComponent={() => {
-          return <SelectTeamHeader />;
+          return <SelectTeamHeader text={'Select Your Team'} />;
+        }}
+        disableScrollIfPossible={false}
+        closeOnOverlayTap={true}>
+        <View style={[tailwind('')]}>
+          {['Team1', 'Team2', 'Team3', 'Team4', 'Team5'].map(item => {
+            return <SelectTeamSheet name={item} key={item} />;
+          })}
+        </View>
+      </Modalize>
+
+      <Modalize
+        ref={selectOpponentSheet}
+        useNativeDriver={true}
+        modalTopOffset={200}
+        adjustToContentHeight={true}
+        HeaderComponent={() => {
+          return <SelectTeamHeader text={'Select Opponent Team'} />;
         }}
         disableScrollIfPossible={false}
         closeOnOverlayTap={true}>
