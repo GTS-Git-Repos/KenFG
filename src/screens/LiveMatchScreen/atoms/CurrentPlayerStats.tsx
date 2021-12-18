@@ -15,34 +15,6 @@ interface PropTypes {
 
 export default function CurrentPlayerStats(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-col')]}>
-      <View style={[tailwind('flex-row justify-between items-center py-1')]}>
-        <Text style={[tailwind('font-bold text-white font-13')]}>
-          {props.player1}
-        </Text>
-        <View style={[tailwind('flex-row justify-between items-center')]}>
-          <Text style={[tailwind('font-bold text-white font-14')]}>
-            {props.player1_runs}
-          </Text>
-          <Text style={[tailwind('font-bold px-1 text-light font-12')]}>
-            ({props.player1_balls})
-          </Text>
-        </View>
-      </View>
-
-      <View style={[tailwind('flex-row justify-between py-1 items-center')]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-          {props.player2}
-        </Text>
-        <View style={[tailwind('flex-row justify-between items-center')]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-            {props.player2_runs}
-          </Text>
-          <Text style={[tailwind('font-regular text-dark-1  font-13')]}>
-            ({props.player2_balls})
-          </Text>
-        </View>
-      </View>
-    </View>
+   
   );
 }

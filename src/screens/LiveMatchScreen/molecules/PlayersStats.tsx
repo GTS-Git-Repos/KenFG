@@ -30,6 +30,7 @@ export default function PlayersStats(props: PropTypes) {
           {contestPlayerStats.map((item: any) => {
             return (
               <TouchableOpacity
+                key={item.name}
                 onPress={() => navigation.navigate('MyContestPlayersScreen')}
                 style={[tailwind('flex-row items-center mt-2'), {width: 130}]}>
                 <Image
@@ -65,6 +66,7 @@ export default function PlayersStats(props: PropTypes) {
             {contestPlayerStats.map((item: any) => {
               return (
                 <TouchableOpacity
+                  key={item.name}
                   activeOpacity={0.5}
                   onPress={() => navigation.navigate('MyContestPlayersScreen')}
                   style={[tailwind('flex-row flex-grow items-center mt-2')]}>

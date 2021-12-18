@@ -4,12 +4,16 @@ import BottomLine from './atoms/BottomLine';
 import FullScreenLoading from './atoms/FullScreenLoading';
 import ButtonComponent from './atoms/ButtonComponent';
 import BlockScreenByLoading from './atoms/BlockScreenByLoading';
+import MatchStat from './atoms/MatchStat';
+import Projection from './atoms/Projection';
+import ExpertsStats from './atoms/ExpertsStats';
 
 import ContestCard from './molecules/ContestCard';
 import TeamsCard from './molecules/TeamsCard';
 import HorizontalProfile from './molecules/HorizontalProfile';
 import JoinedContestCard from './molecules/JoinedContestCard';
 import SocialLogin from './molecules/SocialLogin';
+import CurrentLiveStatus from './molecules/CurrentLiveStatus';
 
 import WalletIcon from './icons/WalletIcon';
 import MoneyIcon from './icons/MoneyIcon';
@@ -39,10 +43,14 @@ export {
   BottomLine,
   FullScreenLoading,
   ContestCard,
+  Projection,
+  CurrentLiveStatus,
   TeamsCard,
   HorizontalProfile,
+  MatchStat,
   JoinedContestCard,
   SocialLogin,
+  ExpertsStats,
   WalletIcon,
   MoneyIcon,
   Facebook,

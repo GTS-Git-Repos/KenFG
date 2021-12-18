@@ -2,13 +2,17 @@ import React, {useRef, useState} from 'react';
 import {View, Text, Dimensions, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
-// import assets from 'assets';
-import {TopBar, FullScreenLoading} from '../../sharedComponents/';
-import MatchStat from './atoms/MatchStat';
-import Projection from './atoms/Projection';
+import {
+  TopBar,
+  FullScreenLoading,
+  MatchStat,
+  Projection,
+  CurrentLiveStatus,
+  ExpertsStats,
+} from '../../sharedComponents/';
+
 import PagerView from 'react-native-pager-view';
-import CurrentLiveStats from './molecules/CurrentLiveStatus';
-import LinearGradient from 'react-native-linear-gradient';
+
 import LiveMatchSeparator from './atoms/LiveMatchSeparator';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import LiveMatchTabs from './atoms/LiveMatchTabs';
@@ -18,7 +22,6 @@ import LeaderBoardPage from './molecules/LeaderBoardPage';
 import CommentaryPage from './molecules/CommentaryPage';
 import PlayersStats from './molecules/PlayersStats';
 import WinningsPage from './molecules/WinningsPage';
-import ExpertStats from './atoms/ExpertsStats';
 
 // import Icon from 'react-native-vector-icons/Ionicons';
 const log = console.log;
@@ -52,8 +55,8 @@ export default function LiveMatchScreen() {
         <View style={[tailwind('my-2')]}>
           <LiveMatchSeparator />
         </View>
-        <CurrentLiveStats />
-        <ExpertStats />
+        <CurrentLiveStatus />
+        <ExpertsStats />
       </View>
 
       <View>
