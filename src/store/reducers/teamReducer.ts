@@ -5,6 +5,7 @@ import {
   UPDATE_CAPTAIN,
   UPDATE_VC_CAPTAIN,
   CLEAR_TEAM,
+  UPDATE_BLOCKLIST,
 } from '../actions/actionTypes';
 
 const PRELOAD_PLAYERS = [
@@ -114,7 +115,7 @@ const initialState = {
   players: [],
   cap_key: null,
   vc_key: null,
-  blocklist:[],
+  blocklist: [],
   credits_left: 100,
 };
 
@@ -150,6 +151,12 @@ const Team = (state = initialState, action: actionShape): any => {
         ...state,
         vc_key: action.payload,
       };
+    case UPDATE_BLOCKLIST: {
+      return {
+        ...state,
+        block_list: action.payload,
+      };
+    }
     case CLEAR_TEAM: {
       return {
         ...state,

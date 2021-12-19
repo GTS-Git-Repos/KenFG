@@ -7,10 +7,14 @@ import TeamStatus from '../atoms/TeamStatus';
 import TeamStatusHeader from '../atoms/TeamStatusHeader';
 
 interface PropTypes {
-  text?: string;
+  index: number;
+  activeIndex: number;
 }
 
 export default function ScrollBoardPage(props: PropTypes) {
+  if (props.index !== props.activeIndex) {
+    return null;
+  }
   return (
     <View>
       <ScrollView>

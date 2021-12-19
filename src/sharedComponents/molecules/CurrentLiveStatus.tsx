@@ -75,7 +75,7 @@ const CurrentPlayerStats = (props: CurrentPlayerStatusShape) => {
 
 const CurrentOverStats = () => {
   return (
-    <View style={[tailwind('box')]}>
+    <View style={[tailwind('')]}>
       <View style={[tailwind('flex-row justify-between items-center')]}>
         <Text
           numberOfLines={2}

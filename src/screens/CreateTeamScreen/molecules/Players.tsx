@@ -37,8 +37,7 @@ export default function Player(props: PropTypes) {
           tailwind('pt-3 flex-row'),
           {
             backgroundColor: props.isSelected ? '#3C362C' : '#172338',
-            // opacity: !props.canBeSelected ? 1 : 0.3,
-            // opacity: 0.4,
+            opacity: props.canBeSelected ? 1 : 0.3,
           },
         ]}>
         {/* Image */}

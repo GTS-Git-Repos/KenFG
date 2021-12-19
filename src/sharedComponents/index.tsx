@@ -34,6 +34,8 @@ import CopyIcon from './icons/CopyIcon';
 import MaleIcon from './icons/MaleIcon';
 import FemaleIcon from './icons/FemaleIcon';
 import PointsIcon from './icons/PointsIcon';
+import DollarIcon from './icons/DollarIcon';
+import TickIcon from './icons/TickIcon';
 
 export {
   TopBar,
@@ -65,9 +67,11 @@ export {
   MIcon,
   ShareIcon,
   ContestBellIcon,
+  TickIcon,
   CapWithVSIcon,
   CopyIcon,
   MaleIcon,
+  DollarIcon,
   FemaleIcon,
   PointsIcon,
 };

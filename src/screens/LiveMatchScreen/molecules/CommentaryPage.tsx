@@ -6,10 +6,14 @@ import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
-  text?: string;
+  index: number;
+  activeIndex: number;
 }
 
 export default function CommentaryPage(props: PropTypes) {
+  if (props.index !== props.activeIndex) {
+    return null;
+  }
   return (
     <View>
       <ScrollView>

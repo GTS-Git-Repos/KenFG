@@ -7,10 +7,14 @@ import {RankIcon} from '../../../sharedComponents/';
 import ContestWinningsInfo from '../atoms/ContestWinningsInfo';
 
 interface PropTypes {
-  text?: string;
+  index: number;
+  activeIndex: number;
 }
 
 export default function WinningsPage(props: PropTypes) {
+  if (props.index !== props.activeIndex) {
+    return null;
+  }
   return (
     <View style={[tailwind('')]}>
       <ContestWinningsInfo />

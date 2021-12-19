@@ -6,7 +6,10 @@ import assets from '../../../constants/assets_manifest';
 import TabCondtion from '../atoms/TabCondtions';
 import SortTabs from '../atoms/SortTabs';
 import Player from '../molecules/Players';
-import {isPlayerSelected} from '../../../store/store_utils';
+import {
+  isPlayerCanBeSelected,
+  isPlayerSelected,
+} from '../../../store/store_utils';
 import {BottomLine} from '../../../sharedComponents';
 
 interface PropTypes {
@@ -44,7 +47,11 @@ export default function Page(props: PropTypes) {
               points={item.points}
               credits={item.credits}
               isSelected={isPlayerSelected(item.key)}
-              canBeSelected={true}
+              canBeSelected={isPlayerCanBeSelected(
+                item.seasonal_role,
+                item.team_key,
+                item.key,
+              )}
               checkPlayerSelection={props.checkPlayerSelection}
             />
           );

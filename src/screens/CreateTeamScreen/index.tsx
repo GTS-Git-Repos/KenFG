@@ -63,6 +63,7 @@ export default function CreateTeamScreen() {
   const SelectedMatchState = useSelector(state => state.app.selected_match);
 
   const [loading, setLoading] = useState<boolean>(false);
+  // const [blockListrule, setBlockListrule] = useState('');
 
   const [activeIndex, setActiveIndex] = useState(0);
 

@@ -17,7 +17,7 @@ export default function BottomAction(props: PropTypes) {
       <TouchableOpacity
         onPress={() => navigation.navigate('MatchGroundScreen')}
         style={[
-          tailwind('px-8 py-3 flex-row m-2 rounded'),
+          tailwind('px-5 py-3 flex-row m-2 rounded'),
           {backgroundColor: '#3A2B13'},
         ]}>
         <Text style={[tailwind('font-bold uppercase text-light font-12')]}>
