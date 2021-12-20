@@ -13,50 +13,63 @@ const TABS = [
   {
     id: '1',
     name: 'All',
-    active: true,
   },
   {
     id: '2',
     name: 'Free',
-    active: false,
   },
   {
     id: '3',
     name: 'Mega',
-    active: false,
   },
   {
     id: '4',
     name: 'Fireball',
-    active: false,
   },
   {
     id: '5',
     name: 'Hard',
-    active: false,
   },
   {
     id: '6',
     name: 'Premium',
-    active: false,
   },
   {
     id: '7',
     name: 'Pro',
-    active: false,
   },
   {
     id: '8',
     name: 'Fortune',
-    active: false,
   },
   {
     id: '9',
     name: '+5',
-    active: false,
   },
 ];
-const BUTTON_HEIGHT = 40;
+
+const MoreFilters = [
+  {
+    id: '10',
+    name: 'Head to Head',
+  },
+  {
+    id: '11',
+    name: '5 in 1',
+  },
+  {
+    id: '12',
+    name: '3 in 1',
+  },
+  {
+    id: '13',
+    name: '10 in 5',
+  },
+  {
+    id: '14',
+    name: '2 in 1',
+  },
+];
 
 export default function FilterTabs(props: PropTypes) {
   return (
@@ -92,6 +105,37 @@ export default function FilterTabs(props: PropTypes) {
                 </TouchableOpacity>
               );
             })}
+            {props.selectedFilter === '+5'
+              ? MoreFilters.map(item => {
+                  return (
+                    <TouchableOpacity
+                      onPress={() => props.setSelectedFilter(item.name)}
+                      key={item.id}
+                      style={[
+                        tailwind(
+                          'border border-gray-600 rounded-2xl py-0.5 m-0.5',
+                        ),
+                        {paddingHorizontal: 10},
+                        props.selectedFilter === item.name
+                          ? styles.selectedFilter
+                          : {},
+                      ]}>
+                      <Text
+                        style={[
+                          tailwind(
+                            `font-regular font-12 ${
+                              props.selectedFilter === item.name
+                                ? 'text-brown-5'
+                                : 'text-white'
+                            }`,
+                          ),
+                        ]}>
+                        {item.name}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })
+              : null}
           </View>
 
           <View

@@ -118,8 +118,11 @@ const Cricket = (props: any) => {
 };
 
 const LobbyUserInfo = (props: any) => {
+  const navigation = useNavigation<any>();
   return (
-    <View style={[tailwind(''), {flex: 2}]}>
+    <TouchableOpacity
+      style={[tailwind(''), {flex: 2}]}
+      onPress={() => navigation.openDrawer()}>
       <View style={[tailwind('ml-2 pb-0.5')]}>
         <Image
           resizeMode="contain"
@@ -140,7 +143,7 @@ const LobbyUserInfo = (props: any) => {
           Hi, {props.name}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
