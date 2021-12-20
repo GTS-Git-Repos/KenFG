@@ -16,7 +16,7 @@ export default function PlayersStats(props: PropTypes) {
   const navigation = useNavigation<any>();
 
   return (
-    <View>
+    <ScrollView>
       <Filter />
 
       <View style={[tailwind('flex-row bg-dark-3')]}>
@@ -100,7 +100,8 @@ export default function PlayersStats(props: PropTypes) {
           </View>
         </ScrollView>
       </View>
-    </View>
+      <View style={[tailwind('h-20')]}></View>
+    </ScrollView>
   );
 }
 

@@ -31,15 +31,15 @@ export default function LobbyScreen() {
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
   // console.log(userInfoState.name);
-  
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <LinearGradient
-        start={{x: 0.49, y: 1.1}}
-        end={{x: 1, y: 0.1}}
-        locations={[0.4, 0.3, 0, 0.1, 0]}
-        colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}>
+      <View
+        // start={{x: 0.49, y: 1.1}}
+        // end={{x: 1, y: 0.1}}
+        // locations={[0.4, 0.3, 0, 0.1, 0]}
+        // colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}
+        style={[tailwind('bg-secondary')]}>
         <LobbyTopBar amount={'100,00'} />
         {/* <NewLobbyNav/> */}
         <LobbyNav
@@ -47,7 +47,7 @@ export default function LobbyScreen() {
           setCricket={setCricket}
           name={userInfoState?.name}
         />
-      </LinearGradient>
+      </View>
 
       {cricket ? (
         <View style={[tailwind('px-5 py-4 pb-0.5')]}>

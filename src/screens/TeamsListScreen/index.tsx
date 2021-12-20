@@ -16,8 +16,8 @@ export default function TeamsListScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopBar text={'My Teams'} />
-      <Text style={[tailwind('font-bold text-light p-4 bg-dark-3 font-15')]}>
+      <TopBar text={'Switch Teams'} />
+      <Text style={[tailwind('font-regular text-white p-3 bg-dark-3 font-14')]}>
         Choose a Team to Replace Team 1
       </Text>
 
@@ -25,7 +25,7 @@ export default function TeamsListScreen() {
         Already Joined
       </Text>
       <ScrollView>
-        <TeamsCard />
+        <TeamsCard teams_key={''} canModify={false} />
       </ScrollView>
       <TeamSwitch current={'Team 1'} />
     </View>

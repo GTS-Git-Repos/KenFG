@@ -1,6 +1,12 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -15,7 +21,7 @@ export default function LiveMatchTabs(props: PropTypes) {
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      style={[tailwind('bg-dark-3')]}>
+      style={[tailwind('bg-dark-3'), styles.root]}>
       <TabItem
         tabName="Winnings"
         index={0}
@@ -77,3 +83,18 @@ const TabItem = ({tabName, active, index, onTabPressed}) => {
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  root: {
+    borderColor: '#202C43',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+  activeBorder: {
+    borderColor: '#BCA04D',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+});

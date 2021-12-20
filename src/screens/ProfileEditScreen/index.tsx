@@ -12,6 +12,7 @@ import GenderSelection from './molecules/GenderSelection';
 import LogOut from './atoms/Logout';
 import {format, parseISO} from 'date-fns';
 import ErrorHint from './atoms/ErrorHint';
+import PrivacySettings from './atoms/PrivacySettings';
 import {useForm, Controller} from 'react-hook-form';
 import Dob from './molecules/Dob';
 import {ButtonComponent, BlockScreenByLoading} from '../../sharedComponents/';
@@ -20,6 +21,7 @@ import {errorBox, infoBox} from '../../utils/snakBars';
 import {useDispatch, useSelector} from 'react-redux';
 import {decodeJwt} from '../../utils/formatters';
 import {updateUserInfoAction} from '../../store/actions/userAction';
+import AllowSMS from './atoms/AllowSMS';
 const log = console.log;
 
 export default function ProfileEditScreen() {
@@ -177,6 +179,9 @@ export default function ProfileEditScreen() {
         <InputTitle text={'Gender'} />
         <GenderSelection isMale={isMale} setIsMale={setIsMale} />
 
+        <PrivacySettings />
+        <AllowSMS />
+
         <InputTitle text={'Address'} />
         <Controller
           control={control}
@@ -265,9 +270,9 @@ export default function ProfileEditScreen() {
         {/* <LogOut /> */}
 
         <TouchableOpacity
-          style={[tailwind('my-2')]}
+          style={[tailwind('my-6')]}
           onPress={handleSubmit(onSubmit)}>
-          <ButtonComponent text={'Update User'} />
+          <ButtonComponent text={'Update Profile'} />
         </TouchableOpacity>
       </KeyboardAwareScrollView>
 

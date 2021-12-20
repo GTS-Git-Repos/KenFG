@@ -30,6 +30,7 @@ interface PropTypes {
 
 export default function Player(props: PropTypes) {
   const navigation = useNavigation<any>();
+
   return (
     <View>
       <View

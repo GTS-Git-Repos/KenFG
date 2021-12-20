@@ -17,7 +17,7 @@ export default function GenderSelection(props: PropTypes) {
       <TouchableOpacity
         onPress={() => props.setIsMale(true)}
         style={[
-          tailwind('flex-row p-2 my-1  rounded items-center'),
+          tailwind('flex-row p-2 my-1 border-green-500 rounded items-center'),
           styles.box,
           props.isMale === true && {backgroundColor: '#816D2E99'},
         ]}>
@@ -49,6 +49,14 @@ export default function GenderSelection(props: PropTypes) {
 
 const styles = StyleSheet.create({
   box: {
+    flex: 5.5,
+    borderTopColor: '#8797B1',
+    borderBottomColor: '#8797B1',
+    borderLeftColor: '#8797B1',
+    borderRightColor: '#8797B1',
+    borderWidth: 1,
+  },
+  selectedBox: {
     flex: 5.5,
     borderTopColor: '#8797B1',
     borderBottomColor: '#8797B1',

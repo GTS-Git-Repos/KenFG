@@ -29,7 +29,13 @@ export default function MyTeamsPage(props: PropTypes) {
   return (
     <View style={[tailwind('m-3')]}>
       {props.teams.teams.map((item: any) => {
-        return <TeamsCard teams_key={item.teams_key} key={item.teams_key} />;
+        return (
+          <TeamsCard
+            teams_key={item.teams_key}
+            key={item.teams_key}
+            canModify={true}
+          />
+        );
       })}
       <View style={[tailwind('h-20')]}></View>
     </View>

@@ -30,7 +30,7 @@ export default function CategoryPlayers(props: PropTypes) {
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
-          style={[tailwind('mx-28 my-2')]}
+          style={[tailwind('mx-28 my-1')]}
           colors={['#8797B1', '#FFFFFF', '#FFFFFF', '#8797B1']}>
           <View style={[tailwind(''), {height: 1}]}></View>
         </LinearGradient>
@@ -60,7 +60,7 @@ const PlayerProfile = (props: PlayerPropTypes) => {
       <Image
         resizeMode="contain"
         source={assets.player}
-        style={[tailwind(''), {width: 48, height: 48}]}
+        style={[tailwind(''), {width: 38, height: 38}]}
       />
       <Name team1={props.team1} name={props.name} />
       <Text style={[tailwind('font-regular font-7 text-light')]}>
@@ -76,7 +76,7 @@ const Name = (props: any) => {
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       style={[
-        tailwind('rounded-xl px-2 bottom-1 py-1 border-2 border-green-600'),
+        tailwind('rounded-xl px-1 bottom-1 py-0.5 border-2 border-green-600'),
       ]}
       colors={props.team1 ? ['#172338', '#254987'] : ['#73221D', '#172338']}>
       <Text style={[tailwind('font-bold text-light text-center font-10')]}>

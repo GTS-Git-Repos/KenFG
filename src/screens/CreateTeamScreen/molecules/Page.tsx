@@ -18,9 +18,16 @@ interface PropTypes {
   title: string;
   data: [];
   checkPlayerSelection(player_key: string, player_role: string): void;
+  rolesCountSelector: any;
+  index: number;
+  activeIndex: number;
 }
 
 export default function Page(props: PropTypes) {
+  if (props.index !== props.activeIndex) {
+    return null;
+  }
+
   if (!props.data) {
     return null;
   }
@@ -48,9 +55,9 @@ export default function Page(props: PropTypes) {
               credits={item.credits}
               isSelected={isPlayerSelected(item.key)}
               canBeSelected={isPlayerCanBeSelected(
+                item.key,
                 item.seasonal_role,
                 item.team_key,
-                item.key,
               )}
               checkPlayerSelection={props.checkPlayerSelection}
             />

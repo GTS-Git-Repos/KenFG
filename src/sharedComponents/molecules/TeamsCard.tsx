@@ -16,6 +16,7 @@ import Svg, {Path, Rect} from 'react-native-svg';
 
 interface PropTypes {
   teams_key: string;
+  canModify: boolean;
 }
 interface TeamContInfoTypes {
   name: string;
@@ -37,7 +38,10 @@ export default function TeamsCard(props: PropTypes) {
         source={assets.myTeamsBackground}>
         {/* Header */}
 
-        <MyTeamsTopSection teams_key={props.teams_key} />
+        <MyTeamsTopSection
+          teams_key={props.teams_key}
+          canModify={props.canModify}
+        />
 
         <View style={[tailwind('flex-row justify-between items-center p-3')]}>
           {/* Players */}

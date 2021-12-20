@@ -31,11 +31,11 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
   }
 
   return (
-    <LinearGradient
-      start={{x: 0.0, y: 3.0}}
-      end={{x: 0.7, y: 0.1}}
-      locations={[0, 0.8, 0.8]}
-      colors={['#c5a959', '#c5a959', '#bea14f']}
+    <View
+      // start={{x: 0.0, y: 3.0}}
+      // end={{x: 0.7, y: 0.1}}
+      // locations={[0, 0.8, 0.8]}
+      // colors={['#c5a959', '#c5a959', '#bea14f']}
       style={tailwind('flex flex-row py-1 bg-secondary items-center')}>
       {state.routes.map((route: any, index: number) => {
         const {options} = descriptors[route.key];
@@ -144,7 +144,7 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
           </TouchableOpacity>
         );
       })}
-    </LinearGradient>
+    </View>
   );
 }
 

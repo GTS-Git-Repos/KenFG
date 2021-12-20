@@ -9,13 +9,18 @@ import {CopyIcon} from '../../sharedComponents/';
 
 interface PropTypes {
   teams_key: string;
+  canModify: boolean;
 }
 
 export default function MyTeamsTopSection(props: PropTypes) {
   return (
     <View
       style={[
-        tailwind('flex-row justify-between items-center'),
+        tailwind(
+          `flex-row items-center ${
+            props.canModify ? 'justify-between' : 'justify-center'
+          }`,
+        ),
         {backgroundColor: 'rgba(0,0,0,0.3)'},
       ]}>
       <View style={[tailwind('flex-row items-center')]}>
@@ -29,15 +34,16 @@ export default function MyTeamsTopSection(props: PropTypes) {
           (Current)
         </Text>
       </View>
-
-      <View style={[tailwind('flex-row items-center px-2')]}>
-        <TouchableOpacity onPress={() => {}} style={[tailwind('px-2')]}>
-          {/* <CopyIcon /> */}
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}}>
-          <EditIcon />
-        </TouchableOpacity>
-      </View>
+      {props.canModify && (
+        <View style={[tailwind('flex-row items-center px-2')]}>
+          <TouchableOpacity onPress={() => {}} style={[tailwind('px-2')]}>
+            {/* <CopyIcon /> */}
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {}}>
+            <EditIcon />
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 }

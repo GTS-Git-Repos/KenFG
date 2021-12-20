@@ -37,9 +37,9 @@ const TopSection = (props: any) => {
 
 const MatchData = () => {
   return (
-    <LinearGradient
-      colors={['#0D1320', '#172338']}
-      style={[tailwind('flex-row items-center px-4 py-2')]}>
+    <View
+      // colors={['#0D1320', '#172338']}
+      style={[tailwind('flex-row items-center bg-dark-3 px-4 py-2')]}>
       <View style={[tailwind('items-start'), {flex: 4}]}>
         <Text style={[tailwind('font-regular text-dark-1 font-11 pb-0.5')]}>
           Selected by
@@ -65,6 +65,6 @@ const MatchData = () => {
         </Text>
         <Text style={[tailwind('font-regular text-white font-18')]}>9.6</Text>
       </View>
-    </LinearGradient>
+    </View>
   );
 };

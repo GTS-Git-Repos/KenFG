@@ -53,7 +53,7 @@ const ProfileName = () => {
 
 const PlayerStats = () => {
   return (
-    <LinearGradient
+    <View
       style={[
         tailwind('px-4 rounded-b-lg py-1 flex-row items-center flex-wrap'),
       ]}
@@ -76,6 +76,6 @@ const PlayerStats = () => {
           T&C
         </Text>
       </View>
-    </LinearGradient>
+    </View>
   );
 };

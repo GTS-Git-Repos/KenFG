@@ -6,7 +6,7 @@ import Animated, {useAnimatedStyle} from 'react-native-reanimated';
 
 interface PropTypes {
   tabs: Array<string>;
-  tabOffset: number;
+  tabOffset: any;
   onTabPress(index: number): void;
 }
 

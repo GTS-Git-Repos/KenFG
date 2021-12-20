@@ -22,8 +22,8 @@ when we want to block a particular role being selected push that role, ex(**keep
 
 if one team reaches maxiumum 7 players push that team_code (ex, 'aus') on that blocklist
 
-if that _availablecredits_ in redux less than player credits put that **player_key** in the block list
+is any one of the role reaches a maxium all others roles are should to selected by minimum, for that append **min_only** in block list
 
 if 11 players are all selected push that 'all' inside blocklist
 
-`js ['keeper','aus','f_1',all] `
+`js ['keeper','aus','min_only',all] `

@@ -3,6 +3,7 @@ import tailwind from '../../../../tailwind';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
+import {SwitchIcon} from '../../../sharedComponents';
 
 interface PropTypes {
   current: string;
@@ -11,42 +12,35 @@ interface PropTypes {
 export default function TeamSwitch(props: PropTypes) {
   return (
     <View
-      style={[tailwind('bg-dark-3 p-3 flex-row items-center justify-between')]}>
+      style={[
+        tailwind('bg-dark-3 px-3 py-2 flex-row items-center justify-between'),
+      ]}>
       <View style={[tailwind('flex-col')]}>
-        <Text style={[tailwind('font-regular py-0.5 text-light font-12')]}>
+        <Text style={[tailwind('font-regular py-0.5 text-dark-1 font-14')]}>
           Current
         </Text>
-        <Text style={[tailwind('font-bold font-14 text-light')]}>
+        <Text style={[tailwind('font-bold font-16 text-white')]}>
           {props.current}
         </Text>
       </View>
 
-      <Icon name="swap-horizontal" size={20} color="#ffff" />
+      <SwitchIcon />
 
       <View style={[tailwind('flex-col')]}>
-        <Text style={[tailwind('font-regular py-0.5 text-light font-12')]}>
+        <Text style={[tailwind('font-regular py-0.5 text-dark-1 font-14')]}>
           Switch to
         </Text>
-        <Text style={[tailwind('font-bold font-14 text-light text-secondary')]}>
-          Team 2
-        </Text>
+        <Text style={[tailwind('font-bold font-14 text-white')]}>-</Text>
       </View>
 
-      <LinearGradient
-        end={{x: 0.0, y: 0.5}}
-        start={{x: 0.8, y: 2.0}}
-        locations={[0.6, 0.5]}
-        style={[tailwind('flex-row rounded')]}
-        colors={['#B2933D', '#C5A858']}>
-        <TouchableOpacity style={[tailwind('px-3 py-2 rounded')]}>
-          <Text
-            style={[
-              tailwind('font-bold text-center text-brown-5 uppercase font-12'),
-            ]}>
-            Switch Team
-          </Text>
-        </TouchableOpacity>
-      </LinearGradient>
+      <TouchableOpacity style={[tailwind('px-3 py-2 rounded bg-green')]}>
+        <Text
+          style={[
+            tailwind('font-bold text-center text-white uppercase font-12'),
+          ]}>
+          Switch Team
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }

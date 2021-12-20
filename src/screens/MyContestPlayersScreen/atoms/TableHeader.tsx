@@ -12,7 +12,7 @@ export default function TableHeader(props: PropTypes) {
   return (
     <View
       style={[
-        tailwind('flex-row items-center bg-dark-2'),
+        tailwind('flex-row items-center bg-dark-3'),
         {paddingHorizontal: 22},
       ]}>
       <View

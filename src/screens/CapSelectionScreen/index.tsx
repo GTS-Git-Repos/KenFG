@@ -15,7 +15,7 @@ import RowHeader from './atoms/RowHeader';
 import PlayerProfile from './molecules/PlayerProfile';
 import CapSelectionAction from './atoms/CapSelectionAction';
 import {useDispatch, useSelector} from 'react-redux';
-import {allPlayers, playersCountByTeams} from '../../store/selectors';
+import {allSelecdtedPlayers, playersCountByTeams} from '../../store/selectors';
 import {
   captainSelection,
   vicecaptainSelectionAction,
@@ -36,7 +36,7 @@ export default function CapSelectionScreen() {
   // const teamsState = useSelector<any>(state => state.team);
 
   const TeamsSelector = useSelector(playersCountByTeams);
-  const AllPlayers = useSelector(allPlayers);
+  const AllSelecdtedPlayers = useSelector(allSelecdtedPlayers);
   const captain_key = useSelector<any>(state => state.team.cap_key);
   const vc_key = useSelector<any>(state => state.team.vc_key);
   const selected_match: any = useSelector<any>(
@@ -113,9 +113,9 @@ export default function CapSelectionScreen() {
             C Gets 2x Points, VC gets 1.5x Points
           </Text>
         </View>
-        <BottomLine/>
+        <BottomLine />
         <RowHeader />
-        {AllPlayers.map((item: any) => {
+        {AllSelecdtedPlayers.map((item: any) => {
           return (
             <PlayerProfile
               key={item.key}

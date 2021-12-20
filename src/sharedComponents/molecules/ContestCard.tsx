@@ -5,6 +5,7 @@ import assets from '../../constants/assets_manifest';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
+import {CupIcon, DollarIcon, MIcon, MoneyIcon, TickIcon} from '..';
 const log = console.log;
 
 interface PropTypes {
@@ -21,7 +22,6 @@ interface PropTypes {
   max_entry: number;
   bonus: string;
   is_practice: boolean;
-  joined?: [];
 }
 
 const PROGRESS_BAR_HEIGHT = 2;
@@ -120,38 +120,26 @@ export default function ContestCard(props: PropTypes) {
         </View>
       </View>
 
-      <LinearGradient colors={['#131e30', '#162135']} style={[tailwind('p-3')]}>
+      <View style={[tailwind('p-3 bg-dark-4')]}>
         <View style={[tailwind('flex-row justify-between items-center')]}>
           <View style={[tailwind('flex-row items-center')]}>
             <View style={[tailwind('flex-row items-center')]}>
-              <Image
-                resizeMode="contain"
-                source={assets.money}
-                style={[tailwind('app-w-17 app-h-17')]}
-              />
+              <DollarIcon />
               <Text style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
                 {'\u20B9 '}
                 {props.amount_letters}
               </Text>
             </View>
 
-            <View style={[tailwind('flex-row items-center')]}>
-              <Image
-                resizeMode="contain"
-                source={assets.cup}
-                style={[tailwind('app-w-17 app-h-17')]}
-              />
+            <View style={[tailwind('flex-row px-1 items-center')]}>
+              <CupIcon />
               <Text style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
                 {props.bonus}
               </Text>
             </View>
 
             <View style={[tailwind('flex-row items-center')]}>
-              <Image
-                resizeMode="contain"
-                source={assets.M}
-                style={[tailwind('app-w-17 app-h-17')]}
-              />
+              <MIcon />
               <Text style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
                 upto {props.max_entry}
               </Text>
@@ -160,11 +148,7 @@ export default function ContestCard(props: PropTypes) {
 
           {props.guaranteed && (
             <View style={[tailwind('flex-row items-center')]}>
-              <Image
-                resizeMode="contain"
-                source={assets.M}
-                style={[tailwind('app-w-17 app-h-17')]}
-              />
+              <TickIcon />
               <Text
                 style={[tailwind('font-regular text-dark-1 pl-2    font-13')]}>
                 Gauranteed
@@ -172,40 +156,8 @@ export default function ContestCard(props: PropTypes) {
             </View>
           )}
         </View>
-      </LinearGradient>
+      </View>
 
-      {/* joined with */}
-
-      {props.joined ? (
-        <View style={[tailwind(' bg-dark-3 px-2')]}>
-          <Text
-            style={[
-              tailwind('font-regular text-dark-1 py-1 uppercase font-13'),
-            ]}>
-            Joined with
-          </Text>
-
-          <View style={[tailwind('flex-row items-center flex-wrap  py-2')]}>
-            {props.joined.map(item => {
-              return (
-                <View
-                  key={item}
-                  style={[
-                    tailwind('rounded bg-dark-4 py-1 mr-2'),
-                    {paddingHorizontal: 16},
-                  ]}>
-                  <Text
-                    style={[
-                      tailwind('font-bold text-center text-light font-13'),
-                    ]}>
-                    {item}
-                  </Text>
-                </View>
-              );
-            })}
-          </View>
-        </View>
-      ) : null}
       {/* </LinearGradient> */}
     </TouchableOpacity>
   );

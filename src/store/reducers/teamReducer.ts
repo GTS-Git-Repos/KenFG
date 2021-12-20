@@ -1,4 +1,5 @@
 import {
+  SAVE_ALL_PLAYERS,
   UPDATE_PLAYERS,
   UPDATE_TEAM_COUNT,
   UPDATE_CREDITS,
@@ -111,11 +112,12 @@ const PRELOAD_PLAYERS = [
 ];
 
 const initialState = {
+  all_players: [],
   teams: ['aus', 'eng'],
   players: [],
   cap_key: null,
   vc_key: null,
-  blocklist: [],
+  block_list: [],
   credits_left: 100,
 };
 
@@ -126,6 +128,12 @@ interface actionShape {
 
 const Team = (state = initialState, action: actionShape): any => {
   switch (action.type) {
+    case SAVE_ALL_PLAYERS: {
+      return {
+        ...state,
+        all_players: action.payload,
+      };
+    }
     case UPDATE_PLAYERS:
       return {
         ...state,

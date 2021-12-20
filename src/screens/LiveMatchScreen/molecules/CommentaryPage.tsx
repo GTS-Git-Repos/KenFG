@@ -87,7 +87,7 @@ const Title = (props: any) => {
         allowFontScaling={true}
         adjustsFontSizeToFit={true}
         style={[
-          tailwind('font-bold text-center text-brown-5 font-13'),
+          tailwind('font-bold text-center text-brown-5 font-12'),
           {
             fontFamily: 'gadugi-gras',
             lineHeight: 20,
@@ -113,7 +113,7 @@ const Player = () => {
         <Image
           resizeMode="contain"
           source={assets.player}
-          style={[tailwind(''), {width: 24, height: 24}]}
+          style={[tailwind(''), {width: 20, height: 20}]}
         />
         <Text style={[tailwind('font-regular px-2 text-light font-14')]}>
           T Seifert
@@ -142,7 +142,7 @@ const Points = () => {
             locations={[0.6, 0.5]}
             style={[
               tailwind(
-                'flex-row mr-3 border border-gray-900 items-center justify-between rounded py-1',
+                'flex-row mr-3 border-2 border-black items-center justify-between rounded py-1',
               ),
             ]}
             colors={['#FFFFFF', '#25385A']}>

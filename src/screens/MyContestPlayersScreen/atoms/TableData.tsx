@@ -13,46 +13,40 @@ interface PropTypes {
 
 export default function TableData(props: PropTypes) {
   return (
-    <LinearGradient colors={['#0D1320', '#172338']}>
+    // <LinearGradient colors={['#0D1320', '#172338']}>
+    <View
+      style={[
+        tailwind('flex-row bg-dark-4 border-b border-gray-700 items-center'),
+        {paddingHorizontal: 22},
+      ]}>
       <View
-        style={[tailwind('flex-row items-center'), {paddingHorizontal: 22}]}>
-        <View
-          style={[
-            tailwind('flex-row items-center justify-start'),
-            {flex: 10 / 4},
-          ]}>
-          <Text
-            style={[
-              tailwind('font-regular text-dark-1 uppercase py-2 font-13'),
-            ]}>
-            {props.title}
-          </Text>
-        </View>
-        <View
-          style={[
-            tailwind('flex-row items-center justify-center'),
-            {flex: 10 / 4},
-          ]}>
-          <Text
-            style={[
-              tailwind('font-regular text-light uppercase py-2 font-15'),
-            ]}>
-            {props.actual}
-          </Text>
-        </View>
-        <View
-          style={[
-            tailwind('flex-row items-center justify-end'),
-            {flex: 10 / 4},
-          ]}>
-          <Text
-            style={[
-              tailwind('font-regular text-light uppercase py-2 font-15'),
-            ]}>
-            {props.points}
-          </Text>
-        </View>
+        style={[
+          tailwind('flex-row items-center justify-start'),
+          {flex: 10 / 4},
+        ]}>
+        <Text
+          style={[tailwind('font-regular text-dark-1 uppercase py-2 font-13')]}>
+          {props.title}
+        </Text>
       </View>
-    </LinearGradient>
+      <View
+        style={[
+          tailwind('flex-row items-center justify-center'),
+          {flex: 10 / 4},
+        ]}>
+        <Text
+          style={[tailwind('font-regular text-light uppercase py-2 font-15')]}>
+          {props.actual}
+        </Text>
+      </View>
+      <View
+        style={[tailwind('flex-row items-center justify-end'), {flex: 10 / 4}]}>
+        <Text
+          style={[tailwind('font-regular text-light uppercase py-2 font-15')]}>
+          {props.points}
+        </Text>
+      </View>
+    </View>
+    // </LinearGradient>
   );
 }

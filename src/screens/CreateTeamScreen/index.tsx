@@ -27,6 +27,7 @@ import {
   updatePlayerAction,
   updateTeamCountAction,
   clearTeamAction,
+  updateBlockListAction,
 } from '../../store/actions/teamActions';
 // import {getMatchPlayersRemote} from '../../remote/serviceRemote';
 import {getMatchPlayersRemote} from '../../remote/matchesRemote';
@@ -37,6 +38,7 @@ import {
   creditLeft,
   playersCountByTeams,
   rolesCount,
+  blockList,
 } from '../../store/selectors';
 import {isPlayerCanBeSelectable} from '../../workers/decision';
 import {errorBox} from '../../utils/snakBars';
@@ -57,19 +59,23 @@ export default function CreateTeamScreen() {
   const filterSheet = useRef<Modalize>();
 
   const playersState: any = useSelector<any>(state => state.team.players);
+  const SelectedMatchState = useSelector(state => state.app.selected_match);
 
   const availableCredits = useSelector(creditLeft);
   const playersCount = useSelector(playersCountByTeams);
-  const SelectedMatchState = useSelector(state => state.app.selected_match);
+  const rolesCountSelector: any = useSelector(rolesCount);
+  const BlockListSelector: any = useSelector(blockList);
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [onlyMin, setOnlyMin] = useState<boolean>(true);
+  const [tick, setTick] = useState<boolean>(false);
   // const [blockListrule, setBlockListrule] = useState('');
+
+  console.log('BlockListSelector', BlockListSelector);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
   // selectors
-
-  const rolesCountSelector: any = useSelector(rolesCount);
 
   // remote sevice query
   const players: any = useQuery(
@@ -83,8 +89,14 @@ export default function CreateTeamScreen() {
   // side effects
 
   useEffect(() => {
+    dispatch(updateBlockListAction(BlockListSelector));
     dispatch(updateTeamCountAction(playersCount));
     dispatch(updateCreditsAction(availableCredits));
+
+    if (BlockListSelector.length > 0) {
+      setOnlyMin(true);
+    }
+    setTick(!tick);
   }, [playersState]);
 
   // business logic
@@ -247,6 +259,9 @@ export default function CreateTeamScreen() {
             id={'wkt'}
             title={'Select 1-4 Wicket Keepers'}
             data={players.data[0]?.keeper}
+            rolesCountSelector={rolesCountSelector}
+            index={0}
+            activeIndex={activeIndex}
           />
         </View>
         <View>
@@ -256,6 +271,9 @@ export default function CreateTeamScreen() {
             id={'bat'}
             title={'Select 3-6 Batters'}
             data={players.data[0]?.batsman}
+            rolesCountSelector={rolesCountSelector}
+            index={1}
+            activeIndex={activeIndex}
           />
         </View>
         <View>
@@ -265,6 +283,9 @@ export default function CreateTeamScreen() {
             id={'ar'}
             title={'Select 1-4 All Rounders'}
             data={players.data[0]?.all_rounder}
+            rolesCountSelector={rolesCountSelector}
+            index={2}
+            activeIndex={activeIndex}
           />
         </View>
         <View>
@@ -274,6 +295,9 @@ export default function CreateTeamScreen() {
             id={'bwl'}
             title={'Select 3-6 Bowlers'}
             data={players.data[0]?.bowler}
+            rolesCountSelector={rolesCountSelector}
+            index={3}
+            activeIndex={activeIndex}
           />
         </View>
       </PagerView>

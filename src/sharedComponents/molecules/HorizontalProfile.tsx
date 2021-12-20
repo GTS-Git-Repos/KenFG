@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {BottomLine} from '..';
+import {BottomLine, SwitchIcon} from '..';
 import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
 
@@ -30,7 +30,7 @@ export default function HorizontalProfile(props: PropTypes) {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
-      style={[tailwind('px-4 py-2 bg-dark-3 '), styles.root]}
+      style={[tailwind('px-4 py-3 bg-dark-3 '), styles.root]}
       onPress={() => navigation.navigate('CompareTeamsScreen')}>
       <View style={[tailwind('flex-row items-center')]}>
         <View
@@ -42,8 +42,8 @@ export default function HorizontalProfile(props: PropTypes) {
             <Image
               resizeMode="cover"
               // source={{uri: props.image}}
-              source={assets.player}
-              style={{borderRadius: 2, height: 36, width: 36}}
+              source={assets.person}
+              style={{borderRadius: 100, height: 24, width: 24}}
             />
             <View
               style={[
@@ -54,10 +54,11 @@ export default function HorizontalProfile(props: PropTypes) {
                 textBreakStrategy="highQuality"
                 numberOfLines={1}
                 ellipsizeMode="tail"
-                style={[tailwind('font-bold flex-1 text-gray-200 font-14')]}>
+                style={[tailwind('font-regular flex-1 text-gray-200 font-14')]}>
                 {props.name}
               </Text>
-              <Text style={[tailwind('bg-black text-dark-1'), {padding: 2}]}>
+              <Text
+                style={[tailwind('bg-black text-dark-1 font-14 px-1 py-1')]}>
                 {props.teamCode}
               </Text>
             </View>
@@ -94,8 +95,8 @@ export default function HorizontalProfile(props: PropTypes) {
           {props.currentUser ? (
             <TouchableOpacity
               onPress={() => navigation.navigate('TeamsListScreen')}
-              style={[tailwind('px-2')]}>
-              <Icon name="swap-horizontal-outline" size={20} color="#8797B1" />
+              style={[tailwind('')]}>
+              <SwitchIcon />
             </TouchableOpacity>
           ) : (
             <View style={[tailwind('px-2')]}></View>
