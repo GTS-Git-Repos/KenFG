@@ -28,6 +28,8 @@ import {
   updateTeamCountAction,
   clearTeamAction,
   updateBlockListAction,
+  saveAllPlayersAction,
+  updateErrorMsgAction,
 } from '../../store/actions/teamActions';
 // import {getMatchPlayersRemote} from '../../remote/serviceRemote';
 import {getMatchPlayersRemote} from '../../remote/matchesRemote';
@@ -59,7 +61,10 @@ export default function CreateTeamScreen() {
   const filterSheet = useRef<Modalize>();
 
   const playersState: any = useSelector<any>(state => state.team.players);
-  const SelectedMatchState = useSelector(state => state.app.selected_match);
+  const SelectedMatchState = useSelector<any>(
+    state => state.app.selected_match,
+  );
+  const ErrorMessageState = useSelector<any>(state => state.team.error_message);
 
   const availableCredits = useSelector(creditLeft);
   const playersCount = useSelector(playersCountByTeams);
@@ -79,25 +84,26 @@ export default function CreateTeamScreen() {
   const players: any = useQuery(
     ['players', SelectedMatchState.match_key],
     getMatchPlayersRemote,
-    {
-      cacheTime: 0,
-    },
   );
 
   // side effects
+  useEffect(() => {
+    if (players.data) {
+      dispatch(saveAllPlayersAction(players.data));
+    }
+  }, [players]);
 
   useEffect(() => {
     dispatch(updateBlockListAction(BlockListSelector));
     dispatch(updateTeamCountAction(playersCount));
     dispatch(updateCreditsAction(availableCredits));
-
-    if (BlockListSelector.length > 0) {
-      setOnlyMin(true);
-    }
-    setTick(!tick);
   }, [playersState]);
 
-  // business logic
+  useEffect(() => {
+    if (ErrorMessageState?.message) {
+      errorBox(ErrorMessageState?.message);
+    }
+  }, [ErrorMessageState]);
 
   const onPageSelectedAction = (e: any) => {
     setActiveIndex(e.nativeEvent.position);
@@ -109,6 +115,9 @@ export default function CreateTeamScreen() {
   // Create Team Logic
 
   const checkPlayerSelection = (player_key: string, player_role: string) => {
+    dispatch(updatePlayerAction({key: player_key, role: player_role}));
+    return;
+
     const player = players.data[0][player_role].find(
       (item: any) => item.key === player_key,
     );

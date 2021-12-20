@@ -7,6 +7,7 @@ import {
   UPDATE_VC_CAPTAIN,
   CLEAR_TEAM,
   UPDATE_BLOCKLIST,
+  UPDATE_ERROR_MESSAGE,
 } from '../actions/actionTypes';
 
 const PRELOAD_PLAYERS = [
@@ -120,6 +121,7 @@ const initialState = {
   block_list: [],
   credits_left: 100,
   team_count: {},
+  error_message: {},
 };
 
 interface actionShape {
@@ -140,6 +142,12 @@ const Team = (state = initialState, action: actionShape): any => {
         ...state,
         players: action.payload,
       };
+    case UPDATE_ERROR_MESSAGE: {
+      return {
+        ...state,
+        error_message: action.payload,
+      };
+    }
     case UPDATE_TEAM_COUNT:
       return {
         ...state,
