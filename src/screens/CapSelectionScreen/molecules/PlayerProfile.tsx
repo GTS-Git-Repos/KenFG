@@ -12,7 +12,7 @@ interface PropTypes {
   name: string;
   points: string;
   teamname: string;
-  title: string;
+  role: string;
   c: string;
   vc: string;
   is_captain: boolean;
@@ -23,7 +23,7 @@ interface PropTypes {
 
 export default function PlayerProfile(props: PropTypes) {
   return (
-    <View style={[tailwind('bg-dark-3')]}>
+    <View style={[tailwind('bg-dark-3 border-b border-gray-700')]}>
       <View style={[tailwind('pt-3 flex-row items-center')]}>
         <View style={[tailwind('flex-row'), {flex: 5}]}>
           <Image
@@ -45,7 +45,7 @@ export default function PlayerProfile(props: PropTypes) {
             </Text>
           </View>
         </View>
-        <TeamTag teamname={props.teamname} />
+        <TeamTag teamname={props.teamname} role={props.role} />
 
         {/* Points */}
         <View
@@ -123,9 +123,9 @@ export default function PlayerProfile(props: PropTypes) {
           </View>
         </View>
       </View>
-      <View>
+      {/* <View>
         <BottomLine />
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -158,7 +158,7 @@ const TeamTag = (props: any) => {
             color: '#244785',
           },
         ]}>
-        BAT
+        {props.role}
       </Text>
     </View>
   );

@@ -119,3 +119,21 @@ export const rolesCount = createSelector(
     };
   },
 );
+
+export const playersByRole = createSelector(playersState, players => {
+  const keeper = players.filter((item: any) => item.seasonal_role === 'keeper');
+  const batsman = players.filter(
+    (item: any) => item.seasonal_role === 'batsman',
+  );
+  const all_rounder = players.filter(
+    (item: any) => item.seasonal_role === 'all_rounder',
+  );
+  const bowler = players.filter((item: any) => item.seasonal_role === 'bowler');
+
+  return {
+    keeper,
+    batsman,
+    all_rounder,
+    bowler,
+  };
+});

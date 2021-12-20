@@ -10,12 +10,15 @@ import {TopBar, BlockScreenByLoading, BottomLine} from '../../sharedComponents';
 import {useQuery} from 'react-query';
 const log = console.log;
 
-import ProgressBar from './atoms/ProgressBar';
 import RowHeader from './atoms/RowHeader';
 import PlayerProfile from './molecules/PlayerProfile';
 import CapSelectionAction from './atoms/CapSelectionAction';
 import {useDispatch, useSelector} from 'react-redux';
-import {allSelecdtedPlayers, playersCountByTeams} from '../../store/selectors';
+import {
+  allSelecdtedPlayers,
+  playersByRole,
+  playersCountByTeams,
+} from '../../store/selectors';
 import {
   captainSelection,
   vicecaptainSelectionAction,
@@ -37,6 +40,8 @@ export default function CapSelectionScreen() {
 
   const TeamsSelector = useSelector(playersCountByTeams);
   const AllSelecdtedPlayers = useSelector(allSelecdtedPlayers);
+  const playersByRoleSelector = useSelector(playersByRole);
+
   const captain_key = useSelector<any>(state => state.team.cap_key);
   const vc_key = useSelector<any>(state => state.team.vc_key);
   const selected_match: any = useSelector<any>(
@@ -47,8 +52,8 @@ export default function CapSelectionScreen() {
   );
 
   // useEffect(() => {
-  //   log('cap --->', cap);
-  // }, [cap]);
+  //   log('cap --->', playersByRoleSelector);
+  // }, []);
 
   const captainSelectAction = (player_key: string) => {
     if (vc_key === player_key) {
@@ -72,6 +77,8 @@ export default function CapSelectionScreen() {
       if (captain_key && vc_key) {
         setLoading(true);
         const createTeamObj = createTeamObjCreator();
+        log('createTeamObj', createTeamObj);
+
         const response = await createTeamRemote(createTeamObj);
         if (response) {
           dispatch(clearTeamAction());
@@ -115,7 +122,87 @@ export default function CapSelectionScreen() {
         </View>
         <BottomLine />
         <RowHeader />
-        {AllSelecdtedPlayers.map((item: any) => {
+        {playersByRoleSelector.keeper.map((item: any) => {
+          return (
+            <PlayerProfile
+              key={item.key}
+              player_key={item.key}
+              name={item.name}
+              points={item.points}
+              teamname={item.team_key}
+              role={'KEEP'}
+              c={'43.3%'}
+              vc={'8.3%'}
+              is_captain={isPlayerCaptain(item.key)}
+              is_vice_captain={isPlayerViceCaptain(item.key)}
+              captainSelectAction={captainSelectAction}
+              viceCaptainSelect={viceCaptainSelect}
+            />
+          );
+        })}
+        <View style={[tailwind('h-2 bg-dark-4')]} />
+
+        {playersByRoleSelector.batsman.map((item: any) => {
+          return (
+            <PlayerProfile
+              key={item.key}
+              player_key={item.key}
+              name={item.name}
+              points={item.points}
+              teamname={item.team_key}
+              role={'BAT'}
+              c={'43.3%'}
+              vc={'8.3%'}
+              is_captain={isPlayerCaptain(item.key)}
+              is_vice_captain={isPlayerViceCaptain(item.key)}
+              captainSelectAction={captainSelectAction}
+              viceCaptainSelect={viceCaptainSelect}
+            />
+          );
+        })}
+        <View style={[tailwind('h-2 bg-dark-4')]} />
+
+        {playersByRoleSelector.all_rounder.map((item: any) => {
+          return (
+            <PlayerProfile
+              key={item.key}
+              player_key={item.key}
+              name={item.name}
+              points={item.points}
+              teamname={item.team_key}
+              role={'AR'}
+              c={'43.3%'}
+              vc={'8.3%'}
+              is_captain={isPlayerCaptain(item.key)}
+              is_vice_captain={isPlayerViceCaptain(item.key)}
+              captainSelectAction={captainSelectAction}
+              viceCaptainSelect={viceCaptainSelect}
+            />
+          );
+        })}
+
+        <View style={[tailwind('h-2 bg-dark-4')]} />
+
+        {playersByRoleSelector.bowler.map((item: any) => {
+          return (
+            <PlayerProfile
+              key={item.key}
+              player_key={item.key}
+              name={item.name}
+              points={item.points}
+              teamname={item.team_key}
+              role={'AR'}
+              c={'43.3%'}
+              vc={'8.3%'}
+              is_captain={isPlayerCaptain(item.key)}
+              is_vice_captain={isPlayerViceCaptain(item.key)}
+              captainSelectAction={captainSelectAction}
+              viceCaptainSelect={viceCaptainSelect}
+            />
+          );
+        })}
+
+        {/* {AllSelecdtedPlayers.map((item: any) => {
           return (
             <PlayerProfile
               key={item.key}
@@ -132,7 +219,7 @@ export default function CapSelectionScreen() {
               viceCaptainSelect={viceCaptainSelect}
             />
           );
-        })}
+        })} */}
 
         <View style={[tailwind('h-16')]}></View>
       </ScrollView>

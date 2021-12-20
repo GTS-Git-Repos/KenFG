@@ -85,7 +85,10 @@ export const updatePlayerAction = (payload: any) => {
       const player = all_players[0][payload.role].find(
         (item: any) => item.key === payload.key,
       );
-      // log(player);
+
+      if (players.length === 11) {
+        throw '11 Players selected Tap Continue';
+      }
 
       const teamsSlot = players.filter(
         (item: any) => item.team_key === player.team_key,

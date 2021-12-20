@@ -64,7 +64,7 @@ export default function CreateTeamScreen() {
   const SelectedMatchState = useSelector<any>(
     state => state.app.selected_match,
   );
-  const ErrorMessageState = useSelector<any>(state => state.team.error_message);
+  const ErrorMessageState = useSelector(state => state.team.error_message);
 
   const availableCredits = useSelector(creditLeft);
   const playersCount = useSelector(playersCountByTeams);
@@ -100,6 +100,7 @@ export default function CreateTeamScreen() {
   }, [playersState]);
 
   useEffect(() => {
+    // @ts-ignore
     if (ErrorMessageState?.message) {
       errorBox(ErrorMessageState?.message);
     }
@@ -117,19 +118,6 @@ export default function CreateTeamScreen() {
   const checkPlayerSelection = (player_key: string, player_role: string) => {
     dispatch(updatePlayerAction({key: player_key, role: player_role}));
     return;
-
-    const player = players.data[0][player_role].find(
-      (item: any) => item.key === player_key,
-    );
-    if (player) {
-      const canBeSelected: any = isPlayerCanBeSelectable(players.data, player);
-      if (canBeSelected.result) {
-        dispatch(updatePlayerAction(player));
-      } else {
-        errorBox(canBeSelected.message);
-        log(canBeSelected);
-      }
-    }
   };
 
   const clearTeam = () => {
