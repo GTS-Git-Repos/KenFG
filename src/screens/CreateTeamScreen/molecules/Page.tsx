@@ -58,6 +58,7 @@ export default function Page(props: PropTypes) {
                 item.key,
                 item.seasonal_role,
                 item.team_key,
+                props.rolesCountSelector,
               )}
               checkPlayerSelection={props.checkPlayerSelection}
             />

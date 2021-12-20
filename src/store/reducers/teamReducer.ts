@@ -119,6 +119,7 @@ const initialState = {
   vc_key: null,
   block_list: [],
   credits_left: 100,
+  team_count: {},
 };
 
 interface actionShape {

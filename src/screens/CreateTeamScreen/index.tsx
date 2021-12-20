@@ -71,8 +71,6 @@ export default function CreateTeamScreen() {
   const [tick, setTick] = useState<boolean>(false);
   // const [blockListrule, setBlockListrule] = useState('');
 
-  console.log('BlockListSelector', BlockListSelector);
-
   const [activeIndex, setActiveIndex] = useState(0);
 
   // selectors

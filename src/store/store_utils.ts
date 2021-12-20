@@ -1,6 +1,6 @@
 // import {initialState as state} from './reducer';
 import store from './';
-
+import {minRoles} from '../constants/appContants';
 const log = console.log;
 
 export function isPlayerSelected(player_key: string) {
@@ -12,19 +12,23 @@ export function isPlayerSelected(player_key: string) {
     return false;
   }
 }
+
 export function isPlayerCanBeSelected(
   player_key: string,
   seasonal_role: string,
   team_key: string,
+  rolesCountSelector: any,
 ) {
   const state = store.getState().team;
+  const count = state.team_count;
+  const block_list = state.block_list;
 
   const player = state.players.find((item: any) => item.key === player_key);
   if (player) {
     return true;
-  } else if (state.block_list.includes(seasonal_role)) {
+  } else if (block_list.includes(seasonal_role)) {
     return false;
-  } else if (state.block_list.includes(team_key)) {
+  } else if (block_list.includes(team_key)) {
     return false;
   } else {
     return true;
@@ -39,6 +43,10 @@ export function isPlayerCaptain(player_key: string) {
     return false;
   }
 }
+
+const isAnyRuleReachesMin = () => {
+  return;
+};
 
 export function isPlayerViceCaptain(player_key: string) {
   const state = store.getState().team;

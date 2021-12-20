@@ -21,7 +21,7 @@ export default function PlayersStats(props: PropTypes) {
 
       <View style={[tailwind('flex-row bg-dark-3')]}>
         <View style={[tailwind('')]}>
-          <View style={[tailwind('bg-dark-4 p-2'), {width: 130}]}>
+          <View style={[tailwind('bg-dark-4 p-2'), {width: 150}]}>
             <Text style={[tailwind('font-regular text-dark-1 px-2 font-12')]}>
               PLAYERS
             </Text>
@@ -32,7 +32,7 @@ export default function PlayersStats(props: PropTypes) {
               <TouchableOpacity
                 key={item.name}
                 onPress={() => navigation.navigate('MyContestPlayersScreen')}
-                style={[tailwind('flex-row items-center mt-2'), {width: 130}]}>
+                style={[tailwind('flex-row items-center mt-2'), {width: 150}]}>
                 <Image
                   resizeMode="contain"
                   source={assets.player}

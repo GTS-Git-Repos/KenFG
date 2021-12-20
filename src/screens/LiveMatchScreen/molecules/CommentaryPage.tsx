@@ -85,7 +85,6 @@ const Title = (props: any) => {
       ]}>
       <Text
         allowFontScaling={true}
-        adjustsFontSizeToFit={true}
         style={[
           tailwind('font-bold text-center text-brown-5 font-12'),
           {

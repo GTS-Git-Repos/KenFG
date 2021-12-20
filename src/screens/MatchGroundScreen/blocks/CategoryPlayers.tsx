@@ -60,7 +60,7 @@ const PlayerProfile = (props: PlayerPropTypes) => {
       <Image
         resizeMode="contain"
         source={assets.player}
-        style={[tailwind(''), {width: 38, height: 38}]}
+        style={[tailwind(''), {width: 48, height: 48}]}
       />
       <Name team1={props.team1} name={props.name} />
       <Text style={[tailwind('font-regular font-7 text-light')]}>
