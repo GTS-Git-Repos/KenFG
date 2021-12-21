@@ -36,13 +36,8 @@ import {getMatchPlayersRemote} from '../../remote/matchesRemote';
 import {useQuery} from 'react-query';
 
 import {useSelector, useDispatch} from 'react-redux';
-import {
-  creditLeft,
-  playersCountByTeams,
-  rolesCount,
-  blockList,
-} from '../../store/selectors';
-import {isPlayerCanBeSelectable} from '../../workers/decision';
+import {creditLeft, rolesCount, blockList} from '../../store/selectors';
+// import {isPlayerCanBeSelectable} from '../../workers/decision';
 import {errorBox} from '../../utils/snakBars';
 import TabItem from './atoms/TabItem';
 import ClearTeamSheet from './atoms/ClearTeamSheet';
@@ -67,7 +62,7 @@ export default function CreateTeamScreen() {
   const ErrorMessageState = useSelector(state => state.team.error_message);
 
   const availableCredits = useSelector(creditLeft);
-  const playersCount = useSelector(playersCountByTeams);
+  // const playersCount = useSelector(playersCountByTeams);
   const rolesCountSelector: any = useSelector(rolesCount);
   const BlockListSelector: any = useSelector(blockList);
 
@@ -77,6 +72,8 @@ export default function CreateTeamScreen() {
   // const [blockListrule, setBlockListrule] = useState('');
 
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // log('rolesCountSelector',rolesCountSelector)
 
   // selectors
 
@@ -94,8 +91,8 @@ export default function CreateTeamScreen() {
   }, [players]);
 
   useEffect(() => {
-    dispatch(updateBlockListAction(BlockListSelector));
-    dispatch(updateTeamCountAction(playersCount));
+    // dispatch(updateBlockListAction(BlockListSelector));
+    dispatch(updateTeamCountAction(rolesCountSelector));
     dispatch(updateCreditsAction(availableCredits));
   }, [playersState]);
 
@@ -190,15 +187,15 @@ export default function CreateTeamScreen() {
           <TeamInfo
             teamname1={'AUS'}
             teamname2={'ENG'}
-            teamcount1={playersCount['aus'].length}
-            teamcount2={playersCount['eng'].length}
+            teamcount1={rolesCountSelector['aus']}
+            teamcount2={rolesCountSelector['eng']}
             credits_left={availableCredits}
           />
         </LinearGradient>
         <Line />
         <SelectionIndicator
           clearRef={clearRef}
-          count={playersCount['aus'].length + playersCount['eng'].length}
+          count={rolesCountSelector['aus'] + rolesCountSelector['eng']}
         />
       </LinearGradient>
 
@@ -230,7 +227,7 @@ export default function CreateTeamScreen() {
               <TabItem
                 key={item.tab_key}
                 tabName={item.tab_name}
-                count={rolesCountSelector[item.tab_key]}
+                count={rolesCountSelector[item.tab_key].occupaid}
                 active={activeIndex === index}
                 onTabPressed={onTabPressed}
                 index={index}

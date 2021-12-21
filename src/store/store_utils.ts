@@ -19,6 +19,7 @@ export function isPlayerCanBeSelected(
   team_key: string,
   rolesCountSelector: any,
 ) {
+  return true;
   const state = store.getState().team;
   const count = state.team_count;
   const block_list = state.block_list;
@@ -33,6 +34,23 @@ export function isPlayerCanBeSelected(
   } else {
     return true;
   }
+}
+
+export function sumOfMustNeedToFillSlots(team_count: any) {
+  let total = 0;
+  if (team_count['keeper'].must_need > 0) {
+    total = total + team_count['keeper'].must_need;
+  }
+  if (team_count['batsman'].must_need > 0) {
+    total = total + team_count['batsman'].must_need;
+  }
+  if (team_count['all_rounder'].must_need > 0) {
+    total = total + team_count['all_rounder'].must_need;
+  }
+  if (team_count['bowler'].must_need > 0) {
+    total = total + team_count['bowler'].must_need;
+  }
+  return total;
 }
 
 export function isPlayerCaptain(player_key: string) {

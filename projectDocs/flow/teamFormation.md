@@ -18,12 +18,4 @@ need to show visual constraints (blur the player profile) indicating that item c
 
 in redux there is a state we want to maintain named as _blocklist_ at in initial that state will be an empty array []
 
-when we want to block a particular role being selected push that role, ex(**keeper**) on the blocklist
-
-if one team reaches maxiumum 7 players push that team_code (ex, 'aus') on that blocklist
-
-is any one of the role reaches a maxium all others roles are should to selected by minimum, for that append **min_only** in block list
-
-if 11 players are all selected push that 'all' inside blocklist
-
-`js ['keeper','aus','min_only',all] `
+when an one player has been selected 

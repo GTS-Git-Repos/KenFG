@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {maxRoles} from '../constants/appContants';
+import {rolesConstraints} from '../constants/appContants';
 // const LocationState = (state: any): any => state.app.locationState;
 
 const UserState = (state: any) => state.user.user_info;
@@ -49,16 +49,16 @@ export const blockList = createSelector(
       ).length;
 
       // Block lisy generation
-      if (keeper >= maxRoles['keeper']) {
+      if (keeper >= rolesConstraints['keeper'].max) {
         blockList.push('keeper');
       }
-      if (batsman >= maxRoles['batsman']) {
+      if (batsman >= rolesConstraints['batsman'].max) {
         blockList.push('batsman');
       }
-      if (all_rounder >= maxRoles['all_rounder']) {
+      if (all_rounder >= rolesConstraints['all_rounder'].max) {
         blockList.push('all_rounder');
       }
-      if (bowler >= maxRoles['bowler']) {
+      if (bowler >= rolesConstraints['bowler'].max) {
         blockList.push('bowler');
       }
       if (team_a >= 7) {
@@ -75,16 +75,16 @@ export const blockList = createSelector(
   },
 );
 
-export const playersCountByTeams = createSelector(
-  playersState,
-  TeamsState,
-  (players, teams) => {
-    const team_a = players.filter((item: any) => item.team_key === teams[0]);
-    const team_b = players.filter((item: any) => item.team_key === teams[1]);
+// export const playersCountByTeams = createSelector(
+//   playersState,
+//   TeamsState,
+//   (players, teams) => {
+//     const team_a = players.filter((item: any) => item.team_key === teams[0]);
+//     const team_b = players.filter((item: any) => item.team_key === teams[1]);
 
-    return {[teams[0]]: team_a, [teams[1]]: team_b};
-  },
-);
+//     return {[teams[0]]: team_a, [teams[1]]: team_b};
+//   },
+// );
 
 export const allSelecdtedPlayers = createSelector(playersState, players => {
   return players;
@@ -110,10 +110,35 @@ export const rolesCount = createSelector(
     const team_b = players.filter((item: any) => item.team_key === teams[1]);
 
     return {
-      keeper,
-      batsman,
-      all_rounder,
-      bowler,
+      keeper: {
+        occupaid: keeper,
+        min: rolesConstraints['keeper'].min,
+        max: rolesConstraints['keeper'].max,
+        open_slots: rolesConstraints['keeper'].max - keeper,
+        must_need: rolesConstraints['keeper'].min - keeper,
+      },
+      batsman: {
+        occupaid: batsman,
+        min: rolesConstraints['batsman'].min,
+        max: rolesConstraints['batsman'].max,
+        open_slots: rolesConstraints['batsman'].max - batsman,
+        must_need: rolesConstraints['batsman'].min - batsman,
+      },
+      all_rounder: {
+        occupaid: all_rounder,
+        min: rolesConstraints['all_rounder'].min,
+        max: rolesConstraints['all_rounder'].max,
+        open_slots: rolesConstraints['all_rounder'].max - all_rounder,
+        must_need: rolesConstraints['all_rounder'].min - all_rounder,
+      },
+      bowler: {
+        occupaid: bowler,
+        min: rolesConstraints['bowler'].min,
+        max: rolesConstraints['bowler'].max,
+        open_slots: rolesConstraints['bowler'].max - bowler,
+        must_need: rolesConstraints['bowler'].min - bowler,
+      },
+
       [teams[0]]: team_a.length,
       [teams[1]]: team_b.length,
     };

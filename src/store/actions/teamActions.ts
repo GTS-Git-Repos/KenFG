@@ -16,6 +16,7 @@ import {
   UPDATE_ERROR_MESSAGE,
   SAVE_ALL_PLAYERS,
 } from './actionTypes';
+import {sumOfMustNeedToFillSlots} from '../store_utils';
 const log = console.log;
 
 export const saveAllPlayersAction = (payload: any) => ({
@@ -69,17 +70,17 @@ export const updatePlayerAction = (payload: any) => {
     try {
       dispatch(updateErrorMsgAction(null));
 
-      const {all_players, players, credits_left} = getState().team;
+      const {all_players, players, credits_left, team_count} = getState().team;
 
       const isExists = players.findIndex(
         (item: any) => item.key === payload.key,
       );
       if (isExists !== -1) {
+        // remove that player
         players.splice(isExists, 1);
         const newPlayerState = [...players];
         dispatch(updatePlayer(newPlayerState));
         return;
-        // throw 'remove that player';
       }
 
       const player = all_players[0][payload.role].find(
@@ -99,9 +100,39 @@ export const updatePlayerAction = (payload: any) => {
       if (player.credits > credits_left) {
         throw 'Not enough credits';
       }
+      if (team_count[payload.role].occupaid === team_count[payload.role].max) {
+        throw `Maximum ${team_count[payload.role].max} ${payload.role} only`;
+      }
+      let openSlots = 11 - players.length;
+
+      // is now i want to Accept the increment ?
+      // sum all the must need to fil slots
+      let must_need = sumOfMustNeedToFillSlots(team_count);
+      // check is the must need fill slot greater than open slots DENY the insertion
+      // or else allow to increment
+      log('open slots', openSlots);
+      log('must_need', must_need);
+      // 3 less than 2
+      // log(team_count)
+      // log(team_count[payload.role].must_need < 0);
+      if (openSlots <= must_need) {
+        if (team_count[payload.role].must_need <= 0) {
+          throw 'no';
+        }
+      }
+
+      // throw 'debug';
+      const newPlayerState = [...players];
+      newPlayerState.push(player);
+      dispatch(updatePlayer(newPlayerState));
+      return;
+
+      // dispatch(handleError('hello'));
+      // return;
 
       // is any one of the role reached maximum slot
       const maxSlotsExist = isAnyRoleReachedMaxSlots();
+
       const roleSlots = players.filter(
         (item: any) => item.seasonal_role === payload.role,
       ).length;
@@ -133,7 +164,7 @@ export const updatePlayerAction = (payload: any) => {
         return;
         // throw '1'
       }
-    } catch (err: string) {
+    } catch (err: any) {
       const {error_message} = getState().team;
       let newObj = {...error_message};
       newObj.message = err;
