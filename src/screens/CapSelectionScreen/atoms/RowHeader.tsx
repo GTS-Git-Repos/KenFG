@@ -10,7 +10,7 @@ interface PropTypes {
 
 export default function RowHeader(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center px-2 py-3')]}>
+    <View style={[tailwind('flex-row items-center px-4 py-3')]}>
       <View style={[tailwind('flex-row items-center'), {flex: 5}]}>
         <Text
           style={[tailwind('font-regular pr-1 text-dark-1 uppercase font-13')]}>
@@ -26,7 +26,7 @@ export default function RowHeader(props: PropTypes) {
           POINTS
         </Text>
       </View>
-      {/* Point row */} 
+      {/* Point row */}
       <View style={[tailwind('flex-row'), {flex: 5}]}>
         <Text
           style={[

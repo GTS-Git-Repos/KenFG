@@ -23,8 +23,8 @@ interface PropTypes {
 
 export default function PlayerProfile(props: PropTypes) {
   return (
-    <View style={[tailwind('bg-dark-3 border-b border-gray-700')]}>
-      <View style={[tailwind('pt-3 flex-row items-center')]}>
+    <View style={[tailwind('bg-dark-3 border-b px-4 border-gray-700')]}>
+      <View style={[tailwind('pt-2 flex-row items-center')]}>
         <View style={[tailwind('flex-row'), {flex: 5}]}>
           <Image
             resizeMode="contain"

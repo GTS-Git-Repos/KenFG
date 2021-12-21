@@ -130,7 +130,7 @@ export default function CapSelectionScreen() {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
-              role={'KEEP'}
+              role={'WK'}
               c={'43.3%'}
               vc={'8.3%'}
               is_captain={isPlayerCaptain(item.key)}
@@ -140,7 +140,7 @@ export default function CapSelectionScreen() {
             />
           );
         })}
-        <View style={[tailwind('h-2 bg-dark-4')]} />
+        <View style={[tailwind('h-1 bg-dark-4')]} />
 
         {playersByRoleSelector.batsman.map((item: any) => {
           return (
@@ -160,7 +160,7 @@ export default function CapSelectionScreen() {
             />
           );
         })}
-        <View style={[tailwind('h-2 bg-dark-4')]} />
+        <View style={[tailwind('h-1 bg-dark-4')]} />
 
         {playersByRoleSelector.all_rounder.map((item: any) => {
           return (
@@ -181,7 +181,7 @@ export default function CapSelectionScreen() {
           );
         })}
 
-        <View style={[tailwind('h-2 bg-dark-4')]} />
+        <View style={[tailwind('h-1 bg-dark-4')]} />
 
         {playersByRoleSelector.bowler.map((item: any) => {
           return (
@@ -191,7 +191,7 @@ export default function CapSelectionScreen() {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
-              role={'AR'}
+              role={'BOWL'}
               c={'43.3%'}
               vc={'8.3%'}
               is_captain={isPlayerCaptain(item.key)}
@@ -201,25 +201,6 @@ export default function CapSelectionScreen() {
             />
           );
         })}
-
-        {/* {AllSelecdtedPlayers.map((item: any) => {
-          return (
-            <PlayerProfile
-              key={item.key}
-              player_key={item.key}
-              name={item.name}
-              points={item.points}
-              teamname={item.team_key}
-              title={'BAT'}
-              c={'43.3%'}
-              vc={'8.3%'}
-              is_captain={isPlayerCaptain(item.key)}
-              is_vice_captain={isPlayerViceCaptain(item.key)}
-              captainSelectAction={captainSelectAction}
-              viceCaptainSelect={viceCaptainSelect}
-            />
-          );
-        })} */}
 
         <View style={[tailwind('h-16')]}></View>
       </ScrollView>
