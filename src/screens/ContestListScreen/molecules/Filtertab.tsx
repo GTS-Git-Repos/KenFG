@@ -74,17 +74,17 @@ const MoreFilters = [
 export default function FilterTabs(props: PropTypes) {
   return (
     <View>
-      <View style={[tailwind('pt-4 px-4')]}>
+      <View style={[tailwind('pt-3 px-4')]}>
         <View style={[tailwind('flex-row items-center')]}>
           <View
-            style={[tailwind('flex-row flex-wrap items-center'), {flex: 7}]}>
+            style={[tailwind('flex-row flex-wrap items-center'), {flex: 8}]}>
             {TABS.map((item: any) => {
               return (
                 <TouchableOpacity
                   onPress={() => props.setSelectedFilter(item.name)}
                   key={item.id}
                   style={[
-                    tailwind('border border-gray-600 rounded-2xl py-0.5 m-0.5'),
+                    tailwind('border border-gray-800 rounded-2xl py-0.5 m-0.5'),
                     {paddingHorizontal: 10},
                     props.selectedFilter === item.name
                       ? styles.selectedFilter
@@ -113,7 +113,7 @@ export default function FilterTabs(props: PropTypes) {
                       key={item.id}
                       style={[
                         tailwind(
-                          'border border-gray-600 rounded-2xl py-0.5 m-0.5',
+                          'border border-gray-800 rounded-2xl py-0.5 m-0.5',
                         ),
                         {paddingHorizontal: 10},
                         props.selectedFilter === item.name
@@ -141,7 +141,7 @@ export default function FilterTabs(props: PropTypes) {
           <View
             style={[
               tailwind('flex-row bg-dark-3 items-center'),
-              {flex: 3},
+              {flex: 2},
               styles.privateContestRoot,
             ]}>
             <View
@@ -190,7 +190,7 @@ const SortBy = () => {
     <View
       style={[
         tailwind(
-          'flex-row items-center justify-between border-t border-gray-600 border-b py-2 border-gray-500',
+          'flex-row items-center justify-between border-t border-gray-800 border-b py-2',
         ),
       ]}>
       <TouchableOpacity
@@ -280,11 +280,13 @@ const styles = StyleSheet.create({
     marginVertical: 13,
   },
   selectedFilter: {
-    borderColor: '#D8C872',
+    borderColor: 'transparent',
     borderStyle: 'solid',
-    borderRadius: 7,
-    borderWidth: 1,
-
+    borderRadius: 0,
+    borderWidth: 0,
     backgroundColor: '#D8C872',
   },
+  SortBy:{
+    
+  }
 });

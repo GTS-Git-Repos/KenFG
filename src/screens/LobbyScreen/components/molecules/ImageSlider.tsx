@@ -43,10 +43,10 @@ const ImageSlider = (props: any) => {
       showsButtons={false}
       autoplay={true}
       showsPagination={false}
-      loadMinimal={true}
-      loadMinimalSize={2}
-      autoplayTimeout={2}
-      removeClippedSubviews={true}
+      // loadMinimal={true}
+      // loadMinimalSize={2}
+      // autoplayTimeout={2}
+      // removeClippedSubviews={true}
       activeDotColor={'#d1b45a'}
       activeDot={<ActiveDot />}
       dot={<Dot />}

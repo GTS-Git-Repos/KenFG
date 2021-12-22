@@ -30,8 +30,14 @@ export default function LiveMatchTabs(props: PropTypes) {
       />
       <TabItem
         tabName="Commentary"
-        index={1}
-        active={1 === props.activeIndex}
+        index={2}
+        active={2 === props.activeIndex}
+        onTabPressed={props.onTabPressed}
+      />
+      <TabItem
+        tabName="ScoreBoard"
+        index={3}
+        active={3 === props.activeIndex}
         onTabPressed={props.onTabPressed}
       />
     </ScrollView>

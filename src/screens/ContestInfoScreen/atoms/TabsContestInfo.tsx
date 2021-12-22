@@ -20,7 +20,10 @@ export default function TabsContestInfo(props: PropTypes) {
   });
 
   return (
-    <View style={[tailwind('relative bg-dark-3')]}>
+    <View
+      style={[
+        tailwind('relative bg-dark-3 border-t border-b border-gray-800'),
+      ]}>
       <View style={[tailwind('flex-row items-center')]}>
         {props.tabs.map((item, index) => {
           return (

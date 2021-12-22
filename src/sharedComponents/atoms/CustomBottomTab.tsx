@@ -90,7 +90,7 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
                 <Image
                   resizeMode="contain"
                   source={isFocused ? assets.home_tab : assets.home_tab_off}
-                  style={[tailwind('w-8 h-8')]}
+                  style={[tailwind('w-7 h-7')]}
                 />
               ) : index === 1 ? (
                 <Image
@@ -98,19 +98,19 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
                   source={
                     isFocused ? assets.contest_tab_on : assets.contest_tab
                   }
-                  style={[tailwind('w-8 h-8')]}
+                  style={[tailwind('w-7 h-7')]}
                 />
               ) : index === 2 ? (
                 <Image
                   resizeMode="contain"
                   source={isFocused ? assets.leader_tab_on : assets.leader_tab}
-                  style={[tailwind('w-8 h-8')]}
+                  style={[tailwind('w-7 h-7')]}
                 />
               ) : (
                 <Image
                   resizeMode="contain"
                   source={isFocused ? assets.more_tab : assets.more_tab}
-                  style={[tailwind('w-6 h-8')]}
+                  style={[tailwind('w-6 h-6')]}
                 />
               )}
 

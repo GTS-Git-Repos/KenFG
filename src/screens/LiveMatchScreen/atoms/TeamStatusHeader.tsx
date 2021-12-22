@@ -10,7 +10,10 @@ interface PropTypes {
 
 export default function TeamStatusHeader(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row px-2 py-3 border-gray-100')]}>
+    <View
+      style={[
+        tailwind('flex-row px-2 py-3 bg-dark-3 border-b border-gray-700'),
+      ]}>
       <View style={[tailwind(''), {flex: 6}]}>
         <Text style={[tailwind('font-regular px-2 text-dark-1 font-15')]}>
           Batter

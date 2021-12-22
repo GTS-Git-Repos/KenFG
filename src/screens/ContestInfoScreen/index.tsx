@@ -26,6 +26,7 @@ import Animated, {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import {useSelector} from 'react-redux';
+import ContestInfoPageLoading from './atoms/ContestInfoPageLoading';
 
 export default function ContestInfoScreen() {
   const navigation = useNavigation<any>();
@@ -69,7 +70,7 @@ export default function ContestInfoScreen() {
 
   if (isScreenReady === false || !contest.data) {
     return (
-      <FullScreenLoading
+      <ContestInfoPageLoading
         title={`${selectedMatchState.team_a?.toUpperCase()} VS ${selectedMatchState.team_b?.toUpperCase()}`}
       />
     );

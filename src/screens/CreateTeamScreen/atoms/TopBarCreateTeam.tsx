@@ -33,11 +33,11 @@ export default function TopBarCreateTeam(props: PropTypes) {
           </Text>
         </View>
         <View style={[tailwind('flex-row items-center')]}>
-          <Image
+          {/* <Image
             resizeMode="contain"
             source={assets.fantasy_points}
             style={[tailwind(''), {width: 30, height: 30}]}
-          />
+          /> */}
           <Image
             resizeMode="contain"
             source={assets.Info_Square}

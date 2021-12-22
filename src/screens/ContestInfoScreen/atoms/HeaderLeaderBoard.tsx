@@ -13,7 +13,11 @@ interface PropTypes {
 export default function HeaderLeaderBoard(props: PropTypes) {
   return (
     <View
-      style={[tailwind('flex-row items-center p-4 border-b border-gray-800')]}>
+      style={[
+        tailwind(
+          'flex-row items-center bg-dark-3 px-4 py-2 border-b border-gray-800',
+        ),
+      ]}>
       <View style={[tailwind(''), {width: ALLTEAMSWIDTH}]}>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
           All Teams (100)

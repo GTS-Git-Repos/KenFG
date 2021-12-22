@@ -17,12 +17,17 @@ export default function Actions(props: PropTypes) {
   const navigation = useNavigation<any>();
 
   return (
-    <LinearGradient
-      end={{x: 0.0, y: 0.5}}
-      start={{x: 0.8, y: 2.0}}
-      locations={[0.6, 0.5]}
-      style={[tailwind('m-2 rounded flex-col justify-center')]}
-      colors={['#1C2B46', '#172338']}>
+    <View
+      // start={{x: 0, y: 0}}
+      // end={{x: 1, y: 0}}
+      // colors={['#172338', '#0D1320']}
+      style={[
+        tailwind(
+          'm-2 rounded bg-dark-3 border border-gray-600 flex-col justify-center',
+        ),
+      ]}
+      // colors={['#1C2B46', '#172338']}
+    >
       <TouchableOpacity
         onPress={() => navigation.navigate(props.goto)}
         style={[tailwind('flex-row items-center  justify-between p-4')]}>
@@ -40,6 +45,6 @@ export default function Actions(props: PropTypes) {
 
         <Icon name="chevron-forward" size={20} color="white" />
       </TouchableOpacity>
-    </LinearGradient>
+    </View>
   );
 }

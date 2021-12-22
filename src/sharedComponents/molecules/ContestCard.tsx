@@ -24,7 +24,7 @@ interface PropTypes {
   is_practice: boolean;
 }
 
-const PROGRESS_BAR_HEIGHT = 2;
+const PROGRESS_BAR_HEIGHT = 2.5;
 
 export default function ContestCard(props: PropTypes) {
   const navigation = useNavigation<any>();
@@ -32,15 +32,9 @@ export default function ContestCard(props: PropTypes) {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      style={[tailwind('rounded')]}
+      style={[tailwind('')]}
       onPress={() => props.navigate(props.contest_key)}>
-      {/* <LinearGradient
-        start={{x: 0.0, y: 0.7}}
-        end={{x: 1.0, y: 0.0}}
-        locations={[0.6, 0.5]}
-        colors={['#172338', '#25385A']}> */}
-
-      <View style={[tailwind('p-4 bg-dark-3 rounded-t')]}>
+      <View style={[tailwind('p-4 rounded-t-lg bg-dark-3 ')]}>
         <View style={[tailwind('flex-row justify-between items-center')]}>
           <View style={[tailwind('py-2')]}>
             <Text
@@ -55,24 +49,7 @@ export default function ContestCard(props: PropTypes) {
           </View>
 
           <View style={[tailwind('')]}>
-            {/* {!props.is_practice && (
-                <Text
-                  style={[
-                    tailwind('font-regular font-14 text-white text-right'),
-                  ]}>
-                  Entry
-                </Text>
-              )} */}
             <View style={[tailwind('flex-row justify-end py-2 items-center')]}>
-              {/* <Text
-                  style={[
-                    tailwind('font-semibold px-3 line-through font-14'),
-                    {color: '#006A4D'},
-                  ]}>
-                  {'\u20B9 '}
-                  {parseInt(props.entry) + 10}
-                </Text> */}
-
               <View
                 style={[
                   tailwind('rounded px-4 py-0.5'),
@@ -84,8 +61,6 @@ export default function ContestCard(props: PropTypes) {
                   style={[
                     tailwind('font-bold text-center text-light font-14'),
                   ]}>
-                  {/* {'\u20B9'}
-                    {props.entry} */}
                   Join
                 </Text>
               </View>
@@ -115,12 +90,12 @@ export default function ContestCard(props: PropTypes) {
             {props.total_joined} spots left
           </Text>
           <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-            {props.total_spots} spots
+            {props.total_spots} Spots
           </Text>
         </View>
       </View>
 
-      <View style={[tailwind('p-3 bg-dark-4')]}>
+      <View style={[tailwind('p-3 rounded-b'), {backgroundColor: '#121D2E'}]}>
         <View style={[tailwind('flex-row justify-between items-center')]}>
           <View style={[tailwind('flex-row items-center')]}>
             <View style={[tailwind('flex-row items-center')]}>

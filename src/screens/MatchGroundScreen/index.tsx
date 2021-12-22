@@ -12,7 +12,7 @@ import MatchGroundTopBar from './atoms/MatchGroundTopar';
 import MatchStats from './atoms/MatchStats';
 import CategoryPlayers from './blocks/CategoryPlayers';
 import {useSelector} from 'react-redux';
-import {creditLeft, playersCountByTeams} from '../../store/selectors';
+import {creditLeft, rolesCount} from '../../store/selectors';
 
 export default function MathchGroundScreen() {
   const navigation = useNavigation();
@@ -27,7 +27,11 @@ export default function MathchGroundScreen() {
   const TeamState: any = useSelector<any>(state => state.team.teams);
 
   const availableCredits = useSelector(creditLeft);
-  const playersCount = useSelector(playersCountByTeams);
+  const rolesCountSelector = useSelector(rolesCount);
+
+  useEffect(() => {
+    log('rolesCountSelector', rolesCountSelector);
+  }, [rolesCountSelector]);
 
   useEffect(() => {
     const keepers = playersState.filter(
@@ -54,12 +58,12 @@ export default function MathchGroundScreen() {
       <MatchGroundTopBar name={'Your Team'} />
       <MatchStats
         playersCount={
-          playersCount[TeamState[0]].length + playersCount[TeamState[1]].length
+          rolesCountSelector[TeamState[0]] + rolesCountSelector[TeamState[1]]
         }
         teamname1={TeamState[0]}
         teamname2={TeamState[1]}
-        teamcount1={playersCount[TeamState[0]].length}
-        teamcount2={playersCount[TeamState[1]].length}
+        teamcount1={rolesCountSelector[TeamState[0]]}
+        teamcount2={rolesCountSelector[TeamState[1]]}
         creditsLeft={availableCredits}
       />
       <ScrollView contentContainerStyle={{flexGrow: 1}}>

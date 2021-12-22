@@ -20,11 +20,15 @@ export default function ScrollBoardPage(props: PropTypes) {
       <ScrollView>
         <View>
           <View style={[tailwind('h-3')]}></View>
-          <TeamStatus />
+          <TeamStatus teamName="ENG" isBatting={false} />
+          <TeamStatus teamName="AUS" isBatting={true} />
           <TeamStatusHeader />
           <PlayerStatus name="V.Kohli" />
           <PlayerStatus name="Ms.Dhoni" />
-          <View style={[tailwind('flex-row pt-2 px-2')]}>
+          <View
+            style={[
+              tailwind('flex-row pt-2 px-2 bg-dark-3 border-b border-gray-700'),
+            ]}>
             <View style={[tailwind(''), {flex: 6}]}>
               <View style={[tailwind('px-2')]}>
                 <Text style={[tailwind('font-bold text-light font-14')]}>
@@ -46,7 +50,10 @@ export default function ScrollBoardPage(props: PropTypes) {
             </View>
           </View>
 
-          <View style={[tailwind('flex-row pt-2 px-2')]}>
+          <View
+            style={[
+              tailwind('flex-row pt-2 px-2 border-b border-gray-700 bg-dark-3'),
+            ]}>
             <View style={[tailwind(''), {flex: 6}]}>
               <View style={[tailwind('px-2')]}>
                 <Text style={[tailwind('font-bold text-light font-14')]}>
@@ -76,7 +83,10 @@ export default function ScrollBoardPage(props: PropTypes) {
 
 const PlayerStatus = (props: any) => {
   return (
-    <View style={[tailwind('flex-row pt-2 px-2')]}>
+    <View
+      style={[
+        tailwind('flex-row pt-2 bg-dark-3 px-2 border-b border-gray-700'),
+      ]}>
       <View style={[tailwind(''), {flex: 6}]}>
         <View style={[tailwind('px-2')]}>
           <Text style={[tailwind('font-bold text-light font-14')]}>

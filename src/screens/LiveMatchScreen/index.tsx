@@ -22,6 +22,9 @@ import LeaderBoardPage from './molecules/LeaderBoardPage';
 import CommentaryPage from './molecules/CommentaryPage';
 import PlayersStats from './molecules/PlayersStats';
 import WinningsPage from './molecules/WinningsPage';
+import LinearGradient from 'react-native-linear-gradient';
+import LiveMatchLoading from './atoms/LiveMatchLoading';
+import LiveMatchTopBar from './atoms/LiveMatchTopBar';
 
 // import Icon from 'react-native-vector-icons/Ionicons';
 const log = console.log;
@@ -41,14 +44,17 @@ export default function LiveMatchScreen() {
   };
 
   if (isScreenReady === false) {
-    return <FullScreenLoading title={'AUS vs ENG'} />;
+    return <LiveMatchLoading title={'AUS vs ENG'} />;
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopBar text={'AUS vs ENG'} />
-
-      <View style={[tailwind('px-3 pt-6 pb-3 bg-dark-3')]}>
+      <LiveMatchTopBar text={'AUS vs ENG'} />
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#172338', '#0D1320']}
+        style={[tailwind('px-3 pt-6 pb-3 bg-dark-3')]}>
         <MatchStat teamName1={'Australia'} teamName2={'England'} />
 
         <Projection />
@@ -57,7 +63,7 @@ export default function LiveMatchScreen() {
         </View>
         <CurrentLiveStatus />
         <ExpertsStats />
-      </View>
+      </LinearGradient>
 
       <View>
         <LiveMatchTabs activeIndex={activeIndex} onTabPressed={onTabPressed} />

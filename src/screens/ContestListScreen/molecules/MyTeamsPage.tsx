@@ -28,11 +28,12 @@ export default function MyTeamsPage(props: PropTypes) {
 
   return (
     <View style={[tailwind('m-3')]}>
-      {props.teams.teams.map((item: any) => {
+      {props.teams.teams.map((item: any, index: number) => {
         return (
           <TeamsCard
+            key={index}
             teams_key={item.teams_key}
-            key={item.teams_key}
+            // key={item.teams_key}
             canModify={true}
           />
         );

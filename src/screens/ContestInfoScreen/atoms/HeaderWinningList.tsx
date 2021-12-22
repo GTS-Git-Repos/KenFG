@@ -12,7 +12,7 @@ export default function HeaderWinningsList(props: PropTypes) {
     <View style={[tailwind('')]}>
       <Text
         style={[
-          tailwind('font-regular px-3 font-13 text-dark-1 bg-dark-3'),
+          tailwind('font-regular px-3 font-13 text-white bg-dark-4'),
           {paddingVertical: 12},
         ]}>
         Be the First in your network to join this contenst
@@ -20,15 +20,15 @@ export default function HeaderWinningsList(props: PropTypes) {
 
       <View
         style={[
-          tailwind('flex-row items-center border-b border-gray-800 bg-dark-4'),
+          tailwind('flex-row items-center border-b border-gray-800 bg-dark-3'),
           {paddingVertical: 10},
         ]}>
         <View style={[tailwind('pl-4 text-left w-6/12')]}>
-          <Text style={[tailwind('font-bold text-dark-1 font-14')]}>Rank</Text>
+          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>Rank</Text>
         </View>
 
         <View style={[tailwind('pr-4 w-6/12')]}>
-          <Text style={[tailwind('font-bold text-right text-dark-1 font-14')]}>
+          <Text style={[tailwind('font-regular text-right text-dark-1 font-14')]}>
             Winnings
           </Text>
         </View>

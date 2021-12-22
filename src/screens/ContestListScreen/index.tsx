@@ -15,6 +15,7 @@ import {joinedTeamsRemote} from '../../remote/matchesRemote';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import TopBarContest from '../../sharedComponents/atoms/TopbarContest';
 import {FullScreenLoading, BlockScreenByLoading} from '../../sharedComponents';
+import ContestScreenLoading from './atoms/ContestScreenLoading';
 import Tabs from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
@@ -116,9 +117,9 @@ export default function ContestListScreen() {
     }
   };
 
-  if (isScreenReady === false) {
+  if (isScreenReady === false || !contests.data) {
     return (
-      <FullScreenLoading
+      <ContestScreenLoading
         title={`${selectedMatchState.team_a} VS ${selectedMatchState.team_b}`.toUpperCase()}
       />
     );
@@ -131,7 +132,11 @@ export default function ContestListScreen() {
         subtitle={'18h 11m left'}
       />
       <View style={[tailwind('')]}>
-        <Tabs selectedTab={selectedTab} teamsCount={teams?.data} onTabPressed={onTabPressed} />
+        <Tabs
+          selectedTab={selectedTab}
+          teamsCount={teams?.data}
+          onTabPressed={onTabPressed}
+        />
       </View>
       <PagerView
         ref={pagerRef}

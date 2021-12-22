@@ -117,7 +117,9 @@ export const updatePlayerAction = (payload: any) => {
       // log(team_count[payload.role].must_need < 0);
       if (openSlots <= must_need) {
         if (team_count[payload.role].must_need <= 0) {
-          throw 'no';
+          const message = findARoleNeedToFilled();
+          // log('message', message);
+          throw message;
         }
       }
 

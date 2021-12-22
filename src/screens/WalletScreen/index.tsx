@@ -32,7 +32,7 @@ export default function WalletScreen() {
           <Actions
             text={'Manage Payments'}
             subText="Add / Remove Care, Wallets, etc"
-            goto="TransactionListScreen"
+            goto="ManagePaymentsScreen"
           />
           <Actions
             text={'Verify Account'}

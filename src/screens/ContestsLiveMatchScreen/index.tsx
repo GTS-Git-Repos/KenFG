@@ -16,6 +16,10 @@ import {
 import Tabs from './atoms/Tabs';
 import PagerView from 'react-native-pager-view';
 import MyContestPage from './molecules/MyContestPage';
+import CommentaryPage from '../LiveMatchScreen/molecules/CommentaryPage';
+import ScrollBoardPage from '../LiveMatchScreen/molecules/ScrollBoardPage';
+import ContestLiveMyTeamsPage from './molecules/ContestLiveMyTeamsPage';
+import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
@@ -38,16 +42,21 @@ export default function ContestLiveMatchScreen() {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'AUS vs ENG'} />
 
-      <View style={[tailwind('px-3 pt-6 pb-3 bg-dark-3')]}>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#172338', '#0D1320']}
+        style={[tailwind('px-3 pt-6 pb-3 bg-dark-3')]}>
         <MatchStat teamName1={'Australia'} teamName2={'England'} />
 
         <Projection />
         <View style={[tailwind('my-2'), styles.line]}></View>
         <CurrentLiveStatus />
         <ExpertsStats />
-      </View>
+      </LinearGradient>
+
       <View>
-        <Tabs activeIndex={0} onTabPressed={onTabPressed} />
+        <Tabs activeIndex={selectedTab} onTabPressed={onTabPressed} />
       </View>
 
       <PagerView
@@ -56,7 +65,16 @@ export default function ContestLiveMatchScreen() {
         style={[{flex: 1}]}
         initialPage={selectedTab}>
         <View style={{width: width}}>
-          <MyContestPage />
+          <MyContestPage index={0} activeIndex={selectedTab} />
+        </View>
+        <View style={{width: width}}>
+          <ContestLiveMyTeamsPage index={1} activeIndex={selectedTab} />
+        </View>
+        <View style={{width: width}}>
+          <CommentaryPage index={2} activeIndex={selectedTab} />
+        </View>
+        <View style={{width: width}}>
+          <ScrollBoardPage index={3} activeIndex={selectedTab} />
         </View>
       </PagerView>
     </View>

@@ -17,13 +17,7 @@ interface PropTypes {
 
 export default function ContestPage(props: PropTypes) {
   if (props.status === 'loading') {
-    return (
-      <>
-        <View style={[tailwind('h-28 m-2 bg-dark-3')]} />
-        <View style={[tailwind('h-28 m-2 bg-dark-3')]} />
-        <View style={[tailwind('h-28 m-2 bg-dark-3')]} />
-      </>
-    );
+    return null;
   }
 
   if (props.status === 'success' && !props.data) {
@@ -46,16 +40,16 @@ export default function ContestPage(props: PropTypes) {
         setSelectedFilter={props.setSelectedFilter}
       />
       <ContestSubTitle
-        title={'Big Winnings, Lower Entry!'}
+        title={'Mega Contest'}
         subText={'Ready for One more match'}
       />
-      <View style={[tailwind('mx-2')]}>
+      <View style={[tailwind('px-3')]}>
         <View style={[tailwind('')]}>
           {props.data.map((item: contestListsTypes) => {
             return (
               <View
                 key={item.key}
-                style={[tailwind('my-2 border border-gray-800 rounded')]}>
+                style={[tailwind('my-2')]}>
                 <ContestCard
                   navigate={props.navigate}
                   contest_key={item.key}

@@ -18,7 +18,7 @@ interface PropTypes {
 
 export default function SubTitle(props: PropTypes) {
   return (
-    <View style={[tailwind('p-2')]}>
+    <View style={[tailwind('px-3 py-2')]}>
       <View style={[tailwind('flex-row items-center')]}>
         <View style={[tailwind('flex-grow')]}>
           <Text style={[tailwind('font-bold py-1 text-light font-17')]}>

@@ -2,7 +2,13 @@ import React, {useEffect} from 'react';
 import {NavigationContainer, DarkTheme} from '@react-navigation/native';
 import {Host} from 'react-native-portalize';
 
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
+
+import {
+  CardStyleInterpolators,
+  TransitionPresets,
+} from '@react-navigation/stack';
 
 import {DrawerNav} from './DrawerNavigation';
 import {Home, Auth} from './StackNavigations';
@@ -23,6 +29,8 @@ import HowToPlayScreen from '../screens/HowToPlayScreen';
 import LeaderBoardScreen from '../screens/LeaderBoardScreen';
 import TransactionListScreen from '../screens/TransactionListScreen';
 import VerifyAccountScreen from '../screens/VerifyAccountScreen';
+import ManagePaymentsScreen from '../screens/ManagePaymentsScreen';
+import ContestsLiveMatchScreen from '../screens/ContestsLiveMatchScreen';
 
 import TeamsListScreen from '../screens/TeamsListScreen';
 
@@ -32,9 +40,8 @@ import MoreScreen from '../screens/MoreScreen';
 import InviteScreen from '../screens/InviteScreen';
 import ReferredFriendsListScreen from '../screens/ReferredFriendsListScreen';
 import UserGoalsScreen from '../screens/UserGoalsScreen';
-import ContestsLiveMatchScreen from '../screens/ContestsLiveMatchScreen';
 
-const RootNavigator = createNativeStackNavigator();
+const RootNavigator = createStackNavigator();
 
 const config = {
   animation: 'spring',
@@ -50,10 +57,7 @@ const config = {
 
 const StackConfig = {
   headerShown: false,
-  transitionSpec: {
-    open: config,
-    close: config,
-  },
+  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };
 
 // const MyTheme = {
@@ -72,24 +76,78 @@ const StackConfig = {
 // console.log('DarkTheme', DarkTheme);
 
 export default function RootNavigation() {
+  const forFade = (args: any) => {
+    console.log(args);
+    return {
+      opacity: 0.5,
+    };
+  };
+
+  // const forFade = ({current}) => ({
+  //   cardStyle: {
+  //     opacity: current.progress,
+  //   },
+  // });
+
   return (
     <NavigationContainer theme={DarkTheme}>
       <Host>
         <RootNavigator.Navigator
-          initialRouteName="InitialScreen"
-          screenOptions={StackConfig}>
+          // screenOptions={{...TransitionPresets.SlideFromRightIOS}}
+          // screenOptions={{
+          //   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          // }}
+          screenOptions={StackConfig}
+          // screenOptions={{StackConfig}}
+          initialRouteName="InitialScreen">
           <RootNavigator.Screen
             component={InitialScreen}
             name="InitialScreen"
           />
 
+          {/* transitionSpec: {
+              open: {
+                animation: 'spring',
+                config: {
+                  stiffness: 1000,
+                  damping: 500,
+                  mass: 3,
+                  overshootClamping: true,
+                  restDisplacementThreshold: 0.01,
+                  restSpeedThreshold: 0.01,
+                }
+              },
+              close: {
+                animation: 'spring',
+                config: {
+                  stiffness: 1000,
+                  damping: 500,
+                  mass: 3,
+                  overshootClamping: true,
+                  restDisplacementThreshold: 0.01,
+                  restSpeedThreshold: 0.01,
+                },
+            }
+          } */}
+
           <RootNavigator.Screen component={Auth} name="Auth" />
-          <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
+          <RootNavigator.Screen
+            // options={{cardStyleInterpolator: forFade}}
+            // options={StackConfig}
+            component={DrawerNav}
+            name="DrawerNav"
+          />
           <RootNavigator.Screen
             component={NotificationScreen}
             name="NotificationScreen"
           />
           <RootNavigator.Screen
+            component={ManagePaymentsScreen}
+            name="ManagePaymentsScreen"
+          />
+
+          <RootNavigator.Screen
+            // options={{cardStyleInterpolator: forFade}}
             component={ContestListScreen}
             name="ContestListScreen"
           />
@@ -126,6 +184,7 @@ export default function RootNavigation() {
             component={CompareTeamsScreen}
             name="CompareTeamsScreen"
           />
+
           <RootNavigator.Screen
             component={HowToPlayScreen}
             name="HowToPlayScreen"

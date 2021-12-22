@@ -12,10 +12,9 @@ interface PropTypes {
 export default function CurrentAmount(props: PropTypes) {
   return (
     <LinearGradient
-      colors={['#B2933D', '#bea14f']}
-      end={{x: 0.0, y: 1.8}}
-      start={{x: 1.6, y: 0.5}}
-      locations={[0.6, 0.5]}>
+      start={{x: 0, y: 0}}
+      end={{x: 1, y: 0}}
+      colors={['#BCA04D', '#D8C872']}>
       <View style={[tailwind('py-4 flex-row items-center justify-between')]}>
         <View style={[tailwind('flex-row mx-3 items-center')]}>
           <Image

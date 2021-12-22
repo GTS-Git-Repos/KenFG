@@ -18,7 +18,7 @@ export default function Transaction(props: PropTypes) {
     <View>
       <View
         style={[
-          tailwind('bg-dark-3 flex-row items-center justify-between'),
+          tailwind('bg-dark-3 flex-row items-center justify-between rounded-t'),
           {marginHorizontal: 5, paddingHorizontal: 16, paddingVertical: 12},
         ]}>
         <Text style={[tailwind('font-bold text-light font-14')]}>
@@ -55,7 +55,7 @@ const TransactionInfo = () => {
   return (
     <View
       style={[
-        tailwind('bg-dark-3 mb-2'),
+        tailwind('bg-dark-3 mb-2 rounded-b'),
         {marginHorizontal: 5, paddingHorizontal: 16, paddingVertical: 12},
       ]}>
       <Text style={[tailwind('font-regular text-dark-1 font-14')]}>

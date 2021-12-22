@@ -26,10 +26,10 @@ export default function HorizontalProfile(props: PropTypes) {
     <TouchableOpacity
       style={[tailwind('px-4 bg-dark-3 flex-row items-center'), styles.root]}
       onPress={() => navigation.navigate('CompareTeamsScreen')}>
-      <View style={[tailwind('flex-row items-center'), {flex: 5}]}>
+      <View style={[tailwind('flex-row items-center pt-2'), {flex: 5}]}>
         <Image
           resizeMode="contain"
-          source={assets.player}
+          source={assets.person}
           style={[{width: 38, height: 38}]}
         />
         <View style={[tailwind('px-2 flex-row items-center')]}>

@@ -17,7 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
   allSelecdtedPlayers,
   playersByRole,
-  playersCountByTeams,
+  rolesCount,
 } from '../../store/selectors';
 import {
   captainSelection,
@@ -38,10 +38,9 @@ export default function CapSelectionScreen() {
 
   // const teamsState = useSelector<any>(state => state.team);
 
-  const TeamsSelector = useSelector(playersCountByTeams);
-  const AllSelecdtedPlayers = useSelector(allSelecdtedPlayers);
   const playersByRoleSelector = useSelector(playersByRole);
 
+  const teamsState = useSelector<any>(state => state.team.teams);
   const captain_key = useSelector<any>(state => state.team.cap_key);
   const vc_key = useSelector<any>(state => state.team.vc_key);
   const selected_match: any = useSelector<any>(
@@ -51,9 +50,9 @@ export default function CapSelectionScreen() {
     state => state.app.selected_contest,
   );
 
-  // useEffect(() => {
-  //   log('cap --->', playersByRoleSelector);
-  // }, []);
+  useEffect(() => {
+    log('cap --->', teamsState[0]);
+  }, []);
 
   const captainSelectAction = (player_key: string) => {
     if (vc_key === player_key) {
@@ -107,7 +106,7 @@ export default function CapSelectionScreen() {
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={'15h 33m Left'} teams={Object.keys(TeamsSelector)} />
+      <TopBar text={'15h 33m Left'} teams={teamsState} />
       <ScrollView>
         <View style={[tailwind(' px-4 py-3')]}>
           <Text style={[tailwind('font-bold text-center text-dark-1 font-13')]}>

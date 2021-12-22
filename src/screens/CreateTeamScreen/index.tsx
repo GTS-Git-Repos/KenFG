@@ -43,6 +43,7 @@ import TabItem from './atoms/TabItem';
 import ClearTeamSheet from './atoms/ClearTeamSheet';
 import CreateTeamFilterSheetTitle from './atoms/CreateTeamFilterSheetTitle';
 import PlayerFilterSheet from './molecules/PlayerFilterSheet';
+import CreateTeamLoading from './atoms/CreateTeamLoading';
 
 const log = console.log;
 
@@ -170,7 +171,7 @@ export default function CreateTeamScreen() {
   };
 
   if (isScreenReady === false || !players.data) {
-    return <FullScreenLoading title="Loading..." />;
+    return <CreateTeamLoading text="AUS vs ENG" />;
   }
 
   return (

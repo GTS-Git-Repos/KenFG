@@ -14,8 +14,9 @@ export default function NewMyMatchesCard(props: PropTypes) {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
+      activeOpacity={0.6}
       onPress={() => {
-        navigation.navigate('LiveMatchScreen');
+        navigation.navigate('ContestsLiveMatchScreen');
       }}
       style={[tailwind('rounded bg-dark-3')]}>
       <TopSection />

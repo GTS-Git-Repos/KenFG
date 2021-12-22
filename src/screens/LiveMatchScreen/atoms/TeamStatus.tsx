@@ -1,29 +1,36 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Image, Text} from 'react-native';
+import {View, Image, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
-  text?: string;
+  teamName: string;
+  isBatting: boolean;
 }
 
 export default function TeamStatus(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row py-3 bg-dark-3 items-center')]}>
+    <View
+      style={[
+        tailwind('flex-row py-3 bg-dark-3 items-center'),
+        !props.isBatting ? styles.root : {},
+      ]}>
       <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
         <Text style={[tailwind('font-bold text-light pl-4 pr-1 font-14')]}>
-          IND
+          {props.teamName}
         </Text>
-        <Text
-          style={[
-            tailwind(
-              'font-regular rounded-full bg-dark-4 px-2 py-1 text-dark-1 mx-3 font-10',
-            ),
-          ]}>
-          Batting
-        </Text>
+        {props.isBatting && (
+          <Text
+            style={[
+              tailwind(
+                'font-regular rounded-full bg-dark-4 px-2 py-1 text-dark-1 mx-3 font-10',
+              ),
+            ]}>
+            Batting
+          </Text>
+        )}
       </View>
 
       <View
@@ -44,3 +51,9 @@ export default function TeamStatus(props: PropTypes) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  root: {
+    backgroundColor: '#362F20',
+  },
+});

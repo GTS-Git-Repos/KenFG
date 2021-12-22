@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Image, Text} from 'react-native';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import {
@@ -10,27 +10,32 @@ import {
   RankIcon,
   TickIcon,
 } from '../../../sharedComponents/';
+import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
   text?: string;
 }
 
 export default function MyContestStatus(props: PropTypes) {
+  const navigation = useNavigation<any>();
   return (
-    <View style={[tailwind('bg-dark-3 rounded m-2')]}>
+    <TouchableOpacity
+      activeOpacity={0.6}
+      onPress={() => navigation.navigate('LiveMatchScreen')}
+      style={[tailwind('bg-dark-3 rounded m-2')]}>
       <TopSection />
-      <ContestAttributes />
+      <ContestAttributes amount="10,000" />
       <JoinedTeamStatus selected={true} />
       <JoinedTeamStatus selected={false} />
       <JoinedTeamStatus selected={false} />
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const TopSection = () => {
   return (
-    <View style={[tailwind('flex-row items-center justify-between p-3')]}>
-      <View>
+    <View style={[tailwind('flex-row items-center p-3')]}>
+      <View style={[tailwind(''), {flex: 4}]}>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
           Prize Pool
         </Text>
@@ -39,21 +44,28 @@ const TopSection = () => {
         </Text>
       </View>
 
-      <View style={[tailwind('')]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-          Spots
-        </Text>
-        <Text style={[tailwind('font-bold text-dark-1 font-16 py-0.5')]}>
-          16,000
-        </Text>
+      <View style={[tailwind('flex-row  justify-center'), {flex: 4}]}>
+        <View>
+          <Text
+            style={[tailwind('font-regular text-center text-dark-1 font-14')]}>
+            Spots
+          </Text>
+          <Text style={[tailwind('font-bold text-dark-1 font-16 py-0.5')]}>
+            16,000
+          </Text>
+        </View>
       </View>
-      <View>
-        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-          Entry
-        </Text>
-        <Text style={[tailwind('font-bold text-dark-1 font-16 py-0.5')]}>
-          {'\u20B9'} 125
-        </Text>
+
+      <View style={[tailwind('flex-row justify-end'), {flex: 4}]}>
+        <View>
+          <Text
+            style={[tailwind('font-regular text-right text-dark-1 font-14')]}>
+            Entry
+          </Text>
+          <Text style={[tailwind('font-bold text-dark-1 font-16 py-0.5')]}>
+            {'\u20B9'} 125
+          </Text>
+        </View>
       </View>
     </View>
   );

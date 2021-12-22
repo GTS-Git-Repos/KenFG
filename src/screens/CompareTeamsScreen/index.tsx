@@ -18,6 +18,7 @@ import PlayerStats from './molecules/PlayersStats';
 import {Modalize} from 'react-native-modalize';
 import SelectTeamHeader from './atoms/SelectTeamHeader';
 import TopBarCompareTeam from './atoms/TopBarCompareTeam';
+import CompareTeamLoading from './atoms/CompareTeamLoading';
 
 const log = console.log;
 
@@ -29,7 +30,7 @@ export default function CompareTeamScreen() {
   const isScreenReady = useIsScreenReady();
 
   if (isScreenReady === false) {
-    return <FullScreenLoading title={'Compare Teams'} />;
+    return <CompareTeamLoading text={'Compare Teams'} />;
   }
 
   return (

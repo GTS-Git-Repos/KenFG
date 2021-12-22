@@ -22,6 +22,8 @@ interface PropTypes {
   up?: boolean;
   currentUser: boolean;
   hasStatus: boolean;
+  matchStarted: boolean;
+  navigate(matchStarted: boolean): any;
 }
 const PROFILEWIDTH = Dimensions.get('window').width / 2;
 const SUBTABWIDTH = PROFILEWIDTH / 2;
@@ -31,7 +33,7 @@ export default function HorizontalProfile(props: PropTypes) {
   return (
     <TouchableOpacity
       style={[tailwind('px-4 py-3 bg-dark-3 '), styles.root]}
-      onPress={() => navigation.navigate('CompareTeamsScreen')}>
+      onPress={() => props.navigate(props.matchStarted)}>
       <View style={[tailwind('flex-row items-center')]}>
         <View
           style={[
@@ -58,7 +60,10 @@ export default function HorizontalProfile(props: PropTypes) {
                 {props.name}
               </Text>
               <Text
-                style={[tailwind('bg-black text-dark-1 font-14 px-1 py-1')]}>
+                style={[
+                  tailwind('bg-black text-dark-1 font-14 px-1 py-0.5'),
+                  {borderRadius: 3},
+                ]}>
                 {props.teamCode}
               </Text>
             </View>

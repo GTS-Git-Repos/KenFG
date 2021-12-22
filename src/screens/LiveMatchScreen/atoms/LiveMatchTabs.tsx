@@ -64,7 +64,9 @@ const TabItem = ({tabName, active, index, onTabPressed}) => {
       <View style={[tailwind('pt-3')]}>
         <Text
           style={[
-            tailwind(`font-bold text-center font-14`),
+            tailwind(
+              `text-center font-14 ${active ? 'font-bold' : 'font-regular'}`,
+            ),
             {
               color: active ? '#FFFF' : '#8797B1',
               letterSpacing: 0.3,
@@ -90,6 +92,7 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,
+    borderTopWidth: 2,
   },
   activeBorder: {
     borderColor: '#BCA04D',
