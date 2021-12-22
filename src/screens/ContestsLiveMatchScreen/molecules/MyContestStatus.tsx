@@ -13,7 +13,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
-  text?: string;
+  breakUpSheet?: any;
 }
 
 export default function MyContestStatus(props: PropTypes) {
@@ -26,6 +26,7 @@ export default function MyContestStatus(props: PropTypes) {
       <TopSection />
       <ContestAttributes amount="10,000" />
       <JoinedTeamStatus selected={true} />
+
       <JoinedTeamStatus selected={false} />
       <JoinedTeamStatus selected={false} />
     </TouchableOpacity>
@@ -113,7 +114,7 @@ const JoinedTeamStatus = (props: any) => {
         <Text style={[tailwind('font-regular uppercase text-white font-14')]}>
           Team Name
         </Text>
-        <View style={[tailwind('py-1 mx-2 px-2 bg-dark-4')]}>
+        <View style={[tailwind('py-1 mx-2 px-2 bg-dark-4'), {borderRadius: 2}]}>
           <Text style={[tailwind('font-regular text-dark-1 font-12')]}>T1</Text>
         </View>
       </View>

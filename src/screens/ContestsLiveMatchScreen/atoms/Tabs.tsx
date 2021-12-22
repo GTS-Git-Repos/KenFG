@@ -17,13 +17,13 @@ export default function LiveMatchTabs(props: PropTypes) {
       showsHorizontalScrollIndicator={false}
       style={[tailwind('bg-dark-3')]}>
       <TabItem
-        tabName="My Contests"
+        tabName="My Contests (1)"
         index={0}
         active={0 === props.activeIndex}
         onTabPressed={props.onTabPressed}
       />
       <TabItem
-        tabName="My Teams"
+        tabName="My Teams(1)"
         index={1}
         active={1 === props.activeIndex}
         onTabPressed={props.onTabPressed}
@@ -48,7 +48,7 @@ const TabItem = ({tabName, active, index, onTabPressed}) => {
   return (
     <TouchableOpacity
       onPress={() => onTabPressed(index)}
-      style={[{width: 120}, tailwind('')]}>
+      style={[{width: 140}, tailwind('')]}>
       <View style={[tailwind('pt-3')]}>
         <Text
           style={[

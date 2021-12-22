@@ -74,7 +74,11 @@ export default function SignupScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <ScrollView contentContainerStyle={tailwind('py-9 bg-dark-3 px-4')}>
+      <ScrollView
+        contentContainerStyle={[
+          tailwind('py-9 bg-dark-3'),
+          {paddingHorizontal: 26},
+        ]}>
         <ScrollView>
           <View style={[tailwind('flex-row items-center justify-center')]}>
             <Image
@@ -107,7 +111,7 @@ export default function SignupScreen() {
               value={'98777'}
               style={[
                 tailwind('border-b font-bold text-light font-20'),
-                {borderColor: '#8797B1', height: 40},
+                {borderColor: '#8797B14D', height: 40},
               ]}
             />
           </View>
@@ -124,7 +128,7 @@ export default function SignupScreen() {
               onChangeText={e => setMobile(e)}
               style={[
                 tailwind('border-b font-bold text-light font-20'),
-                {borderColor: '#8797B1', height: 40},
+                {borderColor: '#8797B14D', height: 40},
               ]}
             />
             <Text style={[tailwind('font-regular font-12 text-dark-1 pt-2')]}>
@@ -174,7 +178,7 @@ const OR = () => {
 const FooterHint = (props: any) => {
   const navigation = useNavigation<any>();
   return (
-    <View style={[tailwind(' p-2 flex-row items-center justify-center')]}>
+    <View style={[tailwind('p-4 flex-row items-center justify-center')]}>
       <Text style={[tailwind('font-regular text-light font-15')]}>
         Already a user ?{' '}
       </Text>

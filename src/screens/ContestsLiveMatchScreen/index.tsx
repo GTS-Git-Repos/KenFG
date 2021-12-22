@@ -20,6 +20,8 @@ import CommentaryPage from '../LiveMatchScreen/molecules/CommentaryPage';
 import ScrollBoardPage from '../LiveMatchScreen/molecules/ScrollBoardPage';
 import ContestLiveMyTeamsPage from './molecules/ContestLiveMyTeamsPage';
 import LinearGradient from 'react-native-linear-gradient';
+import {Modalize} from 'react-native-modalize';
+import BreakupModalSheet from './molecules/BreakupModalSheet';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
@@ -27,6 +29,7 @@ const log = console.log;
 export default function ContestLiveMatchScreen() {
   const navigation = useNavigation<any>();
   const pagerRef = useRef<any>();
+  const breakUpSheet = useRef();
   const {width} = useWindowDimensions();
 
   const [selectedTab, setSelectedTab] = useState(0);
@@ -77,6 +80,16 @@ export default function ContestLiveMatchScreen() {
           <ScrollBoardPage index={3} activeIndex={selectedTab} />
         </View>
       </PagerView>
+
+      <Modalize
+        ref={breakUpSheet}
+        useNativeDriver={true}
+        modalTopOffset={100}
+        adjustToContentHeight={true}
+        // HeaderComponent={<FilterSheetTitle filterSheet={filterSheet} />}
+      >
+        <BreakupModalSheet />
+      </Modalize>
     </View>
   );
 }

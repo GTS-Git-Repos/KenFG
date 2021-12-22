@@ -11,7 +11,7 @@ interface PropTypes {
 
 export default function ContestInfoPageLoading(props: PropTypes) {
   return (
-    <View style={[tailwind('h-full bg-dark')]}>
+    <View style={[tailwind('h-full bg-dark-4')]}>
       <TopBar text={props.title} />
       <View style={[tailwind('py-4')]}>
         <ActivityIndicator size={'large'} color="#d1b45a" />

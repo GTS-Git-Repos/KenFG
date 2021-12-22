@@ -55,11 +55,11 @@ export default function CustomDrawer(props: any) {
           text="Leaderboard"
         />
         <Links
-          to="LeaderBoardScreen"
+          to="AchievementsScreen"
           icon={assets.joystick}
           text="Achievements"
         />
-        <Links to="LeaderBoardScreen" icon={assets.joystick} text="Affilated" />
+        <Links to="AffliatedScreen" icon={assets.joystick} text="Affilated" />
 
         <Links
           to="ProfileEditScreen"

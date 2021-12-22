@@ -34,7 +34,7 @@ export default function UpComingMatchesSlider(props: PropTypes) {
   }
 
   return (
-    <View style={[tailwind('flex-row flex-wrap')]}>
+    <View style={[tailwind('flex-row pt-1 px-1 flex-wrap')]}>
       {props.data.map((item: any) => {
         return (
           <View key={item.key} style={[tailwind('w-6/12')]}>

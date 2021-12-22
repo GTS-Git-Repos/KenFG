@@ -44,12 +44,12 @@ export default function LiveMatchScreen() {
   };
 
   if (isScreenReady === false) {
-    return <LiveMatchLoading title={'AUS vs ENG'} />;
+    return <LiveMatchLoading title={"ICC T20 World Cup Contest"} />;
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <LiveMatchTopBar text={'AUS vs ENG'} />
+      <LiveMatchTopBar text={"ICC T20 World Cup Contest"} />
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}

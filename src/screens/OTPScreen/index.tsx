@@ -72,7 +72,11 @@ export default function OTPScreen() {
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'OTP'} />
-      <View style={[tailwind('bg-dark-3 rounded px-3 py-6 py-7')]}>
+      <View
+        style={[
+          tailwind('bg-dark-3 rounded px-3 py-7'),
+          {paddingHorizontal: 26},
+        ]}>
         <View style={[tailwind('flex-row items-center justify-center')]}>
           <Image
             resizeMode="contain"
@@ -80,7 +84,10 @@ export default function OTPScreen() {
             style={[tailwind(''), {width: 91, height: 28}]}
           />
         </View>
-        <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center font-12 pt-4')]}>
+        <Text
+          style={[
+            tailwind('font-regular text-dark-1 pt-1 text-center font-12 pt-4'),
+          ]}>
           Your OTP is : {route?.params?.otp}
         </Text>
 

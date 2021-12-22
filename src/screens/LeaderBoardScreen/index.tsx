@@ -31,9 +31,9 @@ export default function LeaderBoardScreen() {
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={'Series LeaderBoard'} />
+      <TopBar text={'Daily LeaderBoard'} />
       <Tabs selectedTab={selectedTab} />
-      <SelectSeries />
+      {/* <SelectSeries /> */}
 
       <PagerView
         ref={pagerRef}
@@ -43,7 +43,10 @@ export default function LeaderBoardScreen() {
           <SeriesPage />
         </View>
         <View>
-          <WeeklyPage />
+          <SeriesPage />
+        </View>
+        <View>
+          <SeriesPage />
         </View>
       </PagerView>
     </View>

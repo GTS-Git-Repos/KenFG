@@ -17,6 +17,7 @@ import {resetDrawerNavigation} from '../../utils/resetNav';
 import {updateUserInfoAction} from '../../store/actions/userAction';
 import {decodeJwt} from '../../utils/formatters';
 import {useDispatch} from 'react-redux';
+import LinearGradient from 'react-native-linear-gradient';
 
 const log = console.log;
 
@@ -71,39 +72,46 @@ export default function CreateTeamScreen() {
   return (
     <View style={tailwind('h-full bg-dark-4')}>
       <TopBar text={'Tell us your Name'} />
-      <KeyboardAwareScrollView>
-        <View
-          style={[tailwind('pt-8 px-4 flex-col items-center justify-center')]}>
-          <Image
-            resizeMode="contain"
-            source={assets.winning_cup}
-            style={[{width: 40, height: 40}]}
-          />
-          <Text style={[tailwind('font-bold py-3 text-white font-18')]}>
-            You're all set to Play
-          </Text>
+      <LinearGradient
+        colors={['#172338', '#0D1320']}
+        style={[tailwind('px-3 pt-6 pb-3 bg-dark-3')]}>
+        <KeyboardAwareScrollView style={[tailwind('')]}>
+          <View
+            style={[
+              tailwind('pt-8 px-4 flex-col items-center justify-center'),
+              {paddingHorizontal: 26},
+            ]}>
+            <Image
+              resizeMode="contain"
+              source={assets.winning_cup}
+              style={[{width: 40, height: 40}]}
+            />
+            <Text style={[tailwind('font-bold py-3 text-white font-18')]}>
+              You're all set to Play
+            </Text>
 
-          <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-            Start your new innings with kenFg
-          </Text>
-          <Text style={[tailwind('font-regular py-3 text-dark-1 font-15')]}>
-            Tell us your Name
-          </Text>
+            <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+              Start your new innings with kenFg
+            </Text>
+            <Text style={[tailwind('font-regular py-3 text-dark-1 font-15')]}>
+              Tell us your Name
+            </Text>
 
-          <InputBox teamName={teamName} setTeamName={setTeamName} />
+            <InputBox teamName={teamName} setTeamName={setTeamName} />
 
-          <Text style={[tailwind('font-regular text-dark-1 py-3 font-13')]}>
-            Note: Full name is required to create your team
-          </Text>
-        </View>
+            <Text style={[tailwind('font-regular text-dark-1 py-3 font-13')]}>
+              Note: Full name is required to create your team
+            </Text>
+          </View>
 
-        <TouchableOpacity
-          activeOpacity={0.3}
-          onPress={onPressAction}
-          style={[tailwind('mx-4')]}>
-          <ButtonComponent text={'SAVE NAME'} />
-        </TouchableOpacity>
-      </KeyboardAwareScrollView>
+          <TouchableOpacity
+            activeOpacity={0.3}
+            onPress={onPressAction}
+            style={[tailwind('mx-4')]}>
+            <ButtonComponent text={'SAVE NAME'} />
+          </TouchableOpacity>
+        </KeyboardAwareScrollView>
+      </LinearGradient>
 
       {loading && <BlockScreenByLoading />}
     </View>
@@ -114,12 +122,12 @@ const InputBox = (props: any) => {
   return (
     <View
       style={[
-        tailwind('flex-row bg-dark-3 items-center'),
+        tailwind('flex-row items-center'),
         {
           borderTopColor: 'transparent',
           borderLeftColor: 'transparent',
           borderRightColor: 'transparent',
-          borderBottomColor: '#B2933D',
+          borderBottomColor: '#8797B14D',
           borderWidth: 1,
           borderStyle: 'solid',
         },
@@ -138,7 +146,8 @@ const InputBox = (props: any) => {
           style={[
             tailwind('font-regular flex-grow text-light'),
             {
-              height: 50,
+              borderColor: '#8797B14D',
+              height: 40,
             },
           ]}
         />

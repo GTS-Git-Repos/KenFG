@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import {View, Image, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 
@@ -18,11 +18,8 @@ export default function Tabs(props: PropTypes) {
             onPress={() => props.onTabPressed(index)}
             key={item}
             style={[
-              tailwind(
-                `py-4 ${
-                  props.active === index ? 'border-b-2 border-yellow-400' : ''
-                }`,
-              ),
+              tailwind(`py-4`),
+              props.active === index ? styles.activeTab : styles.tabContainer,
               {flex: 4},
             ]}>
             <Text
@@ -40,3 +37,20 @@ export default function Tabs(props: PropTypes) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  tabContainer: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderColor: '#172338',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+  activeTab: {
+    borderColor: '#BCA04D',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+});

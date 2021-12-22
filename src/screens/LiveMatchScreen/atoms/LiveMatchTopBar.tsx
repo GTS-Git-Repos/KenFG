@@ -33,7 +33,7 @@ export default function LiveMatchTopBar(props: Props) {
           </TouchableOpacity>
           <View style={[tailwind('px-2')]}>
             <Text style={[tailwind('font-bold text-brown-4 font-16')]}>
-              ICC T20 World Cup Contest
+              {props.text}
             </Text>
             <Text style={[tailwind('font-regular text-brown-4 font-11')]}>
               Entry {'\u20B9'} 0

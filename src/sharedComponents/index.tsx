@@ -39,6 +39,9 @@ import DollarIcon from './icons/DollarIcon';
 import TickIcon from './icons/TickIcon';
 import DownloadIcon from './icons/DownloadIcon';
 import StarIcon from './icons/StarIcon';
+import IdleLevel from './icons/IdleLevel';
+import TopArrowIcon from './icons/TopArrowIcon';
+import GoogleIcon from './icons/GoogleIcon';
 
 export {
   TopBar,
@@ -63,6 +66,7 @@ export {
   SwitchIcon,
   EditIcon,
   UserIcon,
+  TopArrowIcon,
   BackIcon,
   GearIcon,
   DownArrowIcon,
@@ -73,9 +77,11 @@ export {
   DownloadIcon,
   ShareIcon,
   ContestBellIcon,
+  GoogleIcon,
   TickIcon,
   CapWithVSIcon,
   CopyIcon,
+  IdleLevel,
   MaleIcon,
   DollarIcon,
   FemaleIcon,

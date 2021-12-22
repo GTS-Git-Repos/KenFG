@@ -16,10 +16,30 @@ export default function SeriesPage(props: PropTypes) {
   return (
     <ScrollView>
       <SeriesHeader />
-      <LeaderProfile />
-      <LeaderProfile />
-      <LeaderProfile />
-      <LeaderProfile />
+      <LeaderProfile
+        levelStatus={true}
+        isFirst={false}
+        isSecond={false}
+        isThird={false}
+      />
+      <LeaderProfile
+        levelStatus={null}
+        isFirst={true}
+        isSecond={false}
+        isThird={false}
+      />
+      <LeaderProfile
+        levelStatus={true}
+        isFirst={false}
+        isSecond={true}
+        isThird={false}
+      />
+      <LeaderProfile
+        levelStatus={false}
+        isFirst={false}
+        isSecond={false}
+        isThird={true}
+      />
     </ScrollView>
   );
 }

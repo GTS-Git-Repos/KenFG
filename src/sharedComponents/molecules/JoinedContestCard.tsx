@@ -31,7 +31,10 @@ export default function ContestCard(props: PropTypes) {
   const navigation = useNavigation<any>();
 
   return (
-    <View style={[tailwind('rounded bg-dark-3')]}>
+    <TouchableOpacity
+      activeOpacity={0.6}
+      onPress={() => navigation.navigate('ContestsLiveMatchScreen')}
+      style={[tailwind('rounded bg-dark-3')]}>
       <TopSection />
       <Footer />
       <View style={[tailwind('p-2')]}>
@@ -52,7 +55,7 @@ export default function ContestCard(props: PropTypes) {
         </View>
       </View>
       <ShareContest />
-    </View>
+    </TouchableOpacity>
   );
 }
 

@@ -135,12 +135,12 @@ const LobbyUserInfo = (props: any) => {
           ]}
         />
       </View>
-      <View style={[tailwind('w-11/12')]}>
+      <View style={[tailwind('w-8/12')]}>
         <Text
           numberOfLines={1}
           ellipsizeMode="tail"
-          style={[tailwind('font-regular text-light font-8')]}>
-          Hi, {props.name}
+          style={[tailwind('font-regular text-center text-light font-8')]}>
+          Hi, {props.name} wsef
         </Text>
       </View>
     </TouchableOpacity>

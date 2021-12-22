@@ -40,6 +40,9 @@ import MoreScreen from '../screens/MoreScreen';
 import InviteScreen from '../screens/InviteScreen';
 import ReferredFriendsListScreen from '../screens/ReferredFriendsListScreen';
 import UserGoalsScreen from '../screens/UserGoalsScreen';
+import LeaderProfileScreen from '../screens/LeaderProfileScreen';
+import AffliatedScreen from '../screens/AffliatedScreen';
+import AchievementsScreen from '../screens/AchievementsScreen';
 
 const RootNavigator = createStackNavigator();
 
@@ -161,9 +164,23 @@ export default function RootNavigation() {
             name="AccountProfileScreen"
           />
           <RootNavigator.Screen
+            component={AffliatedScreen}
+            name="AffliatedScreen"
+          />
+          <RootNavigator.Screen
+            component={AchievementsScreen}
+            name="AchievementsScreen"
+          />
+
+          <RootNavigator.Screen
             component={ContestInfoScreen}
             name="ContestInfoScreen"
           />
+          <RootNavigator.Screen
+            component={LeaderProfileScreen}
+            name="LeaderProfileScreen"
+          />
+
           <RootNavigator.Screen
             component={CreateTeamScreen}
             name="CreateTeamScreen"

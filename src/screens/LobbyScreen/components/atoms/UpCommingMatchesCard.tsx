@@ -48,7 +48,10 @@ export default function UpcommingMatches(props: PropTypes) {
         end={{x: 0.5, y: 0.0}}
         locations={[0.6, 0.5]}
         colors={['#172338', '#172338']}
-        style={[tailwind('bg-primary  border border-gray-800 rounded px-2')]}>
+        style={[
+          tailwind('bg-primary  border border-gray-800 rounded px-2'),
+          {paddingTop: 4},
+        ]}>
         <View style={[tailwind('flex-row items-center')]}>
           <View style={[tailwind(''), {flex: 9}]}>
             <Text
@@ -83,7 +86,7 @@ export default function UpcommingMatches(props: PropTypes) {
         <View
           style={[
             tailwind('flex flex-row justify-between py-0.5 items-center'),
-            {paddingHorizontal: 16},
+            {paddingHorizontal: 16, paddingTop: 6},
           ]}>
           <View style={[tailwind('')]}>
             {/* <Image

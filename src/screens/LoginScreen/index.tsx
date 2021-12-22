@@ -16,6 +16,7 @@ import {
   BlockScreenByLoading,
   ButtonComponent,
   SocialLogin,
+  Facebook,
 } from '../../sharedComponents';
 import assets from '../../constants/assets_manifest';
 import {useMutation} from 'react-query';
@@ -67,7 +68,11 @@ export default function LoginScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <ScrollView contentContainerStyle={tailwind('py-9 bg-dark-3 px-4')}>
+      <ScrollView
+        contentContainerStyle={[
+          tailwind('py-9 bg-dark-3'),
+          {paddingHorizontal: 26},
+        ]}>
         <ScrollView>
           <View style={[tailwind('flex-row items-center justify-center')]}>
             <Image
@@ -99,7 +104,7 @@ export default function LoginScreen() {
               keyboardType="decimal-pad"
               style={[
                 tailwind('border-b font-bold text-light font-16'),
-                {borderColor: '#8797B1', height: 40},
+                {borderColor: '#8797B14D', height: 40},
               ]}
             />
           </View>

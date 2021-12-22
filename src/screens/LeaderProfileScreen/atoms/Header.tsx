@@ -8,16 +8,15 @@ interface PropTypes {
   text?: string;
 }
 
-export default function SeriesHeader(props: PropTypes) {
+export default function Header(props: PropTypes) {
   return (
     <View
       style={[
-        tailwind(
-          'flex-row items-center px-6 py-2 bg-dark-3 justify-between border-b border-gray-700',
-        ),
+        tailwind('px-3 py-2 flex-row items-center justify-between'),
+        {backgroundColor: '#3A2B13'},
       ]}>
-      <Text style={[tailwind('font-bold font-12 text-white')]}>TEAM</Text>
-      <Text style={[tailwind('font-bold font-12 text-white')]}>RANK</Text>
+      <Text style={[tailwind('font-bold text-white font-12')]}>MATCHES</Text>
+      <Text style={[tailwind('font-bold text-white font-12')]}>POINTS</Text>
     </View>
   );
 }

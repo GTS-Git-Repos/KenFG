@@ -6,6 +6,7 @@ import {
   Image,
   useWindowDimensions,
   Text,
+  ToastAndroid,
 } from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import Swiper from 'react-native-swiper';
@@ -30,7 +31,17 @@ const ImageSlider = (props: any) => {
   };
 
   const navigate = (item: any) => {
-    return 0;
+    ToastAndroid.show('Navigation Disabled ', ToastAndroid.SHORT);
+    // dispatch(updateSelectedContestAction(null));
+    // dispatch(
+    //   updateSelectedMatchAction({
+    //     match_key: props.match_key,
+    //     team_a: props.team_a_name,
+    //     team_b: props.team_b_name,
+    //   }),
+    // );
+
+    // navigation.navigate('ContestListScreen');
   };
 
   if (!props.data) {
@@ -58,11 +69,7 @@ const ImageSlider = (props: any) => {
             onLayout={calcHeight}
             key={item.banner_key}
             activeOpacity={0.7}
-            // onPress={() =>
-            //   navigation.navigate('ContestListScreen', {
-            //     match_key: item.match_key,
-            //   })
-            // }
+            onPress={navigate}
             style={[tailwind('flex-row mx-5 justify-center items-center')]}>
             <FastImage
               fallback={true}

@@ -42,7 +42,7 @@ export default function InitialScreen() {
 
   return (
     <View
-      style={tailwind('h-full bg-dark flex-col items-center justify-center')}>
+      style={tailwind('h-full bg-dark-4 flex-col items-center justify-center')}>
       <View style={[tailwind('')]}>
         <Image
           resizeMode="contain"
