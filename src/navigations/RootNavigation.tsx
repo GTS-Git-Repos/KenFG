@@ -31,6 +31,7 @@ import TransactionListScreen from '../screens/TransactionListScreen';
 import VerifyAccountScreen from '../screens/VerifyAccountScreen';
 import ManagePaymentsScreen from '../screens/ManagePaymentsScreen';
 import ContestsLiveMatchScreen from '../screens/ContestsLiveMatchScreen';
+import CompletedMatchScreen from '../screens/CompletedMatchScreen';
 
 import TeamsListScreen from '../screens/TeamsListScreen';
 
@@ -147,6 +148,10 @@ export default function RootNavigation() {
           <RootNavigator.Screen
             component={ManagePaymentsScreen}
             name="ManagePaymentsScreen"
+          />
+          <RootNavigator.Screen
+            component={CompletedMatchScreen}
+            name="CompletedMatchScreen"
           />
 
           <RootNavigator.Screen

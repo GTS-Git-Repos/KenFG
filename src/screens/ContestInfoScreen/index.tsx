@@ -27,6 +27,7 @@ import WinningsList from './molecules/WiningsList';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import {useSelector} from 'react-redux';
 import ContestInfoPageLoading from './atoms/ContestInfoPageLoading';
+import PagerView from 'react-native-pager-view';
 
 export default function ContestInfoScreen() {
   const navigation = useNavigation<any>();
@@ -35,6 +36,9 @@ export default function ContestInfoScreen() {
   const tabOffset = useSharedValue<any>(0);
   const scrollRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
+  const pageRef = useRef(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const selectedMatchState: any = useSelector<any>(
     state => state.app.selected_match,
@@ -58,6 +62,14 @@ export default function ContestInfoScreen() {
 
   const onScrollAction = (e: any) => {
     tabOffset.value = e.nativeEvent.contentOffset.x;
+  };
+
+  const onPageSelectedAction = (e: any) => {
+    setActiveIndex(e.nativeEvent.position);
+  };
+
+  const onTabPressed = (index: number) => {
+    pageRef.current?.setPage(index);
   };
 
   const onTabPress = (index: number) => {
@@ -100,11 +112,29 @@ export default function ContestInfoScreen() {
         />
       </View>
       <TabsContestInfo
+        activeIndex={activeIndex}
+        onTabPressed={onTabPressed}
         tabOffset={tabOffset}
         tabs={['Winnings', 'LeaderBoard']}
         onTabPress={onTabPress}
       />
-      <Animated.ScrollView
+
+      <PagerView
+        ref={pageRef}
+        onPageSelected={onPageSelectedAction}
+        style={{flex: 1}}>
+        <View>
+          <WinningsList
+            index={0}
+            activeIndex={activeIndex}
+            data={contest.data.prize.winnings}
+          />
+        </View>
+        <View>
+          <LearderBoard index={1} activeIndex={activeIndex} />
+        </View>
+      </PagerView>
+      {/* <Animated.ScrollView
         ref={scrollRef}
         onScroll={onScrollAction}
         horizontal={true}
@@ -118,7 +148,7 @@ export default function ContestInfoScreen() {
         scrollEventThrottle={16}>
         <WinningsList data={contest.data.prize.winnings} />
         <LearderBoard />
-      </Animated.ScrollView>
+      </Animated.ScrollView> */}
       <View
         style={[
           tailwind(

@@ -10,7 +10,7 @@ interface PropTypes {
 
 export default function Date(props: PropTypes) {
   return (
-    <View style={[tailwind(''),{paddingVertical:10,paddingHorizontal:16}]}>
+    <View style={[tailwind(''), {paddingVertical: 10, paddingHorizontal: 16}]}>
       <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
         {props.date}
       </Text>

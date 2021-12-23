@@ -17,11 +17,6 @@ export default function ContestLiveMyTeamsPage(props: PropTypes) {
         // key={item.teams_key}
         canModify={false}
       />
-      <TeamsCard
-        teams_key={'t1'}
-        // key={item.teams_key}
-        canModify={false}
-      />
 
       <View style={[tailwind('h-10')]}></View>
     </ScrollView>

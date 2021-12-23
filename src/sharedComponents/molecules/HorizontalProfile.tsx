@@ -59,13 +59,24 @@ export default function HorizontalProfile(props: PropTypes) {
                 style={[tailwind('font-regular flex-1 text-gray-200 font-14')]}>
                 {props.name}
               </Text>
-              <Text
+
+              <View
+                style={[
+                  tailwind('py-0.5 mr-1 mb-1 bg-dark-4'),
+                  {borderRadius: 2, paddingHorizontal: 6},
+                ]}>
+                <Text style={[tailwind('font-regular text-white font-12')]}>
+                  {props.teamCode}
+                </Text>
+              </View>
+
+              {/* <Text
                 style={[
                   tailwind('bg-black text-dark-1 font-14 px-1 py-0.5'),
                   {borderRadius: 3},
                 ]}>
-                {props.teamCode}
-              </Text>
+               
+              </Text> */}
             </View>
           </View>
         </View>

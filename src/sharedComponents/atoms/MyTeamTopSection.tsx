@@ -17,11 +17,11 @@ export default function MyTeamsTopSection(props: PropTypes) {
     <View
       style={[
         tailwind(
-          `flex-row items-center ${
+          `flex-row items-center px-2 ${
             props.canModify ? 'justify-between' : 'justify-center'
           }`,
         ),
-        {backgroundColor: 'rgba(0,0,0,0.3)'},
+        {backgroundColor: 'rgba(0,0,0,0.2)'},
       ]}>
       <View style={[tailwind('flex-row items-center')]}>
         <Text
@@ -35,7 +35,7 @@ export default function MyTeamsTopSection(props: PropTypes) {
         </Text>
       </View>
       {props.canModify && (
-        <View style={[tailwind('flex-row items-center px-2')]}>
+        <View style={[tailwind('flex-row items-center')]}>
           <TouchableOpacity onPress={() => {}} style={[tailwind('px-2')]}>
             {/* <CopyIcon /> */}
           </TouchableOpacity>

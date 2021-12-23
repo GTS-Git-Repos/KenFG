@@ -71,8 +71,8 @@ export default function ContestCard(props: PropTypes) {
         {/* Progress bar */}
         <View
           style={[
-            tailwind('w-full bg-dark-1 rounded'),
-            {height: PROGRESS_BAR_HEIGHT},
+            tailwind('w-full rounded'),
+            {height: PROGRESS_BAR_HEIGHT, backgroundColor: '#8797B14D'},
           ]}>
           <View
             style={[

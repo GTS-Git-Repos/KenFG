@@ -54,6 +54,7 @@ const ImageSlider = (props: any) => {
       showsButtons={false}
       autoplay={true}
       showsPagination={false}
+      removeClippedSubviews={false}
       // loadMinimal={true}
       // loadMinimalSize={2}
       // autoplayTimeout={2}

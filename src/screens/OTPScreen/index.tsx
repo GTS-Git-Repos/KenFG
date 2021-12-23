@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image, Button} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {
@@ -70,6 +70,42 @@ export default function OTPScreen() {
   }, []);
 
   return (
+    <View style={[tailwind('h-full bg-dark')]}>
+      <TopBar text={'OTP'} />
+      <View style={[tailwind('bg-dark-3'), {paddingHorizontal: 36}]}>
+        <View style={[tailwind(''), {paddingVertical: 60}]}>
+          <View>
+            <Text
+              style={[
+                tailwind('font-bold text-light text-center'),
+                {fontSize: 24},
+              ]}>
+              Verification Code
+            </Text>
+            <Text
+              style={[
+                tailwind('font-regular text-dark-1 pt-1 mx-4 text-center'),
+              ]}>
+              We have sent the verification code to your mobile number (
+              {route?.params?.otp})
+            </Text>
+
+            {/* OTP Input */}
+            <View style={[tailwind('py-10')]}>
+              <OTPInput value={otp} onChangeText={setOTP} />
+            </View>
+
+            <TouchableOpacity onPress={onPressAction}>
+              <ButtonComponent text={'SUBMIT'} />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+      {loading && <BlockScreenByLoading />}
+    </View>
+  );
+
+  return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'OTP'} />
       <View
@@ -78,11 +114,19 @@ export default function OTPScreen() {
           {paddingHorizontal: 26},
         ]}>
         <View style={[tailwind('flex-row items-center justify-center')]}>
-          <Image
-            resizeMode="contain"
-            source={assets.logo_new}
-            style={[tailwind(''), {width: 91, height: 28}]}
-          />
+          <View>
+            <Text
+              style={[
+                tailwind('font-bold text-light pt-9 text-center'),
+                {fontSize: 24},
+              ]}>
+              Verification Code
+            </Text>
+            <Text
+              style={[tailwind('font-regular text-dark-1 pt-1 text-center')]}>
+              We have sent the verification code to your mobile number
+            </Text>
+          </View>
         </View>
         <Text
           style={[
@@ -109,8 +153,6 @@ export default function OTPScreen() {
         did't receive an OTP ?{' '}
         <Text style={[tailwind('text-green-500 underline')]}>Resend</Text>
       </Text>
-
-      {loading && <BlockScreenByLoading />}
     </View>
   );
 }

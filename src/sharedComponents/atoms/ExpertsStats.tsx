@@ -9,7 +9,7 @@ interface PropTypes {
 
 export default function ExpertStats(props: PropTypes) {
   return (
-    <View style={[tailwind('pt-5 pb-1 flex-row items-center justify-between')]}>
+    <View style={[tailwind('pt-3 flex-row items-center justify-between')]}>
       <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
         For expert comment & stats
       </Text>

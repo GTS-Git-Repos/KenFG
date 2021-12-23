@@ -29,9 +29,7 @@ export default function TopConditions(props: PropTypes) {
             style={[tailwind(''), {width: 20, height: 20}]}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={[tailwind('px-2')]}>
-          <DownArrowIcon />
-        </TouchableOpacity>
+       
       </View>
     </View>
   );

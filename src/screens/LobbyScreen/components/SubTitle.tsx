@@ -10,7 +10,7 @@ interface PropTypes {
 
 export default function SubTitle(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center justify-between')]}>
+    <View style={[tailwind('flex-row items-center justify-between ')]}>
       <Text
         style={[
           tailwind('font-bold uppercase font-12'),

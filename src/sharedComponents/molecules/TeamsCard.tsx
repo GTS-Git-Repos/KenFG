@@ -13,6 +13,7 @@ import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
 import MyTeamsTopSection from '../atoms/MyTeamTopSection';
 import Svg, {Path, Rect} from 'react-native-svg';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   teams_key: string;
@@ -31,7 +32,7 @@ export default function TeamsCard(props: PropTypes) {
     <TouchableOpacity
       activeOpacity={0.7}
       // onPress={() => navigation.navigate('MatchGroundScreen')}
-      style={[tailwind('ml-4 my-2 rounded-lg'), {width: CARDWIDTH / 1.2}]}>
+      style={[tailwind(' my-2 mt-1 rounded-lg')]}>
       <ImageBackground
         imageStyle={{borderTopLeftRadius: 5, borderTopRightRadius: 5}}
         style={[tailwind('w-full')]}
@@ -50,7 +51,7 @@ export default function TeamsCard(props: PropTypes) {
               tailwind('flex-row justify-around items-center'),
               {flex: 6},
             ]}>
-            <PlayerProfile cap={true} name="Player 1" />
+            <PlayerProfile cap={true} index={true} name="Player 1" />
             <PlayerProfile cap={false} name="Player 2" />
           </View>
 
@@ -79,7 +80,7 @@ const TeamCountInfo = (props: TeamContInfoTypes) => {
             'font-bold bg-gray-100 rounded px-2 text-center  py-1 text-light font-20',
           ),
           {
-            backgroundColor: 'rgba(0,0,0,0.3)',
+            backgroundColor: 'rgba(0,0,0,0.2)',
           },
         ]}>
         {props.count}
@@ -100,7 +101,7 @@ const PlayerProfile = (props: any) => {
           source={assets.player}
           style={[tailwind(''), {width: 55, height: 50}]}
         />
-        <PlayerName name={props.name} />
+        <PlayerName name={props.name} index={props.index} />
       </View>
     </View>
   );
@@ -108,14 +109,18 @@ const PlayerProfile = (props: any) => {
 
 const PlayerName = (props: any) => {
   return (
-    <View style={[tailwind('bg-blue-500'), {padding: 2, borderRadius: 3}]}>
+    <LinearGradient
+      start={{x: 0, y: 0}}
+      end={{x: 1, y: 0}}
+      colors={props.index ? ['#254987', '#172338'] : ['#172338', '#6C221E']}
+      style={[tailwind('bg-blue-500'), {padding: 2, borderRadius: 2}]}>
       <Text
         allowFontScaling={true}
         adjustsFontSizeToFit={true}
         style={[tailwind('font-regular text-center text-white font-9')]}>
         {props.name}
       </Text>
-    </View>
+    </LinearGradient>
   );
 };
 

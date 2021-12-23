@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 
 import ContestListScreen from '../screens/ContestListScreen';
 import ContestInfoScreen from '../screens/ContestInfoScreen';
@@ -14,7 +14,6 @@ import TransactionListScreen from '../screens/TransactionListScreen';
 import SignupScreen from '../screens/SignupScreen';
 import FantasyTeamNameScreen from '../screens/FantasyTeamNameScreen';
 
-
 import CreateTeamScreen from '../screens/CreateTeamScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
 
@@ -22,14 +21,18 @@ import LoginScreen from '../screens/LoginScreen';
 import OTPScreen from '../screens/OTPScreen';
 
 import MyMatchesScreen from '../screens/MyMatchesScreen';
+import {CardStyleInterpolators} from '@react-navigation/stack';
 
-const StackConfig = {headerShown: false};
+const StackConfig = {
+  headerShown: false,
+  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+};
 
-const HomeStack = createNativeStackNavigator();
-const ContestStack = createNativeStackNavigator();
-const MyMatch = createNativeStackNavigator();
-const MatchStack = createNativeStackNavigator();
-const AuthStack = createNativeStackNavigator();
+const HomeStack = createStackNavigator();
+const ContestStack = createStackNavigator();
+const MyMatch = createStackNavigator();
+const MatchStack = createStackNavigator();
+const AuthStack = createStackNavigator();
 
 export function Home(props: any) {
   return (

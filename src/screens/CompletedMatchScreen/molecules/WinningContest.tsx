@@ -6,29 +6,25 @@ import assets from '../../../constants/assets_manifest';
 import {
   CupIcon,
   DollarIcon,
-  DownArrowIcon,
+  GoldenCup,
   RankIcon,
   TickIcon,
-} from '../../../sharedComponents/';
-import {useNavigation} from '@react-navigation/native';
+} from '../../../sharedComponents';
+import {} from 'react-native-gesture-handler';
 
 interface PropTypes {
-  breakUpSheet?: any;
+  openPrizeBreakSheet: any;
 }
 
-export default function MyContestStatus(props: PropTypes) {
-  const navigation = useNavigation<any>();
+export default function WinningContest(props: PropTypes) {
   return (
     <TouchableOpacity
-      activeOpacity={0.6}
-      onPress={() => navigation.navigate('LiveMatchScreen')}
-      style={[tailwind('bg-dark-3 rounded m-2')]}>
+      onPress={props.openPrizeBreakSheet}
+      style={[tailwind('mx-2 my-3 bg-dark-3'), {borderRadius: 7}]}>
       <TopSection />
-      <ContestAttributes amount="10,000" />
-      <JoinedTeamStatus selected={true} />
-
-      <JoinedTeamStatus selected={false} />
-      <JoinedTeamStatus selected={false} />
+      <Footer />
+      <JoinedTeamStatus />
+      <YouWon />
     </TouchableOpacity>
   );
 }
@@ -47,8 +43,7 @@ const TopSection = () => {
 
       <View style={[tailwind('flex-row  justify-center'), {flex: 4}]}>
         <View>
-          <Text
-            style={[tailwind('font-regular text-center text-dark-1 font-14')]}>
+          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
             Spots
           </Text>
           <Text style={[tailwind('font-bold text-dark-1 font-16 py-0.5')]}>
@@ -72,32 +67,33 @@ const TopSection = () => {
   );
 };
 
-const ContestAttributes = (props: any) => {
+const Footer = () => {
   return (
-    <View
-      style={[
-        tailwind('flex-row items-center justify-between px-3 py-2'),
-        {backgroundColor: '#121C2F'},
-      ]}>
-      <View style={[tailwind('flex-row items-center')]}>
+    <View style={[tailwind('p-3 rounded-b'), {backgroundColor: '#121D2E'}]}>
+      <View style={[tailwind('flex-row justify-between items-center')]}>
         <View style={[tailwind('flex-row items-center')]}>
-          <DollarIcon />
-          <Text style={[tailwind('font-regular text-dark-1 px-1 font-12')]}>
-            {'\u20B9'} {props.amount}
+          <View style={[tailwind('flex-row items-center')]}>
+            <DollarIcon />
+            <Text style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
+              {'\u20B9 '}
+              20
+            </Text>
+          </View>
+
+          <View style={[tailwind('flex-row px-1 items-center')]}>
+            <CupIcon />
+            <Text style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
+              50%
+            </Text>
+          </View>
+        </View>
+
+        <View style={[tailwind('flex-row items-center')]}>
+          <TickIcon />
+          <Text style={[tailwind('font-regular text-dark-1 pl-2    font-13')]}>
+            Gauranteed
           </Text>
         </View>
-        <View style={[tailwind('flex-row items-center px-2')]}>
-          <CupIcon />
-          <Text style={[tailwind('font-regular text-dark-1 px-1 font-12')]}>
-            60%
-          </Text>
-        </View>
-      </View>
-      <View style={[tailwind('flex-row items-center')]}>
-        <Text style={[tailwind('font-regular pr-1 text-dark-1 font-12')]}>
-          Gauranteed
-        </Text>
-        <TickIcon />
       </View>
     </View>
   );
@@ -107,10 +103,10 @@ const JoinedTeamStatus = (props: any) => {
   return (
     <View
       style={[
-        tailwind('flex-row p-3 items-center'),
+        tailwind('flex-row p-3 justify-between items-center'),
         {backgroundColor: props.selected ? '#006A4D' : ''},
       ]}>
-      <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
+      <View style={[tailwind('flex-row items-center')]}>
         <Text style={[tailwind('font-regular uppercase text-white font-14')]}>
           Team Name
         </Text>
@@ -118,16 +114,34 @@ const JoinedTeamStatus = (props: any) => {
           <Text style={[tailwind('font-regular text-dark-1 font-12')]}>T1</Text>
         </View>
       </View>
-      <View style={[tailwind('flex-row items-center justify-end'), {flex: 6}]}>
+
+      <View>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>50</Text>
+      </View>
+
+      <View style={[tailwind('flex-row items-center justify-end')]}>
         <View style={[tailwind('flex-row px-2 items-center')]}>
           <RankIcon golden={false} />
           <Text style={[tailwind('font-bold px-1 text-white font-15')]}>
             10
           </Text>
         </View>
-        <DownArrowIcon />
       </View>
+    </View>
+  );
+};
+
+const YouWon = () => {
+  return (
+    <View
+      style={[
+        tailwind('flex-row items-center bg-green p-3'),
+        {borderBottomLeftRadius: 7, borderBottomRightRadius: 7},
+      ]}>
+      <GoldenCup />
+      <Text style={[tailwind('font-bold px-2 text-white font-12')]}>
+        You Won !
+      </Text>
     </View>
   );
 };

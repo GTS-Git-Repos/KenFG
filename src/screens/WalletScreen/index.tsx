@@ -50,7 +50,11 @@ export default function WalletScreen() {
         modalTopOffset={100}
         adjustToContentHeight={true}
         disableScrollIfPossible={false}
-        closeOnOverlayTap={true}>
+        closeOnOverlayTap={true}
+        // HeaderComponent={() => (
+        //   <View style={[tailwind('bg-red-500 py-2')]}></View>
+        // )}
+      >
         <View style={[tailwind('')]}>
           <AddMoneySheet />
         </View>

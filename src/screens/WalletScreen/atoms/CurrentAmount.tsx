@@ -15,7 +15,7 @@ export default function CurrentAmount(props: PropTypes) {
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       colors={['#BCA04D', '#D8C872']}>
-      <View style={[tailwind('py-4 flex-row items-center justify-between')]}>
+      <View style={[tailwind('py-4 flex-row  items-center justify-between')]}>
         <View style={[tailwind('flex-row mx-3 items-center')]}>
           <Image
             resizeMode="contain"
@@ -23,14 +23,16 @@ export default function CurrentAmount(props: PropTypes) {
             style={[tailwind(''), , {width: 30, height: 30}]}
           />
           <Text
-            style={[tailwind('font-bold px-3 uppercase text-brown-5 font-13')]}>
+            style={[
+              tailwind('font-bold px-3 uppercase text-brown-5  font-13'),
+            ]}>
             Current Balance
           </Text>
         </View>
 
         <Text
           style={[
-            tailwind('font-bold px-3 uppercase text-brown-5  font-18 px-4'),
+            tailwind('font-bold px-3 uppercase text-brown-5 font-18 px-4'),
           ]}>
           {'\u20B9'} {props.amount}
         </Text>

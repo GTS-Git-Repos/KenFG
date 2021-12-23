@@ -82,7 +82,12 @@ export default function Player(props: PropTypes) {
                 ]}></View>
               <Text
                 numberOfLines={1}
-                style={[tailwind('font-regular text-secondary font-9')]}>
+                style={[
+                  tailwind('font-regular font-9'),
+                  {
+                    color: '#B2933D',
+                  },
+                ]}>
                 Played Last Match
               </Text>
             </View>
@@ -117,8 +122,8 @@ export default function Player(props: PropTypes) {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         style={[tailwind('')]}
-        colors={['#172338', '#FFFFFF', '#172338']}>
-        <View style={[tailwind(''), {height: 0.4}]}></View>
+        colors={['#172338B3', '#FFFFFF4D', '#172338B3']}>
+        <View style={[tailwind(''), {height: 0.5}]}></View>
       </LinearGradient>
     </View>
   );

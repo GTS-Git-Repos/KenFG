@@ -1,7 +1,8 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {DownArrowIcon} from '../../../sharedComponents';
 
 interface PropTypes {
   text?: string;
@@ -27,15 +28,16 @@ export default function SortTabs(props: PropTypes) {
           POINTS
         </Text>
       </View>
-      <View style={[{flex: 2}]}>
+      <View style={[tailwind('flex-row items-center pl-2'), {flex: 2}]}>
         <Text
           style={[
-            tailwind(
-              'font-bold font-12 text-center px-2 text-dark-1 uppercase',
-            ),
+            tailwind('font-bold font-12 text-center  text-dark-1 uppercase'),
           ]}>
           CREDITS
         </Text>
+        <TouchableOpacity style={[tailwind('pl-2')]}>
+          <DownArrowIcon />
+        </TouchableOpacity>
       </View>
     </View>
   );

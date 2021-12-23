@@ -10,7 +10,7 @@ export default function BottomLine() {
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       style={[tailwind('')]}
-      colors={['#172338', '#8797B1', '#172338']}>
+      colors={['#172338', '#204B9180', '#172338']}>
       <View style={[tailwind(''), {height: 1}]}></View>
     </LinearGradient>
   );

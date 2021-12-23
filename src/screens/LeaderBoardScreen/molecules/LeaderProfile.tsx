@@ -61,8 +61,7 @@ export default function LeaderProfile(props: PropTypes) {
         </View>
       </View>
 
-      <View
-        style={[tailwind('flex-row items-center justify-between'), {flex: 3}]}>
+      <View style={[tailwind('flex-row items-center justify-end'), {flex: 4}]}>
         {props.isFirst && (
           <Image
             resizeMode="contain"
@@ -87,16 +86,27 @@ export default function LeaderProfile(props: PropTypes) {
         {!props.isFirst && !props.isSecond && !props.isThird && (
           <View style={[tailwind('flex-row items-center')]}>
             <RankIcon golden={true} />
-            <Text
-              style={[tailwind('font-regular text-white font-14 pl-1 pr-4')]}>
+            <Text style={[tailwind('font-regular text-white font-14 pl-1')]}>
               10
             </Text>
           </View>
         )}
 
-        {props.levelStatus == null && <IdleLevel />}
-        {props.levelStatus === true && <TopArrowIcon />}
-        {props.levelStatus === false && <DownArrowIcon />}
+        {props.levelStatus == null && (
+          <View style={[tailwind('px-0')]}>
+            <IdleLevel />
+          </View>
+        )}
+        {props.levelStatus === true && (
+          <View style={[tailwind('px-0.5')]}>
+            <TopArrowIcon />
+          </View>
+        )}
+        {props.levelStatus === false && (
+          <View style={[tailwind('px-1')]}>
+            <DownArrowIcon />
+          </View>
+        )}
       </View>
     </TouchableOpacity>
   );

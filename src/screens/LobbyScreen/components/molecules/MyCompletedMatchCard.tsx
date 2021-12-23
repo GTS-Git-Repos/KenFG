@@ -1,12 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {
-  View,
-  Image,
-  TouchableOpacity,
-  Text,
-  useWindowDimensions,
-} from 'react-native';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TopSection from '../../components/atoms/MyMatches/TopSection';
 import Teams from '../../components/atoms/MyMatches/Teams';
@@ -16,11 +10,8 @@ interface PropTypes {
   text?: string;
 }
 
-export default function NewMyMatchesCard(props: PropTypes) {
+export default function MyCompletedMatchCard(props: PropTypes) {
   const navigation = useNavigation<any>();
-
-  const {width} = useWindowDimensions();
-
   return (
     <TouchableOpacity
       activeOpacity={0.6}

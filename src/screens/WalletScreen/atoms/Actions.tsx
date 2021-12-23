@@ -21,19 +21,14 @@ export default function Actions(props: PropTypes) {
       // start={{x: 0, y: 0}}
       // end={{x: 1, y: 0}}
       // colors={['#172338', '#0D1320']}
-      style={[
-        tailwind(
-          'm-2 rounded bg-dark-3 border border-gray-600 flex-col justify-center',
-        ),
-      ]}
+      style={[tailwind('mx-2 my-1 rounded bg-dark-3 flex-col justify-center')]}
       // colors={['#1C2B46', '#172338']}
     >
       <TouchableOpacity
         onPress={() => navigation.navigate(props.goto)}
         style={[tailwind('flex-row items-center  justify-between p-4')]}>
         <View>
-          <Text
-            style={[tailwind('font-bold uppercase text-dark-1 px-3 font-14')]}>
+          <Text style={[tailwind('font-bold text-white px-3 font-14')]}>
             {props.text}
           </Text>
           {props.subText && (

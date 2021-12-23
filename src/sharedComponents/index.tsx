@@ -42,6 +42,9 @@ import StarIcon from './icons/StarIcon';
 import IdleLevel from './icons/IdleLevel';
 import TopArrowIcon from './icons/TopArrowIcon';
 import GoogleIcon from './icons/GoogleIcon';
+import CIcon from './icons/CIcon';
+import VCIcon from './icons/VCIcon';
+import GoldenCup from './icons/GoldenCup';
 
 export {
   TopBar,
@@ -68,12 +71,15 @@ export {
   UserIcon,
   TopArrowIcon,
   BackIcon,
+  GoldenCup,
   GearIcon,
   DownArrowIcon,
   RankIcon,
   StarIcon,
   CupIcon,
   MIcon,
+  CIcon,
+  VCIcon,
   DownloadIcon,
   ShareIcon,
   ContestBellIcon,

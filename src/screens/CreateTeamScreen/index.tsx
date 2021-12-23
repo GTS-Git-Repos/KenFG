@@ -179,8 +179,8 @@ export default function CreateTeamScreen() {
       <TopBarCreateTeam />
       <LinearGradient colors={['#172338', '#0D1320']}>
         <LinearGradient
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 0}}
+          // start={{x: 0, y: 0}}
+          // end={{x: 1, y: 0}}
           colors={['#172338', '#0D1320']}>
           <MatchStatus text={'MAX 7 PLAYERS FROM A TEAM'} />
           <Line />

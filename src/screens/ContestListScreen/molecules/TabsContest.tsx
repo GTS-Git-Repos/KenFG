@@ -17,6 +17,8 @@ interface PropTypes {
 }
 
 export default function Tabs(props: PropTypes) {
+  log(props.teamsCount);
+
   return (
     <View style={[tailwind('flex-row bg-dark-3 items-center')]}>
       <TouchableOpacity
@@ -70,7 +72,8 @@ export default function Tabs(props: PropTypes) {
               }`,
             ),
           ]}>
-          My Teams ({props?.teamsCount?.length})
+          {/* {props.teamsCount ? 'My Teams (1)' : 'My Teams (0)'} */}
+          My Teams (1)
         </Text>
       </TouchableOpacity>
     </View>

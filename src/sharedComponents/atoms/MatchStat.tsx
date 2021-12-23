@@ -42,14 +42,16 @@ export default function MatchStat(props: PropTypes) {
 
 const LiveIndicator = () => {
   return (
-    <View style={[tailwind('flex-row justify-center items-center'), {flex: 2}]}>
+    <View
+      style={[tailwind('flex-row justify-center items-center'), {flex: 2.5}]}>
       <View
         style={[
           tailwind('rounded-full'),
-          {backgroundColor: '#EB5757', width: 6, height: 6},
+          {backgroundColor: '#006A4D', width: 6, height: 6},
         ]}></View>
-      <Text style={[tailwind('font-bold uppercase text-red-400 font-13 px-1')]}>
-        LIVE
+      <Text
+        style={[tailwind('font-regular uppercase text-white font-11 px-1')]}>
+        COMPLETED
       </Text>
     </View>
   );

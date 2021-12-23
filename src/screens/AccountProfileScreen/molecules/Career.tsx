@@ -23,7 +23,13 @@ export default function Career(props: PropTypes) {
           <MatchStat index={2} text="Contests" value="3,324" />
         </View>
       </View>
-      <View style={[tailwind('bg-dark-3'), {padding: 4}]}>
+      <View
+        style={[
+          tailwind('bg-dark-3'),
+          
+          {padding: 4},
+          {backgroundColor: '#121D2E'},
+        ]}>
         <Text
           style={[tailwind('font-regular text-dark-1 text-center font-13')]}>
           You have been testing your skill in Kenfg since Mar 2011

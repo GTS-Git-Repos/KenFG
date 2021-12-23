@@ -44,12 +44,12 @@ export default function LiveMatchScreen() {
   };
 
   if (isScreenReady === false) {
-    return <LiveMatchLoading title={"ICC T20 World Cup Contest"} />;
+    return <LiveMatchLoading title={'ICC T20 World Cup Contest'} />;
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <LiveMatchTopBar text={"ICC T20 World Cup Contest"} />
+      <LiveMatchTopBar text={'ICC T20 World Cup Contest'} />
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}

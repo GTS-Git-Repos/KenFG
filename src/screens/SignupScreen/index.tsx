@@ -127,7 +127,7 @@ export default function SignupScreen() {
               keyboardType="decimal-pad"
               onChangeText={e => setMobile(e)}
               style={[
-                tailwind('border-b font-bold text-light font-20'),
+                tailwind('border-b font-bold text-white font-20'),
                 {borderColor: '#8797B14D', height: 40},
               ]}
             />
@@ -157,19 +157,19 @@ const OR = () => {
       <View
         style={[
           tailwind(''),
-          {flex: 5, backgroundColor: '#8797B14D', height: 1.5},
+          {flex: 5, backgroundColor: '#8797B11A', height: 1},
         ]}></View>
       <Text
         style={[
-          tailwind('font-regular font-bold text-center font-10 text-dark-1'),
-          {flex: 2},
+          tailwind('font-regular text-center font-12 text-dark-1'),
+          {flex: 1.5},
         ]}>
         OR
       </Text>
       <View
         style={[
           tailwind(''),
-          {flex: 5, backgroundColor: '#8797B14D', height: 1.5},
+          {flex: 5, backgroundColor: '#8797B11A', height: 1},
         ]}></View>
     </View>
   );
@@ -183,7 +183,7 @@ const FooterHint = (props: any) => {
         Already a user ?{' '}
       </Text>
       <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-        <Text style={[tailwind('font-bold text-light font-15')]}>Log in</Text>
+        <Text style={[tailwind('font-bold text-white underline font-15')]}>Log in</Text>
       </TouchableOpacity>
     </View>
   );
@@ -191,11 +191,11 @@ const FooterHint = (props: any) => {
 
 const TC = () => {
   return (
-    <View style={[tailwind('flex-row justify-center items-center pt-4')]}>
+    <View style={[tailwind('flex-row justify-center items-center pt-5')]}>
       <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
         By registering you agree to the
       </Text>
-      <Text style={[tailwind('font-bold px-1 text-white font-12')]}>T&C</Text>
+      <Text style={[tailwind('font-bold px-1 underline text-white font-12')]}>T&C</Text>
       <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
         {' '}
         of KenFG

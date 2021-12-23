@@ -13,7 +13,7 @@ export const rolesConstraints: any = {
   },
   bowler: {
     min: 3,
-    max: 4,
+    max: 6,
   },
 };
 

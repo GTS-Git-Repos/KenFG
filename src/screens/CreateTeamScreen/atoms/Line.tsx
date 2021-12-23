@@ -11,7 +11,7 @@ export default function Line() {
       end={{x: 1, y: 0}}
       style={[tailwind('mx-4')]}
       colors={['#172338', '#816D2E', '#0D1320']}>
-      <View style={[tailwind(''), {height: 2}]}></View>
+      <View style={[tailwind(''), {height: 1}]}></View>
     </LinearGradient>
   );
 }

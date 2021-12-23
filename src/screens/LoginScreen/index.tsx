@@ -103,7 +103,7 @@ export default function LoginScreen() {
               keyboardAppearance="dark"
               keyboardType="decimal-pad"
               style={[
-                tailwind('border-b font-bold text-light font-16'),
+                tailwind('border-b font-bold text-white font-20'),
                 {borderColor: '#8797B14D', height: 40},
               ]}
             />
@@ -129,31 +129,36 @@ const OR = () => {
       <View
         style={[
           tailwind(''),
-          {flex: 5, backgroundColor: '#8797B14D', height: 1.5},
+          {flex: 5, backgroundColor: '#8797B11A', height: 1},
         ]}></View>
       <Text
         style={[
-          tailwind('font-regular font-bold text-center font-10 text-dark-1'),
-          {flex: 2},
+          tailwind('font-regular text-center font-12 text-dark-1'),
+          {flex: 1.5},
         ]}>
         OR
       </Text>
       <View
         style={[
           tailwind(''),
-          {flex: 5, backgroundColor: '#8797B14D', height: 1.5},
+          {flex: 5, backgroundColor: '#8797B11A', height: 1},
         ]}></View>
     </View>
   );
 };
 
 const FooterHint = () => {
+  const navigation = useNavigation<any>();
   return (
-    <View style={[tailwind(' p-2 flex-row items-center justify-center')]}>
+    <View style={[tailwind('p-4 flex-row items-center justify-center')]}>
       <Text style={[tailwind('font-regular text-light font-15')]}>
         Dont't have an account ?{' '}
       </Text>
-      <Text style={[tailwind('font-bold text-light font-15')]}>Register</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
+        <Text style={[tailwind('font-bold text-white underline font-15')]}>
+          Register
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };

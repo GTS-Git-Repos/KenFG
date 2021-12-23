@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
@@ -18,7 +18,8 @@ export default function BottomAction(props: PropTypes) {
         onPress={() => navigation.navigate('MatchGroundScreen')}
         style={[
           tailwind('px-5 py-3 flex-row m-2 rounded'),
-          {backgroundColor: '#3A2B13'},
+          {backgroundColor: '#172338', borderTopColor: 'red'},
+          styles.teamPreview,
         ]}>
         <Text style={[tailwind('font-bold uppercase text-light font-12')]}>
           Team Preview
@@ -38,3 +39,14 @@ export default function BottomAction(props: PropTypes) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  teamPreview: {
+    borderTopColor: '#006A4D',
+    borderLeftColor: '#006A4D',
+    borderRightColor: '#006A4D',
+    borderBottomColor: '#006A4D',
+    borderWidth: 1,
+    borderStyle: 'solid',
+  },
+});

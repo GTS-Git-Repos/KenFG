@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
 
@@ -15,8 +15,9 @@ export default function CapSelectionAction(props: PropTypes) {
       <TouchableOpacity
         onPress={() => navigation.navigate('MatchGroundScreen')}
         style={[
-          tailwind('flex-row  m-2 rounded px-8 py-3'),
-          {backgroundColor: '#3A2B13'},
+          tailwind('px-5 py-3 flex-row m-2 rounded'),
+          {backgroundColor: '#172338', borderTopColor: 'red'},
+          styles.teamPreview,
         ]}>
         <Text style={[tailwind('font-bold uppercase text-light font-12')]}>
           Team Preview
@@ -36,3 +37,14 @@ export default function CapSelectionAction(props: PropTypes) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  teamPreview: {
+    borderTopColor: '#006A4D',
+    borderLeftColor: '#006A4D',
+    borderRightColor: '#006A4D',
+    borderBottomColor: '#006A4D',
+    borderWidth: 1,
+    borderStyle: 'solid',
+  },
+});

@@ -59,19 +59,20 @@ const styles = StyleSheet.create({
   cellRoot: {
     flex: 1,
     marginHorizontal: 5,
-    height: 35,
+    height: 45,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,
     borderTopColor: 'transparent',
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
-    borderBottomColor: '#C5A858',
+    borderBottomColor: '#8797B14D',
   },
   cellText: {
     color: '#FFF',
-    fontSize: 20,
+    fontSize: 30,
     textAlign: 'center',
+    fontFamily: 'gadugi-bold',
   },
   focusCell: {
     borderBottomColor: '#816D2E',

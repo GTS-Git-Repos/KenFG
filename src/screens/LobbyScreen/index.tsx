@@ -18,6 +18,7 @@ import NewLobbyNav from './components/molecules/NewLobbyNav';
 import CricketPage from './components/molecules/CricketPage';
 import NewMyMatchesCard from './components/molecules/NewMyMatchesCard';
 import SubTitle from './components/SubTitle';
+import MyCompletedMatchCard from './components/molecules/MyCompletedMatchCard';
 
 const log = console.log;
 
@@ -52,6 +53,7 @@ export default function LobbyScreen() {
       {cricket ? (
         <View style={[tailwind('px-5 py-4 pb-0.5')]}>
           <SubTitle text={'My Matches'} actiontext="View all" />
+          <View style={[tailwind('h-1')]} />
           <NewMyMatchesCard />
         </View>
       ) : null}

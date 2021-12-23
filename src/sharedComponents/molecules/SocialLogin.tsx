@@ -12,11 +12,11 @@ interface PropTypes {
 
 export default function SocialLogin(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center')]}>
+    <View style={[tailwind('flex-row py-1 items-center')]}>
       <TouchableOpacity
         style={[
           tailwind(
-            'rounded border flex-row items-center justify-center border-gray-600 rounded-3xl p-2',
+            'rounded border flex-row  items-center justify-center border-gray-600 rounded-3xl p-2',
           ),
           {flex: 4.7},
         ]}>
@@ -25,14 +25,14 @@ export default function SocialLogin(props: PropTypes) {
           Facebook
         </Text>
       </TouchableOpacity>
-      <View style={[tailwind(''), {flex: 1}]}></View>
+      <View style={[tailwind(''), {flex: 0.6}]}></View>
 
       <TouchableOpacity
         style={[
           tailwind(
             'rounded border flex-row items-center justify-center border-gray-600 rounded-3xl p-2',
           ),
-          {flex: 4.5},
+          {flex: 4.7},
         ]}>
         <GoogleIcon />
         <Text style={[tailwind('font-bold px-3 text-light font-14')]}>

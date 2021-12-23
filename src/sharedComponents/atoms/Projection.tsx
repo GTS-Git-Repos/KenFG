@@ -10,8 +10,8 @@ interface PropTypes {
 export default function Projection(props: PropTypes) {
   return (
     <View>
-      <Text style={[tailwind('font-bold text-dark-1 text-center font-13')]}>
-        INDIA need 170 runs to win
+      <Text style={[tailwind('font-bold text-white text-center font-13')]}>
+        AUS beats ENG by 32 Runs
       </Text>
     </View>
   );
