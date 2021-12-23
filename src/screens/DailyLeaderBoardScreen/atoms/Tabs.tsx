@@ -7,12 +7,18 @@ import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   selectedTab: number;
+  onTabPressed: any;
 }
 
 export default function Tabs(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row bg-dark-3 items-center')]}>
-      <TouchableOpacity style={[tailwind(''), {flex: 4}]}>
+    <View
+      style={[
+        tailwind('flex-row bg-dark-3 items-center border-b border-gray-800'),
+      ]}>
+      <TouchableOpacity
+        onPress={() => props.onTabPressed(0)}
+        style={[tailwind(''), {flex: 4}]}>
         <Tab tabText={'Upcomming'} active={props.selectedTab === 0} />
         {props.selectedTab === 0 ? (
           <BottomLine />
@@ -20,7 +26,9 @@ export default function Tabs(props: PropTypes) {
           <View style={{height: 2}} />
         )}
       </TouchableOpacity>
-      <TouchableOpacity style={[tailwind(''), {flex: 4}]}>
+      <TouchableOpacity
+        onPress={() => props.onTabPressed(1)}
+        style={[tailwind(''), {flex: 4}]}>
         <Tab tabText={'Live'} active={props.selectedTab === 1} />
         {props.selectedTab === 1 ? (
           <BottomLine />
@@ -28,7 +36,9 @@ export default function Tabs(props: PropTypes) {
           <View style={{height: 2}} />
         )}
       </TouchableOpacity>
-      <TouchableOpacity style={[tailwind(''), {flex: 4}]}>
+      <TouchableOpacity
+        onPress={() => props.onTabPressed(2)}
+        style={[tailwind(''), {flex: 4}]}>
         <Tab tabText={'Completed'} active={props.selectedTab === 2} />
         {props.selectedTab === 2 ? (
           <BottomLine />

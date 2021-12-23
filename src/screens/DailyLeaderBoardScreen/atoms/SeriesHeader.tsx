@@ -13,7 +13,7 @@ export default function SeriesHeader(props: PropTypes) {
     <View
       style={[
         tailwind(
-          'flex-row items-center px-6 py-2 bg-dark-3 justify-between border-b border-gray-700',
+          'flex-row items-center px-6 py-3 bg-dark-3 justify-between border-b border-gray-800',
         ),
       ]}>
       <Text style={[tailwind('font-bold font-12 text-white')]}>TEAM</Text>

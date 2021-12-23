@@ -110,7 +110,7 @@ const Filter = () => {
     <View style={[tailwind('flex-row m-3 items-center')]}>
       <View
         style={[
-          tailwind('flex-row rounded-3xl border border-gray-600'),
+          tailwind('flex-row rounded-3xl border border-gray-800'),
           {flex: 8},
         ]}>
         <TouchableOpacity
@@ -123,7 +123,7 @@ const Filter = () => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[tailwind('p-2 flex-grow border-gray-600 border-r')]}>
+          style={[tailwind('p-2 flex-grow border-gray-800 border-r')]}>
           <Text
             style={[
               tailwind('font-bold uppercase text-center text-white font-12'),

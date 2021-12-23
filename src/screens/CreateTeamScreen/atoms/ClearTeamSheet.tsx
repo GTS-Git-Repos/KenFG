@@ -43,7 +43,7 @@ export default function ClearTeamSheet(props: PropTypes) {
         onPress={() => props.clearRef?.current?.close()}
         style={[
           tailwind(
-            'flex-grow py-3 m-2 rounded bg-dark-3 border border-gray-700',
+            'flex-grow py-3 m-2 rounded bg-dark-3 border border-gray-800',
           ),
         ]}>
         <Text

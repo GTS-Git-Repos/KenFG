@@ -66,7 +66,7 @@ export default function VerifyContent(props: PropTypes) {
         <TouchableOpacity
           style={[
             tailwind(
-              'flex-row p-1 border border-gray-600 rounded items-center justify-center',
+              'flex-row p-1 border border-gray-800 rounded items-center justify-center',
             ),
             {flex: 3},
           ]}>

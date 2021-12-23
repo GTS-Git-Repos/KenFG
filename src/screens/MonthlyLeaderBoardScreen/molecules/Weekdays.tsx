@@ -12,7 +12,7 @@ interface PropTypes {
 export default function WeekDays(props: PropTypes) {
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-      <View style={[tailwind('border border-gray-600 rounded py-2 px-3 mr-3')]}>
+      <View style={[tailwind('border border-gray-800 rounded py-2 px-3 mr-3')]}>
         <Text style={[tailwind('font-bold text-center text-white font-16')]}>
           Week 2
         </Text>
@@ -32,7 +32,7 @@ export default function WeekDays(props: PropTypes) {
         </Text>
       </View>
 
-      <View style={[tailwind('border border-gray-600 rounded py-2 px-3')]}>
+      <View style={[tailwind('border border-gray-800 rounded py-2 px-3')]}>
         <Text style={[tailwind('font-bold text-center text-white font-16')]}>
           Week 2
         </Text>

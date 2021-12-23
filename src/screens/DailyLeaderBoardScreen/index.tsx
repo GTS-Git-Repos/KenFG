@@ -28,11 +28,14 @@ export default function LeaderBoardScreen() {
   const onPageSelectedAction = (e: any) => {
     setSelectedTab(e.nativeEvent.position);
   };
+  const onTabPressed = (index: number) => {
+    pagerRef.current?.setPage(index);
+  };
 
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Daily LeaderBoard'} />
-      <Tabs selectedTab={selectedTab} />
+      <Tabs selectedTab={selectedTab} onTabPressed={onTabPressed} />
       {/* <SelectSeries /> */}
 
       <PagerView

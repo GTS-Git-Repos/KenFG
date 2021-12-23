@@ -16,7 +16,7 @@ export default function SocialLogin(props: PropTypes) {
       <TouchableOpacity
         style={[
           tailwind(
-            'rounded border flex-row  items-center justify-center border-gray-600 rounded-3xl p-2',
+            'rounded border flex-row  items-center justify-center border-gray-800 rounded-3xl p-2',
           ),
           {flex: 4.7},
         ]}>
@@ -30,7 +30,7 @@ export default function SocialLogin(props: PropTypes) {
       <TouchableOpacity
         style={[
           tailwind(
-            'rounded border flex-row items-center justify-center border-gray-600 rounded-3xl p-2',
+            'rounded border flex-row items-center justify-center border-gray-800 rounded-3xl p-2',
           ),
           {flex: 4.7},
         ]}>
