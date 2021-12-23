@@ -56,6 +56,7 @@ export default function CreateTeamScreen() {
   const isScreenReady = useIsScreenReady();
   const dispatch = useDispatch();
   const filterSheet = useRef<Modalize>();
+  const isMounted = useRef(false);
 
   const playersState: any = useSelector<any>(state => state.team.players);
   const SelectedMatchState = useSelector<any>(
@@ -86,6 +87,12 @@ export default function CreateTeamScreen() {
   );
 
   // side effects
+
+  useEffect(() => {
+    dispatch(clearTeamAction());
+    dispatch(updateErrorMsgAction(null));
+  }, []);
+
   useEffect(() => {
     if (players.data) {
       dispatch(saveAllPlayersAction(players.data));
@@ -206,7 +213,11 @@ export default function CreateTeamScreen() {
 
       {/* Tabs */}
       <View>
-        <ScrollTabs activeIndex={activeIndex} onTabPressed={onTabPressed} rolesCountSelector={rolesCountSelector} />
+        <ScrollTabs
+          activeIndex={activeIndex}
+          onTabPressed={onTabPressed}
+          rolesCountSelector={rolesCountSelector}
+        />
 
         {/* <ScrollView
           horizontal

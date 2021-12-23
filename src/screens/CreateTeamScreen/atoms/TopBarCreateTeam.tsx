@@ -6,6 +6,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {BackIcon} from '../../../sharedComponents/';
+import {useDispatch} from 'react-redux';
+import {clearTeamAction} from '../../../store/actions/teamActions';
 
 interface PropTypes {
   text?: string;
@@ -13,8 +15,10 @@ interface PropTypes {
 
 export default function TopBarCreateTeam(props: PropTypes) {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   function goBack() {
+    dispatch(clearTeamAction());
     navigation.goBack();
   }
   return (
