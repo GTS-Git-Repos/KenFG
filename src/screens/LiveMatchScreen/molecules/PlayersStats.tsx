@@ -60,7 +60,7 @@ export default function PlayersStats(props: PropTypes) {
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
-          style={[tailwind('border-l  border-gray-700')]}>
+          style={[tailwind('border-l  border-gray-800')]}>
           <View>
             <TableRow />
             {contestPlayerStats.map((item: any) => {

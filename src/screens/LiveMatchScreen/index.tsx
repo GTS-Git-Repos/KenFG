@@ -55,9 +55,9 @@ export default function LiveMatchScreen() {
         end={{x: 1, y: 0}}
         colors={['#172338', '#0D1320']}
         style={[tailwind('px-3 pt-6 pb-3 bg-dark-3')]}>
-        <MatchStat teamName1={'Australia'} teamName2={'England'} />
+        <MatchStat teamName1={'Australia'} teamName2={'England'} completed={false} />
 
-        <Projection />
+        <Projection completed={false} />
         <View style={[tailwind('my-2')]}>
           <LiveMatchSeparator />
         </View>

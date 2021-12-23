@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity, FlatList} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -10,32 +10,79 @@ interface PropTypes {
   onTabPressed(index: number): any;
 }
 
+const DATA = [
+  {
+    key: 'winnings',
+    tabName: 'My Contests (1)',
+  },
+  {
+    key: 'leaderboard',
+    tabName: 'My Teams(1)',
+  },
+  {
+    key: 'Commentary',
+    tabName: 'Commentary',
+  },
+  {
+    key: 'ScoreBoard',
+    tabName: 'ScoreBoard',
+  },
+];
+
 export default function LiveMatchTabs(props: PropTypes) {
+  const flatListRef = useRef<any>();
+
+  useEffect(() => {
+    // console.log(flatListRef.current.scrollToIndex);
+    flatListRef.current.scrollToIndex({index: props.activeIndex});
+  }, [props.activeIndex]);
+
+  return (
+    <FlatList
+      ref={flatListRef}
+      showsHorizontalScrollIndicator={false}
+      horizontal
+      style={[tailwind('bg-dark-3')]}
+      data={DATA}
+      renderItem={({item, index}) => {
+        return (
+          <TabItem
+            key={item.key}
+            tabName={item.tabName}
+            index={index}
+            active={index === props.activeIndex}
+            onTabPressed={props.onTabPressed}
+          />
+        );
+      }}
+    />
+  );
+
   return (
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
       style={[tailwind('bg-dark-3')]}>
       <TabItem
-        tabName="My Contests (1)"
+        tabName=""
         index={0}
         active={0 === props.activeIndex}
         onTabPressed={props.onTabPressed}
       />
       <TabItem
-        tabName="My Teams(1)"
+        tabName=""
         index={1}
         active={1 === props.activeIndex}
         onTabPressed={props.onTabPressed}
       />
       <TabItem
-        tabName="Commentary"
+        tabName=""
         index={2}
         active={2 === props.activeIndex}
         onTabPressed={props.onTabPressed}
       />
       <TabItem
-        tabName="ScoreBoard"
+        tabName=""
         index={3}
         active={3 === props.activeIndex}
         onTabPressed={props.onTabPressed}

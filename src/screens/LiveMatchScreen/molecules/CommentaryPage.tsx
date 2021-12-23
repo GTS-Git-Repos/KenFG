@@ -24,7 +24,7 @@ export default function CommentaryPage(props: PropTypes) {
               End of Over 2
             </Text>
           </View>
-          <CommentryByOvers title={10} over={2.3} hasPlayer={true} />
+          <CommentryByOvers title={2} over={2.3} hasPlayer={true} />
           <CommentryByOvers title={'W'} over={2.3} hasPlayer={false} />
           <CommentryByOvers title={'1'} over={2.3} hasPlayer={true} />
         </View>
@@ -36,13 +36,27 @@ export default function CommentaryPage(props: PropTypes) {
 
 const CommentryByOvers = (props: any) => {
   return (
-    <View style={[tailwind('flex-row bg-dark-3 py-3')]}>
-      <View style={[tailwind('flex-col pt-2 items-center'), {flex: 2}]}>
-        <Title title={props.title} />
-        <Text style={[tailwind('font-regular text-light py-2 font-11')]}>
-          {props.over}
-        </Text>
+    <View
+      style={[tailwind('flex-row bg-dark-3 py-3 border-b border-gray-800')]}>
+      <View
+        style={[
+          tailwind('flex-col pt-2 items-center justify-between'),
+          {flex: 2},
+        ]}>
+        <View
+          style={[tailwind('bg-dark-1 rounded'), {width: 3, flex: 3}]}></View>
+        <View style={[tailwind('flex-col justify-center'), {flex: 1.5}]}>
+          <Title title={props.title} />
+          <Text
+            style={[tailwind('font-regular text-light text-center font-11')]}>
+            {props.over}
+          </Text>
+        </View>
+
+        <View
+          style={[tailwind('bg-dark-1 rounded'), {width: 3, flex: 5.5}]}></View>
       </View>
+
       <View style={[tailwind('mt-1'), {flex: 8}]}>
         <View style={[tailwind('mr-2')]}>
           <Text style={[tailwind('font-regular text-light font-12')]}>
@@ -75,7 +89,7 @@ const Title = (props: any) => {
   return (
     <View
       style={[
-        tailwind('bg-secondary flex-col items-center justify-center'),
+        tailwind('bg-secondary flex-col my-1 items-center justify-center'),
         {
           width: 20,
           height: 20,
@@ -134,24 +148,24 @@ const Points = () => {
     <View style={[tailwind('flex-row flex-wrap items-center')]}>
       {[2, 3, 5].map((item: any) => {
         return (
-          <LinearGradient
-            key={item}
-            start={{x: 1.1, y: 2.0}}
-            end={{x: 0.0, y: 0.5}}
-            locations={[0.6, 0.5]}
-            style={[
-              tailwind(
-                'flex-row mr-3 border-2 border-black items-center justify-between rounded py-1',
-              ),
-            ]}
-            colors={['#FFFFFF', '#25385A']}>
-            <Text style={[tailwind('font-bold px-1 text-dark-1 font-13')]}>
-              T17
-            </Text>
-            <Text style={[tailwind('font-bold px-1 text-black font-13')]}>
-              +5
-            </Text>
-          </LinearGradient>
+          <View style={[tailwind('border-2 mr-3 rounded border-gray-900')]}>
+            <LinearGradient
+              key={item}
+              start={{x: 1.1, y: 2.0}}
+              end={{x: 0.0, y: 0.5}}
+              locations={[0.6, 0.5]}
+              style={[
+                tailwind('flex-row items-center justify-between rounded py-1'),
+              ]}
+              colors={['#FFFFFF', '#25385A']}>
+              <Text style={[tailwind('font-bold px-1 text-dark-1 font-13')]}>
+                T17
+              </Text>
+              <Text style={[tailwind('font-bold px-1 text-black font-13')]}>
+                +5
+              </Text>
+            </LinearGradient>
+          </View>
         );
       })}
     </View>

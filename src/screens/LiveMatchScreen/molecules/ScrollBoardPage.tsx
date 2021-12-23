@@ -27,7 +27,7 @@ export default function ScrollBoardPage(props: PropTypes) {
           <PlayerStatus name="Ms.Dhoni" />
           <View
             style={[
-              tailwind('flex-row pt-2 px-2 bg-dark-3 border-b border-gray-700'),
+              tailwind('flex-row pt-2 px-2 bg-dark-3 border-b border-gray-800'),
             ]}>
             <View style={[tailwind(''), {flex: 6}]}>
               <View style={[tailwind('px-2')]}>
@@ -52,7 +52,7 @@ export default function ScrollBoardPage(props: PropTypes) {
 
           <View
             style={[
-              tailwind('flex-row pt-2 px-2 border-b border-gray-700 bg-dark-3'),
+              tailwind('flex-row pt-2 px-2 border-b border-gray-800 bg-dark-3'),
             ]}>
             <View style={[tailwind(''), {flex: 6}]}>
               <View style={[tailwind('px-2')]}>
@@ -85,7 +85,7 @@ const PlayerStatus = (props: any) => {
   return (
     <View
       style={[
-        tailwind('flex-row pt-2 bg-dark-3 px-2 border-b border-gray-700'),
+        tailwind('flex-row pt-2 bg-dark-3 px-2 border-b border-gray-800'),
       ]}>
       <View style={[tailwind(''), {flex: 6}]}>
         <View style={[tailwind('px-2')]}>

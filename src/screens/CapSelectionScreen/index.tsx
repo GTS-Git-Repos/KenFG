@@ -129,6 +129,7 @@ export default function CapSelectionScreen() {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
+              is_team_a={item.team_key === 'aus'}
               role={'WK'}
               c={'43.3%'}
               vc={'8.3%'}
@@ -149,6 +150,7 @@ export default function CapSelectionScreen() {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
+              is_team_a={item.team_key === 'aus'}
               role={'BAT'}
               c={'43.3%'}
               vc={'8.3%'}
@@ -169,6 +171,7 @@ export default function CapSelectionScreen() {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
+              is_team_a={item.team_key === 'aus'}
               role={'AR'}
               c={'43.3%'}
               vc={'8.3%'}
@@ -190,6 +193,7 @@ export default function CapSelectionScreen() {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
+              is_team_a={item.team_key === 'aus'}
               role={'BOWL'}
               c={'43.3%'}
               vc={'8.3%'}

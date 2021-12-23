@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity, FlatList} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -10,7 +10,54 @@ interface PropTypes {
   onTabPressed(index: number): any;
 }
 
+const DATA = [
+  {
+    key: 'winnings',
+    tabName: 'My Contests (1)',
+  },
+  {
+    key: 'leaderboard',
+    tabName: 'My Teams(1)',
+  },
+  {
+    key: 'ScoreBoard',
+    tabName: 'Commentary',
+  },
+  {
+    key: 'Commentry',
+    tabName: 'ScoreBoard',
+  },
+];
+
 export default function LiveMatchTabs(props: PropTypes) {
+  const flatListRef = useRef<any>();
+
+  useEffect(() => {
+    // console.log(flatListRef.current.scrollToIndex);
+    flatListRef.current.scrollToIndex({index: props.activeIndex});
+  }, [props.activeIndex]);
+
+  return (
+    <FlatList
+      ref={flatListRef}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      style={[tailwind('bg-dark-3')]}
+      data={DATA}
+      renderItem={({item, index}) => {
+        return (
+          <TabItem
+            key={item.key}
+            tabName={item.tabName}
+            index={index}
+            active={index === props.activeIndex}
+            onTabPressed={props.onTabPressed}
+          />
+        );
+      }}
+    />
+  );
+
   return (
     <ScrollView
       horizontal

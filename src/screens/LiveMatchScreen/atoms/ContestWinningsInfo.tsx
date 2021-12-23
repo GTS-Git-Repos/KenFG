@@ -15,14 +15,14 @@ export default function ContestWinningsInfo(props: PropTypes) {
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
           Prize pool
         </Text>
-        <Text style={[tailwind('font-bold text-white py-1 font-16')]}>
+        <Text style={[tailwind('font-bold text-dark-1 py-1 font-16')]}>
           {'\u20B9'} 12.50 Lakhs
         </Text>
       </View>
 
       <View style={[tailwind('flex-row  justify-center'), {flex: 4}]}>
         <View>
-          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+          <Text style={[tailwind('font-regular text-dark-1 text-center font-14')]}>
             Spots
           </Text>
           <Text style={[tailwind('font-bold text-dark-1 py-1 font-16')]}>
@@ -33,7 +33,7 @@ export default function ContestWinningsInfo(props: PropTypes) {
 
       <View style={[tailwind('flex-row justify-end'), {flex: 4}]}>
         <View>
-          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+          <Text style={[tailwind('font-regular text-dark-1 text-right font-14')]}>
             Entry
           </Text>
           <Text style={[tailwind('font-bold text-dark-1 py-1 font-16')]}>

@@ -23,21 +23,18 @@ const TABS = [
     name: 'Mega',
   },
   {
+    id: '6',
+    name: 'Premium Pro',
+  },
+  {
     id: '4',
     name: 'Fireball',
   },
   {
     id: '5',
-    name: 'Hard',
+    name: 'Hot',
   },
-  {
-    id: '6',
-    name: 'Premium',
-  },
-  {
-    id: '7',
-    name: 'Pro',
-  },
+
   {
     id: '8',
     name: 'Fortune',
@@ -286,7 +283,5 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     backgroundColor: '#D8C872',
   },
-  SortBy:{
-    
-  }
+  SortBy: {},
 });

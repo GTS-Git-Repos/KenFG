@@ -19,7 +19,7 @@ export default function GenderSelection(props: PropTypes) {
         style={[
           tailwind('flex-row p-2 my-1 border-green-500 rounded items-center'),
           styles.box,
-          props.isMale === true && {backgroundColor: '#816D2E99'},
+          props.isMale === true && styles.selectedBox,
         ]}>
         <MaleIcon />
         <Text style={[tailwind('font-regular text-white px-2 font-14')]}>
@@ -32,11 +32,10 @@ export default function GenderSelection(props: PropTypes) {
       <TouchableOpacity
         onPress={() => props.setIsMale(false)}
         style={[
-          tailwind('flex-row border border-gray-400 p-2 rounded items-center'),
+          tailwind('flex-row border border-gray-300 p-2 rounded items-center'),
           styles.box,
-          props.isMale === false && {
-            backgroundColor: '#816D2E99',
-          },
+          props.isMale === false && styles.selectedBox,
+          ,
         ]}>
         <FemaleIcon />
         <Text style={[tailwind('font-regular text-white px-2 font-14')]}>
@@ -50,18 +49,19 @@ export default function GenderSelection(props: PropTypes) {
 const styles = StyleSheet.create({
   box: {
     flex: 5.5,
-    borderTopColor: '#8797B1',
-    borderBottomColor: '#8797B1',
-    borderLeftColor: '#8797B1',
-    borderRightColor: '#8797B1',
+    borderTopColor: '#8797B14D',
+    borderBottomColor: '#8797B14D',
+    borderLeftColor: '#8797B14D',
+    borderRightColor: '#8797B14D',
     borderWidth: 1,
   },
   selectedBox: {
     flex: 5.5,
-    borderTopColor: '#8797B1',
-    borderBottomColor: '#8797B1',
-    borderLeftColor: '#8797B1',
-    borderRightColor: '#8797B1',
+    borderTopColor: '#00513B',
+    borderBottomColor: '#00513B',
+    borderLeftColor: '#00513B',
+    borderRightColor: '#00513B',
+    backgroundColor: '#00513B1A',
     borderWidth: 1,
   },
 });

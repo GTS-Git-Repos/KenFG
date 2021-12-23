@@ -4,6 +4,7 @@ import {View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
+  completed: boolean;
   teamName1: string;
   teamName2: string;
 }
@@ -22,8 +23,7 @@ export default function MatchStat(props: PropTypes) {
           </Text>
         </View>
       </View>
-
-      <LiveIndicator />
+      {props.completed ? <Completed /> : <LiveIndicator />}
 
       <View style={[tailwind('flex-col items-end'), {flex: 4}]}>
         <Text style={[tailwind('font-regular text-white font-14')]}>
@@ -41,6 +41,21 @@ export default function MatchStat(props: PropTypes) {
 }
 
 const LiveIndicator = () => {
+  return (
+    <View style={[tailwind('flex-row justify-center items-center'), {flex: 2}]}>
+      <View
+        style={[
+          tailwind('rounded-full'),
+          {backgroundColor: '#EB5757', width: 6, height: 6},
+        ]}></View>
+      <Text style={[tailwind('font-bold uppercase text-red-400 font-13 px-1')]}>
+        LIVE
+      </Text>
+    </View>
+  );
+};
+
+const Completed = () => {
   return (
     <View
       style={[tailwind('flex-row justify-center items-center'), {flex: 2.5}]}>

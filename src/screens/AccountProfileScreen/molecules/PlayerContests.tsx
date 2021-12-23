@@ -36,7 +36,10 @@ const NewTop = () => {
               style={[tailwind(''), {width: 40, height: 20}]}
             /> */}
             <View
-              style={[tailwind('bg-blue-700'), {width: 40, height: 20}]}></View>
+              style={[
+                tailwind('bg-blue-700'),
+                {width: 45, height: 25, aspectRatio: 16 / 9},
+              ]}></View>
             <Text style={[tailwind('font-bold px-2 text-light py-1 font-13')]}>
               AUS
             </Text>
@@ -55,7 +58,7 @@ const NewTop = () => {
             <View
               style={[
                 tailwind('bg-green-700'),
-                {width: 40, height: 20},
+                {width: 45, height: 25},
               ]}></View>
             <Text style={[tailwind('font-bold px-2 text-light py-1 font-13')]}>
               ENG

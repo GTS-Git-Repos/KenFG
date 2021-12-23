@@ -65,13 +65,14 @@ const ContestWinning = () => {
 
 const Line = () => {
   return (
-    <LinearGradient
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 0}}
-      style={[tailwind('')]}
-      colors={['#172338B3', '#FFFFFF4D', '#172338B3']}>
+    <View
+      // start={{x: 0, y: 0}}
+      // end={{x: 1, y: 0}}
+      style={[tailwind('border-b border-gray-800')]}
+      // colors={['#172338B3', '#FFFFFF4D', '#172338B3']}
+      >
       <View style={[tailwind(''), {height: 0.5}]}></View>
-    </LinearGradient>
+    </View>
   );
 };
 

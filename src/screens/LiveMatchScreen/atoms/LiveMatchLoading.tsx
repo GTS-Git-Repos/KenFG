@@ -7,7 +7,7 @@ import {TopBar} from '../../../sharedComponents/';
 import LiveMatchTopBar from './LiveMatchTopBar';
 
 interface PropTypes {
-  text: string;
+  title: string;
 }
 
 export default function LiveMatchLoading(props: PropTypes) {

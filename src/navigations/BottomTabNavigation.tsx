@@ -13,6 +13,7 @@ import MoreScreen from '../screens/MoreScreen';
 
 import BluePrintScreen from '../screens/BluePrintScreen';
 import ContainerScreen from '../screens/ContainerScreen';
+import LeaderBoardListsScreen from '../screens/LeaderBoardListsScreen';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -53,9 +54,9 @@ export default function BottomTabNavigation() {
         component={MyMatchesScreen}
       />
       <BottomTab.Screen
-        name="LeaderBoardScreen"
+        name="LeaderBoardListsScreen"
         options={{tabBarLabel: 'LeaderBoard'}}
-        component={LeaderBoardScreen}
+        component={LeaderBoardListsScreen}
       />
       <BottomTab.Screen
         name="MoreScreen"

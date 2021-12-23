@@ -16,7 +16,7 @@ export default function TableData(props: PropTypes) {
     // <LinearGradient colors={['#0D1320', '#172338']}>
     <View
       style={[
-        tailwind('flex-row bg-dark-4 border-b border-gray-700 items-center'),
+        tailwind('flex-row bg-dark-4 border-b border-gray-800 items-center'),
         {paddingHorizontal: 22},
       ]}>
       <View

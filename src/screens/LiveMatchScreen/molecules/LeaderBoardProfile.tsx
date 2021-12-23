@@ -24,7 +24,11 @@ export default function HorizontalProfile(props: PropTypes) {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
-      style={[tailwind('px-4 bg-dark-3 flex-row items-center'), styles.root]}
+      style={[
+        tailwind(
+          'px-4 bg-dark-3 flex-row items-center border-b border-gray-800',
+        ),
+      ]}
       onPress={() => navigation.navigate('CompareTeamsScreen')}>
       <View style={[tailwind('flex-row items-center pt-2'), {flex: 5}]}>
         <Image

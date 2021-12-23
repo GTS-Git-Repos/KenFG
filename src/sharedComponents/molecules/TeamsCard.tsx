@@ -113,7 +113,7 @@ const PlayerName = (props: any) => {
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       colors={props.index ? ['#254987', '#172338'] : ['#172338', '#6C221E']}
-      style={[tailwind('bg-blue-500'), {padding: 2, borderRadius: 2}]}>
+      style={[tailwind('bg-blue-500'), {padding: 2, borderRadius: 4}]}>
       <Text
         allowFontScaling={true}
         adjustsFontSizeToFit={true}

@@ -26,12 +26,13 @@ import MatchGroundScreen from '../screens/MatchGroundScreen';
 import CapSelectionScreen from '../screens/CapSelectionScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
 import HowToPlayScreen from '../screens/HowToPlayScreen';
-import LeaderBoardScreen from '../screens/LeaderBoardScreen';
+import DailyLeaderBoardScreen from '../screens/DailyLeaderBoardScreen';
 import TransactionListScreen from '../screens/TransactionListScreen';
 import VerifyAccountScreen from '../screens/VerifyAccountScreen';
 import ManagePaymentsScreen from '../screens/ManagePaymentsScreen';
 import ContestsLiveMatchScreen from '../screens/ContestsLiveMatchScreen';
 import CompletedMatchScreen from '../screens/CompletedMatchScreen';
+import MonthlyLeaderBoardScreen from '../screens/MonthlyLeaderBoardScreen';
 
 import TeamsListScreen from '../screens/TeamsListScreen';
 
@@ -44,6 +45,7 @@ import UserGoalsScreen from '../screens/UserGoalsScreen';
 import LeaderProfileScreen from '../screens/LeaderProfileScreen';
 import AffliatedScreen from '../screens/AffliatedScreen';
 import AchievementsScreen from '../screens/AchievementsScreen';
+import LeaderBoardListsScreen from '../screens/LeaderBoardListsScreen';
 
 const RootNavigator = createStackNavigator();
 
@@ -150,6 +152,15 @@ export default function RootNavigation() {
             name="ManagePaymentsScreen"
           />
           <RootNavigator.Screen
+            component={LeaderBoardListsScreen}
+            name="LeaderBoardListsScreen"
+          />
+          <RootNavigator.Screen
+            component={MonthlyLeaderBoardScreen}
+            name="MonthlyLeaderBoardScreen"
+          />
+
+          <RootNavigator.Screen
             component={CompletedMatchScreen}
             name="CompletedMatchScreen"
           />
@@ -218,8 +229,8 @@ export default function RootNavigation() {
 
           <RootNavigator.Screen component={MoreScreen} name="MoreScreen" />
           <RootNavigator.Screen
-            component={LeaderBoardScreen}
-            name="LeaderBoardScreen"
+            component={DailyLeaderBoardScreen}
+            name="DailyLeaderBoardScreen"
           />
           <RootNavigator.Screen
             component={TransactionListScreen}

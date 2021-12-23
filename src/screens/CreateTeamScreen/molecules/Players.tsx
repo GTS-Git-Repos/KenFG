@@ -25,6 +25,8 @@ interface PropTypes {
   credits: number;
   isSelected: boolean;
   canBeSelected: boolean;
+  team_a: string;
+  team_b: string;
   checkPlayerSelection(player_key: string, player_role: string): void;
 }
 
@@ -35,7 +37,7 @@ export default function Player(props: PropTypes) {
     <View>
       <View
         style={[
-          tailwind('pt-3 flex-row'),
+          tailwind('pt-3 flex-row border-b border-gray-800'),
           {
             backgroundColor: props.isSelected ? '#3C362C' : '#172338',
             opacity: props.canBeSelected ? 1 : 0.3,
@@ -51,7 +53,10 @@ export default function Player(props: PropTypes) {
             source={assets.player}
             style={[tailwind(''), {height: 62, width: 70}]}
           />
-          <TeamBadge team1={true} name={props.teamname} />
+          <TeamBadge
+            name={props.teamname}
+            team_a={props.teamname === props.team_a}
+          />
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -118,13 +123,13 @@ export default function Player(props: PropTypes) {
         </TouchableOpacity>
       </View>
 
-      <LinearGradient
+      {/* <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         style={[tailwind('')]}
         colors={['#172338B3', '#FFFFFF4D', '#172338B3']}>
         <View style={[tailwind(''), {height: 0.5}]}></View>
-      </LinearGradient>
+      </LinearGradient> */}
     </View>
   );
 }
@@ -134,7 +139,7 @@ const TeamBadge = (props: any) => {
     <View
       style={[
         tailwind('absolute bottom-0 rounded-t'),
-        {backgroundColor: props.team1 ? '#244785' : '#70211E', padding: 3},
+        {backgroundColor: props.team_a ? '#244785' : '#70211E', padding: 3},
       ]}>
       <Text style={[tailwind('font-bold uppercase text-light font-9')]}>
         {props.name}
@@ -149,10 +154,10 @@ const AddButton = (props: any) => {
       colors={['#006A4D', '#00513B']}
       style={[
         tailwind(
-          'flex-col items-center justify-center absolute rounded-l-lg py-2 px-1 right-0',
+          'flex-col items-center justify-center absolute rounded-l-lg px-1 right-0',
         ),
       ]}>
-      <Icon name="add" color="white" size={24} />
+      <Icon name="add" color="white" size={20} />
     </LinearGradient>
   );
 };

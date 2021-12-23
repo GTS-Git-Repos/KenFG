@@ -17,13 +17,14 @@ interface PropTypes {
   vc: string;
   is_captain: boolean;
   is_vice_captain: boolean;
+  is_team_a: boolean;
   captainSelectAction(player_key: string): any;
   viceCaptainSelect(player_key: string): any;
 }
 
 export default function PlayerProfile(props: PropTypes) {
   return (
-    <View style={[tailwind('bg-dark-3 border-b px-4 border-gray-700')]}>
+    <View style={[tailwind('bg-dark-3 border-t px-4 border-gray-800')]}>
       <View style={[tailwind('pt-2 flex-row items-center')]}>
         <View style={[tailwind('flex-row'), {flex: 5}]}>
           <Image
@@ -45,7 +46,11 @@ export default function PlayerProfile(props: PropTypes) {
             </Text>
           </View>
         </View>
-        <TeamTag teamname={props.teamname} role={props.role} />
+        <TeamTag
+          teamname={props.teamname}
+          role={props.role}
+          is_team_a={props.is_team_a}
+        />
 
         {/* Points */}
         <View
@@ -133,33 +138,34 @@ export default function PlayerProfile(props: PropTypes) {
 const TeamTag = (props: any) => {
   return (
     <View
-      style={[
-        tailwind('absolute bottom-0 flex-row items-center'),
-        {paddingHorizontal: 3, paddingVertical: 1},
-      ]}>
-      <Text
+      style={[tailwind('absolute bottom-0.5 rounded-t flex-row items-center')]}>
+      <View
         style={[
-          tailwind('font-regular uppercase font-9  text-light'),
+          tailwind('rounded-tl flex-row items-center'),
           {
+            backgroundColor: props.is_team_a ? '#244785' : '#70211E',
             paddingHorizontal: 2,
             paddingVertical: 1,
-            backgroundColor: '#244785',
           },
         ]}>
-        {props.teamname}
-      </Text>
-      <Text
-        style={[
-          tailwind('font-regular uppercase font-9  text-light'),
-          {
-            paddingHorizontal: 2,
-            paddingVertical: 1,
-            backgroundColor: '#FFFFFF',
-            color: '#244785',
-          },
-        ]}>
-        {props.role}
-      </Text>
+        <Text
+          style={[tailwind('font-regular uppercase font-9  text-light'), {}]}>
+          {props.teamname}
+        </Text>
+      </View>
+      <View style={[tailwind('bg-white rounded-tr')]}>
+        <Text
+          style={[
+            tailwind('font-regular uppercase font-9  text-light'),
+            {
+              paddingHorizontal: 2,
+              paddingVertical: 1,
+              color: '#244785',
+            },
+          ]}>
+          {props.role}
+        </Text>
+      </View>
     </View>
   );
 };

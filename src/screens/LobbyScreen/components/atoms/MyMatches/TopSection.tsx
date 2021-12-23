@@ -37,13 +37,14 @@ export default function MyMatchesTopSection(props: PropTypes) {
           </Text>
         </View>
       </View>
-      <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        style={[tailwind('mx-4 mb-1')]}
-        colors={['#162339', '#29344B', '#162339']}>
-        <View style={[tailwind(''), {height: 2}]}></View>
-      </LinearGradient>
+      <View
+        // start={{x: 0, y: 0}}
+        // end={{x: 1, y: 0}}
+        style={[tailwind('border-b border-gray-800'),{marginHorizontal:1}]}
+        // colors={['#162339', '#29344B', '#162339']}
+      >
+        <View style={[tailwind(''), {height: 2,}]}></View>
+      </View>
     </View>
   );
 }

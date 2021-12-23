@@ -18,7 +18,11 @@ export default function Teams(props: PropTypes) {
             {width: 10, height: 14, top: 25 / 4},
           ]}></View>
         <View>
-          <View style={[tailwind('bg-dark-1'), {width: 45, height: 25}]}></View>
+          <View
+            style={[
+              tailwind('bg-dark-1'),
+              {width: 45, height: 25, aspectRatio: 16 / 9},
+            ]}></View>
           <Text
             style={[
               tailwind('font-bold text-center py-0.5 text-light font-12'),

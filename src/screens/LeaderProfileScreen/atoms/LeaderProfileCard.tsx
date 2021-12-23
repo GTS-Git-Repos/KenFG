@@ -23,7 +23,7 @@ const TopSection = () => {
     <View
       style={[
         tailwind(
-          'border-b flex-row items-center justify-between border-gray-700 px-4 py-3',
+          'border-b flex-row items-center justify-between border-gray-800 px-4 py-3',
         ),
       ]}>
       <View style={[tailwind('flex-row items-center')]}>

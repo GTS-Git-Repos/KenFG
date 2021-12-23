@@ -29,9 +29,9 @@ export default function MathchGroundScreen() {
   const availableCredits = useSelector(creditLeft);
   const rolesCountSelector = useSelector(rolesCount);
 
-  useEffect(() => {
-    log('rolesCountSelector', rolesCountSelector);
-  }, [rolesCountSelector]);
+  // useEffect(() => {
+  //   log('rolesCountSelector', rolesCountSelector);
+  // }, [rolesCountSelector]);
 
   useEffect(() => {
     const keepers = playersState.filter(

@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
@@ -31,7 +31,7 @@ export default function CategoryPlayers(props: PropTypes) {
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           style={[tailwind('mx-28 my-1')]}
-          colors={['#8797B1', '#FFFFFF', '#FFFFFF', '#8797B1']}>
+          colors={['#8797B14D', '#FFFFFF4D', '#FFFFFF4D', '#8797B14D']}>
           <View style={[tailwind(''), {height: 1}]}></View>
         </LinearGradient>
       </View>
@@ -76,12 +76,25 @@ const Name = (props: any) => {
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       style={[
-        tailwind('rounded-xl px-1 bottom-1 py-0.5 border-2 border-green-600'),
+        tailwind('px-2 bottom-1 py-1 border-2 border-green-600'),
+        styles.tag,
       ]}
-      colors={props.team1 ? ['#172338', '#254987'] : ['#73221D', '#172338']}>
+      colors={props.team1 ? ['#73221D', '#172338'] : ['#172338', '#254987']}>
       <Text style={[tailwind('font-bold text-light text-center font-10')]}>
         {props.name}
       </Text>
     </LinearGradient>
   );
 };
+
+const styles = StyleSheet.create({
+  tag: {
+    borderTopColor: '#00513B',
+    borderLeftColor: '#00513B',
+    borderRightColor: '#00513B',
+    borderBottomColor: '#00513B',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderRadius: 42,
+  },
+});

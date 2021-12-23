@@ -23,13 +23,14 @@ export default function MatchGroundTopBar(props: PropTypes) {
           {props.name}
         </Text>
       </TouchableOpacity>
-      <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        style={[tailwind('mx-3 my-2')]}
-        colors={['#162339', '#29344B', '#162339']}>
+      <View
+        // start={{x: 0, y: 0}}
+        // end={{x: 1, y: 0}}
+        style={[tailwind('mx-3 my-2 border-b border-gray-800')]}
+        // colors={['#162339', '#29344B', '#162339']}
+      >
         <View style={[tailwind(''), {height: 2}]}></View>
-      </LinearGradient>
+      </View>
     </View>
   );
 }

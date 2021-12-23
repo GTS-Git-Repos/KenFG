@@ -27,7 +27,7 @@ export default function LeaderProfile(props: PropTypes) {
       onPress={() => navigation.navigate('LeaderProfileScreen')}
       style={[
         tailwind(
-          'px-4 py-3 bg-dark-3 border-b border-gray-700 flex-row items-center',
+          'px-4 py-3 bg-dark-3 border-b border-gray-800 flex-row items-center',
         ),
       ]}>
       <View style={[tailwind('flex-row items-center'), {flex: 7}]}>

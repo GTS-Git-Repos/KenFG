@@ -21,7 +21,9 @@ export default function Transaction(props: PropTypes) {
       <TouchableOpacity
         onPress={() => setOpen(!open)}
         style={[
-          tailwind('bg-dark-3 flex-row items-center justify-between'),
+          tailwind(
+            'bg-dark-3 flex-row items-center justify-between border-b border-gray-800',
+          ),
           {marginHorizontal: 5, paddingHorizontal: 16, paddingVertical: 12},
         ]}>
         <Text style={[tailwind('font-bold text-light font-14')]}>
@@ -35,10 +37,10 @@ export default function Transaction(props: PropTypes) {
         <Icon
           name={open ? 'chevron-up' : 'chevron-down'}
           size={24}
-          color="#FFFFFF"
+          color="#FFFFFF4D"
         />
       </TouchableOpacity>
-      <LinearGradient
+      {/* <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         style={[tailwind('')]}
@@ -48,7 +50,7 @@ export default function Transaction(props: PropTypes) {
             : ['#172338', '#204B91', '#172338']
         }>
         <View style={[tailwind(''), {height: 0.4}]}></View>
-      </LinearGradient>
+      </LinearGradient> */}
       {open && <TransactionInfo />}
     </View>
   );
@@ -58,7 +60,7 @@ const TransactionInfo = () => {
   return (
     <View
       style={[
-        tailwind('bg-dark-3'),
+        tailwind('bg-dark-3 border-b border-gray-800'),
         {marginHorizontal: 5, paddingHorizontal: 16, paddingTop: 12},
       ]}>
       <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
@@ -81,13 +83,13 @@ const TransactionInfo = () => {
       <Text style={[tailwind('font-regular text-light py-1 pb-3 font-14')]}>
         Team 1
       </Text>
-      <LinearGradient
+      {/* <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         style={[tailwind('')]}
         colors={['#172338', '#204B91', '#172338']}>
         <View style={[{height: 1}]}></View>
-      </LinearGradient>
+      </LinearGradient> */}
     </View>
   );
 };

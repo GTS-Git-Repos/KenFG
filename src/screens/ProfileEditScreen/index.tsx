@@ -179,8 +179,8 @@ export default function ProfileEditScreen() {
         <InputTitle text={'Gender'} />
         <GenderSelection isMale={isMale} setIsMale={setIsMale} />
 
-        <PrivacySettings />
-        <AllowSMS />
+        {/* <PrivacySettings />
+        <AllowSMS /> */}
 
         <InputTitle text={'Address'} />
         <Controller

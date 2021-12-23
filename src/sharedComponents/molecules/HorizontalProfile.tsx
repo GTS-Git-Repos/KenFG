@@ -32,7 +32,7 @@ export default function HorizontalProfile(props: PropTypes) {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
-      style={[tailwind('px-4 py-3 bg-dark-3 '), styles.root]}
+      style={[tailwind('px-4 py-3 bg-dark-3 border-b border-gray-800')]}
       onPress={() => props.navigate(props.matchStarted)}>
       <View style={[tailwind('flex-row items-center')]}>
         <View
@@ -125,7 +125,7 @@ export default function HorizontalProfile(props: PropTypes) {
 
 const styles = StyleSheet.create({
   root: {
-    borderTopColor: '#8797B180',
+    borderTopColor: '#8797B140',
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: 'transparent',

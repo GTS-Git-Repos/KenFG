@@ -15,7 +15,7 @@ export default function Links(props: PropTypes) {
       activeOpacity={0.6}
       style={[
         tailwind(
-          'bg-dark-3 flex-row items-center p-4 mb-0.5 border-b border-gray-700',
+          'bg-dark-3 flex-row items-center p-4 border-b border-gray-800',
         ),
       ]}>
       {props.icon}

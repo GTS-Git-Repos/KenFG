@@ -12,7 +12,7 @@ interface PropTypes {
 
 export default function PromoNotification(props: PropTypes) {
   return (
-    <View style={[tailwind('bg-dark-3')]}>
+    <View style={[tailwind('bg-dark-3 border-b border-gray-800')]}>
       <View style={[tailwind('flex-row items-center p-3')]}>
         <View>
           <Svg width="39" height="40" viewBox="0 0 39 40" fill="none">
@@ -42,13 +42,13 @@ export default function PromoNotification(props: PropTypes) {
         </View>
         <View style={[tailwind(''), {flex: 2}]}></View>
       </View>
-      <LinearGradient
+      {/* <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         style={[tailwind('')]}
         colors={['#172338', '#8797B1', '#172338']}>
         <View style={[tailwind(''), {height: 1}]}></View>
-      </LinearGradient>
+      </LinearGradient> */}
     </View>
   );
 }

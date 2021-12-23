@@ -46,6 +46,8 @@ export default function Page(props: PropTypes) {
               key={item.key}
               player_key={item.key}
               teamname={item.team_key}
+              team_a={'aus'}
+              team_b={'eng'}
               role={item.seasonal_role}
               image={''}
               name={item.name}

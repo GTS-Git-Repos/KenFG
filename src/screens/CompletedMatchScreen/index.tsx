@@ -55,11 +55,14 @@ export default function CompletedMatchScreen() {
         end={{x: 1, y: 0}}
         colors={['#172338', '#0D1320']}
         style={[tailwind('px-3 pt-6 pb-3 bg-dark-3')]}>
-        <MatchStat teamName1={'Australia'} teamName2={'England'} />
+        <MatchStat
+          teamName1={'Australia'}
+          teamName2={'England'}
+          completed={true}
+        />
 
-        <Projection />
-        <View style={[tailwind('mt-2'), styles.line]}></View>
-        {/* <CurrentLiveStatus /> */}
+        <Projection completed={true} />
+        <View style={[tailwind('mt-2 border-b border-gray-800')]}></View>
         <ExpertsStats />
       </LinearGradient>
 

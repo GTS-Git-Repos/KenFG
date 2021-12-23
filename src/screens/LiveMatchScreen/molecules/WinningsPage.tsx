@@ -33,7 +33,7 @@ const TableHeader = () => {
     <View
       style={[
         tailwind(
-          'px-4 py-2 bg-dark-3 flex-row items-center justify-between mb-0.5',
+          'px-4 py-2  bg-dark-3 flex-row items-center justify-between border-b border-gray-800 ',
         ),
       ]}>
       <Text style={[tailwind('font-regular text-dark-1 font-14')]}>Rank</Text>
@@ -49,11 +49,11 @@ const TableData = (props: any) => {
     <View
       style={[
         tailwind(
-          'px-4 py-2 bg-dark-3 flex-row items-center justify-between border-t-2 border-gray-700',
+          'px-4 py-2 bg-dark-3 flex-row items-center justify-between border-t border-gray-800',
         ),
       ]}>
       <View style={[tailwind('flex-row items-center')]}>
-        <RankIcon />
+        <RankIcon golden={false} />
         <Text style={[tailwind('font-bold px-2 text-white font-14')]}>
           {props.rank}
         </Text>

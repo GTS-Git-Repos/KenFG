@@ -12,7 +12,7 @@ interface PropTypes {
 export default function Career(props: PropTypes) {
   return (
     <View>
-      <View style={[tailwind('bg-dark-3 rounded py-3 px-4')]}>
+      <View style={[tailwind('bg-dark-3 rounded-t py-3 px-4')]}>
         <WinRate />
         <View>
           <BottomLine />
@@ -25,7 +25,7 @@ export default function Career(props: PropTypes) {
       </View>
       <View
         style={[
-          tailwind('bg-dark-3'),
+          tailwind('bg-dark-3 rounded-b'),
           
           {padding: 4},
           {backgroundColor: '#121D2E'},
@@ -82,7 +82,7 @@ const MatchStat = (props: any) => {
     <View
       style={[
         tailwind(
-          `${props.index === 1 ? 'border-l border-r border-gray-200' : ''}`,
+          `${props.index === 1 ? 'border-l border-r border-gray-800' : ''}`,
         ),
         {flex: 10 / 3},
       ]}>

@@ -22,11 +22,11 @@ export default function Team1(props: PropTypes) {
         ),
         {flex: 6},
       ]}>
-      <View style={[tailwind(''), {flex: 8}]}>
+      <View style={[tailwind('flex-row justify-center'), {flex: 8}]}>
         <Image
           resizeMode="contain"
           source={assets.teamIndia}
-          style={[tailwind(''), {width: '100%', height: 40}]}
+          style={[tailwind(''), {aspectRatio: 16 / 9}]}
         />
       </View>
       <View style={[tailwind('px-1'), {flex: 4}]}>

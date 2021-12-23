@@ -10,7 +10,7 @@ interface PropTypes {
 
 export default function SelectionTabs(props: PropTypes) {
 
-  
+  // Deprecated
 
   return (
     <ScrollView

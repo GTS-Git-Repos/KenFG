@@ -50,7 +50,7 @@ export default function CustomDrawer(props: any) {
         />
         <ReferaAndEarn />
         <Links
-          to="LeaderBoardScreen"
+          to="LeaderBoardListsScreen"
           icon={assets.joystick}
           text="Leaderboard"
         />

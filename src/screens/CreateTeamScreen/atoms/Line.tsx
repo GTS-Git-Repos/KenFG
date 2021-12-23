@@ -5,6 +5,8 @@ import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Line() {
+  return <View style={[tailwind('border-b border-gray-800')]}></View>;
+
   return (
     <LinearGradient
       start={{x: 0, y: 0}}

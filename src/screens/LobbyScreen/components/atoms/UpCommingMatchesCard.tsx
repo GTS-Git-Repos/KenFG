@@ -70,7 +70,7 @@ export default function UpcommingMatches(props: PropTypes) {
             <Image
               resizeMode="contain"
               source={assets.bell}
-              style={[tailwind(''), {width: 13, height: 13}]}
+              style={[tailwind(''), {aspectRatio: 16 / 9}]}
             />
           </View>
         </View>

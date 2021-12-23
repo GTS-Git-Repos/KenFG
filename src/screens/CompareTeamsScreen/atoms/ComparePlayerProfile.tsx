@@ -15,7 +15,7 @@ interface PropTypes {
 export default function ComparePlayerProfile(props: PropTypes) {
   return (
     <View>
-      <View style={[tailwind('flex-row px-1 pt-2')]}>
+      <View style={[tailwind('flex-row px-1 pt-2 border-b border-gray-800')]}>
         <View style={[tailwind('flex-row'), {flex: 8}]}>
           <View style={[tailwind(''), {flex: 3}]}>
             <Image
@@ -58,13 +58,13 @@ export default function ComparePlayerProfile(props: PropTypes) {
           </LinearGradient>
         </View>
       </View>
-      <LinearGradient
+      {/* <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         style={[tailwind('')]}
         colors={['#C4A858', '#816D2E', '#172338']}>
         <View style={[tailwind(''), {height: 1}]}></View>
-      </LinearGradient>
+      </LinearGradient> */}
     </View>
   );
 }

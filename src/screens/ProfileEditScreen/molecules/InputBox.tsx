@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     borderTopColor: 'transparent',
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
-    borderBottomColor: '#8797B1',
+    borderBottomColor: '#8797B14D',
     borderWidth: 1,
     borderStyle: 'solid',
   },

@@ -44,6 +44,7 @@ import ClearTeamSheet from './atoms/ClearTeamSheet';
 import CreateTeamFilterSheetTitle from './atoms/CreateTeamFilterSheetTitle';
 import PlayerFilterSheet from './molecules/PlayerFilterSheet';
 import CreateTeamLoading from './atoms/CreateTeamLoading';
+import ScrollTabs from './molecules/ScrollTabs';
 
 const log = console.log;
 
@@ -109,6 +110,9 @@ export default function CreateTeamScreen() {
   };
   const onTabPressed = (index: number) => {
     pageRef.current?.setPage(index);
+  };
+  const onPageScrollAction = (e: any) => {
+    console.log(e.nativeEvent);
   };
 
   // Create Team Logic
@@ -202,7 +206,9 @@ export default function CreateTeamScreen() {
 
       {/* Tabs */}
       <View>
-        <ScrollView
+        <ScrollTabs activeIndex={activeIndex} onTabPressed={onTabPressed} rolesCountSelector={rolesCountSelector} />
+
+        {/* <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           style={[tailwind('bg-dark-3')]}>
@@ -235,7 +241,7 @@ export default function CreateTeamScreen() {
               />
             );
           })}
-        </ScrollView>
+        </ScrollView> */}
 
         {/* <Tabs activeIndex={activeIndex} onTabPressed={onTabPressed} /> */}
       </View>
@@ -243,6 +249,7 @@ export default function CreateTeamScreen() {
       <PagerView
         ref={pageRef}
         onPageSelected={onPageSelectedAction}
+        onPageScroll={onPageScrollAction}
         style={{flex: 1}}
         initialPage={0}>
         <View>
