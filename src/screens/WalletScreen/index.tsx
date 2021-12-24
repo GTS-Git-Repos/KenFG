@@ -11,6 +11,7 @@ import {Modalize} from 'react-native-modalize';
 import AddMoneyButton from './atoms/AddMoneyButton';
 import Actions from './atoms/Actions';
 import AddMoneySheet from './molecules/AddMoneySheet';
+import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
@@ -23,7 +24,8 @@ export default function WalletScreen() {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Wallet'} />
       <ScrollView>
-        <CurrentAmount amount={38} />
+        {/* <CurrentAmount amount={38} /> */}
+        <NewWallet />
         <View style={[tailwind('my-2')]}>
           <Actions
             text={'My Recent Transactions'}
@@ -62,3 +64,20 @@ export default function WalletScreen() {
     </View>
   );
 }
+
+const NewWallet = () => {
+  return (
+    <View
+      // start={{x: 0, y: 0}}
+      // end={{x: 1, y: 0}}
+      // colors={['#172338', '#0D1320']}
+      style={[tailwind('p-6 bg-dark-4')]}>
+      <Text style={[tailwind('font-regular uppercase text-dark-1 font-12')]}>
+        Current Balance
+      </Text>
+      <Text style={[tailwind('font-bold text-white'), {fontSize: 30}]}>
+        {'\u20B9'} 7,323
+      </Text>
+    </View>
+  );
+};

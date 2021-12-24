@@ -17,21 +17,41 @@ interface PropTypes {
   isFirst: boolean;
   isSecond: boolean;
   isThird: boolean;
+  type: number;
+  showPoints: boolean;
 }
 
 export default function LeaderProfile(props: PropTypes) {
   const navigation = useNavigation<any>();
+
+  const navigate = () => {
+    if (props.type === 0) {
+      navigation.navigate('LeaderProfileScreen', {
+        type: props.type,
+      });
+    }
+    if (props.type === 1) {
+      navigation.navigate('LeaderProfileScreen', {
+        type: props.type,
+      });
+    } else {
+      navigation.navigate('LeaderProfileScreen', {
+        type: props.type,
+      });
+    }
+  };
+
   return (
     <TouchableOpacity
       activeOpacity={0.5}
-      onPress={() => navigation.navigate('LeaderProfileScreen')}
+      onPress={navigate}
       style={[
         tailwind(
           'px-4 py-3 bg-dark-3 border-b border-gray-800 flex-row items-center',
         ),
       ]}>
       <View style={[tailwind('flex-row items-center'), {flex: 7}]}>
-        <View style={[tailwind(''), {width: 36, height: 36}]}>
+        <View style={[tailwind(''), {width: 40, height: 40}]}>
           <Image
             resizeMode="contain"
             source={assets.person}
@@ -62,51 +82,57 @@ export default function LeaderProfile(props: PropTypes) {
       </View>
 
       <View style={[tailwind('flex-row items-center justify-end'), {flex: 4}]}>
-        {props.isFirst && (
-          <Image
-            resizeMode="contain"
-            source={assets.prize1}
-            style={[{width: 39, height: 34}]}
-          />
-        )}
-        {props.isSecond && (
-          <Image
-            resizeMode="contain"
-            source={assets.prize2}
-            style={[{width: 39, height: 34}]}
-          />
-        )}
-        {props.isThird && (
-          <Image
-            resizeMode="contain"
-            source={assets.prize3}
-            style={[{width: 39, height: 34}]}
-          />
-        )}
+        <View style={[tailwind('')]}>
+          {props.isFirst && (
+            <Image
+              resizeMode="contain"
+              source={assets.prize1}
+              style={[{width: 39, height: 33}]}
+            />
+          )}
+          {props.isSecond && (
+            <Image
+              resizeMode="contain"
+              source={assets.prize2}
+              style={[{width: 39, height: 33}]}
+            />
+          )}
+          {props.isThird && (
+            <Image
+              resizeMode="contain"
+              source={assets.prize3}
+              style={[{width: 39, height: 33}]}
+            />
+          )}
+        </View>
+
         {!props.isFirst && !props.isSecond && !props.isThird && (
-          <View style={[tailwind('flex-row items-center')]}>
+          <View style={[tailwind('flex-row items-center px-2')]}>
             <RankIcon golden={true} />
-            <Text style={[tailwind('font-regular text-white font-14 pl-1')]}>
+            <Text style={[tailwind('font-regular text-white font-14')]}>
               10
             </Text>
           </View>
         )}
-
-        {props.levelStatus == null && (
-          <View style={[tailwind('px-0')]}>
-            <IdleLevel />
+        {props.showPoints ? (
+          <View>
+            {props.levelStatus == null && (
+              <View style={[tailwind('pl-1')]}>
+                <IdleLevel />
+              </View>
+            )}
+            {props.levelStatus === true && (
+              <View style={[tailwind('pl-1')]}>
+                <TopArrowIcon />
+              </View>
+            )}
+            {props.levelStatus === false && (
+              <View style={[tailwind('pl-1')]}>
+                <DownArrowIcon />
+              </View>
+            )}
           </View>
-        )}
-        {props.levelStatus === true && (
-          <View style={[tailwind('px-0.5')]}>
-            <TopArrowIcon />
-          </View>
-        )}
-        {props.levelStatus === false && (
-          <View style={[tailwind('px-1')]}>
-            <DownArrowIcon />
-          </View>
-        )}
+        ) : null}
       </View>
     </TouchableOpacity>
   );

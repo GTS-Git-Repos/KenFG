@@ -10,11 +10,8 @@ interface PropTypes {
 
 export default function SelectSeries(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center justify-between')]}>
-      <Text style={[tailwind('font-regular text-white font-12')]}>
-        Abu Dhabi
-      </Text>
-      <Icon name="chevron-down-outline" size={16} color="#8797B1" />
+    <View style={[tailwind('box')]}>
+      <Text style={[tailwind('font-regular font-15')]}>HEllo</Text>
     </View>
   );
 }

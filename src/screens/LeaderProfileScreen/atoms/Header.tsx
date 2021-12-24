@@ -12,8 +12,7 @@ export default function Header(props: PropTypes) {
   return (
     <View
       style={[
-        tailwind('px-3 py-2 flex-row items-center justify-between'),
-        {backgroundColor: '#3A2B13'},
+        tailwind('px-4 py-2 flex-row bg-dark-4 items-center justify-between'),
       ]}>
       <Text style={[tailwind('font-bold text-white font-12')]}>MATCHES</Text>
       <Text style={[tailwind('font-bold text-white font-12')]}>POINTS</Text>

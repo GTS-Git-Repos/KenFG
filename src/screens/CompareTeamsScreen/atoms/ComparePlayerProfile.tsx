@@ -14,57 +14,65 @@ interface PropTypes {
 
 export default function ComparePlayerProfile(props: PropTypes) {
   return (
-    <View>
-      <View style={[tailwind('flex-row px-1 pt-2 border-b border-gray-800')]}>
-        <View style={[tailwind('flex-row'), {flex: 8}]}>
-          <View style={[tailwind(''), {flex: 3}]}>
-            <Image
-              resizeMode="contain"
-              source={assets.player}
-              style={[{width: '100%', height: 40}]}
-            />
-          </View>
-          <View style={[tailwind(''), {flex: 7}]}>
-            <View style={[tailwind('px-2')]}>
-              <Text
-                numberOfLines={1}
-                style={[tailwind('font-regular text-light font-14')]}>
-                {props.name}
-              </Text>
-              <Text
-                numberOfLines={1}
-                style={[tailwind('font-regular text-dark-1 font-12 py-1')]}>
-                {props.title}
-              </Text>
-            </View>
-          </View>
+    <View
+      style={[
+        tailwind(
+          `justify-between px-1 pt-2 border-b border-gray-800 ${
+            props.team1 ? 'flex-row-reverse' : 'flex-row'
+          } `,
+        ),
+      ]}>
+      <View
+        style={[
+          tailwind(
+            `${
+              props.team1
+                ? 'flex-row-reverse items-center justify-start'
+                : 'flex-row items-center justify-start'
+            }`,
+          ),
+          {flex: 8},
+        ]}>
+        <View style={[tailwind('')]}>
+          <Image
+            resizeMode="contain"
+            source={assets.player}
+            style={[{width: 40, height: 40}]}
+          />
         </View>
-
-        <View
-          style={[tailwind('flex-row items-center justify-center'), {flex: 2}]}>
-          <LinearGradient
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}
-            colors={
-              props.team1 ? ['#172338', '#254987'] : ['#73221D', '#172338']
-            }
-            style={[tailwind('rounded px-2 py-1 w-12')]}>
+        <View style={[tailwind('')]}>
+          <View style={[tailwind('px-2')]}>
             <Text
-              allowFontScaling={true}
-              adjustsFontSizeToFit={true}
-              style={[tailwind('font-bold text-white text-center font-14')]}>
-              {props.points}
+              numberOfLines={1}
+              style={[tailwind('font-regular text-light font-14')]}>
+              {props.name}
             </Text>
-          </LinearGradient>
+            <Text
+              numberOfLines={1}
+              style={[tailwind('font-regular text-dark-1 font-12 py-1')]}>
+              {props.title}
+            </Text>
+          </View>
         </View>
       </View>
-      {/* <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        style={[tailwind('')]}
-        colors={['#C4A858', '#816D2E', '#172338']}>
-        <View style={[tailwind(''), {height: 1}]}></View>
-      </LinearGradient> */}
+
+      <View
+        style={[tailwind('flex-row items-center justify-center'), {flex: 2}]}>
+        <View
+          // start={{x: 0, y: 0}}
+          // end={{x: 1, y: 0}}
+          // colors={
+          //   props.team1 ? ['#172338', '#254987'] : ['#73221D', '#172338']
+          // }
+          style={[tailwind('rounded px-2 py-1 w-12')]}>
+          <Text
+            allowFontScaling={true}
+            adjustsFontSizeToFit={true}
+            style={[tailwind('font-bold text-white text-center font-14')]}>
+            {props.points}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 }

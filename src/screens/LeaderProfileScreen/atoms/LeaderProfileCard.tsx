@@ -6,19 +6,19 @@ import assets from '../../../constants/assets_manifest';
 import {DownArrowIcon, RankIcon} from '../../../sharedComponents';
 
 interface PropTypes {
-  text?: string;
+  type: number;
 }
 
 export default function UserProfileCard(props: PropTypes) {
   return (
     <View style={[tailwind('m-2 bg-dark-3 rounded')]}>
-      <TopSection />
+      <TopSection type={props.type} />
       <BottomSection />
     </View>
   );
 }
 
-const TopSection = () => {
+const TopSection = (props: any) => {
   return (
     <View
       style={[
@@ -47,14 +47,52 @@ const TopSection = () => {
           </Text>
         </View>
       </View>
-      <View>
-        <Text style={[tailwind('font-regular text-right text-dark-1 font-12')]}>
-          WEEK 5
-        </Text>
-        <Text style={[tailwind('font-regular text-white font-14')]}>
-          1 Nov to 7 Nov
-        </Text>
-      </View>
+
+      {props.type === -1 && (
+        <View>
+          <Text
+            style={[tailwind('font-regular text-right text-dark-1 font-12')]}>
+            DAY
+          </Text>
+          <Text style={[tailwind('font-regular pt-0.5 text-white font-14')]}>
+            1 Jan 2022
+          </Text>
+        </View>
+      )}
+
+      {props.type === 0 && (
+        <View>
+          <Text
+            style={[tailwind('font-regular text-right text-dark-1 font-12')]}>
+            WEEK 5
+          </Text>
+          <Text style={[tailwind('font-regular pt-0.5 text-white font-14')]}>
+            1 Nov to 7 Nov
+          </Text>
+        </View>
+      )}
+      {props.type === 1 && (
+        <View>
+          <Text
+            style={[tailwind('font-regular text-right text-dark-1 font-12')]}>
+            MONTH
+          </Text>
+          <Text style={[tailwind('font-regular pt-0.5 text-white font-14')]}>
+            Jan 22
+          </Text>
+        </View>
+      )}
+      {props.type === 2 && (
+        <View style={[tailwind('flex-row items-center')]}>
+          <Text
+            style={[
+              tailwind('font-regular text-right text-dark-1 px-2 font-12'),
+            ]}>
+            Abu Dhabi
+          </Text>
+          <Icon name="chevron-down-outline" size={20} color="lightgray" />
+        </View>
+      )}
     </View>
   );
 };

@@ -21,23 +21,13 @@ export default function LeaderBoardLisScreen() {
       <TopBar text={'Leaderboard Contests'} />
       <ScrollView contentContainerStyle={[tailwind('pb-3')]}>
         <SubTitle text="DAILY" />
-        <LeaderBoardBannerSlider
-          type={-1}
-          text=""
-          goto={'DailyLeaderBoardScreen'}
-        />
+        <LeaderBoardBannerSlider type={-1} />
         <SubTitle text="WEEKLY" />
-        <LeaderBoardBannerSlider
-          goto={'MonthlyLeaderBoardScreen'}
-          type={0}
-          text="Weekly Leaderboard"
-        />
+        <LeaderBoardBannerSlider type={0} />
         <SubTitle text="MONTHLY" />
-        <LeaderBoardBannerSlider
-          goto={'MonthlyLeaderBoardScreen'}
-          type={1}
-          text="Monthly Leaderboard"
-        />
+        <LeaderBoardBannerSlider type={1} />
+        <SubTitle text="SERIES" />
+        <LeaderBoardBannerSlider type={2} />
       </ScrollView>
     </View>
   );
@@ -52,3 +42,8 @@ const SubTitle = (props: any) => {
     </View>
   );
 };
+
+// {
+//   type: 0 // weekly
+//   type: 1 // weekly
+// }

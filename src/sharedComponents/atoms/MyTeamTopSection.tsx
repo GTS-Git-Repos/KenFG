@@ -5,11 +5,12 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../constants/assets_manifest';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import EditIcon from '../icons/EditIcon';
-import {CopyIcon} from '../../sharedComponents/';
+import {CloneIcon, CopyIcon} from '../../sharedComponents/';
 
 interface PropTypes {
   teams_key: string;
   canModify: boolean;
+  current: boolean;
 }
 
 export default function MyTeamsTopSection(props: PropTypes) {
@@ -30,14 +31,16 @@ export default function MyTeamsTopSection(props: PropTypes) {
           ]}>
           {props.teams_key || 'T1'}
         </Text>
-        <Text style={[tailwind('font-regular text-light font-14')]}>
-          (Current)
-        </Text>
+        {props.current && (
+          <Text style={[tailwind('font-regular text-light font-14')]}>
+            (Current)
+          </Text>
+        )}
       </View>
       {props.canModify && (
         <View style={[tailwind('flex-row items-center')]}>
           <TouchableOpacity onPress={() => {}} style={[tailwind('px-2')]}>
-            {/* <CopyIcon /> */}
+            <CloneIcon white={false} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {}}>
             <EditIcon />

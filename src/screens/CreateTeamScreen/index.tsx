@@ -119,7 +119,7 @@ export default function CreateTeamScreen() {
     pageRef.current?.setPage(index);
   };
   const onPageScrollAction = (e: any) => {
-    console.log(e.nativeEvent);
+    // console.log(e.nativeEvent);
   };
 
   // Create Team Logic

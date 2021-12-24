@@ -9,7 +9,7 @@ import SeriesHeader from '../atoms/SeriesHeader';
 import Tabs from '../atoms/Tabs';
 
 interface PropTypes {
-  text?: string;
+  showPoints: boolean;
 }
 
 export default function SeriesPage(props: PropTypes) {
@@ -21,24 +21,31 @@ export default function SeriesPage(props: PropTypes) {
         isFirst={false}
         isSecond={false}
         isThird={false}
+        type={-1}
+        showPoints={props.showPoints}
       />
       <LeaderProfile
         levelStatus={null}
         isFirst={true}
         isSecond={false}
         isThird={false}
+        type={-1}
+        showPoints={props.showPoints}
       />
       <LeaderProfile
         levelStatus={true}
         isFirst={false}
         isSecond={true}
         isThird={false}
+        type={-1}
+        showPoints={props.showPoints}
       />
       <LeaderProfile
         levelStatus={false}
         isFirst={false}
         isSecond={false}
         isThird={true}
+        showPoints={props.showPoints}
       />
     </ScrollView>
   );

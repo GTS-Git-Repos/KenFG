@@ -13,6 +13,14 @@ export function isPlayerSelected(player_key: string) {
   }
 }
 
+export function currentPlayerStatus(
+  player_key: string,
+  seasonal_role: string,
+  team_key: string,
+) {
+  return 0;
+}
+
 export function isPlayerCanBeSelected(
   player_key: string,
   seasonal_role: string,

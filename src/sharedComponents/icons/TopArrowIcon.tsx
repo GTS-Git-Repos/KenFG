@@ -3,16 +3,16 @@ import Svg, {SvgProps, Path} from 'react-native-svg';
 
 function Icon(props: SvgProps) {
   return (
-    <Svg width="20" height="21" viewBox="0 0 20 21" fill="none">
+    <Svg width="10" height="13" viewBox="0 0 10 13" fill="none">
       <Path
-        d="M10 4.38248L10 18.5"
+        d="M4 1.88248L4 16"
         stroke="#27AE60"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <Path
-        d="M13.3774 6.70215L10.189 3.49994L7 6.70215"
+        d="M7.37743 4.20215L4.18898 0.999936L1 4.20215"
         stroke="#27AE60"
         stroke-width="1.5"
         stroke-linecap="round"

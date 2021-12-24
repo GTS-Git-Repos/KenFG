@@ -30,7 +30,7 @@ export default function InviteScreen() {
         <SocialMediaShare />
         <MoreOption />
       </View>
-      <FriendsListLink/>
+      <FriendsListLink />
     </View>
   );
 }
@@ -58,7 +58,7 @@ const MoreOption = () => {
 
 const styles = StyleSheet.create({
   link: {
-    borderColor: '#8797B1',
+    borderColor: '#8797B14D',
     borderWidth: 1,
     borderRadius: 2,
   },

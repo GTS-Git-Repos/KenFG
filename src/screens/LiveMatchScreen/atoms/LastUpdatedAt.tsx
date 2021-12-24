@@ -16,32 +16,32 @@ export default function LastUpdatedAt(props: PropTypes) {
       ]}>
       <Text
         style={[
-          tailwind('font-regular text-light px-2 font-11'),
+          tailwind('font-regular pl-3 text-light font-11'),
           {letterSpacing: 0.5},
         ]}>
         Points last updated at {props.updatedAt} overs
       </Text>
       <View style={[tailwind('flex-row px-2 items-center')]}>
-        <View style={[tailwind('px-1')]}>
+        {/* <View style={[tailwind('px-1')]}>
           <Image
             resizeMode="contain"
             source={assets.comparePlayer}
             style={[tailwind('app-w-20 app-h-20')]}
           />
-        </View>
-        {/* <View style={[tailwind('px-1')]}>
+        </View> */}
+        <View style={[tailwind('pr-1')]}>
           <Image
             resizeMode="contain"
             source={assets.vs}
-            style={[tailwind('app-w-20 app-h-20')]}
+            style={[tailwind('app-w-18 app-h-18')]}
           />
-        </View> */}
+        </View>
 
-        <View style={[tailwind('px-1')]}>
+        <View style={[tailwind('pl-1')]}>
           <Image
             resizeMode="contain"
             source={assets.download}
-            style={[tailwind('app-w-20 app-h-20')]}
+            style={[tailwind('app-w-18 app-h-18')]}
           />
         </View>
       </View>

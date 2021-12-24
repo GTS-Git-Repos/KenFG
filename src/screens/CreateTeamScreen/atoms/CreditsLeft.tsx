@@ -9,15 +9,17 @@ interface PropTypes {
 
 export default function CreditsLeft(props: PropTypes) {
   return (
-    <View style={[tailwind(''), {flex: 4}]}>
-      <View style={[tailwind('flex-row items-center')]}>
-        <Text style={[tailwind('font-bold text-white'), {fontSize: 26}]}>
-          {props.left}
+    <View style={[tailwind('flex-row justify-end'), {flex: 3.5}]}>
+      <View style={[tailwind('')]}>
+        <View style={[tailwind('flex-row justify-end items-center')]}>
+          <Text style={[tailwind('font-bold text-white'), {fontSize: 26}]}>
+            {props.left}
+          </Text>
+        </View>
+        <Text style={[tailwind('font-bold text-right text-dark-1 font-12')]}>
+          CREDITS LEFT
         </Text>
       </View>
-      <Text style={[tailwind('font-bold text-dark-1 font-12')]}>
-        CREDITS LEFT
-      </Text>
     </View>
   );
 }

@@ -4,9 +4,11 @@ import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import ProgressBar from '../molecules/ProgressBar';
+import {CompletedIcon} from '../../../sharedComponents';
 
 interface PropTypes {
-  text?: string;
+  received: boolean;
+  completed: boolean;
 }
 
 export default function Person(props: PropTypes) {
@@ -20,21 +22,25 @@ export default function Person(props: PropTypes) {
         />
       </View>
       <View style={[tailwind('pl-2'), {flex: 1}]}>
-        <Text style={[tailwind('font-regular text-light font-15')]}>
-          Jenny Wilson
-        </Text>
-        <ProgressBar />
+        <View style={[tailwind('flex-row items-center justify-between')]}>
+          <Text style={[tailwind('font-regular text-light font-15')]}>
+            Jenny Wilson
+          </Text>
+          {props.completed && <CompletedIcon />}
+        </View>
+
+        <ProgressBar completed={props.completed} />
         <View style={[tailwind('flex-row items-center justify-between')]}>
           <View style={[tailwind('flex-row items-center')]}>
             <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
               Received
             </Text>
             <Text style={[tailwind('font-bold text-dark-1 px-2 font-16')]}>
-              {'\u20B9'} 2,342
+              {'\u20B9'} {props.received}
             </Text>
           </View>
           <Text style={[tailwind('font-bold text-dark-1 px-2 font-16')]}>
-            {'\u20B9'} 5,342
+            {'\u20B9'} 500
           </Text>
         </View>
       </View>

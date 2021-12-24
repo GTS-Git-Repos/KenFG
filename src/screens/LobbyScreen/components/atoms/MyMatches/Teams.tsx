@@ -10,7 +10,7 @@ interface PropTypes {
 
 export default function Teams(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row')]}>
+    <View style={[tailwind('flex-row'), {paddingTop: 3}]}>
       <View style={[tailwind('flex-row'), {flex: 4}]}>
         <View
           style={[

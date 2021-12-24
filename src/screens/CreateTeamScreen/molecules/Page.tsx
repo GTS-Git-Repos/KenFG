@@ -9,6 +9,7 @@ import Player from '../molecules/Players';
 import {
   isPlayerCanBeSelected,
   isPlayerSelected,
+  currentPlayerStatus,
 } from '../../../store/store_utils';
 import {BottomLine} from '../../../sharedComponents';
 
@@ -55,13 +56,18 @@ export default function Page(props: PropTypes) {
               anounced={true}
               points={item.points}
               credits={item.credits}
-              isSelected={isPlayerSelected(item.key)}
-              canBeSelected={isPlayerCanBeSelected(
+              status={currentPlayerStatus(
                 item.key,
                 item.seasonal_role,
                 item.team_key,
-                props.rolesCountSelector,
               )}
+              isSelected={isPlayerSelected(item.key)}
+              // canBeSelected={isPlayerCanBeSelected(
+              //   item.key,
+              //   item.seasonal_role,
+              //   item.team_key,
+              //   props.rolesCountSelector,
+              // )}
               checkPlayerSelection={props.checkPlayerSelection}
             />
           );

@@ -19,10 +19,10 @@ export default function ReferredFriendsListScreen() {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Referred Friends'} />
       <TotalReferral />
-      <Person />
-      <Person />
-      <Person />
-      <Person />
+      <Person received={324} completed={false} />
+      <Person received={224} completed={false} />
+      <Person received={500} completed={true}  />
+      <Person received={132} completed={false}/>
     </View>
   );
 }

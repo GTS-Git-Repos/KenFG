@@ -62,7 +62,7 @@ export default function LiveMatchScreen() {
           <LiveMatchSeparator />
         </View>
         <CurrentLiveStatus />
-        <ExpertsStats />
+        {/* <ExpertsStats /> */}
       </LinearGradient>
 
       <View>

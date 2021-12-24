@@ -68,44 +68,6 @@ export default function LiveMatchTabs(props: PropTypes) {
       }}
     />
   );
-
-  return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      style={[tailwind('bg-dark-3'), styles.root]}>
-      <TabItem
-        tabName="Winnings"
-        index={0}
-        active={0 === props.activeIndex}
-        onTabPressed={props.onTabPressed}
-      />
-      <TabItem
-        tabName="Leaderboard"
-        index={1}
-        active={1 === props.activeIndex}
-        onTabPressed={props.onTabPressed}
-      />
-      <TabItem
-        tabName="ScoreBoard"
-        index={2}
-        active={2 === props.activeIndex}
-        onTabPressed={props.onTabPressed}
-      />
-      <TabItem
-        tabName="Commentry"
-        index={3}
-        active={3 === props.activeIndex}
-        onTabPressed={props.onTabPressed}
-      />
-      <TabItem
-        tabName="Stats"
-        index={4}
-        active={4 === props.activeIndex}
-        onTabPressed={props.onTabPressed}
-      />
-    </ScrollView>
-  );
 }
 
 const TabItem = ({tabName, active, index, onTabPressed}) => {
@@ -130,7 +92,7 @@ const TabItem = ({tabName, active, index, onTabPressed}) => {
           <LinearGradient
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
-            style={[tailwind('mx-3 mt-3 rounded'), {height: 2}]}
+            style={[tailwind('mt-3 mx-3 rounded'), {height: 2}]}
             colors={['#816D2E', '#614920']}></LinearGradient>
         )}
       </View>

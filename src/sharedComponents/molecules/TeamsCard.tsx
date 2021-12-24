@@ -18,6 +18,7 @@ import LinearGradient from 'react-native-linear-gradient';
 interface PropTypes {
   teams_key: string;
   canModify: boolean;
+  current: boolean;
 }
 interface TeamContInfoTypes {
   name: string;
@@ -32,7 +33,7 @@ export default function TeamsCard(props: PropTypes) {
     <TouchableOpacity
       activeOpacity={0.7}
       // onPress={() => navigation.navigate('MatchGroundScreen')}
-      style={[tailwind(' my-2 mt-1 rounded-lg')]}>
+      style={[tailwind('my-2 mt-1 rounded-lg')]}>
       <ImageBackground
         imageStyle={{borderTopLeftRadius: 5, borderTopRightRadius: 5}}
         style={[tailwind('w-full')]}
@@ -42,6 +43,7 @@ export default function TeamsCard(props: PropTypes) {
         <MyTeamsTopSection
           teams_key={props.teams_key}
           canModify={props.canModify}
+          current={props.current}
         />
 
         <View style={[tailwind('flex-row justify-between items-center p-3')]}>

@@ -44,8 +44,8 @@ export default function PlayerStats(props: PropTypes) {
         </View>
       )}
       {/* Players */}
-      <View style={[tailwind('flex-row p-1 justify-between items-center')]}>
-        <View style={[tailwind(''), {flex: 4.5}]}>
+      <View style={[tailwind('flex-row px-1 justify-between items-center')]}>
+        <View style={[tailwind('border-r border-gray-700'), {flex: 4.5}]}>
           <ComparePlayerProfile
             name={'Kumara'}
             title={'SL Bowl '}
@@ -53,7 +53,7 @@ export default function PlayerStats(props: PropTypes) {
             team1={false}
           />
         </View>
-        <View style={[tailwind(''), {flex: 0.5}]}></View>
+        {/* <View style={[tailwind('bg-red-500'), {flex: 0.5}]}></View> */}
         <View style={[tailwind(''), {flex: 4.5}]}>
           <ComparePlayerProfile
             name={'Kumara'}
@@ -63,8 +63,8 @@ export default function PlayerStats(props: PropTypes) {
           />
         </View>
       </View>
-      <View style={[tailwind('flex-row p-1 justify-between items-center')]}>
-        <View style={[tailwind(''), {flex: 4.5}]}>
+      <View style={[tailwind('flex-row px-1 justify-between items-center')]}>
+        <View style={[tailwind('border-r border-gray-700'), {flex: 4.5}]}>
           <ComparePlayerProfile
             name={'Kumara'}
             title={'SL Bowl '}
@@ -72,7 +72,7 @@ export default function PlayerStats(props: PropTypes) {
             team1={false}
           />
         </View>
-        <View style={[tailwind(''), {flex: 0.5}]}></View>
+        {/* <View style={[tailwind(''), {flex: 0.5}]}></View> */}
         <View style={[tailwind(''), {flex: 4.5}]}>
           <ComparePlayerProfile
             name={'Kumara'}

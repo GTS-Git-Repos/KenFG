@@ -38,9 +38,11 @@ const Link = (props: any) => {
   return (
     <View
       style={[
-        tailwind('flex-row bg-dark-4 items-center justify-center'),
+        tailwind(
+          'flex-row bg-dark-4 items-center border-b border-gray-800 justify-center',
+        ),
         {paddingVertical: 10},
-        styles.link,
+        // styles.link,
       ]}>
       <Image
         resizeMode="contain"
@@ -57,15 +59,15 @@ const Link = (props: any) => {
 
 const styles = StyleSheet.create({
   root: {
-    borderTopColor: '#8797B1',
-    borderLeftColor: '#8797B1',
-    borderRightColor: '#8797B1',
-    borderBottomColor: '#8797B1',
+    borderTopColor: '#8797B14D',
+    borderLeftColor: '#8797B14D',
+    borderRightColor: '#8797B14D',
+    borderBottomColor: '#8797B14D',
     borderWidth: 1,
     borderRadius: 2,
   },
   link: {
-    borderTopColor: '#8797B1',
+    borderTopColor: '#8797B14D',
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: 'transparent',

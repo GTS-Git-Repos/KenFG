@@ -34,7 +34,7 @@ export default function HorizontalProfile(props: PropTypes) {
         <Image
           resizeMode="contain"
           source={assets.person}
-          style={[{width: 38, height: 38}]}
+          style={[{width: 40, height: 40}]}
         />
         <View style={[tailwind('px-2 flex-row items-center')]}>
           <Text

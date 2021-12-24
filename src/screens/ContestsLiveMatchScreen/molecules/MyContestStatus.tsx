@@ -36,7 +36,7 @@ export default function MyContestStatus(props: PropTypes) {
 const TopSection = () => {
   return (
     <View style={[tailwind('flex-row items-center p-3')]}>
-      <View style={[tailwind(''), {flex: 4}]}>
+      <View style={[tailwind(''), {flex: 5}]}>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
           Prize Pool
         </Text>
@@ -45,7 +45,7 @@ const TopSection = () => {
         </Text>
       </View>
 
-      <View style={[tailwind('flex-row  justify-center'), {flex: 4}]}>
+      <View style={[tailwind('flex-row  justify-center pr-3'), {flex: 4}]}>
         <View>
           <Text
             style={[tailwind('font-regular text-center text-dark-1 font-14')]}>
@@ -57,7 +57,7 @@ const TopSection = () => {
         </View>
       </View>
 
-      <View style={[tailwind('flex-row justify-end'), {flex: 4}]}>
+      <View style={[tailwind('flex-row justify-end'), {flex: 3}]}>
         <View>
           <Text
             style={[tailwind('font-regular text-right text-dark-1 font-14')]}>

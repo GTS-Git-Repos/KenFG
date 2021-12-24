@@ -13,11 +13,15 @@ export default function SeriesHeader(props: PropTypes) {
     <View
       style={[
         tailwind(
-          'flex-row items-center px-6 py-3 bg-dark-3 justify-between border-b border-gray-800',
+          'flex-row items-center px-4 py-3 bg-dark-4 justify-between border-b border-t border-gray-800',
         ),
       ]}>
-      <Text style={[tailwind('font-bold font-12 text-white')]}>TEAM</Text>
-      <Text style={[tailwind('font-bold font-12 text-white')]}>RANK</Text>
+      <Text style={[tailwind('font-bold font-12 text-white text-left')]}>
+        TEAM
+      </Text>
+      <Text style={[tailwind('font-bold font-12 text-white text-right')]}>
+        RANK
+      </Text>
     </View>
   );
 }

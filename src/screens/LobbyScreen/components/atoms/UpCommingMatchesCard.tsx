@@ -53,15 +53,12 @@ export default function UpcommingMatches(props: PropTypes) {
           {paddingTop: 4},
         ]}>
         <View style={[tailwind('flex-row items-center')]}>
-          <View style={[tailwind(''), {flex: 9}]}>
+          <View style={[tailwind('mr-1'), {flex: 9}]}>
             <Text
               numberOfLines={1}
               // allowFontScaling={true}
-              // adjustsFontSizeToFit={true}
-              style={[
-                tailwind('font-regular text-center font-10'),
-                {color: '#F6F7F4'},
-              ]}>
+              adjustsFontSizeToFit={true}
+              style={[tailwind('font-regular text-center text-white font-11')]}>
               {props.tournament_name}
             </Text>
           </View>
@@ -75,13 +72,14 @@ export default function UpcommingMatches(props: PropTypes) {
           </View>
         </View>
 
-        <LinearGradient
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 0}}
-          style={[tailwind('mx-2'), {marginTop: 2}]}
-          colors={['#162339', '#29344B', '#162339']}>
+        <View
+          // start={{x: 0, y: 0}}
+          // end={{x: 1, y: 0}}
+          style={[tailwind('mx-2 border-t border-gray-800'), {marginTop: 2}]}
+          // colors={['#162339', '#29344B', '#162339']}
+        >
           <View style={[tailwind(''), {height: 2}]}></View>
-        </LinearGradient>
+        </View>
 
         <View
           style={[

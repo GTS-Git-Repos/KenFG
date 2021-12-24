@@ -43,13 +43,13 @@ export default function LeaderBoardScreen() {
         onPageSelected={onPageSelectedAction}
         style={[{flex: 1}]}>
         <View>
-          <SeriesPage />
+          <SeriesPage showPoints={true} />
         </View>
         <View>
-          <SeriesPage />
+          <SeriesPage showPoints={true} />
         </View>
         <View>
-          <SeriesPage />
+          <SeriesPage showPoints={false} />
         </View>
       </PagerView>
     </View>

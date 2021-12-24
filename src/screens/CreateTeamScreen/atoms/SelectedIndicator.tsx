@@ -9,7 +9,7 @@ interface PropTypes {
 
 export default function SelectedIndcator(props: PropTypes) {
   return (
-    <View style={[tailwind(''), {flex: 4}]}>
+    <View style={[tailwind(''), {flex: 3.5}]}>
       <View style={[tailwind('flex-row items-center')]}>
         <Text style={[tailwind('font-bold text-white'), {fontSize: 26}]}>
           {props.count}

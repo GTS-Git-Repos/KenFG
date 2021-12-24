@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import tailwind from '../../../../tailwind';
-import {FlatList} from 'react-native';
+import {FlatList, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import TabItem from '../atoms/TabItem';
@@ -39,24 +39,26 @@ export default function ScrollTabs(props: PropTypes) {
   }, [props.activeIndex]);
 
   return (
-    <FlatList
-      ref={flatListRef}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      style={[tailwind('bg-dark-3')]}
-      data={DATA}
-      renderItem={({item, index}) => {
-        return (
-          <TabItem
-            key={item.tab_key}
-            tabName={item.tab_name}
-            count={props.rolesCountSelector[item.tab_key].occupaid}
-            active={props.activeIndex === index}
-            onTabPressed={props.onTabPressed}
-            index={index}
-          />
-        );
-      }}
-    />
+    <View style={[tailwind('bg-dark-3 px-4')]}>
+      <FlatList
+        ref={flatListRef}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={[tailwind('bg-dark-3')]}
+        data={DATA}
+        renderItem={({item, index}) => {
+          return (
+            <TabItem
+              key={item.tab_key}
+              tabName={item.tab_name}
+              count={props.rolesCountSelector[item.tab_key].occupaid}
+              active={props.activeIndex === index}
+              onTabPressed={props.onTabPressed}
+              index={index}
+            />
+          );
+        }}
+      />
+    </View>
   );
 }

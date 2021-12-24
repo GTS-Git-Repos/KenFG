@@ -21,8 +21,8 @@ interface PropTypes {
 
 function TeamInfo(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row'), {padding: 17}]}>
-      <View style={[tailwind('flex-row'), {flex: 6}]}>
+    <View style={[tailwind('flex-row'), {padding: 16}]}>
+      <View style={[tailwind('flex-row justify-start'), {flex: 6}]}>
         <SelectedIndicator count={props.teamcount1 + props.teamcount2} />
         <Team1
           teamname={props.teamname1}

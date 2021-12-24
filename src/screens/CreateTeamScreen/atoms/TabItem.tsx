@@ -14,16 +14,23 @@ interface PropTypes {
 }
 
 export default function TabItem(props: PropTypes) {
+  const onLayoutAction = (e: any) => {
+    console.log(e.nativeEvent.layout);
+  };
+
   return (
     <TouchableOpacity
       onPress={() => {
         props.onTabPressed(props.index);
       }}
-      style={[{width: 100}, tailwind('')]}>
-      <View style={[tailwind('pt-3')]}>
+      style={[{width: 85}, tailwind('')]}>
+      <View onLayout={onLayoutAction} style={[tailwind('pt-3')]}>
         <Text
           style={[
-            tailwind(`font-bold text-center font-13`),
+            tailwind(
+              `font-bold text-center font-13 
+              `,
+            ),
             {
               color: props.active ? '#FFFF' : '#8797B1',
             },
@@ -34,7 +41,7 @@ export default function TabItem(props: PropTypes) {
           <LinearGradient
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
-            style={[tailwind('mx-3 mt-3 rounded h-1')]}
+            style={[tailwind('mt-3 rounded h-1')]}
             colors={['#816D2E', '#614920']}></LinearGradient>
         )}
       </View>

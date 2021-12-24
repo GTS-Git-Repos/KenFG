@@ -14,9 +14,7 @@ import {} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
-  goto: string;
   type: number;
-  text: string;
 }
 
 export default function LeaderBoardBannerSlider(props: PropTypes) {
@@ -26,23 +24,27 @@ export default function LeaderBoardBannerSlider(props: PropTypes) {
 
   const navigate = () => {
     if (props.type === -1) {
-      navigation.navigate(props.goto);
+      navigation.navigate('DailyLeaderBoardScreen');
     } else if (props.type === 0) {
       navigation.navigate('MonthlyLeaderBoardScreen', {
-        name: 'Weekly Leaderboard',
         type: 0,
       });
-    } else {
+    } else if (props.type === 1) {
       navigation.navigate('MonthlyLeaderBoardScreen', {
-        name: 'Montly Leaderboard',
         type: 1,
+      });
+    } else if (props.type === 2) {
+      navigation.navigate('MonthlyLeaderBoardScreen', {
+        type: 2,
       });
     }
   };
 
   return (
-    <View style={[tailwind('')]}>
-      <Carousel
+    <View style={[tailwind('mx-5')]}>
+      <Banner navigate={navigate} />
+
+      {/* <Carousel
         ref={sliderRef}
         data={[1, 2, 4]}
         renderItem={() => {
@@ -72,7 +74,7 @@ export default function LeaderBoardBannerSlider(props: PropTypes) {
         }}
         inactiveDotOpacity={1}
         inactiveDotScale={0.6}
-      />
+      /> */}
     </View>
   );
 }
@@ -83,7 +85,7 @@ const Banner = (props: any) => {
       <Image
         resizeMode="stretch"
         source={assets.banner1}
-        style={[tailwind('w-full'), {height: 120}]}
+        style={[tailwind('w-full'), {height: 100}]}
       />
     </TouchableOpacity>
   );

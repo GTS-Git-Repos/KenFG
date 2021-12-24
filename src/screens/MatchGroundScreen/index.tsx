@@ -25,6 +25,8 @@ export default function MathchGroundScreen() {
 
   const playersState: any = useSelector<any>(state => state.team.players);
   const TeamState: any = useSelector<any>(state => state.team.teams);
+  const CaptainKeyState: any = useSelector<any>(state => state.team.cap_key);
+  const ViceCaptainState: any = useSelector<any>(state => state.team.vc_key);
 
   const availableCredits = useSelector(creditLeft);
   const rolesCountSelector = useSelector(rolesCount);
@@ -71,10 +73,30 @@ export default function MathchGroundScreen() {
           source={assets.ground}
           style={[tailwind('w-full'), {flexGrow: 1}]}
           resizeMode="cover">
-          <CategoryPlayers title={'WICKET-KEEPERS'} players={keepers} />
-          <CategoryPlayers title={'BATS MEN'} players={batsman} />
-          <CategoryPlayers title={'ALL ROUNDERS'} players={all_rounder} />
-          <CategoryPlayers title={'BOWLERS'} players={bowler} />
+          <CategoryPlayers
+            title={'WICKET-KEEPERS'}
+            players={keepers}
+            CaptainKeyState={CaptainKeyState}
+            ViceCaptainState={ViceCaptainState}
+          />
+          <CategoryPlayers
+            title={'BATS MEN'}
+            players={batsman}
+            CaptainKeyState={CaptainKeyState}
+            ViceCaptainState={ViceCaptainState}
+          />
+          <CategoryPlayers
+            title={'ALL ROUNDERS'}
+            players={all_rounder}
+            CaptainKeyState={CaptainKeyState}
+            ViceCaptainState={ViceCaptainState}
+          />
+          <CategoryPlayers
+            title={'BOWLERS'}
+            players={bowler}
+            CaptainKeyState={CaptainKeyState}
+            ViceCaptainState={ViceCaptainState}
+          />
         </ImageBackground>
         {/* <Image
           resizeMode="contain"

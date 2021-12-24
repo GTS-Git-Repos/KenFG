@@ -45,6 +45,9 @@ import GoogleIcon from './icons/GoogleIcon';
 import CIcon from './icons/CIcon';
 import VCIcon from './icons/VCIcon';
 import GoldenCup from './icons/GoldenCup';
+import RadioButton from './icons/RadioButton';
+import CloneIcon from './icons/CloneIcon';
+import CompletedIcon from './icons/CompletedIcon';
 
 export {
   TopBar,
@@ -72,16 +75,19 @@ export {
   TopArrowIcon,
   BackIcon,
   GoldenCup,
+  CloneIcon,
   GearIcon,
   DownArrowIcon,
   RankIcon,
   StarIcon,
+  CompletedIcon,
   CupIcon,
   MIcon,
   CIcon,
   VCIcon,
   DownloadIcon,
   ShareIcon,
+  RadioButton,
   ContestBellIcon,
   GoogleIcon,
   TickIcon,

@@ -3,14 +3,20 @@ import tailwind from '../../../../tailwind';
 import {View, Text, Image, StyleSheet} from 'react-native';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
+import {CIcon, VCIcon} from '../../../sharedComponents';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
+  CaptainKeyState: string;
+  ViceCaptainState: string;
   title: string;
   players: any;
 }
 
 interface PlayerPropTypes {
+  CaptainKeyState: string;
+  ViceCaptainState: string;
+  player_key: string;
   image: string;
   name: string;
   amount: string;
@@ -42,10 +48,13 @@ export default function CategoryPlayers(props: PropTypes) {
           return (
             <PlayerProfile
               key={item.key}
+              player_key={item.key}
               team1={item.team_key === 'eng'}
               image={''}
               name={item.name}
               amount={'8.4 crore'}
+              CaptainKeyState={props.CaptainKeyState}
+              ViceCaptainState={props.ViceCaptainState}
             />
           );
         })}
@@ -56,7 +65,7 @@ export default function CategoryPlayers(props: PropTypes) {
 
 const PlayerProfile = (props: PlayerPropTypes) => {
   return (
-    <View style={[tailwind('flex-col px-4 py-1 items-center')]}>
+    <View style={[tailwind('flex-col px-2 items-center')]}>
       <Image
         resizeMode="contain"
         source={assets.player}
@@ -66,6 +75,17 @@ const PlayerProfile = (props: PlayerPropTypes) => {
       <Text style={[tailwind('font-regular font-7 text-light')]}>
         {props.amount}
       </Text>
+      {props.player_key === props.CaptainKeyState && (
+        <View style={[tailwind('absolute left-2')]}>
+          <CIcon white={true} />
+        </View>
+      )}
+
+      {props.player_key === props.ViceCaptainState && (
+        <View style={[tailwind('absolute left-2')]}>
+          <VCIcon white={true} />
+        </View>
+      )}
     </View>
   );
 };

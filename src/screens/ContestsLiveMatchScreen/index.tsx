@@ -55,7 +55,7 @@ export default function ContestLiveMatchScreen() {
         <Projection completed={false} />
         <View style={[tailwind('my-2 border-b border-gray-800')]}></View>
         <CurrentLiveStatus />
-        <ExpertsStats />
+        {/* <ExpertsStats /> */}
       </LinearGradient>
 
       <View>

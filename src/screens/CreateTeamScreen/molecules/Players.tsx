@@ -5,6 +5,7 @@ import {
   View,
   Text,
   Image,
+  StyleSheet,
   TouchableOpacity,
   TouchableOpacityBase,
 } from 'react-native';
@@ -28,6 +29,7 @@ interface PropTypes {
   team_a: string;
   team_b: string;
   checkPlayerSelection(player_key: string, player_role: string): void;
+  status(player_key: string, player_role: string, team_key: string): void;
 }
 
 export default function Player(props: PropTypes) {
@@ -40,8 +42,9 @@ export default function Player(props: PropTypes) {
           tailwind('pt-3 flex-row border-b border-gray-800'),
           {
             backgroundColor: props.isSelected ? '#3C362C' : '#172338',
-            opacity: props.canBeSelected ? 1 : 0.3,
+            // opacity: props.canBeSelected ? 1 : 0.3,
           },
+          // true ? styles.disabledUser : {},
         ]}>
         {/* Image */}
         <TouchableOpacity
@@ -168,10 +171,17 @@ const AddedButton = (props: any) => {
       colors={['#816D2E', '#614920']}
       style={[
         tailwind(
-          'flex-col items-center justify-center absolute rounded-l-lg py-2 right-0',
+          'flex-col items-center justify-center absolute rounded-l-lg px-1 right-0',
         ),
       ]}>
-      <Icon name="remove" color="white" size={24} />
+      <Icon name="remove" color="white" size={20} />
     </LinearGradient>
   );
 };
+
+const styles = StyleSheet.create({
+  disabledUser: {
+    // backgroundColor: 'rgba(255,255,255,0.)',
+    // opacity: 0.3,
+  },
+});
