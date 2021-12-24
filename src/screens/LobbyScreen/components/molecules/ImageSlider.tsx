@@ -12,6 +12,14 @@ import assets from '../../../../constants/assets_manifest';
 import Swiper from 'react-native-swiper';
 import {useNavigation} from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
+import {upcommingMatchesandBannersRemote} from '../../../../remote/matchesRemote';
+import {useQuery} from 'react-query';
+import {useDispatch, useSelector} from 'react-redux';
+import {userInfo} from '../../../../store/selectors';
+import {
+  updateSelectedContestAction,
+  updateSelectedMatchAction,
+} from '../../../../store/actions/appActions';
 
 interface PropTypes {
   data: [];
@@ -22,8 +30,15 @@ const ImageSlider = (props: any) => {
   const {width} = useWindowDimensions();
   const navigation = useNavigation<any>();
   const swiperRef = useRef();
+  const dispatch = useDispatch();
+  const userInfoSelector = useSelector(userInfo);
 
   const [height, setHeight] = useState(95);
+
+  const upcommingMatches = useQuery(
+    ['upcomingMatches', userInfoSelector?.mobile],
+    upcommingMatchesandBannersRemote,
+  );
 
   const calcHeight = (e: any) => {
     const {height} = e.nativeEvent.layout;
@@ -31,17 +46,25 @@ const ImageSlider = (props: any) => {
   };
 
   const navigate = (item: any) => {
-    ToastAndroid.show('Navigation Disabled ', ToastAndroid.SHORT);
-    // dispatch(updateSelectedContestAction(null));
-    // dispatch(
-    //   updateSelectedMatchAction({
-    //     match_key: props.match_key,
-    //     team_a: props.team_a_name,
-    //     team_b: props.team_b_name,
-    //   }),
-    // );
+    try {
+      if (upcommingMatches.data?.matches) {
+        const match = upcommingMatches.data?.matches[0];
+        let obj = {
+          match_key: match.key,
+          team_a: match.teams.a.key,
+          team_b: match.teams.b.key,
+        };
+        // console.log(obj);
 
-    // navigation.navigate('ContestListScreen');
+        dispatch(updateSelectedContestAction(null));
+        dispatch(updateSelectedMatchAction(obj));
+        navigation.navigate('ContestListScreen');
+      } else {
+        throw 'err';
+      }
+    } catch (err) {
+      ToastAndroid.show('Navigation Disabled ', ToastAndroid.SHORT);
+    }
   };
 
   if (!props.data) {

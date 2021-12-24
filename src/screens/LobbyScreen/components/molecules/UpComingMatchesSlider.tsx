@@ -16,7 +16,7 @@ export default function UpComingMatchesSlider(props: PropTypes) {
     return (
       <Text
         style={[
-          tailwind('font-regular text-light text-center text-light font-15'),
+          tailwind('font-regular text-dark-1 text-center text-light font-15'),
         ]}>
         Loading ...
       </Text>
