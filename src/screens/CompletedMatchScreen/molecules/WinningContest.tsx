@@ -8,6 +8,7 @@ import {
   DollarIcon,
   GoldenCup,
   RankIcon,
+  TeamCode,
   TickIcon,
 } from '../../../sharedComponents';
 import {} from 'react-native-gesture-handler';
@@ -20,7 +21,7 @@ export default function WinningContest(props: PropTypes) {
   return (
     <TouchableOpacity
       onPress={props.openPrizeBreakSheet}
-      style={[tailwind('mx-2 my-3 bg-dark-3'), {borderRadius: 7}]}>
+      style={[tailwind('mx-2 bg-dark-3'), {borderRadius: 7, marginTop: 10}]}>
       <TopSection />
       <Footer />
       <JoinedTeamStatus />
@@ -43,7 +44,8 @@ const TopSection = () => {
 
       <View style={[tailwind('flex-row  justify-center'), {flex: 4}]}>
         <View>
-          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+          <Text
+            style={[tailwind('font-regular text-center text-dark-1 font-14')]}>
             Spots
           </Text>
           <Text style={[tailwind('font-bold text-dark-1 font-16 py-0.5')]}>
@@ -103,24 +105,29 @@ const JoinedTeamStatus = (props: any) => {
   return (
     <View
       style={[
-        tailwind('flex-row p-3 justify-between items-center'),
+        tailwind('flex-row p-3 items-center'),
         {backgroundColor: props.selected ? '#006A4D' : ''},
       ]}>
-      <View style={[tailwind('flex-row items-center')]}>
+      <View style={[tailwind('flex-row items-center'), {flex: 12 / 4}]}>
         <Text style={[tailwind('font-regular uppercase text-white font-14')]}>
           Team Name
         </Text>
-        <View style={[tailwind('py-1 mx-2 px-2 bg-dark-4'), {borderRadius: 2}]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-12')]}>T1</Text>
+        <View style={[tailwind('pl-2')]}>
+          <TeamCode code={'T2'} />
         </View>
       </View>
 
-      <View>
-        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>50</Text>
+      <View
+        style={[tailwind(''), {flex: 12 / 4, position: 'relative', left: 8}]}>
+        <Text
+          style={[tailwind('font-regular text-center text-dark-1 font-14')]}>
+          50
+        </Text>
       </View>
 
-      <View style={[tailwind('flex-row items-center justify-end')]}>
-        <View style={[tailwind('flex-row px-2 items-center')]}>
+      <View
+        style={[tailwind('flex-row items-center justify-end'), {flex: 12 / 4}]}>
+        <View style={[tailwind('flex-row items-center')]}>
           <RankIcon golden={false} />
           <Text style={[tailwind('font-bold px-1 text-white font-15')]}>
             10

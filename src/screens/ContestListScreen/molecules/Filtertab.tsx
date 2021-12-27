@@ -187,7 +187,7 @@ const SortBy = () => {
     <View
       style={[
         tailwind(
-          'flex-row items-center justify-between border-t border-gray-800 border-b py-2',
+          'flex-row items-center justify-between border-t border-b border-gray-800  py-2',
         ),
       ]}>
       <TouchableOpacity

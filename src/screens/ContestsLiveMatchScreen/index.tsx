@@ -22,6 +22,7 @@ import ContestLiveMyTeamsPage from './molecules/ContestLiveMyTeamsPage';
 import LinearGradient from 'react-native-linear-gradient';
 import {Modalize} from 'react-native-modalize';
 import BreakupModalSheet from './molecules/BreakupModalSheet';
+import PlayersStats from '../LiveMatchScreen/molecules/PlayersStats';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
@@ -49,8 +50,12 @@ export default function ContestLiveMatchScreen() {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         colors={['#172338', '#0D1320']}
-        style={[tailwind('px-3 pt-6 pb-3 bg-dark-3')]}>
-        <MatchStat teamName1={'Australia'} teamName2={'England'} completed={false} />
+        style={[tailwind('p-3 bg-dark-3')]}>
+        <MatchStat
+          teamName1={'Australia'}
+          teamName2={'England'}
+          completed={false}
+        />
 
         <Projection completed={false} />
         <View style={[tailwind('my-2 border-b border-gray-800')]}></View>
@@ -78,6 +83,9 @@ export default function ContestLiveMatchScreen() {
         </View>
         <View style={{width: width}}>
           <ScrollBoardPage index={3} activeIndex={selectedTab} />
+        </View>
+        <View style={{width: width}}>
+          <PlayersStats index={4} activeIndex={selectedTab} />
         </View>
       </PagerView>
 

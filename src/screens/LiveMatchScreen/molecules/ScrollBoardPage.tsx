@@ -20,60 +20,14 @@ export default function ScrollBoardPage(props: PropTypes) {
       <ScrollView>
         <View>
           <View style={[tailwind('h-3')]}></View>
-          <TeamStatus teamName="ENG" isBatting={false} />
-          <TeamStatus teamName="AUS" isBatting={true} />
+          <TeamStatus teamName="ENG" isBatting={false} isExpanded={false} />
+          <TeamStatus teamName="AUS" isBatting={true} isExpanded={true} />
           <TeamStatusHeader />
           <PlayerStatus name="V.Kohli" />
           <PlayerStatus name="Ms.Dhoni" />
-          <View
-            style={[
-              tailwind('flex-row pt-2 px-2 bg-dark-3 border-b border-gray-800'),
-            ]}>
-            <View style={[tailwind(''), {flex: 6}]}>
-              <View style={[tailwind('px-2')]}>
-                <Text style={[tailwind('font-bold text-light font-14')]}>
-                  Extras
-                </Text>
-                <Text
-                  style={[tailwind('font-regular py-2 text-dark-1 font-12')]}>
-                  (nb 1, wd 1, b0, lb, pen 0)
-                </Text>
-              </View>
-            </View>
-            <View style={[tailwind(''), {flex: 6}]}>
-              <View
-                style={[tailwind('flex-col px-2 justify-center'), {flex: 6}]}>
-                <Text style={[tailwind(`font-regular font-14 text-white`)]}>
-                  {2}
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          <View
-            style={[
-              tailwind('flex-row pt-2 px-2 border-b border-gray-800 bg-dark-3'),
-            ]}>
-            <View style={[tailwind(''), {flex: 6}]}>
-              <View style={[tailwind('px-2')]}>
-                <Text style={[tailwind('font-bold text-light font-14')]}>
-                  Total
-                </Text>
-                <Text
-                  style={[tailwind('font-regular py-2 text-dark-1 font-12')]}>
-                  (1 Wickets 12.3 overs)
-                </Text>
-              </View>
-            </View>
-            <View style={[tailwind(''), {flex: 6}]}>
-              <View
-                style={[tailwind('flex-col px-2 justify-center'), {flex: 6}]}>
-                <Text style={[tailwind(`font-regular font-14 text-white`)]}>
-                  43
-                </Text>
-              </View>
-            </View>
-          </View>
+          <Extras />
+          <Total />
+          <YetToBat />
         </View>
         <View style={[tailwind('h-10')]}></View>
       </ScrollView>
@@ -113,8 +67,10 @@ const PlayerStatus = (props: any) => {
               <Text
                 style={[
                   tailwind(
-                    `font-regular text-center text-dark-1 font-12 ${
-                      index === 0 ? 'font-14 text-white' : ''
+                    `text-center ${
+                      index === 0
+                        ? 'font-14 text-white font-bold'
+                        : 'font-regular text-dark-1 font-12  '
                     }`,
                   ),
                 ]}>
@@ -124,6 +80,76 @@ const PlayerStatus = (props: any) => {
           );
         })}
       </View>
+    </View>
+  );
+};
+const Total = (props: any) => {
+  return (
+    <View
+      style={[
+        tailwind(
+          'flex-row  items-center pt-2 px-2 border-b border-gray-800 bg-dark-3',
+        ),
+      ]}>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('px-2')]}>
+          <Text style={[tailwind('font-bold text-light font-14')]}>Total</Text>
+          <Text style={[tailwind('font-regular py-2 text-dark-1 font-12')]}>
+            (1 Wickets 12.3 overs)
+          </Text>
+        </View>
+      </View>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('flex-col  px-4 justify-center'), {flex: 6}]}>
+          <Text style={[tailwind(`font-bold font-14 text-white`)]}>43</Text>
+        </View>
+      </View>
+    </View>
+  );
+};
+const Extras = (props: any) => {
+  return (
+    <View
+      style={[
+        tailwind(
+          'flex-row items-center pt-2 px-2 bg-dark-3 border-b border-gray-800',
+        ),
+      ]}>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('px-2')]}>
+          <Text style={[tailwind('font-bold text-light font-14')]}>Extras</Text>
+          <Text style={[tailwind('font-regular py-2 text-dark-1 font-12')]}>
+            (nb 1, wd 1, b0, lb, pen 0)
+          </Text>
+        </View>
+      </View>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('flex-col px-4 justify-center')]}>
+          <Text style={[tailwind(`font-bold font-14 text-white`)]}>{2}</Text>
+        </View>
+      </View>
+    </View>
+  );
+};
+const YetToBat = () => {
+  return (
+    <View
+      style={[
+        tailwind(
+          'flex-row  items-center pt-2 px-2 border-b border-gray-800 bg-dark-3',
+        ),
+      ]}>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('px-2')]}>
+          <Text style={[tailwind('font-bold text-light font-14')]}>
+            Yet to bat
+          </Text>
+          <Text style={[tailwind('font-regular py-2 text-dark-1 font-12')]}>
+            Mitcher,Starc
+          </Text>
+        </View>
+      </View>
+      <View style={[tailwind(''), {flex: 6}]}></View>
     </View>
   );
 };

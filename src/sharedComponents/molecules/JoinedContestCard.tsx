@@ -13,6 +13,7 @@ import {
   MIcon,
   ShareIcon,
   SwitchIcon,
+  TeamCode,
   TickIcon,
   VCIcon,
 } from '../';
@@ -168,18 +169,7 @@ const JoinedTeams = () => {
         'T1',
         'T3',
       ].map((item: any, index: number) => {
-        return (
-          <View
-            style={[
-              tailwind('py-0.5 mr-1 mb-1 bg-dark-4'),
-              {borderRadius: 2, paddingHorizontal: 6},
-            ]}
-            key={index}>
-            <Text style={[tailwind('font-regular text-dark-1 font-12  ')]}>
-              {item}
-            </Text>
-          </View>
-        );
+        return <TeamCode code={item} key={index} />;
       })}
     </View>
   );

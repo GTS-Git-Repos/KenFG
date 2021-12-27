@@ -7,6 +7,7 @@ import {
   DownArrowIcon,
   IdleLevel,
   RankIcon,
+  TeamCode,
   TopArrowIcon,
 } from '../../../sharedComponents';
 import {useNavigation} from '@react-navigation/native';
@@ -74,10 +75,93 @@ export default function LeaderProfile(props: PropTypes) {
             </Text>
           </View>
           <View style={[tailwind('flex-row items-center flex-wrap')]}>
-            <TeamTag teamCode="M1" />
-            <TeamTag teamCode="M2" />
-            <TeamTag teamCode="M3" />
+            <TeamCode code="M1" />
+            <TeamCode code="M2" />
+            <TeamCode code="M3" />
           </View>
+        </View>
+      </View>
+
+      <View style={[tailwind('flex-row items-center justify-end'), {flex: 3}]}>
+        <View
+          style={[
+            tailwind(
+              `flex-row justify-center ${
+                props.showPoints ? 'justify-center' : 'justify-end'
+              }`,
+            ),
+            {flex: props.showPoints ? 9 : 1},
+          ]}>
+          {!props.isFirst && !props.isSecond && !props.isThird ? (
+            <RankPoints />
+          ) : null}
+          {props.isFirst ? (
+            <Image
+              resizeMode="contain"
+              source={assets.prize1}
+              style={[{width: 33, height: 33}]}
+            />
+          ) : null}
+          {props.isSecond ? (
+            <Image
+              resizeMode="contain"
+              source={assets.prize2}
+              style={[{width: 33, height: 33}]}
+            />
+          ) : null}
+          {props.isThird ? (
+            <Image
+              resizeMode="contain"
+              source={assets.prize3}
+              style={[{width: 33, height: 33}]}
+            />
+          ) : null}
+        </View>
+        {props.showPoints && (
+          <View
+            style={[tailwind('flex-row items-center justify-end'), {flex: 1}]}>
+            {props.levelStatus === null ? <IdleLevel /> : null}
+            {props.levelStatus === true ? <TopArrowIcon /> : null}
+            {props.levelStatus === false ? <DownArrowIcon /> : null}
+          </View>
+        )}
+      </View>
+    </TouchableOpacity>
+  );
+
+  return (
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={navigate}
+      style={[
+        tailwind(
+          'px-4 py-3 bg-dark-3 border-b border-gray-800 flex-row items-center',
+        ),
+      ]}>
+      <View style={[tailwind('flex-row items-center'), {flex: 7}]}>
+        <View style={[tailwind(''), {width: 40, height: 40}]}>
+          <Image
+            resizeMode="contain"
+            source={assets.person}
+            style={[tailwind('w-full h-full')]}
+          />
+        </View>
+        <View style={[tailwind('px-2')]}>
+          <Text style={[tailwind('font-regular uppercase text-white font-14')]}>
+            Kairo
+          </Text>
+          <View style={[tailwind('flex-row items-center py-1')]}>
+            <Text style={[tailwind('font-regular text-white font-12')]}>
+              98678
+            </Text>
+            <Text
+              style={[
+                tailwind('font-regular uppercase px-2 text-dark-1 font-12'),
+              ]}>
+              Points
+            </Text>
+          </View>
+          <View style={[tailwind('flex-row items-center flex-wrap')]}></View>
         </View>
       </View>
 
@@ -138,16 +222,11 @@ export default function LeaderProfile(props: PropTypes) {
   );
 }
 
-const TeamTag = (props: any) => {
+const RankPoints = () => {
   return (
-    <View
-      style={[
-        tailwind('bg-dark-4 py-0.5 mr-1'),
-        {paddingHorizontal: 6, borderRadius: 2},
-      ]}>
-      <Text style={[tailwind('font-regular text-white font-12')]}>
-        {props.teamCode}
-      </Text>
+    <View style={[tailwind('flex-row items-center')]}>
+      <RankIcon golden={true} />
+      <Text style={[tailwind('font-regular pl-1 text-white font-14')]}>10</Text>
     </View>
   );
 };

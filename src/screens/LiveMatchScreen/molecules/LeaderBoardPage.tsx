@@ -21,14 +21,14 @@ export default function LeaderBoardPage(props: PropTypes) {
           <Tabs />
           <LeaderBoardProfile
             image={''}
-            name={'Player 1'}
+            name={'Your Team'}
             teamCode={'T20'}
             points={42}
             rank={'32,333,232'}
           />
           <LeaderBoardProfile
             image={''}
-            name={'Player 21 '}
+            name={'Your Team'}
             teamCode={'T53'}
             points={42}
             rank={'11,333,232'}
@@ -36,25 +36,26 @@ export default function LeaderBoardPage(props: PropTypes) {
 
           <LeaderBoardProfile
             image={''}
-            name={'Player 1'}
+            name={'Player One'}
             teamCode={'T20'}
             points={42}
             rank={'32,333,232'}
           />
           <LeaderBoardProfile
             image={''}
-            name={'Player 21 '}
+            name={'Player Two'}
             teamCode={'T53'}
             points={42}
             rank={'32,333,232'}
           />
           <LeaderBoardProfile
             image={''}
-            name={'Player 3'}
+            name={'Player One'}
             teamCode={'T20'}
             points={42}
             rank={'32,333,232'}
           />
+
           <LeaderBoardProfile
             image={''}
             name={'Player 1'}

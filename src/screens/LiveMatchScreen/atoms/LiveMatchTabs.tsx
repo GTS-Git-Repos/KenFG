@@ -19,12 +19,12 @@ interface PropTypes {
 
 const DATA = [
   {
-    key: 'winnings',
-    tabName: 'Winnigs',
-  },
-  {
     key: 'leaderboard',
     tabName: 'Leaderboard',
+  },
+  {
+    key: 'winnings',
+    tabName: 'Winnigs',
   },
   {
     key: 'ScoreBoard',

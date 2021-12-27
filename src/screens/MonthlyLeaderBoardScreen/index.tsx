@@ -40,7 +40,7 @@ export default function MonthlyLeaderBoardScreen() {
       <PromobannerLeader />
       <View style={[tailwind('px-3')]}>
         {route.params.type === 0 ? <WeekDays /> : null}
-        {route.params.type === 1 ? <WeekDays /> : null}
+        {route.params.type === 1 ? <MonthDays /> : null}
         {route.params.type === 2 ? <SelectSeries /> : null}
       </View>
 

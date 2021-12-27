@@ -13,7 +13,9 @@ export default function NotificationsToolbar(props: PropTypes) {
   return (
     <View
       style={[
-        tailwind('bg-dark-3 p-3 mb-3 flex-row items-center justify-between'),
+        tailwind(
+          'bg-dark-4 border-b border-gray-800 p-3 flex-row items-center justify-between',
+        ),
       ]}>
       <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
         You have unread notifications

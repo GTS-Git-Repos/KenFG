@@ -8,6 +8,7 @@ import MatchStat from './atoms/MatchStat';
 import Projection from './atoms/Projection';
 import ExpertsStats from './atoms/ExpertsStats';
 import ContestScreenLoading from './atoms/ContestScreenLoading';
+import TeamCode from './atoms/TeamCode';
 
 import ContestCard from './molecules/ContestCard';
 import TeamsCard from './molecules/TeamsCard';
@@ -57,6 +58,7 @@ export {
   BottomLine,
   FullScreenLoading,
   ContestCard,
+  TeamCode,
   Projection,
   ContestScreenLoading,
   CurrentLiveStatus,

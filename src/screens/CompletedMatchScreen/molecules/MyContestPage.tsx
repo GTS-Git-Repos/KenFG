@@ -18,7 +18,6 @@ export default function MyContestPage(props: PropTypes) {
   return (
     <ScrollView style={[tailwind('my-3'), {flex: 1}]}>
       <WinningBanner />
-      
       <WinningContest openPrizeBreakSheet={props.openPrizeBreakSheet} />
     </ScrollView>
   );

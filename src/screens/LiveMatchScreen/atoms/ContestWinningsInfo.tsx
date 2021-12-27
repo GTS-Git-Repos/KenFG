@@ -11,7 +11,7 @@ interface PropTypes {
 export default function ContestWinningsInfo(props: PropTypes) {
   return (
     <View style={[tailwind('flex-row items-center p-4')]}>
-      <View style={[tailwind(''), {flex: 4}]}>
+      <View style={[tailwind(''), {flex: 12 / 4}]}>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
           Prize pool
         </Text>
@@ -20,9 +20,14 @@ export default function ContestWinningsInfo(props: PropTypes) {
         </Text>
       </View>
 
-      <View style={[tailwind('flex-row  justify-center'), {flex: 4}]}>
+      <View
+        style={[
+          tailwind('flex-row justify-center'),
+          {flex: 12 / 4, position: 'relative', left: 16},
+        ]}>
         <View>
-          <Text style={[tailwind('font-regular text-dark-1 text-center font-14')]}>
+          <Text
+            style={[tailwind('font-regular text-dark-1 text-center font-14')]}>
             Spots
           </Text>
           <Text style={[tailwind('font-bold text-dark-1 py-1 font-16')]}>
@@ -31,9 +36,10 @@ export default function ContestWinningsInfo(props: PropTypes) {
         </View>
       </View>
 
-      <View style={[tailwind('flex-row justify-end'), {flex: 4}]}>
+      <View style={[tailwind('flex-row justify-end'), {flex: 12 / 4}]}>
         <View>
-          <Text style={[tailwind('font-regular text-dark-1 text-right font-14')]}>
+          <Text
+            style={[tailwind('font-regular text-dark-1 text-right font-14')]}>
             Entry
           </Text>
           <Text style={[tailwind('font-bold text-dark-1 py-1 font-16')]}>

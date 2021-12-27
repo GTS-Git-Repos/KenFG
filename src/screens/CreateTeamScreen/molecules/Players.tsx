@@ -50,7 +50,7 @@ export default function Player(props: PropTypes) {
         <TouchableOpacity
           onPress={() => navigation.navigate('PlayerProfileScreen')}
           activeOpacity={0.5}
-          style={[tailwind('ml-2'), {flex: 2}]}>
+          style={[tailwind('ml-4'), {flex: 2}]}>
           <Image
             resizeMode="contain"
             source={assets.player}
@@ -104,7 +104,7 @@ export default function Player(props: PropTypes) {
           {/* Points */}
           <View
             style={[
-              tailwind('flex-col items-center  justify-center'),
+              tailwind('flex-col items-start  justify-center'),
               {flex: 2},
             ]}>
             <Text style={[tailwind('font-regular text-dark-1 font-13')]}>

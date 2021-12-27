@@ -22,7 +22,7 @@ export default function MyContestStatus(props: PropTypes) {
     <TouchableOpacity
       activeOpacity={0.6}
       onPress={() => navigation.navigate('LiveMatchScreen')}
-      style={[tailwind('bg-dark-3 rounded m-2')]}>
+      style={[tailwind('bg-dark-3 rounded my-2 mx-3')]}>
       <TopSection />
       <ContestAttributes amount="10,000" />
       <JoinedTeamStatus selected={true} />
@@ -36,17 +36,24 @@ export default function MyContestStatus(props: PropTypes) {
 const TopSection = () => {
   return (
     <View style={[tailwind('flex-row items-center p-3')]}>
-      <View style={[tailwind(''), {flex: 5}]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-          Prize Pool
-        </Text>
-        <Text style={[tailwind('font-bold text-white font-16 py-0.5')]}>
-          {'\u20B9'} 12.43 Lacks
-        </Text>
+      <View style={[tailwind('flex-row  justify-start'), {flex: 12 / 4}]}>
+        <View style={[tailwind('')]}>
+          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+            Prize Pool
+          </Text>
+          <Text style={[tailwind('font-bold text-white font-16 py-0.5')]}>
+            {'\u20B9'} 12.43 Lacks
+          </Text>
+        </View>
       </View>
 
-      <View style={[tailwind('flex-row  justify-center pr-3'), {flex: 4}]}>
-        <View>
+      <View
+        style={[
+          tailwind('flex-row justify-center'),
+          {flex: 12 / 4},
+          {position: 'relative', left: 18},
+        ]}>
+        <View style={[tailwind('')]}>
           <Text
             style={[tailwind('font-regular text-center text-dark-1 font-14')]}>
             Spots
@@ -57,10 +64,10 @@ const TopSection = () => {
         </View>
       </View>
 
-      <View style={[tailwind('flex-row justify-end'), {flex: 3}]}>
+      <View style={[tailwind('flex-row  justify-end'), {flex: 12 / 4}]}>
         <View>
           <Text
-            style={[tailwind('font-regular text-right text-dark-1 font-14')]}>
+            style={[tailwind('font-regular text-center text-dark-1 font-14')]}>
             Entry
           </Text>
           <Text style={[tailwind('font-bold text-dark-1 font-16 py-0.5')]}>

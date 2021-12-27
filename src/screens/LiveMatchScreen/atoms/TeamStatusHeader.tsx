@@ -15,7 +15,7 @@ export default function TeamStatusHeader(props: PropTypes) {
         tailwind('flex-row px-2 py-3 bg-dark-4 border-b border-gray-800'),
       ]}>
       <View style={[tailwind(''), {flex: 6}]}>
-        <Text style={[tailwind('font-regular px-2 text-dark-1 font-15')]}>
+        <Text style={[tailwind('font-bold px-2 text-dark-1 font-15')]}>
           Batter
         </Text>
       </View>
@@ -29,9 +29,7 @@ export default function TeamStatusHeader(props: PropTypes) {
                 {flex: 10 / 5},
               ]}>
               <Text
-                style={[
-                  tailwind('font-regular text-center text-dark-1 font-12'),
-                ]}>
+                style={[tailwind('font-bold text-center text-dark-1 font-12')]}>
                 {item}
               </Text>
             </View>

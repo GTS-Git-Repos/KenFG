@@ -1,6 +1,13 @@
 import React, {useEffect, useRef} from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Text, ScrollView, TouchableOpacity, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  FlatList,
+  useWindowDimensions,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -26,6 +33,10 @@ const DATA = [
   {
     key: 'Commentry',
     tabName: 'ScoreBoard',
+  },
+  {
+    key: 'stats',
+    tabName: 'Stats',
   },
 ];
 
@@ -57,45 +68,16 @@ export default function LiveMatchTabs(props: PropTypes) {
       }}
     />
   );
-
-  return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      style={[tailwind('bg-dark-3')]}>
-      <TabItem
-        tabName="My Contests (1)"
-        index={0}
-        active={0 === props.activeIndex}
-        onTabPressed={props.onTabPressed}
-      />
-      <TabItem
-        tabName="My Teams(1)"
-        index={1}
-        active={1 === props.activeIndex}
-        onTabPressed={props.onTabPressed}
-      />
-      <TabItem
-        tabName="Commentary"
-        index={2}
-        active={2 === props.activeIndex}
-        onTabPressed={props.onTabPressed}
-      />
-      <TabItem
-        tabName="ScoreBoard"
-        index={3}
-        active={3 === props.activeIndex}
-        onTabPressed={props.onTabPressed}
-      />
-    </ScrollView>
-  );
 }
 
 const TabItem = ({tabName, active, index, onTabPressed}) => {
+  const width = useWindowDimensions('window').width;
+
+  const TABWIDTH = (width - 32) / 3;
   return (
     <TouchableOpacity
       onPress={() => onTabPressed(index)}
-      style={[{width: 140}, tailwind('')]}>
+      style={[{width: TABWIDTH}, tailwind('')]}>
       <View style={[tailwind('pt-3')]}>
         <Text
           style={[
@@ -113,7 +95,7 @@ const TabItem = ({tabName, active, index, onTabPressed}) => {
           <LinearGradient
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
-            style={[tailwind('mx-3 mt-3 rounded'), {height: 2}]}
+            style={[tailwind('mx-2 mt-3 rounded'), {height: 2}]}
             colors={['#816D2E', '#614920']}></LinearGradient>
         )}
       </View>

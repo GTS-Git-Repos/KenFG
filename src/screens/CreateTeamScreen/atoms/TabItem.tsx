@@ -4,6 +4,7 @@ import {View, Image, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
+import {useWindowDimensions} from 'react-native';
 
 interface PropTypes {
   active: boolean;
@@ -14,6 +15,9 @@ interface PropTypes {
 }
 
 export default function TabItem(props: PropTypes) {
+  const width = useWindowDimensions('window').width;
+  const TABWIDTH = (width - 32) / 4;
+
   const onLayoutAction = (e: any) => {
     console.log(e.nativeEvent.layout);
   };
@@ -23,8 +27,8 @@ export default function TabItem(props: PropTypes) {
       onPress={() => {
         props.onTabPressed(props.index);
       }}
-      style={[{width: 85}, tailwind('')]}>
-      <View onLayout={onLayoutAction} style={[tailwind('pt-3')]}>
+      style={[{width: TABWIDTH}, tailwind('')]}>
+      <View  style={[tailwind('pt-3')]}>
         <Text
           style={[
             tailwind(

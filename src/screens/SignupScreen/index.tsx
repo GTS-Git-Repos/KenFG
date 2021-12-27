@@ -7,6 +7,9 @@ import {
   TouchableOpacity,
   ScrollView,
   Keyboard,
+  UIManager,
+  LayoutAnimation,
+  Platform,
 } from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
@@ -30,9 +33,16 @@ export default function SignupScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute();
 
+  if (Platform.OS === 'android') {
+    if (UIManager.setLayoutAnimationEnabledExperimental) {
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
+  }
+
   const [mobile, setMobile] = useState('9876543210');
   const [ref, setRef] = useState('');
   const [showHint, setShowHint] = useState(true);
+  const [showInvite, setShowInvite] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -48,6 +58,11 @@ export default function SignupScreen() {
       close.remove();
     };
   }, []);
+
+  const openInviteInput = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setShowInvite(true);
+  };
 
   const navigate = async () => {
     try {
@@ -101,22 +116,8 @@ export default function SignupScreen() {
             ]}>
             Register to Continue
           </Text>
-          {/* Invite code input */}
-          <View style={[tailwind('pt-8 pb-4')]}>
-            <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-              Enter Invite Code
-            </Text>
-            <TextInput
-              maxLength={7}
-              value={'98777'}
-              style={[
-                tailwind('border-b font-bold text-light font-20'),
-                {borderColor: '#8797B14D', height: 40},
-              ]}
-            />
-          </View>
 
-          <View style={[tailwind('pt-1 pb-4')]}>
+          <View style={[tailwind(' pt-8 pb-4 ')]}>
             <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
               Mobile No
             </Text>
@@ -135,6 +136,21 @@ export default function SignupScreen() {
               You will receive OTP for Verification
             </Text>
           </View>
+          {showInvite && (
+            <View style={[tailwind('pt-1 pb-4')]}>
+              <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+                Enter Invite Code
+              </Text>
+              <TextInput
+                maxLength={7}
+                value={'98777'}
+                style={[
+                  tailwind('border-b font-bold text-light font-20'),
+                  {borderColor: '#8797B14D', height: 40},
+                ]}
+              />
+            </View>
+          )}
 
           <TouchableOpacity onPress={navigate}>
             <ButtonComponent text={'REGISTER'} />
@@ -144,7 +160,7 @@ export default function SignupScreen() {
           <TC />
         </ScrollView>
       </ScrollView>
-      {showHint && <FooterHint screen="LoginScreen" />}
+      {showHint && <FooterHint openInviteInput={openInviteInput} />}
 
       {loading && <BlockScreenByLoading />}
     </View>
@@ -178,13 +194,31 @@ const OR = () => {
 const FooterHint = (props: any) => {
   const navigation = useNavigation<any>();
   return (
-    <View style={[tailwind('p-4 flex-row items-center justify-center')]}>
-      <Text style={[tailwind('font-regular text-light font-15')]}>
-        Already a user ?{' '}
-      </Text>
-      <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-        <Text style={[tailwind('font-bold text-white underline font-15')]}>Log in</Text>
-      </TouchableOpacity>
+    <View style={[tailwind('p-4 flex-row items-center justify-between')]}>
+      <View>
+        <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+          Have a referral Code ?{' '}
+        </Text>
+        <TouchableOpacity onPress={props.openInviteInput}>
+          <Text style={[tailwind('font-bold text-white underline font-15')]}>
+            Enter Code
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <View>
+        <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+          Already a user ?{' '}
+        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+          <Text
+            style={[
+              tailwind('font-bold text-white text-right underline font-15'),
+            ]}>
+            Log in
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -195,7 +229,9 @@ const TC = () => {
       <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
         By registering you agree to the
       </Text>
-      <Text style={[tailwind('font-bold px-1 underline text-white font-12')]}>T&C</Text>
+      <Text style={[tailwind('font-bold px-1 underline text-white font-12')]}>
+        T&C
+      </Text>
       <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
         {' '}
         of KenFG
