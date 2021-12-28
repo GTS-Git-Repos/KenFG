@@ -24,12 +24,10 @@ interface PropTypes {
   anounced: boolean;
   points: number;
   credits: number;
-  isSelected: boolean;
-  canBeSelected: boolean;
   team_a: string;
   team_b: string;
+  status: number;
   checkPlayerSelection(player_key: string, player_role: string): void;
-  status(player_key: string, player_role: string, team_key: string): void;
 }
 
 export default function Player(props: PropTypes) {
@@ -39,12 +37,10 @@ export default function Player(props: PropTypes) {
     <View>
       <View
         style={[
-          tailwind('pt-3 flex-row border-b border-gray-800'),
-          {
-            backgroundColor: props.isSelected ? '#3C362C' : '#172338',
-            // opacity: props.canBeSelected ? 1 : 0.3,
-          },
-          // true ? styles.disabledUser : {},
+          tailwind('pt-3 flex-row border-b bg-dark-3 border-gray-800'),
+
+          props.status === 0 ? styles.selectedUser : {},
+          props.status === -1 ? styles.disabledUser : {},
         ]}>
         {/* Image */}
         <TouchableOpacity
@@ -60,6 +56,12 @@ export default function Player(props: PropTypes) {
             name={props.teamname}
             team_a={props.teamname === props.team_a}
           />
+          {/* <Text
+            style={[
+              tailwind('font-regular text-white font-15 absolute inset-0'),
+            ]}>
+            {props.status}
+          </Text> */}
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -180,8 +182,11 @@ const AddedButton = (props: any) => {
 };
 
 const styles = StyleSheet.create({
+  selectedUser: {
+    backgroundColor: '#3C362C',
+  },
   disabledUser: {
-    // backgroundColor: 'rgba(255,255,255,0.)',
-    // opacity: 0.3,
+    backgroundColor: '#172338',
+    opacity: 0.6,
   },
 });

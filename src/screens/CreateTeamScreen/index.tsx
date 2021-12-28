@@ -218,43 +218,6 @@ export default function CreateTeamScreen() {
           onTabPressed={onTabPressed}
           rolesCountSelector={rolesCountSelector}
         />
-
-        {/* <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={[tailwind('bg-dark-3')]}>
-          {[
-            {
-              tab_key: 'keeper',
-              tab_name: 'WK',
-            },
-            {
-              tab_key: 'batsman',
-              tab_name: 'BAT',
-            },
-            {
-              tab_key: 'all_rounder',
-              tab_name: 'AR',
-            },
-            {
-              tab_key: 'bowler',
-              tab_name: 'BOWL',
-            },
-          ].map((item: any, index: number) => {
-            return (
-              <TabItem
-                key={item.tab_key}
-                tabName={item.tab_name}
-                count={rolesCountSelector[item.tab_key].occupaid}
-                active={activeIndex === index}
-                onTabPressed={onTabPressed}
-                index={index}
-              />
-            );
-          })}
-        </ScrollView> */}
-
-        {/* <Tabs activeIndex={activeIndex} onTabPressed={onTabPressed} /> */}
       </View>
 
       <PagerView

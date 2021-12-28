@@ -95,7 +95,8 @@ export default function ContestCard(props: PropTypes) {
         </View>
       </View>
 
-      <View style={[tailwind('p-3 rounded-b'), {backgroundColor: '#121D2E'}]}>
+      <View
+        style={[tailwind('py-3 px-4 rounded-b'), {backgroundColor: '#121D2E'}]}>
         <View style={[tailwind('flex-row justify-between items-center')]}>
           <View style={[tailwind('flex-row items-center')]}>
             <View style={[tailwind('flex-row items-center')]}>

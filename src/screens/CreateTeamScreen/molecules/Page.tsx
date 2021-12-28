@@ -61,13 +61,6 @@ export default function Page(props: PropTypes) {
                 item.seasonal_role,
                 item.team_key,
               )}
-              isSelected={isPlayerSelected(item.key)}
-              // canBeSelected={isPlayerCanBeSelected(
-              //   item.key,
-              //   item.seasonal_role,
-              //   item.team_key,
-              //   props.rolesCountSelector,
-              // )}
               checkPlayerSelection={props.checkPlayerSelection}
             />
           );

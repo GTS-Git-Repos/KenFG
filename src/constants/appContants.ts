@@ -17,6 +17,10 @@ export const rolesConstraints: any = {
   },
 };
 
+export const PLAYER_CAN_BE_SELECTED = 1;
+export const PLAYER_ALREADY_SELECTED = 0;
+export const PLAYER_DISABLED = -1;
+
 export const maxRoles: any = {
   bowler: 4,
   batsman: 6,

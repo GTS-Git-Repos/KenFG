@@ -1,6 +1,10 @@
 // import {initialState as state} from './reducer';
 import store from './';
-import {minRoles} from '../constants/appContants';
+import {
+  PLAYER_ALREADY_SELECTED,
+  PLAYER_CAN_BE_SELECTED,
+  PLAYER_DISABLED,
+} from '../constants/appContants';
 const log = console.log;
 
 export function isPlayerSelected(player_key: string) {
@@ -17,30 +21,38 @@ export function currentPlayerStatus(
   player_key: string,
   seasonal_role: string,
   team_key: string,
-) {
-  return 0;
-}
+): number {
+  try {
+    const {all_players, players, credits_left, team_count} =
+      store.getState().team;
+    const isExists = players.find((item: any) => item.key === player_key);
+    // is player already selected
+    if (isExists) {
+      return PLAYER_ALREADY_SELECTED;
+    }
+    // is 11 players is selected
+    if (players.length === 11) {
+      throw '11 Players selected Tap Continue';
+    }
+    // is one of the team reaches it's maximum
+    const teamsSlot = players.filter(
+      (item: any) => item.team_key === team_key,
+    ).length;
+    if (teamsSlot >= 7) {
+      throw 'Maximum 7 members only per team';
+    }
+    // is credits not enough
+    const inputPlayer = all_players[0][seasonal_role].find(
+      (item: any) => item.key === player_key,
+    );
+    if (inputPlayer.credits > credits_left) {
+      throw 'Credits not enough';
+    }
 
-export function isPlayerCanBeSelected(
-  player_key: string,
-  seasonal_role: string,
-  team_key: string,
-  rolesCountSelector: any,
-) {
-  return true;
-  const state = store.getState().team;
-  const count = state.team_count;
-  const block_list = state.block_list;
-
-  const player = state.players.find((item: any) => item.key === player_key);
-  if (player) {
-    return true;
-  } else if (block_list.includes(seasonal_role)) {
-    return false;
-  } else if (block_list.includes(team_key)) {
-    return false;
-  } else {
-    return true;
+    return PLAYER_CAN_BE_SELECTED;
+  } catch (err) {
+    console.log(err);
+    return PLAYER_DISABLED;
   }
 }
 

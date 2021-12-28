@@ -20,7 +20,7 @@ export default function WinningsList(props: PropTypes) {
   const {width} = useWindowDimensions();
   return (
     <ScrollView contentContainerStyle={{width: width}}>
-      {/* <HeaderWinningList /> */}
+      <HeaderWinningList />
       {props.data.map((item: any) => {
         return (
           <WinningListRankings
