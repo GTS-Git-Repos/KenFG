@@ -47,6 +47,7 @@ export default function UpComingMatchesSlider(props: PropTypes) {
               team_b_flag={''}
               tournament_shortName={item?.teams?.tournament?.short_name}
               price={item?.teams?.price}
+              start_at={item.start_at}
             />
           </View>
         );

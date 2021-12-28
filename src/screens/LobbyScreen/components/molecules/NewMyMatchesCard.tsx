@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import tailwind from '../../../../../tailwind';
 import {
   View,
   Image,
   TouchableOpacity,
   Text,
+  AppState,
   useWindowDimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -12,14 +13,38 @@ import TopSection from '../../components/atoms/MyMatches/TopSection';
 import Teams from '../../components/atoms/MyMatches/Teams';
 import SlideAddMyMatchCard from '../atoms/SlideAddMyMatchCard';
 import {useNavigation} from '@react-navigation/core';
+import {getCountDown} from '../../../../utils/formatters';
+import {add} from 'date-fns';
+const log = console.log;
+
 interface PropTypes {
   text?: string;
 }
 
 export default function NewMyMatchesCard(props: PropTypes) {
   const navigation = useNavigation<any>();
+  const isMounted = useRef(true);
 
-  const {width} = useWindowDimensions();
+  const [countDown, setCountDown] = useState<any>('00:00:00');
+
+  useEffect(() => {
+    let interval: any = null;
+    try {
+      if (isMounted.current) {
+        let nextDate = add(new Date(), {days: 2});
+        interval = setInterval(() => {
+          setCountDown(getCountDown(nextDate));
+        }, 1000);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    return () => {
+      log('Unmounted');
+      isMounted.current = false;
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <TouchableOpacity
@@ -29,7 +54,7 @@ export default function NewMyMatchesCard(props: PropTypes) {
       }}
       style={[tailwind('rounded bg-dark-3')]}>
       <TopSection />
-      <Teams />
+      <Teams countDown={countDown} />
       <SlideAddMyMatchCard />
     </TouchableOpacity>
   );

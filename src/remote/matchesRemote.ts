@@ -1,6 +1,7 @@
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import {upCommingMatchesMock} from '../constants/mockAPIData';
+import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
 // API Routes
 
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
@@ -18,7 +19,11 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
       {player_key: params.queryKey[1]},
     );
     if (response.status === 200) {
-      return response.data.data;
+      let matches = normalizeUpcommingMatchesAPI(response.data.data);
+      let banners = response.data.data.banners;
+      console.log(matches[0]);
+
+      return {matches: matches, banners};
     } else {
       failedLog('upcommingMatchesandBannersRemote()', response);
     }

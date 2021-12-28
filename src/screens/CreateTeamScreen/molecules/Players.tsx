@@ -40,7 +40,7 @@ export default function Player(props: PropTypes) {
           tailwind('pt-3 flex-row border-b bg-dark-3 border-gray-800'),
 
           props.status === 0 ? styles.selectedUser : {},
-          props.status === -1 ? styles.disabledUser : {},
+          // props.status === -1 ? styles.disabledUser : {},
         ]}>
         {/* Image */}
         <TouchableOpacity

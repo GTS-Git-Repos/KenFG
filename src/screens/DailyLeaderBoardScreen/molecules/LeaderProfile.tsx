@@ -20,6 +20,7 @@ interface PropTypes {
   isThird: boolean;
   type: number;
   showPoints: boolean;
+  showteams: boolean;
 }
 
 export default function LeaderProfile(props: PropTypes) {
@@ -74,11 +75,13 @@ export default function LeaderProfile(props: PropTypes) {
               Points
             </Text>
           </View>
-          <View style={[tailwind('flex-row items-center flex-wrap')]}>
-            <TeamCode code="M1" />
-            <TeamCode code="M2" />
-            <TeamCode code="M3" />
-          </View>
+          {props.showteams && (
+            <View style={[tailwind('flex-row items-center flex-wrap')]}>
+              <TeamCode code="M1" />
+              <TeamCode code="M2" />
+              <TeamCode code="M3" />
+            </View>
+          )}
         </View>
       </View>
 

@@ -24,6 +24,10 @@ export default function CricketPage(props: PropTypes) {
     upcommingMatchesandBannersRemote,
   );
 
+  useEffect(() => {
+    // console.log('upcommingMatches', upcommingMatches);
+  }, [upcommingMatches.data]);
+
   return (
     <View>
       {/* <View style={[tailwind('px-5 pt-4 pb-0.5')]}>

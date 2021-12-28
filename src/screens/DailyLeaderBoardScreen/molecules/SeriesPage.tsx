@@ -23,6 +23,7 @@ export default function SeriesPage(props: PropTypes) {
         isThird={false}
         type={-1}
         showPoints={props.showPoints}
+        showteams={true}
       />
       <LeaderProfile
         levelStatus={null}
@@ -31,6 +32,7 @@ export default function SeriesPage(props: PropTypes) {
         isThird={false}
         type={-1}
         showPoints={props.showPoints}
+        showteams={true}
       />
       <LeaderProfile
         levelStatus={true}
@@ -39,6 +41,7 @@ export default function SeriesPage(props: PropTypes) {
         isThird={false}
         type={-1}
         showPoints={props.showPoints}
+        showteams={true}
       />
       <LeaderProfile
         levelStatus={false}
@@ -46,6 +49,8 @@ export default function SeriesPage(props: PropTypes) {
         isSecond={false}
         isThird={true}
         showPoints={props.showPoints}
+        showteams={true}
+        type={-1}
       />
     </ScrollView>
   );

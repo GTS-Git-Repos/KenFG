@@ -53,6 +53,7 @@ export default function MonthlyLeaderBoardScreen() {
         isThird={false}
         type={route.params?.type}
         showPoints={true}
+        showteams={false}
       />
       <LeaderProfile
         levelStatus={null}
@@ -61,6 +62,7 @@ export default function MonthlyLeaderBoardScreen() {
         isThird={false}
         type={route.params?.type}
         showPoints={true}
+        showteams={false}
       />
       <LeaderProfile
         levelStatus={true}
@@ -69,6 +71,7 @@ export default function MonthlyLeaderBoardScreen() {
         isThird={false}
         type={route.params?.type}
         showPoints={true}
+        showteams={false}
       />
     </View>
   );

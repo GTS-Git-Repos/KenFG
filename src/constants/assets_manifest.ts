@@ -92,6 +92,10 @@ export default {
   prize2: require('../assets/images/prize2.png'),
   prize3: require('../assets/images/prize3.png'),
 
+  // flags
+  AUS: require('../assets/images/flags/AUS.png'),
+  ENG: require('../assets/images/flags/ENG.png'),
+
   banner1: require('../assets/temp/banner1.png'),
   playerImage: require('../assets/temp/playerimage.png'),
   indianflag: require('../assets/temp/indianflag.png'),

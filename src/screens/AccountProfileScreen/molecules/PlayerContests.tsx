@@ -26,7 +26,7 @@ export default function PlayerContests(props: PropTypes) {
 
 const NewTop = () => {
   return (
-    <View style={[tailwind('flex-row justify-between py-3 px-2')]}>
+    <View style={[tailwind('flex-row justify-between pt-3 pb-1 px-2')]}>
       <View>
         <View style={[tailwind('flex-row  items-center')]}>
           <View style={[tailwind('flex-col justify-center items-center')]}>
@@ -37,9 +37,15 @@ const NewTop = () => {
             /> */}
             <View
               style={[
-                tailwind('bg-blue-700'),
+                tailwind(''),
                 {width: 45, height: 25, aspectRatio: 16 / 9},
-              ]}></View>
+              ]}>
+              <Image
+                resizeMode="contain"
+                source={assets.AUS}
+                style={[{aspectRatio: 16 / 9}]}
+              />
+            </View>
             <Text style={[tailwind('font-bold px-2 text-light py-1 font-13')]}>
               AUS
             </Text>
@@ -48,7 +54,7 @@ const NewTop = () => {
           <Text
             style={[
               tailwind(
-                'font-bold px-2 text-light font-13 py-2 relative bottom-2',
+                'font-bold px-3 text-light font-13 py-2 relative bottom-2',
               ),
             ]}>
             VS
@@ -57,9 +63,15 @@ const NewTop = () => {
           <View style={[tailwind('flex-col items-center')]}>
             <View
               style={[
-                tailwind('bg-green-700'),
-                {width: 45, height: 25},
-              ]}></View>
+                tailwind(''),
+                {width: 45, height: 25, aspectRatio: 16 / 9},
+              ]}>
+              <Image
+                resizeMode="contain"
+                source={assets.ENG}
+                style={[{aspectRatio: 16 / 9}]}
+              />
+            </View>
             <Text style={[tailwind('font-bold px-2 text-light py-1 font-13')]}>
               ENG
             </Text>

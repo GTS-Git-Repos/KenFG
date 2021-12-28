@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -10,6 +10,10 @@ import {
   updateSelectedContestAction,
   updateSelectedMatchAction,
 } from '../../../../store/actions/appActions';
+import {addSeconds, differenceInSeconds, format} from 'date-fns';
+import {subSeconds} from 'date-fns/esm';
+import {getCountDown} from '../../../../utils/formatters';
+const log = console.log;
 
 interface PropTypes {
   match_key: string;
@@ -20,11 +24,32 @@ interface PropTypes {
   team_b_flag: string;
   tournament_shortName: string;
   price: string;
+  start_at: Date;
 }
 
 export default function UpcommingMatches(props: PropTypes) {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
+  const isMounted = useRef(true);
+  const [currentTime, setCurrentTime] = useState<any>('00:00:00');
+
+  useEffect(() => {
+    let interval: any = null;
+    try {
+      if (isMounted.current) {
+        interval = setInterval(() => {
+          setCurrentTime(getCountDown(props.start_at));
+        }, 1000);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    return () => {
+      log('Unmounted');
+      isMounted.current = false;
+      clearInterval(interval);
+    };
+  }, []);
 
   const navigateToContestList = () => {
     dispatch(updateSelectedContestAction(null));
@@ -43,11 +68,7 @@ export default function UpcommingMatches(props: PropTypes) {
     <TouchableOpacity
       onPress={navigateToContestList}
       style={[tailwind('p-1'), {flex: 6}]}>
-      <LinearGradient
-        start={{x: 0.0, y: 0.5}}
-        end={{x: 0.5, y: 0.0}}
-        locations={[0.6, 0.5]}
-        colors={['#172338', '#172338']}
+      <View
         style={[
           tailwind('bg-primary  border border-gray-800 rounded px-2'),
           {paddingTop: 4},
@@ -73,77 +94,14 @@ export default function UpcommingMatches(props: PropTypes) {
         </View>
 
         <View
-          // start={{x: 0, y: 0}}
-          // end={{x: 1, y: 0}}
-          style={[tailwind('mx-2 border-t border-gray-800'), {marginTop: 2}]}
-          // colors={['#162339', '#29344B', '#162339']}
-        >
+          style={[tailwind('mx-2 border-t border-gray-800'), {marginTop: 2}]}>
           <View style={[tailwind(''), {height: 2}]}></View>
         </View>
-
-        <View
-          style={[
-            tailwind('flex flex-row justify-between py-0.5 items-center'),
-            {paddingHorizontal: 16, paddingTop: 6},
-          ]}>
-          <View style={[tailwind('')]}>
-            {/* <Image
-              resizeMode="contain"
-              source={assets.south_africa_flag}
-              style={[tailwind(''), {width: 40, height: 40}]}
-            /> */}
-            <PlaceHolderImage color="green" />
-            <Text
-              style={[
-                tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
-                {color: '#D3D3D5'},
-              ]}>
-              {props.team_a_name}
-            </Text>
-          </View>
-
-          <Text style={[tailwind('font-bold font-10'), {color: '#D3D3D5'}]}>
-            VS
-          </Text>
-
-          <View style={[tailwind('')]}>
-            <PlaceHolderImage color="red" />
-            <Text
-              style={[
-                tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
-                {color: '#D3D3D5'},
-              ]}>
-              {props.team_b_name}
-            </Text>
-          </View>
-        </View>
-
-        {/* Contest Prize Info */}
-        <View style={[tailwind('flex-row items-center'), {paddingLeft: 10}]}>
-          <View style={[tailwind(''), {flex: 6}]}>
-            <Text
-              numberOfLines={1}
-              allowFontScaling={true}
-              adjustsFontSizeToFit={true}
-              style={[tailwind('font-regular font-10'), {color: '#9AABC6'}]}>
-              Line ups out
-            </Text>
-          </View>
-
-          <Text
-            style={[
-              tailwind('font-regular px-1 font-10'),
-              {color: '#9AABC6', flex: 1},
-            ]}>
-            |
-          </Text>
-          <View style={[tailwind(''), {flex: 3}]}>
-            <Text
-              style={[tailwind('font-regular font-10'), {color: '#DBC872'}]}>
-              {'\u20B9'} {props.price}
-            </Text>
-          </View>
-        </View>
+        <Teams
+          team_a_name={props.team_a_name}
+          team_b_name={props.team_b_name}
+        />
+        <PrizeandStatus price={props.price} />
 
         {/* Count Down */}
         <View
@@ -163,10 +121,10 @@ export default function UpcommingMatches(props: PropTypes) {
               tailwind('font-bold text-center pl-1 font-10'),
               {color: '#FEFEFF'},
             ]}>
-            3h:40:23
+            {currentTime}
           </Text>
         </View>
-      </LinearGradient>
+      </View>
     </TouchableOpacity>
   );
 }
@@ -175,10 +133,75 @@ const PlaceHolderImage = (props: any) => {
   return (
     <View style={{width: 45, height: 25}}>
       <Image
-        resizeMode="stretch"
-        source={assets.australia_flag}
+        resizeMode="contain"
+        source={props.image}
         style={[tailwind(''), {width: 45, height: 25}]}
       />
+    </View>
+  );
+};
+
+const Teams = (props: any) => {
+  return (
+    <View
+      style={[
+        tailwind('flex flex-row justify-between py-0.5 items-center'),
+        {paddingHorizontal: 16, paddingTop: 6},
+      ]}>
+      <View style={[tailwind('')]}>
+        <PlaceHolderImage color="green" image={assets.ENG} />
+        <Text
+          style={[
+            tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
+            {color: '#D3D3D5'},
+          ]}>
+          {props.team_a_name}
+        </Text>
+      </View>
+
+      <Text style={[tailwind('font-bold font-10'), {color: '#D3D3D5'}]}>
+        VS
+      </Text>
+
+      <View style={[tailwind('')]}>
+        <PlaceHolderImage color="red" image={assets.AUS} />
+        <Text
+          style={[
+            tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
+            {color: '#D3D3D5'},
+          ]}>
+          {props.team_b_name}
+        </Text>
+      </View>
+    </View>
+  );
+};
+
+const PrizeandStatus = (props: any) => {
+  return (
+    <View style={[tailwind('flex-row items-center'), {paddingLeft: 10}]}>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <Text
+          numberOfLines={1}
+          allowFontScaling={true}
+          adjustsFontSizeToFit={true}
+          style={[tailwind('font-regular font-10'), {color: '#9AABC6'}]}>
+          Line ups out
+        </Text>
+      </View>
+
+      <Text
+        style={[
+          tailwind('font-regular px-1 font-10'),
+          {color: '#9AABC6', flex: 1},
+        ]}>
+        |
+      </Text>
+      <View style={[tailwind(''), {flex: 3}]}>
+        <Text style={[tailwind('font-regular font-10'), {color: '#DBC872'}]}>
+          {'\u20B9'} {props.price}
+        </Text>
+      </View>
     </View>
   );
 };

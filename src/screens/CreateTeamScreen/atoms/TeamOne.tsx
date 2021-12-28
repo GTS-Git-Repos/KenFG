@@ -27,7 +27,7 @@ export default function Team1(props: PropTypes) {
         <View style={[tailwind('flex-col items-center')]}>
           <Image
             resizeMode="contain"
-            source={assets.teamIndia}
+            source={props.reverseUI ? assets.ENG : assets.AUS}
             style={[tailwind(''), {aspectRatio: 16 / 9, width: 45, height: 25}]}
           />
           <Text
