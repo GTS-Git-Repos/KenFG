@@ -11,7 +11,7 @@ import {
 } from '@react-navigation/stack';
 
 import {DrawerNav} from './DrawerNavigation';
-import {Home, Auth} from './StackNavigations';
+import {Home, Auth, More} from './StackNavigations';
 
 import InitialScreen from '../screens/InitialScreen';
 import NotificationScreen from '../screens/NotificationScreen';
@@ -33,12 +33,13 @@ import ManagePaymentsScreen from '../screens/ManagePaymentsScreen';
 import ContestsLiveMatchScreen from '../screens/ContestsLiveMatchScreen';
 import CompletedMatchScreen from '../screens/CompletedMatchScreen';
 import MonthlyLeaderBoardScreen from '../screens/MonthlyLeaderBoardScreen';
+import CreateContestScreen from '../screens/CreateContestScreen';
 
 import TeamsListScreen from '../screens/TeamsListScreen';
 
 import MyContestPlayersScreen from '../screens/MyContestPlayersScreen';
 import PlayerProfileScreen from '../screens/PlayerProfileScreen';
-import MoreScreen from '../screens/MoreScreen';
+
 import InviteScreen from '../screens/InviteScreen';
 import ReferredFriendsListScreen from '../screens/ReferredFriendsListScreen';
 import UserGoalsScreen from '../screens/UserGoalsScreen';
@@ -66,83 +67,25 @@ const StackConfig = {
   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
 };
 
-// const MyTheme = {
-//   ...DefaultTheme,
-//   colors: {
-//     background: 'rgb(0, 0, 0)',P
-//     border: 'rgb(0, 0, 0)',
-//     card: 'rgb(0, 0, 0)',
-//     notification: 'rgb(0, 0, 0)',
-//     primary: 'rgb(0, 0, 0)',
-//     text: 'rgb(0, 0, 0)',
-//   },
-//   dark: true,
-// };
-
-// console.log('DarkTheme', DarkTheme);
-
 export default function RootNavigation() {
-  const forFade = (args: any) => {
-    console.log(args);
-    return {
-      opacity: 0.5,
-    };
-  };
-
-  // const forFade = ({current}) => ({
-  //   cardStyle: {
-  //     opacity: current.progress,
-  //   },
-  // });
-
   return (
     <NavigationContainer theme={DarkTheme}>
       <Host>
         <RootNavigator.Navigator
-          // screenOptions={{...TransitionPresets.SlideFromRightIOS}}
-          // screenOptions={{
-          //   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          // }}
           screenOptions={StackConfig}
-          // screenOptions={{StackConfig}}
           initialRouteName="InitialScreen">
           <RootNavigator.Screen
             component={InitialScreen}
             name="InitialScreen"
           />
-
-          {/* transitionSpec: {
-              open: {
-                animation: 'spring',
-                config: {
-                  stiffness: 1000,
-                  damping: 500,
-                  mass: 3,
-                  overshootClamping: true,
-                  restDisplacementThreshold: 0.01,
-                  restSpeedThreshold: 0.01,
-                }
-              },
-              close: {
-                animation: 'spring',
-                config: {
-                  stiffness: 1000,
-                  damping: 500,
-                  mass: 3,
-                  overshootClamping: true,
-                  restDisplacementThreshold: 0.01,
-                  restSpeedThreshold: 0.01,
-                },
-            }
-          } */}
-
           <RootNavigator.Screen component={Auth} name="Auth" />
+          <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
+          <RootNavigator.Screen component={More} name="More" />
           <RootNavigator.Screen
-            // options={{cardStyleInterpolator: forFade}}
-            // options={StackConfig}
-            component={DrawerNav}
-            name="DrawerNav"
+            component={CreateContestScreen}
+            name="CreateContestScreen"
           />
+
           <RootNavigator.Screen
             component={NotificationScreen}
             name="NotificationScreen"
@@ -227,7 +170,6 @@ export default function RootNavigation() {
             name="ReferredFriendsListScreen"
           />
 
-          <RootNavigator.Screen component={MoreScreen} name="MoreScreen" />
           <RootNavigator.Screen
             component={DailyLeaderBoardScreen}
             name="DailyLeaderBoardScreen"

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Svg, {SvgProps, Path, Rect} from 'react-native-svg';
 
 interface PropTypes {
-  white: boolean;
+  white?: boolean;
 }
 
 function Icon(props: PropTypes) {

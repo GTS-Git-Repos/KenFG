@@ -12,7 +12,7 @@ export default function ButtonComponent(props: PropTypes) {
   return (
     <View
       style={[
-        tailwind('rounded p-3 flex-row  items-center justify-center '),
+        tailwind('rounded p-4 flex-row  items-center justify-center '),
         {
           backgroundColor: '#00513B',
         },

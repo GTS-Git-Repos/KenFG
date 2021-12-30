@@ -8,7 +8,8 @@ import {HorizontalProfile, RankIcon} from '../../../sharedComponents';
 import LeaderBoardProfile from './LeaderBoardProfile';
 
 interface PropTypes {
-  text?: string;
+  index: number;
+  activeIndex: number;
 }
 
 export default function LeaderBoardPage(props: PropTypes) {

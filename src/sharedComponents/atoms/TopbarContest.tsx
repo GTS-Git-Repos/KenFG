@@ -48,12 +48,6 @@ export default function TopBarContest(props: PropTypes) {
         <TouchableOpacity style={[tailwind('px-1')]}>
           <WalletIcon darkColor={true} />
         </TouchableOpacity>
-
-        {/* <Image
-          resizeMode="contain"
-          source={assets.newWallet}
-          style={[tailwind(''), {width: 24, height: 24}]}
-        /> */}
       </View>
     </LinearGradient>
   );

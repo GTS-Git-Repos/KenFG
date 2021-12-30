@@ -9,7 +9,7 @@ import {TopBar} from '../../sharedComponents';
 import InfoContent from './atoms/InfoContent';
 import UserCode from './molecules/UserCode';
 import ReferContacts from './atoms/ReferContacts';
-import SocialMediaShare from './atoms/SocialMediaShare';
+import {SocialMediaShare} from '../../sharedComponents/';
 import FriendsListLink from './atoms/FriendsListLink';
 
 // import Icon from 'react-native-vector-icons/Ionicons';

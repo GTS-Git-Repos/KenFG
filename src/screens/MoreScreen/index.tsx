@@ -20,12 +20,12 @@ export default function MoreScreen() {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'More'} />
       <ScrollView>
-        <Links icon={<MoneyIcon />} text={'Fair Play Guidelines'} />
-        <Links icon={<MoneyIcon />} text={'Privacy Contest Code'} />
-        <Links icon={<MoneyIcon />} text={'About Us'} />
-        <Links icon={<MoneyIcon />} text={'Legality'} />
-        <Links icon={<MoneyIcon />} text={'T&C'} />
-        <Links icon={<MoneyIcon />} text={'Join with us'} />
+        <Links icon={<MoneyIcon />} text={'Fair Play Guidelines'} goto={''} />
+        <Links icon={<MoneyIcon />} text={'Privacy Contest Code'} goto={''} />
+        <Links icon={<MoneyIcon />} text={'About Us'} goto={'AboutUsScreen'} />
+        <Links icon={<MoneyIcon />} text={'Legality'} goto={''} />
+        <Links icon={<MoneyIcon />} text={'T&C'} goto={'TermsScreen'} />
+        <Links icon={<MoneyIcon />} text={'Join with us'} goto={''} />
       </ScrollView>
     </View>
   );

@@ -77,10 +77,14 @@ export default function SignupScreen() {
           otp: response.otp,
         });
       } else {
-        errorBox('Failed to create a User, Please check your Internet');
+        setTimeout(() => {
+          errorBox('Failed to create a User, Please check your Internet');
+        }, 600);
       }
     } catch (err) {
-      errorBox('Failed to create a User');
+      setTimeout(() => {
+        errorBox('Failed to create a User');
+      }, 600);
       log(err);
     } finally {
       setLoading(false);

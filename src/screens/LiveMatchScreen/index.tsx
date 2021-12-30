@@ -78,10 +78,10 @@ export default function LiveMatchScreen() {
         onPageSelected={onPageSelectedAction}
         style={{flex: 1}}>
         <View>
-          <LeaderBoardPage index={1} activeIndex={activeIndex} />
+          <LeaderBoardPage index={0} activeIndex={activeIndex} />
         </View>
         <View>
-          <WinningsPage index={0} activeIndex={activeIndex} />
+          <WinningsPage index={1} activeIndex={activeIndex} />
         </View>
         <View>
           <ScrollBoardPage index={2} activeIndex={activeIndex} />

@@ -33,7 +33,7 @@ export default function Teams(props: PropTypes) {
             style={[
               tailwind('font-bold text-center py-0.5 text-light font-12'),
             ]}>
-            IND
+            AUS
           </Text>
         </View>
       </View>
@@ -67,7 +67,7 @@ export default function Teams(props: PropTypes) {
             style={[
               tailwind('font-bold text-center py-0.5 text-light font-12'),
             ]}>
-            AUS
+            ENG
           </Text>
         </View>
         <View

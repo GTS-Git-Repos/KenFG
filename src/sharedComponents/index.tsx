@@ -9,6 +9,7 @@ import Projection from './atoms/Projection';
 import ExpertsStats from './atoms/ExpertsStats';
 import ContestScreenLoading from './atoms/ContestScreenLoading';
 import TeamCode from './atoms/TeamCode';
+import TabsBottomLine from './atoms/TabsBottomLine';
 
 import ContestCard from './molecules/ContestCard';
 import TeamsCard from './molecules/TeamsCard';
@@ -16,6 +17,7 @@ import HorizontalProfile from './molecules/HorizontalProfile';
 import JoinedContestCard from './molecules/JoinedContestCard';
 import SocialLogin from './molecules/SocialLogin';
 import CurrentLiveStatus from './molecules/CurrentLiveStatus';
+import SocialMediaShare from './molecules/SocialMediaShare';
 
 import WalletIcon from './icons/WalletIcon';
 import MoneyIcon from './icons/MoneyIcon';
@@ -49,6 +51,9 @@ import GoldenCup from './icons/GoldenCup';
 import RadioButton from './icons/RadioButton';
 import CloneIcon from './icons/CloneIcon';
 import CompletedIcon from './icons/CompletedIcon';
+import QuestionIcon from './icons/QuestionIcon';
+import CheckBoxIcon from './icons/CheckBoxIcon';
+import ReferPeopleIcon from './icons/ReferPeopleIcon';
 
 export {
   TopBar,
@@ -67,6 +72,7 @@ export {
   MatchStat,
   JoinedContestCard,
   SocialLogin,
+  TabsBottomLine,
   ExpertsStats,
   WalletIcon,
   MoneyIcon,
@@ -79,17 +85,21 @@ export {
   GoldenCup,
   CloneIcon,
   GearIcon,
+  ReferPeopleIcon,
   DownArrowIcon,
+  QuestionIcon,
   RankIcon,
   StarIcon,
   CompletedIcon,
   CupIcon,
   MIcon,
+  SocialMediaShare,
   CIcon,
   VCIcon,
   DownloadIcon,
   ShareIcon,
   RadioButton,
+  CheckBoxIcon,
   ContestBellIcon,
   GoogleIcon,
   TickIcon,

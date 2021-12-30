@@ -20,7 +20,14 @@ import CompareTeamsScreen from '../screens/CompareTeamsScreen';
 import LoginScreen from '../screens/LoginScreen';
 import OTPScreen from '../screens/OTPScreen';
 
+import MoreScreen from '../screens/MoreScreen';
+import AboutUsScreen from '../screens/AboutUsScreen';
+import TermsScreen from '../screens/TermsScreen';
+import FairPlayScreen from '../screens/FairPlayScreen';
+import PrivacyPolicyScreen from '../screens/PrivacyPolicyScreen';
+
 import MyMatchesScreen from '../screens/MyMatchesScreen';
+
 import {CardStyleInterpolators} from '@react-navigation/stack';
 
 const StackConfig = {
@@ -33,6 +40,7 @@ const ContestStack = createStackNavigator();
 const MyMatch = createStackNavigator();
 const MatchStack = createStackNavigator();
 const AuthStack = createStackNavigator();
+const MoreStack = createStackNavigator();
 
 export function Home(props: any) {
   return (
@@ -119,5 +127,22 @@ export function Auth(props: any) {
         component={FantasyTeamNameScreen}
       />
     </AuthStack.Navigator>
+  );
+}
+
+export function More(props: any) {
+  return (
+    <MoreStack.Navigator
+      screenOptions={StackConfig}
+      initialRouteName="MoreScreen">
+      <MoreStack.Screen name="MoreScreen" component={MoreScreen} />
+      <MoreStack.Screen name="AboutUsScreen" component={AboutUsScreen} />
+      <MoreStack.Screen
+        name="PrivacyPolicyScreen"
+        component={PrivacyPolicyScreen}
+      />
+      <MoreStack.Screen name="FairPlayScreen" component={FairPlayScreen} />
+      <MoreStack.Screen name="TermsScreen" component={TermsScreen} />
+    </MoreStack.Navigator>
   );
 }

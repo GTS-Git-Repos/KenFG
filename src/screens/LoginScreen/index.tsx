@@ -55,12 +55,19 @@ export default function LoginScreen() {
             mobile,
             otp: response.otp,
           });
+        } else {
+          throw 'Failed! Please check your Internet';
         }
       } else {
-        errorBox('Invalid Mobile Number');
+        setTimeout(() => {
+          errorBox('Invalid Mobile Number');
+        }, 600);
       }
     } catch (err) {
-      errorBox("Can't Proceed ");
+      log(err);
+      setTimeout(() => {
+        errorBox('Failed! Please check your Internet');
+      }, 600);
     } finally {
       setLoading(false);
     }
@@ -90,7 +97,7 @@ export default function LoginScreen() {
             Welcome Back
           </Text>
           <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center')]}>
-            Sign in to Continue
+            Log in to Continue
           </Text>
 
           <View style={[tailwind('pt-8 pb-4')]}>
@@ -98,8 +105,9 @@ export default function LoginScreen() {
               Enter Mobile Number
             </Text>
             <TextInput
-              maxLength={13}
-              value={'9876543210'}
+              maxLength={10}
+              value={mobile}
+              onChangeText={e => setMobile(e)}
               keyboardAppearance="dark"
               keyboardType="decimal-pad"
               style={[

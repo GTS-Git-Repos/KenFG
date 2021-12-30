@@ -62,6 +62,7 @@ export default {
   facebook: require('../assets/icons/facebook.png'),
   more_share: require('../assets/icons/more_share.png'),
   friends: require('../assets/icons/friends.png'),
+  help: require('../assets/icons/help.png'),
 
   running_clock: require('../assets/icons/running_clock.png'),
   bell: require('../assets/icons/bell.png'),
@@ -91,6 +92,8 @@ export default {
   prize1: require('../assets/images/prize1.png'),
   prize2: require('../assets/images/prize2.png'),
   prize3: require('../assets/images/prize3.png'),
+  createContestBanner: require('../assets/images/createContestBanner.png'),
+  shareToFriends: require('../assets/images/shareToFriends.png'),
 
   // flags
   AUS: require('../assets/images/flags/AUS.png'),

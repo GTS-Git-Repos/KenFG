@@ -3,6 +3,7 @@ import tailwind from '../../../../tailwind';
 import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Svg, {Defs, LinearGradient, Path, Stop} from 'react-native-svg';
+import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
   selectedFilter: null | string;
@@ -69,6 +70,7 @@ const MoreFilters = [
 ];
 
 export default function FilterTabs(props: PropTypes) {
+  const navigation = useNavigation();
   return (
     <View>
       <View style={[tailwind('pt-3 px-4')]}>
@@ -135,7 +137,8 @@ export default function FilterTabs(props: PropTypes) {
               : null}
           </View>
 
-          <View
+          <TouchableOpacity
+            onPress={() => navigation.navigate('CreateContestScreen')}
             style={[
               tailwind('flex-row bg-dark-3 items-center'),
               {flex: 2},
@@ -173,7 +176,7 @@ export default function FilterTabs(props: PropTypes) {
                 </Defs>
               </Svg>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
         <SecondInnings />
       </View>

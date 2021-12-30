@@ -8,8 +8,10 @@ import {BottomLine} from '../../../sharedComponents';
 import {useNavigation} from '@react-navigation/native';
 // @ts-ignore
 import contestPlayerStats from '../../../constants/mocks/contestPlayerStats.json';
+
 interface PropTypes {
-  text?: string;
+  index: number;
+  activeIndex: number;
 }
 
 export default function PlayersStats(props: PropTypes) {
