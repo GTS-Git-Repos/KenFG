@@ -53,7 +53,7 @@ export default function LiveMatchTabs(props: PropTypes) {
       ref={flatListRef}
       horizontal
       showsHorizontalScrollIndicator={false}
-      style={[tailwind('bg-dark-3')]}
+      style={[tailwind('bg-dark-3 px-3')]}
       data={DATA}
       renderItem={({item, index}) => {
         return (
@@ -73,7 +73,7 @@ export default function LiveMatchTabs(props: PropTypes) {
 const TabItem = ({tabName, active, index, onTabPressed}) => {
   const width = useWindowDimensions('window').width;
 
-  const TABWIDTH = (width - 32) / 3;
+  const TABWIDTH = width / 3;
   return (
     <TouchableOpacity
       onPress={() => onTabPressed(index)}
@@ -95,7 +95,7 @@ const TabItem = ({tabName, active, index, onTabPressed}) => {
           <LinearGradient
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
-            style={[tailwind('mx-2 mt-3 rounded'), {height: 2}]}
+            style={[tailwind('mt-3 rounded'), {height: 2}]}
             colors={['#816D2E', '#614920']}></LinearGradient>
         )}
       </View>

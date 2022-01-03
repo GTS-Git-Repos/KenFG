@@ -2,40 +2,52 @@ import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {liveTeamShape} from '../../types/api';
 
 interface PropTypes {
   completed: boolean;
-  teamName1: string;
-  teamName2: string;
+  team_a: liveTeamShape;
+  team_b: liveTeamShape;
 }
-
 
 export default function MatchStat(props: PropTypes) {
   return (
     <View style={[tailwind('flex-row items-center justify-between')]}>
       <View style={[tailwind('flex-col'), {flex: 4}]}>
         <Text style={[tailwind('font-regular text-white font-14')]}>
-          {props.teamName1}
+          {props.team_a.name}
         </Text>
-        <View style={[tailwind('flex-row items-center py-0.5')]}>
-          <Text style={[tailwind('font-bold text-white font-20')]}>43/1</Text>
-          <Text style={[tailwind('font-regular text-dark-1 pl-2 font-14')]}>
-            (3)
-          </Text>
-        </View>
+        {props.team_a.has_points ? (
+          <View style={[tailwind('flex-row items-center py-0.5')]}>
+            <Text style={[tailwind('font-bold text-white font-20')]}>
+              {props.team_a.runs}/{props.team_a.wickets}
+            </Text>
+            <Text style={[tailwind('font-regular text-dark-1 pl-2 font-14')]}>
+              ({props.team_a.overs})
+            </Text>
+          </View>
+        ) : (
+          <NoPoints />
+        )}
       </View>
       {props.completed ? <Completed /> : <LiveIndicator />}
 
       <View style={[tailwind('flex-col items-end'), {flex: 4}]}>
         <Text style={[tailwind('font-regular text-white font-14')]}>
-          {props.teamName2}
+          {props.team_b.name}
         </Text>
-        <View style={[tailwind('flex-row items-center py-0.5')]}>
-          <Text style={[tailwind('font-bold text-white font-20')]}>183/6</Text>
-          <Text style={[tailwind('font-regular text-dark-1 pl-2 font-14')]}>
-            (20)
-          </Text>
-        </View>
+        {props.team_b.has_points ? (
+          <View style={[tailwind('flex-row items-center py-0.5')]}>
+            <Text style={[tailwind('font-bold text-white font-20')]}>
+              {props.team_b.runs}/{props.team_b.wickets}
+            </Text>
+            <Text style={[tailwind('font-regular text-dark-1 pl-2 font-12')]}>
+              ({props.team_b.overs})
+            </Text>
+          </View>
+        ) : (
+          <NoPoints />
+        )}
       </View>
     </View>
   );
@@ -69,6 +81,15 @@ const Completed = () => {
         style={[tailwind('font-regular uppercase text-white font-11 px-1')]}>
         COMPLETED
       </Text>
+    </View>
+  );
+};
+
+const NoPoints = () => {
+  return (
+    <View style={[tailwind('flex-row items-center py-0.5')]}>
+      <Text style={[tailwind('font-bold text-white font-20')]}>--/--</Text>
+      <Text style={[tailwind('font-regular text-dark-1 pl-2 font-14')]}></Text>
     </View>
   );
 };

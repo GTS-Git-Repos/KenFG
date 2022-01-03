@@ -1,7 +1,8 @@
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
-import {upCommingMatchesMock} from '../constants/mockAPIData';
 import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
+import LiveMatchMeta from '../constants/mocks/liveMatchMeta.json';
+import {liveMatchStatsFormat} from '../formatters/livematch.formatter';
 // API Routes
 
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
@@ -21,7 +22,6 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
     if (response.status === 200) {
       let matches = normalizeUpcommingMatchesAPI(response.data.data);
       let banners = response.data.data.banners;
-      console.log(matches[0]);
 
       return {matches: matches, banners};
     } else {
@@ -67,6 +67,25 @@ export const contestInfoRemote = async (params: any) => {
       }
     } else {
       failedLog('contestInfoRemote', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const liveMatchMetaRemote = async (payload: any) => {
+  try {
+    return liveMatchStatsFormat(LiveMatchMeta);
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_team_create,
+      payload,
+    );
+    if (response.status === 200) {
+      return response.data.data;
+    } else {
+      failedLog('createTeamRemote()', response);
     }
   } catch (err) {
     console.log(err);

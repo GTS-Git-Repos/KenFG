@@ -10,6 +10,7 @@ import ExpertsStats from './atoms/ExpertsStats';
 import ContestScreenLoading from './atoms/ContestScreenLoading';
 import TeamCode from './atoms/TeamCode';
 import TabsBottomLine from './atoms/TabsBottomLine';
+import LoadingSpinner from './atoms/Loading.Spinnner';
 
 import ContestCard from './molecules/ContestCard';
 import TeamsCard from './molecules/TeamsCard';
@@ -62,6 +63,7 @@ export {
   ButtonComponent,
   BottomLine,
   FullScreenLoading,
+  LoadingSpinner,
   ContestCard,
   TeamCode,
   Projection,

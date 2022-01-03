@@ -54,6 +54,3 @@ export default function CricketPage(props: PropTypes) {
   );
 }
 
-const styles = StyleSheet.create({
-  root: {},
-});

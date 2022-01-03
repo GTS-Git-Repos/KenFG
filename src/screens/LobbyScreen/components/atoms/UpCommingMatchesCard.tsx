@@ -60,7 +60,6 @@ export default function UpcommingMatches(props: PropTypes) {
         team_b: props.team_b_name,
       }),
     );
-
     navigation.navigate('ContestListScreen');
   };
 

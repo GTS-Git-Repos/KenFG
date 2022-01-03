@@ -31,7 +31,6 @@ export default function LobbyScreen() {
 
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
-  // console.log(userInfoState.name);
 
   return (
     <View style={tailwind('bg-dark h-full')}>
