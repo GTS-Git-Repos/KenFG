@@ -23,6 +23,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Modalize} from 'react-native-modalize';
 import BreakupModalSheet from './molecules/BreakupModalSheet';
 import PlayersStats from '../LiveMatchScreen/molecules/PlayersStats';
+import {useQuery} from 'react-query';
+import {liveMatchesMetaRemote} from '../../remote/matchesRemote';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
@@ -35,12 +37,26 @@ export default function ContestLiveMatchScreen() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
+  const matchRemote = useQuery('matchRemote', liveMatchesMetaRemote);
+
+  // log('matchRemote', matchRemote.data);
+
   const onTabPressed = (index: number) => {
     pagerRef.current?.setPage(index);
   };
   const onPageSelectedAction = (e: any) => {
     setSelectedTab(e.nativeEvent.position);
   };
+
+  if (matchRemote.isLoading) {
+    return null;
+  }
+
+  if (matchRemote.isSuccess && !matchRemote.data) {
+    return (
+      <Text style={[tailwind('font-regular text-white font-15')]}>Failed</Text>
+    );
+  }
 
   return (
     <View style={tailwind('h-full bg-dark')}>

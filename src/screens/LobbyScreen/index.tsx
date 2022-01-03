@@ -23,15 +23,13 @@ import MyCompletedMatchCard from './components/molecules/MyCompletedMatchCard';
 const log = console.log;
 
 export default function LobbyScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const route = useRoute();
   const dispatch = useDispatch();
 
   const [cricket, setCricket] = useState(true);
 
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
-
-  // console.log(userInfoState.name);
 
   return (
     <View style={tailwind('bg-dark h-full')}>
@@ -52,7 +50,7 @@ export default function LobbyScreen() {
 
       {cricket ? (
         <View style={[tailwind('px-5 py-4 pb-0.5')]}>
-          <SubTitle text={'My Matches'} actiontext="View all" />
+          <SubTitle text={'My Matches'} actiontext="View all"  />
           <View style={[tailwind('h-1')]} />
           <NewMyMatchesCard />
         </View>

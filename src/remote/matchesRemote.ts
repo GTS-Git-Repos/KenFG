@@ -2,7 +2,9 @@ import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import {upCommingMatchesMock} from '../constants/mockAPIData';
 import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
-// API Routes
+
+// @ts-ignore
+import LiveMatchScreen from '../constants/mocks/liveMatchScreen.json';
 
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
 const req_team_create = '/create-team.php';
@@ -21,8 +23,6 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
     if (response.status === 200) {
       let matches = normalizeUpcommingMatchesAPI(response.data.data);
       let banners = response.data.data.banners;
-      console.log(matches[0]);
-
       return {matches: matches, banners};
     } else {
       failedLog('upcommingMatchesandBannersRemote()', response);
@@ -52,6 +52,31 @@ export const contestListsRemote = async (params: any) => {
 
 export const contestInfoRemote = async (params: any) => {
   try {
+    const response = await requestServer(
+      METHODS.GET,
+      BASE_URL + `${req_contest_list}?m=${params.queryKey[1]}`,
+    );
+    if (response.status === 200) {
+      let contest = response.data.data.find(
+        (item: any) => item.key === params.queryKey[2],
+      );
+      if (contest) {
+        return contest;
+      } else {
+        failedLog('No contest Found', '0');
+      }
+    } else {
+      failedLog('contestInfoRemote', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const liveMatchesMetaRemote = async (params: any) => {
+  try {
+    return LiveMatchScreen;
     const response = await requestServer(
       METHODS.GET,
       BASE_URL + `${req_contest_list}?m=${params.queryKey[1]}`,
