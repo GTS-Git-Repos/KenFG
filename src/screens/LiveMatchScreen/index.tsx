@@ -1,14 +1,13 @@
 import React, {useRef, useState} from 'react';
-import {View, Text, Dimensions, ScrollView} from 'react-native';
+import {View, Text} from 'react-native';
 import tailwind from '../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import {
-  TopBar,
-  FullScreenLoading,
   MatchStat,
   Projection,
   CurrentLiveStatus,
   ExpertsStats,
+  LoadingSpinner,
 } from '../../sharedComponents/';
 
 import PagerView from 'react-native-pager-view';
@@ -25,6 +24,8 @@ import WinningsPage from './molecules/WinningsPage';
 import LinearGradient from 'react-native-linear-gradient';
 import LiveMatchLoading from './atoms/LiveMatchLoading';
 import LiveMatchTopBar from './atoms/LiveMatchTopBar';
+import {liveMatchMetaRemote} from '../../remote/matchesRemote';
+import {useQuery} from 'react-query';
 
 // import Icon from 'react-native-vector-icons/Ionicons';
 const log = console.log;
@@ -34,6 +35,8 @@ export default function LiveMatchScreen() {
   const pageRef = useRef(null);
   const isScreenReady = useIsScreenReady();
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const matchMeta = useQuery('matchMeta', liveMatchMetaRemote);
 
   const onPageSelectedAction = (e: any) => {
     setActiveIndex(e.nativeEvent.position);
@@ -46,6 +49,16 @@ export default function LiveMatchScreen() {
   if (isScreenReady === false) {
     return <LiveMatchLoading title={'ICC T20 World Cup Contest'} />;
   }
+  if (matchMeta.isLoading) {
+    return <LoadingSpinner title={'RSA vs IND'} />;
+  }
+  if (matchMeta.isSuccess && !matchMeta.data) {
+    return (
+      <Text style={[tailwind('font-regular text-white font-15')]}>
+        Failed to Load
+      </Text>
+    );
+  }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
@@ -56,16 +69,21 @@ export default function LiveMatchScreen() {
         colors={['#172338', '#0D1320']}
         style={[tailwind('p-3 bg-dark-3')]}>
         <MatchStat
-          teamName1={'Australia'}
-          teamName2={'England'}
           completed={false}
+          team_a={matchMeta.data.team_a}
+          team_b={matchMeta.data.team_b}
         />
 
         <Projection completed={false} />
         <View style={[tailwind('my-2')]}>
           <LiveMatchSeparator />
         </View>
-        <CurrentLiveStatus />
+        <CurrentLiveStatus
+          batter1={matchMeta.data.batters[0]}
+          batter2={matchMeta.data.batters[1]}
+          bowler={matchMeta.data.bowler}
+          overInfo={[matchMeta.data.overInfo]}
+        />
         {/* <ExpertsStats /> */}
       </LinearGradient>
 

@@ -7,86 +7,99 @@ import {View, Text, ScrollView} from 'react-native';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface CurrentPlayerStatusShape {
-  player1: string;
-  player2: string;
-  player1_runs: string;
-  player1_balls: string;
-  player2_runs: string;
-  player2_balls: string;
-  active: number;
+  batter1: BatterShape;
+  batter2: BatterShape;
+  bowler: BowlerShape;
+  overInfo: any[];
 }
 
-export default function CurrentLiveStats(props: PropTypes) {
+interface BatterShape {
+  active: boolean;
+  key: string;
+  name: string;
+  runs: number;
+  used_balls: number;
+}
+interface BowlerShape {
+  given_runs: number;
+  key: string;
+  name: string;
+  taken_wicket: number;
+  used_overs: number;
+}
+
+export default function CurrentLiveStats(props: CurrentPlayerStatusShape) {
   return (
     <View style={[tailwind('flex-row')]}>
       <View style={[tailwind(''), {flex: 4.75}]}>
-        <CurrentPlayerStats
-          player1={'D Warner'}
+        <View style={[tailwind('flex-row justify-between items-center pb-1')]}>
+          <Text style={[tailwind('font-bold text-white font-13')]}>
+            {props.batter1.name}
+          </Text>
+          <View style={[tailwind('flex-row justify-between items-center')]}>
+            <Text style={[tailwind('font-bold text-white font-14')]}>
+              {props.batter1.runs}
+            </Text>
+            <Text style={[tailwind('font-bold px-1 text-light font-12')]}>
+              ({props.batter1.used_balls})
+            </Text>
+          </View>
+        </View>
+
+        <View style={[tailwind('flex-row justify-between items-center pb-1')]}>
+          <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+            {props.batter2.name || 'N/A'}
+          </Text>
+          <View style={[tailwind('flex-row justify-between items-center')]}>
+            <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+              {props.batter2.runs}
+            </Text>
+            <Text style={[tailwind('font-regular px-1 text-dark-1 font-12')]}>
+              ({props.batter2.used_balls})
+            </Text>
+          </View>
+        </View>
+
+        {/* <CurrentPlayerStats
+          player1={props.batter1.name}
           player2={'A Finch'}
           player1_runs={'23'}
           player1_balls={'8'}
           player2_runs={'43'}
           player2_balls={'23'}
           active={0}
-        />
+        /> */}
       </View>
       <View style={[{flex: 0.25}]}></View>
       <View style={[tailwind('flex-col justify-between'), {flex: 4.75}]}>
-        <CurrentOverStats />
-        <OverStats />
+        <CurrentOverStats
+          key={props.bowler.key}
+          given_runs={props.bowler.given_runs}
+          name={props.bowler.name}
+          taken_wicket={props.bowler.taken_wicket}
+          used_overs={props.bowler.used_overs}
+        />
+        <OverStats overInfo={props.overInfo} />
       </View>
     </View>
   );
 }
-
-const CurrentPlayerStats = (props: CurrentPlayerStatusShape) => {
-  return (
-    <View style={[tailwind('flex-col')]}>
-      <View style={[tailwind('flex-row justify-between items-center pb-1')]}>
-        <Text style={[tailwind('font-bold text-white font-13')]}>
-          {props.player1}
-        </Text>
-        <View style={[tailwind('flex-row justify-between items-center')]}>
-          <Text style={[tailwind('font-bold text-white font-14')]}>
-            {props.player1_runs}
-          </Text>
-          <Text style={[tailwind('font-bold px-1 text-light font-12')]}>
-            ({props.player1_balls})
-          </Text>
-        </View>
-      </View>
-
-      <View style={[tailwind('flex-row justify-between py-1 items-center')]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-          {props.player2}
-        </Text>
-        <View style={[tailwind('flex-row justify-between items-center')]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-            {props.player2_runs}
-          </Text>
-          <Text style={[tailwind('font-regular text-dark-1  font-13')]}>
-            ({props.player2_balls})
-          </Text>
-        </View>
-      </View>
-    </View>
-  );
-};
-
-const CurrentOverStats = () => {
+const CurrentOverStats = (props: BowlerShape) => {
   return (
     <View style={[tailwind('')]}>
       <View style={[tailwind('flex-row justify-between items-center')]}>
         <Text
-          numberOfLines={2}
+          numberOfLines={1}
           style={[tailwind('font-bold text-white font-13'), {flex: 6}]}>
-          A. Millence
+          {props.name}
         </Text>
         <View
           style={[tailwind('flex-row justify-end items-center'), {flex: 6}]}>
-          <Text style={[tailwind('font-bold text-white font-14')]}>2/34</Text>
+          <Text style={[tailwind('font-bold text-white font-14')]}>
+            {props.taken_wicket}/{props.given_runs}
+          </Text>
           <Text style={[tailwind('font-bold px-1 text-light font-14')]}>
-            (3.2)
+            ({props.used_overs})
           </Text>
         </View>
       </View>
@@ -94,16 +107,75 @@ const CurrentOverStats = () => {
   );
 };
 
-const OverStats = () => {
+// const CurrentPlayerStats = (props: CurrentPlayerStatusShape) => {
+//   return (
+//     <View style={[tailwind('flex-col')]}>
+//       <View style={[tailwind('flex-row justify-between items-center pb-1')]}>
+//         <Text style={[tailwind('font-bold text-white font-13')]}>
+//           {props.player1}
+//         </Text>
+//         <View style={[tailwind('flex-row justify-between items-center')]}>
+//           <Text style={[tailwind('font-bold text-white font-14')]}>
+//             {props.player1_runs}
+//           </Text>
+//           <Text style={[tailwind('font-bold px-1 text-light font-12')]}>
+//             ({props.player1_balls})
+//           </Text>
+//         </View>
+//       </View>
+
+//       <View style={[tailwind('flex-row justify-between py-1 items-center')]}>
+//         <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+//           {props.player2}
+//         </Text>
+//         <View style={[tailwind('flex-row justify-between items-center')]}>
+//           <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+//             {props.player2_runs}
+//           </Text>
+//           <Text style={[tailwind('font-regular text-dark-1  font-13')]}>
+//             ({props.player2_balls})
+//           </Text>
+//         </View>
+//       </View>
+//     </View>
+//   );
+// };
+
+const OverStats = (props: any[]) => {
   return (
     <View style={[tailwind('')]}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <BallStats info={3} />
-        <BallStats info={0} />
-        <BallStats info={4} />
-        <BallStats info={3} />
-        <EmptyBall />
-        <EmptyBall />
+        {props.overInfo[0] ? (
+          <BallStats info={props.overInfo[0]} />
+        ) : (
+          <EmptyBall />
+        )}
+        {props.overInfo[1] ? (
+          <BallStats info={props.overInfo[1]} />
+        ) : (
+          <EmptyBall />
+        )}
+        {props.overInfo[2] ? (
+          <BallStats info={props.overInfo[2]} />
+        ) : (
+          <EmptyBall />
+        )}
+
+        {props.overInfo[3] ? (
+          <BallStats info={props.overInfo[3]} />
+        ) : (
+          <EmptyBall />
+        )}
+        {props.overInfo[4] ? (
+          <BallStats info={props.overInfo[4]} />
+        ) : (
+          <EmptyBall />
+        )}
+        {props.overInfo[5] ? (
+          <BallStats info={props.overInfo[5]} />
+        ) : (
+          <EmptyBall />
+        )}
       </ScrollView>
     </View>
   );

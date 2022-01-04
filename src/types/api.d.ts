@@ -23,3 +23,12 @@ export interface winningsLists {
   key: string;
   value: string;
 }
+
+export interface liveTeamShape {
+  has_points: boolean;
+  key: string;
+  name: string;
+  overs: number;
+  runs: number;
+  wickets: number;
+}

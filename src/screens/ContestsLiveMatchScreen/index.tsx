@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {View, StyleSheet, Text, useWindowDimensions} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
@@ -12,6 +12,7 @@ import {
   Projection,
   CurrentLiveStatus,
   ExpertsStats,
+  LoadingSpinner,
 } from '../../sharedComponents/';
 import Tabs from './atoms/Tabs';
 import PagerView from 'react-native-pager-view';
@@ -24,7 +25,7 @@ import {Modalize} from 'react-native-modalize';
 import BreakupModalSheet from './molecules/BreakupModalSheet';
 import PlayersStats from '../LiveMatchScreen/molecules/PlayersStats';
 import {useQuery} from 'react-query';
-import {liveMatchesMetaRemote} from '../../remote/matchesRemote';
+import {liveMatchMetaRemote} from '../../remote/matchesRemote';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
@@ -37,9 +38,13 @@ export default function ContestLiveMatchScreen() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const matchRemote = useQuery('matchRemote', liveMatchesMetaRemote);
+  const matchMeta = useQuery('matchMeta', liveMatchMetaRemote);
 
-  // log('matchRemote', matchRemote.data);
+  useEffect(() => {
+    if (matchMeta.data) {
+      // console.log(matchMeta.data);
+    }
+  }, [matchMeta.data]);
 
   const onTabPressed = (index: number) => {
     pagerRef.current?.setPage(index);
@@ -48,34 +53,39 @@ export default function ContestLiveMatchScreen() {
     setSelectedTab(e.nativeEvent.position);
   };
 
-  if (matchRemote.isLoading) {
-    return null;
+  if (matchMeta.isLoading) {
+    return <LoadingSpinner title={'RSA vs IND'} />;
   }
-
-  if (matchRemote.isSuccess && !matchRemote.data) {
+  if (matchMeta.isSuccess && !matchMeta.data) {
     return (
-      <Text style={[tailwind('font-regular text-white font-15')]}>Failed</Text>
+      <Text style={[tailwind('font-regular text-white font-15')]}>
+        Failed to Load
+      </Text>
     );
   }
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={'AUS vs ENG'} />
-
+      <TopBar text={matchMeta.data.short_name} />
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         colors={['#172338', '#0D1320']}
         style={[tailwind('p-3 bg-dark-3')]}>
         <MatchStat
-          teamName1={'Australia'}
-          teamName2={'England'}
           completed={false}
+          team_a={matchMeta.data.team_a}
+          team_b={matchMeta.data.team_b}
         />
 
         <Projection completed={false} />
         <View style={[tailwind('my-2 border-b border-gray-800')]}></View>
-        <CurrentLiveStatus />
+        <CurrentLiveStatus
+          batter1={matchMeta.data.batters[0]}
+          batter2={matchMeta.data.batters[1]}
+          bowler={matchMeta.data.bowler}
+          overInfo={[matchMeta.data.overInfo]}
+        />
         {/* <ExpertsStats /> */}
       </LinearGradient>
 
