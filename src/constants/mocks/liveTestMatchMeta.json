@@ -1,0 +1,2716 @@
+{
+    "data": {
+        "key": "rsaind_2021_test_02",
+        "name": "South Africa vs India",
+        "short_name": "RSA vs IND",
+        "sub_title": "2nd Test Match",
+        "teams": {
+            "a": {
+                "key": "rsa",
+                "code": "RSA",
+                "name": "South Africa"
+            },
+            "b": {
+                "key": "ind",
+                "code": "IND",
+                "name": "India"
+            }
+        },
+        "start_at": 1641196800,
+        "tournament": {
+            "key": "rsaind_2021",
+            "name": "India tour of South Africa, 2021-22",
+            "short_name": "RSA vs IND"
+        },
+        "association": {
+            "key": "c__board__icc__c2ab7ee61",
+            "code": "ICC",
+            "name": "International Cricket Council",
+            "country": null,
+            "parent": null
+        },
+        "metric_group": "MG100",
+        "status": "started",
+        "winner": null,
+        "messages": [],
+        "gender": "male",
+        "sport": "cricket",
+        "format": "test",
+        "title": "South Africa vs India - 2nd Test Match - India tour of South Africa, 2021-22",
+        "play_status": "in_play",
+        "start_at_local": 1641204000,
+        "toss": {
+            "called": "b",
+            "winner": "b",
+            "elected": "bat"
+        },
+        "play": {
+            "first_batting": "b",
+            "day_number": 1,
+            "overs_per_innings": null,
+            "reduced_overs": null,
+            "target": null,
+            "result": null,
+            "innings_order": [
+                "b_1"
+            ],
+            "innings": {
+                "b_1": {
+                    "index": "b_1",
+                    "overs": [
+                        22,
+                        0
+                    ],
+                    "is_completed": false,
+                    "score_str": "45/1 in 22.0",
+                    "score": {
+                        "runs": 45,
+                        "balls": 132,
+                        "fours": 8,
+                        "sixes": 0,
+                        "dot_balls": 113,
+                        "run_rate": 2.05
+                    },
+                    "wickets": 1,
+                    "extra_runs": {
+                        "extra": 1,
+                        "bye": 0,
+                        "leg_bye": 0,
+                        "wide": 0,
+                        "no_ball": 1,
+                        "penalty": null
+                    },
+                    "balls_breakup": {
+                        "balls": 132,
+                        "dot_balls": 113,
+                        "wides": 0,
+                        "no_balls": 1
+                    },
+                    "batting_order": [
+                        "l_rahul",
+                        "m_agarwal",
+                        "c_pujara"
+                    ],
+                    "bowling_order": [],
+                    "wicket_order": [
+                        "m_agarwal"
+                    ],
+                    "partnerships": [
+                        {
+                            "begin_overs": [
+                                0,
+                                1
+                            ],
+                            "end_overs": [
+                                14,
+                                1
+                            ],
+                            "player_a_key": "l_rahul",
+                            "player_a_score": {
+                                "runs": 9,
+                                "balls": 49,
+                                "fours": 2,
+                                "sixes": 0
+                            },
+                            "player_b_key": "m_agarwal",
+                            "player_b_score": {
+                                "runs": 26,
+                                "balls": 37,
+                                "fours": 5,
+                                "sixes": 0
+                            },
+                            "score": {
+                                "runs": 36,
+                                "balls": 85,
+                                "fours": 7,
+                                "sixes": 0,
+                                "run_rate": 2.54
+                            },
+                            "is_completed": true
+                        },
+                        {
+                            "begin_overs": [
+                                14,
+                                2
+                            ],
+                            "end_overs": [
+                                21,
+                                6
+                            ],
+                            "player_a_key": "c_pujara",
+                            "player_a_score": {
+                                "runs": 3,
+                                "balls": 30,
+                                "fours": 0,
+                                "sixes": 0
+                            },
+                            "player_b_key": "l_rahul",
+                            "player_b_score": {
+                                "runs": 6,
+                                "balls": 17,
+                                "fours": 1,
+                                "sixes": 0
+                            },
+                            "score": {
+                                "runs": 9,
+                                "balls": 47,
+                                "fours": 1,
+                                "sixes": 0,
+                                "run_rate": 1.15
+                            },
+                            "is_completed": false
+                        }
+                    ]
+                },
+                "a_1": {
+                    "index": "a_1",
+                    "overs": [
+                        0,
+                        0
+                    ],
+                    "is_completed": false,
+                    "score_str": "0/0 in 0.0",
+                    "score": {
+                        "runs": 0,
+                        "balls": 0,
+                        "fours": 0,
+                        "sixes": 0,
+                        "dot_balls": 0,
+                        "run_rate": 0
+                    },
+                    "wickets": 0,
+                    "extra_runs": {
+                        "extra": 0,
+                        "bye": 0,
+                        "leg_bye": 0,
+                        "wide": 0,
+                        "no_ball": 0,
+                        "penalty": null
+                    },
+                    "balls_breakup": {
+                        "balls": 0,
+                        "dot_balls": 0,
+                        "wides": 0,
+                        "no_balls": 0
+                    },
+                    "batting_order": [],
+                    "bowling_order": [
+                        "k_rabada",
+                        "du_oliver",
+                        "l_ngidi",
+                        "mar_jansen"
+                    ],
+                    "wicket_order": [],
+                    "partnerships": []
+                }
+            },
+            "live": {
+                "innings": "b_1",
+                "batting_team": "b",
+                "bowling_team": "a",
+                "last_ball_key": "ef136737-b9dc-4b14-85f9-b3603e480db6",
+                "striker_key": "l_rahul",
+                "non_striker_key": "c_pujara",
+                "bowler_key": null,
+                "match_break": null,
+                "score": {
+                    "runs": 45,
+                    "balls": 132,
+                    "wickets": 1,
+                    "run_rate": 2.05,
+                    "title": "45/1 in 22.0",
+                    "overs": [
+                        22,
+                        0
+                    ],
+                    "msg_lead_by": null,
+                    "msg_trail_by": null
+                },
+                "required_score": null,
+                "recent_overs": [
+                    {
+                        "overnumber": 22,
+                        "ball_keys": [
+                            "b8e340ee-b232-4950-9076-b8303c1dfcde",
+                            "8a3d921e-b666-461f-9c92-299f025a6206",
+                            "ca67793d-0a61-4bdb-857c-6a441f623747",
+                            "bbae3bb0-8d58-4d03-86f2-6a37d0232441",
+                            "d1d480b1-00e5-4fd0-a869-0dba0d197419",
+                            "ef136737-b9dc-4b14-85f9-b3603e480db6"
+                        ]
+                    },
+                    {
+                        "overnumber": 21,
+                        "ball_keys": [
+                            "5f078ee3-439f-434f-8ccf-2f295cb2d9bd",
+                            "3aabafd4-d39d-4d9b-8999-694b290bb733",
+                            "b2ab9896-c31f-485b-a752-c0c28e2d2a09",
+                            "59225f15-c1e4-42d9-8219-ea8c16064e71",
+                            "d4c86d35-fb66-4623-aeae-cc8cd622699e",
+                            "ced2a593-3d36-4cee-b7f0-a0571362d304"
+                        ]
+                    },
+                    {
+                        "overnumber": 20,
+                        "ball_keys": [
+                            "2e9f7133-1937-4796-a4d0-05a2ef84be6a",
+                            "ab8f5e3d-b689-4749-aca0-026b522fcba0",
+                            "dc0df142-dbf6-405b-9ca8-63c523fe5b92",
+                            "564819d7-6666-4193-ace9-14bcdef22c50",
+                            "9d1e2e51-486e-4194-9c33-f3dbc143e5f3",
+                            "a77d5be4-5ffc-46f3-bbc4-3b111d6632a7"
+                        ]
+                    }
+                ],
+                "recent_overs_repr": [
+                    {
+                        "overnumber": 22,
+                        "ball_repr": [
+                            "r0",
+                            "b4",
+                            "r0",
+                            "r1",
+                            "r0",
+                            "r0"
+                        ]
+                    },
+                    {
+                        "overnumber": 21,
+                        "ball_repr": [
+                            "r0",
+                            "r0",
+                            "r0",
+                            "r0",
+                            "r0",
+                            "r0"
+                        ]
+                    },
+                    {
+                        "overnumber": 20,
+                        "ball_repr": [
+                            "r0",
+                            "r0",
+                            "r0",
+                            "r1",
+                            "r0",
+                            "r0"
+                        ]
+                    }
+                ]
+            },
+            "related_balls": {
+                "8a3d921e-b666-461f-9c92-299f025a6206": {
+                    "key": "8a3d921e-b666-461f-9c92-299f025a6206",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Lokesh Rahul: FOUR.",
+                    "innings": "b_1",
+                    "overs": [
+                        21,
+                        2
+                    ],
+                    "batsman": {
+                        "player_key": "l_rahul",
+                        "ball_count": 1,
+                        "runs": 4,
+                        "is_dot_ball": false,
+                        "is_four": true,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 4,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 4,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "c_pujara",
+                    "entry_time": 1641202653.68
+                },
+                "b8e340ee-b232-4950-9076-b8303c1dfcde": {
+                    "key": "b8e340ee-b232-4950-9076-b8303c1dfcde",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Lokesh Rahul: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        21,
+                        1
+                    ],
+                    "batsman": {
+                        "player_key": "l_rahul",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "c_pujara",
+                    "entry_time": 1641202609.976
+                },
+                "564819d7-6666-4193-ace9-14bcdef22c50": {
+                    "key": "564819d7-6666-4193-ace9-14bcdef22c50",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Cheteshwar Pujara: 1 run.",
+                    "innings": "b_1",
+                    "overs": [
+                        19,
+                        4
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 1,
+                        "is_dot_ball": false,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 1,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 1,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202240.645
+                },
+                "b2ab9896-c31f-485b-a752-c0c28e2d2a09": {
+                    "key": "b2ab9896-c31f-485b-a752-c0c28e2d2a09",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Kagiso Rabada to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        20,
+                        3
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "k_rabada",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202451.16
+                },
+                "bbae3bb0-8d58-4d03-86f2-6a37d0232441": {
+                    "key": "bbae3bb0-8d58-4d03-86f2-6a37d0232441",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Lokesh Rahul: 1 run.",
+                    "innings": "b_1",
+                    "overs": [
+                        21,
+                        4
+                    ],
+                    "batsman": {
+                        "player_key": "l_rahul",
+                        "ball_count": 1,
+                        "runs": 1,
+                        "is_dot_ball": false,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 1,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 1,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "c_pujara",
+                    "entry_time": 1641202749.412
+                },
+                "59225f15-c1e4-42d9-8219-ea8c16064e71": {
+                    "key": "59225f15-c1e4-42d9-8219-ea8c16064e71",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Kagiso Rabada to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        20,
+                        4
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "k_rabada",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202482.464
+                },
+                "ef136737-b9dc-4b14-85f9-b3603e480db6": {
+                    "key": "ef136737-b9dc-4b14-85f9-b3603e480db6",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        21,
+                        6
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202862.932
+                },
+                "ab8f5e3d-b689-4749-aca0-026b522fcba0": {
+                    "key": "ab8f5e3d-b689-4749-aca0-026b522fcba0",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        19,
+                        2
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202163.016
+                },
+                "ca67793d-0a61-4bdb-857c-6a441f623747": {
+                    "key": "ca67793d-0a61-4bdb-857c-6a441f623747",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Lokesh Rahul: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        21,
+                        3
+                    ],
+                    "batsman": {
+                        "player_key": "l_rahul",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "c_pujara",
+                    "entry_time": 1641202705.293
+                },
+                "a77d5be4-5ffc-46f3-bbc4-3b111d6632a7": {
+                    "key": "a77d5be4-5ffc-46f3-bbc4-3b111d6632a7",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Lokesh Rahul: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        19,
+                        6
+                    ],
+                    "batsman": {
+                        "player_key": "l_rahul",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "c_pujara",
+                    "entry_time": 1641202333.474
+                },
+                "5f078ee3-439f-434f-8ccf-2f295cb2d9bd": {
+                    "key": "5f078ee3-439f-434f-8ccf-2f295cb2d9bd",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Kagiso Rabada to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        20,
+                        1
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "k_rabada",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202410.752
+                },
+                "9d1e2e51-486e-4194-9c33-f3dbc143e5f3": {
+                    "key": "9d1e2e51-486e-4194-9c33-f3dbc143e5f3",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Lokesh Rahul: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        19,
+                        5
+                    ],
+                    "batsman": {
+                        "player_key": "l_rahul",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "c_pujara",
+                    "entry_time": 1641202298.214
+                },
+                "dc0df142-dbf6-405b-9ca8-63c523fe5b92": {
+                    "key": "dc0df142-dbf6-405b-9ca8-63c523fe5b92",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        19,
+                        3
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202197.917
+                },
+                "2e9f7133-1937-4796-a4d0-05a2ef84be6a": {
+                    "key": "2e9f7133-1937-4796-a4d0-05a2ef84be6a",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        19,
+                        1
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202132.323
+                },
+                "d1d480b1-00e5-4fd0-a869-0dba0d197419": {
+                    "key": "d1d480b1-00e5-4fd0-a869-0dba0d197419",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Duanne Olivier to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        21,
+                        5
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "du_oliver",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202791.811
+                },
+                "d4c86d35-fb66-4623-aeae-cc8cd622699e": {
+                    "key": "d4c86d35-fb66-4623-aeae-cc8cd622699e",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Kagiso Rabada to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        20,
+                        5
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "k_rabada",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202514.938
+                },
+                "ced2a593-3d36-4cee-b7f0-a0571362d304": {
+                    "key": "ced2a593-3d36-4cee-b7f0-a0571362d304",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Kagiso Rabada to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        20,
+                        6
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "k_rabada",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202548.884
+                },
+                "3aabafd4-d39d-4d9b-8999-694b290bb733": {
+                    "key": "3aabafd4-d39d-4d9b-8999-694b290bb733",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Kagiso Rabada to Cheteshwar Pujara: No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        20,
+                        2
+                    ],
+                    "batsman": {
+                        "player_key": "c_pujara",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "k_rabada",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": false
+                    },
+                    "fielders": [],
+                    "wicket": null,
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641202420.787
+                },
+                "5b766500-861d-4586-9849-d3b568e52322": {
+                    "key": "5b766500-861d-4586-9849-d3b568e52322",
+                    "ball_type": "normal",
+                    "batting_team": "b",
+                    "comment": "Marco Jansen to Mayank Agarwal: Wicket!, Caught by . No runs.",
+                    "innings": "b_1",
+                    "overs": [
+                        14,
+                        1
+                    ],
+                    "batsman": {
+                        "player_key": "m_agarwal",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "is_dot_ball": true,
+                        "is_four": false,
+                        "is_six": false
+                    },
+                    "bowler": {
+                        "player_key": "mar_jansen",
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": true
+                    },
+                    "team_score": {
+                        "ball_count": 1,
+                        "runs": 0,
+                        "extras": 0,
+                        "is_wicket": true
+                    },
+                    "fielders": [
+                        {
+                            "player_key": "k_verreynne",
+                            "is_run_out": false,
+                            "is_stumps": false,
+                            "is_catch": true,
+                            "is_assists": false
+                        }
+                    ],
+                    "wicket": {
+                        "player_key": "m_agarwal",
+                        "wicket_type": "caught"
+                    },
+                    "non_striker_key": "l_rahul",
+                    "entry_time": 1641200741.336
+                }
+            }
+        },
+        "players": {
+            "m_siraj": {
+                "player": {
+                    "key": "m_siraj",
+                    "name": "Mohammed Siraj",
+                    "jersey_name": "Mohammed Siraj",
+                    "legal_name": "Mohammed Siraj",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium_fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "p_subrayen": {
+                "player": {
+                    "key": "p_subrayen",
+                    "name": "Prenelan Subrayen",
+                    "jersey_name": "Prenelan Subrayen",
+                    "legal_name": "Prenelan Subrayen",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "a_rahane": {
+                "player": {
+                    "key": "a_rahane",
+                    "name": "Ajinkya Rahane",
+                    "jersey_name": "Ajinkya Rahane",
+                    "legal_name": "Ajinkya Rahane",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "anr_nortje": {
+                "player": {
+                    "key": "anr_nortje",
+                    "name": "Anrich Nortje",
+                    "jersey_name": "Anrich Nortje",
+                    "legal_name": "Anrich Nortje",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "k_verreynne": {
+                "player": {
+                    "key": "k_verreynne",
+                    "name": "Kyle Verreynne",
+                    "jersey_name": "Kyle Verreynne",
+                    "legal_name": "Kyle Verreynne",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "keeper",
+                    "roles": [
+                        "keeper"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": {
+                            "catches": 1,
+                            "stumpings": 0,
+                            "runouts": 0
+                        }
+                    }
+                }
+            },
+            "ke_petersen": {
+                "player": {
+                    "key": "ke_petersen",
+                    "name": "Keegan Petersen",
+                    "jersey_name": "Keegan Petersen",
+                    "legal_name": "Keegan Petersen",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": "leg_break"
+                    },
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "du_oliver": {
+                "player": {
+                    "key": "du_oliver",
+                    "name": "Duanne Olivier",
+                    "jersey_name": "Duanne Olivier",
+                    "legal_name": "Duanne Olivier",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium_fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": {
+                            "score": {
+                                "balls": 42,
+                                "runs": 24,
+                                "economy": 3.43,
+                                "extras": 1,
+                                "wickets": 0,
+                                "maiden_overs": 1,
+                                "overs": [
+                                    7,
+                                    0
+                                ],
+                                "balls_breakup": {
+                                    "dot_balls": 34,
+                                    "wides": 0,
+                                    "no_balls": 1,
+                                    "fours": 5,
+                                    "sixes": 0
+                                }
+                            }
+                        },
+                        "fielding": null
+                    }
+                }
+            },
+            "r_ashwin": {
+                "player": {
+                    "key": "r_ashwin",
+                    "name": "Ravichandran Ashwin",
+                    "jersey_name": "Ravichandran Ashwin",
+                    "legal_name": "Ravichandran Ashwin",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "g_linde": {
+                "player": {
+                    "key": "g_linde",
+                    "name": "George Linde",
+                    "jersey_name": "George Linde",
+                    "legal_name": "George Linde",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "left_arm",
+                        "pace": "slow",
+                        "bowling_type": "orthodox"
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "c_pujara": {
+                "player": {
+                    "key": "c_pujara",
+                    "name": "Cheteshwar Pujara",
+                    "jersey_name": "Cheteshwar Pujara",
+                    "legal_name": "Cheteshwar Pujara",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": "leg_break"
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": {
+                            "score": {
+                                "runs": 3,
+                                "balls": 30,
+                                "fours": 0,
+                                "sixes": 0,
+                                "dot_balls": 27,
+                                "strike_rate": 10
+                            },
+                            "dismissal": null
+                        },
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "wia_mulder": {
+                "player": {
+                    "key": "wia_mulder",
+                    "name": "Wiaan Mulder",
+                    "jersey_name": "Wiaan Mulder",
+                    "legal_name": "Wiaan Mulder",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "v_kohli": {
+                "player": {
+                    "key": "v_kohli",
+                    "name": "V Kohli",
+                    "jersey_name": "V Kohli",
+                    "legal_name": "Virat Kohli",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "u_yadav": {
+                "player": {
+                    "key": "u_yadav",
+                    "name": "Umesh Yadav",
+                    "jersey_name": "Umesh Yadav",
+                    "legal_name": "Umesh Yadav",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "fast_medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "l_ngidi": {
+                "player": {
+                    "key": "l_ngidi",
+                    "name": "Lungi Ngidi",
+                    "jersey_name": "Lungi Ngidi",
+                    "legal_name": "Lungi Ngidi",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": {
+                            "score": {
+                                "balls": 24,
+                                "runs": 3,
+                                "economy": 0.75,
+                                "extras": 0,
+                                "wickets": 0,
+                                "maiden_overs": 2,
+                                "overs": [
+                                    4,
+                                    0
+                                ],
+                                "balls_breakup": {
+                                    "dot_balls": 21,
+                                    "wides": 0,
+                                    "no_balls": 0,
+                                    "fours": 0,
+                                    "sixes": 0
+                                }
+                            }
+                        },
+                        "fielding": null
+                    }
+                }
+            },
+            "r_rickelton": {
+                "player": {
+                    "key": "r_rickelton",
+                    "name": "Ryan Rickelton",
+                    "jersey_name": "Ryan Rickelton",
+                    "legal_name": "Ryan Rickelton",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "keeper",
+                    "roles": [
+                        "keeper"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": null,
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "t_bavuma": {
+                "player": {
+                    "key": "t_bavuma",
+                    "name": "Temba Bavuma",
+                    "jersey_name": "Temba Bavuma",
+                    "legal_name": "Temba Bavuma",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "mar_jansen": {
+                "player": {
+                    "key": "mar_jansen",
+                    "name": "Marco Jansen",
+                    "jersey_name": "Marco Jansen",
+                    "legal_name": "Marco Jansen",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "left_arm",
+                        "pace": "fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": {
+                            "score": {
+                                "balls": 24,
+                                "runs": 2,
+                                "economy": 0.5,
+                                "extras": 0,
+                                "wickets": 1,
+                                "maiden_overs": 2,
+                                "overs": [
+                                    4,
+                                    0
+                                ],
+                                "balls_breakup": {
+                                    "dot_balls": 22,
+                                    "wides": 0,
+                                    "no_balls": 0,
+                                    "fours": 0,
+                                    "sixes": 0
+                                }
+                            }
+                        },
+                        "fielding": null
+                    }
+                }
+            },
+            "s_thakur": {
+                "player": {
+                    "key": "s_thakur",
+                    "name": "SN Thakur",
+                    "jersey_name": "SN Thakur",
+                    "legal_name": "SN Thakur",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "c__player__sisanda_magala__ee622": {
+                "player": {
+                    "key": "c__player__sisanda_magala__ee622",
+                    "name": "Sisanda Magala",
+                    "jersey_name": "Sisanda Magala",
+                    "legal_name": "Sisanda Magala",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": null,
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "k_maharaj": {
+                "player": {
+                    "key": "k_maharaj",
+                    "name": "K Maharaj",
+                    "jersey_name": "K Maharaj",
+                    "legal_name": "Keshav Maharaj",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "left_arm",
+                        "pace": "slow",
+                        "bowling_type": "orthodox"
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "s_erwee": {
+                "player": {
+                    "key": "s_erwee",
+                    "name": "Sarel Erwee",
+                    "jersey_name": "Sarel Erwee",
+                    "legal_name": "Sarel Erwee",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "s_ahmed": {
+                "player": {
+                    "key": "s_ahmed",
+                    "name": "Mohammed Shami",
+                    "jersey_name": "Mohammed Shami",
+                    "legal_name": "Mohammed Shami",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "fast_medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "s_iyer": {
+                "player": {
+                    "key": "s_iyer",
+                    "name": "Shreyas Iyer",
+                    "jersey_name": "Shreyas Iyer",
+                    "legal_name": "Shreyas Iyer",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": "leg_break"
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "l_rahul": {
+                "player": {
+                    "key": "l_rahul",
+                    "name": "Lokesh Rahul",
+                    "jersey_name": "Lokesh Rahul",
+                    "legal_name": "Lokesh Rahul",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": null,
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": {
+                            "score": {
+                                "runs": 15,
+                                "balls": 66,
+                                "fours": 3,
+                                "sixes": 0,
+                                "dot_balls": 59,
+                                "strike_rate": 22.73
+                            },
+                            "dismissal": null
+                        },
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "i_sharma": {
+                "player": {
+                    "key": "i_sharma",
+                    "name": "Ishant Sharma",
+                    "jersey_name": "Ishant Sharma",
+                    "legal_name": "Ishant Sharma",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "fast_medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "a_markram": {
+                "player": {
+                    "key": "a_markram",
+                    "name": "Aiden Markram",
+                    "jersey_name": "Aiden Markram",
+                    "legal_name": "Aiden Markram",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "j_bumrah": {
+                "player": {
+                    "key": "j_bumrah",
+                    "name": "JJ Bumrah",
+                    "jersey_name": "JJ Bumrah",
+                    "legal_name": "Jasprit Bumrah",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "k_rabada": {
+                "player": {
+                    "key": "k_rabada",
+                    "name": "Kagiso Rabada",
+                    "jersey_name": "Kagiso Rabada",
+                    "legal_name": "Kagiso Rabada",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": {
+                            "score": {
+                                "balls": 42,
+                                "runs": 16,
+                                "economy": 2.29,
+                                "extras": 0,
+                                "wickets": 0,
+                                "maiden_overs": 2,
+                                "overs": [
+                                    7,
+                                    0
+                                ],
+                                "balls_breakup": {
+                                    "dot_balls": 36,
+                                    "wides": 0,
+                                    "no_balls": 0,
+                                    "fours": 3,
+                                    "sixes": 0
+                                }
+                            }
+                        },
+                        "fielding": null
+                    }
+                }
+            },
+            "r_pant": {
+                "player": {
+                    "key": "r_pant",
+                    "name": "RR Pant",
+                    "jersey_name": "RR Pant",
+                    "legal_name": "Rishabh Pant",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "keeper",
+                    "roles": [
+                        "keeper"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": null,
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "b_hendricks": {
+                "player": {
+                    "key": "b_hendricks",
+                    "name": "Beuran Hendricks",
+                    "jersey_name": "Beuran Hendricks",
+                    "legal_name": "Beuran Hendricks",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "left_arm",
+                        "pace": "fast_medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "rvd_dussen": {
+                "player": {
+                    "key": "rvd_dussen",
+                    "name": "RVD Dussen",
+                    "jersey_name": "RVD Dussen",
+                    "legal_name": "Rassie van der Dussen",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": "leg_break"
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "de_kock": {
+                "player": {
+                    "key": "de_kock",
+                    "name": "Quinton de Kock",
+                    "jersey_name": "Quinton de Kock",
+                    "legal_name": "Quinton de Kock",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "keeper",
+                    "roles": [
+                        "keeper"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": null,
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "g_suurmant": {
+                "player": {
+                    "key": "g_suurmant",
+                    "name": "Glenton Stuurman",
+                    "jersey_name": "Glenton Stuurman",
+                    "legal_name": "Glenton Stuurman",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "rg_sharma": {
+                "player": {
+                    "key": "rg_sharma",
+                    "name": "Rohit Sharma",
+                    "jersey_name": "Rohit Sharma",
+                    "legal_name": "Rohit Sharma",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "d_elgar": {
+                "player": {
+                    "key": "d_elgar",
+                    "name": "Dean Elgar",
+                    "jersey_name": "Dean Elgar",
+                    "legal_name": "Dean Elgar",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "ZA",
+                        "code": "ZAF",
+                        "name": "South Africa",
+                        "official_name": "Republic of South Africa",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "left_arm",
+                        "pace": "slow",
+                        "bowling_type": "orthodox"
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "m_agarwal": {
+                "player": {
+                    "key": "m_agarwal",
+                    "name": "Mayank Agarwal",
+                    "jersey_name": "Mayank Agarwal",
+                    "legal_name": "Mayank Agarwal",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": "off_break"
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": {
+                            "score": {
+                                "runs": 26,
+                                "balls": 37,
+                                "fours": 5,
+                                "sixes": 0,
+                                "dot_balls": 27,
+                                "strike_rate": 70.27
+                            },
+                            "dismissal": {
+                                "overs": [
+                                    14,
+                                    1
+                                ],
+                                "team_runs": 36,
+                                "wicket_number": 1,
+                                "msg": "c Kyle Verreynne b Marco Jansen",
+                                "ball_key": "5b766500-861d-4586-9849-d3b568e52322"
+                            }
+                        },
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "c__player__priyank_panchal__6d837": {
+                "player": {
+                    "key": "c__player__priyank_panchal__6d837",
+                    "name": "Panchal",
+                    "jersey_name": "Panchal",
+                    "legal_name": "Priyank Panchal",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "w_saha": {
+                "player": {
+                    "key": "w_saha",
+                    "name": "WP Saha",
+                    "jersey_name": "WP Saha",
+                    "legal_name": "WP Saha",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "keeper",
+                    "roles": [
+                        "keeper"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": null,
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "h_vihari": {
+                "player": {
+                    "key": "h_vihari",
+                    "name": "H Vihari",
+                    "jersey_name": "H Vihari",
+                    "legal_name": "Hanuma Vihari",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            },
+            "j_yadav": {
+                "player": {
+                    "key": "j_yadav",
+                    "name": "Jayant Yadav",
+                    "jersey_name": "Jayant Yadav",
+                    "legal_name": "Jayant Yadav",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {
+                    "1": {
+                        "batting": null,
+                        "bowling": null,
+                        "fielding": null
+                    }
+                }
+            }
+        },
+        "notes": [],
+        "data_review": {
+            "schedule": true,
+            "venue": true,
+            "result": false,
+            "pom": false,
+            "score": false,
+            "players": true,
+            "playing_xi": true,
+            "score_reviewed_ball_index": [
+                "b_1",
+                [
+                    21,
+                    6
+                ]
+            ],
+            "team_a": true,
+            "team_b": true,
+            "good_to_close": false,
+            "note": null
+        },
+        "squad": {
+            "a": {
+                "player_keys": [
+                    "r_rickelton",
+                    "p_subrayen",
+                    "anr_nortje",
+                    "rvd_dussen",
+                    "ke_petersen",
+                    "mar_jansen",
+                    "de_kock",
+                    "wia_mulder",
+                    "g_suurmant",
+                    "b_hendricks",
+                    "a_markram",
+                    "d_elgar",
+                    "k_verreynne",
+                    "g_linde",
+                    "k_rabada",
+                    "c__player__sisanda_magala__ee622",
+                    "k_maharaj",
+                    "s_erwee",
+                    "du_oliver",
+                    "l_ngidi",
+                    "t_bavuma"
+                ],
+                "captain": "d_elgar",
+                "keeper": "k_verreynne",
+                "playing_xi": [
+                    "d_elgar",
+                    "a_markram",
+                    "ke_petersen",
+                    "rvd_dussen",
+                    "t_bavuma",
+                    "k_verreynne",
+                    "du_oliver",
+                    "mar_jansen",
+                    "k_maharaj",
+                    "k_rabada",
+                    "l_ngidi"
+                ]
+            },
+            "b": {
+                "player_keys": [
+                    "m_siraj",
+                    "s_iyer",
+                    "l_rahul",
+                    "a_rahane",
+                    "m_agarwal",
+                    "h_vihari",
+                    "rg_sharma",
+                    "r_pant",
+                    "r_ashwin",
+                    "j_bumrah",
+                    "i_sharma",
+                    "c_pujara",
+                    "c__player__priyank_panchal__6d837",
+                    "w_saha",
+                    "v_kohli",
+                    "u_yadav",
+                    "s_thakur",
+                    "s_ahmed",
+                    "j_yadav"
+                ],
+                "captain": "l_rahul",
+                "keeper": "r_pant",
+                "playing_xi": [
+                    "l_rahul",
+                    "m_agarwal",
+                    "c_pujara",
+                    "a_rahane",
+                    "h_vihari",
+                    "r_pant",
+                    "r_ashwin",
+                    "s_thakur",
+                    "s_ahmed",
+                    "j_bumrah",
+                    "m_siraj"
+                ]
+            }
+        },
+        "estimated_end_date": 1641574800,
+        "completed_date_approximate": null,
+        "umpires": {
+            "match_umpires": null,
+            "tv_umpires": null,
+            "reserve_umpires": null,
+            "match_referee": null
+        }
+    },
+    "cache": {
+        "key": "RS:CK:Match:rsaind_2021_test_02:detail:5.0",
+        "expires": 1641202928.414238,
+        "etag": "ET:RS:CK:Match:rsaind_2021_test_02:detail:5.0:1641202919.108989:0",
+        "max_age": 300
+    },
+    "schema": {
+        "major_version": "5.0",
+        "minor_version": "1"
+    },
+    "error": null,
+    "http_status_code": 200
+}

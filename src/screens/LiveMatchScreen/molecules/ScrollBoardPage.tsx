@@ -28,7 +28,7 @@ export default function ScrollBoardPage(props: PropTypes) {
   const matchMeta = useQuery('matchMeta', liveMatchMetaRemote);
 
   useEffect(() => {
-    log('matchMeta srlbd', matchMeta.data);
+    // log('matchMeta srlbd', matchMeta.data);
   }, []);
 
   if (matchMeta.isLoading) {
@@ -122,7 +122,7 @@ const TeamOverAllScoreBoard = (props: OverallTeamShape) => {
         ) : (
           <Text
             style={[tailwind('font-regular text-white font-12'), {flex: 4}]}>
-            n/a
+            N/A
           </Text>
         )}
         {props.has_points ? (
@@ -133,10 +133,10 @@ const TeamOverAllScoreBoard = (props: OverallTeamShape) => {
         ) : (
           <Text
             style={[
-              tailwind('font-regular px-3 text-light font-14'),
+              tailwind('font-regular px-3 text-white font-12'),
               {flex: 4},
             ]}>
-            n/a
+            N/A
           </Text>
         )}
 

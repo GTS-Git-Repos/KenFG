@@ -1,4 +1,4 @@
-export const liveMatchStatsBluprint = Object.seal({
+export const liveTestMatchStatsBluprint = Object.seal({
   key: '',
   name: '',
   short_name: '',
@@ -10,7 +10,6 @@ export const liveMatchStatsBluprint = Object.seal({
     runs: 0,
     wickets: 0,
     overs: 0.0,
-    players: [],
   },
   team_b: {
     key: '',
@@ -20,7 +19,6 @@ export const liveMatchStatsBluprint = Object.seal({
     runs: 0,
     wickets: 0,
     overs: 0.0,
-    players: [],
   },
   status: null,
   projection: '',

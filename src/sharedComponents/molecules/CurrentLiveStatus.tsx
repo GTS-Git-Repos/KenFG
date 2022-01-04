@@ -145,56 +145,34 @@ const OverStats = (props: any[]) => {
   return (
     <View style={[tailwind('')]}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {props.overInfo[0] ? (
-          <BallStats info={props.overInfo[0]} />
-        ) : (
-          <EmptyBall />
-        )}
-        {props.overInfo[1] ? (
-          <BallStats info={props.overInfo[1]} />
-        ) : (
-          <EmptyBall />
-        )}
-        {props.overInfo[2] ? (
-          <BallStats info={props.overInfo[2]} />
-        ) : (
-          <EmptyBall />
-        )}
-
-        {props.overInfo[3] ? (
-          <BallStats info={props.overInfo[3]} />
-        ) : (
-          <EmptyBall />
-        )}
-        {props.overInfo[4] ? (
-          <BallStats info={props.overInfo[4]} />
-        ) : (
-          <EmptyBall />
-        )}
-        {props.overInfo[5] ? (
-          <BallStats info={props.overInfo[5]} />
-        ) : (
-          <EmptyBall />
-        )}
+        {props.overInfo.map((item: any, index: number) => {
+          return <BallStats info={item} key={index} />;
+        })}
+        <EmptyBall />
       </ScrollView>
     </View>
   );
 };
 
-const BallStats = ({info}) => {
+const BallStats = (props: any) => {
   return (
     <View
       style={[
-        tailwind('rounded-full mr-1'),
+        tailwind('rounded-full flex-row items-center justify-center mr-1'),
         {
           width: 20,
           height: 20,
-          backgroundColor: 'rgba(255, 255, 255,1)',
+          backgroundColor: props.info === 'w' ? 'red' : 'white',
         },
       ]}>
       <Text
-        style={[tailwind('font-bold text-center text-black top-0.5 font-13')]}>
-        {info}
+        style={[
+          tailwind('font-bold text-center text-black uppercase font-11'),
+          {
+            color: props.info === 'w' ? 'white' : 'black',
+          },
+        ]}>
+        {props.info}
       </Text>
     </View>
   );

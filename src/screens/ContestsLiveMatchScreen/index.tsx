@@ -38,7 +38,9 @@ export default function ContestLiveMatchScreen() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const matchMeta = useQuery('matchMeta', liveMatchMetaRemote);
+  const matchMeta = useQuery('matchMeta', liveMatchMetaRemote, {
+    staleTime: 0,
+  });
 
   useEffect(() => {
     if (matchMeta.data) {
@@ -84,7 +86,7 @@ export default function ContestLiveMatchScreen() {
           batter1={matchMeta.data.batters[0]}
           batter2={matchMeta.data.batters[1]}
           bowler={matchMeta.data.bowler}
-          overInfo={[matchMeta.data.overInfo]}
+          overInfo={matchMeta.data.overInfo}
         />
         {/* <ExpertsStats /> */}
       </LinearGradient>

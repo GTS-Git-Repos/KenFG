@@ -3,7 +3,10 @@ import requestServer from '../workers/requestServer';
 import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
 // @ts-ignore
 import LiveMatchMeta from '../constants/mocks/liveMatchMeta.json';
+import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
+
 import {liveMatchStatsFormat} from '../formatters/livematch.formatter';
+import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
 // API Routes
 
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
@@ -12,6 +15,7 @@ const req_view_team = '/view-team.php';
 const req_contest_list = '/contests.php';
 const req_join_contest = '/join-contest.php';
 const req_players = '/fantasy-player.php';
+const req_live_match = '/live-match.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -76,14 +80,14 @@ export const contestInfoRemote = async (params: any) => {
 
 export const liveMatchMetaRemote = async (payload: any) => {
   try {
-    return liveMatchStatsFormat(LiveMatchMeta);
+    // return liveMatchStatsFormat(LiveMatchMeta);
     const response = await requestServer(
       METHODS.POST,
-      BASE_URL + req_team_create,
+      BASE_URL + req_live_match,
       payload,
     );
     if (response.status === 200) {
-      return response.data.data;
+      return liveTestMatchFormat(response.data.data.data);
     } else {
       failedLog('createTeamRemote()', response);
     }
