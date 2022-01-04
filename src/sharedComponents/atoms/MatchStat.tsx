@@ -88,7 +88,9 @@ const Completed = () => {
 const NoPoints = () => {
   return (
     <View style={[tailwind('flex-row items-center py-0.5')]}>
-      <Text style={[tailwind('font-bold text-white font-20')]}>--/--</Text>
+      <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+        Yet to bat
+      </Text>
       <Text style={[tailwind('font-regular text-dark-1 pl-2 font-14')]}></Text>
     </View>
   );

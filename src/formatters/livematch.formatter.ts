@@ -15,6 +15,7 @@ export const liveMatchStatsFormat = (payload: any) => {
     if (payload.live.batting_team === 'a') {
       if (payload.live.score) {
         obj.team_a.has_points = true;
+        obj.team_a.is_batting = true;
         obj.team_a.runs = payload.live.score.runs;
         obj.team_a.wickets = payload.live.score.wickets;
         obj.team_a.overs =
@@ -23,6 +24,7 @@ export const liveMatchStatsFormat = (payload: any) => {
 
       if (payload.live.required_score) {
         obj.team_b.has_points = true;
+        obj.team_b.is_batting = false;
         obj.team_b.runs = payload.live.required_score.runs;
         obj.team_b.wickets = payload.live.required_score.wickets;
         obj.team_b.overs =
@@ -31,6 +33,7 @@ export const liveMatchStatsFormat = (payload: any) => {
     } else {
       if (payload.live.score) {
         obj.team_b.has_points = true;
+        obj.team_b.is_batting = true;
         obj.team_b.runs = payload.live.score.runs;
         obj.team_b.wickets = payload.live.score.wickets;
         obj.team_b.overs = `${payload.live.score.overs[0]}.${payload.live.score.overs[1]}`;
@@ -38,6 +41,8 @@ export const liveMatchStatsFormat = (payload: any) => {
 
       if (payload.live.required_score) {
         obj.team_a.has_points = true;
+        obj.team_a.is_batting = false;
+
         obj.team_a.runs = payload.live.required_score.runs;
         obj.team_a.wickets = payload.live.required_score.wickets;
         obj.team_a.overs = `${payload.live.required_score.overs[0]}.${payload.live.required_score.overs[1]}`;
@@ -85,6 +90,11 @@ export const liveMatchStatsFormat = (payload: any) => {
       }
     }
     obj.overInfo = overDetails;
+    // All batters order
+    // currently get only from first innings of test match
+    // const inningsOrder = payload.play.innings['b_1'].batting_order;
+    // console.log('batt ==>', Object.keys(payload.live));
+
     return obj;
   } catch (err) {
     console.log(err);

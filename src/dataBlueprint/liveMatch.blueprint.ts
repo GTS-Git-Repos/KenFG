@@ -5,6 +5,7 @@ export const liveMatchStatsBluprint = Object.seal({
   team_a: {
     key: '',
     has_points: false,
+    is_batting: false,
     name: '',
     runs: 0,
     wickets: 0,
@@ -13,6 +14,7 @@ export const liveMatchStatsBluprint = Object.seal({
   team_b: {
     key: '',
     has_points: false,
+    is_batting: false,
     name: '',
     runs: 0,
     wickets: 0,

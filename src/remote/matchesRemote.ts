@@ -1,6 +1,7 @@
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
+// @ts-ignore
 import LiveMatchMeta from '../constants/mocks/liveMatchMeta.json';
 import {liveMatchStatsFormat} from '../formatters/livematch.formatter';
 // API Routes
