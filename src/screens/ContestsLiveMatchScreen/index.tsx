@@ -97,9 +97,9 @@ export default function ContestLiveMatchScreen() {
         {/* <ExpertsStats /> */}
       </LinearGradient>
 
-      <View>
+      {/* <View>
         <Tabs activeIndex={selectedTab} onTabPressed={onTabPressed} />
-      </View>
+      </View> */}
 
       <PagerView
         ref={pagerRef}

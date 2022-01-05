@@ -1,19 +1,24 @@
 const log = console.log;
 
-export const getTeamMetaData = (payload: any, team_key: string) => {
+export const getTeamMetaData = (payload: any, api_key: string) => {
   return {
-    key: payload.teams[team_key].key,
-    code: payload.teams[team_key].code,
-    name: payload.teams[team_key].name,
+    key: payload.teams[api_key].key,
+    code: payload.teams[api_key].code,
+    name: payload.teams[api_key].name,
+    [api_key]: api_key,
   };
 };
 
-export const calculateTeamScore = (payload: any, team_key: string) => {
+export const calculateTeamScore = (
+  payload: any,
+  team_key: string,
+  teams: any,
+) => {
   try {
     const inningsOrder = payload.play.innings_order;
     let teamScore = [];
     for (let innings of inningsOrder) {
-      const {team} = getTeamAndDayFromInningsKey(innings);
+      const {team} = getTeamAndDayFromInningsKey(innings, teams);
       if (team_key === team) {
         const inningsData = payload.play.innings[innings];
         teamScore.push({
@@ -81,7 +86,7 @@ export const getCurrentBowlerData = (
 };
 
 export const getLastOverData = (recentOver: any[], related_balls: any[]) => {
-  let ballsData = [];
+  const ballsData = [];
   for (const key of recentOver) {
     const ball = related_balls[key];
     if (ball.bowler.is_wicket) {
@@ -100,8 +105,109 @@ export const getLastOverData = (recentOver: any[], related_balls: any[]) => {
   return ballsData;
 };
 
-export const getScroeByInnings = (allInnings: any[], inningsOrder: any[]) => {
-  return 1;
+export const getScroeByInnings = (
+  allInnings: any[],
+  inningsOrder: any[],
+  teams: any,
+  allPlayers: any,
+) => {
+  const inningsData: any = [];
+  for (const ikey of inningsOrder) {
+    const {code, day} = getTeamAndDayFromInningsKey(ikey, teams);
+    const innings_t = allInnings[ikey];
+    // const batters = innings_t.batting_order;
+
+    // const battersData = [];
+    // for (const key of batters) {
+    //   const player = allPlayers[key];
+    //   const score = player.score[day].batting.score;
+    //   const isDismis = score.dismissal;
+    //   battersData.push({
+    //     name: player.player.jersey_name,
+    //     runs: score.runs,
+    //     balls: score.balls,
+    //     fours: score.fours,
+    //     six: score.sixes,
+    //     sr: score.strike_rate,
+    //     isBatting: isDismis ? true : false,
+    //     msg: player.isDismis ? isDismis.msg : false,
+    //   });
+    // }
+    const batters = getBattersDataByInnings(
+      innings_t.batting_order,
+      allPlayers,
+      day,
+    );
+    // Bowlers
+    const bowlers = getBowlerDataByInnings(
+      innings_t.bowling_order,
+      allPlayers,
+      day,
+    );
+
+    inningsData.push({
+      code: code,
+      is_completed: innings_t.is_completed,
+      runs: innings_t.score.runs,
+      wickets: innings_t.wickets,
+      overs: oversArrayInToString(innings_t.overs),
+      extra: innings_t.extra_runs,
+      battersData: batters,
+      bowlersData: bowlers,
+    });
+  }
+  // Do for Wickets
+  return inningsData;
+};
+
+const getBattersDataByInnings = (
+  batters: any,
+  allPlayers: any,
+  day: string,
+) => {
+  const battersData = [];
+  for (const key of batters) {
+    const player = allPlayers[key];
+    const hasScore = player.score[day].batting;
+    if (!hasScore) {
+      return;
+    }
+    const score = player.score[day].batting.score;
+    const isDismis = score.dismissal;
+    battersData.push({
+      name: player.player.jersey_name,
+      runs: score.runs,
+      balls: score.balls,
+      fours: score.fours,
+      six: score.sixes,
+      sr: score.strike_rate,
+      isBatting: isDismis ? true : false,
+      msg: player.isDismis ? isDismis.msg : false,
+    });
+  }
+  return battersData;
+};
+
+const getBowlerDataByInnings = (bowlers: any, allPlayers: any, day: string) => {
+  const bowlersData = [];
+  for (const key of bowlers) {
+    const player = allPlayers[key];
+    const hasScore = player.score[day].bowling;
+    if (!hasScore) {
+      return;
+    }
+    const score = player.score[day].bowling.score;
+    bowlersData.push({
+      name: player.player.jersey_name,
+      overs: oversArrayInToString(score.overs),
+      runs: score.runs,
+      maider: score.maiden_overs,
+      balls: score.balls,
+      wickets: score.wickets,
+      economy: score.economy,
+    });
+  }
+  return bowlersData;
 };
 
 const getPlayerData = (players: any, player_key: string) => {
@@ -111,8 +217,12 @@ const getPlayerData = (players: any, player_key: string) => {
 export const getTeamKeyByInningsKey = (innings_key: string) => {
   return innings_key.split('_')[0];
 };
-export const getTeamAndDayFromInningsKey = (innings_key: string) => {
+export const getTeamAndDayFromInningsKey = (
+  innings_key: string,
+  teams: any,
+) => {
   return {
+    code: teams[innings_key.split('_')[0]].code,
     team: innings_key.split('_')[0],
     day: innings_key.split('_')[1],
   };
@@ -120,7 +230,7 @@ export const getTeamAndDayFromInningsKey = (innings_key: string) => {
 const oversArrayInToString = (overs: number[]) => `${overs[0]}.${overs[1]}`;
 
 export const parseCurrentInnings = (live: any) => {
-  let data = live.innings.split('_');
+  const data = live.innings.split('_');
   return {
     team: data[0],
     day: data[1],

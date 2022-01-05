@@ -16,6 +16,7 @@ export const liveTestMatchFormat = (payload: any) => {
   try {
     const obj: any = {...liveTestMatchStatsBluprint};
 
+    const teams = payload.teams;
     const play = payload.play;
     const live = payload.play.live;
     const inningsOrder = play.innings_order;
@@ -27,8 +28,8 @@ export const liveTestMatchFormat = (payload: any) => {
     const matchMeta = getMatchMeta(payload);
     const teamAMeta = getTeamMetaData(payload, 'a');
     const teamBMeta = getTeamMetaData(payload, 'b');
-    const teamAScore = calculateTeamScore(payload, 'a');
-    const teamBScore = calculateTeamScore(payload, 'b');
+    const teamAScore = calculateTeamScore(payload, 'a', teams);
+    const teamBScore = calculateTeamScore(payload, 'b', teams);
     const notification = getNotificationString(payload);
     const currentInnings = parseCurrentInnings(live);
     const striker = getCurrentStrikerData(
@@ -48,9 +49,13 @@ export const liveTestMatchFormat = (payload: any) => {
       currentInnings.day,
     );
     const lastOverData = getLastOverData(recentOver, related_balls);
-    const d = getScroeByInnings(allInnings, inningsOrder);
-    log('Data -->', d);
-    let liveObj = {
+    const inningsData = getScroeByInnings(
+      allInnings,
+      inningsOrder,
+      teams,
+      allPlayers,
+    );
+    const liveObj = {
       match: matchMeta,
       team_a: teamAMeta,
       team_b: teamBMeta,
@@ -61,6 +66,7 @@ export const liveTestMatchFormat = (payload: any) => {
       nonStriker,
       bowler,
       lastOverData,
+      innings: inningsData,
     };
 
     return liveObj;

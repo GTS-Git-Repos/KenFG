@@ -19,6 +19,7 @@ import JoinedContestCard from './molecules/JoinedContestCard';
 import SocialLogin from './molecules/SocialLogin';
 import CurrentLiveStatus from './molecules/CurrentLiveStatus';
 import SocialMediaShare from './molecules/SocialMediaShare';
+import TeamScrollBoardByInnings from './molecules/team.scoreboard.innings';
 
 import WalletIcon from './icons/WalletIcon';
 import MoneyIcon from './icons/MoneyIcon';
@@ -72,6 +73,7 @@ export {
   TeamsCard,
   HorizontalProfile,
   MatchStat,
+  TeamScrollBoardByInnings,
   JoinedContestCard,
   SocialLogin,
   TabsBottomLine,

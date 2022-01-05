@@ -36,7 +36,13 @@ export default function LiveMatchScreen() {
   const isScreenReady = useIsScreenReady();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const matchMeta = useQuery('matchMeta', liveMatchMetaRemote);
+  const {data, isLoading, isSuccess} = useQuery(
+    'matchMeta',
+    liveMatchMetaRemote,
+    {
+      staleTime: 8000,
+    },
+  );
 
   const onPageSelectedAction = (e: any) => {
     setActiveIndex(e.nativeEvent.position);
@@ -49,10 +55,10 @@ export default function LiveMatchScreen() {
   if (isScreenReady === false) {
     return <LiveMatchLoading title={'ICC T20 World Cup Contest'} />;
   }
-  if (matchMeta.isLoading) {
+  if (isLoading) {
     return <LoadingSpinner title={'RSA vs IND'} />;
   }
-  if (matchMeta.isSuccess && !matchMeta.data) {
+  if (isSuccess && !data) {
     return (
       <Text style={[tailwind('font-regular text-white font-15')]}>
         Failed to Load
@@ -62,7 +68,7 @@ export default function LiveMatchScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <LiveMatchTopBar text={'ICC T20 World Cup Contest'} />
+      <LiveMatchTopBar text={data?.match?.short_name} />
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
@@ -70,8 +76,10 @@ export default function LiveMatchScreen() {
         style={[tailwind('p-3 bg-dark-3')]}>
         <MatchStat
           completed={false}
-          team_a={matchMeta.data.team_a}
-          team_b={matchMeta.data.team_b}
+          team_a={data.team_a}
+          team_b={data.team_b}
+          score_a={data.score_a}
+          score_b={data.score_b}
         />
 
         <Projection completed={false} />
@@ -79,10 +87,10 @@ export default function LiveMatchScreen() {
           <LiveMatchSeparator />
         </View>
         <CurrentLiveStatus
-          batter1={matchMeta.data.batters[0]}
-          batter2={matchMeta.data.batters[1]}
-          bowler={matchMeta.data.bowler}
-          overInfo={matchMeta.data.overInfo}
+          striker={data.striker}
+          nonStriker={data.nonStriker}
+          bowler={data.bowler}
+          lastOverData={data.lastOverData}
         />
         {/* <ExpertsStats /> */}
       </LinearGradient>

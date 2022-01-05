@@ -3,10 +3,11 @@ import tailwind from '../../../../tailwind';
 import {View, ScrollView, Text, ActivityIndicator} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
-import TeamStatus from '../atoms/TeamStatus';
+// import TeamStatus from '../atoms/TeamStatus';
 import TeamStatusHeader from '../atoms/TeamStatusHeader';
 import {liveMatchMetaRemote} from '../../../remote/matchesRemote';
 import {useQuery} from 'react-query';
+import {TeamScrollBoardByInnings} from '../../../sharedComponents';
 const log = console.log;
 
 interface PropTypes {
@@ -25,16 +26,24 @@ interface OverallTeamShape {
 }
 
 export default function ScrollBoardPage(props: PropTypes) {
-  const matchMeta = useQuery('matchMeta', liveMatchMetaRemote);
+  const {data, isLoading, isSuccess} = useQuery(
+    'matchMeta',
+    liveMatchMetaRemote,
+    {
+      staleTime: 8000,
+    },
+  );
 
   useEffect(() => {
-    // log('matchMeta srlbd', matchMeta.data);
+    if (data) {
+      console.log(JSON.stringify(data.innings));
+    }
   }, []);
 
-  if (matchMeta.isLoading) {
+  if (isLoading) {
     return <ActivityIndicator color="0c1320" />;
   }
-  if (matchMeta.isSuccess && !matchMeta.data) {
+  if (isSuccess && !data) {
     return null;
   }
 
@@ -46,35 +55,27 @@ export default function ScrollBoardPage(props: PropTypes) {
       <ScrollView>
         <View>
           <View style={[tailwind('h-3')]}></View>
-          <TeamOverAllScoreBoard
-            has_points={matchMeta.data.team_a.has_points}
-            team_key={matchMeta.data.team_a.key}
-            team_code={matchMeta.data.team_a.key}
-            is_batting={matchMeta.data.team_a.is_batting}
-            team_overs={matchMeta.data.team_a.overs}
-            team_runs={matchMeta.data.team_a.runs}
-            team_wickets={matchMeta.data.team_a.team_wickets}
-            isExpanded={false}
-          />
-          <TeamOverAllScoreBoard
-            has_points={matchMeta.data.team_b.has_points}
-            team_key={matchMeta.data.team_b.key}
-            team_code={matchMeta.data.team_b.key}
-            is_batting={matchMeta.data.team_b.is_batting}
-            team_overs={matchMeta.data.team_b.overs}
-            team_runs={matchMeta.data.team_b.runs}
-            team_wickets={matchMeta.data.team_b.wickets}
-            isExpanded={true}
-          />
+          {data.innings.map((item: any, index: any) => {
+            return (
+              <TeamScrollBoardByInnings
+                key={index}
+                topSection={{
+                  key: item.code,
+                  code: item.code,
+                  overs: item.overs,
+                  runs: item.runs,
+                  wickets: item.wickets,
+                }}
+              />
+            );
+          })}
 
-          {/* <TeamStatus teamName="ENG" isBatting={false} isExpanded={false} />
-          <TeamStatus teamName="AUS" isBatting={true} isExpanded={true} /> */}
-          <TeamStatusHeader />
+          {/* <TeamStatusHeader />
           <PlayerStatus name="V.Kohli" />
           <PlayerStatus name="Ms.Dhoni" />
           <Extras />
           <Total />
-          <YetToBat />
+          <YetToBat /> */}
         </View>
         <View style={[tailwind('h-10')]}></View>
       </ScrollView>
@@ -83,6 +84,7 @@ export default function ScrollBoardPage(props: PropTypes) {
 }
 
 const TeamOverAllScoreBoard = (props: OverallTeamShape) => {
+  // Deprecated
   return (
     <View
       style={[
