@@ -2,10 +2,10 @@ import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
 // @ts-ignore
-import LiveMatchMeta from '../constants/mocks/liveMatchMeta.json';
+// import LiveMatchMeta from '../constants/mocks/liveMatchMeta.json';
 import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
 
-import {liveMatchStatsFormat} from '../formatters/livematch.formatter';
+// import {liveMatchStatsFormat} from '../formatters/livematch.formatter';
 import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
 // API Routes
 
@@ -80,11 +80,15 @@ export const contestInfoRemote = async (params: any) => {
 
 export const liveMatchMetaRemote = async (payload: any) => {
   try {
-    // return liveMatchStatsFormat(LiveMatchMeta);
+    return liveTestMatchFormat(LiveTestMatchMeta);
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_live_match,
-      payload,
+      {
+        match_key: 'rsaind_2021_test_02',
+        mobile: '99876543210',
+        data_key: 'all',
+      },
     );
     if (response.status === 200) {
       return liveTestMatchFormat(response.data.data.data);

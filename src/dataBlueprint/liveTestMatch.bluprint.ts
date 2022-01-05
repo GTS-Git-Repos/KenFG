@@ -1,24 +1,33 @@
-export const liveTestMatchStatsBluprint = Object.seal({
+export const liveTestMatchStatsBluprint = Object.freeze({
   key: '',
   name: '',
   short_name: '',
   team_a: {
     key: '',
     has_points: false,
-    is_batting: false,
-    name: '',
-    runs: 0,
-    wickets: 0,
-    overs: 0.0,
+    innings: [
+      {
+        name: '',
+        runs: 0,
+        wickets: 0,
+        overs: 0.0,
+        isCompleted: false,
+      },
+    ],
   },
   team_b: {
     key: '',
     has_points: false,
-    is_batting: false,
     name: '',
-    runs: 0,
-    wickets: 0,
-    overs: 0.0,
+    innings: [
+      {
+        name: '',
+        runs: 0,
+        wickets: 0,
+        overs: 0.0,
+        isCompleted: false,
+      },
+    ],
   },
   status: null,
   projection: '',

@@ -38,15 +38,19 @@ export default function ContestLiveMatchScreen() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const matchMeta = useQuery('matchMeta', liveMatchMetaRemote, {
-    staleTime: 0,
-  });
+  const {data, isLoading, isSuccess} = useQuery(
+    'matchMeta',
+    liveMatchMetaRemote,
+    {
+      staleTime: 8000,
+    },
+  );
 
   useEffect(() => {
-    if (matchMeta.data) {
-      // console.log(matchMeta.data);
+    if (data) {
+      // console.log('Match Data --> \n', JSON.stringify(data));
     }
-  }, [matchMeta.data]);
+  }, [data]);
 
   const onTabPressed = (index: number) => {
     pagerRef.current?.setPage(index);
@@ -55,10 +59,10 @@ export default function ContestLiveMatchScreen() {
     setSelectedTab(e.nativeEvent.position);
   };
 
-  if (matchMeta.isLoading) {
+  if (isLoading) {
     return <LoadingSpinner title={'RSA vs IND'} />;
   }
-  if (matchMeta.isSuccess && !matchMeta.data) {
+  if (isSuccess && !data) {
     return (
       <Text style={[tailwind('font-regular text-white font-15')]}>
         Failed to Load
@@ -68,7 +72,7 @@ export default function ContestLiveMatchScreen() {
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={matchMeta.data.short_name} />
+      <TopBar text={data?.match?.short_name} />
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
@@ -76,17 +80,19 @@ export default function ContestLiveMatchScreen() {
         style={[tailwind('p-3 bg-dark-3')]}>
         <MatchStat
           completed={false}
-          team_a={matchMeta.data.team_a}
-          team_b={matchMeta.data.team_b}
+          team_a={data.team_a}
+          team_b={data.team_b}
+          score_a={data.score_a}
+          score_b={data.score_b}
         />
 
         <Projection completed={false} />
         <View style={[tailwind('my-2 border-b border-gray-800')]}></View>
         <CurrentLiveStatus
-          batter1={matchMeta.data.batters[0]}
-          batter2={matchMeta.data.batters[1]}
-          bowler={matchMeta.data.bowler}
-          overInfo={matchMeta.data.overInfo}
+          striker={data.striker}
+          nonStriker={data.nonStriker}
+          bowler={data.bowler}
+          lastOverData={data.lastOverData}
         />
         {/* <ExpertsStats /> */}
       </LinearGradient>

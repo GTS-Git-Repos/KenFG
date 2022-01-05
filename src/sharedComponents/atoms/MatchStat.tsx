@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -6,8 +6,10 @@ import {liveTeamShape} from '../../types/api';
 
 interface PropTypes {
   completed: boolean;
-  team_a: liveTeamShape;
-  team_b: liveTeamShape;
+  team_a: any;
+  team_b: any;
+  score_a: any;
+  score_b: any;
 }
 
 export default function MatchStat(props: PropTypes) {
@@ -17,17 +19,31 @@ export default function MatchStat(props: PropTypes) {
         <Text style={[tailwind('font-regular text-white font-14')]}>
           {props.team_a.name}
         </Text>
-        {props.team_a.has_points ? (
+        {props.score_a.length > 1 && (
+          <CompletedInnings
+            runs={props.score_a[0]?.runs}
+            wickets={props.score_a[0]?.wickets}
+            overs={props.score_a[0]?.overs}
+          />
+        )}
+        {props.score_a.length > 1 ? (
           <View style={[tailwind('flex-row items-center py-0.5')]}>
             <Text style={[tailwind('font-bold text-white font-20')]}>
-              {props.team_a.runs}/{props.team_a.wickets}
+              {props.score_a[1].runs}/{props.score_a[1].wickets}
             </Text>
-            <Text style={[tailwind('font-regular text-dark-1 pl-2 font-14')]}>
-              ({props.team_a.overs})
+            <Text style={[tailwind('font-regular text-dark-1 pl-2 font-12')]}>
+              ({props.score_a[1].overs})
             </Text>
           </View>
         ) : (
-          <NoPoints />
+          <View style={[tailwind('flex-row items-center py-0.5')]}>
+            <Text style={[tailwind('font-bold text-white font-20')]}>
+              {props.score_a[0].runs}/{props.score_a[0].wickets}
+            </Text>
+            <Text style={[tailwind('font-regular text-dark-1 pl-2 font-12')]}>
+              ({props.score_a[0].overs})
+            </Text>
+          </View>
         )}
       </View>
       {props.completed ? <Completed /> : <LiveIndicator />}
@@ -36,17 +52,31 @@ export default function MatchStat(props: PropTypes) {
         <Text style={[tailwind('font-regular text-white font-14')]}>
           {props.team_b.name}
         </Text>
-        {props.team_b.has_points ? (
+        {props.score_b.length > 1 && (
+          <CompletedInnings
+            runs={props.score_b[0]?.runs}
+            wickets={props.score_b[0]?.wickets}
+            overs={props.score_b[0]?.overs}
+          />
+        )}
+        {props.score_b.length > 1 ? (
           <View style={[tailwind('flex-row items-center py-0.5')]}>
             <Text style={[tailwind('font-bold text-white font-20')]}>
-              {props.team_b.runs}/{props.team_b.wickets}
+              {props.score_b[1].runs}/{props.score_b[1].wickets}
             </Text>
             <Text style={[tailwind('font-regular text-dark-1 pl-2 font-12')]}>
-              ({props.team_b.overs})
+              ({props.score_b[1].overs})
             </Text>
           </View>
         ) : (
-          <NoPoints />
+          <View style={[tailwind('flex-row items-center py-0.5')]}>
+            <Text style={[tailwind('font-bold text-white font-20')]}>
+              {props.score_b[0].runs}/{props.score_b[0].wickets}
+            </Text>
+            <Text style={[tailwind('font-regular text-dark-1 pl-2 font-12')]}>
+              ({props.score_b[0].overs})
+            </Text>
+          </View>
         )}
       </View>
     </View>
@@ -92,6 +122,19 @@ const NoPoints = () => {
         Yet to bat
       </Text>
       <Text style={[tailwind('font-regular text-dark-1 pl-2 font-14')]}></Text>
+    </View>
+  );
+};
+
+const CompletedInnings = (props: any) => {
+  return (
+    <View style={[tailwind('flex-row items-center pt-0.5')]}>
+      <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+        {props.runs}/{props.wickets}{' '}
+      </Text>
+      <Text style={[tailwind('font-regular text-dark-1 font-9')]}>
+        ({props.overs})
+      </Text>
     </View>
   );
 };
