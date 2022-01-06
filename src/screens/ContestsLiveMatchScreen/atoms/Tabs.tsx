@@ -42,16 +42,24 @@ const DATA = [
 
 export default function LiveMatchTabs(props: PropTypes) {
   const flatListRef = useRef<any>();
+  const width = useWindowDimensions('window').width;
+
+  const TABWIDTH = width / 3;
 
   useEffect(() => {
     // console.log(flatListRef.current.scrollToIndex);
     flatListRef.current.scrollToIndex({index: props.activeIndex});
   }, [props.activeIndex]);
 
+  const getItemLayout = (data: any, index: any) => {
+    return {length: data.length, offset: index * TABWIDTH, index};
+  };
+
   return (
     <FlatList
       ref={flatListRef}
       horizontal
+      getItemLayout={getItemLayout}
       showsHorizontalScrollIndicator={false}
       style={[tailwind('bg-dark-3 px-3')]}
       data={DATA}

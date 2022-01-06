@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
+  useWindowDimensions,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
@@ -42,17 +43,25 @@ const DATA = [
 
 export default function LiveMatchTabs(props: PropTypes) {
   const flatListRef = useRef<any>();
+  const width = useWindowDimensions('window').width;
+
+  const TABWIDTH = width / 3;
 
   useEffect(() => {
     // console.log(flatListRef.current.scrollToIndex);
     flatListRef.current.scrollToIndex({index: props.activeIndex});
   }, [props.activeIndex]);
 
+  const getItemLayout = (data: any, index: any) => {
+    return {length: data.length, offset: index * TABWIDTH, index};
+  };
+
   return (
     <FlatList
       ref={flatListRef}
       showsHorizontalScrollIndicator={false}
       horizontal
+      getItemLayout={getItemLayout}
       style={[tailwind('bg-dark-3')]}
       data={DATA}
       renderItem={({item, index}) => {

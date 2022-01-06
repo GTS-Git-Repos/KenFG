@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, ActivityIndicator} from 'react-native';
 import tailwind from '../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../utils/customHoooks';
@@ -47,8 +47,11 @@ export default function InitialScreen() {
         <Image
           resizeMode="contain"
           source={assets.logo_new}
-          style={[{width: 250, height: 250}]}
+          style={[{width: 250, height: 100}]}
         />
+        <View style={[tailwind('my-3')]}>
+          <ActivityIndicator color="#d1b45a" size={'large'} />
+        </View>
       </View>
     </View>
   );

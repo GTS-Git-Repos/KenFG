@@ -80,7 +80,7 @@ export const contestInfoRemote = async (params: any) => {
 
 export const liveMatchMetaRemote = async (payload: any) => {
   try {
-    return liveTestMatchFormat(LiveTestMatchMeta);
+    // return liveTestMatchFormat(LiveTestMatchMeta);
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_live_match,

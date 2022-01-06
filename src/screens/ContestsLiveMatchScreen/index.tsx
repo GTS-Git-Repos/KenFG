@@ -86,7 +86,7 @@ export default function ContestLiveMatchScreen() {
           score_b={data.score_b}
         />
 
-        <Projection completed={false} />
+        <Projection completed={false} msg={data.notification} />
         <View style={[tailwind('my-2 border-b border-gray-800')]}></View>
         <CurrentLiveStatus
           striker={data.striker}
@@ -97,9 +97,9 @@ export default function ContestLiveMatchScreen() {
         {/* <ExpertsStats /> */}
       </LinearGradient>
 
-      {/* <View>
+      <View>
         <Tabs activeIndex={selectedTab} onTabPressed={onTabPressed} />
-      </View> */}
+      </View>
 
       <PagerView
         ref={pagerRef}

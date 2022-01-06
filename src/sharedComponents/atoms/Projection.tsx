@@ -5,20 +5,22 @@ import {View, Text} from 'react-native';
 
 interface PropTypes {
   completed: boolean;
+  msg: string;
 }
 
 export default function Projection(props: PropTypes) {
   return (
     <View>
-      {props.completed ? (
-        <Text style={[tailwind('font-bold text-white text-center font-13')]}>
-          AUS beats ENG by 32 Runs
-        </Text>
+      <Text style={[tailwind('font-bold text-white text-center font-13')]}>
+        {props.msg}
+      </Text>
+      {/* {props.completed ? (
+       
       ) : (
         <Text style={[tailwind('font-bold text-white text-center font-13')]}>
           AUS need 170 runs to win
         </Text>
-      )}
+      )} */}
     </View>
   );
 }

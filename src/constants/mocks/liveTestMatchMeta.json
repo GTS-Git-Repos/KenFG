@@ -43,12 +43,14 @@
     "metric_group": "MG100",
     "status": "started",
     "winner": null,
-    "messages": [],
+    "messages": [
+        "Delayed due to wet outfield"
+    ],
     "gender": "male",
     "sport": "cricket",
     "format": "test",
     "title": "South Africa vs India - 2nd Test Match - India tour of South Africa, 2021-22",
-    "play_status": "in_play",
+    "play_status": "bad_pitch_condition",
     "start_at_local": 1641204000,
     "toss": {
         "called": "b",
@@ -57,7 +59,7 @@
     },
     "play": {
         "first_batting": "b",
-        "day_number": 3,
+        "day_number": 4,
         "overs_per_innings": null,
         "reduced_overs": null,
         "target": null,
@@ -65,7 +67,8 @@
         "innings_order": [
             "b_1",
             "a_1",
-            "b_2"
+            "b_2",
+            "a_2"
         ],
         "innings": {
             "b_1": {
@@ -457,33 +460,33 @@
             "b_2": {
                 "index": "b_2",
                 "overs": [
-                    37,
+                    60,
                     1
                 ],
-                "is_completed": false,
-                "score_str": "163\/4 in 37.1",
+                "is_completed": true,
+                "score_str": "266\/10 in 60.1",
                 "score": {
-                    "runs": 163,
-                    "balls": 223,
-                    "fours": 24,
-                    "sixes": 1,
-                    "dot_balls": 162,
-                    "run_rate": 4.39
+                    "runs": 266,
+                    "balls": 361,
+                    "fours": 37,
+                    "sixes": 3,
+                    "dot_balls": 262,
+                    "run_rate": 4.42
                 },
-                "wickets": 4,
+                "wickets": 10,
                 "extra_runs": {
-                    "extra": 20,
-                    "bye": 7,
+                    "extra": 33,
+                    "bye": 16,
                     "leg_bye": 4,
                     "wide": 5,
-                    "no_ball": 4,
+                    "no_ball": 8,
                     "penalty": null
                 },
                 "balls_breakup": {
-                    "balls": 223,
-                    "dot_balls": 162,
+                    "balls": 361,
+                    "dot_balls": 262,
                     "wides": 1,
-                    "no_balls": 4
+                    "no_balls": 8
                 },
                 "batting_order": [
                     "l_rahul",
@@ -491,14 +494,31 @@
                     "c_pujara",
                     "a_rahane",
                     "h_vihari",
-                    "r_pant"
+                    "r_pant",
+                    "r_ashwin",
+                    "s_thakur",
+                    "s_ahmed",
+                    "j_bumrah",
+                    "m_siraj"
                 ],
-                "bowling_order": [],
+                "bowling_order": [
+                    "j_bumrah",
+                    "s_ahmed",
+                    "s_thakur",
+                    "m_siraj",
+                    "r_ashwin"
+                ],
                 "wicket_order": [
                     "l_rahul",
                     "m_agarwal",
                     "a_rahane",
-                    "c_pujara"
+                    "c_pujara",
+                    "r_pant",
+                    "r_ashwin",
+                    "s_thakur",
+                    "s_ahmed",
+                    "j_bumrah",
+                    "m_siraj"
                 ],
                 "partnerships": [
                     {
@@ -635,66 +655,231 @@
                             1
                         ],
                         "end_overs": [
-                            37,
-                            1
+                            38,
+                            3
                         ],
                         "player_a_key": "h_vihari",
                         "player_a_score": {
-                            "runs": 0,
-                            "balls": 1,
-                            "fours": 0,
+                            "runs": 4,
+                            "balls": 6,
+                            "fours": 1,
                             "sixes": 0
                         },
                         "player_b_key": "r_pant",
                         "player_b_score": {
                             "runs": 0,
-                            "balls": 0,
+                            "balls": 3,
                             "fours": 0,
                             "sixes": 0
                         },
                         "score": {
+                            "runs": 4,
+                            "balls": 9,
+                            "fours": 1,
+                            "sixes": 0,
+                            "run_rate": 2.67
+                        },
+                        "is_completed": true
+                    },
+                    {
+                        "begin_overs": [
+                            38,
+                            4
+                        ],
+                        "end_overs": [
+                            43,
+                            3
+                        ],
+                        "player_a_key": "r_ashwin",
+                        "player_a_score": {
+                            "runs": 16,
+                            "balls": 14,
+                            "fours": 2,
+                            "sixes": 0
+                        },
+                        "player_b_key": "h_vihari",
+                        "player_b_score": {
+                            "runs": 1,
+                            "balls": 16,
+                            "fours": 0,
+                            "sixes": 0
+                        },
+                        "score": {
+                            "runs": 17,
+                            "balls": 30,
+                            "fours": 2,
+                            "sixes": 0,
+                            "run_rate": 3.4
+                        },
+                        "is_completed": true
+                    },
+                    {
+                        "begin_overs": [
+                            43,
+                            4
+                        ],
+                        "end_overs": [
+                            49,
+                            6
+                        ],
+                        "player_a_key": "s_thakur",
+                        "player_a_score": {
+                            "runs": 28,
+                            "balls": 24,
+                            "fours": 5,
+                            "sixes": 1
+                        },
+                        "player_b_key": "h_vihari",
+                        "player_b_score": {
+                            "runs": 4,
+                            "balls": 16,
+                            "fours": 0,
+                            "sixes": 0
+                        },
+                        "score": {
+                            "runs": 41,
+                            "balls": 39,
+                            "fours": 5,
+                            "sixes": 1,
+                            "run_rate": 6.31
+                        },
+                        "is_completed": true
+                    },
+                    {
+                        "begin_overs": [
+                            50,
+                            1
+                        ],
+                        "end_overs": [
+                            51,
+                            5
+                        ],
+                        "player_a_key": "h_vihari",
+                        "player_a_score": {
+                            "runs": 2,
+                            "balls": 6,
+                            "fours": 0,
+                            "sixes": 0
+                        },
+                        "player_b_key": "s_ahmed",
+                        "player_b_score": {
                             "runs": 0,
-                            "balls": 1,
+                            "balls": 6,
+                            "fours": 0,
+                            "sixes": 0
+                        },
+                        "score": {
+                            "runs": 3,
+                            "balls": 11,
                             "fours": 0,
                             "sixes": 0,
-                            "run_rate": 0
+                            "run_rate": 1.64
                         },
-                        "is_completed": false
+                        "is_completed": true
+                    },
+                    {
+                        "begin_overs": [
+                            51,
+                            6
+                        ],
+                        "end_overs": [
+                            56,
+                            2
+                        ],
+                        "player_a_key": "j_bumrah",
+                        "player_a_score": {
+                            "runs": 7,
+                            "balls": 14,
+                            "fours": 0,
+                            "sixes": 1
+                        },
+                        "player_b_key": "h_vihari",
+                        "player_b_score": {
+                            "runs": 8,
+                            "balls": 15,
+                            "fours": 1,
+                            "sixes": 0
+                        },
+                        "score": {
+                            "runs": 17,
+                            "balls": 27,
+                            "fours": 1,
+                            "sixes": 1,
+                            "run_rate": 3.78
+                        },
+                        "is_completed": true
+                    },
+                    {
+                        "begin_overs": [
+                            56,
+                            3
+                        ],
+                        "end_overs": [
+                            60,
+                            1
+                        ],
+                        "player_a_key": "h_vihari",
+                        "player_a_score": {
+                            "runs": 20,
+                            "balls": 21,
+                            "fours": 4,
+                            "sixes": 0
+                        },
+                        "player_b_key": "m_siraj",
+                        "player_b_score": {
+                            "runs": 0,
+                            "balls": 2,
+                            "fours": 0,
+                            "sixes": 0
+                        },
+                        "score": {
+                            "runs": 21,
+                            "balls": 23,
+                            "fours": 4,
+                            "sixes": 0,
+                            "run_rate": 5.48
+                        },
+                        "is_completed": true
                     }
                 ]
             },
             "a_2": {
                 "index": "a_2",
                 "overs": [
-                    0,
+                    40,
                     0
                 ],
                 "is_completed": false,
-                "score_str": "0\/0 in 0.0",
+                "score_str": "118\/2 in 40.0",
                 "score": {
-                    "runs": 0,
-                    "balls": 0,
-                    "fours": 0,
+                    "runs": 118,
+                    "balls": 240,
+                    "fours": 12,
                     "sixes": 0,
-                    "dot_balls": 0,
-                    "run_rate": 0
+                    "dot_balls": 175,
+                    "run_rate": 2.95
                 },
-                "wickets": 0,
+                "wickets": 2,
                 "extra_runs": {
-                    "extra": 0,
-                    "bye": 0,
-                    "leg_bye": 0,
+                    "extra": 2,
+                    "bye": 1,
+                    "leg_bye": 1,
                     "wide": 0,
                     "no_ball": 0,
                     "penalty": null
                 },
                 "balls_breakup": {
-                    "balls": 0,
-                    "dot_balls": 0,
+                    "balls": 240,
+                    "dot_balls": 175,
                     "wides": 0,
                     "no_balls": 0
                 },
-                "batting_order": [],
+                "batting_order": [
+                    "a_markram",
+                    "d_elgar",
+                    "ke_petersen",
+                    "rvd_dussen"
+                ],
                 "bowling_order": [
                     "k_rabada",
                     "du_oliver",
@@ -702,8 +887,108 @@
                     "mar_jansen",
                     "k_maharaj"
                 ],
-                "wicket_order": [],
-                "partnerships": []
+                "wicket_order": [
+                    "a_markram",
+                    "ke_petersen"
+                ],
+                "partnerships": [
+                    {
+                        "begin_overs": [
+                            0,
+                            1
+                        ],
+                        "end_overs": [
+                            9,
+                            6
+                        ],
+                        "player_a_key": "a_markram",
+                        "player_a_score": {
+                            "runs": 31,
+                            "balls": 38,
+                            "fours": 6,
+                            "sixes": 0
+                        },
+                        "player_b_key": "d_elgar",
+                        "player_b_score": {
+                            "runs": 16,
+                            "balls": 22,
+                            "fours": 1,
+                            "sixes": 0
+                        },
+                        "score": {
+                            "runs": 47,
+                            "balls": 60,
+                            "fours": 7,
+                            "sixes": 0,
+                            "run_rate": 4.7
+                        },
+                        "is_completed": true
+                    },
+                    {
+                        "begin_overs": [
+                            10,
+                            1
+                        ],
+                        "end_overs": [
+                            27,
+                            2
+                        ],
+                        "player_a_key": "d_elgar",
+                        "player_a_score": {
+                            "runs": 16,
+                            "balls": 60,
+                            "fours": 1,
+                            "sixes": 0
+                        },
+                        "player_b_key": "ke_petersen",
+                        "player_b_score": {
+                            "runs": 28,
+                            "balls": 44,
+                            "fours": 4,
+                            "sixes": 0
+                        },
+                        "score": {
+                            "runs": 46,
+                            "balls": 104,
+                            "fours": 5,
+                            "sixes": 0,
+                            "run_rate": 2.65
+                        },
+                        "is_completed": true
+                    },
+                    {
+                        "begin_overs": [
+                            27,
+                            3
+                        ],
+                        "end_overs": [
+                            39,
+                            6
+                        ],
+                        "player_a_key": "rvd_dussen",
+                        "player_a_score": {
+                            "runs": 11,
+                            "balls": 37,
+                            "fours": 0,
+                            "sixes": 0
+                        },
+                        "player_b_key": "d_elgar",
+                        "player_b_score": {
+                            "runs": 14,
+                            "balls": 39,
+                            "fours": 0,
+                            "sixes": 0
+                        },
+                        "score": {
+                            "runs": 25,
+                            "balls": 76,
+                            "fours": 0,
+                            "sixes": 0,
+                            "run_rate": 1.97
+                        },
+                        "is_completed": false
+                    }
+                ]
             },
             "a_1": {
                 "index": "a_1",
@@ -1093,104 +1378,117 @@
             }
         },
         "live": {
-            "innings": "b_2",
-            "batting_team": "b",
-            "bowling_team": "a",
-            "last_ball_key": "602f541f-58c1-4861-b4cf-82ac0dd176c8",
-            "striker_key": "h_vihari",
-            "non_striker_key": "r_pant",
-            "bowler_key": "du_oliver",
+            "innings": "a_2",
+            "batting_team": "a",
+            "bowling_team": "b",
+            "last_ball_key": "5503b81f-cd94-437f-9c0b-0d6781240aba",
+            "striker_key": "rvd_dussen",
+            "non_striker_key": "d_elgar",
+            "bowler_key": null,
             "match_break": null,
             "score": {
-                "runs": 163,
-                "balls": 223,
-                "wickets": 4,
-                "run_rate": 4.39,
-                "title": "163\/4 in 37.1",
+                "runs": 118,
+                "balls": 240,
+                "wickets": 2,
+                "run_rate": 2.95,
+                "title": "118\/2 in 40.0",
                 "overs": [
-                    37,
-                    1
+                    40,
+                    0
                 ],
-                "msg_lead_by": "IND lead by 136 runs.",
+                "msg_lead_by": null,
                 "msg_trail_by": null
             },
-            "required_score": null,
+            "required_score": {
+                "runs": 122,
+                "title": "Required 122 runs to win",
+                "balls": null,
+                "run_rate": null
+            },
             "recent_overs": [
+                {
+                    "overnumber": 40,
+                    "ball_keys": [
+                        "5b89f1f6-d342-461c-b374-743a8a1635b5",
+                        "454f3118-aef7-45c6-a01f-0b95b927ee75",
+                        "1320804e-36e9-4052-967c-bdb9ccf71019",
+                        "a7a57839-46fd-4156-a9d6-1fd8b7b85fbd",
+                        "5538045e-51c9-4534-b29c-354ff58cd99a",
+                        "5503b81f-cd94-437f-9c0b-0d6781240aba"
+                    ]
+                },
+                {
+                    "overnumber": 39,
+                    "ball_keys": [
+                        "64095293-06c8-45d6-b9db-b6b5a33b0c74",
+                        "08905abb-6e04-4eb3-a8bb-f80b8ef2da59",
+                        "c5f58f64-b90e-4e02-a27c-e74ed77dd383",
+                        "b103430f-27a8-4890-9af5-67345f0c4f8e",
+                        "0c2377bc-e3a4-4a03-82cf-73553ab2c42e",
+                        "2ed0de39-a528-4488-a9f7-612a7505e24d"
+                    ]
+                },
                 {
                     "overnumber": 38,
                     "ball_keys": [
-                        "602f541f-58c1-4861-b4cf-82ac0dd176c8"
-                    ]
-                },
-                {
-                    "overnumber": 37,
-                    "ball_keys": [
-                        "2cfe5b65-a22e-431f-ae28-8a5d5dd194c4",
-                        "63ea67fb-4150-4fe5-89b0-82d4f593ee3d",
-                        "7b7a9c40-7f9a-4e0d-a6ff-95c5e63975de",
-                        "aa74b6b8-9ca8-44a3-9e93-c80f7aa9bae4",
-                        "301f66f0-c3a1-4b53-80d3-afd426157f9f",
-                        "8fbc63a5-d6a9-45bf-9eb0-d8bc5d3433fe",
-                        "1976e181-2c43-4aba-ae29-7aa59bac2865"
-                    ]
-                },
-                {
-                    "overnumber": 36,
-                    "ball_keys": [
-                        "27804d3f-d2e8-4cc3-9218-86bc1e3ea9be",
-                        "1f70f7e5-02b0-4340-a31c-2a02ce46e582",
-                        "c722bdbd-49cd-4302-8950-a5f86b12b1c6",
-                        "b0f1104c-77c3-486a-b4aa-5e39bf26d84f",
-                        "0f77b311-4869-4c60-b18a-ddec751e127b",
-                        "fd8f7d7e-1cba-4f3e-99ee-b3d55d1e2406"
+                        "6a869b7f-e968-423f-b92a-eab0545ad4e6",
+                        "94a1f649-b140-433f-ad6b-a8b102183ee9",
+                        "11af63d9-3efc-48dc-99c4-002141cfbfb0",
+                        "bf13e8c4-0ad5-4c65-8215-48762d9cf0e2",
+                        "c7bf4a7e-60a2-48b8-9abe-5a443f7c845a",
+                        "da7e9194-f684-4587-98e2-2f9164375c64"
                     ]
                 }
             ],
             "recent_overs_repr": [
                 {
-                    "overnumber": 38,
+                    "overnumber": 40,
                     "ball_repr": [
+                        "r0",
+                        "r0",
+                        "r0",
+                        "r1",
+                        "r0",
                         "r0"
                     ]
                 },
                 {
-                    "overnumber": 37,
+                    "overnumber": 39,
                     "ball_repr": [
                         "r1",
-                        "e5,wd",
                         "r0",
                         "r0",
                         "r0",
                         "r1",
-                        "w"
+                        "r0"
                     ]
                 },
                 {
-                    "overnumber": 36,
+                    "overnumber": 38,
                     "ball_repr": [
                         "r0",
                         "r0",
                         "r0",
                         "r0",
-                        "r0",
-                        "r1"
+                        "r1",
+                        "r0"
                     ]
                 }
             ]
         },
         "related_balls": {
-            "301f66f0-c3a1-4b53-80d3-afd426157f9f": {
-                "key": "301f66f0-c3a1-4b53-80d3-afd426157f9f",
+            "11af63d9-3efc-48dc-99c4-002141cfbfb0": {
+                "key": "11af63d9-3efc-48dc-99c4-002141cfbfb0",
                 "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Kagiso Rabada to H Vihari: No runs.",
-                "innings": "b_2",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to Dean Elgar: No runs.",
+                "innings": "a_2",
                 "overs": [
-                    36,
-                    4
+                    37,
+                    3
                 ],
                 "batsman": {
-                    "player_key": "h_vihari",
+                    "player_key": "d_elgar",
                     "ball_count": 1,
                     "runs": 0,
                     "is_dot_ball": true,
@@ -1198,7 +1496,7 @@
                     "is_six": false
                 },
                 "bowler": {
-                    "player_key": "k_rabada",
+                    "player_key": "s_ahmed",
                     "ball_count": 1,
                     "runs": 0,
                     "extras": 0,
@@ -1212,21 +1510,21 @@
                 },
                 "fielders": [],
                 "wicket": null,
-                "non_striker_key": "c_pujara",
-                "entry_time": 1641374568.727
+                "non_striker_key": "rvd_dussen",
+                "entry_time": 1641396046.728
             },
-            "8fbc63a5-d6a9-45bf-9eb0-d8bc5d3433fe": {
-                "key": "8fbc63a5-d6a9-45bf-9eb0-d8bc5d3433fe",
+            "0c2377bc-e3a4-4a03-82cf-73553ab2c42e": {
+                "key": "0c2377bc-e3a4-4a03-82cf-73553ab2c42e",
                 "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Kagiso Rabada to H Vihari: 1 run.",
-                "innings": "b_2",
+                "batting_team": "a",
+                "comment": "SN Thakur to RVD Dussen: 1 run.",
+                "innings": "a_2",
                 "overs": [
-                    36,
+                    38,
                     5
                 ],
                 "batsman": {
-                    "player_key": "h_vihari",
+                    "player_key": "rvd_dussen",
                     "ball_count": 1,
                     "runs": 1,
                     "is_dot_ball": false,
@@ -1234,7 +1532,7 @@
                     "is_six": false
                 },
                 "bowler": {
-                    "player_key": "k_rabada",
+                    "player_key": "s_thakur",
                     "ball_count": 1,
                     "runs": 1,
                     "extras": 0,
@@ -1248,57 +1546,21 @@
                 },
                 "fielders": [],
                 "wicket": null,
-                "non_striker_key": "c_pujara",
-                "entry_time": 1641374602.791
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641396341.903
             },
-            "27804d3f-d2e8-4cc3-9218-86bc1e3ea9be": {
-                "key": "27804d3f-d2e8-4cc3-9218-86bc1e3ea9be",
+            "c5f58f64-b90e-4e02-a27c-e74ed77dd383": {
+                "key": "c5f58f64-b90e-4e02-a27c-e74ed77dd383",
                 "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Duanne Olivier to Cheteshwar Pujara: No runs.",
-                "innings": "b_2",
+                "batting_team": "a",
+                "comment": "SN Thakur to RVD Dussen: No runs.",
+                "innings": "a_2",
                 "overs": [
-                    35,
-                    1
-                ],
-                "batsman": {
-                    "player_key": "c_pujara",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "is_dot_ball": true,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "du_oliver",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "team_score": {
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "fielders": [],
-                "wicket": null,
-                "non_striker_key": "h_vihari",
-                "entry_time": 1641374047.008
-            },
-            "aa74b6b8-9ca8-44a3-9e93-c80f7aa9bae4": {
-                "key": "aa74b6b8-9ca8-44a3-9e93-c80f7aa9bae4",
-                "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Kagiso Rabada to H Vihari: No runs.",
-                "innings": "b_2",
-                "overs": [
-                    36,
+                    38,
                     3
                 ],
                 "batsman": {
-                    "player_key": "h_vihari",
+                    "player_key": "rvd_dussen",
                     "ball_count": 1,
                     "runs": 0,
                     "is_dot_ball": true,
@@ -1306,7 +1568,7 @@
                     "is_six": false
                 },
                 "bowler": {
-                    "player_key": "k_rabada",
+                    "player_key": "s_thakur",
                     "ball_count": 1,
                     "runs": 0,
                     "extras": 0,
@@ -1320,21 +1582,129 @@
                 },
                 "fielders": [],
                 "wicket": null,
-                "non_striker_key": "c_pujara",
-                "entry_time": 1641374492.318
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641396308.679
             },
-            "602f541f-58c1-4861-b4cf-82ac0dd176c8": {
-                "key": "602f541f-58c1-4861-b4cf-82ac0dd176c8",
+            "454f3118-aef7-45c6-a01f-0b95b927ee75": {
+                "key": "454f3118-aef7-45c6-a01f-0b95b927ee75",
                 "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Duanne Olivier to H Vihari: No runs.",
-                "innings": "b_2",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to RVD Dussen: No runs.",
+                "innings": "a_2",
+                "overs": [
+                    39,
+                    2
+                ],
+                "batsman": {
+                    "player_key": "rvd_dussen",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_ahmed",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641396482.54
+            },
+            "94a1f649-b140-433f-ad6b-a8b102183ee9": {
+                "key": "94a1f649-b140-433f-ad6b-a8b102183ee9",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to Dean Elgar: No runs.",
+                "innings": "a_2",
+                "overs": [
+                    37,
+                    2
+                ],
+                "batsman": {
+                    "player_key": "d_elgar",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_ahmed",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "rvd_dussen",
+                "entry_time": 1641396034.645
+            },
+            "c7bf4a7e-60a2-48b8-9abe-5a443f7c845a": {
+                "key": "c7bf4a7e-60a2-48b8-9abe-5a443f7c845a",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to Dean Elgar: 1 run.",
+                "innings": "a_2",
+                "overs": [
+                    37,
+                    5
+                ],
+                "batsman": {
+                    "player_key": "d_elgar",
+                    "ball_count": 1,
+                    "runs": 1,
+                    "is_dot_ball": false,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_ahmed",
+                    "ball_count": 1,
+                    "runs": 1,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 1,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "rvd_dussen",
+                "entry_time": 1641396069.471
+            },
+            "6a869b7f-e968-423f-b92a-eab0545ad4e6": {
+                "key": "6a869b7f-e968-423f-b92a-eab0545ad4e6",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to Dean Elgar: No runs.",
+                "innings": "a_2",
                 "overs": [
                     37,
                     1
                 ],
                 "batsman": {
-                    "player_key": "h_vihari",
+                    "player_key": "d_elgar",
                     "ball_count": 1,
                     "runs": 0,
                     "is_dot_ball": true,
@@ -1342,7 +1712,7 @@
                     "is_six": false
                 },
                 "bowler": {
-                    "player_key": "du_oliver",
+                    "player_key": "s_ahmed",
                     "ball_count": 1,
                     "runs": 0,
                     "extras": 0,
@@ -1356,312 +1726,21 @@
                 },
                 "fielders": [],
                 "wicket": null,
-                "non_striker_key": "r_pant",
-                "entry_time": 1641374818.982
+                "non_striker_key": "rvd_dussen",
+                "entry_time": 1641396022.384
             },
-            "1f70f7e5-02b0-4340-a31c-2a02ce46e582": {
-                "key": "1f70f7e5-02b0-4340-a31c-2a02ce46e582",
+            "5b89f1f6-d342-461c-b374-743a8a1635b5": {
+                "key": "5b89f1f6-d342-461c-b374-743a8a1635b5",
                 "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Duanne Olivier to Cheteshwar Pujara: No runs.",
-                "innings": "b_2",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to RVD Dussen: No runs.",
+                "innings": "a_2",
                 "overs": [
-                    35,
-                    2
-                ],
-                "batsman": {
-                    "player_key": "c_pujara",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "is_dot_ball": true,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "du_oliver",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "team_score": {
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "fielders": [],
-                "wicket": null,
-                "non_striker_key": "h_vihari",
-                "entry_time": 1641374060.915
-            },
-            "1976e181-2c43-4aba-ae29-7aa59bac2865": {
-                "key": "1976e181-2c43-4aba-ae29-7aa59bac2865",
-                "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Kagiso Rabada to Cheteshwar Pujara: <b>LBW!<\/b>. No runs.",
-                "innings": "b_2",
-                "overs": [
-                    36,
-                    6
-                ],
-                "batsman": {
-                    "player_key": "c_pujara",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "is_dot_ball": true,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "k_rabada",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": true
-                },
-                "team_score": {
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": true
-                },
-                "fielders": [],
-                "wicket": {
-                    "player_key": "c_pujara",
-                    "wicket_type": "lbw"
-                },
-                "non_striker_key": "h_vihari",
-                "entry_time": 1641374658.469
-            },
-            "7b7a9c40-7f9a-4e0d-a6ff-95c5e63975de": {
-                "key": "7b7a9c40-7f9a-4e0d-a6ff-95c5e63975de",
-                "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Kagiso Rabada to H Vihari: No runs.",
-                "innings": "b_2",
-                "overs": [
-                    36,
-                    2
-                ],
-                "batsman": {
-                    "player_key": "h_vihari",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "is_dot_ball": true,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "k_rabada",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "team_score": {
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "fielders": [],
-                "wicket": null,
-                "non_striker_key": "c_pujara",
-                "entry_time": 1641374481.792
-            },
-            "c722bdbd-49cd-4302-8950-a5f86b12b1c6": {
-                "key": "c722bdbd-49cd-4302-8950-a5f86b12b1c6",
-                "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Duanne Olivier to Cheteshwar Pujara: No runs.",
-                "innings": "b_2",
-                "overs": [
-                    35,
-                    3
-                ],
-                "batsman": {
-                    "player_key": "c_pujara",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "is_dot_ball": true,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "du_oliver",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "team_score": {
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "fielders": [],
-                "wicket": null,
-                "non_striker_key": "h_vihari",
-                "entry_time": 1641374075.672
-            },
-            "b0f1104c-77c3-486a-b4aa-5e39bf26d84f": {
-                "key": "b0f1104c-77c3-486a-b4aa-5e39bf26d84f",
-                "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Duanne Olivier to Cheteshwar Pujara: No runs.",
-                "innings": "b_2",
-                "overs": [
-                    35,
-                    4
-                ],
-                "batsman": {
-                    "player_key": "c_pujara",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "is_dot_ball": true,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "du_oliver",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "team_score": {
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "fielders": [],
-                "wicket": null,
-                "non_striker_key": "h_vihari",
-                "entry_time": 1641374194.645
-            },
-            "63ea67fb-4150-4fe5-89b0-82d4f593ee3d": {
-                "key": "63ea67fb-4150-4fe5-89b0-82d4f593ee3d",
-                "ball_type": "wide",
-                "batting_team": "b",
-                "comment": "Kagiso Rabada to H Vihari: wide, 5 runs.",
-                "innings": "b_2",
-                "overs": [
-                    36,
-                    2
-                ],
-                "batsman": {
-                    "player_key": "h_vihari",
-                    "ball_count": 0,
-                    "runs": 0,
-                    "is_dot_ball": false,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "k_rabada",
-                    "ball_count": 0,
-                    "runs": 5,
-                    "extras": 5,
-                    "is_wicket": false
-                },
-                "team_score": {
-                    "ball_count": 0,
-                    "runs": 5,
-                    "extras": 5,
-                    "is_wicket": false
-                },
-                "fielders": [],
-                "wicket": null,
-                "non_striker_key": "c_pujara",
-                "entry_time": 1641374471.551
-            },
-            "fd8f7d7e-1cba-4f3e-99ee-b3d55d1e2406": {
-                "key": "fd8f7d7e-1cba-4f3e-99ee-b3d55d1e2406",
-                "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Duanne Olivier to Cheteshwar Pujara: 1 run.",
-                "innings": "b_2",
-                "overs": [
-                    35,
-                    6
-                ],
-                "batsman": {
-                    "player_key": "c_pujara",
-                    "ball_count": 1,
-                    "runs": 1,
-                    "is_dot_ball": false,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "du_oliver",
-                    "ball_count": 1,
-                    "runs": 1,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "team_score": {
-                    "ball_count": 1,
-                    "runs": 1,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "fielders": [],
-                "wicket": null,
-                "non_striker_key": "h_vihari",
-                "entry_time": 1641374444.85
-            },
-            "2cfe5b65-a22e-431f-ae28-8a5d5dd194c4": {
-                "key": "2cfe5b65-a22e-431f-ae28-8a5d5dd194c4",
-                "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Kagiso Rabada to Cheteshwar Pujara: 1 run.",
-                "innings": "b_2",
-                "overs": [
-                    36,
+                    39,
                     1
                 ],
                 "batsman": {
-                    "player_key": "c_pujara",
-                    "ball_count": 1,
-                    "runs": 1,
-                    "is_dot_ball": false,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "k_rabada",
-                    "ball_count": 1,
-                    "runs": 1,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "team_score": {
-                    "ball_count": 1,
-                    "runs": 1,
-                    "extras": 0,
-                    "is_wicket": false
-                },
-                "fielders": [],
-                "wicket": null,
-                "non_striker_key": "h_vihari",
-                "entry_time": 1641374457.857
-            },
-            "0f77b311-4869-4c60-b18a-ddec751e127b": {
-                "key": "0f77b311-4869-4c60-b18a-ddec751e127b",
-                "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Duanne Olivier to Cheteshwar Pujara: No runs.",
-                "innings": "b_2",
-                "overs": [
-                    35,
-                    5
-                ],
-                "batsman": {
-                    "player_key": "c_pujara",
+                    "player_key": "rvd_dussen",
                     "ball_count": 1,
                     "runs": 0,
                     "is_dot_ball": true,
@@ -1669,7 +1748,7 @@
                     "is_six": false
                 },
                 "bowler": {
-                    "player_key": "du_oliver",
+                    "player_key": "s_ahmed",
                     "ball_count": 1,
                     "runs": 0,
                     "extras": 0,
@@ -1683,8 +1762,368 @@
                 },
                 "fielders": [],
                 "wicket": null,
-                "non_striker_key": "h_vihari",
-                "entry_time": 1641374266.748
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641396451.045
+            },
+            "5503b81f-cd94-437f-9c0b-0d6781240aba": {
+                "key": "5503b81f-cd94-437f-9c0b-0d6781240aba",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to Dean Elgar: No runs.",
+                "innings": "a_2",
+                "overs": [
+                    39,
+                    6
+                ],
+                "batsman": {
+                    "player_key": "d_elgar",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_ahmed",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "rvd_dussen",
+                "entry_time": 1641396661.119
+            },
+            "1320804e-36e9-4052-967c-bdb9ccf71019": {
+                "key": "1320804e-36e9-4052-967c-bdb9ccf71019",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to RVD Dussen: No runs.",
+                "innings": "a_2",
+                "overs": [
+                    39,
+                    3
+                ],
+                "batsman": {
+                    "player_key": "rvd_dussen",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_ahmed",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641396508.661
+            },
+            "b103430f-27a8-4890-9af5-67345f0c4f8e": {
+                "key": "b103430f-27a8-4890-9af5-67345f0c4f8e",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "SN Thakur to RVD Dussen: No runs.",
+                "innings": "a_2",
+                "overs": [
+                    38,
+                    4
+                ],
+                "batsman": {
+                    "player_key": "rvd_dussen",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_thakur",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641396319.243
+            },
+            "a7a57839-46fd-4156-a9d6-1fd8b7b85fbd": {
+                "key": "a7a57839-46fd-4156-a9d6-1fd8b7b85fbd",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to RVD Dussen: 1 run.",
+                "innings": "a_2",
+                "overs": [
+                    39,
+                    4
+                ],
+                "batsman": {
+                    "player_key": "rvd_dussen",
+                    "ball_count": 1,
+                    "runs": 1,
+                    "is_dot_ball": false,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_ahmed",
+                    "ball_count": 1,
+                    "runs": 1,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 1,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641396594.269
+            },
+            "2ed0de39-a528-4488-a9f7-612a7505e24d": {
+                "key": "2ed0de39-a528-4488-a9f7-612a7505e24d",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "SN Thakur to Dean Elgar: No runs.",
+                "innings": "a_2",
+                "overs": [
+                    38,
+                    6
+                ],
+                "batsman": {
+                    "player_key": "d_elgar",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_thakur",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "rvd_dussen",
+                "entry_time": 1641396397.205
+            },
+            "da7e9194-f684-4587-98e2-2f9164375c64": {
+                "key": "da7e9194-f684-4587-98e2-2f9164375c64",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to RVD Dussen: No runs.",
+                "innings": "a_2",
+                "overs": [
+                    37,
+                    6
+                ],
+                "batsman": {
+                    "player_key": "rvd_dussen",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_ahmed",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641396130.346
+            },
+            "5538045e-51c9-4534-b29c-354ff58cd99a": {
+                "key": "5538045e-51c9-4534-b29c-354ff58cd99a",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to Dean Elgar: No runs.",
+                "innings": "a_2",
+                "overs": [
+                    39,
+                    5
+                ],
+                "batsman": {
+                    "player_key": "d_elgar",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_ahmed",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "rvd_dussen",
+                "entry_time": 1641396617.091
+            },
+            "bf13e8c4-0ad5-4c65-8215-48762d9cf0e2": {
+                "key": "bf13e8c4-0ad5-4c65-8215-48762d9cf0e2",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "Mohammed Shami to Dean Elgar: No runs.",
+                "innings": "a_2",
+                "overs": [
+                    37,
+                    4
+                ],
+                "batsman": {
+                    "player_key": "d_elgar",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_ahmed",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "rvd_dussen",
+                "entry_time": 1641396058.625
+            },
+            "64095293-06c8-45d6-b9db-b6b5a33b0c74": {
+                "key": "64095293-06c8-45d6-b9db-b6b5a33b0c74",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "SN Thakur to Dean Elgar: 1 run.",
+                "innings": "a_2",
+                "overs": [
+                    38,
+                    1
+                ],
+                "batsman": {
+                    "player_key": "d_elgar",
+                    "ball_count": 1,
+                    "runs": 1,
+                    "is_dot_ball": false,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_thakur",
+                    "ball_count": 1,
+                    "runs": 1,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 1,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "rvd_dussen",
+                "entry_time": 1641396289.01
+            },
+            "08905abb-6e04-4eb3-a8bb-f80b8ef2da59": {
+                "key": "08905abb-6e04-4eb3-a8bb-f80b8ef2da59",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "SN Thakur to RVD Dussen: No runs.",
+                "innings": "a_2",
+                "overs": [
+                    38,
+                    2
+                ],
+                "batsman": {
+                    "player_key": "rvd_dussen",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_thakur",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": false
+                },
+                "fielders": [],
+                "wicket": null,
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641396297.398
             },
             "8c220400-eb88-4057-b9f8-e2d3d21b4c6b": {
                 "key": "8c220400-eb88-4057-b9f8-e2d3d21b4c6b",
@@ -1732,6 +2171,45 @@
                 },
                 "non_striker_key": "j_bumrah",
                 "entry_time": 1641218502.111
+            },
+            "91fbf625-8886-4d3b-a87b-a351bca5a545": {
+                "key": "91fbf625-8886-4d3b-a87b-a351bca5a545",
+                "ball_type": "normal",
+                "batting_team": "b",
+                "comment": "Lungi Ngidi to Mohammed Siraj: <b>Bowled!<\/b>. No runs.",
+                "innings": "b_2",
+                "overs": [
+                    60,
+                    1
+                ],
+                "batsman": {
+                    "player_key": "m_siraj",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "l_ngidi",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [],
+                "wicket": {
+                    "player_key": "m_siraj",
+                    "wicket_type": "bowled"
+                },
+                "non_striker_key": "h_vihari",
+                "entry_time": 1641384042.719
             },
             "46563318-075a-4e0b-bbf8-720b6cee36ad": {
                 "key": "46563318-075a-4e0b-bbf8-720b6cee36ad",
@@ -1913,6 +2391,45 @@
                 "non_striker_key": "rvd_dussen",
                 "entry_time": 1641289993.776
             },
+            "bb3260cf-e9f1-4c3b-a0f5-2fd4d2751996": {
+                "key": "bb3260cf-e9f1-4c3b-a0f5-2fd4d2751996",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "Ravichandran Ashwin to Keegan Petersen: <b>LBW!<\/b>. No runs.",
+                "innings": "a_2",
+                "overs": [
+                    27,
+                    2
+                ],
+                "batsman": {
+                    "player_key": "ke_petersen",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "r_ashwin",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [],
+                "wicket": {
+                    "player_key": "ke_petersen",
+                    "wicket_type": "lbw"
+                },
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641393175.391
+            },
             "4cce30f3-86cd-45ec-ac95-f803eeaff068": {
                 "key": "4cce30f3-86cd-45ec-ac95-f803eeaff068",
                 "ball_type": "normal",
@@ -1960,6 +2477,53 @@
                 "non_striker_key": "j_bumrah",
                 "entry_time": 1641217862.097
             },
+            "a82ec770-c457-4f58-8483-2738162879a0": {
+                "key": "a82ec770-c457-4f58-8483-2738162879a0",
+                "ball_type": "normal",
+                "batting_team": "b",
+                "comment": "Lungi Ngidi to Ravichandran Ashwin: <b>Wicket!<\/b>, Caught by . No runs.",
+                "innings": "b_2",
+                "overs": [
+                    43,
+                    3
+                ],
+                "batsman": {
+                    "player_key": "r_ashwin",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "l_ngidi",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [
+                    {
+                        "player_key": "k_verreynne",
+                        "is_run_out": false,
+                        "is_stumps": false,
+                        "is_catch": true,
+                        "is_assists": false
+                    }
+                ],
+                "wicket": {
+                    "player_key": "r_ashwin",
+                    "wicket_type": "caught"
+                },
+                "non_striker_key": "h_vihari",
+                "entry_time": 1641376631.617
+            },
             "2fa5b13c-37a3-4f56-acdf-2d3967685d9a": {
                 "key": "2fa5b13c-37a3-4f56-acdf-2d3967685d9a",
                 "ball_type": "normal",
@@ -2006,6 +2570,45 @@
                 },
                 "non_striker_key": "l_rahul",
                 "entry_time": 1641203216.627
+            },
+            "1976e181-2c43-4aba-ae29-7aa59bac2865": {
+                "key": "1976e181-2c43-4aba-ae29-7aa59bac2865",
+                "ball_type": "normal",
+                "batting_team": "b",
+                "comment": "Kagiso Rabada to Cheteshwar Pujara: <b>LBW!<\/b>. No runs.",
+                "innings": "b_2",
+                "overs": [
+                    36,
+                    6
+                ],
+                "batsman": {
+                    "player_key": "c_pujara",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "k_rabada",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [],
+                "wicket": {
+                    "player_key": "c_pujara",
+                    "wicket_type": "lbw"
+                },
+                "non_striker_key": "h_vihari",
+                "entry_time": 1641374658.469
             },
             "2274a854-bd8f-4af9-be65-a562e6ae57c0": {
                 "key": "2274a854-bd8f-4af9-be65-a562e6ae57c0",
@@ -2195,6 +2798,53 @@
                 "non_striker_key": "r_ashwin",
                 "entry_time": 1641216473.548
             },
+            "60b8bdf7-3157-4f05-91d3-783df6f486f1": {
+                "key": "60b8bdf7-3157-4f05-91d3-783df6f486f1",
+                "ball_type": "normal",
+                "batting_team": "b",
+                "comment": "Marco Jansen to SN Thakur: <b>Wicket!<\/b>, Caught by . No runs.",
+                "innings": "b_2",
+                "overs": [
+                    49,
+                    6
+                ],
+                "batsman": {
+                    "player_key": "s_thakur",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "mar_jansen",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [
+                    {
+                        "player_key": "k_maharaj",
+                        "is_run_out": false,
+                        "is_stumps": false,
+                        "is_catch": true,
+                        "is_assists": false
+                    }
+                ],
+                "wicket": {
+                    "player_key": "s_thakur",
+                    "wicket_type": "caught"
+                },
+                "non_striker_key": "h_vihari",
+                "entry_time": 1641380990.259
+            },
             "32fffb29-e922-4447-88ab-000429b03006": {
                 "key": "32fffb29-e922-4447-88ab-000429b03006",
                 "ball_type": "normal",
@@ -2280,6 +2930,53 @@
                 },
                 "non_striker_key": "r_ashwin",
                 "entry_time": 1641217327.629
+            },
+            "90eb04fe-53cb-4a8f-a093-aab0a6fc8fd9": {
+                "key": "90eb04fe-53cb-4a8f-a093-aab0a6fc8fd9",
+                "ball_type": "normal",
+                "batting_team": "b",
+                "comment": "Marco Jansen to Mohammed Shami: <b>Wicket!<\/b>, Caught by . No runs.",
+                "innings": "b_2",
+                "overs": [
+                    51,
+                    5
+                ],
+                "batsman": {
+                    "player_key": "s_ahmed",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "mar_jansen",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [
+                    {
+                        "player_key": "k_verreynne",
+                        "is_run_out": false,
+                        "is_stumps": false,
+                        "is_catch": true,
+                        "is_assists": false
+                    }
+                ],
+                "wicket": {
+                    "player_key": "s_ahmed",
+                    "wicket_type": "caught"
+                },
+                "non_striker_key": "h_vihari",
+                "entry_time": 1641381593.311
             },
             "1826228f-5970-4466-b4a9-d6a03c1f3076": {
                 "key": "1826228f-5970-4466-b4a9-d6a03c1f3076",
@@ -2375,92 +3072,6 @@
                 "non_striker_key": "m_agarwal",
                 "entry_time": 1641306815.991
             },
-            "5b766500-861d-4586-9849-d3b568e52322": {
-                "key": "5b766500-861d-4586-9849-d3b568e52322",
-                "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Marco Jansen to Mayank Agarwal: <b>Wicket!<\/b>, Caught by . No runs.",
-                "innings": "b_1",
-                "overs": [
-                    14,
-                    1
-                ],
-                "batsman": {
-                    "player_key": "m_agarwal",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "is_dot_ball": true,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "mar_jansen",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": true
-                },
-                "team_score": {
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": true
-                },
-                "fielders": [
-                    {
-                        "player_key": "k_verreynne",
-                        "is_run_out": false,
-                        "is_stumps": false,
-                        "is_catch": true,
-                        "is_assists": false
-                    }
-                ],
-                "wicket": {
-                    "player_key": "m_agarwal",
-                    "wicket_type": "caught"
-                },
-                "non_striker_key": "l_rahul",
-                "entry_time": 1641200741.336
-            },
-            "bbdba863-f7b1-4768-902d-fe95c1637351": {
-                "key": "bbdba863-f7b1-4768-902d-fe95c1637351",
-                "ball_type": "normal",
-                "batting_team": "b",
-                "comment": "Duanne Olivier to Mayank Agarwal: <b>LBW!<\/b>. No runs.",
-                "innings": "b_2",
-                "overs": [
-                    11,
-                    4
-                ],
-                "batsman": {
-                    "player_key": "m_agarwal",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "is_dot_ball": true,
-                    "is_four": false,
-                    "is_six": false
-                },
-                "bowler": {
-                    "player_key": "du_oliver",
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": true
-                },
-                "team_score": {
-                    "ball_count": 1,
-                    "runs": 0,
-                    "extras": 0,
-                    "is_wicket": true
-                },
-                "fielders": [],
-                "wicket": {
-                    "player_key": "m_agarwal",
-                    "wicket_type": "lbw"
-                },
-                "non_striker_key": "c_pujara",
-                "entry_time": 1641308249.912
-            },
             "de627988-1d84-4b11-bb03-69a7ffc7aee9": {
                 "key": "de627988-1d84-4b11-bb03-69a7ffc7aee9",
                 "ball_type": "normal",
@@ -2499,6 +3110,92 @@
                 },
                 "non_striker_key": "d_elgar",
                 "entry_time": 1641220058.901
+            },
+            "8ac5a34a-925d-4c93-ab1a-09d3b1be1c9c": {
+                "key": "8ac5a34a-925d-4c93-ab1a-09d3b1be1c9c",
+                "ball_type": "normal",
+                "batting_team": "a",
+                "comment": "SN Thakur to Aiden Markram: <b>LBW!<\/b>. No runs.",
+                "innings": "a_2",
+                "overs": [
+                    9,
+                    6
+                ],
+                "batsman": {
+                    "player_key": "a_markram",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "s_thakur",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [],
+                "wicket": {
+                    "player_key": "a_markram",
+                    "wicket_type": "lbw"
+                },
+                "non_striker_key": "d_elgar",
+                "entry_time": 1641388425.548
+            },
+            "2fbc69dd-9e52-4c4e-97f3-29e67c305b13": {
+                "key": "2fbc69dd-9e52-4c4e-97f3-29e67c305b13",
+                "ball_type": "normal",
+                "batting_team": "b",
+                "comment": "Lungi Ngidi to JJ Bumrah: <b>Wicket!<\/b>, Caught by . No runs.",
+                "innings": "b_2",
+                "overs": [
+                    56,
+                    2
+                ],
+                "batsman": {
+                    "player_key": "j_bumrah",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "l_ngidi",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [
+                    {
+                        "player_key": "mar_jansen",
+                        "is_run_out": false,
+                        "is_stumps": false,
+                        "is_catch": true,
+                        "is_assists": false
+                    }
+                ],
+                "wicket": {
+                    "player_key": "j_bumrah",
+                    "wicket_type": "caught"
+                },
+                "non_striker_key": "h_vihari",
+                "entry_time": 1641382867.066
             },
             "78f52e77-8ec5-418a-b61e-460cc905018c": {
                 "key": "78f52e77-8ec5-418a-b61e-460cc905018c",
@@ -2594,6 +3291,53 @@
                 "non_striker_key": "r_ashwin",
                 "entry_time": 1641215568.666
             },
+            "26a937c9-be7f-4b07-87bc-3cae8141632d": {
+                "key": "26a937c9-be7f-4b07-87bc-3cae8141632d",
+                "ball_type": "normal",
+                "batting_team": "b",
+                "comment": "Kagiso Rabada to RR Pant: <b>Wicket!<\/b>, Caught by . No runs.",
+                "innings": "b_2",
+                "overs": [
+                    38,
+                    3
+                ],
+                "batsman": {
+                    "player_key": "r_pant",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "k_rabada",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [
+                    {
+                        "player_key": "k_verreynne",
+                        "is_run_out": false,
+                        "is_stumps": false,
+                        "is_catch": true,
+                        "is_assists": false
+                    }
+                ],
+                "wicket": {
+                    "player_key": "r_pant",
+                    "wicket_type": "caught"
+                },
+                "non_striker_key": "h_vihari",
+                "entry_time": 1641375147.627
+            },
             "0ccf13fd-4885-43e7-bca9-15fb731ab269": {
                 "key": "0ccf13fd-4885-43e7-bca9-15fb731ab269",
                 "ball_type": "normal",
@@ -2687,6 +3431,92 @@
                 },
                 "non_striker_key": "ke_petersen",
                 "entry_time": 1641288659.335
+            },
+            "5b766500-861d-4586-9849-d3b568e52322": {
+                "key": "5b766500-861d-4586-9849-d3b568e52322",
+                "ball_type": "normal",
+                "batting_team": "b",
+                "comment": "Marco Jansen to Mayank Agarwal: <b>Wicket!<\/b>, Caught by . No runs.",
+                "innings": "b_1",
+                "overs": [
+                    14,
+                    1
+                ],
+                "batsman": {
+                    "player_key": "m_agarwal",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "mar_jansen",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [
+                    {
+                        "player_key": "k_verreynne",
+                        "is_run_out": false,
+                        "is_stumps": false,
+                        "is_catch": true,
+                        "is_assists": false
+                    }
+                ],
+                "wicket": {
+                    "player_key": "m_agarwal",
+                    "wicket_type": "caught"
+                },
+                "non_striker_key": "l_rahul",
+                "entry_time": 1641200741.336
+            },
+            "bbdba863-f7b1-4768-902d-fe95c1637351": {
+                "key": "bbdba863-f7b1-4768-902d-fe95c1637351",
+                "ball_type": "normal",
+                "batting_team": "b",
+                "comment": "Duanne Olivier to Mayank Agarwal: <b>LBW!<\/b>. No runs.",
+                "innings": "b_2",
+                "overs": [
+                    11,
+                    4
+                ],
+                "batsman": {
+                    "player_key": "m_agarwal",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "is_dot_ball": true,
+                    "is_four": false,
+                    "is_six": false
+                },
+                "bowler": {
+                    "player_key": "du_oliver",
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "team_score": {
+                    "ball_count": 1,
+                    "runs": 0,
+                    "extras": 0,
+                    "is_wicket": true
+                },
+                "fielders": [],
+                "wicket": {
+                    "player_key": "m_agarwal",
+                    "wicket_type": "lbw"
+                },
+                "non_striker_key": "c_pujara",
+                "entry_time": 1641308249.912
             },
             "7a10f357-1823-4deb-91f8-9a540c4aa2f4": {
                 "key": "7a10f357-1823-4deb-91f8-9a540c4aa2f4",
@@ -2817,8 +3647,47 @@
                     }
                 },
                 "2": {
-                    "batting": null,
-                    "bowling": null,
+                    "batting": {
+                        "score": {
+                            "runs": 0,
+                            "balls": 2,
+                            "fours": 0,
+                            "sixes": 0,
+                            "dot_balls": 2,
+                            "strike_rate": 0
+                        },
+                        "dismissal": {
+                            "overs": [
+                                60,
+                                1
+                            ],
+                            "team_runs": 266,
+                            "wicket_number": 10,
+                            "msg": "bowled b Lungi Ngidi",
+                            "ball_key": "91fbf625-8886-4d3b-a87b-a351bca5a545"
+                        }
+                    },
+                    "bowling": {
+                        "score": {
+                            "balls": 24,
+                            "runs": 14,
+                            "economy": 3.5,
+                            "extras": 0,
+                            "wickets": 0,
+                            "maiden_overs": 0,
+                            "overs": [
+                                4,
+                                0
+                            ],
+                            "balls_breakup": {
+                                "dot_balls": 16,
+                                "wides": 0,
+                                "no_balls": 0,
+                                "fours": 1,
+                                "sixes": 0
+                            }
+                        }
+                    },
                     "fielding": null
                 }
             }
@@ -3051,7 +3920,7 @@
                     "batting": null,
                     "bowling": null,
                     "fielding": {
-                        "catches": 1,
+                        "catches": 4,
                         "stumpings": 0,
                         "runouts": 0
                     }
@@ -3118,7 +3987,26 @@
                     }
                 },
                 "2": {
-                    "batting": null,
+                    "batting": {
+                        "score": {
+                            "runs": 28,
+                            "balls": 44,
+                            "fours": 4,
+                            "sixes": 0,
+                            "dot_balls": 29,
+                            "strike_rate": 63.64
+                        },
+                        "dismissal": {
+                            "overs": [
+                                27,
+                                2
+                            ],
+                            "team_runs": 93,
+                            "wicket_number": 2,
+                            "msg": "lbw b Ravichandran Ashwin",
+                            "ball_key": "bb3260cf-e9f1-4c3b-a0f5-2fd4d2751996"
+                        }
+                    },
                     "bowling": null,
                     "fielding": null
                 }
@@ -3193,21 +4081,21 @@
                     "batting": null,
                     "bowling": {
                         "score": {
-                            "balls": 49,
-                            "runs": 36,
-                            "economy": 4.41,
+                            "balls": 72,
+                            "runs": 51,
+                            "economy": 4.25,
                             "extras": 0,
                             "wickets": 1,
-                            "maiden_overs": 0,
+                            "maiden_overs": 1,
                             "overs": [
-                                8,
-                                1
+                                12,
+                                0
                             ],
                             "balls_breakup": {
-                                "dot_balls": 33,
+                                "dot_balls": 50,
                                 "wides": 0,
                                 "no_balls": 0,
-                                "fours": 6,
+                                "fours": 9,
                                 "sixes": 0
                             }
                         }
@@ -3296,8 +4184,47 @@
                     }
                 },
                 "2": {
-                    "batting": null,
-                    "bowling": null,
+                    "batting": {
+                        "score": {
+                            "runs": 16,
+                            "balls": 14,
+                            "fours": 2,
+                            "sixes": 0,
+                            "dot_balls": 7,
+                            "strike_rate": 114.29
+                        },
+                        "dismissal": {
+                            "overs": [
+                                43,
+                                3
+                            ],
+                            "team_runs": 184,
+                            "wicket_number": 6,
+                            "msg": "c Kyle Verreynne b Lungi Ngidi",
+                            "ball_key": "a82ec770-c457-4f58-8483-2738162879a0"
+                        }
+                    },
+                    "bowling": {
+                        "score": {
+                            "balls": 48,
+                            "runs": 14,
+                            "economy": 1.75,
+                            "extras": 0,
+                            "wickets": 1,
+                            "maiden_overs": 1,
+                            "overs": [
+                                8,
+                                0
+                            ],
+                            "balls_breakup": {
+                                "dot_balls": 38,
+                                "wides": 0,
+                                "no_balls": 0,
+                                "fours": 0,
+                                "sixes": 0
+                            }
+                        }
+                    },
                     "fielding": null
                 }
             }
@@ -3630,21 +4557,21 @@
                     "batting": null,
                     "bowling": {
                         "score": {
-                            "balls": 42,
-                            "runs": 26,
-                            "economy": 3.71,
+                            "balls": 61,
+                            "runs": 43,
+                            "economy": 4.23,
                             "extras": 0,
-                            "wickets": 0,
+                            "wickets": 3,
                             "maiden_overs": 2,
                             "overs": [
-                                7,
-                                0
+                                10,
+                                1
                             ],
                             "balls_breakup": {
-                                "dot_balls": 31,
+                                "dot_balls": 45,
                                 "wides": 0,
                                 "no_balls": 0,
-                                "fours": 4,
+                                "fours": 8,
                                 "sixes": 0
                             }
                         }
@@ -3836,26 +4763,30 @@
                     "batting": null,
                     "bowling": {
                         "score": {
-                            "balls": 54,
-                            "runs": 33,
-                            "economy": 3.67,
+                            "balls": 102,
+                            "runs": 67,
+                            "economy": 3.94,
                             "extras": 0,
-                            "wickets": 1,
-                            "maiden_overs": 2,
+                            "wickets": 3,
+                            "maiden_overs": 4,
                             "overs": [
-                                9,
+                                17,
                                 0
                             ],
                             "balls_breakup": {
-                                "dot_balls": 42,
+                                "dot_balls": 77,
                                 "wides": 0,
                                 "no_balls": 0,
-                                "fours": 5,
-                                "sixes": 1
+                                "fours": 10,
+                                "sixes": 2
                             }
                         }
                     },
-                    "fielding": null
+                    "fielding": {
+                        "catches": 1,
+                        "stumpings": 0,
+                        "runouts": 0
+                    }
                 }
             }
         },
@@ -3934,8 +4865,47 @@
                     "fielding": null
                 },
                 "2": {
-                    "batting": null,
-                    "bowling": null,
+                    "batting": {
+                        "score": {
+                            "runs": 28,
+                            "balls": 24,
+                            "fours": 5,
+                            "sixes": 1,
+                            "dot_balls": 14,
+                            "strike_rate": 116.67
+                        },
+                        "dismissal": {
+                            "overs": [
+                                49,
+                                6
+                            ],
+                            "team_runs": 225,
+                            "wicket_number": 7,
+                            "msg": "c K Maharaj b Marco Jansen",
+                            "ball_key": "60b8bdf7-3157-4f05-91d3-783df6f486f1"
+                        }
+                    },
+                    "bowling": {
+                        "score": {
+                            "balls": 54,
+                            "runs": 24,
+                            "economy": 2.67,
+                            "extras": 0,
+                            "wickets": 1,
+                            "maiden_overs": 1,
+                            "overs": [
+                                9,
+                                0
+                            ],
+                            "balls_breakup": {
+                                "dot_balls": 38,
+                                "wides": 0,
+                                "no_balls": 0,
+                                "fours": 2,
+                                "sixes": 0
+                            }
+                        }
+                    },
                     "fielding": null
                 }
             }
@@ -4075,7 +5045,11 @@
                             }
                         }
                     },
-                    "fielding": null
+                    "fielding": {
+                        "catches": 1,
+                        "stumpings": 0,
+                        "runouts": 0
+                    }
                 }
             }
         },
@@ -4196,8 +5170,47 @@
                     "fielding": null
                 },
                 "2": {
-                    "batting": null,
-                    "bowling": null,
+                    "batting": {
+                        "score": {
+                            "runs": 0,
+                            "balls": 6,
+                            "fours": 0,
+                            "sixes": 0,
+                            "dot_balls": 6,
+                            "strike_rate": 0
+                        },
+                        "dismissal": {
+                            "overs": [
+                                51,
+                                5
+                            ],
+                            "team_runs": 228,
+                            "wicket_number": 8,
+                            "msg": "c Kyle Verreynne b Marco Jansen",
+                            "ball_key": "90eb04fe-53cb-4a8f-a093-aab0a6fc8fd9"
+                        }
+                    },
+                    "bowling": {
+                        "score": {
+                            "balls": 54,
+                            "runs": 22,
+                            "economy": 2.44,
+                            "extras": 0,
+                            "wickets": 0,
+                            "maiden_overs": 2,
+                            "overs": [
+                                9,
+                                0
+                            ],
+                            "balls_breakup": {
+                                "dot_balls": 44,
+                                "wides": 0,
+                                "no_balls": 0,
+                                "fours": 3,
+                                "sixes": 0
+                            }
+                        }
+                    },
                     "fielding": null
                 }
             }
@@ -4321,12 +5334,12 @@
                 }
             }
         },
-        "m_agarwal": {
+        "i_sharma": {
             "player": {
-                "key": "m_agarwal",
-                "name": "Mayank Agarwal",
-                "jersey_name": "Mayank Agarwal",
-                "legal_name": "Mayank Agarwal",
+                "key": "i_sharma",
+                "name": "Ishant Sharma",
+                "jersey_name": "Ishant Sharma",
+                "legal_name": "Ishant Sharma",
                 "gender": "male",
                 "nationality": {
                     "short_code": "IN",
@@ -4336,70 +5349,28 @@
                     "is_region": false
                 },
                 "date_of_birth": null,
-                "seasonal_role": "batsman",
+                "seasonal_role": "bowler",
                 "roles": [
-                    "batsman"
+                    "bowler"
                 ],
                 "batting_style": "right_hand",
                 "bowling_style": {
                     "arm": "right_arm",
-                    "pace": "slow",
-                    "bowling_type": "off_break"
+                    "pace": "fast_medium",
+                    "bowling_type": null
                 },
                 "skills": [
-                    "bat"
+                    "bowl"
                 ]
             },
             "score": {
                 "1": {
-                    "batting": {
-                        "score": {
-                            "runs": 26,
-                            "balls": 37,
-                            "fours": 5,
-                            "sixes": 0,
-                            "dot_balls": 27,
-                            "strike_rate": 70.27
-                        },
-                        "dismissal": {
-                            "overs": [
-                                14,
-                                1
-                            ],
-                            "team_runs": 36,
-                            "wicket_number": 1,
-                            "msg": "c Kyle Verreynne b Marco Jansen",
-                            "ball_key": "5b766500-861d-4586-9849-d3b568e52322"
-                        }
-                    },
+                    "batting": null,
                     "bowling": null,
-                    "fielding": {
-                        "catches": 1,
-                        "stumpings": 0,
-                        "runouts": 0
-                    }
+                    "fielding": null
                 },
                 "2": {
-                    "batting": {
-                        "score": {
-                            "runs": 23,
-                            "balls": 37,
-                            "fours": 5,
-                            "sixes": 0,
-                            "dot_balls": 29,
-                            "strike_rate": 62.16
-                        },
-                        "dismissal": {
-                            "overs": [
-                                11,
-                                4
-                            ],
-                            "team_runs": 44,
-                            "wicket_number": 2,
-                            "msg": "lbw b Duanne Olivier",
-                            "ball_key": "bbdba863-f7b1-4768-902d-fe95c1637351"
-                        }
-                    },
+                    "batting": null,
                     "bowling": null,
                     "fielding": null
                 }
@@ -4460,7 +5431,26 @@
                     "fielding": null
                 },
                 "2": {
-                    "batting": null,
+                    "batting": {
+                        "score": {
+                            "runs": 31,
+                            "balls": 38,
+                            "fours": 6,
+                            "sixes": 0,
+                            "dot_balls": 28,
+                            "strike_rate": 81.58
+                        },
+                        "dismissal": {
+                            "overs": [
+                                9,
+                                6
+                            ],
+                            "team_runs": 47,
+                            "wicket_number": 1,
+                            "msg": "lbw b SN Thakur",
+                            "ball_key": "8ac5a34a-925d-4c93-ab1a-09d3b1be1c9c"
+                        }
+                    },
                     "bowling": null,
                     "fielding": {
                         "catches": 1,
@@ -4536,8 +5526,47 @@
                     "fielding": null
                 },
                 "2": {
-                    "batting": null,
-                    "bowling": null,
+                    "batting": {
+                        "score": {
+                            "runs": 7,
+                            "balls": 14,
+                            "fours": 0,
+                            "sixes": 1,
+                            "dot_balls": 11,
+                            "strike_rate": 50
+                        },
+                        "dismissal": {
+                            "overs": [
+                                56,
+                                2
+                            ],
+                            "team_runs": 245,
+                            "wicket_number": 9,
+                            "msg": "c Marco Jansen b Lungi Ngidi",
+                            "ball_key": "2fbc69dd-9e52-4c4e-97f3-29e67c305b13"
+                        }
+                    },
+                    "bowling": {
+                        "score": {
+                            "balls": 60,
+                            "runs": 42,
+                            "economy": 4.2,
+                            "extras": 0,
+                            "wickets": 0,
+                            "maiden_overs": 1,
+                            "overs": [
+                                10,
+                                0
+                            ],
+                            "balls_breakup": {
+                                "dot_balls": 41,
+                                "wides": 0,
+                                "no_balls": 0,
+                                "fours": 6,
+                                "sixes": 0
+                            }
+                        }
+                    },
                     "fielding": null
                 }
             }
@@ -4624,22 +5653,22 @@
                     "batting": null,
                     "bowling": {
                         "score": {
-                            "balls": 72,
-                            "runs": 49,
-                            "economy": 4.08,
-                            "extras": 9,
-                            "wickets": 2,
-                            "maiden_overs": 2,
+                            "balls": 120,
+                            "runs": 77,
+                            "economy": 3.85,
+                            "extras": 13,
+                            "wickets": 3,
+                            "maiden_overs": 3,
                             "overs": [
-                                12,
+                                20,
                                 0
                             ],
                             "balls_breakup": {
-                                "dot_balls": 56,
+                                "dot_balls": 93,
                                 "wides": 1,
-                                "no_balls": 4,
-                                "fours": 8,
-                                "sixes": 0
+                                "no_balls": 8,
+                                "fours": 9,
+                                "sixes": 1
                             }
                         }
                     },
@@ -4706,13 +5735,22 @@
                     "batting": {
                         "score": {
                             "runs": 0,
-                            "balls": 0,
+                            "balls": 3,
                             "fours": 0,
                             "sixes": 0,
-                            "dot_balls": 0,
+                            "dot_balls": 3,
                             "strike_rate": 0
                         },
-                        "dismissal": null
+                        "dismissal": {
+                            "overs": [
+                                38,
+                                3
+                            ],
+                            "team_runs": 167,
+                            "wicket_number": 5,
+                            "msg": "c Kyle Verreynne b Kagiso Rabada",
+                            "ball_key": "26a937c9-be7f-4b07-87bc-3cae8141632d"
+                        }
                     },
                     "bowling": null,
                     "fielding": null
@@ -4820,7 +5858,17 @@
                     }
                 },
                 "2": {
-                    "batting": null,
+                    "batting": {
+                        "score": {
+                            "runs": 11,
+                            "balls": 37,
+                            "fours": 0,
+                            "sixes": 0,
+                            "dot_balls": 27,
+                            "strike_rate": 29.73
+                        },
+                        "dismissal": null
+                    },
                     "bowling": null,
                     "fielding": null
                 }
@@ -5004,18 +6052,28 @@
                     "fielding": null
                 },
                 "2": {
-                    "batting": null,
+                    "batting": {
+                        "score": {
+                            "runs": 46,
+                            "balls": 121,
+                            "fours": 2,
+                            "sixes": 0,
+                            "dot_balls": 91,
+                            "strike_rate": 38.02
+                        },
+                        "dismissal": null
+                    },
                     "bowling": null,
                     "fielding": null
                 }
             }
         },
-        "i_sharma": {
+        "m_agarwal": {
             "player": {
-                "key": "i_sharma",
-                "name": "Ishant Sharma",
-                "jersey_name": "Ishant Sharma",
-                "legal_name": "Ishant Sharma",
+                "key": "m_agarwal",
+                "name": "Mayank Agarwal",
+                "jersey_name": "Mayank Agarwal",
+                "legal_name": "Mayank Agarwal",
                 "gender": "male",
                 "nationality": {
                     "short_code": "IN",
@@ -5025,28 +6083,70 @@
                     "is_region": false
                 },
                 "date_of_birth": null,
-                "seasonal_role": "bowler",
+                "seasonal_role": "batsman",
                 "roles": [
-                    "bowler"
+                    "batsman"
                 ],
                 "batting_style": "right_hand",
                 "bowling_style": {
                     "arm": "right_arm",
-                    "pace": "fast_medium",
-                    "bowling_type": null
+                    "pace": "slow",
+                    "bowling_type": "off_break"
                 },
                 "skills": [
-                    "bowl"
+                    "bat"
                 ]
             },
             "score": {
                 "1": {
-                    "batting": null,
+                    "batting": {
+                        "score": {
+                            "runs": 26,
+                            "balls": 37,
+                            "fours": 5,
+                            "sixes": 0,
+                            "dot_balls": 27,
+                            "strike_rate": 70.27
+                        },
+                        "dismissal": {
+                            "overs": [
+                                14,
+                                1
+                            ],
+                            "team_runs": 36,
+                            "wicket_number": 1,
+                            "msg": "c Kyle Verreynne b Marco Jansen",
+                            "ball_key": "5b766500-861d-4586-9849-d3b568e52322"
+                        }
+                    },
                     "bowling": null,
-                    "fielding": null
+                    "fielding": {
+                        "catches": 1,
+                        "stumpings": 0,
+                        "runouts": 0
+                    }
                 },
                 "2": {
-                    "batting": null,
+                    "batting": {
+                        "score": {
+                            "runs": 23,
+                            "balls": 37,
+                            "fours": 5,
+                            "sixes": 0,
+                            "dot_balls": 29,
+                            "strike_rate": 62.16
+                        },
+                        "dismissal": {
+                            "overs": [
+                                11,
+                                4
+                            ],
+                            "team_runs": 44,
+                            "wicket_number": 2,
+                            "msg": "lbw b Duanne Olivier",
+                            "ball_key": "bbdba863-f7b1-4768-902d-fe95c1637351"
+                        }
+                    },
                     "bowling": null,
                     "fielding": null
                 }
@@ -5191,12 +6291,12 @@
                 "2": {
                     "batting": {
                         "score": {
-                            "runs": 1,
-                            "balls": 5,
-                            "fours": 0,
+                            "runs": 40,
+                            "balls": 84,
+                            "fours": 6,
                             "sixes": 0,
-                            "dot_balls": 4,
-                            "strike_rate": 20
+                            "dot_balls": 61,
+                            "strike_rate": 47.62
                         },
                         "dismissal": null
                     },
@@ -5259,10 +6359,10 @@
         "players": true,
         "playing_xi": true,
         "score_reviewed_ball_index": [
-            "b_2",
+            "a_2",
             [
-                37,
-                1
+                39,
+                6
             ]
         ],
         "team_a": true,
@@ -5275,24 +6375,24 @@
             "player_keys": [
                 "r_rickelton",
                 "p_subrayen",
-                "s_erwee",
                 "anr_nortje",
                 "rvd_dussen",
                 "ke_petersen",
                 "mar_jansen",
                 "de_kock",
+                "wia_mulder",
                 "g_suurmant",
-                "l_ngidi",
+                "b_hendricks",
                 "a_markram",
                 "d_elgar",
-                "k_maharaj",
+                "k_verreynne",
                 "g_linde",
                 "k_rabada",
                 "c__player__sisanda_magala__ee622",
-                "wia_mulder",
-                "k_verreynne",
+                "k_maharaj",
+                "s_erwee",
                 "du_oliver",
-                "b_hendricks",
+                "l_ngidi",
                 "t_bavuma"
             ],
             "captain": "d_elgar",
@@ -5317,15 +6417,15 @@
                 "s_iyer",
                 "l_rahul",
                 "a_rahane",
+                "m_agarwal",
                 "h_vihari",
                 "rg_sharma",
-                "c__player__priyank_panchal__6d837",
+                "r_pant",
                 "r_ashwin",
                 "j_bumrah",
                 "i_sharma",
-                "m_agarwal",
                 "c_pujara",
-                "r_pant",
+                "c__player__priyank_panchal__6d837",
                 "w_saha",
                 "v_kohli",
                 "u_yadav",

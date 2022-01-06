@@ -30,7 +30,7 @@ export const liveTestMatchFormat = (payload: any) => {
     const teamBMeta = getTeamMetaData(payload, 'b');
     const teamAScore = calculateTeamScore(payload, 'a', teams);
     const teamBScore = calculateTeamScore(payload, 'b', teams);
-    const notification = getNotificationString(payload);
+    const notification = getNotificationString(live);
     const currentInnings = parseCurrentInnings(live);
     const striker = getCurrentStrikerData(
       allPlayers,

@@ -53,10 +53,10 @@ export default function LiveMatchScreen() {
   };
 
   if (isScreenReady === false) {
-    return <LiveMatchLoading title={'ICC T20 World Cup Contest'} />;
+    return <LiveMatchLoading title={'South Africa vs India'} />;
   }
   if (isLoading) {
-    return <LoadingSpinner title={'RSA vs IND'} />;
+    return <LoadingSpinner title={'South Africa vs India'} />;
   }
   if (isSuccess && !data) {
     return (
@@ -68,7 +68,7 @@ export default function LiveMatchScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <LiveMatchTopBar text={data?.match?.short_name} />
+      <LiveMatchTopBar text={'South Africa vs India'} />
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
@@ -82,7 +82,8 @@ export default function LiveMatchScreen() {
           score_b={data.score_b}
         />
 
-        <Projection completed={false} />
+        <Projection completed={false} msg={data.notification} />
+
         <View style={[tailwind('my-2')]}>
           <LiveMatchSeparator />
         </View>

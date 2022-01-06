@@ -38,8 +38,16 @@ export const calculateTeamScore = (
   }
 };
 
-export const getNotificationString = (payload: any) => {
-  return 'Live Match API Intergration ...';
+export const getNotificationString = (live: any) => {
+  let score = live.score;
+  if (score.msg_lead_by) {
+    return score.msg_lead_by;
+  }
+  if (score.msg_trail_by) {
+    return score.msg_trail_by;
+  } else {
+    return 'Match Break';
+  }
 };
 export const getMatchMeta = (payload: any) => {
   return {
@@ -115,24 +123,6 @@ export const getScroeByInnings = (
   for (const ikey of inningsOrder) {
     const {code, day} = getTeamAndDayFromInningsKey(ikey, teams);
     const innings_t = allInnings[ikey];
-    // const batters = innings_t.batting_order;
-
-    // const battersData = [];
-    // for (const key of batters) {
-    //   const player = allPlayers[key];
-    //   const score = player.score[day].batting.score;
-    //   const isDismis = score.dismissal;
-    //   battersData.push({
-    //     name: player.player.jersey_name,
-    //     runs: score.runs,
-    //     balls: score.balls,
-    //     fours: score.fours,
-    //     six: score.sixes,
-    //     sr: score.strike_rate,
-    //     isBatting: isDismis ? true : false,
-    //     msg: player.isDismis ? isDismis.msg : false,
-    //   });
-    // }
     const batters = getBattersDataByInnings(
       innings_t.batting_order,
       allPlayers,
@@ -141,6 +131,11 @@ export const getScroeByInnings = (
     // Bowlers
     const bowlers = getBowlerDataByInnings(
       innings_t.bowling_order,
+      allPlayers,
+      day,
+    );
+    const wickets = getWicketsDataByInnings(
+      innings_t.wicket_order,
       allPlayers,
       day,
     );
@@ -154,9 +149,10 @@ export const getScroeByInnings = (
       extra: innings_t.extra_runs,
       battersData: batters,
       bowlersData: bowlers,
+      wicketsData: wickets,
     });
   }
-  // Do for Wickets
+
   return inningsData;
 };
 
@@ -173,7 +169,7 @@ const getBattersDataByInnings = (
       return;
     }
     const score = player.score[day].batting.score;
-    const isDismis = score.dismissal;
+    const isDismis = player.score[day].batting.dismissal;
     battersData.push({
       name: player.player.jersey_name,
       runs: score.runs,
@@ -181,8 +177,8 @@ const getBattersDataByInnings = (
       fours: score.fours,
       six: score.sixes,
       sr: score.strike_rate,
-      isBatting: isDismis ? true : false,
-      msg: player.isDismis ? isDismis.msg : false,
+      isBatting: isDismis ? false : true,
+      msg: isDismis ? isDismis.msg : false,
     });
   }
   return battersData;
@@ -208,6 +204,29 @@ const getBowlerDataByInnings = (bowlers: any, allPlayers: any, day: string) => {
     });
   }
   return bowlersData;
+};
+
+const getWicketsDataByInnings = (
+  wickets: any,
+  allPlayers: any,
+  day: string,
+) => {
+  const wicketsData = [];
+  for (const key of wickets) {
+    const player = allPlayers[key];
+    const isDismissal = player.score[day].batting.dismissal;
+    if (!isDismissal) {
+      return;
+    }
+    const state = player.score[day].batting.dismissal;
+    wicketsData.push({
+      name: player.player.jersey_name,
+      overs: oversArrayInToString(state.overs),
+      runs: state.team_runs,
+      number: state.wicket_number,
+    });
+  }
+  return wicketsData;
 };
 
 const getPlayerData = (players: any, player_key: string) => {

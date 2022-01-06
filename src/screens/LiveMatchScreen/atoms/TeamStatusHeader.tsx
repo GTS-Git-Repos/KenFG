@@ -9,6 +9,7 @@ interface PropTypes {
 }
 
 export default function TeamStatusHeader(props: PropTypes) {
+  // Deprecated
   return (
     <View
       style={[

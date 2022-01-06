@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import tailwind from '../../../tailwind';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
   topSection: HeaderSectionProps;
+  battersData: BattersScroreShape[];
+  bowlersData: BowlerScoreShape[];
+  extra: ExtrasShape;
+  wicketsData: WicketsShape;
+  isExpanded: boolean;
+  index: number;
+  openInningsTab(index: number): any;
 }
 interface HeaderSectionProps {
   key: string;
@@ -12,10 +19,54 @@ interface HeaderSectionProps {
   overs: string;
   runs: string;
   wickets: string;
+  index: number;
   isExpanded?: boolean;
+  openInningsTab(index: number): any;
+  isCompleted: boolean;
+}
+interface BattersScroreShape {
+  name: string;
+  runs: string;
+  balls: string;
+  fours: string;
+  six: string;
+  sr: string;
+  msg: string;
+  inningsStatus: boolean;
+  isBatting: string;
+}
+
+interface WicketsShape {
+  name: string;
+  number: string;
+  overs: string;
+  runs: string;
+}
+
+interface BowlerScoreShape {
+  name: string;
+  overs: string;
+  runs: string;
+  maider: string;
+  balls: string;
+  wickets: string;
+  economy: string;
+  isBowling: string;
+}
+interface ExtrasShape {
+  extra: string;
+  bye: string;
+  leg_bye: string;
+  wide: string;
+  no_ball: string;
+  penalty: string;
 }
 
 export default function TeamScoreBoardInnings(props: PropTypes) {
+  useEffect(() => {
+    // console.log(props.topSection);
+  }, []);
+
   return (
     <View style={[tailwind('')]}>
       <HeaderSection
@@ -24,15 +75,102 @@ export default function TeamScoreBoardInnings(props: PropTypes) {
         overs={props.topSection.overs}
         runs={props.topSection.runs}
         wickets={props.topSection.wickets}
-        isExpanded={false}
+        isExpanded={props.isExpanded}
+        index={props.index}
+        openInningsTab={props.openInningsTab}
+        isCompleted={props.topSection.isCompleted}
       />
+      {props.isExpanded && (
+        <View>
+          <View style={[tailwind('pb-5')]}>
+            <RoleHeader
+              title="Batter"
+              headers={['R', 'B', '4s', '6s', 'S/R']}
+            />
+            {props.battersData.map((item: any, index: number) => {
+              return (
+                <BattersScrore
+                  key={index}
+                  name={item.name}
+                  runs={item.runs}
+                  balls={item.balls}
+                  fours={item.fours}
+                  six={item.six}
+                  sr={item.sr}
+                  isBatting={item.isBatting}
+                  inningsStatus={props.topSection.isCompleted}
+                  msg={item.msg}
+                />
+              );
+            })}
+
+            <Extras
+              extra={props.extra.extra}
+              bye={props.extra.bye}
+              leg_bye={props.extra.leg_bye}
+              wide={props.extra.wide}
+              no_ball={props.extra.no_ball}
+              penalty={props.extra.penalty}
+            />
+            {/* <YetToBat /> */}
+            <TotalScore
+              overs={props.topSection.overs}
+              runs={props.topSection.runs}
+              wickets={props.topSection.wickets}
+            />
+          </View>
+
+          {props.bowlersData.length > 1 && (
+            <View style={[tailwind('pb-5')]}>
+              <RoleHeader
+                title="Bowler"
+                headers={['O', 'M', 'R', 'W', 'Eco']}
+              />
+              {props.bowlersData.map(
+                (item: BowlerScoreShape, index: number) => {
+                  return (
+                    <BowlerScore
+                      key={index}
+                      name={item.name}
+                      overs={item.overs}
+                      runs={item.runs}
+                      maider={item.maider}
+                      balls={item.balls}
+                      wickets={item.wickets}
+                      economy={item.economy}
+                      isBowling={item.isBowling}
+                    />
+                  );
+                },
+              )}
+            </View>
+          )}
+
+          <View style={[tailwind('pb-5')]}>
+            <RoleHeader title="Fall of Wickets" headers={['Score', 'Over']} />
+
+            {props.wicketsData.map((item: WicketsShape, index: number) => {
+              return (
+                <WicketsScore
+                  key={index}
+                  name={item.name}
+                  number={item.number}
+                  overs={item.overs}
+                  runs={item.runs}
+                />
+              );
+            })}
+          </View>
+        </View>
+      )}
     </View>
   );
 }
 
 const HeaderSection = (props: HeaderSectionProps) => {
   return (
-    <View
+    <TouchableOpacity
+      onPress={() => props.openInningsTab(props.index)}
       style={[
         tailwind(
           'flex-row py-3 bg-dark-3 border-b border-gray-800 items-center',
@@ -48,16 +186,7 @@ const HeaderSection = (props: HeaderSectionProps) => {
           ]}>
           {props.code}
         </Text>
-        {/* {props.is_batting && (
-            <Text
-              style={[
-                tailwind(
-                  'font-regular rounded-full bg-dark-4 px-2 py-1 text-dark-1 mx-3 font-10',
-                ),
-              ]}>
-              Batting
-            </Text>
-          )} */}
+        {!props.isCompleted && <IsBatttingTag />}
       </View>
 
       <View
@@ -72,20 +201,268 @@ const HeaderSection = (props: HeaderSectionProps) => {
 
         {props.isExpanded ? (
           <Icon
-            name="chevron-down"
+            name="chevron-up"
             size={20}
             style={[tailwind('mr-2')]}
             color="#8797B1"
           />
         ) : (
           <Icon
-            name="chevron-up"
+            name="chevron-down"
             size={20}
             style={[tailwind('mr-2')]}
             color="#B2933D"
           />
         )}
       </View>
+    </TouchableOpacity>
+  );
+};
+
+const RoleHeader = (props: any) => {
+  return (
+    <View
+      style={[
+        tailwind('flex-row px-2 py-3 bg-dark-4 border-b border-gray-800'),
+      ]}>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <Text style={[tailwind('font-bold px-2 text-dark-1 font-15')]}>
+          {props.title}
+        </Text>
+      </View>
+      <View style={[tailwind('flex-row'), {flex: 6}]}>
+        {props.headers.map((item: any) => {
+          return (
+            <View
+              key={item}
+              style={[
+                tailwind('flex-col items-center justify-center'),
+                {flex: 10 / 5},
+              ]}>
+              <Text
+                style={[tailwind('font-bold text-center text-dark-1 font-12')]}>
+                {item}
+              </Text>
+            </View>
+          );
+        })}
+      </View>
     </View>
   );
 };
+
+const BattersScrore = (props: BattersScroreShape) => {
+  return (
+    <View
+      style={[
+        tailwind('flex-row py-2 bg-dark-3 px-2 border-b border-gray-800'),
+      ]}>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('px-2')]}>
+          <Text
+            numberOfLines={1}
+            style={[tailwind('font-bold text-light font-14')]}>
+            {props.name}
+          </Text>
+          {props.isBatting && props.inningsStatus === false ? (
+            <IsActive text="Batting" />
+          ) : (
+            <WicketText msg={props.msg} />
+          )}
+        </View>
+      </View>
+      <View style={[tailwind('flex-row'), {flex: 6}]}>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreBoldTextStyle}>{props.runs}</Text>
+        </View>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreTextStyle}>{props.balls}</Text>
+        </View>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreTextStyle}>{props.fours}</Text>
+        </View>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreTextStyle}>{props.six}</Text>
+        </View>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreTextStyle}>{props.sr}</Text>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const BowlerScore = (props: BowlerScoreShape) => {
+  return (
+    <View
+      style={[
+        tailwind('flex-row py-2 bg-dark-3 px-2 border-b border-gray-800'),
+      ]}>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('px-2')]}>
+          <Text
+            numberOfLines={1}
+            style={[tailwind('font-bold text-light font-14')]}>
+            {props.name}
+          </Text>
+          {props.isBowling && <IsActive text="Bowling" />}
+        </View>
+      </View>
+      <View style={[tailwind('flex-row'), {flex: 6}]}>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreBoldTextStyle}>{props.overs}</Text>
+        </View>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreTextStyle}>{props.maider}</Text>
+        </View>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreTextStyle}>{props.runs}</Text>
+        </View>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreTextStyle}>{props.wickets}</Text>
+        </View>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreTextStyle}>{props.economy}</Text>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const WicketsScore = (props: WicketsShape) => {
+  return (
+    <View
+      style={[
+        tailwind('flex-row py-2 bg-dark-3 px-2 border-b border-gray-800'),
+      ]}>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('px-2')]}>
+          <Text
+            numberOfLines={1}
+            style={[tailwind('font-bold text-light font-14')]}>
+            {props.name}
+          </Text>
+        </View>
+      </View>
+      <View style={[tailwind('flex-row'), {flex: 6}]}>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreBoldTextStyle}>
+            {props.runs}/{props.number}
+          </Text>
+        </View>
+        <View style={scoreTextViewStyle}>
+          <Text style={scoreTextStyle}>{props.overs}</Text>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const Extras = (props: ExtrasShape) => {
+  return (
+    <View
+      style={[
+        tailwind(
+          'flex-row items-center pt-2 px-2 bg-dark-3 border-b border-gray-800',
+        ),
+      ]}>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('px-2')]}>
+          <Text style={[tailwind('font-bold text-light font-14')]}>Extras</Text>
+          <Text style={[tailwind('font-regular py-2 text-dark-1 font-12')]}>
+            {`nb ${props.no_ball ?? 0}, wd ${props.wide ?? 0}, b0 ${
+              props.bye ?? 0
+            },lb ${props.leg_bye}, pen ${props.penalty ?? 0}`}
+          </Text>
+        </View>
+      </View>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('flex-col px-4 justify-center')]}>
+          <Text style={[tailwind(`font-bold font-14 text-white`)]}>
+            {props.extra}
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const TotalScore = (props: any) => {
+  return (
+    <View
+      style={[
+        tailwind(
+          'flex-row items-center pt-2 px-2 border-b border-gray-800 bg-dark-3',
+        ),
+      ]}>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <View style={[tailwind('px-2')]}>
+          <Text style={[tailwind('font-bold text-light font-14')]}>Total</Text>
+          <Text style={[tailwind('font-regular py-2 text-dark-1 font-12')]}>
+            {`${props.wickets} Wickets ${props.overs} overs`}
+          </Text>
+        </View>
+      </View>
+      <View style={[tailwind(''), {flex: 6}]}>
+        <Text style={[tailwind('font-bold text-white text-center font-13')]}>
+          {props.runs}
+        </Text>
+      </View>
+    </View>
+  );
+};
+
+const YetToBat = () => {
+  return (
+    <View style={[tailwind('pt-2 border-b px-4 border-gray-800 bg-dark-3')]}>
+      <Text style={[tailwind('font-bold text-white font-15')]}>Yet to bat</Text>
+      <View style={[tailwind('flex-row items-center flex-wrap')]}>
+        <Text style={[tailwind('font-regular py-2 text-dark-1 font-12')]}>
+          Player1,Player1,Player1,Player1, Player1,Player1,Player1,Player1,
+          Player1,Player1,Player1,Player1,
+        </Text>
+      </View>
+    </View>
+  );
+};
+
+const IsBatttingTag = () => {
+  return (
+    <View style={[tailwind('rounded-full bg-dark-4 px-1 py-0.5 mx-2')]}>
+      <Text style={[tailwind('font-regular text-dark-1 font-10')]}>
+        Batting
+      </Text>
+    </View>
+  );
+};
+
+const IsActive = (props: any) => {
+  return (
+    <Text
+      style={[
+        tailwind('font-regular pt-2 text-secondary font-12'),
+        {color: '#816D2E'},
+      ]}>
+      {props.text}
+    </Text>
+  );
+};
+
+const WicketText = (props: any) => {
+  return (
+    <Text style={[tailwind('font-regular text-dark-1 font-11 mt-1')]}>
+      {props.msg}
+    </Text>
+  );
+};
+
+const scoreTextViewStyle = [
+  tailwind('flex-col items-center justify-center'),
+  {flex: 10 / 5},
+];
+const scoreTextStyle = [
+  tailwind('text-center font-regular text-dark-1 font-12'),
+];
+const scoreBoldTextStyle = [
+  tailwind('text-center font-bold text-white font-12'),
+];

@@ -13,7 +13,7 @@ interface PropTypes {
 export default function LiveMatchLoading(props: PropTypes) {
   return (
     <View style={[tailwind('h-full bg-dark')]}>
-      <LiveMatchTopBar text={'ICC T20 World Cup Contest'} />
+      <LiveMatchTopBar text={'South Africa vs India'} />
       <View style={[tailwind('my-3')]}>
         <ActivityIndicator color="#d1b45a" size={'large'} />
       </View>
