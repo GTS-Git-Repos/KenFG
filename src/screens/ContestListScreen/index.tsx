@@ -9,6 +9,7 @@ import {
 import PagerView from 'react-native-pager-view';
 import {
   contestListsRemote,
+  getJoinedTeamsRemote,
   joinContestRemote,
 } from '../../remote/matchesRemote';
 import {joinedTeamsRemote} from '../../remote/matchesRemote';
@@ -61,7 +62,7 @@ export default function ContestListScreen() {
 
   const teams = useQuery(
     ['teams', userInfoSelector?.mobile, selectedMatchState?.match_key],
-    joinedTeamsRemote,
+    getJoinedTeamsRemote,
   );
 
   useEffect(() => {
@@ -73,8 +74,10 @@ export default function ContestListScreen() {
   }, []);
 
   useEffect(() => {
-    // console.log('teams', teams.data);
-  }, [teams]);
+    if (teams.data) {
+      // console.log('teams -->', teams.data);
+    }
+  }, [teams.data]);
 
   // Business logic
 

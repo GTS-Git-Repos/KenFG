@@ -50,10 +50,6 @@ export default function CapSelectionScreen() {
     state => state.app.selected_contest,
   );
 
-  useEffect(() => {
-    log('cap --->', teamsState[0]);
-  }, []);
-
   const captainSelectAction = (player_key: string) => {
     if (vc_key === player_key) {
       dispatch(vicecaptainSelectionAction(null));
@@ -77,7 +73,7 @@ export default function CapSelectionScreen() {
         setLoading(true);
         const createTeamObj = createTeamObjCreator();
         log('createTeamObj', createTeamObj);
-
+        // return;
         const response = await createTeamRemote(createTeamObj);
         if (response) {
           dispatch(clearTeamAction());

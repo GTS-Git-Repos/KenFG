@@ -7,6 +7,7 @@ import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
 import CompletedTestMatchMeta from '../constants/mocks/completedTestMatch3i.json';
 
 import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
+import {splitJoinedTeamsResponse} from '../formatters/teams.formatter';
 // API Routes
 
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
@@ -148,21 +149,24 @@ export const getMatchPlayersRemote = async (params: any) => {
   }
 };
 
-export const joinedTeamsRemote = async (params: any) => {
+export const getJoinedTeamsRemote = async (params: any) => {
   try {
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_view_team,
-      {player_key: params.queryKey[1], match_key: params.queryKey[2]},
+      {
+        player_key: '9876543211',
+        match_key: 'sst20_2021_g23',
+      },
+      // {player_key: params.queryKey[1], match_key: params.queryKey[2]},
     );
     if (response.status === 200) {
-      return response.data.data;
+      return splitJoinedTeamsResponse(response.data.data);
     } else {
-      failedLog('joinedTeamsRemote()', response);
+      failedLog('getJoinedTeamsRemote()', response);
     }
   } catch (err) {
     console.log(err);
-    return false;
   }
 };
 

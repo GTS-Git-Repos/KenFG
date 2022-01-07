@@ -1,5 +1,6 @@
 import store from '../store/';
 import {occupaid_role_count} from './decision';
+
 export const createTeamObjCreator = () => {
   const UserInfo = store.getState().user.user_info;
   const Players = store.getState().team.players;
@@ -14,26 +15,9 @@ export const createTeamObjCreator = () => {
   let finalPlayers: any = [];
 
   Players.forEach((item: any) => {
-    if (item.key === captain) {
-      finalPlayers.push({
-        ...item,
-        captain: true,
-        vc: false,
-      });
-    }
-    if (item.key === vc) {
-      finalPlayers.push({
-        ...item,
-        captain: false,
-        vc: true,
-      });
-    } else {
-      finalPlayers.push({
-        ...item,
-        captain: true,
-        vc: true,
-      });
-    }
+    let obj = {...item};
+    delete obj.selected_by;
+    finalPlayers.push(obj);
   });
 
   const c_player = Players.find((item: any) => item.key === captain);
@@ -43,17 +27,19 @@ export const createTeamObjCreator = () => {
 
   return {
     match_key: selected_match.match_key,
-    contest_key: selected_contest,
+    // contest_key: selected_contest,
     player_key: UserInfo?.mobile ? UserInfo.mobile : '9876543210',
     access_key: UserInfo?.mobile ? UserInfo.mobile : '9876543210',
     players: finalPlayers,
     captain: {
       key: c_player.key,
       name: c_player.name,
+      team_key: c_player.team_key,
     },
     vc_captain: {
       key: vc_player.key,
       name: vc_player.name,
+      team_key: vc_player.team_key,
     },
     team_a: Teams[0],
     team_b: Teams[1],

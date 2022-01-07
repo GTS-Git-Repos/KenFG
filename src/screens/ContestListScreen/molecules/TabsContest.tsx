@@ -72,8 +72,9 @@ export default function Tabs(props: PropTypes) {
               }`,
             ),
           ]}>
-          {/* {props.teamsCount ? 'My Teams (1)' : 'My Teams (0)'} */}
-          My Teams (1)
+          {props.teamsCount
+            ? `My Teams (${props.teamsCount.length})`
+            : 'My Teams (0)'}
         </Text>
       </TouchableOpacity>
     </View>

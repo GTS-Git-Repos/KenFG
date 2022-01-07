@@ -30,6 +30,7 @@ import {Modalize} from 'react-native-modalize';
 import MoreSheet from './atoms/MoreSheet';
 const log = console.log;
 
+
 const WIDTH = Dimensions.get('window').width;
 
 export default function AccountProfileScreen() {

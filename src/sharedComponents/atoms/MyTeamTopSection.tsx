@@ -8,7 +8,7 @@ import EditIcon from '../icons/EditIcon';
 import {CloneIcon, CopyIcon} from '../../sharedComponents/';
 
 interface PropTypes {
-  teams_key: string;
+  team_key: string;
   canModify: boolean;
   current: boolean;
 }
@@ -29,7 +29,7 @@ export default function MyTeamsTopSection(props: PropTypes) {
           style={[
             tailwind('font-bold py-3 px-2 uppercase text-light font-14'),
           ]}>
-          {props.teams_key || 'T1'}
+          {props.team_key}
         </Text>
         {props.current && (
           <Text style={[tailwind('font-regular text-light font-14')]}>

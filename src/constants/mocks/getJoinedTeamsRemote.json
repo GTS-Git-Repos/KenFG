@@ -1,0 +1,188 @@
+[
+    {
+        "players": [
+            {
+                "key": "f_0",
+                "name": "Player 0",
+                "points": 3,
+                "credits": 10.5,
+                "team_key": "eng",
+                "seasonal_role": "keeper"
+            },
+            {
+                "key": "f_1",
+                "name": "Player 1",
+                "points": 3,
+                "credits": 8,
+                "team_key": "aus",
+                "seasonal_role": "keeper"
+            },
+            {
+                "key": "f_2",
+                "name": "Player 2",
+                "points": 3,
+                "credits": 8.5,
+                "team_key": "aus",
+                "seasonal_role": "keeper"
+            },
+            {
+                "key": "f_3",
+                "name": "Player 3",
+                "points": 3,
+                "credits": 10,
+                "team_key": "eng",
+                "seasonal_role": "keeper"
+            },
+            {
+                "key": "f_4",
+                "name": "Player 4",
+                "points": 3,
+                "credits": 9,
+                "team_key": "eng",
+                "seasonal_role": "batsman"
+            },
+            {
+                "key": "f_5",
+                "name": "Player 5",
+                "points": 3,
+                "credits": 8,
+                "team_key": "eng",
+                "seasonal_role": "batsman"
+            },
+            {
+                "key": "f_7",
+                "name": "Player 7",
+                "points": 3,
+                "credits": 9,
+                "team_key": "eng",
+                "seasonal_role": "batsman"
+            },
+            {
+                "key": "f_10",
+                "name": "Player 10",
+                "points": 3,
+                "credits": 9,
+                "team_key": "eng",
+                "seasonal_role": "all_rounder"
+            },
+            {
+                "key": "f_15",
+                "name": "Player 15",
+                "points": 3,
+                "credits": 9,
+                "team_key": "eng",
+                "seasonal_role": "bowler"
+            },
+            {
+                "key": "f_22",
+                "name": "Player 22",
+                "points": 3,
+                "credits": 10,
+                "team_key": "aus",
+                "seasonal_role": "bowler"
+            },
+            {
+                "key": "f_18",
+                "name": "Player 18",
+                "points": 3,
+                "credits": 9,
+                "team_key": "aus",
+                "seasonal_role": "bowler"
+            }
+        ],
+        "teams_key": "t1"
+    },
+    {
+        "players": [
+            {
+                "key": "f_0",
+                "name": "Player 0",
+                "points": 3,
+                "credits": 10.5,
+                "team_key": "eng",
+                "seasonal_role": "keeper"
+            },
+            {
+                "key": "f_1",
+                "name": "Player 1",
+                "points": 3,
+                "credits": 8,
+                "team_key": "aus",
+                "seasonal_role": "keeper"
+            },
+            {
+                "key": "f_2",
+                "name": "Player 2",
+                "points": 3,
+                "credits": 8.5,
+                "team_key": "aus",
+                "seasonal_role": "keeper"
+            },
+            {
+                "key": "f_3",
+                "name": "Player 3",
+                "points": 3,
+                "credits": 10,
+                "team_key": "eng",
+                "seasonal_role": "keeper"
+            },
+            {
+                "key": "f_4",
+                "name": "Player 4",
+                "points": 3,
+                "credits": 9,
+                "team_key": "eng",
+                "seasonal_role": "batsman"
+            },
+            {
+                "key": "f_5",
+                "name": "Player 5",
+                "points": 3,
+                "credits": 8,
+                "team_key": "eng",
+                "seasonal_role": "batsman"
+            },
+            {
+                "key": "f_7",
+                "name": "Player 7",
+                "points": 3,
+                "credits": 9,
+                "team_key": "eng",
+                "seasonal_role": "batsman"
+            },
+            {
+                "key": "f_10",
+                "name": "Player 10",
+                "points": 3,
+                "credits": 9,
+                "team_key": "eng",
+                "seasonal_role": "all_rounder"
+            },
+            {
+                "key": "f_15",
+                "name": "Player 15",
+                "points": 3,
+                "credits": 9,
+                "team_key": "eng",
+                "seasonal_role": "bowler"
+            },
+            {
+                "key": "f_22",
+                "name": "Player 22",
+                "points": 3,
+                "credits": 10,
+                "team_key": "aus",
+                "seasonal_role": "bowler"
+            },
+            {
+                "key": "f_18",
+                "name": "Player 18",
+                "points": 3,
+                "credits": 9,
+                "team_key": "aus",
+                "seasonal_role": "bowler"
+            }
+        ],
+        "teams_key": "t2"
+    }
+]

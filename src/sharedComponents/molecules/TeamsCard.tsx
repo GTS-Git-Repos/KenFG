@@ -16,9 +16,13 @@ import Svg, {Path, Rect} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
-  teams_key: string;
+  team_key: string;
   canModify: boolean;
   current: boolean;
+  keepers: any[];
+  batsman: any[];
+  all_rounder: any[];
+  bowler: any[];
 }
 interface TeamContInfoTypes {
   name: string;
@@ -41,7 +45,7 @@ export default function TeamsCard(props: PropTypes) {
         {/* Header */}
 
         <MyTeamsTopSection
-          teams_key={props.teams_key}
+          team_key={props.team_key}
           canModify={props.canModify}
           current={props.current}
         />
@@ -64,7 +68,12 @@ export default function TeamsCard(props: PropTypes) {
           </View>
         </View>
       </ImageBackground>
-      <BottomStats />
+      <BottomStats
+        batsman={props.batsman.length}
+        keepers={props.keepers.length}
+        all_rounder={props.all_rounder.length}
+        bowler={props.bowler.length}
+      />
     </TouchableOpacity>
   );
 }
@@ -126,7 +135,7 @@ const PlayerName = (props: any) => {
   );
 };
 
-const BottomStats = () => {
+const BottomStats = (props: any) => {
   return (
     <View
       style={[
@@ -137,25 +146,33 @@ const BottomStats = () => {
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>WK</Text>
-        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>1</Text>
+        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>
+          {props.keepers}
+        </Text>
       </View>
 
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>BAT</Text>
-        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>3</Text>
+        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>
+          {props.batsman}
+        </Text>
       </View>
 
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>AR</Text>
-        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>2</Text>
+        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>
+          {props.all_rounder}
+        </Text>
       </View>
 
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2.5}]}>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>BOWL</Text>
-        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>5</Text>
+        <Text style={[tailwind('font-bold text-white px-2 font-14')]}>
+          {props.bowler}
+        </Text>
       </View>
     </View>
   );

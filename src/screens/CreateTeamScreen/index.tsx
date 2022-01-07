@@ -59,6 +59,9 @@ export default function CreateTeamScreen() {
   const isMounted = useRef(false);
 
   const playersState: any = useSelector<any>(state => state.team.players);
+
+  console.log(JSON.stringify(playersState));
+
   const SelectedMatchState = useSelector<any>(
     state => state.app.selected_match,
   );
