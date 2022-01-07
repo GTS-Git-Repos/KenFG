@@ -79,15 +79,19 @@ export default function ContestLiveMatchScreen() {
         colors={['#172338', '#0D1320']}
         style={[tailwind('p-3 bg-dark-3')]}>
         <MatchStat
+          matchStatus={data.matchStatus}
           completed={false}
           team_a={data.team_a}
           team_b={data.team_b}
           score_a={data.score_a}
           score_b={data.score_b}
         />
+        {data.notification && (
+          <Projection completed={false} msg={data.notification} />
+        )}
 
-        <Projection completed={false} msg={data.notification} />
         <View style={[tailwind('my-2 border-b border-gray-800')]}></View>
+
         <CurrentLiveStatus
           striker={data.striker}
           nonStriker={data.nonStriker}

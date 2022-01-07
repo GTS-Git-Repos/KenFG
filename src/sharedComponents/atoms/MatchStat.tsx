@@ -6,6 +6,7 @@ import {liveTeamShape} from '../../types/api';
 
 interface PropTypes {
   completed: boolean;
+  matchStatus: string;
   team_a: any;
   team_b: any;
   score_a: any;
@@ -46,7 +47,7 @@ export default function MatchStat(props: PropTypes) {
           </View>
         )}
       </View>
-      {props.completed ? <Completed /> : <LiveIndicator />}
+      {props.matchStatus === 'completed' ? <Completed /> : <LiveIndicator />}
 
       <View style={[tailwind('flex-col items-end'), {flex: 4}]}>
         <Text style={[tailwind('font-regular text-white font-14')]}>

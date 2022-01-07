@@ -17,38 +17,53 @@ export const liveTestMatchFormat = (payload: any) => {
     const obj: any = {...liveTestMatchStatsBluprint};
 
     const teams = payload.teams;
+    const matchStatus = payload.status;
     const play = payload.play;
     const live = payload.play.live;
     const inningsOrder = play.innings_order;
     const allInnings = play.innings;
     const allPlayers = payload.players;
-    const recentOver = live.recent_overs[0].ball_keys;
-    const related_balls = play.related_balls;
+
+    const playStatus = payload.play_status;
+
+    let striker = null;
+    let nonStriker = null;
+    let bowler = null;
+    let lastOverData = null;
 
     const matchMeta = getMatchMeta(payload);
     const teamAMeta = getTeamMetaData(payload, 'a');
     const teamBMeta = getTeamMetaData(payload, 'b');
     const teamAScore = calculateTeamScore(payload, 'a', teams);
     const teamBScore = calculateTeamScore(payload, 'b', teams);
-    const notification = getNotificationString(live);
-    const currentInnings = parseCurrentInnings(live);
-    const striker = getCurrentStrikerData(
-      allPlayers,
-      live.striker_key,
-      currentInnings.day,
-    );
-    const nonStriker = getCurrentStrikerData(
-      allPlayers,
-      live.non_striker_key,
-      currentInnings.day,
-    );
-    const bowler = getCurrentBowlerData(
-      allPlayers,
-      play.related_balls,
-      live.last_ball_key,
-      currentInnings.day,
-    );
-    const lastOverData = getLastOverData(recentOver, related_balls);
+    const notification = getNotificationString(playStatus, play);
+
+    if (live) {
+      const currentInnings = parseCurrentInnings(live);
+      const recentOver = live.recent_overs[0].ball_keys;
+      const related_balls = play.related_balls;
+
+      striker = getCurrentStrikerData(
+        allPlayers,
+        live.striker_key,
+        currentInnings.day,
+      );
+      nonStriker = getCurrentStrikerData(
+        allPlayers,
+        live.non_striker_key,
+        currentInnings.day,
+      );
+      // get next innings bowler data
+
+      bowler = getCurrentBowlerData(
+        allPlayers,
+        play.related_balls,
+        live.last_ball_key,
+        currentInnings.day,
+      );
+      lastOverData = getLastOverData(recentOver, related_balls);
+    }
+
     const inningsData = getScroeByInnings(
       allInnings,
       inningsOrder,
@@ -57,6 +72,7 @@ export const liveTestMatchFormat = (payload: any) => {
     );
     const liveObj = {
       match: matchMeta,
+      matchStatus,
       team_a: teamAMeta,
       team_b: teamBMeta,
       score_a: teamAScore,

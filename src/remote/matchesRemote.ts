@@ -2,10 +2,10 @@ import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
 // @ts-ignore
-// import LiveMatchMeta from '../constants/mocks/liveMatchMeta.json';
-import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
 
-// import {liveMatchStatsFormat} from '../formatters/livematch.formatter';
+import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
+import CompletedTestMatchMeta from '../constants/mocks/completedTestMatch3i.json';
+
 import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
 // API Routes
 
@@ -80,7 +80,7 @@ export const contestInfoRemote = async (params: any) => {
 
 export const liveMatchMetaRemote = async (payload: any) => {
   try {
-    // return liveTestMatchFormat(LiveTestMatchMeta);
+    return liveTestMatchFormat(CompletedTestMatchMeta);
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_live_match,

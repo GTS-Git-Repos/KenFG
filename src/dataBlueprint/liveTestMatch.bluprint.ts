@@ -1,3 +1,5 @@
+// Deprecated
+
 export const liveTestMatchStatsBluprint = Object.freeze({
   key: '',
   name: '',

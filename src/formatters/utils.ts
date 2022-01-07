@@ -38,15 +38,26 @@ export const calculateTeamScore = (
   }
 };
 
-export const getNotificationString = (live: any) => {
-  let score = live.score;
-  if (score.msg_lead_by) {
-    return score.msg_lead_by;
-  }
-  if (score.msg_trail_by) {
-    return score.msg_trail_by;
+export const StatusOfTheMatch = () => {};
+
+export const getNotificationString = (playStatus: string, play: any) => {
+  if (play.live) {
+    let score = play.live.score;
+    if (score.msg_lead_by) {
+      return score.msg_lead_by;
+    }
+    if (score.msg_trail_by) {
+      return score.msg_trail_by;
+    } else {
+      return 'Match Break';
+    }
   } else {
-    return 'Match Break';
+    // return winning data
+    if (playStatus === 'result') {
+      return play.result.msg;
+    } else {
+      return 'Match Will be Started';
+    }
   }
 };
 export const getMatchMeta = (payload: any) => {
@@ -112,7 +123,7 @@ export const getLastOverData = (recentOver: any[], related_balls: any[]) => {
   }
   return ballsData;
 };
-
+// For constructing ScoreCard
 export const getScroeByInnings = (
   allInnings: any[],
   inningsOrder: any[],
@@ -121,8 +132,11 @@ export const getScroeByInnings = (
 ) => {
   const inningsData: any = [];
   for (const ikey of inningsOrder) {
+    const innings_t_bowlers = swapInningsKeyForBowler(ikey);
+
     const {code, day} = getTeamAndDayFromInningsKey(ikey, teams);
     const innings_t = allInnings[ikey];
+    const innings_bowlers = allInnings[innings_t_bowlers];
     const batters = getBattersDataByInnings(
       innings_t.batting_order,
       allPlayers,
@@ -130,7 +144,7 @@ export const getScroeByInnings = (
     );
     // Bowlers
     const bowlers = getBowlerDataByInnings(
-      innings_t.bowling_order,
+      innings_bowlers.bowling_order,
       allPlayers,
       day,
     );
@@ -182,6 +196,18 @@ const getBattersDataByInnings = (
     });
   }
   return battersData;
+};
+
+const swapInningsKeyForBowler = (i_key: string) => {
+  let i = i_key.split('_')[0];
+  let d = i_key.split('_')[1];
+  if (i === 'a') {
+    return `${'b'}_${d}`;
+  } else {
+    if (i === 'b') {
+      return `${'a'}_${d}`;
+    }
+  }
 };
 
 const getBowlerDataByInnings = (bowlers: any, allPlayers: any, day: string) => {

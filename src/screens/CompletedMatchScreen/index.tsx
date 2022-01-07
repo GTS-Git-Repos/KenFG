@@ -45,7 +45,11 @@ export default function CompletedMatchScreen() {
   const openPrizeBreakSheet = () => {
     breakUpSheet?.current?.open();
   };
-
+  return (
+    <Text style={[tailwind('font-regular text-white font-15')]}>
+      API Intergration working on Here
+    </Text>
+  );
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'AUS vs ENG'} />
