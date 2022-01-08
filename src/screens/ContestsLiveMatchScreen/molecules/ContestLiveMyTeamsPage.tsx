@@ -12,7 +12,7 @@ interface PropTypes {
 export default function ContestLiveMyTeamsPage(props: PropTypes) {
   return (
     <ScrollView style={[tailwind('m-2')]}>
-      <TeamsCard
+      {/* <TeamsCard
         teams_key={'t1'}
         // key={item.teams_key}
         canModify={false}
@@ -23,7 +23,7 @@ export default function ContestLiveMyTeamsPage(props: PropTypes) {
         // key={item.teams_key}
         canModify={false}
         current={false}
-      />
+      /> */}
 
       <View style={[tailwind('h-10')]}></View>
     </ScrollView>

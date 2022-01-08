@@ -7,6 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
+  navigateToTeamPreviewScreeen(): any;
   navigateToCapSelection(): any;
 }
 
@@ -15,7 +16,7 @@ export default function BottomAction(props: PropTypes) {
   return (
     <View style={[tailwind('flex-row items-center justify-center')]}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('MatchGroundScreen')}
+        onPress={props.navigateToTeamPreviewScreeen}
         style={[
           tailwind('px-5 py-3 flex-row m-2 rounded'),
           {backgroundColor: '#172338', borderTopColor: 'red'},

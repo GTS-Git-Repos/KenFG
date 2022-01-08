@@ -12,7 +12,6 @@ import {
   getJoinedTeamsRemote,
   joinContestRemote,
 } from '../../remote/matchesRemote';
-import {joinedTeamsRemote} from '../../remote/matchesRemote';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import TopBarContest from '../../sharedComponents/atoms/TopbarContest';
 import {FullScreenLoading, BlockScreenByLoading} from '../../sharedComponents';
@@ -104,7 +103,7 @@ export default function ContestListScreen() {
         team_key: route.params.team_key,
         player_key: userInfoSelector.mobile,
       };
-      console.log('payload', payload);
+      // console.log('payload', payload);
       setLoading(true);
       const response = await joinContestRemote(payload);
       if (response) {

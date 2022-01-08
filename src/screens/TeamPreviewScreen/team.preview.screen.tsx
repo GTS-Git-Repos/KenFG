@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Image, ImageBackground, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation, useRoute, CommonActions} from '@react-navigation/native';
 import assets from '../../constants/assets_manifest';
-// import {TopBar} from 'components';
-// import Icon from 'react-native-vector-icons/Ionicons';
 import {useQuery} from 'react-query';
-const log = console.log;
+
+import {log} from '../../utils/logs';
 import MatchGroundTopBar from './atoms/MatchGroundTopar';
 import MatchStats from './atoms/MatchStats';
 import CategoryPlayers from './blocks/CategoryPlayers';
@@ -19,11 +17,12 @@ export default function MathchGroundScreen() {
   const route = useRoute();
 
   const [keepers, setKeepers] = useState([]);
-  const [batsman, setBastman] = useState([]);
+  const [batsman, setBatsman] = useState([]);
   const [all_rounder, setAll_rounder] = useState([]);
   const [bowler, setBowlers] = useState([]);
+  const [c_key, setC_key] = useState(null);
+  const [vc_key, setVC_key] = useState(null);
 
-  const playersState: any = useSelector<any>(state => state.team.players);
   const TeamState: any = useSelector<any>(state => state.team.teams);
   const CaptainKeyState: any = useSelector<any>(state => state.team.cap_key);
   const ViceCaptainState: any = useSelector<any>(state => state.team.vc_key);
@@ -31,29 +30,12 @@ export default function MathchGroundScreen() {
   const availableCredits = useSelector(creditLeft);
   const rolesCountSelector = useSelector(rolesCount);
 
-  // useEffect(() => {
-  //   log('rolesCountSelector', rolesCountSelector);
-  // }, [rolesCountSelector]);
-
   useEffect(() => {
-    const keepers = playersState.filter(
-      (item: any) => item.seasonal_role === 'keeper',
-    );
-    const batsman = playersState.filter(
-      (item: any) => item.seasonal_role === 'batsman',
-    );
-    const all_rounders = playersState.filter(
-      (item: any) => item.seasonal_role === 'all_rounder',
-    );
-    const bowlers = playersState.filter(
-      (item: any) => item.seasonal_role === 'bowler',
-    );
-    setKeepers(keepers);
-    console.log(keepers);
-    setBastman(batsman);
-    setAll_rounder(all_rounders);
-    setBowlers(bowlers);
-  }, []);
+    setKeepers(rolesCountSelector.keeper.players);
+    setBatsman(rolesCountSelector.batsman.players);
+    setAll_rounder(rolesCountSelector.all_rounder.players);
+    setBowlers(rolesCountSelector.bowler.players);
+  }, [rolesCountSelector]);
 
   return (
     <View style={tailwind('h-full bg-dark-4')}>
@@ -98,20 +80,9 @@ export default function MathchGroundScreen() {
             ViceCaptainState={ViceCaptainState}
           />
         </ImageBackground>
-        {/* <Image
-          resizeMode="contain"
-          source={assets.logo_new}
-          style={[
-            tailwind('w-20 h-20 absolute right-5 top-10'),
-            {opacity: 0.7},
-          ]}
-        />
-        <Image
-          resizeMode="contain"
-          source={assets.logo_new}
-          style={[tailwind('w-20 h-20 absolute left-5 top-10'), {opacity: 0.7}]}
-        /> */}
       </ScrollView>
     </View>
   );
 }
+
+// *from* route props is mandatory

@@ -17,8 +17,6 @@ interface PropTypes {
 }
 
 export default function Tabs(props: PropTypes) {
-  log(props.teamsCount);
-
   return (
     <View style={[tailwind('flex-row bg-dark-3 items-center')]}>
       <TouchableOpacity

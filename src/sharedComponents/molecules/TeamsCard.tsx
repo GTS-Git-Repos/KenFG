@@ -13,16 +13,21 @@ import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
 import MyTeamsTopSection from '../atoms/MyTeamTopSection';
 import Svg, {Path, Rect} from 'react-native-svg';
+import {log} from '../../utils/logs';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   team_key: string;
   canModify: boolean;
   current: boolean;
+  cap: any;
+  vc: any;
   keepers: any[];
   batsman: any[];
   all_rounder: any[];
   bowler: any[];
+  team_a: any;
+  team_b: any;
 }
 interface TeamContInfoTypes {
   name: string;
@@ -33,6 +38,9 @@ const CARDWIDTH = Dimensions.get('window').width;
 
 export default function TeamsCard(props: PropTypes) {
   const navigation = useNavigation<any>();
+
+  log.info(props.team_a);
+
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -57,14 +65,14 @@ export default function TeamsCard(props: PropTypes) {
               tailwind('flex-row justify-around items-center'),
               {flex: 6},
             ]}>
-            <PlayerProfile cap={true} index={true} name="Player 1" />
-            <PlayerProfile cap={false} name="Player 2" />
+            <PlayerProfile cap={true} index={true} name={props.cap.name} />
+            <PlayerProfile cap={false} name={props.vc.name} />
           </View>
 
           {/* Count */}
           <View style={[tailwind('items-end'), {flex: 4}]}>
-            <TeamCountInfo name={'AUS'} count={6} />
-            <TeamCountInfo name={'ENG'} count={4} />
+            <TeamCountInfo name={props.team_a.key} count={props.team_a.count} />
+            <TeamCountInfo name={props.team_b.key} count={props.team_b.count} />
           </View>
         </View>
       </ImageBackground>
@@ -82,7 +90,11 @@ const TeamCountInfo = (props: TeamContInfoTypes) => {
   return (
     <View style={[tailwind('flex-row mb-0.5 items-center')]}>
       <Text
-        style={[tailwind('font-regular text-white text-center px-4 font-12')]}>
+        style={[
+          tailwind(
+            'font-regular text-white uppercase text-center px-4 font-12',
+          ),
+        ]}>
         {props.name}
       </Text>
       <Text

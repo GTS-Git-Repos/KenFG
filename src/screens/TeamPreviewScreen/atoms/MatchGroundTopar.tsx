@@ -15,7 +15,7 @@ export default function MatchGroundTopBar(props: PropTypes) {
     <View>
       <TouchableOpacity
         onPress={() => navigation.goBack()}
-        style={[tailwind('flex-row items-center px-3 pt-2')]}>
+        style={[tailwind('flex-row items-center px-3 py-2')]}>
         <Icon name="close" color="white" size={25} />
         <Text
           numberOfLines={1}
@@ -23,14 +23,7 @@ export default function MatchGroundTopBar(props: PropTypes) {
           {props.name}
         </Text>
       </TouchableOpacity>
-      <View
-        // start={{x: 0, y: 0}}
-        // end={{x: 1, y: 0}}
-        style={[tailwind('mx-3 my-2 border-b border-gray-800')]}
-        // colors={['#162339', '#29344B', '#162339']}
-      >
-        <View style={[tailwind(''), {height: 2}]}></View>
-      </View>
+      <View style={[tailwind('mx-3 mb-2 border-b border-gray-800')]}></View>
     </View>
   );
 }

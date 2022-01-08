@@ -22,7 +22,7 @@ import AccountProfileScreen from '../screens/AccountProfileScreen';
 import ContestInfoScreen from '../screens/ContestInfoScreen';
 import CreateTeamScreen from '../screens/CreateTeamScreen';
 import LiveMatchScreen from '../screens/LiveMatchScreen';
-import MatchGroundScreen from '../screens/MatchGroundScreen';
+import TeamPreviewScreen from '../screens/TeamPreviewScreen';
 import CapSelectionScreen from '../screens/CapSelectionScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
 import HowToPlayScreen from '../screens/HowToPlayScreen';
@@ -149,8 +149,8 @@ export default function RootNavigation() {
             name="LiveMatchScreen"
           />
           <RootNavigator.Screen
-            component={MatchGroundScreen}
-            name="MatchGroundScreen"
+            component={TeamPreviewScreen}
+            name="TeamPreviewScreen"
           />
           <RootNavigator.Screen
             component={CapSelectionScreen}

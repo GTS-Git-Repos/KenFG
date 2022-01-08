@@ -2,6 +2,7 @@ import 'react-native-reanimated';
 import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
+
 import {
   LogBox,
   SafeAreaView,
@@ -19,9 +20,6 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import RootNavigation from './src/navigations/RootNavigation';
 import store from './src/store';
-
-// SQLite.DEBUG(true);
-// SQLite.enablePromise(true);
 
 const queryClient = new QueryClient();
 

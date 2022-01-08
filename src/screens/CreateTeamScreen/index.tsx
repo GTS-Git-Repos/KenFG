@@ -79,9 +79,6 @@ export default function CreateTeamScreen() {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // log('rolesCountSelector',rolesCountSelector)
-
-  // selectors
 
   // remote sevice query
   const players: any = useQuery(
@@ -135,6 +132,12 @@ export default function CreateTeamScreen() {
   const clearTeam = () => {
     dispatch(clearTeamAction());
     clearRef?.current?.close();
+  };
+
+  const navigateToTeamPreviewScreeen = () => {
+    // Prepare data For Team Preview Screen
+    
+    return 1;
   };
 
   const navigateToCapSelection = () => {
@@ -280,7 +283,10 @@ export default function CreateTeamScreen() {
       </PagerView>
       <View
         style={[tailwind('absolute bottom-0 w-full flex-row justify-center')]}>
-        <BottomAction navigateToCapSelection={navigateToCapSelection} />
+        <BottomAction
+          navigateToCapSelection={navigateToCapSelection}
+          navigateToTeamPreviewScreeen={navigateToTeamPreviewScreeen}
+        />
       </View>
 
       <Modalize
