@@ -5,10 +5,10 @@ export const createTeamObjCreator = () => {
   const UserInfo = store.getState().user.user_info;
   const Players = store.getState().team.players;
   const Teams = store.getState().team.teams;
-  const captain = store.getState().team.cap_key;
+  const c_key = store.getState().team.cap_key;
   const selected_match = store.getState().app.selected_match;
   const selected_contest = store.getState().app.selected_contest;
-  const vc = store.getState().team.vc_key;
+  const vc_key = store.getState().team.vc_key;
 
   const {keeper, batsman, all_rounder, bowler} = occupaid_role_count();
 
@@ -17,30 +17,21 @@ export const createTeamObjCreator = () => {
   Players.forEach((item: any) => {
     let obj = {...item};
     delete obj.selected_by;
+    delete obj.recent_performance;
     finalPlayers.push(obj);
   });
 
-  const c_player = Players.find((item: any) => item.key === captain);
-  const vc_player = Players.find((item: any) => item.key === vc);
-
-  // console.log('c_player',c_player)
+  const cap = Players.find((item: any) => item.key === c_key);
+  const vice = Players.find((item: any) => item.key === vc_key);
 
   return {
     match_key: selected_match.match_key,
     // contest_key: selected_contest,
-    player_key: UserInfo?.mobile ? UserInfo.mobile : '9876543210',
-    access_key: UserInfo?.mobile ? UserInfo.mobile : '9876543210',
+    player_key: UserInfo?.mobile,
+    access_key: UserInfo?.mobile,
     players: finalPlayers,
-    captain: {
-      key: c_player.key,
-      name: c_player.name,
-      team_key: c_player.team_key,
-    },
-    vc_captain: {
-      key: vc_player.key,
-      name: vc_player.name,
-      team_key: vc_player.team_key,
-    },
+    cap_key: cap.key,
+    vc_key: vice.key,
     team_a: Teams[0],
     team_b: Teams[1],
     keepers: keeper,

@@ -131,8 +131,32 @@ export default function CreateTeamScreen() {
   };
 
   const navigateToTeamPreviewScreeen = () => {
-    // Prepare data For Team Preview Screen
-    return 1;
+    navigation.navigate('TeamPreviewScreen', {
+      from: 1,
+      keepers: playersState.filter(
+        (item: any) => item.seasonal_role === 'keeper',
+      ),
+      batsman: playersState.filter(
+        (item: any) => item.seasonal_role === 'batsman',
+      ),
+      all_rounder: playersState.filter(
+        (item: any) => item.seasonal_role === 'all_rounder',
+      ),
+      bowler: playersState.filter(
+        (item: any) => item.seasonal_role === 'bowler',
+      ),
+      cap_key: 1,
+      vc_key: 1,
+      team_a: {
+        key: matchSelector.team_a,
+        count: rolesCountSelector[matchSelector.team_a],
+      },
+      team_b: {
+        key: matchSelector.team_b,
+        count: rolesCountSelector[matchSelector.team_b],
+      },
+      credits_left: availableCredits,
+    });
   };
 
   const navigateToCapSelection = () => {

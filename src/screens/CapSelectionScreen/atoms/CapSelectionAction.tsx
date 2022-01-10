@@ -13,7 +13,7 @@ export default function CapSelectionAction(props: PropTypes) {
   return (
     <View style={[tailwind('flex-row items-center justify-center')]}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('MatchGroundScreen')}
+        onPress={() => {}}
         style={[
           tailwind('px-5 py-3 flex-row m-2 rounded'),
           {backgroundColor: '#172338', borderTopColor: 'red'},

@@ -72,8 +72,8 @@ export default function CapSelectionScreen() {
       if (captain_key && vc_key) {
         setLoading(true);
         const createTeamObj = createTeamObjCreator();
-        log('createTeamObj', createTeamObj);
-        // return;
+        log('createTeamObj', JSON.stringify(createTeamObj));
+        return;
         const response = await createTeamRemote(createTeamObj);
         if (response) {
           dispatch(clearTeamAction());
