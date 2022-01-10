@@ -110,10 +110,6 @@ export default function RootNavigation() {
             name="CompletedMatchScreen"
           />
 
-          {/* <RootNavigator.Screen
-            component={ContestListScreen}
-            name="ContestListScreen"
-          /> */}
           <RootNavigator.Screen component={WalletScreen} name="WalletScreen" />
           <RootNavigator.Screen
             component={ProfileEditScreen}
@@ -131,32 +127,15 @@ export default function RootNavigation() {
             component={AchievementsScreen}
             name="AchievementsScreen"
           />
-
-          {/* <RootNavigator.Screen
-            component={ContestInfoScreen}
-            name="ContestInfoScreen"
-          /> */}
           <RootNavigator.Screen
             component={LeaderProfileScreen}
             name="LeaderProfileScreen"
           />
-
-          {/* <RootNavigator.Screen
-            component={CreateTeamScreen}
-            name="CreateTeamScreen"
-          /> */}
           <RootNavigator.Screen
             component={LiveMatchScreen}
             name="LiveMatchScreen"
           />
-          {/* <RootNavigator.Screen
-            component={TeamPreviewScreen}
-            name="TeamPreviewScreen"
-          /> */}
-          {/* <RootNavigator.Screen
-            component={CapSelectionScreen}
-            name="CapSelectionScreen"
-          /> */}
+
           <RootNavigator.Screen
             component={CompareTeamsScreen}
             name="CompareTeamsScreen"

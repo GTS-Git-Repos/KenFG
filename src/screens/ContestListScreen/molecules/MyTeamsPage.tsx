@@ -3,12 +3,12 @@ import tailwind from '../../../../tailwind';
 import {View, ScrollView, Text} from 'react-native';
 import {TeamsCard} from '../../../sharedComponents';
 import {log} from '../../../utils/logs';
-import {
-  creditsLeftCalculator,
-  teamPreviewObjConstuctor,
-} from '../../../constructors/teams.constructor';
+import {updatePlayer} from '../../../store/actions/teamActions';
+import {creditsLeftCalculator} from '../../../constructors/teams.constructor';
 import {useNavigation} from '@react-navigation/native';
 import {errorBox} from '../../../utils/snakBars';
+import {useDispatch, useSelector} from 'react-redux';
+import {creditLeft, rolesCount, selectedMatch} from '../../../store/selectors';
 
 interface PropTypes {
   teams: any;
@@ -17,6 +17,12 @@ interface PropTypes {
 
 export default function MyTeamsPage(props: PropTypes) {
   const navigation = useNavigation<any>();
+  const dispatch = useDispatch();
+
+  const playersState: any = useSelector<any>(state => state.team.players);
+  const matchSelector: any = useSelector(selectedMatch);
+  const availableCredits = useSelector(creditLeft);
+  const rolesCountSelector: any = useSelector(rolesCount);
 
   const navigateToPreview = (team_key: string) => {
     const team = props.teams.find((item: any) => item.team_key === team_key);
@@ -49,6 +55,26 @@ export default function MyTeamsPage(props: PropTypes) {
     // const obj = teamPreviewObjConstuctor(team);
   };
 
+  const mutateTeam = (team_key: string) => {
+    const team = props.teams.find((item: any) => item.team_key === team_key);
+    const players = [];
+    if (team) {
+      // console.log(team.keepers);
+      players.push(...team.keepers);
+      players.push(...team.all_rounder);
+      players.push(...team.batsman);
+      players.push(...team.bowler);
+      // console.log('>>', players.length);
+      dispatch(updatePlayer(players));
+      // console.log('playersState', playersState);
+
+      navigation.navigate('CreateTeamScreen', {
+        from: 1,
+        inputPlayer: players,
+      });
+    }
+  };
+
   if (props.status === 'loading') {
     return <TeamsLoading />;
   }
@@ -73,6 +99,7 @@ export default function MyTeamsPage(props: PropTypes) {
             cap={item.cap}
             vc={item.vc}
             navigateToPreview={navigateToPreview}
+            mutateTeam={mutateTeam}
           />
         );
       })}

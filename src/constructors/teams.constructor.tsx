@@ -27,6 +27,7 @@ export const normalizeGetPlayersAPI = (payload: any) => {
 };
 
 export const teamPreviewObjConstuctor = (payload: any) => {
+  // Not used anywhere
   return 1;
 };
 

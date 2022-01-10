@@ -24,14 +24,15 @@ interface PropTypes {
   anounced: boolean;
   points: number;
   credits: number;
-  team_a: string;
-  team_b: string;
+  isTeam_a: boolean;
   status: number;
   checkPlayerSelection(player_key: string, player_role: string): void;
 }
 
 export default function Player(props: PropTypes) {
   const navigation = useNavigation<any>();
+
+  
 
   return (
     <View>
@@ -52,10 +53,7 @@ export default function Player(props: PropTypes) {
             source={assets.player}
             style={[tailwind(''), {height: 62, width: 70}]}
           />
-          <TeamBadge
-            name={props.teamname}
-            team_a={props.teamname === props.team_a}
-          />
+          <TeamBadge name={props.teamname} team_a={props.isTeam_a} />
           {/* <Text
             style={[
               tailwind('font-regular text-white font-15 absolute inset-0'),
@@ -70,7 +68,6 @@ export default function Player(props: PropTypes) {
             props.checkPlayerSelection(props.player_key, props.role)
           }
           style={[tailwind('flex-row'), {flex: 8}]}>
-          {/* name */}
           <View style={[tailwind('pl-4'), {flex: 4}]}>
             <Text
               numberOfLines={1}
@@ -123,18 +120,10 @@ export default function Player(props: PropTypes) {
               ]}>
               {props.credits}
             </Text>
-            {props.isSelected ? <AddedButton /> : <AddButton />}
+            {props.status === 0 ? <AddedButton /> : <AddButton />}
           </View>
         </TouchableOpacity>
       </View>
-
-      {/* <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        style={[tailwind('')]}
-        colors={['#172338B3', '#FFFFFF4D', '#172338B3']}>
-        <View style={[tailwind(''), {height: 0.5}]}></View>
-      </LinearGradient> */}
     </View>
   );
 }
@@ -153,7 +142,7 @@ const TeamBadge = (props: any) => {
   );
 };
 
-const AddButton = (props: any) => {
+const AddButton = () => {
   return (
     <LinearGradient
       colors={['#006A4D', '#00513B']}
@@ -167,7 +156,7 @@ const AddButton = (props: any) => {
   );
 };
 
-const AddedButton = (props: any) => {
+const AddedButton = () => {
   return (
     <LinearGradient
       colors={['#816D2E', '#614920']}

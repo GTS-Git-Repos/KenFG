@@ -1,16 +1,14 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Image, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../constants/assets_manifest';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {View, TouchableOpacity, Text} from 'react-native';
 import EditIcon from '../icons/EditIcon';
-import {CloneIcon, CopyIcon} from '../../sharedComponents/';
+import {CloneIcon} from '../../sharedComponents/';
 
 interface PropTypes {
   team_key: string;
   canModify: boolean;
   current: boolean;
+  mutateTeam(team_key: string): any;
 }
 
 export default function MyTeamsTopSection(props: PropTypes) {
@@ -39,10 +37,14 @@ export default function MyTeamsTopSection(props: PropTypes) {
       </View>
       {props.canModify && (
         <View style={[tailwind('flex-row items-center')]}>
-          <TouchableOpacity onPress={() => {}} style={[tailwind('px-2')]}>
+          <TouchableOpacity
+            onPress={() => props.mutateTeam(props.team_key)}
+            style={[tailwind('px-2')]}>
             <CloneIcon white={false} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity
+            style={[tailwind('px-1')]}
+            onPress={() => props.mutateTeam(props.team_key)}>
             <EditIcon />
           </TouchableOpacity>
         </View>

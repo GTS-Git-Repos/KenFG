@@ -29,22 +29,16 @@ interface PropTypes {
   team_a: any;
   team_b: any;
   navigateToPreview(team_key: string): any;
+  mutateTeam(team_key: string): any;
 }
 interface TeamContInfoTypes {
   name: string;
   count: number;
 }
 
-const CARDWIDTH = Dimensions.get('window').width;
-
 export default function TeamsCard(props: PropTypes) {
-  const navigation = useNavigation<any>();
-
   return (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      onPress={() => props.navigateToPreview(props.team_key)}
-      style={[tailwind('my-2 mt-1 rounded-lg')]}>
+    <View style={[tailwind('my-2 mt-1 rounded-lg')]}>
       <ImageBackground
         imageStyle={{borderTopLeftRadius: 5, borderTopRightRadius: 5}}
         style={[tailwind('w-full')]}
@@ -55,9 +49,13 @@ export default function TeamsCard(props: PropTypes) {
           team_key={props.team_key}
           canModify={props.canModify}
           current={props.current}
+          mutateTeam={props.mutateTeam}
         />
 
-        <View style={[tailwind('flex-row justify-between items-center p-3')]}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => props.navigateToPreview(props.team_key)}
+          style={[tailwind('flex-row justify-between items-center p-3')]}>
           {/* Players */}
           <View
             style={[
@@ -73,7 +71,7 @@ export default function TeamsCard(props: PropTypes) {
             <TeamCountInfo name={props.team_a.key} count={props.team_a.count} />
             <TeamCountInfo name={props.team_b.key} count={props.team_b.count} />
           </View>
-        </View>
+        </TouchableOpacity>
       </ImageBackground>
       <BottomStats
         batsman={props.batsman.length}
@@ -81,7 +79,7 @@ export default function TeamsCard(props: PropTypes) {
         all_rounder={props.all_rounder.length}
         bowler={props.bowler.length}
       />
-    </TouchableOpacity>
+    </View>
   );
 }
 

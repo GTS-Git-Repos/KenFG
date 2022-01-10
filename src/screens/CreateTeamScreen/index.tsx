@@ -64,6 +64,8 @@ export default function CreateTeamScreen() {
   const filterSheet = useRef<Modalize>();
   const isMounted = useRef(false);
 
+  const [tick, setTick] = useState(0);
+
   const playersState: any = useSelector<any>(state => state.team.players);
   const userState: any = useSelector<any>(state => state.user.user_info);
 
@@ -73,6 +75,8 @@ export default function CreateTeamScreen() {
   const ErrorMessageState: any = useSelector<any>(
     state => state.team.error_message,
   );
+
+  // console.log('playersState', JSON.stringify(playersState));
 
   const matchSelector: any = useSelector(selectedMatch);
   const availableCredits = useSelector(creditLeft);
@@ -90,7 +94,10 @@ export default function CreateTeamScreen() {
   // side effects
 
   useEffect(() => {
-    dispatch(clearTeamAction());
+    if (route?.params?.from === 1) {
+    } else {
+      dispatch(clearTeamAction());
+    }
     dispatch(updateErrorMsgAction(null));
     dispatch(updateTeamAction([matchSelector.team_a, matchSelector.team_b]));
   }, []);
@@ -107,7 +114,6 @@ export default function CreateTeamScreen() {
   }, [playersState]);
 
   useEffect(() => {
-    // @ts-ignore
     if (ErrorMessageState?.message) {
       errorBox(ErrorMessageState?.message);
     }
@@ -162,38 +168,6 @@ export default function CreateTeamScreen() {
   const navigateToCapSelection = () => {
     try {
       if (playersState.length === 11) {
-        // check is all minimum roles are satisfied
-        const minRoles: any = {
-          bowler: 3,
-          batsman: 3,
-          keeper: 1,
-          all_rounder: 1,
-        };
-        const keepersSlots = playersState.filter(
-          (item: any) => item.seasonal_role === 'keeper',
-        );
-        const batsmanSlots = playersState.filter(
-          (item: any) => item.seasonal_role === 'batsman',
-        );
-        const all_roundedSlots = playersState.filter(
-          (item: any) => item.seasonal_role === 'all_rounder',
-        );
-        const bowler_Slots = playersState.filter(
-          (item: any) => item.seasonal_role === 'bowler',
-        );
-
-        if (keepersSlots.length < minRoles.keeper) {
-          throw 'Minimum 1 keeper required';
-        }
-        if (batsmanSlots.length < minRoles.batsman) {
-          throw 'Minimum 3 batsmans required';
-        }
-        if (all_roundedSlots.length < minRoles.all_rounder) {
-          throw 'Minimum 1 All Rounder required';
-        }
-        if (bowler_Slots.length < minRoles.bowler) {
-          throw 'Minimum 3 bowlers required';
-        }
         navigation.navigate('CapSelectionScreen'),
           {
             match_key: !route?.params?.match_key,
@@ -263,6 +237,7 @@ export default function CreateTeamScreen() {
             rolesCountSelector={rolesCountSelector}
             index={0}
             activeIndex={activeIndex}
+            team_a={matchSelector.team_a}
           />
         </View>
         <View>
@@ -275,6 +250,7 @@ export default function CreateTeamScreen() {
             rolesCountSelector={rolesCountSelector}
             index={1}
             activeIndex={activeIndex}
+            team_a={matchSelector.team_a}
           />
         </View>
         <View>
@@ -287,6 +263,7 @@ export default function CreateTeamScreen() {
             rolesCountSelector={rolesCountSelector}
             index={2}
             activeIndex={activeIndex}
+            team_a={matchSelector.team_a}
           />
         </View>
         <View>
@@ -299,6 +276,7 @@ export default function CreateTeamScreen() {
             rolesCountSelector={rolesCountSelector}
             index={3}
             activeIndex={activeIndex}
+            team_a={matchSelector.team_a}
           />
         </View>
       </PagerView>

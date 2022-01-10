@@ -8,6 +8,7 @@ import {
 const log = console.log;
 
 export function isPlayerSelected(player_key: string) {
+  // DEPRECATED
   const state = store.getState().team;
   const player = state.players.find((item: any) => item.key === player_key);
   if (player) {

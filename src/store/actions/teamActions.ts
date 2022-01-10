@@ -13,6 +13,7 @@ import {
   SAVE_ALL_PLAYERS,
   UPDATE_TEAM,
 } from './actionTypes';
+
 import {sumOfMustNeedToFillSlots} from '../store_utils';
 const log = console.log;
 
@@ -122,12 +123,14 @@ export const updatePlayerAction = (payload: any) => {
         }
       }
       const newPlayerState = [...players];
-      newPlayerState.push(player);
+      const playerObj = {...player};
+      delete playerObj.recent_performance;
+      newPlayerState.push(playerObj);
       dispatch(updatePlayer(newPlayerState));
       return;
     } catch (err: any) {
       const {error_message} = getState().team;
-      let newObj = {...error_message};
+      const newObj = {...error_message};
       newObj.message = err;
       dispatch(updateErrorMsgAction(newObj));
       return;

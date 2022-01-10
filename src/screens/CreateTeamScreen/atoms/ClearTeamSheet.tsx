@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useDispatch} from 'react-redux';
 
 interface PropTypes {
-  clearRef(): any;
+  clearRef: any;
   clearTeam(): any;
 }
 

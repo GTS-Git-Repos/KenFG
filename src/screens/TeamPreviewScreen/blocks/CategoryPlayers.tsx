@@ -11,6 +11,7 @@ interface PropTypes {
   vc_key: string;
   title: string;
   players: any;
+  team_a: string;
 }
 
 interface PlayerPropTypes {
@@ -18,13 +19,12 @@ interface PlayerPropTypes {
   image: string;
   name: string;
   amount: string;
-  team1: boolean;
+  isteam_a: boolean;
   isCaptain: boolean;
   isViceCaptain: boolean;
 }
 
 export default function CategoryPlayers(props: PropTypes) {
-
   return (
     <View style={[tailwind('py-2')]}>
       <View style={[tailwind('')]}>
@@ -50,7 +50,7 @@ export default function CategoryPlayers(props: PropTypes) {
             <PlayerProfile
               key={item.key}
               player_key={item.key}
-              team1={item.team_key === 'eng'}
+              isteam_a={item.team_key === props.team_a}
               image={''}
               name={item.name}
               amount={'8.4 crore'}
@@ -72,7 +72,7 @@ const PlayerProfile = (props: PlayerPropTypes) => {
         source={assets.player}
         style={[tailwind(''), {width: 48, height: 48}]}
       />
-      <Name team1={props.team1} name={props.name} />
+      <Name isteam_a={props.isteam_a} name={props.name} />
       <Text style={[tailwind('font-regular font-7 text-light')]}>
         {props.amount}
       </Text>
@@ -100,7 +100,7 @@ const Name = (props: any) => {
         tailwind('px-2 bottom-1 py-1 border-2 border-green-600'),
         styles.tag,
       ]}
-      colors={props.team1 ? ['#73221D', '#172338'] : ['#172338', '#254987']}>
+      colors={props.isteam_a ? ['#172338', '#254987'] : ['#73221D', '#172338']}>
       <Text style={[tailwind('font-bold text-light text-center font-10')]}>
         {props.name}
       </Text>

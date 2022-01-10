@@ -1,7 +1,6 @@
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
-// @ts-ignore
 
 import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
 import CompletedTestMatchMeta from '../constants/mocks/completedTestMatch3i.json';
@@ -9,8 +8,8 @@ import CompletedTestMatchMeta from '../constants/mocks/completedTestMatch3i.json
 import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
 import {parseJoinedTeamsAPI} from '../formatters/teams.formatter';
 import {normalizeGetPlayersAPI} from '../constructors/teams.constructor';
-// API Routes
 
+// API Routes
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
 const req_team_create = '/create-team.php';
 const req_view_team = '/view-team.php';
@@ -27,8 +26,8 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
       {player_key: params.queryKey[1]},
     );
     if (response.status === 200) {
-      let matches = normalizeUpcommingMatchesAPI(response.data.data);
-      let banners = response.data.data.banners;
+      const matches = normalizeUpcommingMatchesAPI(response.data.data);
+      const banners = response.data.data.banners;
       return {matches: matches, banners};
     } else {
       failedLog('upcommingMatchesandBannersRemote()', response);
@@ -63,7 +62,7 @@ export const contestInfoRemote = async (params: any) => {
       BASE_URL + `${req_contest_list}?m=${params.queryKey[1]}`,
     );
     if (response.status === 200) {
-      let contest = response.data.data.find(
+      const contest = response.data.data.find(
         (item: any) => item.key === params.queryKey[2],
       );
       if (contest) {

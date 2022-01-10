@@ -1,16 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Image, ImageBackground, ScrollView} from 'react-native';
+import React, {useEffect} from 'react';
+import {View, Text, ImageBackground, ScrollView} from 'react-native';
 import tailwind from '../../../tailwind';
-import {useNavigation, useRoute, CommonActions} from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
 import assets from '../../constants/assets_manifest';
-import {useQuery} from 'react-query';
 
 import MatchGroundTopBar from './atoms/MatchGroundTopar';
 import MatchStats from './atoms/MatchStats';
 import CategoryPlayers from './blocks/CategoryPlayers';
-import {log} from '../../utils/logs';
-import {useSelector} from 'react-redux';
-import {creditLeft, rolesCount} from '../../store/selectors';
 
 export default function TeamPreViewScreen() {
   const route = useRoute<any>();
@@ -42,24 +38,28 @@ export default function TeamPreViewScreen() {
             players={route.params.keepers}
             cap_key={route.params.cap_key}
             vc_key={route.params.vc_key}
+            team_a={route.params.team_a.key}
           />
           <CategoryPlayers
             title={'BATS MEN'}
             players={route.params.batsman}
             cap_key={route.params.cap_key}
             vc_key={route.params.vc_key}
+            team_a={route.params.team_a.key}
           />
           <CategoryPlayers
             title={'ALL ROUNDERS'}
             players={route.params.all_rounder}
             cap_key={route.params.cap_key}
             vc_key={route.params.vc_key}
+            team_a={route.params.team_a}
           />
           <CategoryPlayers
             title={'BOWLERS'}
             players={route.params.bowler}
             cap_key={route.params.cap_key}
             vc_key={route.params.vc_key}
+            team_a={route.params.team_a}
           />
         </ImageBackground>
       </ScrollView>

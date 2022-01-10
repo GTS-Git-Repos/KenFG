@@ -1,16 +1,10 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
 import {View, ScrollView, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../constants/assets_manifest';
 import TabCondtion from '../atoms/TabCondtions';
 import SortTabs from '../atoms/SortTabs';
 import Player from '../molecules/Players';
-import {
-  isPlayerCanBeSelected,
-  isPlayerSelected,
-  currentPlayerStatus,
-} from '../../../store/store_utils';
+import {currentPlayerStatus} from '../../../store/store_utils';
 import {BottomLine} from '../../../sharedComponents';
 
 interface PropTypes {
@@ -22,11 +16,10 @@ interface PropTypes {
   rolesCountSelector: any;
   index: number;
   activeIndex: number;
+  team_a: string;
 }
 
 export default function Page(props: PropTypes) {
-
-
   if (props.index !== props.activeIndex) {
     return null;
   }
@@ -49,8 +42,7 @@ export default function Page(props: PropTypes) {
               key={item.key}
               player_key={item.key}
               teamname={item.team_key}
-              team_a={'aus'}
-              team_b={'eng'}
+              isTeam_a={props.team_a === item.team_key}
               role={item.seasonal_role}
               image={''}
               name={item.name}
