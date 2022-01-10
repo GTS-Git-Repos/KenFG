@@ -7,10 +7,8 @@ import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
 import CompletedTestMatchMeta from '../constants/mocks/completedTestMatch3i.json';
 
 import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
-import {
-  parseJoinedTeamsAPI,
-  splitJoinedTeamsResponse,
-} from '../formatters/teams.formatter';
+import {parseJoinedTeamsAPI} from '../formatters/teams.formatter';
+import {normalizeGetPlayersAPI} from '../constructors/teams.constructor';
 // API Routes
 
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
@@ -125,29 +123,17 @@ export const createTeamRemote = async (payload: any) => {
 
 export const getMatchPlayersRemote = async (params: any) => {
   try {
-    const response = await requestServer(
-      METHODS.POST,
-      BASE_URL + `${req_players}?match_key=${params.queryKey[1]}`,
-    );
+    const response = await requestServer(METHODS.POST, BASE_URL + req_players, {
+      match_key: params.queryKey[1],
+      mobile: params.queryKey[2],
+    });
     if (response.status === 200) {
-      const keeper = response.data.filter(
-        (item: any) => item.seasonal_role === 'keeper',
-      );
-      const batsman = response.data.filter(
-        (item: any) => item.seasonal_role === 'batsman',
-      );
-      const all_rounder = response.data.filter(
-        (item: any) => item.seasonal_role === 'all_rounder',
-      );
-      const bowler = response.data.filter(
-        (item: any) => item.seasonal_role === 'bowler',
-      );
-      return [{keeper, batsman, all_rounder, bowler}];
+      return normalizeGetPlayersAPI(response.data.data);
     } else {
       failedLog('getMatchPlayersRemote()', response);
     }
   } catch (err) {
-    console.log(err);
+    console.log('getMatchPlayersRemote', err);
     return false;
   }
 };

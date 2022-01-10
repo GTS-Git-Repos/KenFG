@@ -22,7 +22,7 @@ import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
 import {useQuery} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
-import {userInfo} from '../../store/selectors';
+import {selectedMatch, userInfo} from '../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import {updateSelectedContestAction} from '../../store/actions/appActions';
 import JoinContestModal from './molecules/JoinContestModal';
@@ -44,8 +44,11 @@ export default function ContestListScreen() {
   const [showJoinModal, setShowJoinModal] = useState(true);
   const [loading, setLoading] = useState<any>(false);
   const [selectedFilter, setSelectedFilter] = useState<any>(null);
+  const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
 
-  const userInfoSelector = useSelector(userInfo);
+  const userInfoSelector: any = useSelector(userInfo);
+  const matchSelector: any = useSelector(selectedMatch);
+
   const selectedMatchState: any = useSelector<any>(
     state => state.app.selected_match,
   );
@@ -64,6 +67,8 @@ export default function ContestListScreen() {
     getJoinedTeamsRemote,
   );
 
+  // side Effects
+
   useEffect(() => {
     if (route.params?.contest_key && selectedContestState) {
       setShowJoinModal(true);
@@ -72,14 +77,7 @@ export default function ContestListScreen() {
     }
   }, []);
 
-  useEffect(() => {
-    if (teams.data) {
-      // console.log('teams -->', teams.data);
-    }
-  }, [teams.data]);
-
   // Business logic
-
   const onPageSelectedAction = (e: any) => {
     setSelectedTab(e.nativeEvent.position);
   };
@@ -103,7 +101,6 @@ export default function ContestListScreen() {
         team_key: route.params.team_key,
         player_key: userInfoSelector.mobile,
       };
-      // console.log('payload', payload);
       setLoading(true);
       const response = await joinContestRemote(payload);
       if (response) {
@@ -113,25 +110,21 @@ export default function ContestListScreen() {
         errorBox('Failed to join Contest');
       }
     } catch (err) {
-      log('join_err', err);
+      log('joinContest', err);
     } finally {
       setLoading(false);
     }
   };
 
   if (isScreenReady === false || !contests.data) {
-    return (
-      <ContestScreenLoading
-        title={`${selectedMatchState.team_a} VS ${selectedMatchState.team_b}`.toUpperCase()}
-      />
-    );
+    return <ContestScreenLoading title={matchSelector?.titleString} />;
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarContest
-        title={`${selectedMatchState?.team_a} VS ${selectedMatchState?.team_b}`}
-        subtitle={'18h 11m left'}
+        title={matchSelector?.titleString}
+        subtitle={currentTime}
       />
       <View style={[tailwind('')]}>
         <Tabs

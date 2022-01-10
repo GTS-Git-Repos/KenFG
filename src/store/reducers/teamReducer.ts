@@ -6,18 +6,18 @@ import {
   UPDATE_CAPTAIN,
   UPDATE_VC_CAPTAIN,
   CLEAR_TEAM,
+  UPDATE_TEAM,
   UPDATE_BLOCKLIST,
   UPDATE_ERROR_MESSAGE,
 } from '../actions/actionTypes';
 
 import preloadPlayers from '../../constants/preload/teamformation.preload.json';
 
-
-
-
 const initialState = {
   all_players: [],
-  teams: ['aus', 'eng'],
+  teams: ['', ''],
+  team_a: null,
+  team_b: null,
   players: [],
   cap_key: null,
   vc_key: null,
@@ -49,6 +49,12 @@ const Team = (state = initialState, action: actionShape): any => {
       return {
         ...state,
         error_message: action.payload,
+      };
+    }
+    case UPDATE_TEAM: {
+      return {
+        ...state,
+        teams: action.payload,
       };
     }
     case UPDATE_TEAM_COUNT:

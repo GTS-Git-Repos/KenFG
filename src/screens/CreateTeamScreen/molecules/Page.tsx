@@ -25,6 +25,8 @@ interface PropTypes {
 }
 
 export default function Page(props: PropTypes) {
+
+
   if (props.index !== props.activeIndex) {
     return null;
   }

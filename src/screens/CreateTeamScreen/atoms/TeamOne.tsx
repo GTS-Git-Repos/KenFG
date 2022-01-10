@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   teamname: string;
-  teamcount: string;
+  teamcount: number;
   reverseUI: boolean;
 }
 
@@ -33,7 +33,7 @@ export default function Team1(props: PropTypes) {
           <Text
             allowFontScaling={true}
             adjustsFontSizeToFit={true}
-            style={[tailwind('font-bold text-white py-1 font-12')]}>
+            style={[tailwind('font-bold text-white py-1 uppercase font-12')]}>
             {props.teamname}
           </Text>
         </View>

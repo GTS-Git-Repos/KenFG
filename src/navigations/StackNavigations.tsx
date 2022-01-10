@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import ContestListScreen from '../screens/ContestListScreen';
 import ContestInfoScreen from '../screens/ContestInfoScreen';
 import LiveMatchScreen from '../screens/LiveMatchScreen';
-import MatchGroundScreen from '../screens/MatchGroundScreen';
+import TeamPreviewScreen from '../screens/TeamPreviewScreen';
 import AccountProfileScreen from '../screens/AccountProfileScreen';
 import CapSelectionScreen from '../screens/CapSelectionScreen';
 import TeamsListScreen from '../screens/TeamsListScreen';
@@ -46,8 +46,8 @@ export function Home(props: any) {
   return (
     <HomeStack.Navigator screenOptions={StackConfig}>
       <HomeStack.Screen
-        name="MatchGroundScreen"
-        component={MatchGroundScreen}
+        name="TeamPreviewScreen"
+        component={TeamPreviewScreen}
       />
       <HomeStack.Screen
         name="AccountProfileScreen"
@@ -82,6 +82,12 @@ export function Contest(props: any) {
         name="ContestListScreen"
         component={ContestListScreen}
       />
+
+      <ContestStack.Screen
+        component={ContestInfoScreen}
+        name="ContestInfoScreen"
+      />
+      <ContestStack.Screen name="TeamsListScreen" component={TeamsListScreen} />
       <ContestStack.Screen
         name="CreateTeamScreen"
         component={CreateTeamScreen}
@@ -92,14 +98,9 @@ export function Contest(props: any) {
       />
 
       <ContestStack.Screen
-        name="MatchGroundScreen"
-        component={MatchGroundScreen}
+        name="TeamPreviewScreen"
+        component={TeamPreviewScreen}
       />
-      <ContestStack.Screen
-        name="CompareTeamsScreen"
-        component={CompareTeamsScreen}
-      />
-      <ContestStack.Screen name="TeamsListScreen" component={TeamsListScreen} />
     </ContestStack.Navigator>
   );
 }

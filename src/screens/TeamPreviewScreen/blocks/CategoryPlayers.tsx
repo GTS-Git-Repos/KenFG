@@ -7,23 +7,24 @@ import {CIcon, VCIcon} from '../../../sharedComponents';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
-  CaptainKeyState: string;
-  ViceCaptainState: string;
+  cap_key: string;
+  vc_key: string;
   title: string;
   players: any;
 }
 
 interface PlayerPropTypes {
-  CaptainKeyState: string;
-  ViceCaptainState: string;
   player_key: string;
   image: string;
   name: string;
   amount: string;
   team1: boolean;
+  isCaptain: boolean;
+  isViceCaptain: boolean;
 }
 
 export default function CategoryPlayers(props: PropTypes) {
+
   return (
     <View style={[tailwind('py-2')]}>
       <View style={[tailwind('')]}>
@@ -44,7 +45,7 @@ export default function CategoryPlayers(props: PropTypes) {
 
       <View
         style={[tailwind('flex-row justify-center flex-wrap items-center')]}>
-        {props.players.map(item => {
+        {props.players.map((item: any) => {
           return (
             <PlayerProfile
               key={item.key}
@@ -53,8 +54,8 @@ export default function CategoryPlayers(props: PropTypes) {
               image={''}
               name={item.name}
               amount={'8.4 crore'}
-              CaptainKeyState={props.CaptainKeyState}
-              ViceCaptainState={props.ViceCaptainState}
+              isCaptain={props.cap_key === item.key}
+              isViceCaptain={props.vc_key === item.key}
             />
           );
         })}
@@ -75,13 +76,13 @@ const PlayerProfile = (props: PlayerPropTypes) => {
       <Text style={[tailwind('font-regular font-7 text-light')]}>
         {props.amount}
       </Text>
-      {props.player_key === props.CaptainKeyState && (
+      {props.isCaptain && (
         <View style={[tailwind('absolute left-2')]}>
           <CIcon white={true} />
         </View>
       )}
 
-      {props.player_key === props.ViceCaptainState && (
+      {props.isViceCaptain && (
         <View style={[tailwind('absolute left-2')]}>
           <VCIcon white={true} />
         </View>

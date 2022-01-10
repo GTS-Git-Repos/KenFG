@@ -28,6 +28,7 @@ interface PropTypes {
   bowler: any[];
   team_a: any;
   team_b: any;
+  navigateToPreview(team_key: string): any;
 }
 interface TeamContInfoTypes {
   name: string;
@@ -39,12 +40,10 @@ const CARDWIDTH = Dimensions.get('window').width;
 export default function TeamsCard(props: PropTypes) {
   const navigation = useNavigation<any>();
 
-  log.info(props.team_a);
-
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      // onPress={() => navigation.navigate('MatchGroundScreen')}
+      onPress={() => props.navigateToPreview(props.team_key)}
       style={[tailwind('my-2 mt-1 rounded-lg')]}>
       <ImageBackground
         imageStyle={{borderTopLeftRadius: 5, borderTopRightRadius: 5}}

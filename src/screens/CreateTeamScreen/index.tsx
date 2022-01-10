@@ -30,13 +30,19 @@ import {
   updateBlockListAction,
   saveAllPlayersAction,
   updateErrorMsgAction,
+  updateTeamAction,
 } from '../../store/actions/teamActions';
 // import {getMatchPlayersRemote} from '../../remote/serviceRemote';
 import {getMatchPlayersRemote} from '../../remote/matchesRemote';
 import {useQuery} from 'react-query';
 
 import {useSelector, useDispatch} from 'react-redux';
-import {creditLeft, rolesCount, blockList} from '../../store/selectors';
+import {
+  creditLeft,
+  rolesCount,
+  blockList,
+  selectedMatch,
+} from '../../store/selectors';
 // import {isPlayerCanBeSelectable} from '../../workers/decision';
 import {errorBox} from '../../utils/snakBars';
 import TabItem from './atoms/TabItem';
@@ -45,8 +51,8 @@ import CreateTeamFilterSheetTitle from './atoms/CreateTeamFilterSheetTitle';
 import PlayerFilterSheet from './molecules/PlayerFilterSheet';
 import CreateTeamLoading from './atoms/CreateTeamLoading';
 import ScrollTabs from './molecules/ScrollTabs';
-
-const log = console.log;
+import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
+import {log} from '../../utils/logs';
 
 export default function CreateTeamScreen() {
   const navigation = useNavigation<any>();
@@ -59,30 +65,25 @@ export default function CreateTeamScreen() {
   const isMounted = useRef(false);
 
   const playersState: any = useSelector<any>(state => state.team.players);
+  const userState: any = useSelector<any>(state => state.user.user_info);
 
-  console.log(JSON.stringify(playersState));
-
-  const SelectedMatchState = useSelector<any>(
+  const SelectedMatchState: any = useSelector<any>(
     state => state.app.selected_match,
   );
-  const ErrorMessageState = useSelector(state => state.team.error_message);
+  const ErrorMessageState: any = useSelector<any>(
+    state => state.team.error_message,
+  );
 
+  const matchSelector: any = useSelector(selectedMatch);
   const availableCredits = useSelector(creditLeft);
-  // const playersCount = useSelector(playersCountByTeams);
   const rolesCountSelector: any = useSelector(rolesCount);
-  const BlockListSelector: any = useSelector(blockList);
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [onlyMin, setOnlyMin] = useState<boolean>(true);
-  const [tick, setTick] = useState<boolean>(false);
-  // const [blockListrule, setBlockListrule] = useState('');
-
   const [activeIndex, setActiveIndex] = useState(0);
-
 
   // remote sevice query
   const players: any = useQuery(
-    ['players', SelectedMatchState.match_key],
+    ['players', SelectedMatchState.match_key, userState.mobile],
     getMatchPlayersRemote,
   );
 
@@ -91,6 +92,7 @@ export default function CreateTeamScreen() {
   useEffect(() => {
     dispatch(clearTeamAction());
     dispatch(updateErrorMsgAction(null));
+    dispatch(updateTeamAction([matchSelector.team_a, matchSelector.team_b]));
   }, []);
 
   useEffect(() => {
@@ -100,7 +102,6 @@ export default function CreateTeamScreen() {
   }, [players]);
 
   useEffect(() => {
-    // dispatch(updateBlockListAction(BlockListSelector));
     dispatch(updateTeamCountAction(rolesCountSelector));
     dispatch(updateCreditsAction(availableCredits));
   }, [playersState]);
@@ -118,11 +119,6 @@ export default function CreateTeamScreen() {
   const onTabPressed = (index: number) => {
     pageRef.current?.setPage(index);
   };
-  const onPageScrollAction = (e: any) => {
-    // console.log(e.nativeEvent);
-  };
-
-  // Create Team Logic
 
   const checkPlayerSelection = (player_key: string, player_role: string) => {
     dispatch(updatePlayerAction({key: player_key, role: player_role}));
@@ -136,7 +132,6 @@ export default function CreateTeamScreen() {
 
   const navigateToTeamPreviewScreeen = () => {
     // Prepare data For Team Preview Screen
-    
     return 1;
   };
 
@@ -187,33 +182,36 @@ export default function CreateTeamScreen() {
     }
   };
 
-  if (isScreenReady === false || !players.data) {
-    return <CreateTeamLoading text="AUS vs ENG" />;
+  if (isScreenReady === false || players.status === 'loading') {
+    return <CreateTeamLoading text={``} />;
+  }
+  if (players.status === 'success' && !players.data) {
+    return <LoadFailedTeamFormation />;
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarCreateTeam />
       <LinearGradient colors={['#172338', '#0D1320']}>
-        <LinearGradient
-          // start={{x: 0, y: 0}}
-          // end={{x: 1, y: 0}}
-          colors={['#172338', '#0D1320']}>
+        <LinearGradient colors={['#172338', '#0D1320']}>
           <MatchStatus text={'MAX 7 PLAYERS FROM A TEAM'} />
           <Line />
 
           <TeamInfo
-            teamname1={'AUS'}
-            teamname2={'ENG'}
-            teamcount1={rolesCountSelector['aus']}
-            teamcount2={rolesCountSelector['eng']}
+            teamname1={matchSelector.team_a}
+            teamname2={matchSelector.team_b}
+            teamcount1={rolesCountSelector[matchSelector.team_a]}
+            teamcount2={rolesCountSelector[matchSelector.team_b]}
             credits_left={availableCredits}
           />
         </LinearGradient>
         <Line />
         <SelectionIndicator
           clearRef={clearRef}
-          count={rolesCountSelector['aus'] + rolesCountSelector['eng']}
+          count={
+            rolesCountSelector[matchSelector.team_a] +
+            rolesCountSelector[matchSelector.team_b]
+          }
         />
       </LinearGradient>
 
@@ -229,7 +227,6 @@ export default function CreateTeamScreen() {
       <PagerView
         ref={pageRef}
         onPageSelected={onPageSelectedAction}
-        onPageScroll={onPageScrollAction}
         style={{flex: 1}}
         initialPage={0}>
         <View>

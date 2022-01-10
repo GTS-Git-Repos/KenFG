@@ -1,9 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/core';
+import {useFocusEffect, useNavigation} from '@react-navigation/core';
 import assets from '../../../../constants/assets_manifest';
 import {useDispatch} from 'react-redux';
 import {
@@ -33,6 +33,12 @@ export default function UpcommingMatches(props: PropTypes) {
   const isMounted = useRef(true);
   const [currentTime, setCurrentTime] = useState<any>('00:00:00');
 
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     //  Runs side effect
+  //   }, []),
+  // );
+
   useEffect(() => {
     let interval: any = null;
     try {
@@ -58,9 +64,10 @@ export default function UpcommingMatches(props: PropTypes) {
         match_key: props.match_key,
         team_a: props.team_a_name,
         team_b: props.team_b_name,
+        start_at: props.start_at,
       }),
     );
-    navigation.navigate('ContestListScreen');
+    navigation.navigate('Contest');
   };
 
   return (

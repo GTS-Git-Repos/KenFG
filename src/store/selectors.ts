@@ -1,10 +1,13 @@
+import {exp} from 'react-native-reanimated';
 import {createSelector} from 'reselect';
+import {covertInputTimeStringToDate} from '../utils/comman';
 import {rolesConstraints} from '../constants/appContants';
 // const LocationState = (state: any): any => state.app.locationState;
 
 const UserState = (state: any) => state.user.user_info;
 const playersState = (state: any) => state.team.players;
 const TeamsState = (state: any) => state.team.teams;
+const SelectedMatchState = (state: any) => state.app.selected_match;
 
 export const userInfo = createSelector(UserState, userInfo => {
   return userInfo;
@@ -20,6 +23,19 @@ export const creditLeft = createSelector(playersState, players => {
   } catch (err) {
     console.log(err);
     return 0;
+  }
+});
+
+export const selectedMatch = createSelector(SelectedMatchState, match => {
+  try {
+    return {
+      team_a: match.team_b,
+      team_b: match.team_a,
+      titleString: `${match.team_a} VS ${match.team_b}`,
+    };
+  } catch (err) {
+    console.log('selectedMatch Selector', selectedMatch);
+    return false;
   }
 });
 

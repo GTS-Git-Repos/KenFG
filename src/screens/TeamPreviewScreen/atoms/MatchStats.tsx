@@ -5,12 +5,14 @@ import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
-  playersCount: number;
-  teamname1: string;
-  teamname2: string;
-  teamcount1: number;
-  teamcount2: number;
-  creditsLeft: number;
+  team_a: TeamStatProps;
+  team_b: TeamStatProps;
+  credits_left: number;
+}
+
+interface TeamStatProps {
+  key: string;
+  count: number;
 }
 
 export default function MatchStats(props: PropTypes) {
@@ -19,7 +21,7 @@ export default function MatchStats(props: PropTypes) {
       <View style={[tailwind('flex-col items-center'), {flex: 3}]}>
         <View style={[tailwind('flex-row items-center py-1')]}>
           <Text style={[tailwind('font-bold text-light font-20')]}>
-            {props.playersCount}
+            {props.team_a.count + props.team_b.count}
           </Text>
           <Text style={[tailwind('font-regular px-1 text-dark-1 font-20')]}>
             /11
@@ -33,20 +35,20 @@ export default function MatchStats(props: PropTypes) {
       {/* team */}
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 6}]}>
-        <TeamTag teamname={props.teamname1} team1={true} />
+        <TeamTag teamname={props.team_a.key} team1={true} />
 
         <Text
           style={[tailwind('font-bold text-light px-2 rounded font-20'), {}]}>
-          {props.teamcount1} : {props.teamcount2}
+          {props.team_a.count} : {props.team_b.count}
         </Text>
 
-        <TeamTag teamname={props.teamname2} team1={false} />
+        <TeamTag teamname={props.team_a.key} team1={false} />
       </View>
 
       <View style={[tailwind(''), {flex: 3}]}>
         <View style={[tailwind('py-1 px-2')]}>
           <Text style={[tailwind('font-bold text-right text-light font-20')]}>
-            {props.creditsLeft}
+            {props.credits_left}
           </Text>
         </View>
         <Text

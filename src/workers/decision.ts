@@ -2,26 +2,6 @@ import store from '../store/';
 const log = console.log;
 import {rolesConstraints} from '../constants/appContants';
 
-export function isAnyRoleReachedMaxSlots(): boolean {
-  const {keeper, batsman, all_rounder, bowler} = occupaid_role_count();
-  if (keeper >= 4) {
-    return true;
-  }
-
-  if (batsman >= 6) {
-    return true;
-  }
-
-  if (all_rounder >= 4) {
-    return true;
-  }
-
-  if (bowler >= 4) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 export function findARoleNeedToFilled() {
   const {keeper, batsman, all_rounder, bowler} = occupaid_role_count();

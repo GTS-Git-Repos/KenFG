@@ -11,7 +11,7 @@ import {
 } from '@react-navigation/stack';
 
 import {DrawerNav} from './DrawerNavigation';
-import {Home, Auth, More} from './StackNavigations';
+import {Home, Auth, More, Contest} from './StackNavigations';
 
 import InitialScreen from '../screens/InitialScreen';
 import NotificationScreen from '../screens/NotificationScreen';
@@ -81,6 +81,8 @@ export default function RootNavigation() {
           <RootNavigator.Screen component={Auth} name="Auth" />
           <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
           <RootNavigator.Screen component={More} name="More" />
+          <RootNavigator.Screen component={Contest} name="Contest" />
+
           <RootNavigator.Screen
             component={CreateContestScreen}
             name="CreateContestScreen"
@@ -108,11 +110,10 @@ export default function RootNavigation() {
             name="CompletedMatchScreen"
           />
 
-          <RootNavigator.Screen
-            // options={{cardStyleInterpolator: forFade}}
+          {/* <RootNavigator.Screen
             component={ContestListScreen}
             name="ContestListScreen"
-          />
+          /> */}
           <RootNavigator.Screen component={WalletScreen} name="WalletScreen" />
           <RootNavigator.Screen
             component={ProfileEditScreen}
@@ -131,31 +132,31 @@ export default function RootNavigation() {
             name="AchievementsScreen"
           />
 
-          <RootNavigator.Screen
+          {/* <RootNavigator.Screen
             component={ContestInfoScreen}
             name="ContestInfoScreen"
-          />
+          /> */}
           <RootNavigator.Screen
             component={LeaderProfileScreen}
             name="LeaderProfileScreen"
           />
 
-          <RootNavigator.Screen
+          {/* <RootNavigator.Screen
             component={CreateTeamScreen}
             name="CreateTeamScreen"
-          />
+          /> */}
           <RootNavigator.Screen
             component={LiveMatchScreen}
             name="LiveMatchScreen"
           />
-          <RootNavigator.Screen
+          {/* <RootNavigator.Screen
             component={TeamPreviewScreen}
             name="TeamPreviewScreen"
-          />
-          <RootNavigator.Screen
+          /> */}
+          {/* <RootNavigator.Screen
             component={CapSelectionScreen}
             name="CapSelectionScreen"
-          />
+          /> */}
           <RootNavigator.Screen
             component={CompareTeamsScreen}
             name="CompareTeamsScreen"
