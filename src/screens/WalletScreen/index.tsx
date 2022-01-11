@@ -14,6 +14,7 @@ import AddMoneySheet from './molecules/AddMoneySheet';
 import LinearGradient from 'react-native-linear-gradient';
 import WalletSubTitle from './atoms/WalletSubTitle';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useSelector} from 'react-redux';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
@@ -22,13 +23,15 @@ export default function WalletScreen() {
   const addMoneySheet = useRef(null);
   const navigation = useNavigation();
 
+  const userInfoState: any = useSelector<any>(state => state.user.user_info);
+
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Wallet'} />
       <ScrollView>
         {/* <CurrentAmount amount={38} /> */}
-        <NewWallet />
-        <View style={[tailwind('')]}>
+        <NewWallet amount={userInfoState.un_utilized} />
+        {/* <View style={[tailwind('')]}>
           <WalletSubTitle text={'Amount Added (UNUTALISED)'} />
           <Text style={[tailwind('font-bold px-4 py-2 text-white font-18')]}>
             {'\u20B9'} 7,323
@@ -36,6 +39,7 @@ export default function WalletScreen() {
         </View>
 
         <WalletSubTitle text={'Winnings'} />
+        
         <View style={[tailwind('flex-row items-center justify-between px-4')]}>
           <Text style={[tailwind('font-bold py-2 text-white font-18')]}>
             {'\u20B9'} 7,323
@@ -48,7 +52,7 @@ export default function WalletScreen() {
               Verify Now
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         <View style={[tailwind('my-2')]}>
           <Actions
@@ -89,7 +93,7 @@ export default function WalletScreen() {
   );
 }
 
-const NewWallet = () => {
+const NewWallet = (props: any) => {
   return (
     <View
       // start={{x: 0, y: 0}}
@@ -100,7 +104,8 @@ const NewWallet = () => {
         Current Balance
       </Text>
       <Text style={[tailwind('font-bold text-white'), {fontSize: 30}]}>
-        {'\u20B9'} 7,323
+        {'\u20B9'}
+        {props.amount}
       </Text>
     </View>
   );

@@ -13,6 +13,7 @@ import WalletScreen from '../screens/WalletScreen';
 import TransactionListScreen from '../screens/TransactionListScreen';
 import SignupScreen from '../screens/SignupScreen';
 import FantasyTeamNameScreen from '../screens/FantasyTeamNameScreen';
+import TeamSelectionScreen from '../screens/TeamSelectionScreen';
 
 import CreateTeamScreen from '../screens/CreateTeamScreen';
 import CompareTeamsScreen from '../screens/CompareTeamsScreen';
@@ -100,6 +101,10 @@ export function Contest(props: any) {
       <ContestStack.Screen
         name="TeamPreviewScreen"
         component={TeamPreviewScreen}
+      />
+      <ContestStack.Screen
+        name="TeamSelectionScreen"
+        component={TeamSelectionScreen}
       />
     </ContestStack.Navigator>
   );

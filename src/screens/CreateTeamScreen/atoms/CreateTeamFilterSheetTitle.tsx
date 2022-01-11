@@ -20,12 +20,10 @@ export default function CreateTeamFilterSheetTitle(props: PropTypes) {
         <Icon name="close" size={17} color="white" />
       </TouchableOpacity>
 
-      <Text style={[tailwind('font-bold text-white font-13')]}>Filter by</Text>
-      <TouchableOpacity style={[tailwind('px-3')]}>
-        {/* <Text style={[tailwind('font-regular uppercase text-white font-13')]}>
-          Reset
-        </Text> */}
-      </TouchableOpacity>
+      <Text style={[tailwind('font-bold text-white font-13')]}>
+        Filter by Teams
+      </Text>
+      <TouchableOpacity style={[tailwind('px-3')]}></TouchableOpacity>
     </View>
   );
 }

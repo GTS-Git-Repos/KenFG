@@ -33,13 +33,8 @@ export default function LobbyScreen() {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <View
-        // start={{x: 0.49, y: 1.1}}
-        // end={{x: 1, y: 0.1}}
-        // locations={[0.4, 0.3, 0, 0.1, 0]}
-        // colors={['#C2A554', '#C2A554', '#C2A755', '#BD9F4B', '#BB9C49']}
-        style={[tailwind('bg-secondary')]}>
-        <LobbyTopBar amount={'100,00'} />
+      <View style={[tailwind('bg-secondary')]}>
+        <LobbyTopBar amount={userInfoState.un_utilized} />
         {/* <NewLobbyNav/> */}
         <LobbyNav
           cricket={cricket}
@@ -50,7 +45,7 @@ export default function LobbyScreen() {
 
       {cricket ? (
         <View style={[tailwind('px-5 py-4 pb-0.5')]}>
-          <SubTitle text={'My Matches'} actiontext="View all"  />
+          <SubTitle text={'My Matches'} actiontext="View all" />
           <View style={[tailwind('h-1')]} />
           <NewMyMatchesCard />
         </View>

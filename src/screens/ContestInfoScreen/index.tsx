@@ -56,12 +56,8 @@ export default function ContestInfoScreen() {
   // Bussiness logic
 
   const navigate = () => {
-    // navigation.navigate('CreateTeamScreen');
     log('selectedContestState', selectedContestState);
-  };
-
-  const onScrollAction = (e: any) => {
-    tabOffset.value = e.nativeEvent.contentOffset.x;
+    navigation.navigate('CreateTeamScreen');
   };
 
   const onPageSelectedAction = (e: any) => {
@@ -100,8 +96,8 @@ export default function ContestInfoScreen() {
           contest_key={contest.data.key}
           match_key={contest.data.match_key}
           title={contest.data.title}
-          total_joined={200}
-          total_spots={1000}
+          total_joined={30}
+          total_spots={contest.data.total_spots}
           amount_letters={contest.data.prize.amount_letters}
           amount={contest.data.prize.amount}
           guaranteed={contest.data.guaranteed}
@@ -109,6 +105,7 @@ export default function ContestInfoScreen() {
           max_entry={contest.data.max_entry}
           bonus={contest.data.bonus}
           is_practice={contest.data.is_practice}
+          contest_type={contest.data.contest_type}
         />
       </View>
       <TabsContestInfo
@@ -134,21 +131,6 @@ export default function ContestInfoScreen() {
           <LearderBoard index={1} activeIndex={activeIndex} />
         </View>
       </PagerView>
-      {/* <Animated.ScrollView
-        ref={scrollRef}
-        onScroll={onScrollAction}
-        horizontal={true}
-        pagingEnabled={true}
-        bounces={false}
-        scrollEnabled={true}
-        decelerationRate={'normal'}
-        disableIntervalMomentum={true}
-        snapToAlignment="center"
-        snapToInterval={width}
-        scrollEventThrottle={16}>
-        <WinningsList data={contest.data.prize.winnings} />
-        <LearderBoard />
-      </Animated.ScrollView> */}
       <View
         style={[
           tailwind(

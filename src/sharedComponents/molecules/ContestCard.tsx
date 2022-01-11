@@ -8,6 +8,8 @@ import {useNavigation} from '@react-navigation/native';
 import {CupIcon, DollarIcon, MIcon, MoneyIcon, TickIcon} from '..';
 const log = console.log;
 
+type ContestType = 'public' | 'practice';
+
 interface PropTypes {
   navigate(contest_key: string): any;
   contest_key: string;
@@ -22,6 +24,8 @@ interface PropTypes {
   max_entry: number;
   bonus: string;
   is_practice: boolean;
+  contest_type: string;
+  proceedToJoin(contest_key: string): any;
 }
 
 const PROGRESS_BAR_HEIGHT = 2.5;
@@ -47,25 +51,12 @@ export default function ContestCard(props: PropTypes) {
               {props.amount_letters}
             </Text>
           </View>
-
-          <View style={[tailwind('')]}>
-            <View style={[tailwind('flex-row justify-end py-2 items-center')]}>
-              <View
-                style={[
-                  tailwind('rounded px-4 py-0.5'),
-                  {
-                    backgroundColor: '#006A4D',
-                  },
-                ]}>
-                <Text
-                  style={[
-                    tailwind('font-bold text-center text-light font-14'),
-                  ]}>
-                  Join
-                </Text>
-              </View>
-            </View>
-          </View>
+          <ContestEntryType
+            proceedToJoin={props.proceedToJoin}
+            contest_type={props.contest_type}
+            entry={props.entry}
+            contest_key={props.contest_key}
+          />
         </View>
 
         {/* Progress bar */}
@@ -138,3 +129,34 @@ export default function ContestCard(props: PropTypes) {
     </TouchableOpacity>
   );
 }
+
+const ContestEntryType = (props: any) => {
+  return (
+    <TouchableOpacity
+      onPress={() => props.proceedToJoin(props.contest_key)}
+      style={[tailwind('')]}>
+      <View style={[tailwind('flex-row justify-end py-2 items-center')]}>
+        <View
+          style={[
+            tailwind('rounded px-4 py-0.5'),
+            {
+              backgroundColor: '#006A4D',
+            },
+          ]}>
+          {props.contest_type === 'public' ? (
+            <Text
+              style={[tailwind('font-bold text-center text-light font-14')]}>
+              {'\u20B9 '}
+              {props.entry}
+            </Text>
+          ) : (
+            <Text
+              style={[tailwind('font-bold text-center text-light font-14')]}>
+              Join
+            </Text>
+          )}
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};

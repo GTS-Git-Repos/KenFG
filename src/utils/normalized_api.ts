@@ -1,6 +1,8 @@
 import {covertInputTimeStringToDate} from './comman';
 
 export const normalizeUpcommingMatchesAPI = (response: any) => {
+  // DEPRECATED, NEED TO MOVE THAT TO match.contest.formatter
+
   try {
     const formatted = response.matches.map((item: any) => {
       return {

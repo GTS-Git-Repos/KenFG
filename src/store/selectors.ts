@@ -29,6 +29,7 @@ export const creditLeft = createSelector(playersState, players => {
 export const selectedMatch = createSelector(SelectedMatchState, match => {
   try {
     return {
+      match_key: match.match_key,
       team_a: match.team_b,
       team_b: match.team_a,
       titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),

@@ -5,6 +5,7 @@ import {View, Text} from 'react-native';
 import CardMyContest from './CardMyContest';
 import {ContestCard, JoinedContestCard} from '../../../sharedComponents';
 import {useNavigation} from '@react-navigation/core';
+import NoJoinedContest from '../atoms/NoJoinedContest';
 
 interface PropTypes {
   text?: string;
@@ -19,7 +20,8 @@ export default function MyContestPage(props: PropTypes) {
 
   return (
     <View style={[tailwind('m-3')]}>
-      <JoinedContestCard
+      <NoJoinedContest/>
+      {/* <JoinedContestCard
         navigate={navigate}
         contest_key={'123345'}
         match_key={'123345'}
@@ -34,7 +36,7 @@ export default function MyContestPage(props: PropTypes) {
         bonus={'32%'}
         is_practice={true}
       />
-      <View style={[tailwind('h-20')]}></View>
+      <View style={[tailwind('h-20')]}></View> */}
     </View>
   );
 }

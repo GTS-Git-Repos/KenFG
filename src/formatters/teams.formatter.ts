@@ -3,10 +3,11 @@ import {log} from '../utils/logs';
 export const parseJoinedTeamsAPI = (payload: Array<any>) => {
   try {
     const teams = payload.teams;
+    if (!teams) {
+      throw 'No Teams';
+    }
     const teamData = [];
     for (let team of teams) {
-      // log.info(team);
-
       const allPlayers = team.players.players;
 
       const cap = allPlayers.find(
@@ -48,7 +49,7 @@ export const parseJoinedTeamsAPI = (payload: Array<any>) => {
     }
     return teamData;
   } catch (err) {
-    console.log('<splitJoinedTeamsResponse>', err);
+    console.log('<parseJoinedTeamsAPI>', err);
 
     return false;
   }

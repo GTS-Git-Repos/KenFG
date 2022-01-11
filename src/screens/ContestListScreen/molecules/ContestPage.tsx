@@ -5,6 +5,7 @@ import {ContestCard, FullScreenLoading} from '../../../sharedComponents';
 import FilterTab from './Filtertab';
 import {contestListsTypes} from '../../../types/api';
 import ContestSubTitle from '../atoms/ContestSubTitle';
+import LoadFailedContestList from '../atoms/loadfailed.contestlist';
 const log = console.log;
 
 interface PropTypes {
@@ -13,15 +14,14 @@ interface PropTypes {
   data: any;
   selectedFilter: null | string;
   setSelectedFilter(filter: string): any;
+  proceedToJoin(contest_key: string): any;
 }
 
 export default function ContestPage(props: PropTypes) {
-  if (props.status === 'loading') {
-    return null;
-  }
-
-  if (props.status === 'success' && !props.data) {
-    return null;
+  if (!props.data) {
+    return (
+      <Text style={[tailwind('font-regular text-white font-15')]}>Failed</Text>
+    );
   }
 
   if (props.status === 'success' && props.data.length === 0) {
@@ -45,19 +45,16 @@ export default function ContestPage(props: PropTypes) {
       />
       <View style={[tailwind('px-3')]}>
         <View style={[tailwind('')]}>
-          {props.data.map((item: contestListsTypes) => {
+          {props.data.map((item: any) => {
             return (
-              <View
-                key={item.key}
-                style={[tailwind('my-2')]}>
+              <View key={item.key} style={[tailwind('my-2')]}>
                 <ContestCard
                   navigate={props.navigate}
                   contest_key={item.key}
                   match_key={item.match_key}
                   title={item.title}
-                  total_joined={100}
-                  total_spots={1000}
-                  // total_spots={item.total_spots}
+                  total_joined={30}
+                  total_spots={item.total_spots}
                   entry={item.entry}
                   amount_letters={item.prize.amount_letters}
                   amount={item.prize.amount}
@@ -65,6 +62,8 @@ export default function ContestPage(props: PropTypes) {
                   max_entry={item.max_entry}
                   bonus={item.bonus}
                   is_practice={item.is_practice}
+                  contest_type={item.contest_type}
+                  proceedToJoin={props.proceedToJoin}
                 />
               </View>
             );

@@ -52,7 +52,7 @@ export default function Tabs(props: PropTypes) {
               }`,
             ),
           ]}>
-          My Contests (1)
+          My Contests
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -72,7 +72,7 @@ export default function Tabs(props: PropTypes) {
           ]}>
           {props.teamsCount
             ? `My Teams (${props.teamsCount.length})`
-            : 'My Teams (0)'}
+            : 'My Teams'}
         </Text>
       </TouchableOpacity>
     </View>

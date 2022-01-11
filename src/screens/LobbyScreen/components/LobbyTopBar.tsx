@@ -5,12 +5,17 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
+import { useSelector } from 'react-redux';
 interface PropTypes {
   amount: string;
 }
 
 export default function LobbyTopBar(props: PropTypes) {
   const navigation = useNavigation<any>();
+
+
+
+
   return (
     <View>
       <View style={[tailwind('flex-row justify-between')]}>
@@ -57,7 +62,7 @@ export default function LobbyTopBar(props: PropTypes) {
                 tailwind('font-regular text-primary text-right font-13'),
               ]}>
               {'\u20B9 '}
-              {/* {props.amount} */}1,00,000
+              {props.amount}
             </Text>
           </View>
           <Image

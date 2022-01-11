@@ -5,6 +5,7 @@ export interface contestListsTypes {
   title: string;
   entry: string;
   group: string;
+  contest_type: string;
   prize: {
     amount_letters: string;
     amount: string;
