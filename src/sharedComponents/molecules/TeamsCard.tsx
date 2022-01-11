@@ -135,8 +135,7 @@ const PlayerName = (props: any) => {
       colors={props.index ? ['#254987', '#172338'] : ['#172338', '#6C221E']}
       style={[tailwind('bg-blue-500'), {padding: 2, borderRadius: 4}]}>
       <Text
-        allowFontScaling={true}
-        adjustsFontSizeToFit={true}
+        numberOfLines={1}
         style={[tailwind('font-regular text-center text-white font-9')]}>
         {props.name}
       </Text>

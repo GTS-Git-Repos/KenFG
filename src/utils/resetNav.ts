@@ -38,7 +38,7 @@ export const resetContestListNavigation = async (
           name: 'DrawerNav',
         },
         {
-          name: 'ContestListScreen',
+          name: 'Contest',
           params: params,
         },
       ],

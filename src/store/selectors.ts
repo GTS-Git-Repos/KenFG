@@ -31,7 +31,7 @@ export const selectedMatch = createSelector(SelectedMatchState, match => {
     return {
       team_a: match.team_b,
       team_b: match.team_a,
-      titleString: `${match.team_a} VS ${match.team_b}`,
+      titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),
     };
   } catch (err) {
     console.log('selectedMatch Selector', selectedMatch);

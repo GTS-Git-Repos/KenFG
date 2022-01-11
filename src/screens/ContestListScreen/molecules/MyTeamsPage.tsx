@@ -64,13 +64,9 @@ export default function MyTeamsPage(props: PropTypes) {
       players.push(...team.all_rounder);
       players.push(...team.batsman);
       players.push(...team.bowler);
-      // console.log('>>', players.length);
       dispatch(updatePlayer(players));
-      // console.log('playersState', playersState);
-
       navigation.navigate('CreateTeamScreen', {
         from: 1,
-        inputPlayer: players,
       });
     }
   };

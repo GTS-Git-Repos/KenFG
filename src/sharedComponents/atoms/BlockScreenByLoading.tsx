@@ -27,7 +27,7 @@ export default function BlockScreenByLoading(props: PropTypes) {
         <View
           style={[
             tailwind(
-              'bg-white mx-7 bg-dark-2 p-5 rounded flex-row items-center',
+              'bg-white mx-7 bg-dark-3 p-5 rounded flex-row items-center',
             ),
           ]}>
           <ActivityIndicator size="large" color="#B2933D" />

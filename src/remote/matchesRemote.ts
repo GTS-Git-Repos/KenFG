@@ -142,11 +142,7 @@ export const getJoinedTeamsRemote = async (params: any) => {
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_view_team,
-      {
-        player_key: '9876543211',
-        match_key: 'sst20_2021_g23',
-      },
-      // {player_key: params.queryKey[1], match_key: params.queryKey[2]},
+      {match_key: params.queryKey[1], player_key: params.queryKey[2]},
     );
     if (response.status === 200) {
       return parseJoinedTeamsAPI(response.data.data);

@@ -64,8 +64,6 @@ export default function CreateTeamScreen() {
   const filterSheet = useRef<Modalize>();
   const isMounted = useRef(false);
 
-  const [tick, setTick] = useState(0);
-
   const playersState: any = useSelector<any>(state => state.team.players);
   const userState: any = useSelector<any>(state => state.user.user_info);
 
@@ -91,10 +89,12 @@ export default function CreateTeamScreen() {
     getMatchPlayersRemote,
   );
 
+
   // side effects
 
   useEffect(() => {
     if (route?.params?.from === 1) {
+      // Dont clear its from clone or edit
     } else {
       dispatch(clearTeamAction());
     }

@@ -63,7 +63,7 @@ export default function ContestListScreen() {
   );
 
   const teams = useQuery(
-    ['teams', userInfoSelector?.mobile, selectedMatchState?.match_key],
+    ['teams', selectedMatchState?.match_key,userInfoSelector?.mobile],
     getJoinedTeamsRemote,
   );
 

@@ -16,8 +16,10 @@ import CapSelectionAction from './atoms/CapSelectionAction';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   allSelecdtedPlayers,
+  creditLeft,
   playersByRole,
   rolesCount,
+  selectedMatch,
 } from '../../store/selectors';
 import {
   captainSelection,
@@ -31,7 +33,7 @@ import {createTeamObjCreator} from '../../workers/objCreators';
 import {resetContestListNavigation} from '../../utils/resetNav';
 
 export default function CapSelectionScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   const route = useRoute<any>();
   const [loading, setLoading] = useState(false);
@@ -39,8 +41,11 @@ export default function CapSelectionScreen() {
   // const teamsState = useSelector<any>(state => state.team);
 
   const playersByRoleSelector = useSelector(playersByRole);
+  const matchSelector: any = useSelector(selectedMatch);
+  const rolesCountSelector: any = useSelector(rolesCount);
+  const availableCredits = useSelector(creditLeft);
 
-  const teamsState = useSelector<any>(state => state.team.teams);
+  const playersState: any = useSelector<any>(state => state.team.players);
   const captain_key = useSelector<any>(state => state.team.cap_key);
   const vc_key = useSelector<any>(state => state.team.vc_key);
   const selected_match: any = useSelector<any>(
@@ -67,22 +72,49 @@ export default function CapSelectionScreen() {
     }
   };
 
+  const navigateToTeamPreviewScreeen = () => {
+    navigation.navigate('TeamPreviewScreen', {
+      from: 1,
+      keepers: playersState.filter(
+        (item: any) => item.seasonal_role === 'keeper',
+      ),
+      batsman: playersState.filter(
+        (item: any) => item.seasonal_role === 'batsman',
+      ),
+      all_rounder: playersState.filter(
+        (item: any) => item.seasonal_role === 'all_rounder',
+      ),
+      bowler: playersState.filter(
+        (item: any) => item.seasonal_role === 'bowler',
+      ),
+      cap_key: captain_key,
+      vc_key: vc_key,
+      team_a: {
+        key: matchSelector.team_a,
+        count: rolesCountSelector[matchSelector.team_a],
+      },
+      team_b: {
+        key: matchSelector.team_b,
+        count: rolesCountSelector[matchSelector.team_b],
+      },
+      credits_left: availableCredits,
+    });
+  };
+
   const saveTeam = async () => {
     try {
       if (captain_key && vc_key) {
         setLoading(true);
         const createTeamObj = createTeamObjCreator();
-        log('createTeamObj', JSON.stringify(createTeamObj));
-        return;
+        // log('createTeamObj', JSON.stringify(createTeamObj));
+        // return;
         const response = await createTeamRemote(createTeamObj);
         if (response) {
           dispatch(clearTeamAction());
-          // log(selected_contest);
           resetContestListNavigation(navigation, {
             match_key: selected_match.match_key,
             contest_key: selected_contest,
-            // team_key: response.teams[1].teams_key,
-            team_key: 't1',
+            team_key: response.team_key,
           });
           return;
         } else {
@@ -102,7 +134,7 @@ export default function CapSelectionScreen() {
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={'15h 33m Left'} teams={teamsState} />
+      <TopBar text={matchSelector.titleString} />
       <ScrollView>
         <View style={[tailwind(' px-4 py-3')]}>
           <Text style={[tailwind('font-bold text-center text-dark-1 font-13')]}>
@@ -125,7 +157,7 @@ export default function CapSelectionScreen() {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
-              is_team_a={item.team_key === 'aus'}
+              is_team_a={item.team_key === matchSelector.team_a}
               role={'WK'}
               c={'43.3%'}
               vc={'8.3%'}
@@ -146,7 +178,7 @@ export default function CapSelectionScreen() {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
-              is_team_a={item.team_key === 'aus'}
+              is_team_a={item.team_key === matchSelector.team_a}
               role={'BAT'}
               c={'43.3%'}
               vc={'8.3%'}
@@ -167,7 +199,7 @@ export default function CapSelectionScreen() {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
-              is_team_a={item.team_key === 'aus'}
+              is_team_a={item.team_key === matchSelector.team_a}
               role={'AR'}
               c={'43.3%'}
               vc={'8.3%'}
@@ -189,7 +221,7 @@ export default function CapSelectionScreen() {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
-              is_team_a={item.team_key === 'aus'}
+              is_team_a={item.team_key === matchSelector.team_a}
               role={'BOWL'}
               c={'43.3%'}
               vc={'8.3%'}
@@ -205,7 +237,7 @@ export default function CapSelectionScreen() {
       </ScrollView>
       <View
         style={[tailwind('absolute bottom-0 w-full flex-row justify-center')]}>
-        <CapSelectionAction saveTeam={saveTeam} />
+        <CapSelectionAction navigateToTeamPreviewScreeen={navigateToTeamPreviewScreeen} saveTeam={saveTeam} />
       </View>
 
       {loading && <BlockScreenByLoading />}

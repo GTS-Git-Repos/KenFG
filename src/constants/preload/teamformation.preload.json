@@ -1,101 +1,101 @@
 [
     {
-        "key": "f_1",
-        "name": "Player 1",
-        "team_key": "aus",
+        "key": "j_philippe",
+        "name": "Josh Philippe",
+        "team_key": "syd",
         "seasonal_role": "keeper",
-        "selected_by": "96%",
-        "points": 3,
-        "credits": 8
-    },
-    {
-        "key": "f_2",
-        "name": "Player 2",
-        "team_key": "aus",
-        "seasonal_role": "keeper",
-        "selected_by": "96%",
-        "points": 3,
-        "credits": 8.5
-    },
-    {
-        "key": "f_4",
-        "name": "Player 4",
-        "team_key": "eng",
-        "seasonal_role": "batsman",
-        "selected_by": "96%",
-        "points": 3,
-        "credits": 9
-    },
-    {
-        "key": "f_5",
-        "name": "Player 5",
-        "team_key": "eng",
-        "seasonal_role": "batsman",
-        "selected_by": "96%",
-        "points": 3,
-        "credits": 8
-    },
-    {
-        "key": "f_7",
-        "name": "Player 7",
-        "team_key": "eng",
-        "seasonal_role": "batsman",
-        "selected_by": "96%",
-        "points": 3,
-        "credits": 9
-    },
-    {
-        "key": "f_3w1",
-        "name": "Player extra keeper",
-        "team_key": "eng",
-        "seasonal_role": "keeper",
-        "selected_by": "96%",
-        "points": 3,
-        "credits": 8
-    },
-    {
-        "key": "f_11",
-        "name": "Player 11",
-        "team_key": "eng",
-        "seasonal_role": "all_rounder",
-        "selected_by": "96%",
-        "points": 3,
+        "selected_by": "",
+        "points": 10,
         "credits": 10
     },
     {
-        "key": "f_12",
-        "name": "Player 12",
-        "team_key": "aus",
+        "key": "s_harper",
+        "name": "Sam Harper",
+        "team_key": "mlr",
+        "seasonal_role": "keeper",
+        "selected_by": "",
+        "points": 9.5,
+        "credits": 9.5
+    },
+    {
+        "key": "m_henriques",
+        "name": "Moises Henriques",
+        "team_key": "syd",
+        "seasonal_role": "batsman",
+        "selected_by": "",
+        "points": 9,
+        "credits": 9
+    },
+    {
+        "key": "s_marsh",
+        "name": "Shaun Marsh",
+        "team_key": "mlr",
+        "seasonal_role": "batsman",
+        "selected_by": "",
+        "points": 9,
+        "credits": 9
+    },
+    {
+        "key": "mack_harvey",
+        "name": "Mackenzie Harvey",
+        "team_key": "mlr",
+        "seasonal_role": "batsman",
+        "selected_by": "",
+        "points": 9,
+        "credits": 9
+    },
+    {
+        "key": "jo_merlo",
+        "name": "Jonathan Merlo",
+        "team_key": "mlr",
         "seasonal_role": "all_rounder",
-        "selected_by": "96%",
-        "points": 3,
-        "credits": 9
+        "selected_by": "",
+        "points": 8,
+        "credits": 8
     },
     {
-        "key": "f_18",
-        "name": "Player 18",
-        "team_key": "aus",
+        "key": "c__player__lawrence_neilsmith__93ff0",
+        "name": "Lawrence Neil-Smith",
+        "team_key": "syd",
         "seasonal_role": "bowler",
-        "selected_by": "96%",
-        "points": 3,
-        "credits": 9
+        "selected_by": "",
+        "points": 8,
+        "credits": 8
     },
     {
-        "key": "f_19",
-        "name": "Player 19",
-        "team_key": "aus",
+        "key": "c__player__todd_murphy__cb5f6",
+        "name": "Todd Murphy",
+        "team_key": "syd",
         "seasonal_role": "bowler",
-        "selected_by": "96%",
-        "points": 3,
-        "credits": 9
+        "selected_by": "",
+        "points": 8,
+        "credits": 8
     },
     {
-        "key": "f_20",
-        "name": "Player 21",
-        "team_key": "aus",
+        "key": "n_winter",
+        "name": "Nick Winter",
+        "team_key": "syd",
         "seasonal_role": "bowler",
-        "selected_by": "96%",
-        "points": 3,
-        "credits": 10.5
+        "selected_by": "",
+        "points": 8,
+        "credits": 8
+    },
+    {
+        "key": "u_chand",
+        "name": "Unmukt Chand",
+        "team_key": "mlr",
+        "seasonal_role": "batsman",
+        "selected_by": "",
+        "points": 8,
+        "credits": 8
+    },
+    {
+        "key": "m_harris",
+        "name": "Marcus Harris",
+        "team_key": "mlr",
+        "seasonal_role": "batsman",
+        "selected_by": "",
+        "points": 8,
+        "credits": 8
     }
 ]
