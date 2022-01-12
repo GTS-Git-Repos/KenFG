@@ -14,7 +14,7 @@ export default function TeamCode(props: PropTypes) {
         tailwind('py-0.5 mx-0.5 bg-dark-4'),
         {borderRadius: 2, paddingHorizontal: 6},
       ]}>
-      <Text style={[tailwind('font-regular text-dark-1 font-12  ')]}>
+      <Text style={[tailwind('font-regular uppercase text-dark-1 font-12  ')]}>
         {props.code}
       </Text>
     </View>

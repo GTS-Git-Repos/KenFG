@@ -17,7 +17,9 @@ export const getCountDown = (inputDate: Date) => {
       start: inputDate,
       end: new Date(),
     });
-    let timeString = `${countDown.hours}h:${countDown.minutes}:${countDown.seconds}`;
+    let timeString = `${countDown.hours}h:${countDown.minutes}:${
+      countDown.seconds < 10 ? `0${countDown.seconds}` : countDown.seconds
+    }`;
     return timeString;
   } catch (err) {
     return '00:00:00';

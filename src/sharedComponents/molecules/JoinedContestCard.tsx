@@ -33,7 +33,7 @@ interface PropTypes {
   max_entry: number;
   bonus: string;
   is_practice: boolean;
-  joined?: [];
+  teams: Array<any>;
 }
 
 const PROGRESS_BAR_HEIGHT = 3;
@@ -47,20 +47,20 @@ export default function ContestCard(props: PropTypes) {
     <TouchableOpacity
       activeOpacity={0.6}
       onPress={() => navigation.navigate('ContestsLiveMatchScreen')}
-      style={[tailwind('rounded bg-dark-3')]}>
+      style={[tailwind('rounded mb-2 bg-dark-3')]}>
       <TopSection />
       <Footer />
       <View style={[tailwind('p-2')]}>
         <View style={[tailwind('flex-row items-center justify-between')]}>
           <Text style={[tailwind('font-regular text-white font-14')]}>
-            Joined with 20 teams
+            Joined with {props.teams.length} teams
           </Text>
           <TouchableOpacity onPress={() => setOpen(!open)}>
             <Icon name="chevron-up-outline" size={16} color="#FFFFFF80" />
           </TouchableOpacity>
         </View>
 
-        <JoinedTeams />
+        <JoinedTeams teams={props.teams} />
         {open && (
           <View style={[tailwind('box rounded px-2 bg-dark-4'), styles.border]}>
             <TeamInfo />
@@ -152,23 +152,10 @@ const Footer = () => {
   );
 };
 
-const JoinedTeams = () => {
+const JoinedTeams = (props: any) => {
   return (
     <View style={[tailwind('flex-row items-center flex-wrap py-2')]}>
-      {[
-        'T1',
-        'T1',
-        'T3',
-        'T1',
-        'T1',
-        'T3',
-        'T1',
-        'T1',
-        'T3',
-        'T1',
-        'T1',
-        'T3',
-      ].map((item: any, index: number) => {
+      {props.teams.map((item: any, index: number) => {
         return <TeamCode code={item} key={index} />;
       })}
     </View>

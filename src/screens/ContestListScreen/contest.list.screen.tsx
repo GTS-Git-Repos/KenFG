@@ -13,9 +13,9 @@ import {
   joinContestRemote,
   getJoinedContestRemote,
 } from '../../remote/matchesRemote';
-import {useIsScreenReady} from '../../utils/customHoooks';
+import {useIsScreenReady, useRenderCount} from '../../utils/customHoooks';
 import TopBarContest from '../../sharedComponents/atoms/TopbarContest';
-import {FullScreenLoading, BlockScreenByLoading} from '../../sharedComponents';
+import {BlockScreenByLoading} from '../../sharedComponents';
 import ContestScreenLoading from './atoms/ContestScreenLoading';
 import Tabs from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
@@ -42,6 +42,7 @@ const log = console.log;
 export default function ContestListScreen(props: any) {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
+  // const renderCount = useRenderCount('ContestListScreen')
 
   const {width} = useWindowDimensions();
   const pagerRef = useRef<any>(null);
@@ -201,7 +202,10 @@ export default function ContestListScreen(props: any) {
           />
         </View>
         <View style={{width: width}}>
-          <MyContestPage />
+          <MyContestPage
+            contests={joinedContest?.data?.contests}
+            status={joinedContest.status}
+          />
         </View>
         <View style={{width: width}}>
           <MyTeamsPage teams={teams.data} status={teams.status} />

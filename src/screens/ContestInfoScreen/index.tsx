@@ -8,21 +8,16 @@ import {
 } from 'react-native';
 import tailwind from '../../../tailwind';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {
-  TopbarContest,
-  ContestCard,
-  FullScreenLoading,
-} from '../../sharedComponents/';
+import {TopbarContest, ContestCard} from '../../sharedComponents/';
 import TabsContestInfo from './atoms/TabsContestInfo';
 import {useQuery} from 'react-query';
 const log = console.log;
 import LearderBoard from './molecules/LeaderBoardList';
 import {useIsScreenReady} from '../../utils/customHoooks';
-import {contestListsTypes} from '../../types/api';
 
 import {contestInfoRemote} from '../../remote/matchesRemote';
 
-import Animated, {useSharedValue} from 'react-native-reanimated';
+import {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import {useSelector} from 'react-redux';
@@ -60,6 +55,10 @@ export default function ContestInfoScreen() {
     navigation.navigate('CreateTeamScreen');
   };
 
+  const proceedToJoin = (contest_key: string) => {
+    navigation.navigate('CreateTeamScreen');
+  };
+
   const onPageSelectedAction = (e: any) => {
     setActiveIndex(e.nativeEvent.position);
   };
@@ -92,7 +91,7 @@ export default function ContestInfoScreen() {
       />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
-          navigate={navigate}
+          navigate={() => {}}
           contest_key={contest.data.key}
           match_key={contest.data.match_key}
           title={contest.data.title}
@@ -106,6 +105,7 @@ export default function ContestInfoScreen() {
           bonus={contest.data.bonus}
           is_practice={contest.data.is_practice}
           contest_type={contest.data.contest_type}
+          proceedToJoin={proceedToJoin}
         />
       </View>
       <TabsContestInfo

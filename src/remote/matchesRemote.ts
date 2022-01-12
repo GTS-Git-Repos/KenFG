@@ -8,7 +8,10 @@ import CompletedTestMatchMeta from '../constants/mocks/completedTestMatch3i.json
 import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
 import {parseJoinedTeamsAPI} from '../formatters/teams.formatter';
 import {normalizeGetPlayersAPI} from '../constructors/teams.constructor';
-import {groupAllContestsAPIRmeote} from '../formatters/matchcontest.formatters';
+import {
+  extractJoinedContestAPIResponse,
+  groupAllContestsAPIRmeote,
+} from '../formatters/matchcontest.formatters';
 
 // API Routes
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
@@ -165,11 +168,12 @@ export const getJoinedContestRemote = async (params: any) => {
       BASE_URL + req_my_contest,
       {match_key: params.queryKey[1], player_key: params.queryKey[2]},
     );
+    // console.log('response.data.data', response.data.data);
+
     if (response.status === 200) {
-      return true;
-      return response.data?.data;
+      return extractJoinedContestAPIResponse(response.data.data);
     } else {
-      failedLog('joinContestRemote()', response);
+      failedLog('getJoinedContestRemote()', response);
     }
   } catch (err) {
     console.log(err);

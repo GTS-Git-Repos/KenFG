@@ -13,10 +13,21 @@ export const groupAllContestsAPIRmeote = (payload: any) => {
 
 export const extractJoinedContestAPIResponse = (payload: any) => {
   try {
-    const players = payload[payload.length - 1];
-    console.log(players);
+    const contestsdata = payload.slice(0, payload.length - 1);
+    const teams = payload[payload.length - 1];
+    const contests = contestsdata.map((item: any) => {
+      return {
+        ...item,
+        contest_team: JSON.parse(item.contest_team),
+      };
+    });
+
+    return {
+      contests,
+      teams,
+    };
   } catch (err) {
-    console.log('groupAllContestsAPIRmeote', err);
+    console.log('extractJoinedContestAPIResponse', err);
     return false;
   }
 };

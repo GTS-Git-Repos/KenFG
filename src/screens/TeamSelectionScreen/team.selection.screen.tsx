@@ -56,10 +56,10 @@ export default function TeamSelectionScreen(props: any) {
         errorBox('Please select any one of the Team');
         return;
       }
-      let obj = {
+      const obj = {
         match_key: matchSelector.match_key,
         contest_key: matchSelector.joinContest.contestKey,
-        team_key: choosenTeams[0],
+        team_key: choosenTeams,
         player_key: userSelector.mobile,
       };
       setLoading(true);
