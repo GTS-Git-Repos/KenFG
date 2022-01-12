@@ -10,3 +10,13 @@ export const groupAllContestsAPIRmeote = (payload: any) => {
     return false;
   }
 };
+
+export const extractJoinedContestAPIResponse = (payload: any) => {
+  try {
+    const players = payload[payload.length - 1];
+    console.log(players);
+  } catch (err) {
+    console.log('groupAllContestsAPIRmeote', err);
+    return false;
+  }
+};

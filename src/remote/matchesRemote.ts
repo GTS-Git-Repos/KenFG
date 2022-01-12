@@ -18,6 +18,7 @@ const req_contest_list = '/contests.php';
 const req_join_contest = '/join-contest.php';
 const req_players = '/fantasy-player.php';
 const req_live_match = '/live-match.php';
+const req_my_contest = '/my-contest.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -157,6 +158,25 @@ export const getJoinedTeamsRemote = async (params: any) => {
   }
 };
 
+export const getJoinedContestRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_my_contest,
+      {match_key: params.queryKey[1], player_key: params.queryKey[2]},
+    );
+    if (response.status === 200) {
+      return true;
+      return response.data?.data;
+    } else {
+      failedLog('joinContestRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
 export const joinContestRemote = async (payload: any) => {
   try {
     const response = await requestServer(
@@ -165,7 +185,7 @@ export const joinContestRemote = async (payload: any) => {
       payload,
     );
     if (response.status === 200) {
-      return response.data?.data;
+      return true;
     } else {
       failedLog('joinContestRemote()', response);
     }

@@ -18,12 +18,29 @@ export default function Actions(props: PropTypes) {
 
   return (
     <View
-      // start={{x: 0, y: 0}}
-      // end={{x: 1, y: 0}}
-      // colors={['#172338', '#0D1320']}
-      style={[tailwind('mx-2 my-1 rounded bg-dark-3 flex-col justify-center')]}
-      // colors={['#1C2B46', '#172338']}
-    >
+      style={[tailwind('mx-4 my-1 rounded bg-dark-3 flex-col justify-center')]}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate(props.goto)}
+        style={[tailwind('flex-row items-center justify-between py-3 pr-3')]}>
+        <View>
+          <Text style={[tailwind('font-regular text-white px-3 font-15')]}>
+            {props.text}
+          </Text>
+          {props.subText && (
+            <Text style={[tailwind('font-regular text-dark-1 px-3 font-12')]}>
+              {props.subText}
+            </Text>
+          )}
+        </View>
+
+        <Icon name="chevron-forward" size={20} color="white" />
+      </TouchableOpacity>
+    </View>
+  );
+
+  return (
+    <View
+      style={[tailwind('mx-4 my-1 rounded bg-dark-3 flex-col justify-center')]}>
       <TouchableOpacity
         onPress={() => navigation.navigate(props.goto)}
         style={[tailwind('flex-row items-center  justify-between p-4')]}>

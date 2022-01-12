@@ -9,31 +9,23 @@ interface PropTypes {
   addMoneySheet: any;
 }
 
-export default function BluePrintComponent(props: PropTypes) {
+export default function AddMoneyButtonWallet(props: PropTypes) {
   return (
-    <View style={[tailwind('my-1')]}>
-      {/* <LinearGradient
-        end={{x: 0.0, y: 0.2}}
-        start={{x: 0.8, y: 2.0}}
-        locations={[0.6, 0.5]}
-        style={[tailwind('flex-row m-2 rounded')]}
-        colors={['#00513B', '#006A4D']}
-        > */}
+    <View style={[tailwind('mx-4')]}>
       <TouchableOpacity
         onPress={() => props.addMoneySheet?.current.open()}
         style={[
           tailwind(
-            'px-8 py-3 bg-green m-2 rounded flex-grow flex-row justify-center',
+            'py-4 bg-green my-2 rounded flex-grow flex-row justify-center',
           ),
         ]}>
         <Text
           style={[
             tailwind('font-bold text-center uppercase text-light font-12'),
           ]}>
-          Add Amount
+          Add Cash
         </Text>
       </TouchableOpacity>
-      {/* </LinearGradient> */}
     </View>
   );
 }

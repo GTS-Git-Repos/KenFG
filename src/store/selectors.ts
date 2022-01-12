@@ -8,9 +8,18 @@ const UserState = (state: any) => state.user.user_info;
 const playersState = (state: any) => state.team.players;
 const TeamsState = (state: any) => state.team.teams;
 const SelectedMatchState = (state: any) => state.app.selected_match;
+const JoinContestState = (state: any) => state.app.joinContestRequest;
 
 export const userInfo = createSelector(UserState, userInfo => {
   return userInfo;
+});
+
+export const userWalletAmount = createSelector(UserState, userInfo => {
+  try {
+    return parseInt(userInfo.un_utilized);
+  } catch (err) {
+    return 0;
+  }
 });
 
 export const creditLeft = createSelector(playersState, players => {
@@ -26,19 +35,25 @@ export const creditLeft = createSelector(playersState, players => {
   }
 });
 
-export const selectedMatch = createSelector(SelectedMatchState, match => {
-  try {
-    return {
-      match_key: match.match_key,
-      team_a: match.team_b,
-      team_b: match.team_a,
-      titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),
-    };
-  } catch (err) {
-    console.log('selectedMatch Selector', selectedMatch);
-    return false;
-  }
-});
+export const selectedMatch = createSelector(
+  SelectedMatchState,
+  JoinContestState,
+  (match, contest) => {
+    try {
+      return {
+        match_key: match.match_key,
+        team_a: match.team_b,
+        team_b: match.team_a,
+        titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),
+        start_at: match.start_at,
+        joinContest: contest,
+      };
+    } catch (err) {
+      console.log('selectedMatch Selector', selectedMatch);
+      return false;
+    }
+  },
+);
 
 export const blockList = createSelector(
   playersState,

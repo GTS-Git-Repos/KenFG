@@ -1,5 +1,5 @@
 // The file where comman utilities functins are placed
-import {intervalToDuration} from 'date-fns';
+import {differenceInSeconds, intervalToDuration} from 'date-fns';
 
 export function covertInputTimeStringToDate(inputTime: string) {
   try {
@@ -30,5 +30,39 @@ export const getCountDown = (inputDate: Date) => {
     return timeString;
   } catch (err) {
     return '00:00:00';
+  }
+};
+
+export const isMatchTimeExhausted = (time: any): Boolean => {
+  try {
+    const seconds = differenceInSeconds(time, new Date());
+    if (seconds > 5) {
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.log('isMatchTimeExhausted', isMatchTimeExhausted);
+    return false;
+  }
+};
+
+export const isWalletHaveContestAmount = (
+  contest_entry: any,
+  user_wallet: any,
+) => {
+  try {
+    const neededAmount = parseInt(user_wallet) - parseInt(contest_entry);
+    if (neededAmount < 0) {
+      return {
+        status: false,
+        needed: neededAmount,
+      };
+    } else {
+      return {
+        status: true,
+      };
+    }
+  } catch (err) {
+    return {status: false};
   }
 };

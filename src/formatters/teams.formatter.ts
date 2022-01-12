@@ -54,3 +54,4 @@ export const parseJoinedTeamsAPI = (payload: Array<any>) => {
     return false;
   }
 };
+

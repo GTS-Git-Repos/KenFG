@@ -11,8 +11,7 @@ export const decodeJwt = (jwt: string) => {
 };
 
 export const getCountDown = (inputDate: Date) => {
-  // console.log('MOVED TO COMMAN UTILS');
-
+  // console.log('NEED TO MOVE COMMAN UTILS');
   try {
     const countDown = intervalToDuration({
       start: inputDate,

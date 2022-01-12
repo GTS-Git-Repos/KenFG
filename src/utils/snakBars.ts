@@ -17,7 +17,7 @@ export const errorBox = (message: string) => {
   Snackbar.show({
     text: message,
     duration: Snackbar.LENGTH_LONG,
-    backgroundColor: 'red',
+    backgroundColor: '#e74c3c',
     action: {
       text: 'OK',
       textColor: 'white',

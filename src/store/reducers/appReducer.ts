@@ -3,6 +3,7 @@ import {
   SAVE_IP,
   UPDATE_SELECTED_MATCH,
   UPDATE_SELECTED_CONTEST,
+  UPDATE_JOINCONTEST_REQUEST,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   ip: null,
   selected_match: null,
   selected_contest: null,
+  joinContestRequest: null,
 };
 
 interface actionShape {
@@ -19,17 +21,17 @@ interface actionShape {
 
 const App = (state = initialState, action: actionShape): any => {
   switch (action.type) {
-    case HANDLE_ERROR:
-      console.log('State anomoly -->', action.payload);
-      return {
-        ...state,
-        error: action.payload,
-      };
     case SAVE_IP:
       return {
         ...state,
         ip: action.payload,
       };
+    case UPDATE_JOINCONTEST_REQUEST: {
+      return {
+        ...state,
+        joinContestRequest: action.payload,
+      };
+    }
     case UPDATE_SELECTED_MATCH:
       return {
         ...state,
@@ -40,6 +42,8 @@ const App = (state = initialState, action: actionShape): any => {
         ...state,
         selected_contest: action.payload,
       };
+    }
+    case UPDATE_JOINCONTEST_REQUEST: {
     }
     default:
       return state;

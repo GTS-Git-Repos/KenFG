@@ -11,6 +11,7 @@ import {
   contestListsRemote,
   getJoinedTeamsRemote,
   joinContestRemote,
+  getJoinedContestRemote,
 } from '../../remote/matchesRemote';
 import {useIsScreenReady} from '../../utils/customHoooks';
 import TopBarContest from '../../sharedComponents/atoms/TopbarContest';
@@ -22,12 +23,20 @@ import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
 import {useQuery} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
-import {selectedMatch, userInfo} from '../../store/selectors';
+import {selectedMatch, userInfo, userWalletAmount} from '../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
-import {updateSelectedContestAction} from '../../store/actions/appActions';
+import {
+  joinContestRequestAction,
+  updateSelectedContestAction,
+} from '../../store/actions/appActions';
 import JoinContestModal from './molecules/JoinContestModal';
 import Modal from 'react-native-modal';
 import {errorBox} from '../../utils/snakBars';
+import {
+  isMatchTimeExhausted,
+  isWalletHaveContestAmount,
+} from '../../utils/comman';
+
 const log = console.log;
 
 export default function ContestListScreen(props: any) {
@@ -46,6 +55,7 @@ export default function ContestListScreen(props: any) {
   const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
 
   const userInfoSelector: any = useSelector(userInfo);
+  const userWallet: any = useSelector(userWalletAmount);
   const matchSelector: any = useSelector(selectedMatch);
 
   const selectedContestState: any = useSelector<any>(
@@ -55,6 +65,10 @@ export default function ContestListScreen(props: any) {
   const contests = useQuery(
     ['contests', matchSelector.match_key],
     contestListsRemote,
+  );
+  const joinedContest = useQuery(
+    ['joined_contest', matchSelector.match_key, userInfoSelector?.mobile],
+    getJoinedContestRemote,
   );
 
   const teams = useQuery(
@@ -91,10 +105,44 @@ export default function ContestListScreen(props: any) {
   };
 
   const proceedToJoin = (contest_key: string) => {
-    console.log(contest_key);
-    navigation.navigate('TeamSelectionScreen', {
-      contest_ket: contest_key,
-    });
+    try {
+      const contest = contests.data.find(
+        (item: any) => item.key === contest_key,
+      );
+      if (!contest) {
+        throw 'no contest found';
+      }
+      // is time exhausted ?
+      const timeExhausted = isMatchTimeExhausted(matchSelector.start_at);
+      if (timeExhausted) {
+        errorBox('Time Exhausted');
+        return;
+      }
+      // sent a contest join request
+      dispatch(
+        joinContestRequestAction({
+          contestKey: contest.key,
+          entryAmount: contest.entry,
+          maxTeam: contest.max_entry,
+        }),
+      );
+      const walletStatus: any = isWalletHaveContestAmount(
+        contest.entry,
+        userWallet,
+      );
+      if (!walletStatus.status) {
+        // go to wallet screen with needed amount in route params
+      }
+      if (teams.data.length > 1) {
+        navigation.navigate('TeamSelectionScreen');
+      } else {
+        navigation.navigate('CreateTeamScreen');
+      }
+
+      // is user have more than 2 team ?
+    } catch (err) {
+      console.log('proceedToJoin', err);
+    }
   };
 
   const joinContest = async () => {
