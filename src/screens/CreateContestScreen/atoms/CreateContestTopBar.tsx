@@ -16,31 +16,27 @@ export default function CreateContestTopBar(props: PropTypes) {
   function goBack() {
     navigation.goBack();
   }
+
   return (
-    <LinearGradient
-      colors={['#BCA04D', '#D8C872']}
-      style={[tailwind('py-2 px-4 flex-row items-center justify-between')]}>
+    <LinearGradient colors={['#BCA04D', '#D8C872']}>
       <View
-        style={[tailwind('flex flex-row items-center'), {paddingVertical: 6}]}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <BackIcon />
-        </TouchableOpacity>
-
-        <View style={[tailwind('px-4')]}>
-          <Text style={[tailwind('font-regular text-brown-4 font-11')]}>
-            Contests
-          </Text>
-          <Text style={[tailwind('font-bold text-brown-4 pt-1 font-15')]}>
-            29m 22s Left
-          </Text>
+        style={[
+          tailwind('flex-row items-center justify-between px-4'),
+          {paddingVertical: 16},
+        ]}>
+        <View style={[tailwind('flex-row items-center')]}>
+          <TouchableOpacity onPress={goBack}>
+            <BackIcon />
+          </TouchableOpacity>
+          <View style={[tailwind('px-2')]}>
+            <Text style={[tailwind('font-bold text-brown-4 font-16')]}>
+              Private Contest
+            </Text>
+          </View>
         </View>
-      </View>
-
-      <View style={[tailwind('flex-row items-center')]}>
-        <View style={[tailwind('mr-2')]}>
+        <View>
           <Priceicon />
         </View>
-        <Priceicon />
       </View>
     </LinearGradient>
   );
@@ -61,10 +57,10 @@ const Priceicon = () => {
 
 const styles = StyleSheet.create({
   priceBorder: {
-    borderBottomColor: '#604820',
-    borderLeftColor: '#604820',
-    borderEndColor: '#604820',
-    borderRightColor: '#604820',
+    borderBottomColor: '#B2933D',
+    borderLeftColor: '#B2933D',
+    borderEndColor: '#B2933D',
+    borderRightColor: '#B2933D',
     borderRadius: 6,
     borderWidth: 1,
   },

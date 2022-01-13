@@ -10,6 +10,7 @@ import AddMoneySheet from './molecules/addmoney.sheet.wallet';
 import AmountStatusWallet from './atoms/amount.status.wallet';
 
 import {useSelector} from 'react-redux';
+import {userInfo} from '../../store/selectors';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
@@ -18,17 +19,19 @@ export default function WalletScreen() {
   const addMoneySheet = useRef(null);
   const navigation = useNavigation();
 
-  const userInfoState: any = useSelector<any>(state => state.user.user_info);
+  const userInfoSelector: any = useSelector(userInfo);
+
+  console.log(userInfoSelector);
 
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'My Balance'} />
       <ScrollView contentContainerStyle={{paddingBottom: 20}}>
         <AmountStatusWallet
-          balance={0}
-          winnigs={0}
-          bonus={0}
-          earned={0}
+          balance={userInfoSelector.un_utilized}
+          winnigs={userInfoSelector.winnings}
+          bonus={userInfoSelector.bonus}
+          earned={userInfoSelector.winnings}
           isVerified={false}
         />
         <View style={[tailwind('')]}>

@@ -62,6 +62,7 @@ export default function UpcommingMatches(props: PropTypes) {
     dispatch(
       updateSelectedMatchAction({
         match_key: props.match_key,
+        name: props.tournament_name,
         team_a: props.team_a_name,
         team_b: props.team_b_name,
         start_at: props.start_at,

@@ -37,16 +37,10 @@ export default function MyMatches() {
       <PagerView
         ref={pageRef}
         onPageSelected={onPageSelectedAction}
-        style={[tailwind('flex-1')]}>
-        <View>
-          <UpcommingPage />
-        </View>
-        <View>
-          <LivePage />
-        </View>
-        <View>
-          <CompletedPage />
-        </View>
+        style={[tailwind('')]}>
+        <View><UpcommingPage /></View>
+        <View>{/* <LivePage /> */}</View>
+        <View>{/* <CompletedPage /> */}</View>
       </PagerView>
     </View>
   );

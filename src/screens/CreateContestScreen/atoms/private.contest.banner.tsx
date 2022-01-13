@@ -11,15 +11,14 @@ interface PropTypes {
 
 export default function CreateContesBanner(props: PropTypes) {
   return (
-    <View style={[tailwind('mx-10 mt-4')]}>
+    <View style={[tailwind('mx-6 mt-4')]}>
       <View style={[tailwind('flex-row justify-center')]}>
         <Image
           resizeMode="contain"
           source={assets.createContestBanner}
-          style={{height: 356, width: 281}}
+          style={{height: 396, width: 308}}
         />
       </View>
-
       <TouchableOpacity
         onPress={props.proceedToCreateContest}
         style={[tailwind('my-3')]}>

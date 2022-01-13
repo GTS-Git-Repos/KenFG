@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Image, Text, TouchableOpacity} from 'react-native';
+import {View, Image, Text, TouchableOpacity, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import {QuestionIcon, TabsBottomLine} from '../../../sharedComponents';
@@ -11,7 +11,46 @@ interface PropTypes {
   onTabPressed(item: any): any;
 }
 
+const TABWIDTH = Dimensions.get('window').width / 4;
+const DATA = ['Create', 'Share', 'Join'];
+
 export default function Tabs(props: PropTypes) {
+  return (
+    <View
+      style={[
+        tailwind(
+          'bg-dark-3 flex-row items-center border border-gray-800 mb-0.5',
+        ),
+      ]}>
+      {DATA.map((item: any, index: number) => {
+        return (
+          <TouchableOpacity
+            key={item}
+            onPress={() => props.onTabPressed(index)}
+            style={[tailwind('pt-3'), {flex: 4}]}>
+            <Text
+              style={[
+                tailwind(
+                  `text-center font-14 font-regular ${
+                    props.activeIndex === index
+                      ? 'font-bold text-white'
+                      : 'text-dark-1'
+                  }`,
+                ),
+              ]}>
+              {item}
+            </Text>
+            {props.activeIndex === index ? (
+              <BottomLine />
+            ) : (
+              <View style={[tailwind('mt-3')]} />
+            )}
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
+
   return (
     <View
       style={[

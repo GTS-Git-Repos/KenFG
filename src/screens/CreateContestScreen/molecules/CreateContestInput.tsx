@@ -7,7 +7,18 @@ import AllowMultipleTeam from '../atoms/AllowMultipleTeam';
 import {ButtonComponent} from '../../../sharedComponents';
 
 interface PropTypes {
-  text?: string;
+  contestName: string;
+  setContestName(input: any): any;
+  allowedTeams: string;
+  setAllowedTeams(input: any): any;
+  entryFee: string;
+  setEntryFee(input: any): any;
+  winners: string;
+  setWinners(input: any): any;
+  allowMultiple: boolean;
+  setAllowMultiple(input: any): any;
+  perUserTeam: string;
+  setPerUserTeam(input: any): any;
 }
 
 export default function CreateContestInput(props: PropTypes) {
@@ -16,19 +27,34 @@ export default function CreateContestInput(props: PropTypes) {
       <View style={[tailwind('bg-dark-3 mx-4 rounded px-3 pt-7 pb-4')]}>
         <View style={[tailwind('mb-5')]}>
           <InputTitle text="Contest Name" />
-          <UserInput value="Kairo" />
+          <UserInput
+            value={props.contestName}
+            onChangeText={props.setContestName}
+          />
         </View>
         <View style={[tailwind('mb-5')]}>
           <InputTitle text="No of Teams" />
-          <UserInput value="1000" />
+          <UserInput
+            value={props.allowedTeams}
+            isNumber={true}
+            onChangeText={props.setAllowedTeams}
+          />
         </View>
         <View style={[tailwind('mb-5')]}>
           <InputTitle text="Entry Fee" />
-          <UserInput value="2000" />
+          <UserInput
+            value={props.entryFee}
+            isNumber={true}
+            onChangeText={props.setEntryFee}
+          />
         </View>
         <View style={[tailwind('mb-5 border border-green-700 rounded-lg p-3')]}>
           <InputTitle text="No of Winners" />
-          <UserInput value="250" />
+          <UserInput
+            value={props.winners}
+            isNumber={true}
+            onChangeText={props.setWinners}
+          />
           <Text
             style={[
               tailwind('font-bold text-right pt-2 text-green-600 font-14'),
@@ -36,14 +62,18 @@ export default function CreateContestInput(props: PropTypes) {
             View Winnings & Leaderboard
           </Text>
         </View>
-        <AllowMultipleTeam />
+        <AllowMultipleTeam
+          selected={props.allowMultiple}
+          setSelected={props.setAllowMultiple}
+        />
         <View style={[tailwind('my-5')]}>
-          <InputTitle text="No. of Teams Allowed" />
-          <UserInput value="250" />
+          <InputTitle text="No. of Teams Allowed Per User" />
+          <UserInput
+            value={props.perUserTeam}
+            isNumber={true}
+            onChangeText={props.setPerUserTeam}
+          />
         </View>
-        <TouchableOpacity style={[tailwind('m-4')]}>
-          <ButtonComponent text={'CREATE & EARN Rs.2,00,000'} />
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -62,6 +92,8 @@ const UserInput = (props: any) => {
     <View style={[tailwind('')]}>
       <TextInput
         value={props.value}
+        keyboardType={props.isNumber ? 'number-pad' : 'default'}
+        onChangeText={e => props.onChangeText(e)}
         style={[
           tailwind(
             'p-0 m-0 border-b border-gray-800 font-20 text-white font-bold',

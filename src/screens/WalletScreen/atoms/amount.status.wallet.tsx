@@ -16,16 +16,20 @@ interface PropTypes {
 export default function AmountStatusWallet(props: PropTypes) {
   return (
     <View style={[tailwind('mx-4 my-3 px-3 bg-dark-3 rounded')]}>
-      <Balance />
-      <Section text="Amount Added (unutilised)" verified={true} amount={4000} />
-      <Section text="Winnings" verified={false} amout={342} />
-      <Section text="Cash Bonus" verified={true} amout={2454} />
-      <Section text="Earned" verified={false} amout={223} />
+      <Balance amount={props.balance} />
+      <Section
+        text="Amount Added (unutilised)"
+        verified={true}
+        amount={props.balance}
+      />
+      <Section text="Winnings" verified={false} amount={props.winnigs} />
+      <Section text="Cash Bonus" verified={true} amount={props.bonus} />
+      <Section text="Earned" verified={false} amount={props.earned} />
     </View>
   );
 }
 
-const Balance = () => {
+const Balance = (props: any) => {
   return (
     <View style={[tailwind('py-3 border-b border-gray-800')]}>
       <Text style={[tailwind('font-regular text-dark-1 text-center font-12')]}>
@@ -33,7 +37,8 @@ const Balance = () => {
       </Text>
       <Text
         style={[tailwind('font-bold text-white text-center'), {fontSize: 24}]}>
-        Rs.400
+        {'\u20B9 '}
+        {props.amount}
       </Text>
     </View>
   );
@@ -52,7 +57,7 @@ const Section = (props: any) => {
           {props.text}
         </Text>
         <Text style={[tailwind('font-regular text-white font-18')]}>
-          {'\u20B9'} 4000
+          {'\u20B9'} {props.amount}
         </Text>
       </View>
       <View style={[tailwind('flex-row items-center')]}>

@@ -1,6 +1,14 @@
 import React from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Image, Text, ScrollView, StyleSheet} from 'react-native';
+import {
+  View,
+  Image,
+  Share,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
 import {
@@ -15,6 +23,13 @@ interface PropTypes {
 }
 
 export default function ShareContestPage(props: PropTypes) {
+  
+  const moreShareBtn = async () => {
+    const result = await Share.share({
+      message: 'Share this Contest',
+    });
+  };
+
   return (
     <ScrollView contentContainerStyle={[tailwind('bg-dark-3 px-4 py-4 ')]}>
       <TopSection />
@@ -27,7 +42,7 @@ export default function ShareContestPage(props: PropTypes) {
         <InputTitle text="Share WebLink" />
       </View>
       <ShareWebLink />
-      <MoreButton />
+      <MoreButton moreShareBtn={moreShareBtn} />
     </ScrollView>
   );
 }
@@ -93,9 +108,10 @@ function ReferContactsBtn() {
   );
 }
 
-function MoreButton() {
+function MoreButton(props: any) {
   return (
-    <View
+    <TouchableOpacity
+      onPress={props.moreShareBtn}
       style={[
         tailwind(
           'rounded flex-row items-center border border-gray-700 my-4 justify-center',
@@ -107,7 +123,7 @@ function MoreButton() {
         style={[tailwind('font-regular font-14 px-3 uppercase text-white')]}>
         More Options
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 

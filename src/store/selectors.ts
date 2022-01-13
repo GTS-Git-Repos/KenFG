@@ -42,6 +42,7 @@ export const selectedMatch = createSelector(
     try {
       return {
         match_key: match.match_key,
+        name: match.name,
         team_a: match.team_b,
         team_b: match.team_a,
         titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),

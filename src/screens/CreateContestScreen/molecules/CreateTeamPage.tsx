@@ -1,70 +1,114 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import tailwind from '../../../../tailwind';
-import {View, Image, Text, ScrollView} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../constants/assets_manifest';
-import Switch from './Switch';
+import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {BlockScreenByLoading, ButtonComponent} from '../../../sharedComponents';
 import CreateContestInput from './CreateContestInput';
-import CreateContestBanner from '../atoms/CreateContestBanner';
-import AcceptTermsSheet from '../atoms/AcceptTermsSheet';
-import {Modalize} from 'react-native-modalize';
 import JoinContestListPage from './JoinContestListPage';
+import {useSelector} from 'react-redux';
+import {selectedMatch, userInfo} from '../../../store/selectors';
+import {errorBox, infoBox} from '../../../utils/snakBars';
+import {createContestRemote} from '../../../remote/matchesRemote';
 
 interface PropTypes {
   activeIndex: number;
+  pageRef: any;
 }
 
 export default function CreateTeamPage(props: PropTypes) {
-  const termsSheet = useRef(null);
+  const userInfoSelector: any = useSelector(userInfo);
+  const matchSelector: any = useSelector(selectedMatch);
 
-  const [canCreateContest, setCanCreateContest] = useState(false);
   const [showWinngList, setShowWinngList] = useState(true);
   const [selectedSwitchTab, setSelectedSwitchTab] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  const proceedToCreateContest = () => {
-    termsSheet?.current?.open();
+  const [contestName, setContestName] = useState('');
+  const [allowedTeams, setAllowedTeams] = useState('');
+  const [entryFee, setEntryFee] = useState('');
+  const [winners, setWinners] = useState('');
+  const [allowMultiple, setAllowMultiple] = useState(false);
+  const [perUserTeam, setPerUserTeam] = useState('');
+
+  useEffect(() => {
+    if (userInfoSelector.name) {
+      setContestName(userInfoSelector.name);
+    }
+  }, []);
+
+  const createContest = async () => {
+    if (
+      !contestName ||
+      !allowedTeams ||
+      !entryFee ||
+      !winners ||
+      !perUserTeam
+    ) {
+      errorBox('All Fields are Required');
+      return;
+    }
+    let obj = {
+      player_key: userInfoSelector.mobile,
+      mobile: userInfoSelector.mobile,
+      match_key: matchSelector.match_key,
+      pcname: contestName,
+      n_teams: allowedTeams,
+      entry_fee: entryFee,
+      n_winners: winners,
+      allow_multiple: allowMultiple ? 'y' : 'n',
+      team_limit: perUserTeam,
+    };
+    // let obj = {
+    //   player_key: 9867543210,
+    //   mobile: 9867543210,
+    //   match_key: 'bblt20_2021_g46',
+    //   pcname: 'test private contest',
+    //   n_teams: 1,
+    //   entry_fee: 10,
+    //   n_winners: 1,
+    //   allow_multiple: 'y',
+    //   team_limit: 1,
+    // };
+    setLoading(true);
+    const response = await createContestRemote(obj);
+    setLoading(false);
+    props.contests.refetch();
+    if (!response) {
+      setTimeout(() => {
+        errorBox('Failed to Create Contest !!');
+      }, 500);
+      return;
+    }
+
+    setTimeout(() => {
+      infoBox('Contest Created');
+    }, 500);
+    props.pageRef?.current?.setPage(1);
+
+    console.log(obj);
   };
-  const enableCreateContest = () => {
-    termsSheet?.current?.close();
-    setCanCreateContest(true);
-  };
-  const switchTab = (tab: number) => {
-    setSelectedSwitchTab(tab);
-  };
+
   return (
     <ScrollView>
-      {canCreateContest ? (
-        selectedSwitchTab === 1 ? (
-          <>
-            <Switch
-              selectedSwitchTab={selectedSwitchTab}
-              switchTab={switchTab}
-            />
-            <CreateContestInput />
-          </>
-        ) : (
-          <>
-            <Switch
-              selectedSwitchTab={selectedSwitchTab}
-              switchTab={switchTab}
-            />
-            <JoinContestListPage />
-          </>
-        )
-      ) : (
-        <CreateContestBanner proceedToCreateContest={proceedToCreateContest} />
-      )}
-
-      <Modalize
-        ref={termsSheet}
-        useNativeDriver={true}
-        modalTopOffset={100}
-        adjustToContentHeight={true}>
-        <AcceptTermsSheet
-          enableCreateContest={enableCreateContest}
-          termsSheet={termsSheet}
+      <View style={[tailwind('my-2')]}>
+        <CreateContestInput
+          contestName={contestName}
+          setContestName={setContestName}
+          allowedTeams={allowedTeams}
+          setAllowedTeams={setAllowedTeams}
+          entryFee={entryFee}
+          setEntryFee={setEntryFee}
+          winners={winners}
+          setWinners={setWinners}
+          allowMultiple={allowMultiple}
+          setAllowMultiple={setAllowMultiple}
+          perUserTeam={perUserTeam}
+          setPerUserTeam={setPerUserTeam}
         />
-      </Modalize>
+        <TouchableOpacity onPress={createContest} style={[tailwind('m-4')]}>
+          <ButtonComponent text={'CREATE & EARN Rs.2,00,000'} />
+        </TouchableOpacity>
+      </View>
+      {loading && <BlockScreenByLoading />}
     </ScrollView>
   );
 }

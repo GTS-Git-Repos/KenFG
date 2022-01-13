@@ -20,21 +20,6 @@ export default function UpcommingPage(props: PropTypes) {
 
   return (
     <View style={[tailwind('m-3')]}>
-      <JoinedContestCard
-        navigate={navigate}
-        contest_key={'123345'}
-        match_key={'123345'}
-        title={'Practice 1'}
-        total_joined={100}
-        total_spots={1000}
-        amount_letters={'10000'}
-        amount={'1000000'}
-        guaranteed={true}
-        entry={''}
-        max_entry={1}
-        bonus={'32%'}
-        is_practice={true}
-      />
       <View style={[tailwind('h-20')]}></View>
     </View>
   );

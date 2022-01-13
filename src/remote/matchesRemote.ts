@@ -22,6 +22,8 @@ const req_join_contest = '/join-contest.php';
 const req_players = '/fantasy-player.php';
 const req_live_match = '/live-match.php';
 const req_my_contest = '/my-contest.php';
+const req_create_contest = '/create-private-contest.php';
+const req_get_private_contest = '/private-contest.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -192,6 +194,42 @@ export const joinContestRemote = async (payload: any) => {
       return true;
     } else {
       failedLog('joinContestRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const createContestRemote = async (payload: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_create_contest,
+      payload,
+    );
+    if (response.status === 200) {
+      return true;
+    } else {
+      failedLog('createContestRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const getPrivateContestsRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.GET,
+      BASE_URL +
+        `${req_get_private_contest}?m=${params.queryKey[1]}&p=${params.queryKey[2]}`,
+    );
+    if (response.status === 200) {
+      return response.data.data;
+    } else {
+      failedLog('createContestRemote()', response);
     }
   } catch (err) {
     console.log(err);

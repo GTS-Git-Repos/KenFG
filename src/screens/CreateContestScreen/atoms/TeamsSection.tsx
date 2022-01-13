@@ -6,21 +6,27 @@ import assets from '../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
-  text?: string;
+  match_name: string;
+  team_a: string;
+  team_b: string;
+  start_at: string;
 }
 
 export default function TeamsSection(props: PropTypes) {
   return (
     <View style={[tailwind('py-3 px-9')]}>
       <Text style={[tailwind('font-bold text-white text-center font-13')]}>
-        ICC Cricket World Cup 2020{' '}
+        {props.match_name}
       </Text>
       <View
         style={[tailwind('pt-3 pb-2 flex-row items-center justify-between')]}>
-        <Team1 />
-        <Team2 />
+        <Team1 team_a={props.team_a} />
+        <Text style={[tailwind('font-bold text-center text-white font-12')]}>
+          VS
+        </Text>
+        <Team2 team_b={props.team_b} />
       </View>
-      <Text style={[tailwind('font-bold text-center text-dark-1 font-15')]}>
+      <Text style={[tailwind('font-regular text-center text-dark-1 font-12')]}>
         29m 22s left
       </Text>
     </View>
@@ -41,8 +47,11 @@ const Team1 = (props: any) => {
           end={{x: 1, y: 0}}
           colors={['#172338', '#254987']}
           style={[tailwind('rounded-full p-0.5 px-2')]}>
-          <Text style={[tailwind(`font-bold text-white  font-12 text-right`)]}>
-            AUS
+          <Text
+            style={[
+              tailwind(`font-bold text-white uppercase font-12 text-right`),
+            ]}>
+            {props.team_a}
           </Text>
         </LinearGradient>
       </View>
@@ -59,8 +68,11 @@ const Team2 = (props: any) => {
           end={{x: 1, y: 0}}
           colors={['#872525', '#0D1320']}
           style={[tailwind('rounded-full p-0.5 px-2')]}>
-          <Text style={[tailwind(`font-bold text-white  font-12 text-right`)]}>
-            ENG
+          <Text
+            style={[
+              tailwind(`font-bold text-white uppercase font-12 text-right`),
+            ]}>
+            {props.team_b}
           </Text>
         </LinearGradient>
       </View>

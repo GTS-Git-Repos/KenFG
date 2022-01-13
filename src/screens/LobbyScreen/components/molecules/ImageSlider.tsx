@@ -51,6 +51,7 @@ const ImageSlider = (props: any) => {
         const match = upcommingMatches.data?.matches[0];
         let obj = {
           match_key: match.key,
+          name: match.tournament.short_name,
           team_a: match.teams.a.key,
           team_b: match.teams.b.key,
         };

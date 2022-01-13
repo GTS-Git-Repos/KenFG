@@ -22,7 +22,10 @@ export default function MyContestPage(props: PropTypes) {
   if (props.status === 'loading') {
     return <ActivityIndicator size={'large'} color="#d1b45a" />;
   }
-  if (props.status === 'success' && !props.contests) {
+  if (
+    props.status === 'success' &&
+    (!props.contests || props.contests.length === 0)
+  ) {
     return <NoJoinedContest />;
   }
 

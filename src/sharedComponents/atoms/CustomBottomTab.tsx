@@ -3,6 +3,7 @@ import {View, Text, Image, TouchableOpacity, Keyboard} from 'react-native';
 import tailwind from '../../../tailwind';
 import assets from '../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
+import {ContestsBottomTabIcon} from '../../assets/newIcons';
 
 export default function CustomBottomTab({state, descriptors, navigation}: any) {
   const [showTab, setShowTab] = useState(true);
@@ -36,7 +37,10 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
       // end={{x: 0.7, y: 0.1}}
       // locations={[0, 0.8, 0.8]}
       // colors={['#c5a959', '#c5a959', '#bea14f']}
-      style={tailwind('flex flex-row py-1 bg-secondary items-center')}>
+      style={[
+        tailwind('flex flex-row py-1 bg-secondary items-center'),
+        {backgroundColor: '#BCA04D'},
+      ]}>
       {state.routes.map((route: any, index: number) => {
         const {options} = descriptors[route.key];
         const label =
@@ -78,14 +82,6 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
               // transform: [{scale: isFocused ? 2 : 1}],
             }}>
             <View style={tailwind('flex flex-col justify-center items-center')}>
-              {/* <View
-                style={[
-                  tailwind(
-                    'bg-green-500 h-20 w-10 border-2 border-red-400  absolute top-0 rounded-full',
-                  ),
-                  {transform: [{scaleY: 2}, {scaleX: 2}]},
-                  // {backgroundColor: 'transparent'},
-                ]}></View> */}
               {index === 0 ? (
                 <Image
                   resizeMode="contain"
