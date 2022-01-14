@@ -1,8 +1,7 @@
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
-
-import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
+// import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
 import CompletedTestMatchMeta from '../constants/mocks/completedTestMatch3i.json';
 
 import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
@@ -170,8 +169,6 @@ export const getJoinedContestRemote = async (params: any) => {
       BASE_URL + req_my_contest,
       {match_key: params.queryKey[1], player_key: params.queryKey[2]},
     );
-    // console.log('response.data.data', response.data.data);
-
     if (response.status === 200) {
       return extractJoinedContestAPIResponse(response.data.data);
     } else {

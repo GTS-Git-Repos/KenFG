@@ -1,33 +1,33 @@
 import React, {useState, useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import ContestListScreen from '../screens/ContestListScreen';
-import ContestInfoScreen from '../screens/ContestInfoScreen';
-import LiveMatchScreen from '../screens/LiveMatchScreen';
-import TeamPreviewScreen from '../screens/TeamPreviewScreen';
-import AccountProfileScreen from '../screens/AccountProfileScreen';
-import CapSelectionScreen from '../screens/CapSelectionScreen';
-import TeamsListScreen from '../screens/TeamsListScreen';
-import NotificationScreen from '../screens/NotificationScreen';
-import WalletScreen from '../screens/WalletScreen';
-import TransactionListScreen from '../screens/TransactionListScreen';
-import SignupScreen from '../screens/SignupScreen';
-import FantasyTeamNameScreen from '../screens/FantasyTeamNameScreen';
-import TeamSelectionScreen from '../screens/TeamSelectionScreen';
+import ContestListScreen from '../screens/matches/ContestsLiveMatchScreen/ContestListScreen';
+import ContestInfoScreen from '../screens/contests/ContestInfoScreen';
+import LiveMatchScreen from '../screens/matches/LiveMatchScreen';
+import TeamPreviewScreen from '../screens/contests/TeamPreviewScreen';
+import AccountProfileScreen from '../screens/user/AccountProfileScreen';
+import CapSelectionScreen from '../screens/contests/CapSelectionScreen';
+import TeamsListScreen from '../screens/contests/TeamsListScreen';
+import NotificationScreen from '../screens/user/NotificationScreen';
+import WalletScreen from '../screens/wallet/WalletScreen';
+import TransactionListScreen from '../screens/wallet/TransactionListScreen';
+import SignupScreen from '../screens/user/SignupScreen';
+import FantasyTeamNameScreen from '../screens/leaderboard/FantasyTeamNameScreen';
+import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
 
-import CreateTeamScreen from '../screens/CreateTeamScreen';
-import CompareTeamsScreen from '../screens/CompareTeamsScreen';
+import CreateTeamScreen from '../screens/contests/CreateTeamScreen';
+import CompareTeamsScreen from '../screens/matches/CompareTeamsScreen';
 
-import LoginScreen from '../screens/LoginScreen';
-import OTPScreen from '../screens/OTPScreen';
+import LoginScreen from '../screens/user/LoginScreen';
+import OTPScreen from '../screens/user/OTPScreen';
 
-import MoreScreen from '../screens/MoreScreen';
-import AboutUsScreen from '../screens/AboutUsScreen';
-import TermsScreen from '../screens/TermsScreen';
-import FairPlayScreen from '../screens/FairPlayScreen';
-import PrivacyPolicyScreen from '../screens/PrivacyPolicyScreen';
+import MoreScreen from '../screens/app/MoreScreen';
+import AboutUsScreen from '../screens/app/AboutUsScreen';
+import TermsScreen from '../screens/app/TermsScreen';
+import FairPlayScreen from '../screens/app/FairPlayScreen';
+import PrivacyPolicyScreen from '../screens/app/PrivacyPolicyScreen';
 
-import MyMatchesScreen from '../screens/MyMatchesScreen';
+import MyMatchesScreen from '../screens/matches/MyMatchesScreen';
 
 import {CardStyleInterpolators} from '@react-navigation/stack';
 

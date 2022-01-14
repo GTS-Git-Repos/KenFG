@@ -4,15 +4,15 @@ import CustomBottomTab from '../sharedComponents/atoms/CustomBottomTab';
 
 import {More} from './StackNavigations';
 
-import LobbyScreen from '../screens/LobbyScreen';
-import MyMatchesScreen from '../screens/MyMatchesScreen';
-import LiveMatchScreen from '../screens/LiveMatchScreen';
+import LobbyScreen from '../screens/app/LobbyScreen';
+import MyMatchesScreen from '../screens/matches/MyMatchesScreen';
+import LiveMatchScreen from '../screens/matches/LiveMatchScreen';
 
-import LoginScreen from '../screens/LoginScreen';
+import LoginScreen from '../screens/user/LoginScreen';
 
 import BluePrintScreen from '../screens/BluePrintScreen';
 import ContainerScreen from '../screens/ContainerScreen';
-import LeaderBoardListsScreen from '../screens/LeaderBoardListsScreen';
+import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScreen';
 
 const BottomTab = createBottomTabNavigator();
 

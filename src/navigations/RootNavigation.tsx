@@ -5,48 +5,41 @@ import {Host} from 'react-native-portalize';
 // import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {
-  CardStyleInterpolators,
-  TransitionPresets,
-} from '@react-navigation/stack';
+import {CardStyleInterpolators} from '@react-navigation/stack';
 
 import {DrawerNav} from './DrawerNavigation';
-import {Home, Auth, More, Contest} from './StackNavigations';
+import {Auth, More, Contest} from './StackNavigations';
 
-import InitialScreen from '../screens/InitialScreen';
-import NotificationScreen from '../screens/NotificationScreen';
-import ContestListScreen from '../screens/ContestListScreen';
-import WalletScreen from '../screens/WalletScreen';
-import ProfileEditScreen from '../screens/ProfileEditScreen';
-import AccountProfileScreen from '../screens/AccountProfileScreen';
-import ContestInfoScreen from '../screens/ContestInfoScreen';
-import CreateTeamScreen from '../screens/CreateTeamScreen';
-import LiveMatchScreen from '../screens/LiveMatchScreen';
-import TeamPreviewScreen from '../screens/TeamPreviewScreen';
-import CapSelectionScreen from '../screens/CapSelectionScreen';
-import CompareTeamsScreen from '../screens/CompareTeamsScreen';
-import HowToPlayScreen from '../screens/HowToPlayScreen';
-import DailyLeaderBoardScreen from '../screens/DailyLeaderBoardScreen';
-import TransactionListScreen from '../screens/TransactionListScreen';
-import VerifyAccountScreen from '../screens/VerifyAccountScreen';
-import ManagePaymentsScreen from '../screens/ManagePaymentsScreen';
-import ContestsLiveMatchScreen from '../screens/ContestsLiveMatchScreen';
-import CompletedMatchScreen from '../screens/CompletedMatchScreen';
-import MonthlyLeaderBoardScreen from '../screens/MonthlyLeaderBoardScreen';
-import CreateContestScreen from '../screens/CreateContestScreen';
+import InitialScreen from '../screens/app/InitialScreen';
+import NotificationScreen from '../screens/user/NotificationScreen';
+import WalletScreen from '../screens/wallet/WalletScreen';
+import ProfileEditScreen from '../screens/user/ProfileEditScreen';
+import AccountProfileScreen from '../screens/user/AccountProfileScreen';
 
-import TeamsListScreen from '../screens/TeamsListScreen';
+import LiveMatchScreen from '../screens/matches/LiveMatchScreen';
+import CompareTeamsScreen from '../screens/matches/CompareTeamsScreen';
+import HowToPlayScreen from '../screens/app/HowToPlayScreen';
+import DailyLeaderBoardScreen from '../screens/leaderboard/DailyLeaderBoardScreen';
+import TransactionListScreen from '../screens/wallet/TransactionListScreen';
+import VerifyAccountScreen from '../screens/wallet/VerifyAccountScreen';
+import ManagePaymentsScreen from '../screens/wallet/ManagePaymentsScreen';
+import ContestsLiveMatchScreen from '../screens/matches/ContestsLiveMatchScreen';
+import CompletedMatchScreen from '../screens/matches/CompletedMatchScreen';
+import MonthlyLeaderBoardScreen from '../screens/leaderboard/MonthlyLeaderBoardScreen';
+import CreateContestScreen from '../screens/contests/CreateContestScreen';
 
-import MyContestPlayersScreen from '../screens/MyContestPlayersScreen';
-import PlayerProfileScreen from '../screens/PlayerProfileScreen';
+import TeamsListScreen from '../screens/contests/TeamsListScreen';
 
-import InviteScreen from '../screens/InviteScreen';
-import ReferredFriendsListScreen from '../screens/ReferredFriendsListScreen';
-import UserGoalsScreen from '../screens/UserGoalsScreen';
-import LeaderProfileScreen from '../screens/LeaderProfileScreen';
-import AffliatedScreen from '../screens/AffliatedScreen';
-import AchievementsScreen from '../screens/AchievementsScreen';
-import LeaderBoardListsScreen from '../screens/LeaderBoardListsScreen';
+import MyContestPlayersScreen from '../screens/contests/MyContestPlayersScreen';
+import PlayerProfileScreen from '../screens/contests/PlayerProfileScreen';
+
+import InviteScreen from '../screens/user/InviteScreen';
+import ReferredFriendsListScreen from '../screens/user/ReferredFriendsListScreen';
+import UserGoalsScreen from '../screens/user/UserGoalsScreen';
+import LeaderProfileScreen from '../screens/leaderboard/LeaderProfileScreen';
+import AffliatedScreen from '../screens/user/AffliatedScreen';
+import AchievementsScreen from '../screens/user/AchievementsScreen';
+import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScreen';
 
 const RootNavigator = createStackNavigator();
 

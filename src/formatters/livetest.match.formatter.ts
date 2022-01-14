@@ -1,4 +1,3 @@
-import {liveTestMatchStatsBluprint} from '../dataBlueprint/liveTestMatch.bluprint';
 import {
   calculateTeamScore,
   getCurrentBowlerData,
@@ -14,8 +13,6 @@ const log = console.log;
 
 export const liveTestMatchFormat = (payload: any) => {
   try {
-    const obj: any = {...liveTestMatchStatsBluprint};
-
     const teams = payload.teams;
     const matchStatus = payload.status;
     const play = payload.play;
@@ -90,6 +87,5 @@ export const liveTestMatchFormat = (payload: any) => {
     console.log(err);
     log('Failed in <liveMatchStatsFormat>');
     return null;
-    return liveTestMatchStatsBluprint;
   }
 };
