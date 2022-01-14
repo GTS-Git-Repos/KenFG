@@ -12,7 +12,7 @@ import TeamCode from './atoms/TeamCode';
 import TabsBottomLine from './atoms/TabsBottomLine';
 import LoadingSpinner from './atoms/Loading.Spinnner';
 
-import ContestCard from './molecules/ContestCard';
+import ContestCard from './molecules/contest.card.shared';
 import TeamsCard from './molecules/TeamsCard';
 import HorizontalProfile from './molecules/HorizontalProfile';
 import JoinedContestCard from './molecules/JoinedContestCard';

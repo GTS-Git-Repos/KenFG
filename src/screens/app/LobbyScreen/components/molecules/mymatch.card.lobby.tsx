@@ -30,7 +30,7 @@ export default function NewMyMatchesCard(props: PropTypes) {
   useEffect(() => {
     let interval: any = null;
     try {
-      if (isMounted.current) {
+      if (isMounted.current && false) {
         let nextDate = add(new Date(), {days: 2});
         interval = setInterval(() => {
           setCountDown(getCountDown(nextDate));

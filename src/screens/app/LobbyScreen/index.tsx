@@ -1,19 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, Image, Pressable, ScrollView} from 'react-native';
+import React, {useState,} from 'react';
+import {View, Text, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useSelector, useDispatch} from 'react-redux';
-import {useNavigation, useRoute, CommonActions} from '@react-navigation/native';
-import assets from '../../../constants/assets_manifest';
-
-import LinearGradient from 'react-native-linear-gradient';
-
-// import {useQuery} from 'react-query';
-// import {initialRemote} from '../../remote/appRemote';
-// import {saveIpAction} from '../../store/actions/appActions';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 import LobbyTopBar from './components/LobbyTopBar';
 import LobbyNav from './components/LobbyNav';
-import NewLobbyNav from './components/molecules/NewLobbyNav';
 
 import CricketPage from './components/molecules/CricketPage';
 import MyMatchCard from './components/molecules/mymatch.card.lobby';
@@ -22,7 +14,6 @@ import SubTitle from './components/SubTitle';
 const log = console.log;
 
 export default function LobbyScreen() {
-  const navigation = useNavigation<any>();
   const route = useRoute();
   const dispatch = useDispatch();
 

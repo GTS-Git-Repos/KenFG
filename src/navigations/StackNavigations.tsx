@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+// import {createStackNavigator} from '@react-navigation/stack';
+import {createNativeStackNavigator as createStackNavigator} from '@react-navigation/native-stack';
 
 import ContestListScreen from '../screens/matches/ContestsLiveMatchScreen/ContestListScreen';
 import ContestInfoScreen from '../screens/contests/ContestInfoScreen';

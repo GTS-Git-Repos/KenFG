@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {NavigationContainer, DarkTheme} from '@react-navigation/native';
 import {Host} from 'react-native-portalize';
 
-// import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import {createStackNavigator} from '@react-navigation/stack';
 
 import {CardStyleInterpolators} from '@react-navigation/stack';
 
@@ -41,19 +41,8 @@ import AffliatedScreen from '../screens/user/AffliatedScreen';
 import AchievementsScreen from '../screens/user/AchievementsScreen';
 import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScreen';
 
-const RootNavigator = createStackNavigator();
-
-const config = {
-  animation: 'spring',
-  config: {
-    stiffness: 1000,
-    damping: 500,
-    mass: 3,
-    overshootClamping: true,
-    restDisplacementThreshold: 0.01,
-    restSpeedThreshold: 0.01,
-  },
-};
+// const RootNavigator = createStackNavigator();
+const RootNavigator = createNativeStackNavigator();
 
 const StackConfig = {
   headerShown: false,

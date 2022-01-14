@@ -23,7 +23,11 @@ import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
 import {useQuery} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
-import {selectedMatch, userInfo, userWalletAmount} from '../../../../store/selectors';
+import {
+  selectedMatch,
+  userInfo,
+  userWalletAmount,
+} from '../../../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import {
   joinContestRequestAction,
@@ -66,6 +70,7 @@ export default function ContestListScreen(props: any) {
   const contests = useQuery(
     ['contests', matchSelector.match_key],
     contestListsRemote,
+    {staleTime: 8000},
   );
   const joinedContest = useQuery(
     ['joined_contest', matchSelector.match_key, userInfoSelector?.mobile],

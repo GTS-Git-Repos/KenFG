@@ -7,7 +7,6 @@ import Animated, {log, useAnimatedStyle} from 'react-native-reanimated';
 interface PropTypes {
   tabs: Array<string>;
   tabOffset: any;
-  onTabPress(index: number): void;
   activeIndex: any;
   onTabPressed: any;
 }
@@ -38,7 +37,9 @@ export default function TabsContestInfo(props: PropTypes) {
                 style={[
                   tailwind(
                     `font-semibold text-gray-200 px-2 py-3 text-center font-15 ${
-                      props.activeIndex === index ? 'font-bold' : 'font-regular text-dark-1'
+                      props.activeIndex === index
+                        ? 'font-bold'
+                        : 'font-regular text-dark-1'
                     }`,
                   ),
                 ]}>

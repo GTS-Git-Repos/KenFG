@@ -1,11 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-  useWindowDimensions,
-} from 'react-native';
+import {View} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {TopbarContest, ContestCard} from '../../../sharedComponents';
@@ -14,44 +8,53 @@ import {useQuery} from 'react-query';
 const log = console.log;
 import LearderBoard from './molecules/LeaderBoardList';
 import {useIsScreenReady} from '../../../utils/customHoooks';
-
-import {contestInfoRemote} from '../../../remote/matchesRemote';
-
+import {contestListsRemote} from '../../../remote/matchesRemote';
 import {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import {useSelector} from 'react-redux';
 import ContestInfoPageLoading from './atoms/ContestInfoPageLoading';
 import PagerView from 'react-native-pager-view';
+import {
+  selectedMatch,
+  userInfo,
+  userWalletAmount,
+} from '../../../store/selectors';
 
 export default function ContestInfoScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
-  const {width} = useWindowDimensions();
   const tabOffset = useSharedValue<any>(0);
-  const scrollRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
   const pageRef = useRef(null);
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [contestInfo, setContestInfo]: any = useState(null);
 
-  const selectedMatchState: any = useSelector<any>(
-    state => state.app.selected_match,
+  const userInfoSelector: any = useSelector(userInfo);
+  const userWallet: any = useSelector(userWalletAmount);
+  const matchSelector: any = useSelector(selectedMatch);
+
+  const {data, isLoading, isSuccess} = useQuery(
+    ['contests', matchSelector.match_key],
+    contestListsRemote,
+    {staleTime: 8000},
   );
 
-  const selectedContestState: any = useSelector<any>(
-    state => state.app.selected_contest,
-  );
+  log('isLoading', isLoading);
 
-  const contest = useQuery(
-    ['contest', selectedMatchState?.match_key, route.params.contest_key],
-    contestInfoRemote,
-  );
+  useEffect(() => {
+    if (data) {
+      const contest = data.find(
+        (item: any) => item.key === route.params.contest_key,
+      );
+      contest ? setContestInfo(contest) : null;
+    }
+  }, [data]);
 
   // Bussiness logic
 
   const navigate = () => {
-    log('selectedContestState', selectedContestState);
     navigation.navigate('CreateTeamScreen');
   };
 
@@ -67,44 +70,32 @@ export default function ContestInfoScreen() {
     pageRef.current?.setPage(index);
   };
 
-  const onTabPress = (index: number) => {
-    if (index === 0) {
-      scrollRef?.current?.scrollTo({x: 0, y: 0, animated: true});
-    } else {
-      scrollRef?.current?.scrollTo({x: width, y: 0, animated: true});
-    }
-  };
-
-  if (isScreenReady === false || !contest.data) {
-    return (
-      <ContestInfoPageLoading
-        title={`${selectedMatchState.team_a?.toUpperCase()} VS ${selectedMatchState.team_b?.toUpperCase()}`}
-      />
-    );
+  if (!contestInfo) {
+    return <ContestInfoPageLoading title={matchSelector.titleString} />;
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopbarContest
-        title={`${selectedMatchState.team_a?.toUpperCase()} VS ${selectedMatchState.team_b?.toUpperCase()}`}
+        title={matchSelector.titleString}
         subtitle={'18h 11m left'}
       />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
           navigate={() => {}}
-          contest_key={contest.data.key}
-          match_key={contest.data.match_key}
-          title={contest.data.title}
+          contest_key={contestInfo.key}
+          match_key={contestInfo.match_key}
+          title={contestInfo.title}
           total_joined={30}
-          total_spots={contest.data.total_spots}
-          amount_letters={contest.data.prize.amount_letters}
-          amount={contest.data.prize.amount}
-          guaranteed={contest.data.guaranteed}
-          entry={contest.data.entry}
-          max_entry={contest.data.max_entry}
-          bonus={contest.data.bonus}
-          is_practice={contest.data.is_practice}
-          contest_type={contest.data.contest_type}
+          total_spots={contestInfo.total_spots}
+          amount_letters={contestInfo.prize.amount_letters}
+          amount={contestInfo.prize.amount}
+          guaranteed={contestInfo.guaranteed}
+          entry={contestInfo.entry}
+          max_entry={contestInfo.max_entry}
+          bonus={contestInfo.bonus}
+          is_practice={contestInfo.is_practice}
+          contest_type={contestInfo.contest_type}
           proceedToJoin={proceedToJoin}
         />
       </View>
@@ -113,7 +104,6 @@ export default function ContestInfoScreen() {
         onTabPressed={onTabPressed}
         tabOffset={tabOffset}
         tabs={['Winnings', 'LeaderBoard']}
-        onTabPress={onTabPress}
       />
 
       <PagerView
@@ -124,7 +114,7 @@ export default function ContestInfoScreen() {
           <WinningsList
             index={0}
             activeIndex={activeIndex}
-            data={contest.data.prize.winnings}
+            data={contestInfo.prize.winnings}
           />
         </View>
         <View>
