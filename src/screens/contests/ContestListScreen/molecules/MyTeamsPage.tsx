@@ -1,14 +1,13 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View, ScrollView, Text} from 'react-native';
-import {TeamsCard} from '../../../../../sharedComponents';
-import {log} from '../../../../../utils/logs';
-import {updatePlayer} from '../../../../../store/actions/teamActions';
-import {creditsLeftCalculator} from '../../../../../constructors/teams.constructor';
+import {TeamsCard} from '../../../../sharedComponents';
+import {log} from '../../../../utils/logs';
+import {updatePlayer} from '../../../../store/actions/teamActions';
+import {creditsLeftCalculator} from '../../../../constructors/teams.constructor';
 import {useNavigation} from '@react-navigation/native';
-import {errorBox} from '../../../../../utils/snakBars';
-import {useDispatch, useSelector} from 'react-redux';
-import {creditLeft, rolesCount, selectedMatch} from '../../../../../store/selectors';
+import {errorBox} from '../../../../utils/snakBars';
+import {useDispatch} from 'react-redux';
 
 interface PropTypes {
   teams: any;
@@ -19,15 +18,8 @@ export default function MyTeamsPage(props: PropTypes) {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
 
-  const playersState: any = useSelector<any>(state => state.team.players);
-  const matchSelector: any = useSelector(selectedMatch);
-  const availableCredits = useSelector(creditLeft);
-  const rolesCountSelector: any = useSelector(rolesCount);
-
   const navigateToPreview = (team_key: string) => {
     const team = props.teams.find((item: any) => item.team_key === team_key);
-    // log.info(team);
-    // returnw
     if (team) {
       const credits_left = creditsLeftCalculator(
         team.keepers,
@@ -71,10 +63,10 @@ export default function MyTeamsPage(props: PropTypes) {
     }
   };
 
-  if (props.status === 'loading') {
+  if (!props.status) {
     return <TeamsLoading />;
   }
-  if (props.status === 'success' && !props.teams) {
+  if (props.status && !props.teams) {
     return <NoTeamsFound />;
   }
   return (

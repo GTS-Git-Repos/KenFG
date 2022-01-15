@@ -4,6 +4,9 @@ export const groupAllContestsAPIRmeote = (payload: any) => {
     const practice = payload.filter(
       (item: any) => item.contest_type === 'practice',
     );
+    if (paid.length === 0 && practice.length === 0) {
+      throw 'no contest found';
+    }
     return [...paid, ...practice];
   } catch (err) {
     console.log('groupAllContestsAPIRmeote', err);
@@ -14,6 +17,10 @@ export const groupAllContestsAPIRmeote = (payload: any) => {
 export const extractJoinedContestAPIResponse = (payload: any) => {
   try {
     const contestsdata = payload.slice(0, payload.length - 1);
+    if (contestsdata.length === 0) {
+      throw 'no joined contests';
+    }
+
     const teams = payload[payload.length - 1];
     const contests = contestsdata.map((item: any) => {
       return {

@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {View, useWindowDimensions, ScrollView, FlatList} from 'react-native';
-import tailwind from '../../../../../tailwind';
+import tailwind from '../../../../tailwind';
 import {
   useFocusEffect,
   useNavigation,
@@ -11,12 +11,10 @@ import {
   contestListsRemote,
   getJoinedTeamsRemote,
   joinContestRemote,
-  getJoinedContestRemote,
-} from '../../../../remote/matchesRemote';
-import {useIsScreenReady, useRenderCount} from '../../../../utils/customHoooks';
-import TopBarContest from '../../../../sharedComponents/atoms/TopbarContest';
-import {BlockScreenByLoading} from '../../../../sharedComponents';
-import ContestScreenLoading from './atoms/ContestScreenLoading';
+} from '../../../remote/matchesRemote';
+import {useIsScreenReady, useRenderCount} from '../../../utils/customHoooks';
+import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
+import {BlockScreenByLoading} from '../../../sharedComponents';
 import Tabs from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
@@ -27,34 +25,42 @@ import {
   selectedMatch,
   userInfo,
   userWalletAmount,
-} from '../../../../store/selectors';
+} from '../../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import {
   joinContestRequestAction,
   updateSelectedContestAction,
-} from '../../../../store/actions/appActions';
+} from '../../../store/actions/appActions';
 import JoinContestModal from './molecules/JoinContestModal';
 import Modal from 'react-native-modal';
-import {errorBox} from '../../../../utils/snakBars';
+import {errorBox} from '../../../utils/snakBars';
 import {
   isMatchTimeExhausted,
   isWalletHaveContestAmount,
-} from '../../../../utils/comman';
+} from '../../../utils/comman';
 
 const log = console.log;
 
-export default function ContestListScreen(props: any) {
+interface PropTypes {
+  contests: any;
+  contestsAPI: any;
+  joined: any;
+  joinedAPI: any;
+  teams: any;
+  teamsAPI: any;
+}
+
+export default function ContestListScreen(props: PropTypes) {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
   // const renderCount = useRenderCount('ContestListScreen')
 
   const {width} = useWindowDimensions();
   const pagerRef = useRef<any>(null);
-  const isScreenReady = useIsScreenReady();
   const dispatch = useDispatch();
 
   const [selectedTab, setSelectedTab] = useState(0);
-  const [showJoinModal, setShowJoinModal] = useState(true);
+  const [showJoinModal, setShowJoinModal] = useState(false);
   const [loading, setLoading] = useState<any>(false);
   const [selectedFilter, setSelectedFilter] = useState<any>(null);
   const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
@@ -67,32 +73,7 @@ export default function ContestListScreen(props: any) {
     state => state.app.selected_contest,
   );
 
-  const contests = useQuery(
-    ['contests', matchSelector.match_key],
-    contestListsRemote,
-    {staleTime: 8000},
-  );
-  const joinedContest = useQuery(
-    ['joined_contest', matchSelector.match_key, userInfoSelector?.mobile],
-    getJoinedContestRemote,
-  );
-
-  const teams = useQuery(
-    ['teams', matchSelector.match_key, userInfoSelector?.mobile],
-    getJoinedTeamsRemote,
-  );
-
-  // side Effects
-
-  useEffect(() => {
-    // console.log('route.params?.contest_key', route.params?.contest_key);
-
-    if (route.params?.contest_key && selectedContestState) {
-      setShowJoinModal(true);
-    } else {
-      setShowJoinModal(false);
-    }
-  }, []);
+  // log(props.teams)
 
   // Business logic
   const onPageSelectedAction = (e: any) => {
@@ -112,7 +93,7 @@ export default function ContestListScreen(props: any) {
 
   const proceedToJoin = (contest_key: string) => {
     try {
-      const contest = contests.data.find(
+      const contest = props.contests.find(
         (item: any) => item.key === contest_key,
       );
       if (!contest) {
@@ -139,13 +120,11 @@ export default function ContestListScreen(props: any) {
       if (!walletStatus.status) {
         // go to wallet screen with needed amount in route params
       }
-      if (teams.data.length > 0) {
+      if (props.teams?.length > 0) {
         navigation.navigate('TeamSelectionScreen');
       } else {
         navigation.navigate('CreateTeamScreen');
       }
-
-      // is user have more than 2 team ?
     } catch (err) {
       console.log('proceedToJoin', err);
     }
@@ -174,10 +153,6 @@ export default function ContestListScreen(props: any) {
     }
   };
 
-  if (isScreenReady === false || !contests.data) {
-    return <ContestScreenLoading title={matchSelector?.titleString} />;
-  }
-
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarContest
@@ -187,7 +162,7 @@ export default function ContestListScreen(props: any) {
       <View style={[tailwind('')]}>
         <Tabs
           selectedTab={selectedTab}
-          teamsCount={teams?.data?.length}
+          teamsCount={props.teams?.length}
           onTabPressed={onTabPressed}
         />
       </View>
@@ -199,21 +174,18 @@ export default function ContestListScreen(props: any) {
         <View style={{width: width}}>
           <ContestPage
             navigate={navigate}
-            status={contests.status}
-            data={contests.data}
+            status={props.contestsAPI}
+            data={props.contests}
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
             proceedToJoin={proceedToJoin}
           />
         </View>
         <View style={{width: width}}>
-          <MyContestPage
-            contests={joinedContest?.data?.contests}
-            status={joinedContest.status}
-          />
+          <MyContestPage joined={props.joined} status={props.joinedAPI} />
         </View>
         <View style={{width: width}}>
-          <MyTeamsPage teams={teams.data} status={teams.status} />
+          <MyTeamsPage teams={props.teams} status={props.teamsAPI} />
         </View>
       </PagerView>
 
@@ -223,7 +195,7 @@ export default function ContestListScreen(props: any) {
             'absolute bottom-0 w-full flex-row items-center justify-center',
           ),
         ]}>
-        <CreateTeamButton contests={contests} />
+        {props.contests && <CreateTeamButton />}
       </View>
 
       <Modal

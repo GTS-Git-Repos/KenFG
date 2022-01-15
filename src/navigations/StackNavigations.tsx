@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 // import {createStackNavigator} from '@react-navigation/stack';
 import {createNativeStackNavigator as createStackNavigator} from '@react-navigation/native-stack';
 
-import ContestListScreen from '../screens/matches/ContestsLiveMatchScreen/ContestListScreen';
+import ContestListScreen from '../screens/contests/ContestListScreen';
 import ContestInfoScreen from '../screens/contests/ContestInfoScreen';
 import LiveMatchScreen from '../screens/matches/LiveMatchScreen';
 import TeamPreviewScreen from '../screens/contests/TeamPreviewScreen';

@@ -1,5 +1,5 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {
   View,
   Text,

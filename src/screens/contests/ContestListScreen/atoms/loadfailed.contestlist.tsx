@@ -1,8 +1,8 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {TopBar} from '../../../../../sharedComponents';
+import {TopBar} from '../../../../sharedComponents';
 
 interface PropTypes {
   title: string;

@@ -1,9 +1,9 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View, Text, ScrollView} from 'react-native';
-import {ContestCard, FullScreenLoading} from '../../../../../sharedComponents';
+import {ContestCard, FullScreenLoading} from '../../../../sharedComponents';
 import FilterTab from './Filtertab';
-import {contestListsTypes} from '../../../../../types/api';
+import {contestListsTypes} from '../../../../types/api';
 import ContestSubTitle from '../atoms/ContestSubTitle';
 import LoadFailedContestList from '../atoms/loadfailed.contestlist';
 const log = console.log;
@@ -18,17 +18,17 @@ interface PropTypes {
 }
 
 export default function ContestPage(props: PropTypes) {
-  if (!props.data) {
+  if (!props.status) {
     return (
-      <Text style={[tailwind('font-regular text-white font-15')]}>Failed</Text>
+      <Text style={[tailwind('font-regular text-white font-15')]}>
+        Loading...
+      </Text>
     );
   }
-
-  if (props.status === 'success' && props.data.length === 0) {
+  if (props.status && !props.data) {
     return (
-      <Text
-        style={[tailwind('font-regular text-center p-7 text-dark-1  font-15')]}>
-        No Contests Found
+      <Text style={[tailwind('font-regular text-white font-15')]}>
+        No Contest Found
       </Text>
     );
   }

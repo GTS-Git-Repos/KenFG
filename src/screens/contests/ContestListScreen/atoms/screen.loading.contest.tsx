@@ -1,19 +1,12 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
-import {View, Dimensions, Image, Text, ActivityIndicator} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {TopBar} from '../../../../../sharedComponents';
-
-import ContentLoader, {Rect} from 'react-content-loader/native';
+import tailwind from '../../../../../tailwind';
+import {View,ActivityIndicator} from 'react-native';
 import Tabs from '../molecules/TabsContest';
-import Filtertab from '../molecules/Filtertab';
-import {TopbarContest} from '../../../../../sharedComponents';
+import {TopbarContest} from '../../../../sharedComponents';
 
 interface PropTypes {
   title: string;
 }
-
-const width = Dimensions.get('window').width;
 
 export default function ContestScreenLoading(props: PropTypes) {
   return (

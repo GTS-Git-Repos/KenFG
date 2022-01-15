@@ -1,14 +1,14 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View, Text, ActivityIndicator, ScrollView} from 'react-native';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import CardMyContest from './CardMyContest';
-import {ContestCard, JoinedContestCard} from '../../../../../sharedComponents';
+import {ContestCard, JoinedContestCard} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/core';
 import NoJoinedContest from '../atoms/NoJoinedContest';
-
+const log = console.log;
 interface PropTypes {
-  contests: any;
+  joined: any;
   status: any;
 }
 
@@ -19,19 +19,16 @@ export default function MyContestPage(props: PropTypes) {
     navigation.navigate('LiveMatchScreen');
   };
 
-  if (props.status === 'loading') {
+  if (!props.status) {
     return <ActivityIndicator size={'large'} color="#d1b45a" />;
   }
-  if (
-    props.status === 'success' &&
-    (!props.contests || props.contests.length === 0)
-  ) {
+  if (props.status && !props.joined) {
     return <NoJoinedContest />;
   }
 
   return (
     <ScrollView contentContainerStyle={[tailwind('m-3')]}>
-      {props.contests.map((item: any, index: number) => {
+      {props.joined.map((item: any, index: number) => {
         return (
           <JoinedContestCard
             key={index}

@@ -1,12 +1,12 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../../constants/assets_manifest';
+import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
 import {useDispatch} from 'react-redux';
-import {updateSelectedContestAction} from '../../../../../store/actions/appActions';
+import {updateSelectedContestAction} from '../../../../store/actions/appActions';
 
 export default function CreateTeamButtom(props: any) {
   const navigation = useNavigation<any>();
@@ -16,15 +16,6 @@ export default function CreateTeamButtom(props: any) {
     dispatch(updateSelectedContestAction(null));
     navigation.navigate('CreateTeamScreen');
   };
-
-  if (!props.contests?.data) {
-    return null;
-  }
-
-  if (props.contests?.data?.length === 0) {
-    return null;
-  }
-
   return (
     <View style={[tailwind('w-6/12')]}>
       <LinearGradient

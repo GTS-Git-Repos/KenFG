@@ -62,6 +62,7 @@ export const contestListsRemote = async (params: any) => {
 };
 
 export const contestInfoRemote = async (params: any) => {
+  // DEPRECATED
   try {
     const response = await requestServer(
       METHODS.GET,
