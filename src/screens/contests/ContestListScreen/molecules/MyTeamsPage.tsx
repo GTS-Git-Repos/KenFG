@@ -3,6 +3,7 @@ import tailwind from '../../../../../tailwind';
 import {View, ScrollView, Text} from 'react-native';
 import {TeamsCard} from '../../../../sharedComponents';
 import {log} from '../../../../utils/logs';
+import NoTeams from '../atoms/no.teams';
 import {updatePlayer} from '../../../../store/actions/teamActions';
 import {creditsLeftCalculator} from '../../../../constructors/teams.constructor';
 import {useNavigation} from '@react-navigation/native';
@@ -67,7 +68,7 @@ export default function MyTeamsPage(props: PropTypes) {
     return <TeamsLoading />;
   }
   if (props.status && !props.teams) {
-    return <NoTeamsFound />;
+    return <NoTeams />;
   }
   return (
     <ScrollView contentContainerStyle={[tailwind('m-3')]}>
@@ -95,15 +96,6 @@ export default function MyTeamsPage(props: PropTypes) {
     </ScrollView>
   );
 }
-
-const NoTeamsFound = () => {
-  return (
-    <Text
-      style={[tailwind('font-regular text-center p-7 text-dark-1  font-15')]}>
-      No Teams Found
-    </Text>
-  );
-};
 
 const TeamsLoading = () => {
   return (

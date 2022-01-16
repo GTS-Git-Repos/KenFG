@@ -16,7 +16,7 @@ import SignupScreen from '../screens/user/SignupScreen';
 import FantasyTeamNameScreen from '../screens/leaderboard/FantasyTeamNameScreen';
 import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
 
-import CreateTeamScreen from '../screens/contests/CreateTeamScreen';
+import TeamFormationScreen from '../screens/contests/TeamFormationScreen';
 import CompareTeamsScreen from '../screens/matches/CompareTeamsScreen';
 
 import LoginScreen from '../screens/user/LoginScreen';
@@ -91,8 +91,8 @@ export function Contest(props: any) {
       />
       <ContestStack.Screen name="TeamsListScreen" component={TeamsListScreen} />
       <ContestStack.Screen
-        name="CreateTeamScreen"
-        component={CreateTeamScreen}
+        name="TeamFormationScreen"
+        component={TeamFormationScreen}
       />
       <ContestStack.Screen
         name="CapSelectionScreen"

@@ -94,6 +94,8 @@ export default {
   prize3: require('../assets/images/prize3.png'),
   createContestBanner: require('../assets/images/createContestBanner.png'),
   shareToFriends: require('../assets/images/shareToFriends.png'),
+  stadium: require('../assets/images/stadium.png'),
+  coin: require('../assets/images/coin.png'),
 
   // flags
   AUS: require('../assets/images/flags/AUS.png'),

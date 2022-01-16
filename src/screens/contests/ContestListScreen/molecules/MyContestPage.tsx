@@ -5,7 +5,7 @@ import {View, Text, ActivityIndicator, ScrollView} from 'react-native';
 import CardMyContest from './CardMyContest';
 import {ContestCard, JoinedContestCard} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/core';
-import NoJoinedContest from '../atoms/NoJoinedContest';
+import NoJoinedContest from '../atoms/no.joined.contest';
 const log = console.log;
 interface PropTypes {
   joined: any;

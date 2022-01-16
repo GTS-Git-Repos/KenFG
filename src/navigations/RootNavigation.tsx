@@ -40,6 +40,7 @@ import LeaderProfileScreen from '../screens/leaderboard/LeaderProfileScreen';
 import AffliatedScreen from '../screens/user/AffliatedScreen';
 import AchievementsScreen from '../screens/user/AchievementsScreen';
 import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScreen';
+import TeamFormationScreen from '../screens/contests/TeamFormationScreen';
 
 // const RootNavigator = createStackNavigator();
 const RootNavigator = createNativeStackNavigator();
@@ -56,6 +57,10 @@ export default function RootNavigation() {
         <RootNavigator.Navigator
           screenOptions={StackConfig}
           initialRouteName="InitialScreen">
+          <RootNavigator.Screen
+            component={TeamFormationScreen}
+            name="TeamFormationScreen"
+          />
           <RootNavigator.Screen
             component={InitialScreen}
             name="InitialScreen"

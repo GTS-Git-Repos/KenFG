@@ -1,14 +1,14 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {JoinedContestCard} from '../../../../sharedComponents';
 import assets from '../../../../constants/assets_manifest';
-import NoContestFound from '../atoms/NoContestFound';
+import NoContest from '../atoms/no.contest';
 import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
-  text?: string;
+  upcomming: any;
 }
 
 export default function UpcommingPage(props: PropTypes) {
@@ -18,9 +18,11 @@ export default function UpcommingPage(props: PropTypes) {
     navigation.navigate('LiveMatchScreen');
   };
 
+  return <NoContest />;
+
   return (
     <View style={[tailwind('m-3')]}>
-      <View style={[tailwind('h-20')]}></View>
+      <Text style={[tailwind('font-regular text-white font-15')]}>H</Text>
     </View>
   );
 }

@@ -11,6 +11,7 @@ import ContestScreenLoading from './atoms/ContestScreenLoading';
 import TeamCode from './atoms/TeamCode';
 import TabsBottomLine from './atoms/TabsBottomLine';
 import LoadingSpinner from './atoms/Loading.Spinnner';
+import SecondaryButton from './atoms/secondaryButton';
 
 import ContestCard from './molecules/contest.card.shared';
 import TeamsCard from './molecules/TeamsCard';
@@ -62,6 +63,7 @@ export {
   TopbarContest,
   BlockScreenByLoading,
   ButtonComponent,
+  SecondaryButton,
   BottomLine,
   FullScreenLoading,
   LoadingSpinner,

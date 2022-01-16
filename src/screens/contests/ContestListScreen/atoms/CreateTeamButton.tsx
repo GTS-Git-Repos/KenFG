@@ -14,36 +14,43 @@ export default function CreateTeamButtom(props: any) {
 
   const navigateByButton = () => {
     dispatch(updateSelectedContestAction(null));
-    navigation.navigate('CreateTeamScreen');
+    navigation.navigate('TeamFormationScreen');
   };
   return (
-    <View style={[tailwind('w-6/12')]}>
-      <LinearGradient
-        end={{x: 0.0, y: 0.5}}
-        start={{x: 0.8, y: 2.0}}
-        locations={[0.6, 0.5]}
-        style={[tailwind('flex-row  m-2 rounded')]}
-        colors={['#00513B', '#00513B']}>
-        <TouchableOpacity
-          onPress={navigateByButton}
-          style={[
-            tailwind('py-3 flex-grow flex-row items-center justify-center'),
-          ]}>
-          <Image
-            resizeMode="contain"
-            source={assets.plus}
-            style={[tailwind(''), {width: 20, height: 20}]}
-          />
-          <Text
+    <View
+      style={[
+        tailwind(
+          'absolute bottom-0 w-full flex-row items-center justify-center',
+        ),
+      ]}>
+      <View style={[tailwind('w-6/12 flex-row rounded')]}>
+        {/* <LinearGradient
+          end={{x: 0.0, y: 0.5}}
+          start={{x: 0.8, y: 2.0}}
+          locations={[0.6, 0.5]}
+          style={[tailwind('flex-row  m-2 rounded')]}
+          colors={['#00513B', '#00513B']}> */}
+          <TouchableOpacity
+            onPress={navigateByButton}
             style={[
-              tailwind(
-                'font-bold px-2 uppercase text-center text-light font-12',
-              ),
+              tailwind('py-3 flex-grow flex-row items-center justify-center'),
             ]}>
-            Create Team
-          </Text>
-        </TouchableOpacity>
-      </LinearGradient>
+            <Image
+              resizeMode="contain"
+              source={assets.plus}
+              style={[tailwind(''), {width: 20, height: 20}]}
+            />
+            <Text
+              style={[
+                tailwind(
+                  'font-bold px-2 uppercase text-center text-light font-12',
+                ),
+              ]}>
+              Create Team
+            </Text>
+          </TouchableOpacity>
+        {/* </LinearGradient> */}
+      </View>
     </View>
   );
 }

@@ -189,14 +189,7 @@ export default function ContestListScreen(props: PropTypes) {
         </View>
       </PagerView>
 
-      <View
-        style={[
-          tailwind(
-            'absolute bottom-0 w-full flex-row items-center justify-center',
-          ),
-        ]}>
-        {props.contests && <CreateTeamButton />}
-      </View>
+      {props.contests && <CreateTeamButton />}
 
       <Modal
         isVisible={showJoinModal}

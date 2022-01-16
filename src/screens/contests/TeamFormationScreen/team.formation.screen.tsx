@@ -10,7 +10,10 @@ import tailwind from '../../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../../utils/customHoooks';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {FullScreenLoading, BlockScreenByLoading} from '../../../sharedComponents';
+import {
+  FullScreenLoading,
+  BlockScreenByLoading,
+} from '../../../sharedComponents';
 import LinearGradient from 'react-native-linear-gradient';
 import PagerView from 'react-native-pager-view';
 import TopBarCreateTeam from './atoms/TopBarCreateTeam';
@@ -27,7 +30,6 @@ import {
   updatePlayerAction,
   updateTeamCountAction,
   clearTeamAction,
-  updateBlockListAction,
   saveAllPlayersAction,
   updateErrorMsgAction,
   updateTeamAction,
@@ -37,15 +39,9 @@ import {getMatchPlayersRemote} from '../../../remote/matchesRemote';
 import {useQuery} from 'react-query';
 
 import {useSelector, useDispatch} from 'react-redux';
-import {
-  creditLeft,
-  rolesCount,
-  blockList,
-  selectedMatch,
-} from '../../../store/selectors';
+import {creditLeft, rolesCount, selectedMatch} from '../../../store/selectors';
 // import {isPlayerCanBeSelectable} from '../../workers/decision';
 import {errorBox} from '../../../utils/snakBars';
-import TabItem from './atoms/TabItem';
 import ClearTeamSheet from './atoms/ClearTeamSheet';
 import CreateTeamFilterSheetTitle from './atoms/CreateTeamFilterSheetTitle';
 import PlayerFilterSheet from './molecules/PlayerFilterSheet';
@@ -54,12 +50,15 @@ import ScrollTabs from './molecules/ScrollTabs';
 import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
 import {log} from '../../../utils/logs';
 
-export default function CreateTeamScreen() {
+interface PropTypes {
+  players: any;
+}
+
+export default function TeamFormationScreen(props: PropTypes) {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
   const pageRef = useRef<PagerView>(null);
   const clearRef = useRef<any>(null);
-  const isScreenReady = useIsScreenReady();
   const dispatch = useDispatch();
   const filterSheet = useRef<Modalize>();
   const isMounted = useRef(false);
@@ -83,12 +82,6 @@ export default function CreateTeamScreen() {
   const [loading, setLoading] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // remote sevice query
-  const players: any = useQuery(
-    ['players', SelectedMatchState.match_key, userState.mobile],
-    getMatchPlayersRemote,
-  );
-
   // side effects
 
   useEffect(() => {
@@ -102,10 +95,10 @@ export default function CreateTeamScreen() {
   }, []);
 
   useEffect(() => {
-    if (players.data) {
-      dispatch(saveAllPlayersAction(players.data));
+    if (props.players) {
+      dispatch(saveAllPlayersAction(props.players));
     }
-  }, [players]);
+  }, [props.players]);
 
   useEffect(() => {
     dispatch(updateTeamCountAction(rolesCountSelector));
@@ -179,13 +172,6 @@ export default function CreateTeamScreen() {
     }
   };
 
-  if (isScreenReady === false || players.status === 'loading') {
-    return <CreateTeamLoading text={``} />;
-  }
-  if (players.status === 'success' && !players.data) {
-    return <LoadFailedTeamFormation />;
-  }
-
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarCreateTeam />
@@ -232,7 +218,7 @@ export default function CreateTeamScreen() {
             checkPlayerSelection={checkPlayerSelection}
             id={'wkt'}
             title={'Select 1-4 Wicket Keepers'}
-            data={players.data[0]?.keeper}
+            data={props.players[0]?.keeper}
             rolesCountSelector={rolesCountSelector}
             index={0}
             activeIndex={activeIndex}
@@ -245,7 +231,7 @@ export default function CreateTeamScreen() {
             checkPlayerSelection={checkPlayerSelection}
             id={'bat'}
             title={'Select 3-6 Batters'}
-            data={players.data[0]?.batsman}
+            data={props.players[0]?.batsman}
             rolesCountSelector={rolesCountSelector}
             index={1}
             activeIndex={activeIndex}
@@ -258,7 +244,7 @@ export default function CreateTeamScreen() {
             checkPlayerSelection={checkPlayerSelection}
             id={'ar'}
             title={'Select 1-4 All Rounders'}
-            data={players.data[0]?.all_rounder}
+            data={props.players[0]?.all_rounder}
             rolesCountSelector={rolesCountSelector}
             index={2}
             activeIndex={activeIndex}
@@ -271,7 +257,7 @@ export default function CreateTeamScreen() {
             checkPlayerSelection={checkPlayerSelection}
             id={'bwl'}
             title={'Select 3-6 Bowlers'}
-            data={players.data[0]?.bowler}
+            data={props.players[0]?.bowler}
             rolesCountSelector={rolesCountSelector}
             index={3}
             activeIndex={activeIndex}
