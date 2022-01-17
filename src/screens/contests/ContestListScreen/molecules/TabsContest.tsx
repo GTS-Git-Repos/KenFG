@@ -9,7 +9,9 @@ interface PropTypes {
   teamsCount: any;
 }
 
-function Tabs(props: PropTypes) {
+function TabsContest(props: PropTypes) {
+  console.log(props);
+
   return (
     <View style={[tailwind('flex-row bg-dark-3 items-center')]}>
       <TouchableOpacity
@@ -63,9 +65,7 @@ function Tabs(props: PropTypes) {
               }`,
             ),
           ]}>
-          {props.teamsCount
-            ? `My Teams (${props.teamsCount.length})`
-            : 'My Teams'}
+          {props.teamsCount ? `My Teams (${props.teamsCount})` : 'My Teams'}
         </Text>
       </TouchableOpacity>
     </View>
@@ -89,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default React.memo(Tabs);
+export default TabsContest;

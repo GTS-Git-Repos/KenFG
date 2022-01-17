@@ -129,8 +129,7 @@ const Footer = (props: any) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: '#172338',
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    borderRadius: 8,
   },
   topSection: {
     alignItems: 'center',

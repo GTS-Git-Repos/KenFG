@@ -28,7 +28,7 @@ export default function MyContestPage(props: PropTypes) {
 
   return (
     <ScrollView contentContainerStyle={[tailwind('m-3')]}>
-      {props.joined.map((item: any, index: number) => {
+      {props.joined.contests.map((item: any, index: number) => {
         return (
           <JoinedContestCard
             key={index}

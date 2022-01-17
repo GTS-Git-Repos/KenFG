@@ -15,7 +15,7 @@ import {
 import {useIsScreenReady, useRenderCount} from '../../../utils/customHoooks';
 import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
 import {BlockScreenByLoading} from '../../../sharedComponents';
-import Tabs from './molecules/TabsContest';
+import TabsContest from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
@@ -48,6 +48,7 @@ interface PropTypes {
   joinedAPI: any;
   teams: any;
   teamsAPI: any;
+  teamsAPILive: any;
 }
 
 export default function ContestListScreen(props: PropTypes) {
@@ -72,8 +73,6 @@ export default function ContestListScreen(props: PropTypes) {
   const selectedContestState: any = useSelector<any>(
     state => state.app.selected_contest,
   );
-
-  // log(props.teams)
 
   // Business logic
   const onPageSelectedAction = (e: any) => {
@@ -123,7 +122,7 @@ export default function ContestListScreen(props: PropTypes) {
       if (props.teams?.length > 0) {
         navigation.navigate('TeamSelectionScreen');
       } else {
-        navigation.navigate('CreateTeamScreen');
+        navigation.navigate('TeamFormationScreen');
       }
     } catch (err) {
       console.log('proceedToJoin', err);
@@ -160,7 +159,7 @@ export default function ContestListScreen(props: PropTypes) {
         subtitle={currentTime}
       />
       <View style={[tailwind('')]}>
-        <Tabs
+        <TabsContest
           selectedTab={selectedTab}
           teamsCount={props.teams?.length}
           onTabPressed={onTabPressed}
@@ -185,7 +184,11 @@ export default function ContestListScreen(props: PropTypes) {
           <MyContestPage joined={props.joined} status={props.joinedAPI} />
         </View>
         <View style={{width: width}}>
-          <MyTeamsPage teams={props.teams} status={props.teamsAPI} />
+          <MyTeamsPage
+            teams={props.teams}
+            status={props.teamsAPI}
+            live={props.teamsAPILive}
+          />
         </View>
       </PagerView>
 

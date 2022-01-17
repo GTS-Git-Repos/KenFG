@@ -25,7 +25,7 @@ export const extractJoinedContestAPIResponse = (payload: any) => {
     const contests = contestsdata.map((item: any) => {
       return {
         ...item,
-        contest_team: JSON.parse(item.contest_team),
+        contest_team: item.contest_team.split(','),
       };
     });
 

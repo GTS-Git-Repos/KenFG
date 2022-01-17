@@ -4,7 +4,7 @@ import tailwind from '../../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../../utils/customHoooks';
 import {useNavigation} from '@react-navigation/native';
-import NoContest from "./atoms/no.contest"
+import NoContest from './atoms/no.contest';
 import {TopBar} from '../../../sharedComponents';
 import PagerView from 'react-native-pager-view';
 import MyMatchesTabs from './molecules/MyMatchesTabs';
@@ -42,13 +42,16 @@ export default function MyMatches(props: PropTypes) {
       <PagerView
         ref={pageRef}
         onPageSelected={onPageSelectedAction}
-        style={{flex:1}}
-        >
+        style={{flex: 1}}>
         <View>
           <UpcommingPage upcomming={props.upcomming} />
         </View>
-        <View>{/* <LivePage /> */}</View>
-        <View>{/* <CompletedPage /> */}</View>
+        <View>
+          <LivePage />
+        </View>
+        <View>
+          <CompletedPage />
+        </View>
       </PagerView>
     </View>
   );

@@ -41,8 +41,6 @@ export default function ContestInfoScreen() {
     {staleTime: 8000},
   );
 
-  log('isLoading', isLoading);
-
   useEffect(() => {
     if (data) {
       const contest = data.find(
@@ -55,11 +53,11 @@ export default function ContestInfoScreen() {
   // Bussiness logic
 
   const navigate = () => {
-    navigation.navigate('CreateTeamScreen');
+    navigation.navigate('TeamFormationScreen');
   };
 
   const proceedToJoin = (contest_key: string) => {
-    navigation.navigate('CreateTeamScreen');
+    navigation.navigate('TeamFormationScreen');
   };
 
   const onPageSelectedAction = (e: any) => {

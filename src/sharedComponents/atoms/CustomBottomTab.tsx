@@ -3,7 +3,16 @@ import {View, Text, Image, TouchableOpacity, Keyboard} from 'react-native';
 import tailwind from '../../../tailwind';
 import assets from '../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
-import {ContestsBottomTabIcon} from '../../assets/newIcons';
+import {
+  ContestsBottomTabOff,
+  ContestsBottomTabOn,
+  HomeBottomTabOff,
+  HomeBottomTabOn,
+  LeaderBottomTabOff,
+  LeaderBottomTabOn,
+  MoreBottomTabOff,
+  MoreBottomTabOn,
+} from '../../assets/newIcons';
 
 export default function CustomBottomTab({state, descriptors, navigation}: any) {
   const [showTab, setShowTab] = useState(true);
@@ -83,31 +92,27 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
             }}>
             <View style={tailwind('flex flex-col justify-center items-center')}>
               {index === 0 ? (
-                <Image
-                  resizeMode="contain"
-                  source={isFocused ? assets.home_tab : assets.home_tab_off}
-                  style={[tailwind('w-7 h-7')]}
-                />
+                isFocused ? (
+                  <HomeBottomTabOn />
+                ) : (
+                  <HomeBottomTabOff />
+                )
               ) : index === 1 ? (
-                <Image
-                  resizeMode="contain"
-                  source={
-                    isFocused ? assets.contest_tab_on : assets.contest_tab
-                  }
-                  style={[tailwind('w-7 h-7')]}
-                />
+                isFocused ? (
+                  <ContestsBottomTabOn />
+                ) : (
+                  <ContestsBottomTabOff />
+                )
               ) : index === 2 ? (
-                <Image
-                  resizeMode="contain"
-                  source={isFocused ? assets.leader_tab_on : assets.leader_tab}
-                  style={[tailwind('w-7 h-7')]}
-                />
+                isFocused ? (
+                  <LeaderBottomTabOn />
+                ) : (
+                  <LeaderBottomTabOff />
+                )
+              ) : isFocused ? (
+                <MoreBottomTabOn />
               ) : (
-                <Image
-                  resizeMode="contain"
-                  source={isFocused ? assets.more_tab : assets.more_tab}
-                  style={[tailwind('w-6 h-6')]}
-                />
+                <MoreBottomTabOff />
               )}
 
               <Text

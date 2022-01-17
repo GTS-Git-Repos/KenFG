@@ -48,7 +48,7 @@ export default function ContestCard(props: PropTypes) {
       activeOpacity={0.6}
       onPress={() => navigation.navigate('ContestsLiveMatchScreen')}
       style={[tailwind('rounded mb-2 bg-dark-3')]}>
-      <TopSection />
+      <TopSection title={props.title} />
       <Footer />
       <View style={[tailwind('p-2')]}>
         <View style={[tailwind('flex-row items-center justify-between')]}>
@@ -76,7 +76,7 @@ export default function ContestCard(props: PropTypes) {
   );
 }
 
-const TopSection = () => {
+const TopSection = (props: any) => {
   return (
     <View style={[tailwind('p-2')]}>
       <View style={[tailwind('flex-row items-center justify-between')]}>
@@ -85,7 +85,8 @@ const TopSection = () => {
             Prize Pool
           </Text>
           <Text style={[tailwind('font-bold pt-1 text-white font-15')]}>
-            {'\u20B9'} 12.40 Lacks
+            {'\u20B9'}
+            {props.title}
           </Text>
         </View>
 

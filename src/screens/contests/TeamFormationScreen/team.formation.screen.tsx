@@ -52,58 +52,24 @@ import {log} from '../../../utils/logs';
 
 interface PropTypes {
   players: any;
+  rolesCount: any;
+  creditsLeft: number;
+  match: any;
+  navigateToCapSelection(): any;
+  navigateToTeamPreviewScreeen(): any;
 }
 
 export default function TeamFormationScreen(props: PropTypes) {
-  const navigation = useNavigation<any>();
-  const route = useRoute<any>();
   const pageRef = useRef<PagerView>(null);
   const clearRef = useRef<any>(null);
   const dispatch = useDispatch();
   const filterSheet = useRef<Modalize>();
-  const isMounted = useRef(false);
 
-  const playersState: any = useSelector<any>(state => state.team.players);
-  const userState: any = useSelector<any>(state => state.user.user_info);
-
-  const SelectedMatchState: any = useSelector<any>(
-    state => state.app.selected_match,
-  );
   const ErrorMessageState: any = useSelector<any>(
     state => state.team.error_message,
   );
 
-  // console.log('playersState', JSON.stringify(playersState));
-
-  const matchSelector: any = useSelector(selectedMatch);
-  const availableCredits = useSelector(creditLeft);
-  const rolesCountSelector: any = useSelector(rolesCount);
-
-  const [loading, setLoading] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  // side effects
-
-  useEffect(() => {
-    if (route?.params?.from === 1) {
-      // Dont clear its from clone or edit
-    } else {
-      dispatch(clearTeamAction());
-    }
-    dispatch(updateErrorMsgAction(null));
-    dispatch(updateTeamAction([matchSelector.team_a, matchSelector.team_b]));
-  }, []);
-
-  useEffect(() => {
-    if (props.players) {
-      dispatch(saveAllPlayersAction(props.players));
-    }
-  }, [props.players]);
-
-  useEffect(() => {
-    dispatch(updateTeamCountAction(rolesCountSelector));
-    dispatch(updateCreditsAction(availableCredits));
-  }, [playersState]);
 
   useEffect(() => {
     if (ErrorMessageState?.message) {
@@ -128,50 +94,6 @@ export default function TeamFormationScreen(props: PropTypes) {
     clearRef?.current?.close();
   };
 
-  const navigateToTeamPreviewScreeen = () => {
-    navigation.navigate('TeamPreviewScreen', {
-      from: 1,
-      keepers: playersState.filter(
-        (item: any) => item.seasonal_role === 'keeper',
-      ),
-      batsman: playersState.filter(
-        (item: any) => item.seasonal_role === 'batsman',
-      ),
-      all_rounder: playersState.filter(
-        (item: any) => item.seasonal_role === 'all_rounder',
-      ),
-      bowler: playersState.filter(
-        (item: any) => item.seasonal_role === 'bowler',
-      ),
-      cap_key: 1,
-      vc_key: 1,
-      team_a: {
-        key: matchSelector.team_a,
-        count: rolesCountSelector[matchSelector.team_a],
-      },
-      team_b: {
-        key: matchSelector.team_b,
-        count: rolesCountSelector[matchSelector.team_b],
-      },
-      credits_left: availableCredits,
-    });
-  };
-
-  const navigateToCapSelection = () => {
-    try {
-      if (playersState.length === 11) {
-        navigation.navigate('CapSelectionScreen'),
-          {
-            match_key: !route?.params?.match_key,
-          };
-      } else {
-        throw 'Team requires total 11 players';
-      }
-    } catch (err: any) {
-      errorBox(err);
-    }
-  };
-
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarCreateTeam />
@@ -181,19 +103,19 @@ export default function TeamFormationScreen(props: PropTypes) {
           <Line />
 
           <TeamInfo
-            teamname1={matchSelector.team_a}
-            teamname2={matchSelector.team_b}
-            teamcount1={rolesCountSelector[matchSelector.team_a]}
-            teamcount2={rolesCountSelector[matchSelector.team_b]}
-            credits_left={availableCredits}
+            teamname1={props.match.team_a}
+            teamname2={props.match.team_b}
+            teamcount1={props.rolesCount[props.match.team_a]}
+            teamcount2={props.rolesCount[props.match.team_b]}
+            credits_left={props.creditsLeft}
           />
         </LinearGradient>
         <Line />
         <SelectionIndicator
           clearRef={clearRef}
           count={
-            rolesCountSelector[matchSelector.team_a] +
-            rolesCountSelector[matchSelector.team_b]
+            props.rolesCount[props.match.team_a] +
+            props.rolesCount[props.match.team_b]
           }
         />
       </LinearGradient>
@@ -203,7 +125,7 @@ export default function TeamFormationScreen(props: PropTypes) {
         <ScrollTabs
           activeIndex={activeIndex}
           onTabPressed={onTabPressed}
-          rolesCountSelector={rolesCountSelector}
+          rolesCountSelector={props.rolesCount}
         />
       </View>
 
@@ -219,10 +141,10 @@ export default function TeamFormationScreen(props: PropTypes) {
             id={'wkt'}
             title={'Select 1-4 Wicket Keepers'}
             data={props.players[0]?.keeper}
-            rolesCountSelector={rolesCountSelector}
+            rolesCountSelector={props.rolesCount}
             index={0}
             activeIndex={activeIndex}
-            team_a={matchSelector.team_a}
+            team_a={props.match.team_a}
           />
         </View>
         <View>
@@ -232,10 +154,10 @@ export default function TeamFormationScreen(props: PropTypes) {
             id={'bat'}
             title={'Select 3-6 Batters'}
             data={props.players[0]?.batsman}
-            rolesCountSelector={rolesCountSelector}
+            rolesCountSelector={props.rolesCount}
             index={1}
             activeIndex={activeIndex}
-            team_a={matchSelector.team_a}
+            team_a={props.match.team_a}
           />
         </View>
         <View>
@@ -245,10 +167,10 @@ export default function TeamFormationScreen(props: PropTypes) {
             id={'ar'}
             title={'Select 1-4 All Rounders'}
             data={props.players[0]?.all_rounder}
-            rolesCountSelector={rolesCountSelector}
+            rolesCountSelector={props.rolesCount}
             index={2}
             activeIndex={activeIndex}
-            team_a={matchSelector.team_a}
+            team_a={props.match.team_a}
           />
         </View>
         <View>
@@ -258,18 +180,18 @@ export default function TeamFormationScreen(props: PropTypes) {
             id={'bwl'}
             title={'Select 3-6 Bowlers'}
             data={props.players[0]?.bowler}
-            rolesCountSelector={rolesCountSelector}
+            rolesCountSelector={props.rolesCount}
             index={3}
             activeIndex={activeIndex}
-            team_a={matchSelector.team_a}
+            team_a={props.match.team_a}
           />
         </View>
       </PagerView>
       <View
         style={[tailwind('absolute bottom-0 w-full flex-row justify-center')]}>
         <BottomAction
-          navigateToCapSelection={navigateToCapSelection}
-          navigateToTeamPreviewScreeen={navigateToTeamPreviewScreeen}
+          navigateToCapSelection={props.navigateToCapSelection}
+          navigateToTeamPreviewScreeen={props.navigateToTeamPreviewScreeen}
         />
       </View>
 
@@ -293,8 +215,6 @@ export default function TeamFormationScreen(props: PropTypes) {
         }>
         <PlayerFilterSheet />
       </Modalize>
-
-      {loading && <BlockScreenByLoading />}
     </View>
   );
 }

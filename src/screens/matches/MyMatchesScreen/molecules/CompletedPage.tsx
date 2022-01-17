@@ -4,11 +4,12 @@ import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import {ContestCard} from '../../../../sharedComponents';
-import NoContestFound from '../atoms/NoContestFound';
+import NoContest from '../atoms/no.contest';
+
 interface PropTypes {
   text?: string;
 }
 
 export default function CompletedPage(props: PropTypes) {
-  return <NoContestFound text={"You haven't joined any upcomming contests"} />;
+  return <NoContest text={'You dont have any completed Contest'} />;
 }

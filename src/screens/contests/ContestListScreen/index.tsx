@@ -10,28 +10,29 @@ import {
   useJoinedContests,
   useGetTeams,
 } from './contest.workers';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
 
 export default function ContestListHOC() {
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
   const isScreenReady = useIsScreenReady();
+  // const countDown = useCountDown(matchSelector.start_at, false);
 
   const {contests, contestsAPI} = useContestList(matchSelector.match_key);
   const {joined, joinedAPI} = useJoinedContests(
     matchSelector.match_key,
     userSelector.mobile,
   );
-  const {teams, teamsAPI} = useGetTeams(
+  const {teams, teamsAPI, teamsAPILive} = useGetTeams(
     matchSelector.match_key,
     userSelector.mobile,
   );
 
   useEffect(() => {
-    if (contests) {
-      // console.log(contests);
+    if (joined) {
+      console.log('111', joined);
     }
-  }, []);
+  }, [joined]);
 
   if (!isScreenReady || !contestsAPI) {
     return <ContestScreenLoading title={''} />;
@@ -45,6 +46,7 @@ export default function ContestListHOC() {
       joinedAPI={joinedAPI}
       teams={teams}
       teamsAPI={teamsAPI}
+      teamsAPILive={teamsAPILive}
     />
   );
 }

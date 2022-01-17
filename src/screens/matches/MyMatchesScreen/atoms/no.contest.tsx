@@ -11,7 +11,7 @@ import assets from '../../../../constants/assets_manifest';
 import {SecondaryButton} from '../../../../sharedComponents';
 
 interface PropTypes {
-  text?: string;
+  text: string;
 }
 
 export default function NoContent(props: PropTypes) {
@@ -22,7 +22,7 @@ export default function NoContent(props: PropTypes) {
       resizeMode="cover">
       <View style={[tailwind(''), {paddingVertical: 59}]}>
         <Text style={[tailwind('font-regular text-center text-white font-14')]}>
-          You haven't joined yet
+          {props.text}
         </Text>
         <View style={[tailwind('flex-row pt-2 justify-center')]}>
           <Image

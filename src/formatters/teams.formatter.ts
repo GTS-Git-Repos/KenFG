@@ -1,6 +1,6 @@
 import {log} from '../utils/logs';
 
-export const parseJoinedTeamsAPI = (payload: Array<any>) => {
+export const parseJoinedTeamsAPI = (payload: any) => {
   try {
     const teams = payload.teams;
     if (!teams) {
@@ -54,4 +54,3 @@ export const parseJoinedTeamsAPI = (payload: Array<any>) => {
     return false;
   }
 };
-

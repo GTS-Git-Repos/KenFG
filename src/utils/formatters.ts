@@ -21,7 +21,7 @@ export const getCountDown = (inputDate: Date) => {
       countDown.seconds < 10 ? `0${countDown.seconds}` : countDown.seconds
     }`;
     return timeString;
-  } catch (err) {
+} catch (err) {
     return '00:00:00';
   }
 };

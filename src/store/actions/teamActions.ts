@@ -78,6 +78,7 @@ export const updatePlayerAction = (payload: any) => {
       const isExists = players.findIndex(
         (item: any) => item.key === payload.key,
       );
+
       if (isExists !== -1) {
         // remove that player
         players.splice(isExists, 1);
@@ -85,7 +86,6 @@ export const updatePlayerAction = (payload: any) => {
         dispatch(updatePlayer(newPlayerState));
         return;
       }
-
       const player = all_players[0][payload.role].find(
         (item: any) => item.key === payload.key,
       );

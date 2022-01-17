@@ -226,18 +226,18 @@ const AppVersion = (props: any) => {
       <View style={[tailwind('flex-row px-4 py-3')]}>
         <View style={[tailwind(''), {flex: 7}]}>
           <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
-            Version {props.version}
+            Version 0.1
           </Text>
           <Text style={[tailwind('font-regular py-1 text-dark-1 font-11')]}>
-            App upto date
+            17/1/22-3:37PM
           </Text>
         </View>
-        <View style={[tailwind('justify-end items-end'), {flex: 3}]}>
+        {/* <View style={[tailwind('justify-end items-end'), {flex: 3}]}>
           <Text
             style={[tailwind('font-regular text-dark-1 uppercase font-13')]}>
             UPDATE
           </Text>
-        </View>
+        </View> */}
       </View>
     </LinearGradient>
   );

@@ -18,25 +18,23 @@ export const useContestList = (match_key: string) => {
 };
 
 export const useJoinedContests = (match_key: string, user_id: string) => {
-  const {data: joined, isSuccess: joinedAPI} = useQuery(
-    ['joined_contest', match_key, user_id],
-    getJoinedContestRemote,
-    {
-      notifyOnChangeProps: ['data', 'isSuccess'],
-      staleTime: 60 * 2000,
-    },
-  );
-  return {joined, joinedAPI};
+  const {
+    data: joined,
+    isSuccess: joinedAPI,
+    isFetching: joinedAPILive,
+  } = useQuery(['joined_contest', match_key, user_id], getJoinedContestRemote, {
+    notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
+  });
+  return {joined, joinedAPI, joinedAPILive};
 };
 
 export const useGetTeams = (match_key: string, user_id: string) => {
-  const {data: teams, isSuccess: teamsAPI} = useQuery(
-    ['teams', match_key, user_id],
-    getJoinedTeamsRemote,
-    {
-      notifyOnChangeProps: ['data', 'isSuccess'],
-      staleTime: 60 * 2000,
-    },
-  );
-  return {teams, teamsAPI};
+  const {
+    data: teams,
+    isSuccess: teamsAPI,
+    isFetching: teamsAPILive,
+  } = useQuery(['teams', match_key, user_id], getJoinedTeamsRemote, {
+    notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
+  });
+  return {teams, teamsAPI, teamsAPILive};
 };

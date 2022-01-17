@@ -18,7 +18,7 @@ export default function UpcommingPage(props: PropTypes) {
     navigation.navigate('LiveMatchScreen');
   };
 
-  return <NoContest />;
+  return <NoContest text={"You haven't joined any contests"} />;
 
   return (
     <View style={[tailwind('m-3')]}>

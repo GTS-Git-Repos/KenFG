@@ -17,7 +17,7 @@ export default function CreateTeamButtom() {
         style={[tailwind('flex-row  m-2 rounded')]}
         colors={['#00513B', '#00513B']}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('CreateTeamScreen')}
+          onPress={() => navigation.navigate('TeamFormationScreen')}
           style={[
             tailwind('py-3 flex-grow flex-row items-center justify-center'),
           ]}>

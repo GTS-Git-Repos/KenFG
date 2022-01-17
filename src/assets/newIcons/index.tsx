@@ -1,4 +1,23 @@
 import InfoSquareGrayIcon from './svgIcons/infosquar.gray.icon';
-import ContestsBottomTabIcon from './svgIcons/contests.bottomtab.icon';
+import ContestsBottomTabOff from './svgIcons/contests.bottomtab.off';
+import HomeBottomTabOn from './svgIcons/home.bottomtab.on';
+import HomeBottomTabOff from './svgIcons/home.bottomtab.off';
+import LeaderBottomTabOff from './svgIcons/leader.bottomtab.off';
+import LeaderBottomTabOn from './svgIcons/leader.bottomtab.on';
 
-export {InfoSquareGrayIcon, ContestsBottomTabIcon};
+import MoreBottomTabOff from './svgIcons/more.bottomtab.off';
+import MoreBottomTabOn from './svgIcons/more.bottomtab.on';
+
+import ContestsBottomTabOn from './svgIcons/contests.bottomtab.on';
+
+export {
+  ContestsBottomTabOff,
+  ContestsBottomTabOn,
+  InfoSquareGrayIcon,
+  HomeBottomTabOff,
+  LeaderBottomTabOn,
+  HomeBottomTabOn,
+  LeaderBottomTabOff,
+  MoreBottomTabOn,
+  MoreBottomTabOff,
+};

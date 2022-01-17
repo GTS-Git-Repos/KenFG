@@ -176,7 +176,7 @@ export const getJoinedContestRemote = async (params: any) => {
       failedLog('getJoinedContestRemote()', response);
     }
   } catch (err) {
-    console.log(err);
+    console.log('getJoinedContestRemote', err);
     return false;
   }
 };

@@ -59,9 +59,10 @@ export default function TeamSelectionScreen(props: any) {
       const obj = {
         match_key: matchSelector.match_key,
         contest_key: matchSelector.joinContest.contestKey,
-        team_key: choosenTeams,
+        team_key: choosenTeams.join(','),
         player_key: userSelector.mobile,
       };
+
       setLoading(true);
       const response = await joinContestRemote(obj);
       setLoading(false);

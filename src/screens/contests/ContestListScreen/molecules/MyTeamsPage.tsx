@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, ScrollView, Text} from 'react-native';
+import {View, ScrollView, Text, ActivityIndicator} from 'react-native';
 import {TeamsCard} from '../../../../sharedComponents';
 import {log} from '../../../../utils/logs';
 import NoTeams from '../atoms/no.teams';
@@ -13,6 +13,7 @@ import {useDispatch} from 'react-redux';
 interface PropTypes {
   teams: any;
   status: string;
+  live: string;
 }
 
 export default function MyTeamsPage(props: PropTypes) {
@@ -44,8 +45,6 @@ export default function MyTeamsPage(props: PropTypes) {
     } else {
       errorBox("Can't preview team !!");
     }
-
-    // const obj = teamPreviewObjConstuctor(team);
   };
 
   const mutateTeam = (team_key: string) => {
@@ -58,7 +57,7 @@ export default function MyTeamsPage(props: PropTypes) {
       players.push(...team.batsman);
       players.push(...team.bowler);
       dispatch(updatePlayer(players));
-      navigation.navigate('CreateTeamScreen', {
+      navigation.navigate('TeamFormationScreen', {
         from: 1,
       });
     }
@@ -72,6 +71,8 @@ export default function MyTeamsPage(props: PropTypes) {
   }
   return (
     <ScrollView contentContainerStyle={[tailwind('m-3')]}>
+      {props.live && <TeamsLoading />}
+
       {props.teams.map((item: any) => {
         return (
           <TeamsCard
@@ -99,9 +100,11 @@ export default function MyTeamsPage(props: PropTypes) {
 
 const TeamsLoading = () => {
   return (
-    <Text
-      style={[tailwind('font-regular text-center p-7 text-dark-1  font-15')]}>
-      Please Wait ...
-    </Text>
+    <View style={[tailwind('flex-row items-center pb-2')]}>
+      <Text style={[tailwind('font-regular text-white font-15 pr-3')]}>
+        Loading...
+      </Text>
+      <ActivityIndicator color="white" size="small" />
+    </View>
   );
 };
