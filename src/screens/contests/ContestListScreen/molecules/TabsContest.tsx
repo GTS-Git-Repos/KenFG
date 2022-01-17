@@ -10,8 +10,6 @@ interface PropTypes {
 }
 
 function TabsContest(props: PropTypes) {
-  console.log(props);
-
   return (
     <View style={[tailwind('flex-row bg-dark-3 items-center')]}>
       <TouchableOpacity

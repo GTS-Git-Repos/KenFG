@@ -17,22 +17,44 @@ export const groupAllContestsAPIRmeote = (payload: any) => {
 export const extractJoinedContestAPIResponse = (payload: any) => {
   try {
     const contestsdata = payload.slice(0, payload.length - 1);
+    const teams = payload[payload.length - 1];
+
     if (contestsdata.length === 0) {
       throw 'no joined contests';
     }
+    const contests = [];
+    for (const item of contestsdata) {
+      const contestMeta = {...item, contest_team: item.contest_team.split(',')};
 
-    const teams = payload[payload.length - 1];
-    const contests = contestsdata.map((item: any) => {
-      return {
-        ...item,
-        contest_team: item.contest_team.split(','),
-      };
-    });
+      const joinedTeam = [];
+      for (const team of contestMeta.contest_team) {
+        const teamMeta = teams.find((item: any) => item.teams_key == team);
 
-    return {
-      contests,
-      teams,
-    };
+        if (teamMeta) {
+          const allPlayers = teamMeta.players.players;
+          const t_cap = allPlayers.find(
+            (item: any) => item.key === teamMeta.players.cap_key,
+          );
+          const t_vc = allPlayers.find(
+            (item: any) => item.key === teamMeta.players.vc_key,
+          );
+          joinedTeam.push({
+            teamCode: team,
+            t_cap: t_cap,
+            t_vc: t_vc,
+            team_a: teamMeta.team_a,
+            team_b: teamMeta.team_b,
+            allPlayers,
+          });
+        }
+      }
+      contests.push({
+        contestMeta,
+        joinedTeam,
+      });
+    }
+
+    return contests;
   } catch (err) {
     console.log('extractJoinedContestAPIResponse', err);
     return false;

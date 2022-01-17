@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import tailwind from '../../../tailwind';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import assets from '../../constants/assets_manifest';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 import {
   BottomLine,
@@ -20,7 +18,6 @@ import {
 const log = console.log;
 
 interface PropTypes {
-  navigate(contest_key: string): any;
   contest_key: string;
   match_key: string;
   title: string;
@@ -34,9 +31,8 @@ interface PropTypes {
   bonus: string;
   is_practice: boolean;
   teams: Array<any>;
+  navigate(contest_key: string): any;
 }
-
-const PROGRESS_BAR_HEIGHT = 3;
 
 export default function ContestCard(props: PropTypes) {
   const navigation = useNavigation<any>();

@@ -46,6 +46,7 @@ interface PropTypes {
   contestsAPI: any;
   joined: any;
   joinedAPI: any;
+  joinedAPILive: any;
   teams: any;
   teamsAPI: any;
   teamsAPILive: any;
@@ -131,7 +132,7 @@ export default function ContestListScreen(props: PropTypes) {
 
   const joinContest = async () => {
     try {
-      let payload = {
+      const payload = {
         match_key: matchSelector.match_key,
         contest_key: selectedContestState,
         team_key: route.params.team_key,

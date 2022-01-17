@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react';
-import {useQuery} from 'react-query';
 import {useSelector} from 'react-redux';
-import {contestListsRemote} from '../../../remote/matchesRemote';
 import {selectedMatch, userInfo} from '../../../store/selectors';
 import ContestListScreen from './contest.list.screen';
 import ContestScreenLoading from './atoms/screen.loading.contest';
@@ -19,7 +17,7 @@ export default function ContestListHOC() {
   // const countDown = useCountDown(matchSelector.start_at, false);
 
   const {contests, contestsAPI} = useContestList(matchSelector.match_key);
-  const {joined, joinedAPI} = useJoinedContests(
+  const {joined, joinedAPI, joinedAPILive} = useJoinedContests(
     matchSelector.match_key,
     userSelector.mobile,
   );
@@ -30,7 +28,7 @@ export default function ContestListHOC() {
 
   useEffect(() => {
     if (joined) {
-      console.log('111', joined);
+      // console.log('>>>', JSON.stringify(joined));
     }
   }, [joined]);
 
@@ -44,6 +42,7 @@ export default function ContestListHOC() {
       contestsAPI={contestsAPI}
       joined={joined}
       joinedAPI={joinedAPI}
+      joinedAPILive={joinedAPILive}
       teams={teams}
       teamsAPI={teamsAPI}
       teamsAPILive={teamsAPILive}

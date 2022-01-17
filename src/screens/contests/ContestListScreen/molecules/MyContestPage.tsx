@@ -26,16 +26,18 @@ export default function MyContestPage(props: PropTypes) {
     return <NoJoinedContest />;
   }
 
+  log(props.joined);
+
   return (
     <ScrollView contentContainerStyle={[tailwind('m-3')]}>
-      {props.joined.contests.map((item: any, index: number) => {
+      {props.joined.map((item: any, index: number) => {
         return (
           <JoinedContestCard
             key={index}
             navigate={navigate}
             contest_key={'123345'}
             match_key={'123345'}
-            title={item.contest_name}
+            title={item.contestMeta.contest_name}
             total_joined={100}
             total_spots={1000}
             amount_letters={'10000'}
@@ -45,7 +47,7 @@ export default function MyContestPage(props: PropTypes) {
             max_entry={1}
             bonus={'32%'}
             is_practice={true}
-            teams={item.contest_team}
+            teams={item.contestMeta.contest_team}
           />
         );
       })}
