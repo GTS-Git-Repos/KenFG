@@ -7,9 +7,11 @@ import {ContestCard, JoinedContestCard} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/core';
 import NoJoinedContest from '../atoms/no.joined.contest';
 const log = console.log;
+
 interface PropTypes {
   joined: any;
   status: any;
+  teamPreviewPress(team_key: string): any;
 }
 
 export default function MyContestPage(props: PropTypes) {
@@ -26,28 +28,26 @@ export default function MyContestPage(props: PropTypes) {
     return <NoJoinedContest />;
   }
 
-  log(props.joined);
-
   return (
     <ScrollView contentContainerStyle={[tailwind('m-3')]}>
       {props.joined.map((item: any, index: number) => {
         return (
           <JoinedContestCard
             key={index}
-            navigate={navigate}
-            contest_key={'123345'}
-            match_key={'123345'}
-            title={item.contestMeta.contest_name}
-            total_joined={100}
-            total_spots={1000}
-            amount_letters={'10000'}
-            amount={'1000000'}
-            guaranteed={true}
-            entry={''}
-            max_entry={1}
-            bonus={'32%'}
-            is_practice={true}
-            teams={item.contestMeta.contest_team}
+            match_key={item.contestMeta.match_key}
+            contest_key={item.contestMeta.contest_code}
+            contest_name={item.contestMeta.contest_name}
+            amount_in_letters={item.contestMeta.contest_name}
+            entry_amount={item.contestMeta.entry_fee}
+            max_entry={item.contestMeta.entry_fee}
+            max_entry_reached={false}
+            slots={0}
+            filled_slots={0}
+            bonus={''}
+            isGuaranteed={false}
+            contest_teams={item.contestMeta.contest_team}
+            joinedTeam={item.joinedTeam}
+            teamPreviewPress={props.teamPreviewPress}
           />
         );
       })}

@@ -11,5 +11,10 @@ interface PropTypes {
 }
 
 export default function CompletedPage(props: PropTypes) {
-  return <NoContest text={'You dont have any completed Contest'} />;
+  return (
+    <NoContest
+      text={'You dont have any completed Contest'}
+      actionText={'View Upcomming Matches'}
+    />
+  );
 }

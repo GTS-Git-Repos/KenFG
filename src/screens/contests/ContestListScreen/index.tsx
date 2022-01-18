@@ -32,6 +32,15 @@ export default function ContestListHOC() {
     }
   }, [joined]);
 
+  const teamPreviewPress = (team_key: any) => {
+    console.log(team_key);
+    const team = teams.find((item: any) => item.team_key === team_key);
+    if (team) {
+      console.log(JSON.stringify(team));
+      // console.log(team);
+    }
+  };
+
   if (!isScreenReady || !contestsAPI) {
     return <ContestScreenLoading title={''} />;
   }
@@ -46,6 +55,7 @@ export default function ContestListHOC() {
       teams={teams}
       teamsAPI={teamsAPI}
       teamsAPILive={teamsAPILive}
+      teamPreviewPress={teamPreviewPress}
     />
   );
 }

@@ -10,5 +10,10 @@ interface PropTypes {
 }
 
 export default function LivePage(props: PropTypes) {
-  return <NoContest text={"You haven't joined any contests that are live"} />;
+  return (
+    <NoContest
+      text={"You haven't joined any contests that are live"}
+      actionText={'View Upcomming Matches'}
+    />
+  );
 }

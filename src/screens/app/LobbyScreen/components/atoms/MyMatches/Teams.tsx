@@ -4,6 +4,8 @@ import {View, Image, Text} from 'react-native';
 import assets from '../../../../../../constants/assets_manifest';
 
 interface PropTypes {
+  team_a: any;
+  team_b: any;
   countDown: string;
 }
 
@@ -30,9 +32,11 @@ export default function Teams(props: PropTypes) {
           </View>
           <Text
             style={[
-              tailwind('font-bold text-center py-0.5 text-light font-12'),
+              tailwind(
+                'font-bold text-center uppercase py-0.5 text-light font-12',
+              ),
             ]}>
-            AUS
+            {props.team_a.code}
           </Text>
         </View>
       </View>
@@ -40,16 +44,7 @@ export default function Teams(props: PropTypes) {
       {/* Count down */}
 
       <View style={[tailwind('justify-between items-center'), {flex: 4}]}>
-        <View style={[tailwind('flex-row pt-2')]}>
-          <Image
-            resizeMode="contain"
-            source={assets.running_clock}
-            style={[tailwind(''), {width: 16, height: 16}]}
-          />
-          <Text style={[tailwind('font-bold text-white font-13 px-1')]}>
-            {props.countDown}
-          </Text>
-        </View>
+        <CountDown countDown={props.countDown} />
         {/* <IsLive /> */}
       </View>
 
@@ -64,9 +59,11 @@ export default function Teams(props: PropTypes) {
           </View>
           <Text
             style={[
-              tailwind('font-bold text-center py-0.5 text-light font-12'),
+              tailwind(
+                'font-bold text-center uppercase py-0.5 text-light font-12',
+              ),
             ]}>
-            ENG
+            {props.team_b.code}
           </Text>
         </View>
         <View
@@ -94,6 +91,21 @@ const IsLive = () => {
           tailwind('rounded-full'),
           {backgroundColor: 'green', width: 5, height: 5},
         ]}></View>
+    </View>
+  );
+};
+
+const CountDown = (props: any) => {
+  return (
+    <View style={[tailwind('flex-row pt-2')]}>
+      <Image
+        resizeMode="contain"
+        source={assets.running_clock}
+        style={[tailwind(''), {width: 16, height: 16}]}
+      />
+      <Text style={[tailwind('font-bold text-white font-13 px-1')]}>
+        {props.countDown}
+      </Text>
     </View>
   );
 };

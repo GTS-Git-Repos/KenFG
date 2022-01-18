@@ -3,7 +3,7 @@ import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import ProgressBar from '../molecules/ProgressBar';
+import ProgressBarRefer from '../molecules/progressbar.refer';
 interface PropTypes {
   text?: string;
 }
@@ -14,7 +14,7 @@ export default function TotalReferral(props: PropTypes) {
       <Text style={[tailwind('font-regular text-dark-1 font-15')]}>
         34 Friends Joined!
       </Text>
-      <ProgressBar />
+      <ProgressBarRefer completed={false} />
       <View style={[tailwind('flex-row items-center justify-between')]}>
         <View style={[tailwind('')]}>
           <Text style={[tailwind('font-regular text-dark-1 font-14')]}>

@@ -13,33 +13,20 @@ import {useSelector} from 'react-redux';
 import {userInfo} from '../../../../../store/selectors';
 
 interface PropTypes {
-  text?: string;
+  banners: Array<any>;
+  upcomming: Array<any>;
 }
 
 export default function CricketPage(props: PropTypes) {
-  const userInfoSelector = useSelector(userInfo);
-
-  const upcommingMatches = useQuery(
-    ['upcomingMatches', userInfoSelector?.mobile],
-    upcommingMatchesandBannersRemote,
-  );
-  
   return (
     <View>
       <View style={[tailwind('pt-3')]}>
-        <ImageSlider
-          data={upcommingMatches?.data?.banners}
-          status={upcommingMatches.status}
-        />
+        <ImageSlider data={props.banners} status={props.banners} />
       </View>
-
       <View style={[tailwind('px-5 pt-4')]}>
         <SubTitle text={'Upcoming'} />
       </View>
-      <UpComingMatchesSlider
-        data={upcommingMatches?.data?.matches}
-        status={upcommingMatches.status}
-      />
+      <UpComingMatchesSlider data={props.upcomming} status={props.upcomming} />
     </View>
   );
 }

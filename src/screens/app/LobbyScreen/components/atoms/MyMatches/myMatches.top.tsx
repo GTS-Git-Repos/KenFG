@@ -3,19 +3,21 @@ import {View, StyleSheet, Text} from 'react-native';
 const log = console.log;
 
 interface PropTypes {
-  text?: string;
+  tournament_name: string;
+  teamCount: any;
+  contestCount: any;
 }
 
 function MyMatchesTopSection(props: PropTypes) {
   return (
     <View style={styles.root}>
       <View style={styles.wrapper}>
-        <Text style={styles.matchName}>World T20 Championship</Text>
+        <Text style={styles.matchName}>{props.tournament_name}</Text>
         <View style={styles.metawrapper}>
-          <Text style={[styles.metaValue]}>2</Text>
+          <Text style={[styles.metaValue]}>{props.teamCount}</Text>
           <Text style={styles.metaText}>Team</Text>
           <Text style={[styles.metaSeperator]}>|</Text>
-          <Text style={[styles.metaValue]}>1</Text>
+          <Text style={[styles.metaValue]}>{props.contestCount}</Text>
           <Text style={styles.metaText}>Contest</Text>
         </View>
       </View>

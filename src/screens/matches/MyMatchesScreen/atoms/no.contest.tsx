@@ -12,6 +12,7 @@ import {SecondaryButton} from '../../../../sharedComponents';
 
 interface PropTypes {
   text: string;
+  actionText: string;
 }
 
 export default function NoContent(props: PropTypes) {
@@ -19,19 +20,18 @@ export default function NoContent(props: PropTypes) {
     <ImageBackground
       source={assets.stadium}
       style={[tailwind('w-full'), {flexGrow: 1}]}
-      resizeMode="cover">
+      resizeMode="stretch">
       <View style={[tailwind(''), {paddingVertical: 59}]}>
-        <Text style={[tailwind('font-regular text-center text-white font-14')]}>
+        <Text style={[tailwind('font-bold text-center text-white font-18')]}>
           {props.text}
         </Text>
         <View style={[tailwind('flex-row pt-2 justify-center')]}>
           <Image
             resizeMode="contain"
             source={assets.coin}
-            style={{width: 183, height: 142}}
+            style={{width: '90%', height: 142}}
           />
         </View>
-
         <Text
           style={[
             tailwind('font-regular text-center mx-7 text-white font-14'),
@@ -39,7 +39,7 @@ export default function NoContent(props: PropTypes) {
           Test your Game Skill & Knowledge as Team Manager
         </Text>
         <TouchableOpacity style={[tailwind('mx-16 my-7')]}>
-          <SecondaryButton text={'VIEW UPCOMMING MATCHES'} />
+          <SecondaryButton text={props.actionText} />
         </TouchableOpacity>
       </View>
     </ImageBackground>

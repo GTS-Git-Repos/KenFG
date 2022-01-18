@@ -12,11 +12,12 @@ import TeamCode from './atoms/TeamCode';
 import TabsBottomLine from './atoms/TabsBottomLine';
 import LoadingSpinner from './atoms/Loading.Spinnner';
 import SecondaryButton from './atoms/secondaryButton';
+import ProgressbarShared from './atoms/progressbar.shared';
 
 import ContestCard from './molecules/contest.card.shared';
 import TeamsCard from './molecules/TeamsCard';
 import HorizontalProfile from './molecules/HorizontalProfile';
-import JoinedContestCard from './molecules/JoinedContestCard';
+import JoinedContestCard from './molecules/joined.contest.card';
 import SocialLogin from './molecules/SocialLogin';
 import CurrentLiveStatus from './molecules/CurrentLiveStatus';
 import SocialMediaShare from './molecules/SocialMediaShare';
@@ -61,6 +62,7 @@ import ReferPeopleIcon from './icons/ReferPeopleIcon';
 export {
   TopBar,
   TopbarContest,
+  ProgressbarShared,
   BlockScreenByLoading,
   ButtonComponent,
   SecondaryButton,

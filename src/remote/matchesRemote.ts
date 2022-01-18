@@ -1,5 +1,6 @@
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
+import {log} from '../utils/logs';
 import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
 // import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
 import CompletedTestMatchMeta from '../constants/mocks/completedTestMatch3i.json';
@@ -8,6 +9,7 @@ import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
 import {parseJoinedTeamsAPI} from '../formatters/teams.formatter';
 import {normalizeGetPlayersAPI} from '../constructors/teams.constructor';
 import {
+  extractDataFromUpcommingMatchesAPI,
   extractJoinedContestAPIResponse,
   groupAllContestsAPIRmeote,
 } from '../formatters/matchcontest.formatters';
@@ -32,6 +34,10 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
       {player_key: params.queryKey[1]},
     );
     if (response.status === 200) {
+      const data = extractDataFromUpcommingMatchesAPI(response.data.data);
+      return data;
+      log.info(data);
+
       const matches = normalizeUpcommingMatchesAPI(response.data.data);
       const banners = response.data.data.banners;
       return {matches: matches, banners};

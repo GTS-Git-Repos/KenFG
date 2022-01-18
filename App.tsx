@@ -21,7 +21,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import RootNavigation from './src/navigations/RootNavigation';
 import store from './src/store';
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 LogBox.ignoreLogs([
   'Setting a timer',

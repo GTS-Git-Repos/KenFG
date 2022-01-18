@@ -50,6 +50,7 @@ interface PropTypes {
   teams: any;
   teamsAPI: any;
   teamsAPILive: any;
+  teamPreviewPress(): any;
 }
 
 export default function ContestListScreen(props: PropTypes) {
@@ -182,7 +183,11 @@ export default function ContestListScreen(props: PropTypes) {
           />
         </View>
         <View style={{width: width}}>
-          <MyContestPage joined={props.joined} status={props.joinedAPI} />
+          <MyContestPage
+            joined={props.joined}
+            status={props.joinedAPI}
+            teamPreviewPress={props.teamPreviewPress}
+          />
         </View>
         <View style={{width: width}}>
           <MyTeamsPage

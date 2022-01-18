@@ -21,6 +21,7 @@ export default function MyTeamsPage(props: PropTypes) {
   const dispatch = useDispatch();
 
   const navigateToPreview = (team_key: string) => {
+    // <<DEPRECATED>> need to move
     const team = props.teams.find((item: any) => item.team_key === team_key);
     if (team) {
       const credits_left = creditsLeftCalculator(

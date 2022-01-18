@@ -9,7 +9,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import TopSection from '../atoms/MyMatches/TopSection';
+import MyMatchesTop from '../atoms/MyMatches/myMatches.top';
 import Teams from '../atoms/MyMatches/Teams';
 import SlideAddMyMatchCard from '../atoms/SlideAddMyMatchCard';
 import {useNavigation} from '@react-navigation/core';
@@ -18,7 +18,13 @@ import {add} from 'date-fns';
 const log = console.log;
 
 interface PropTypes {
-  text?: string;
+  match_key: string;
+  team_a: any;
+  team_b: any;
+  tournament_name: string;
+  start_time: Date;
+  teamCount: any;
+  contestCount: any;
 }
 
 export default function NewMyMatchesCard(props: PropTypes) {
@@ -53,8 +59,16 @@ export default function NewMyMatchesCard(props: PropTypes) {
         navigation.navigate('ContestsLiveMatchScreen');
       }}
       style={[tailwind('rounded bg-dark-3')]}>
-      <TopSection />
-      <Teams countDown={countDown} />
+      <MyMatchesTop
+        tournament_name={props.tournament_name}
+        teamCount={props.teamCount}
+        contestCount={props.contestCount}
+      />
+      <Teams
+        countDown={countDown}
+        team_a={props.team_a}
+        team_b={props.team_b}
+      />
       <SlideAddMyMatchCard />
     </TouchableOpacity>
   );

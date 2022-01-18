@@ -3,11 +3,11 @@ import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import ProgressBar from '../molecules/ProgressBar';
+import ProgressBarRefer from '../molecules/progressbar.refer';
 import {CompletedIcon} from '../../../../sharedComponents';
 
 interface PropTypes {
-  received: boolean;
+  received: number;
   completed: boolean;
 }
 
@@ -29,7 +29,7 @@ export default function Person(props: PropTypes) {
           {props.completed && <CompletedIcon />}
         </View>
 
-        <ProgressBar completed={props.completed} />
+        <ProgressBarRefer completed={props.completed} />
         <View style={[tailwind('flex-row items-center justify-between')]}>
           <View style={[tailwind('flex-row items-center')]}>
             <Text style={[tailwind('font-regular text-dark-1 font-14')]}>

@@ -1,19 +1,19 @@
 import React, {useEffect} from 'react';
 import {View, Text, Image, ActivityIndicator} from 'react-native';
 import tailwind from '../../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {queryClient} from '../../../../App';
 import {useNavigation} from '@react-navigation/native';
-import {resetDrawerNavigation, resetAuthNavigation} from '../../../utils/resetNav';
+import {
+  resetDrawerNavigation,
+  resetAuthNavigation,
+} from '../../../utils/resetNav';
 import assets from '../../../constants/assets_manifest';
 import {getToken} from '../../../utils/authTokenUtils';
 import {decodeJwt} from '../../../utils/formatters';
 import {getUserRemote} from '../../../remote/userRemote';
 import {useDispatch} from 'react-redux';
 import {updateUserInfoAction} from '../../../store/actions/userAction';
-// import {TopBar} from 'components';
-// import Icon from 'react-native-vector-icons/Ionicons';
-
+import {upcommingMatchesandBannersRemote} from '../../../remote/matchesRemote';
 const log = console.log;
 
 export default function InitialScreen() {
@@ -22,19 +22,23 @@ export default function InitialScreen() {
 
   useEffect(() => {
     (async () => {
-      const token = await getToken();
-
-      if (token) {
-        const {data} = decodeJwt(token);
-        //  log(data)
-        const userResponse = await getUserRemote({mobile: data.mobile});
-        if (userResponse) {
-          dispatch(updateUserInfoAction(userResponse.data));
-          resetDrawerNavigation(navigation);
-        } else {
-          resetAuthNavigation(navigation);
+      try {
+        const token = await getToken();
+        if (!token) {
+          throw 'user is not logged';
         }
-      } else {
+        const {data} = decodeJwt(token);
+        const userResponse = await getUserRemote({mobile: data.mobile});
+        if (!userResponse) {
+          throw 'failed to get user info';
+        }
+        // queryClient.prefetchQuery(
+        //   ['lobby', data.mobile],
+        //   upcommingMatchesandBannersRemote,
+        // );
+        dispatch(updateUserInfoAction(userResponse.data));
+        resetDrawerNavigation(navigation);
+      } catch (err) {
         resetAuthNavigation(navigation);
       }
     })();
