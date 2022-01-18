@@ -9,8 +9,11 @@ import {
   useGetTeams,
 } from './contest.workers';
 import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
+import {useNavigation} from '@react-navigation/core';
+import {creditsLeftCalculator} from '../../../constructors/teams.constructor';
 
 export default function ContestListHOC() {
+  const navigation = useNavigation<any>();
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
   const isScreenReady = useIsScreenReady();
@@ -21,7 +24,7 @@ export default function ContestListHOC() {
     matchSelector.match_key,
     userSelector.mobile,
   );
-  const {teams, teamsAPI, teamsAPILive} = useGetTeams(
+  const {teams, teamsAPI, teamsAPILive}: any = useGetTeams(
     matchSelector.match_key,
     userSelector.mobile,
   );
@@ -36,8 +39,25 @@ export default function ContestListHOC() {
     console.log(team_key);
     const team = teams.find((item: any) => item.team_key === team_key);
     if (team) {
-      console.log(JSON.stringify(team));
-      // console.log(team);
+      // console.log(JSON.stringify(team));
+      const credits_left = creditsLeftCalculator(
+        team.keepers,
+        team.batsman,
+        team.all_rounder,
+        team.bowler,
+      );
+      navigation.navigate('TeamPreviewScreen', {
+        from: 1,
+        keepers: team.keepers,
+        batsman: team.batsman,
+        all_rounder: team.all_rounder,
+        bowler: team.bowler,
+        cap_key: team.cap.key,
+        vc_key: team.vc.key,
+        team_a: team.team_a,
+        team_b: team.team_b,
+        credits_left: credits_left,
+      });
     }
   };
 

@@ -70,9 +70,9 @@ export default function ContestCard(props: PropTypes) {
         <JoinedTeams teams={props.contest_teams} />
         {open && (
           <View style={[tailwind('box rounded px-2 bg-dark-4'), styles.border]}>
-            {props.joinedTeam.map((item: any) => {
+            {props.joinedTeam.map((item: any, index: number) => {
               return (
-                <View key={item.teamCode} style={[tailwind('pb-1')]}>
+                <View key={index} style={[tailwind('pb-1')]}>
                   <TeamInfo
                     team_key={item.teamCode}
                     code={item.teamCode}

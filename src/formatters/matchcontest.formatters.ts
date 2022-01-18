@@ -72,8 +72,6 @@ export const extractDataFromUpcommingMatchesAPI = (payload: any) => {
     const banners = payload.banners;
     const my_matches = payload.my_matches;
 
-    const meta = [];
-
     const upcomming = [];
     const myMatches = [];
     for (const u_match of u_matches) {
@@ -97,6 +95,22 @@ export const extractDataFromUpcommingMatchesAPI = (payload: any) => {
     return {upcomming, banners, myMatches};
   } catch (err) {
     console.log('extractDataFromUpcommingMatchesAPI', err);
+
+    return false;
+  }
+};
+
+export const parseJoinedMatchesAPI = (payload: any) => {
+  try {
+    const matches = [];
+    for (const match of payload) {
+      const obj = {...match};
+      obj.start_at = covertInputTimeStringToDate(match.teams.start_at);
+      matches.push(obj);
+    }
+    return matches;
+  } catch (err) {
+    console.log('parseJoinedMatchesAPI', err);
 
     return false;
   }

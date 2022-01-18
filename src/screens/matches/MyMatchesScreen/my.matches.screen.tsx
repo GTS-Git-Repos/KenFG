@@ -16,9 +16,10 @@ const log = console.log;
 
 interface PropTypes {
   pagerRef: any;
-  upcomming: any;
-  live: any;
-  completed: any;
+  matches: any;
+  matchesAPI: any;
+  setStatus: any;
+  onPressMyMatchCard(matche_key: string): any;
 }
 
 export default function MyMatches(props: PropTypes) {
@@ -44,13 +45,28 @@ export default function MyMatches(props: PropTypes) {
         onPageSelected={onPageSelectedAction}
         style={{flex: 1}}>
         <View>
-          <UpcommingPage upcomming={props.upcomming} />
+          <UpcommingPage
+            selectedTab={selectedTab}
+            matches={props.matches}
+            matchesAPI={props.matchesAPI}
+            onPressMyMatchCard={props.onPressMyMatchCard}
+          />
         </View>
         <View>
-          <LivePage />
+          <LivePage
+            selectedTab={selectedTab}
+            matches={props.matches}
+            matchesAPI={props.matchesAPI}
+            onPressMyMatchCard={props.onPressMyMatchCard}
+          />
         </View>
         <View>
-          <CompletedPage />
+          <CompletedPage
+            selectedTab={selectedTab}
+            matches={props.matches}
+            matchesAPI={props.matchesAPI}
+            onPressMyMatchCard={props.onPressMyMatchCard}
+          />
         </View>
       </PagerView>
     </View>

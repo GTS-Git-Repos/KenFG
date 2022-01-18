@@ -12,6 +12,7 @@ import {
   extractDataFromUpcommingMatchesAPI,
   extractJoinedContestAPIResponse,
   groupAllContestsAPIRmeote,
+  parseJoinedMatchesAPI,
 } from '../formatters/matchcontest.formatters';
 
 // API Routes
@@ -25,6 +26,8 @@ const req_live_match = '/live-match.php';
 const req_my_contest = '/my-contest.php';
 const req_create_contest = '/create-private-contest.php';
 const req_get_private_contest = '/private-contest.php';
+const req_matches = '/completed-matches.php';
+const req_edit_team = '/edit-team.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -36,16 +39,32 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
     if (response.status === 200) {
       const data = extractDataFromUpcommingMatchesAPI(response.data.data);
       return data;
-      log.info(data);
-
-      const matches = normalizeUpcommingMatchesAPI(response.data.data);
-      const banners = response.data.data.banners;
-      return {matches: matches, banners};
     } else {
       failedLog('upcommingMatchesandBannersRemote()', response);
     }
   } catch (err) {
     console.log(err);
+    return false;
+  }
+};
+
+export const joinedMatchesRemote = async (params: any) => {
+  try {
+    const response = await requestServer(METHODS.POST, BASE_URL + req_matches, {
+      player_key: params.queryKey[1],
+      status: params.queryKey[2],
+    });
+    if (response.status === 200) {
+      const matches = parseJoinedMatchesAPI(response.data.data.completed);
+      if (!matches) {
+        throw 'failed in parse';
+      }
+      return matches;
+    } else {
+      throw 'invalid response';
+    }
+  } catch (err) {
+    console.log('joinedMatchesRemote()', err);
     return false;
   }
 };
@@ -126,6 +145,24 @@ export const createTeamRemote = async (payload: any) => {
       return response.data.data;
     } else {
       failedLog('createTeamRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const editTeamRemote = async (payload: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_edit_team,
+      payload,
+    );
+    if (response.status === 200) {
+      return true;
+    } else {
+      failedLog('editTeamRemote()', response);
     }
   } catch (err) {
     console.log(err);

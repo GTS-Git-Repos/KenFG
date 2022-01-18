@@ -7,14 +7,21 @@ import {ContestCard} from '../../../../sharedComponents';
 import NoContest from '../atoms/no.contest';
 
 interface PropTypes {
-  text?: string;
+  selectedTab: any;
+  matches: any;
+  matchesAPI: any;
 }
 
 export default function CompletedPage(props: PropTypes) {
+  
+  if (props.selectedTab !== 2) {
+    return <NoContest text={''} actionText={''} loading={true} />;
+  }
   return (
     <NoContest
       text={'You dont have any completed Contest'}
       actionText={'View Upcomming Matches'}
+      loading={false}
     />
   );
 }

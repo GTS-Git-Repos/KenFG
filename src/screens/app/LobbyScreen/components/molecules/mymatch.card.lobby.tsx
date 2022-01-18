@@ -1,20 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import tailwind from '../../../../../../tailwind';
-import {
-  View,
-  Image,
-  TouchableOpacity,
-  Text,
-  AppState,
-  useWindowDimensions,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {TouchableOpacity} from 'react-native';
 import MyMatchesTop from '../atoms/MyMatches/myMatches.top';
 import Teams from '../atoms/MyMatches/Teams';
 import SlideAddMyMatchCard from '../atoms/SlideAddMyMatchCard';
 import {useNavigation} from '@react-navigation/core';
 import {getCountDown} from '../../../../../utils/formatters';
-import {add} from 'date-fns';
 const log = console.log;
 
 interface PropTypes {
@@ -25,9 +16,10 @@ interface PropTypes {
   start_time: Date;
   teamCount: any;
   contestCount: any;
+  onPressMyMatchCard(match_key: string): any;
 }
 
-export default function NewMyMatchesCard(props: PropTypes) {
+export default function MyMatchesCard(props: PropTypes) {
   const navigation = useNavigation<any>();
   const isMounted = useRef(true);
 
@@ -46,7 +38,7 @@ export default function NewMyMatchesCard(props: PropTypes) {
       console.log(err);
     }
     return () => {
-      log('Unmounted');
+      // log('Unmounted');
       isMounted.current = false;
       clearInterval(interval);
     };
@@ -56,7 +48,7 @@ export default function NewMyMatchesCard(props: PropTypes) {
     <TouchableOpacity
       activeOpacity={0.6}
       onPress={() => {
-        navigation.navigate('ContestsLiveMatchScreen');
+        props.onPressMyMatchCard(props.match_key);
       }}
       style={[tailwind('rounded bg-dark-3')]}>
       <MyMatchesTop
