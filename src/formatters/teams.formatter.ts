@@ -4,11 +4,12 @@ import {log} from '../utils/logs';
 export const parseJoinedTeamsAPI = (payload: any) => {
   try {
     const teams = payload.teams;
+    
     if (!teams) {
       throw 'No Teams';
     }
     const teamData = [];
-    for (let team of teams) {
+    for (const team of teams) {
       const allPlayers = team.players.players;
 
       const cap = allPlayers.find(
@@ -32,8 +33,11 @@ export const parseJoinedTeamsAPI = (payload: any) => {
         all_rounder,
         bowler,
       );
+
+      console.log('>>>>>>>>>', team);
+
       teamData.push({
-        team_key: team.teams_key,
+        team_key: team.team_key,
         cap: cap,
         vc: vc,
         keepers,

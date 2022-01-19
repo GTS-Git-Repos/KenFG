@@ -124,7 +124,9 @@ export default function ContestListScreen(props: PropTypes) {
       if (props.teams?.length > 0) {
         navigation.navigate('TeamSelectionScreen');
       } else {
-        navigation.navigate('TeamFormationScreen');
+        navigation.navigate('TeamFormationScreen',{
+          mutation:false
+        });
       }
     } catch (err) {
       console.log('proceedToJoin', err);

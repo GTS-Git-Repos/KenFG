@@ -80,18 +80,18 @@ export const extractDataFromUpcommingMatchesAPI = (payload: any) => {
       // delete obj.teams.start_at;
       upcomming.push(obj);
     }
-    for (const myMatch of my_matches) {
-      const matchInfo = u_matches.find(
-        (item: any) => item.key === myMatch.match_key,
-      );
-      if (matchInfo) {
-        let obj = {...matchInfo};
-        obj.start_at = covertInputTimeStringToDate(matchInfo.teams.start_at);
-        obj.team_count = myMatch.team_count;
-        // delete obj.teams.start_at;
-        myMatches.push(obj);
-      }
-    }
+    // for (const myMatch of my_matches) {
+    //   const matchInfo = u_matches.find(
+    //     (item: any) => item.key === myMatch.match_key,
+    //   );
+    //   if (matchInfo) {
+    //     let obj = {...matchInfo};
+    //     obj.start_at = covertInputTimeStringToDate(matchInfo.teams.start_at);
+    //     obj.team_count = myMatch.team_count;
+    //     // delete obj.teams.start_at;
+    //     myMatches.push(obj);
+    //   }
+    // }
     return {upcomming, banners, myMatches};
   } catch (err) {
     console.log('extractDataFromUpcommingMatchesAPI', err);

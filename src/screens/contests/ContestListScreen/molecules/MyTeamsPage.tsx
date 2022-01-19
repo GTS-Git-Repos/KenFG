@@ -48,8 +48,10 @@ export default function MyTeamsPage(props: PropTypes) {
     }
   };
 
-  const mutateTeam = (team_key: string) => {
+  const mutateTeam = (team_key: string, edit: boolean, clone: boolean) => {
+  
     const team = props.teams.find((item: any) => item.team_key === team_key);
+   
     const players = [];
     if (team) {
       // console.log(team.keepers);
@@ -57,12 +59,24 @@ export default function MyTeamsPage(props: PropTypes) {
       players.push(...team.all_rounder);
       players.push(...team.batsman);
       players.push(...team.bowler);
+      // console.log('>>>', players);
+      // return
       dispatch(updatePlayer(players));
+      const params = {
+        edit: edit ? true : false,
+        clone: clone ? true : false,
+        team_key: team_key,
+      };
+      // console.log(params);
+
+      // return;
       navigation.navigate('TeamFormationScreen', {
-        from: 1,
+        mutation: params,
       });
     }
   };
+
+  // console.log(JSON.stringify(props.teams));
 
   if (!props.status) {
     return <TeamsLoading />;
@@ -75,6 +89,8 @@ export default function MyTeamsPage(props: PropTypes) {
       {props.live && <TeamsLoading />}
 
       {props.teams.map((item: any) => {
+        console.log(item.team_key);
+
         return (
           <TeamsCard
             team_a={item.team_a}

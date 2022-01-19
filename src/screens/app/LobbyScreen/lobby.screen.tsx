@@ -42,17 +42,22 @@ export default function LobbyScreen(props: PropTypes) {
 
       {cricket ? (
         <View style={[tailwind('px-5 py-4 pb-0.5')]}>
-          <SubTitle text={'My Matches'} actiontext="View all" />
-          <View style={[tailwind('h-1')]} />
-          <MyMatchCard
-            match_key={props.myMatches.key}
-            team_a={props.myMatches.teams.a}
-            team_b={props.myMatches.teams.b}
-            tournament_name={props.myMatches.teams.tournament.short_name}
-            start_time={props.myMatches.start_at}
-            teamCount={props.myMatches.team_count}
-            contestCount={props.myMatches.contest_count}
-          />
+          {props.myMatches && (
+            <>
+              <SubTitle text={'My Matches'} actiontext="View all" />
+              <View style={[tailwind('h-1')]} />
+              <MyMatchCard
+                match_key={props.myMatches.key}
+                team_a={props.myMatches.teams.a}
+                team_b={props.myMatches.teams.b}
+                tournament_name={props.myMatches.teams.tournament.short_name}
+                start_time={props.myMatches.start_at}
+                teamCount={props.myMatches.team_count}
+                contestCount={props.myMatches.contest_count}
+                onPressMyMatchCard={() => {}}
+              />
+            </>
+          )}
         </View>
       ) : null}
 

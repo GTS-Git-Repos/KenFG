@@ -1,7 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
-import {BlockScreenByLoading, ButtonComponent} from '../../../../sharedComponents';
+import {
+  BlockScreenByLoading,
+  ButtonComponent,
+} from '../../../../sharedComponents';
 import CreateContestInput from './CreateContestInput';
 import JoinContestListPage from './JoinContestListPage';
 import {useSelector} from 'react-redux';
@@ -71,7 +74,7 @@ export default function CreateTeamPage(props: PropTypes) {
     setLoading(true);
     const response = await createContestRemote(obj);
     setLoading(false);
-    props.contests.refetch();
+    props.refetch();
     if (!response) {
       setTimeout(() => {
         errorBox('Failed to Create Contest !!');

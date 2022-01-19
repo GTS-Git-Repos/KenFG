@@ -8,20 +8,22 @@ import {FlatList} from 'react-native-gesture-handler';
 
 interface PropTypes {
   activeIndex: number;
-  status: string;
+  contestsAPI: any;
+  contestAPILive: any;
   contests: any;
+  joinRequestPrivateContest(team_key: string): any;
 }
 
 export default function JoinedContestListPage(props: PropTypes) {
-  console.log(props.status);
+  // console.log(props.contests);
 
-  if (props.status === 'loading') {
-    return <ActivityIndicator size={'small'} color="white" />;
+  if (props.contestAPILive) {
+    return <ActivityIndicator color="#d1b45a" size="large" />;
   }
-  if (props.status === 'success' && !props.contests.length === 0) {
+  if (props.contestsAPI && !props.contests) {
     return (
       <Text style={[tailwind('font-regular text-white font-15')]}>
-        No Contests Found
+        No Contest Found
       </Text>
     );
   }
@@ -34,12 +36,13 @@ export default function JoinedContestListPage(props: PropTypes) {
           return (
             <PrivateContestCard
               key={item.pc_id}
-              id={item.pc_id}
+              contest_key={item.pc_id}
               contest_name={item.pcname}
               hosted_by={item.pcname}
               amount={'10 Lakhs'}
               entry={item.entry_fee}
               max_team={10}
+              joinRequestPrivateContest={props.joinRequestPrivateContest}
             />
           );
         }}

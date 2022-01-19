@@ -3,15 +3,21 @@ import tailwind from '../../../../../tailwind';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import {CupIcon, DollarIcon, MIcon, TickIcon} from '../../../../sharedComponents';
+import {
+  CupIcon,
+  DollarIcon,
+  MIcon,
+  TickIcon,
+} from '../../../../sharedComponents';
 
 interface PropTypes {
-  id: string;
+  contest_key: string;
   contest_name: string;
   hosted_by: string;
   amount: string;
   entry: string;
   max_team: number;
+  joinRequestPrivateContest(team_key: string): any;
 }
 
 export default function PrivateContestCard(props: PropTypes) {
@@ -23,7 +29,11 @@ export default function PrivateContestCard(props: PropTypes) {
           hosted_by={props.hosted_by}
           entry={props.entry}
         />
-        <JoinContest amount={props.amount} />
+        <JoinContest
+          contest_key={props.contest_key}
+          joinRequestPrivateContest={props.joinRequestPrivateContest}
+          amount={props.amount}
+        />
         <ProgressBar />
       </View>
       <Footer />
@@ -59,6 +69,7 @@ const JoinContest = (props: any) => {
       </Text>
 
       <TouchableOpacity
+        onPress={() => props.joinRequestPrivateContest(props.contest_key)}
         style={[
           tailwind('rounded px-4 py-1'),
           {

@@ -32,13 +32,19 @@ import {
 } from '../../../store/actions/teamActions';
 import {isPlayerCaptain, isPlayerViceCaptain} from '../../../store/store_utils';
 import {errorBox} from '../../../utils/snakBars';
-import {createTeamRemote} from '../../../remote/matchesRemote';
+import {createTeamRemote, editTeamRemote} from '../../../remote/matchesRemote';
 import {createTeamObjCreator} from '../../../workers/objCreators';
 import {resetContestListNavigation} from '../../../utils/resetNav';
 
-export default function CapSelectionScreen() {
+interface PropTypes {
+  editTeamAPI(payload: any): any;
+}
+
+export default function CapSelectionScreen(props: PropTypes) {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
+  const route = useRoute<any>();
+
   const [loading, setLoading] = useState(false);
 
   const playersByRoleSelector = useSelector(playersByRole);
@@ -74,6 +80,7 @@ export default function CapSelectionScreen() {
   };
 
   const navigateToTeamPreviewScreeen = () => {
+    // Need to move to formatters
     navigation.navigate('TeamPreviewScreen', {
       from: 1,
       keepers: playersState.filter(
@@ -107,6 +114,30 @@ export default function CapSelectionScreen() {
       if (captain_key && vc_key) {
         setLoading(true);
         const createTeamObj = createTeamObjCreator();
+        // console.log(route.params.mutation);
+        // return;
+        if (route.params.mutation) {
+          // is edit ?
+          if (route.params.mutation.edit) {
+            // props.editTeamAPI(createTeamObj);
+            const team_key = route.params.mutation.team_key;
+            const obj = {...createTeamObj};
+            obj.team_key = team_key;
+            setLoading(true);
+            const response = await editTeamRemote(obj);
+            setLoading(false);
+            if (response) {
+              dispatch(clearTeamAction());
+              resetContestListNavigation(navigation, {
+                match_key: selected_match.match_key,
+                contest_key: selected_contest,
+                // team_key: response.team_key,
+              });
+            }
+            return;
+          }
+          return;
+        }
         const response = await createTeamRemote(createTeamObj);
         if (response) {
           dispatch(clearTeamAction());

@@ -1,53 +1,27 @@
-import React, {
-  useRef,
-  useState,
-  createContext,
-  useReducer,
-  useEffect,
-} from 'react';
-import {View, Text, TouchableOpacity, ScrollView, Alert} from 'react-native';
+import React, {useRef, useState, useEffect} from 'react';
+import {View} from 'react-native';
 import tailwind from '../../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
-import {useIsScreenReady} from '../../../utils/customHoooks';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import {
-  FullScreenLoading,
-  BlockScreenByLoading,
-} from '../../../sharedComponents';
 import LinearGradient from 'react-native-linear-gradient';
 import PagerView from 'react-native-pager-view';
 import TopBarCreateTeam from './atoms/TopBarCreateTeam';
 import MatchStatus from './atoms/MatchStatus';
 import TeamInfo from './molecules/TeamInfo';
 import SelectionIndicator from './atoms/SelectionIndicator';
-import Tabs from './atoms/Tabs';
 import Line from './atoms/Line';
 import BottomAction from './molecules/BottomAction';
 import Page from './molecules/Page';
 import {Modalize} from 'react-native-modalize';
 import {
-  updateCreditsAction,
   updatePlayerAction,
-  updateTeamCountAction,
   clearTeamAction,
-  saveAllPlayersAction,
-  updateErrorMsgAction,
-  updateTeamAction,
 } from '../../../store/actions/teamActions';
-// import {getMatchPlayersRemote} from '../../remote/serviceRemote';
-import {getMatchPlayersRemote} from '../../../remote/matchesRemote';
-import {useQuery} from 'react-query';
 
 import {useSelector, useDispatch} from 'react-redux';
-import {creditLeft, rolesCount, selectedMatch} from '../../../store/selectors';
-// import {isPlayerCanBeSelectable} from '../../workers/decision';
 import {errorBox} from '../../../utils/snakBars';
 import ClearTeamSheet from './atoms/ClearTeamSheet';
 import CreateTeamFilterSheetTitle from './atoms/CreateTeamFilterSheetTitle';
 import PlayerFilterSheet from './molecules/PlayerFilterSheet';
-import CreateTeamLoading from './atoms/CreateTeamLoading';
 import ScrollTabs from './molecules/ScrollTabs';
-import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
 import {log} from '../../../utils/logs';
 
 interface PropTypes {

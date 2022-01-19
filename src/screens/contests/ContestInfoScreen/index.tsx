@@ -52,12 +52,10 @@ export default function ContestInfoScreen() {
 
   // Bussiness logic
 
-  const navigate = () => {
-    navigation.navigate('TeamFormationScreen');
-  };
-
   const proceedToJoin = (contest_key: string) => {
-    navigation.navigate('TeamFormationScreen');
+    navigation.navigate('TeamFormationScreen', {
+      mutation: false,
+    });
   };
 
   const onPageSelectedAction = (e: any) => {

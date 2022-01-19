@@ -22,6 +22,7 @@ import CreateTeamLoading from './atoms/CreateTeamLoading';
 import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
 import TeamFormationScreen from './team.formation.screen';
 import {useMatchPlayers} from './teamformation.workers';
+const log = console.log;
 
 export default function TeamFormationHOC() {
   const dispatch = useDispatch();
@@ -41,14 +42,17 @@ export default function TeamFormationHOC() {
     userSelector.mobile,
   );
 
+  // console.log('matchSelector', JSON.stringify(matchSelector));
+
   useEffect(() => {
-    if (route?.params?.from === 1) {
-      // Dont clear its from clone or edit
-    } else {
-      // dispatch(clearTeamAction());
-    }
     dispatch(updateErrorMsgAction(null));
     dispatch(updateTeamAction([matchSelector.team_a, matchSelector.team_b]));
+
+    if (route.params.mutation) {
+      log('TeamFormationParams -->', route.params.mutation);
+    } else {
+      dispatch(clearTeamAction());
+    }
   }, []);
 
   useEffect(() => {
@@ -63,6 +67,7 @@ export default function TeamFormationHOC() {
   }, [selectedPlayers]);
 
   const navigateToTeamPreviewScreeen = () => {
+    // it neeeds to be changed
     navigation.navigate('TeamPreviewScreen', {
       from: 1,
       keepers: selectedPlayers.filter(
@@ -94,10 +99,11 @@ export default function TeamFormationHOC() {
   const navigateToCapSelection = () => {
     try {
       if (selectedPlayers.length === 11) {
-        navigation.navigate('CapSelectionScreen'),
-          {
-            match_key: !route?.params?.match_key,
-          };
+        // console.log(route.params);
+        // return
+        navigation.navigate('CapSelectionScreen', {
+          mutation: route.params.mutation,
+        });
       } else {
         throw 'Team requires total 11 players';
       }
@@ -125,4 +131,9 @@ export default function TeamFormationHOC() {
   );
 }
 
-
+/**
+ * mandatory route params
+ *
+ * mutation:{edit:true,clone:false,team_key} || false
+ *
+ */

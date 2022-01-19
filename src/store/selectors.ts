@@ -43,8 +43,8 @@ export const selectedMatch = createSelector(
       return {
         match_key: match.match_key,
         name: match.name,
-        team_a: match.team_b,
-        team_b: match.team_a,
+        team_a: match.team_a,
+        team_b: match.team_b,
         titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),
         start_at: match.start_at,
         joinContest: contest,
@@ -117,6 +117,8 @@ export const rolesCount = createSelector(
   playersState,
   TeamsState,
   (players, teams) => {
+    // console.log('teams', teams);
+
     const keeper = players.filter(
       (item: any) => item.seasonal_role === 'keeper',
     );

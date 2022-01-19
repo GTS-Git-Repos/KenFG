@@ -13,7 +13,7 @@ export default function LobbyScreenHOC() {
 
   useEffect(() => {
     if (lobbyMeta) {
-      // console.log(lobbyMeta);
+      // console.log(JSON.stringify(lobbyMeta));
     }
   }, [lobbyMeta]);
 
@@ -23,10 +23,12 @@ export default function LobbyScreenHOC() {
   if (lobbyAPI && !lobbyMeta) {
     return <LobbyScreenLoading failed={true} />;
   }
-
+  // return null;
   return (
     <LobbyScreen
-      myMatches={lobbyMeta.myMatches[0]}
+      myMatches={
+        lobbyMeta.myMatches.length > 0 ? lobbyMeta.myMatches[0] : false
+      }
       banners={lobbyMeta.banners}
       upcomming={lobbyMeta.upcomming}
     />

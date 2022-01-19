@@ -29,7 +29,7 @@ interface PropTypes {
   team_a: any;
   team_b: any;
   navigateToPreview(team_key: string): any;
-  mutateTeam(team_key: string): any;
+  mutateTeam(team_key: string,edit:boolean,clone:boolean): any;
 }
 interface TeamContInfoTypes {
   name: string;

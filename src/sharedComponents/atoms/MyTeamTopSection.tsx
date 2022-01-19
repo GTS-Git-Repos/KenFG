@@ -8,7 +8,7 @@ interface PropTypes {
   team_key: string;
   canModify: boolean;
   current: boolean;
-  mutateTeam(team_key: string): any;
+  mutateTeam(team_key: string, edit: boolean, clone: boolean): any;
 }
 
 export default function MyTeamsTopSection(props: PropTypes) {
@@ -38,14 +38,14 @@ export default function MyTeamsTopSection(props: PropTypes) {
       {props.canModify && (
         <View style={[tailwind('flex-row items-center')]}>
           <TouchableOpacity
-            onPress={() => props.mutateTeam(props.team_key)}
+            onPress={() => props.mutateTeam(props.team_key, false, true)}
             style={[tailwind('px-2')]}>
             <CloneIcon white={false} />
           </TouchableOpacity>
           <TouchableOpacity
             style={[tailwind('px-1')]}
-            onPress={() => props.mutateTeam(props.team_key)}>
-            <EditIcon />
+            onPress={() => props.mutateTeam(props.team_key, true, false)}>
+            <EditIcon background={false} />
           </TouchableOpacity>
         </View>
       )}

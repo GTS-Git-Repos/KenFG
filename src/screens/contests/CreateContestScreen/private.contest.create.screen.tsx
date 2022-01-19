@@ -10,30 +10,28 @@ import CreateTeamPage from './molecules/CreateTeamPage';
 import ShareContestPage from './molecules/ShareContestPage';
 import PrivateContestBanner from './atoms/private.contest.banner';
 import {useSelector} from 'react-redux';
-import {selectedMatch, userInfo} from '../../../store/selectors';
+import {selectedMatch} from '../../../store/selectors';
 import {Modalize} from 'react-native-modalize';
 import AcceptTermsSheet from './atoms/AcceptTermsSheet';
 import JoinPrivateContest from './molecules/join.private.contets';
-import {useQuery} from 'react-query';
-import {getPrivateContestsRemote} from '../../../remote/matchesRemote';
-
 const log = console.log;
 
-export default function PrivateContestCreateScreen() {
+interface PropTypes {
+  contests: any;
+  contestsAPI: any;
+  contestAPILive: any;
+  refetch(): any;
+  joinRequestPrivateContest(team_key: string): any;
+}
+
+export default function PrivateContestCreateScreen(props: PropTypes) {
   const {width} = useWindowDimensions();
-  const navigation = useNavigation();
   const pageRef = useRef(null);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [canCreateContest, setCanCreateContest] = useState(true);
 
   const matchSelector: any = useSelector(selectedMatch);
-  const userSelector: any = useSelector(userInfo);
-
-  const contests = useQuery(
-    ['privateContests', matchSelector.match_key, userSelector.mobile],
-    getPrivateContestsRemote,
-  );
 
   const onPageSelectedAction = (e: any) => {
     setActiveIndex(e.nativeEvent.position);
@@ -68,7 +66,11 @@ export default function PrivateContestCreateScreen() {
         style={{flex: 1}}
         initialPage={0}>
         <View style={[{width: width}]}>
-          <CreateTeamPage activeIndex={activeIndex} pageRef={pageRef} contests={contests} />
+          <CreateTeamPage
+            activeIndex={activeIndex}
+            pageRef={pageRef}
+            refetch={props.refetch}
+          />
         </View>
         <View style={[{width: width}]}>
           <ShareContestPage activeIndex={activeIndex} />
@@ -76,8 +78,10 @@ export default function PrivateContestCreateScreen() {
         <View style={[{width: width}]}>
           <JoinPrivateContest
             activeIndex={activeIndex}
-            status={contests.status}
-            contests={contests.data}
+            contests={props.contests}
+            contestsAPI={props.contestsAPI}
+            contestAPILive={props.contestAPILive}
+            joinRequestPrivateContest={props.joinRequestPrivateContest}
           />
         </View>
       </PagerView>
