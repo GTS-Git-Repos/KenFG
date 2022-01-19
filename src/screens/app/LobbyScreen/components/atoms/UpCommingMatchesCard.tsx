@@ -42,11 +42,11 @@ export default function UpcommingMatches(props: PropTypes) {
   useEffect(() => {
     let interval: any = null;
     try {
-      // if (isMounted.current) {
-      //   interval = setInterval(() => {
-      //     setCurrentTime(getCountDown(props.start_at));
-      //   }, 1000);
-      // }
+      if (isMounted.current) {
+        interval = setInterval(() => {
+          setCurrentTime(getCountDown(props.start_at));
+        }, 5000);
+      }
     } catch (err) {
       console.log(err);
     }

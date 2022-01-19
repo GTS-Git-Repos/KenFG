@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet} from 'react-native';
 
 interface PropTypes {
-  value: string;
+  timeStamp: any;
 }
 
 export default function CountdownContest(props: PropTypes) {
+  const [parsedTime, setParsedTime] = useState('');
+
+  // useEffect(() => {
+  //   // console.log('ccd', props.timeStamp);
+  //   const split = props.timeStamp.split(':');//
+  // }, []);
+
   return (
     <View style={[tailwind('flex-row justify-center items-center my-6')]}>
       <View style={[styles.countDownRoot]}>

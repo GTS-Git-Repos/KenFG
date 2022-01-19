@@ -1,16 +1,16 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, ActivityIndicator, ScrollView} from 'react-native';
-// import Icon from 'react-native-vector-icons/Ionicons';
-import CardMyContest from './CardMyContest';
-import {ContestCard, JoinedContestCard} from '../../../../sharedComponents';
+import {View, ActivityIndicator, ScrollView} from 'react-native';
+import {JoinedContestCard} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/core';
-import NoJoinedContest from '../atoms/no.joined.contest';
+import NoContent from '../atoms/no.content.contest';
 const log = console.log;
 
 interface PropTypes {
   joined: any;
   status: any;
+  timeStamp: any;
+  pagerRef: any;
   teamPreviewPress(team_key: string): any;
   teamMutateAction(team_key: any): any;
 }
@@ -22,11 +22,22 @@ export default function MyContestPage(props: PropTypes) {
     navigation.navigate('LiveMatchScreen');
   };
 
+  function noContentAction() {
+    props.pagerRef.current?.setPage(0);
+  }
+
   if (!props.status) {
     return <ActivityIndicator size={'large'} color="#d1b45a" />;
   }
   if (props.status && !props.joined) {
-    return <NoJoinedContest />;
+    return (
+      <NoContent
+        title={'The first move to get your fortune '}
+        subtitle={'It’s your time where skills & knowledge meets action'}
+        actionText={'VIEW CONTESTS'}
+        noContentAction={noContentAction}
+      />
+    );
   }
 
   return (

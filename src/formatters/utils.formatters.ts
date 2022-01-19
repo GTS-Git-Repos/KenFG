@@ -199,8 +199,9 @@ const getBattersDataByInnings = (
 };
 
 const swapInningsKeyForBowler = (i_key: string) => {
-  let i = i_key.split('_')[0];
-  let d = i_key.split('_')[1];
+  // swapped because API bowlers innings is diffrent
+  const i = i_key.split('_')[0];
+  const d = i_key.split('_')[1];
   if (i === 'a') {
     return `${'b'}_${d}`;
   } else {

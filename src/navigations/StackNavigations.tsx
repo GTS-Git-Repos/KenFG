@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-// import {createStackNavigator} from '@react-navigation/stack';
-import {createNativeStackNavigator as createStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
+// import {createNativeStackNavigator as createStackNavigator} from '@react-navigation/native-stack';
 
 import ContestListScreen from '../screens/contests/ContestListScreen';
 import ContestInfoScreen from '../screens/contests/ContestInfoScreen';
@@ -102,10 +102,6 @@ export function Contest(props: any) {
       <ContestStack.Screen
         name="TeamPreviewScreen"
         component={TeamPreviewScreen}
-      />
-      <ContestStack.Screen
-        name="TeamSelectionScreen"
-        component={TeamSelectionScreen}
       />
     </ContestStack.Navigator>
   );

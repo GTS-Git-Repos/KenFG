@@ -1,10 +1,14 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {joinContestRequestAction} from '../../../store/actions/appActions';
 import {selectedMatch, userInfo} from '../../../store/selectors';
 import PrivateContestCreateScreen from './private.contest.create.screen';
 import {useGetTeams, usePrivateContestList} from './private.contest.workers';
 
 export default function PrivateContestCreateHOC() {
+  const navigation = useNavigation<any>();
+  const dispatch = useDispatch();
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
 
@@ -20,11 +24,26 @@ export default function PrivateContestCreateHOC() {
         throw 'no contest found';
       }
       // console.log(contest);
-      console.log(teams);
+      dispatch(
+        joinContestRequestAction({
+          contestKey: contest.pc_id,
+          entryAmount: contest.entry_fee,
+          maxTeam: contest.n_teams,
+        }),
+      );
+      if (teams.length > 1) {
+        navigation.navigate('TeamSelectionScreen');
+      } else {
+        navigation.navigate('TeamFormationScreen', {
+          mutation: false,
+        });
+      }
     } catch (err) {
       console.log('joinRequestPrivateContest', joinRequestPrivateContest);
     }
   }
+
+  
 
   return (
     <PrivateContestCreateScreen
@@ -33,6 +52,7 @@ export default function PrivateContestCreateHOC() {
       contestAPILive={contestAPILive}
       refetch={refetch}
       joinRequestPrivateContest={joinRequestPrivateContest}
+      wallet={userSelector.un_utilized}
     />
   );
 }

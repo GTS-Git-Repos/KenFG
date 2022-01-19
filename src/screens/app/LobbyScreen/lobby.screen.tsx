@@ -10,6 +10,10 @@ import LobbyNav from './components/LobbyNav';
 import CricketPage from './components/molecules/CricketPage';
 import MyMatchCard from './components/molecules/mymatch.card.lobby';
 import SubTitle from './components/SubTitle';
+import {
+  updateSelectedContestAction,
+  updateSelectedMatchAction,
+} from '../../../store/actions/appActions';
 
 const log = console.log;
 
@@ -21,13 +25,28 @@ interface PropTypes {
 
 export default function LobbyScreen(props: PropTypes) {
   const route = useRoute();
+  const navigation = useNavigation<any>();
   const dispatch = useDispatch();
 
   const [cricket, setCricket] = useState(true);
 
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
-  // console.log(props.myMatches);
+  function onPressMyMatchCard(match_key: string) {
+    // check match current status and navigate based on that
+    // console.log(props.myMatches);
+
+    const obj = {
+      match_key: match_key,
+      name: props.myMatches.teams.tournament.short_name,
+      team_a: props.myMatches.teams.a.code,
+      team_b: props.myMatches.teams.b.code,
+      start_at: props.myMatches.teams.start_at,
+    };
+    dispatch(updateSelectedContestAction(null));
+    dispatch(updateSelectedMatchAction(obj));
+    navigation.navigate('Contest');
+  }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
@@ -54,7 +73,7 @@ export default function LobbyScreen(props: PropTypes) {
                 start_time={props.myMatches.start_at}
                 teamCount={props.myMatches.team_count}
                 contestCount={props.myMatches.contest_count}
-                onPressMyMatchCard={() => {}}
+                onPressMyMatchCard={onPressMyMatchCard}
               />
             </>
           )}

@@ -13,11 +13,14 @@ import {creditsLeftCalculator} from '../../../../constructors/teams.constructor'
 import {useNavigation} from '@react-navigation/native';
 import {errorBox} from '../../../../utils/snakBars';
 import {useDispatch} from 'react-redux';
+import NoContent from '../atoms/no.content.contest';
 
 interface PropTypes {
   teams: any;
   status: string;
   live: string;
+  timeStamp: any;
+  pagerRef: any;
 }
 
 export default function MyTeamsPage(props: PropTypes) {
@@ -54,7 +57,6 @@ export default function MyTeamsPage(props: PropTypes) {
 
   const mutateTeam = (team_key: string, edit: boolean, clone: boolean) => {
     const team = props.teams.find((item: any) => item.team_key === team_key);
-
     const players = [];
     if (team) {
       // console.log(team.keepers);
@@ -73,7 +75,6 @@ export default function MyTeamsPage(props: PropTypes) {
         team_key: team_key,
       };
       // console.log(params);
-
       // return;
       navigation.navigate('TeamFormationScreen', {
         mutation: params,
@@ -81,13 +82,22 @@ export default function MyTeamsPage(props: PropTypes) {
     }
   };
 
-  // console.log(JSON.stringify(props.teams));
+  function noContentAction() {
+    props.pagerRef?.current?.setPage(0);
+  }
 
   if (!props.status) {
     return <TeamsLoading />;
   }
   if (props.status && !props.teams) {
-    return <NoTeams />;
+    return (
+      <NoContent
+        title={'The first move to get your fortune'}
+        subtitle={'It’s your time where skills & knowledge meets action'}
+        actionText={'CREATE TEAM'}
+        noContentAction={noContentAction}
+      />
+    );
   }
   return (
     <ScrollView contentContainerStyle={[tailwind('m-3')]}>

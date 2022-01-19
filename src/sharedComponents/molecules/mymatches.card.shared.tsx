@@ -9,7 +9,7 @@ interface PropTypes {
 }
 
 export default function MyMatchesCardShared(props: PropTypes) {
-  // NOT USED ANYWHERE
+  // NOT USED ANYWHERE for NOW, need to change
   return (
     <View style={[tailwind('box')]}>
       <Text style={[tailwind('font-regular font-15')]}>HEllo</Text>

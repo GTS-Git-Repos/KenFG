@@ -29,6 +29,7 @@ interface PropTypes {
   rolesCount: any;
   creditsLeft: number;
   match: any;
+  countDown:any,
   navigateToCapSelection(): any;
   navigateToTeamPreviewScreeen(): any;
 }
@@ -70,7 +71,7 @@ export default function TeamFormationScreen(props: PropTypes) {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopBarCreateTeam />
+      <TopBarCreateTeam countDown={props.countDown} />
       <LinearGradient colors={['#172338', '#0D1320']}>
         <LinearGradient colors={['#172338', '#0D1320']}>
           <MatchStatus text={'MAX 7 PLAYERS FROM A TEAM'} />

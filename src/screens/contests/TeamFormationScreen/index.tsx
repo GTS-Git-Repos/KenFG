@@ -17,7 +17,7 @@ import {
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
 import CreateTeamLoading from './atoms/CreateTeamLoading';
 import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
 import TeamFormationScreen from './team.formation.screen';
@@ -30,6 +30,7 @@ export default function TeamFormationHOC() {
   const route = useRoute<any>();
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
+  const countDown = useCountDown(matchSelector.start_at, false);
 
   const selectedPlayers: any = useSelector(allSelecdtedPlayers);
   const rolesCountSelector: any = useSelector(rolesCount);
@@ -121,6 +122,7 @@ export default function TeamFormationHOC() {
 
   return (
     <TeamFormationScreen
+      countDown={countDown}
       players={players}
       rolesCount={rolesCountSelector}
       creditsLeft={availableCredits}

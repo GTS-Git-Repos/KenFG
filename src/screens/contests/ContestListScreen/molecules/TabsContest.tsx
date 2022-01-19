@@ -6,6 +6,7 @@ const log = console.log;
 interface PropTypes {
   selectedTab: number;
   onTabPressed(index: number): void;
+  contest_count: any;
   teamsCount: any;
 }
 
@@ -45,7 +46,9 @@ function TabsContest(props: PropTypes) {
               }`,
             ),
           ]}>
-          My Contests
+          {props.contest_count
+            ? `My Contests (${props.contest_count})`
+            : 'My Contests'}
         </Text>
       </TouchableOpacity>
       <TouchableOpacity

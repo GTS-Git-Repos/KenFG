@@ -14,10 +14,13 @@ import assets from '../../../../constants/assets_manifest';
 import {SecondaryButton} from '../../../../sharedComponents';
 
 interface PropTypes {
-  text?: string;
+  timeStamp: any;
 }
 
 export default function NoJoinedContest(props: PropTypes) {
+
+  // DEPRECATED
+  
   return (
     <ImageBackground
       source={assets.stadium}
@@ -27,7 +30,7 @@ export default function NoJoinedContest(props: PropTypes) {
         <Text style={[tailwind('font-regular text-center text-white font-14')]}>
           Litle time to get your fortune
         </Text>
-        <CountdownContest value={''} />
+        <CountdownContest timeStamp={props.timeStamp} />
         <Text style={[tailwind('font-regular text-center text-white font-14')]}>
           All the best
         </Text>
@@ -38,4 +41,3 @@ export default function NoJoinedContest(props: PropTypes) {
     </ImageBackground>
   );
 }
-

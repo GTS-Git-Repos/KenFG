@@ -7,7 +7,7 @@ import TabsContestInfo from './atoms/TabsContestInfo';
 import {useQuery} from 'react-query';
 const log = console.log;
 import LearderBoard from './molecules/LeaderBoardList';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
 import {contestListsRemote} from '../../../remote/matchesRemote';
 import {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
@@ -26,6 +26,7 @@ export default function ContestInfoScreen() {
   const route = useRoute<any>();
   const tabOffset = useSharedValue<any>(0);
   const isScreenReady = useIsScreenReady();
+
   const pageRef = useRef(null);
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -34,6 +35,10 @@ export default function ContestInfoScreen() {
   const userInfoSelector: any = useSelector(userInfo);
   const userWallet: any = useSelector(userWalletAmount);
   const matchSelector: any = useSelector(selectedMatch);
+
+  const countDown = useCountDown(matchSelector.start_at, false);
+
+  // console.log(countDown);
 
   const {data, isLoading, isSuccess} = useQuery(
     ['contests', matchSelector.match_key],
@@ -66,16 +71,13 @@ export default function ContestInfoScreen() {
     pageRef.current?.setPage(index);
   };
 
-  if (!contestInfo) {
+  if (!contestInfo || isScreenReady === false) {
     return <ContestInfoPageLoading title={matchSelector.titleString} />;
   }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopbarContest
-        title={matchSelector.titleString}
-        subtitle={'18h 11m left'}
-      />
+      <TopbarContest title={matchSelector.titleString} subtitle={countDown} />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
           navigate={() => {}}

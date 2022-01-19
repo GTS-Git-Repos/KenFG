@@ -6,6 +6,8 @@ import FilterTab from './Filtertab';
 import {contestListsTypes} from '../../../../types/api';
 import ContestSubTitle from '../atoms/ContestSubTitle';
 import LoadFailedContestList from '../atoms/loadfailed.contestlist';
+import NoContent from '../atoms/no.content.contest';
+import {useNavigation} from '@react-navigation/core';
 const log = console.log;
 
 interface PropTypes {
@@ -18,6 +20,12 @@ interface PropTypes {
 }
 
 export default function ContestPage(props: PropTypes) {
+  const navigation = useNavigation();
+
+  function noContentAction() {
+    navigation.goBack();
+  }
+
   if (!props.status) {
     return (
       <Text style={[tailwind('font-regular text-white font-15')]}>
@@ -27,9 +35,12 @@ export default function ContestPage(props: PropTypes) {
   }
   if (props.status && !props.data) {
     return (
-      <Text style={[tailwind('font-regular text-white font-15')]}>
-        No Contest Found
-      </Text>
+      <NoContent
+        title={'Currently No Contests are open to Join'}
+        subtitle={'Please try again later or check other matches'}
+        actionText={'VIEW MATCHES'}
+        noContentAction={noContentAction}
+      />
     );
   }
 

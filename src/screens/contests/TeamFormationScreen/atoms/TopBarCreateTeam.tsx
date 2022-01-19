@@ -10,7 +10,7 @@ import {useDispatch} from 'react-redux';
 import {clearTeamAction} from '../../../../store/actions/teamActions';
 
 interface PropTypes {
-  text?: string;
+  countDown: string;
 }
 
 export default function TopBarCreateTeam(props: PropTypes) {
@@ -33,7 +33,7 @@ export default function TopBarCreateTeam(props: PropTypes) {
             <BackIcon />
           </TouchableOpacity>
           <Text style={[tailwind('font-bold text-brown-4 font-18')]}>
-            15h 54m 36s Left
+            {props.countDown} Left
           </Text>
         </View>
         <View style={[tailwind('flex-row items-center')]}>

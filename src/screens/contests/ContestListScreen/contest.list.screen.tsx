@@ -12,7 +12,11 @@ import {
   getJoinedTeamsRemote,
   joinContestRemote,
 } from '../../../remote/matchesRemote';
-import {useIsScreenReady, useRenderCount} from '../../../utils/customHoooks';
+import {
+  useCountDown,
+  useIsScreenReady,
+  useRenderCount,
+} from '../../../utils/customHoooks';
 import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
 import {BlockScreenByLoading} from '../../../sharedComponents';
 import TabsContest from './molecules/TabsContest';
@@ -67,11 +71,13 @@ export default function ContestListScreen(props: PropTypes) {
   const [showJoinModal, setShowJoinModal] = useState(false);
   const [loading, setLoading] = useState<any>(false);
   const [selectedFilter, setSelectedFilter] = useState<any>(null);
-  const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
+  // const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
 
   const userInfoSelector: any = useSelector(userInfo);
   const userWallet: any = useSelector(userWalletAmount);
   const matchSelector: any = useSelector(selectedMatch);
+
+  const timeStamp = useCountDown(matchSelector.start_at, false);
 
   const selectedContestState: any = useSelector<any>(
     state => state.app.selected_contest,
@@ -161,14 +167,12 @@ export default function ContestListScreen(props: PropTypes) {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopBarContest
-        title={matchSelector?.titleString}
-        subtitle={currentTime}
-      />
+      <TopBarContest title={matchSelector?.titleString} subtitle={timeStamp} />
       <View style={[tailwind('')]}>
         <TabsContest
           selectedTab={selectedTab}
-          teamsCount={props.teams?.length}
+          contest_count={props?.joined?.length}
+          teamsCount={props?.teams?.length}
           onTabPressed={onTabPressed}
         />
       </View>
@@ -193,6 +197,8 @@ export default function ContestListScreen(props: PropTypes) {
             status={props.joinedAPI}
             teamPreviewPress={props.teamPreviewPress}
             teamMutateAction={props.teamMutateAction}
+            timeStamp={timeStamp}
+            pagerRef={pagerRef}
           />
         </View>
         <View style={{width: width}}>
@@ -200,6 +206,9 @@ export default function ContestListScreen(props: PropTypes) {
             teams={props.teams}
             status={props.teamsAPI}
             live={props.teamsAPILive}
+            timeStamp={timeStamp}
+            pagerRef={pagerRef}
+
           />
         </View>
       </PagerView>

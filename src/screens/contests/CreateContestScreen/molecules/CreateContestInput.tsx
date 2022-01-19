@@ -96,7 +96,7 @@ const UserInput = (props: any) => {
         onChangeText={e => props.onChangeText(e)}
         style={[
           tailwind(
-            'p-0 m-0 border-b border-gray-800 font-20 text-white font-bold',
+            'p-0 m-0 border-b border-gray-700 font-20 text-white font-bold',
           ),
         ]}
       />

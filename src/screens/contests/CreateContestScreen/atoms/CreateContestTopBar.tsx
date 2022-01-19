@@ -8,7 +8,7 @@ import {BackIcon, WalletIcon} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
-  text?: string;
+  wallet: string;
 }
 
 export default function CreateContestTopBar(props: PropTypes) {
@@ -35,32 +35,23 @@ export default function CreateContestTopBar(props: PropTypes) {
           </View>
         </View>
         <View>
-          <Priceicon />
+          <View style={[tailwind('flex-row items-center'), styles.priceBorder]}>
+            <Text style={[tailwind('font-regular text-brown-5 px-2 font-12')]}>
+              {'\u20B9'} {props.wallet}
+            </Text>
+            <View style={[tailwind('py-1 px-2'), {backgroundColor: '#B2933D'}]}>
+              <WalletIcon darkColor={true} />
+            </View>
+          </View>
         </View>
       </View>
     </LinearGradient>
   );
 }
 
-const Priceicon = () => {
-  return (
-    <View style={[tailwind('flex-row items-center'), styles.priceBorder]}>
-      <Text style={[tailwind('font-regular text-brown-5 px-2 font-12')]}>
-        {'\u20B9'} 2
-      </Text>
-      <View style={[tailwind('py-1 px-2'), {backgroundColor: '#B2933D'}]}>
-        <WalletIcon darkColor={true} />
-      </View>
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
   priceBorder: {
-    borderBottomColor: '#B2933D',
-    borderLeftColor: '#B2933D',
-    borderEndColor: '#B2933D',
-    borderRightColor: '#B2933D',
+    borderColor: '#B2933D',
     borderRadius: 6,
     borderWidth: 1,
   },

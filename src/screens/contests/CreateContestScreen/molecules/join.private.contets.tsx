@@ -1,8 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, Text, ScrollView, ActivityIndicator} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
+import {View, Text, ActivityIndicator} from 'react-native';
 import PrivateContestCard from './private.contest.card';
 import {FlatList} from 'react-native-gesture-handler';
 
@@ -15,15 +13,14 @@ interface PropTypes {
 }
 
 export default function JoinedContestListPage(props: PropTypes) {
-  // console.log(props.contests);
-
   if (props.contestAPILive) {
     return <ActivityIndicator color="#d1b45a" size="large" />;
   }
-  if (props.contestsAPI && !props.contests) {
+  if (props.contestsAPI && (!props.contests || props.contests?.length === 0)) {
     return (
-      <Text style={[tailwind('font-regular text-white font-15')]}>
-        No Contest Found
+      <Text
+        style={[tailwind('font-regular p-3 text-center text-dark-1 font-15')]}>
+        No Private Contests Found
       </Text>
     );
   }

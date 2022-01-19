@@ -22,11 +22,12 @@ import {
 } from '../../../../../store/actions/appActions';
 
 interface PropTypes {
+  upcomming: any;
   data: [];
   status: string;
 }
 
-const ImageSlider = (props: any) => {
+const ImageSlider = (props: PropTypes) => {
   const {width} = useWindowDimensions();
   const navigation = useNavigation<any>();
   const swiperRef = useRef();
@@ -35,35 +36,31 @@ const ImageSlider = (props: any) => {
 
   const [height, setHeight] = useState(95);
 
-  const upcommingMatches = useQuery(
-    ['upcomingMatches', userInfoSelector?.mobile],
-    upcommingMatchesandBannersRemote,
-  );
-
   const calcHeight = (e: any) => {
     const {height} = e.nativeEvent.layout;
     // setHeight(height);
   };
 
-  const navigate = (item: any) => {
+  const navigate = (match_key: any) => {
     try {
-      if (upcommingMatches.data?.matches) {
-        const match = upcommingMatches.data?.matches[0];
-        let obj = {
+      const match = props.upcomming[0];
+
+      // console.log(match);
+
+      if (match) {
+        const obj = {
           match_key: match.key,
-          name: match.tournament.short_name,
+          name: match.teams.tournament.short_name,
           team_a: match.teams.a.key,
           team_b: match.teams.b.key,
         };
-        // console.log(obj);
-
         dispatch(updateSelectedContestAction(null));
         dispatch(updateSelectedMatchAction(obj));
-        navigation.navigate('ContestListScreen');
-      } else {
-        throw 'err';
+        navigation.navigate('Contest');
       }
     } catch (err) {
+      console.log(err);
+
       ToastAndroid.show('Navigation Disabled ', ToastAndroid.SHORT);
     }
   };
@@ -94,7 +91,7 @@ const ImageSlider = (props: any) => {
             onLayout={calcHeight}
             key={item.banner_key}
             activeOpacity={0.7}
-            onPress={navigate}
+            onPress={() => navigate(item.match_key)}
             style={[tailwind('flex-row mx-5 justify-center items-center')]}>
             <FastImage
               fallback={true}

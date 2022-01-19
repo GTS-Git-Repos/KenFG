@@ -3,9 +3,11 @@ import {NavigationContainer, DarkTheme} from '@react-navigation/native';
 import {Host} from 'react-native-portalize';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-// import {createStackNavigator} from '@react-navigation/stack';
 
-import {CardStyleInterpolators} from '@react-navigation/stack';
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from '@react-navigation/stack';
 
 import {DrawerNav} from './DrawerNavigation';
 import {Auth, More, Contest} from './StackNavigations';
@@ -41,9 +43,10 @@ import AffliatedScreen from '../screens/user/AffliatedScreen';
 import AchievementsScreen from '../screens/user/AchievementsScreen';
 import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScreen';
 import TeamFormationScreen from '../screens/contests/TeamFormationScreen';
+import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
 
-// const RootNavigator = createStackNavigator();
-const RootNavigator = createNativeStackNavigator();
+const RootNavigator = createStackNavigator();
+// const RootNavigator = createNativeStackNavigator();
 
 const StackConfig = {
   headerShown: false,
@@ -69,6 +72,11 @@ export default function RootNavigation() {
           <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
           <RootNavigator.Screen component={More} name="More" />
           <RootNavigator.Screen component={Contest} name="Contest" />
+
+          <RootNavigator.Screen
+            name="TeamSelectionScreen"
+            component={TeamSelectionScreen}
+          />
 
           <RootNavigator.Screen
             component={CreateContestScreen}

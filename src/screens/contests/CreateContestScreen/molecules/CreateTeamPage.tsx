@@ -60,17 +60,6 @@ export default function CreateTeamPage(props: PropTypes) {
       allow_multiple: allowMultiple ? 'y' : 'n',
       team_limit: perUserTeam,
     };
-    // let obj = {
-    //   player_key: 9867543210,
-    //   mobile: 9867543210,
-    //   match_key: 'bblt20_2021_g46',
-    //   pcname: 'test private contest',
-    //   n_teams: 1,
-    //   entry_fee: 10,
-    //   n_winners: 1,
-    //   allow_multiple: 'y',
-    //   team_limit: 1,
-    // };
     setLoading(true);
     const response = await createContestRemote(obj);
     setLoading(false);
@@ -91,7 +80,7 @@ export default function CreateTeamPage(props: PropTypes) {
   };
 
   return (
-    <ScrollView>
+    <ScrollView keyboardShouldPersistTaps="handled">
       <View style={[tailwind('my-2')]}>
         <CreateContestInput
           contestName={contestName}

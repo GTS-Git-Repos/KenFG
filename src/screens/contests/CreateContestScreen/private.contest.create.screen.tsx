@@ -22,6 +22,7 @@ interface PropTypes {
   contestAPILive: any;
   refetch(): any;
   joinRequestPrivateContest(team_key: string): any;
+  wallet: string;
 }
 
 export default function PrivateContestCreateScreen(props: PropTypes) {
@@ -46,7 +47,7 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <CreateContestTopBar />
+      <CreateContestTopBar wallet={props.wallet} />
 
       <TeamsSection
         team_a={matchSelector.team_a}

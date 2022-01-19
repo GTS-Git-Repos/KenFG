@@ -6,13 +6,13 @@ import assets from '../../../../constants/assets_manifest';
 import {SecondaryButton} from '../../../../sharedComponents';
 
 interface PropTypes {
-  goToContestPage: any;
+  title: string;
+  subtitle: string;
+  actionText: string;
+  noContentAction: any;
 }
 
-export default function NoTeams(props: PropTypes) {
-
-  // DEPRECATED
-
+export default function NoContent(props: PropTypes) {
   return (
     <ImageBackground
       source={assets.stadium}
@@ -20,16 +20,18 @@ export default function NoTeams(props: PropTypes) {
       resizeMode="cover">
       <View style={[tailwind(''), {paddingVertical: 59}]}>
         <Text style={[tailwind('font-regular text-center text-white font-14')]}>
-          The first move to get your fortune
+          {/* The first move to get your fortune */}
+          {props.title}
         </Text>
         <CountdownContest value={''} />
         <Text style={[tailwind('font-regular text-center text-white font-14')]}>
-          It’s your time where skills & knowledge meets action
+          {/* It’s your time where skills & knowledge meets action */}
+          {props.subtitle}
         </Text>
         <TouchableOpacity
-          onPress={props.goToContestPage}
+          onPress={props.noContentAction}
           style={[tailwind('mx-16 my-7')]}>
-          <SecondaryButton text={'CREATE TEAM'} />
+          <SecondaryButton text={props.actionText} />
         </TouchableOpacity>
       </View>
     </ImageBackground>

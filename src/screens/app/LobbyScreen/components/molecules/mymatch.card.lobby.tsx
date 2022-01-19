@@ -28,10 +28,9 @@ export default function MyMatchesCard(props: PropTypes) {
   useEffect(() => {
     let interval: any = null;
     try {
-      if (isMounted.current && false) {
-        let nextDate = add(new Date(), {days: 2});
+      if (isMounted.current) {
         interval = setInterval(() => {
-          setCountDown(getCountDown(nextDate));
+          setCountDown(getCountDown(props.start_time));
         }, 1000);
       }
     } catch (err) {

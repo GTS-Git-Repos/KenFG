@@ -36,7 +36,7 @@ export default function TeamSelectionScreen(props: any) {
         );
         return;
       }
-      let clone = [...choosenTeams];
+      const clone = [...choosenTeams];
       const isExist = clone.findIndex((item: any) => item === team_key);
       if (isExist === -1) {
         clone.push(team_key);
@@ -64,7 +64,7 @@ export default function TeamSelectionScreen(props: any) {
       };
 
       setLoading(true);
-      const response = await joinContestRemote(obj);
+      const response =   await joinContestRemote(obj);
       setLoading(false);
       if (response) {
         resetContestListNavigation(navigation, {});
