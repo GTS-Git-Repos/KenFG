@@ -38,6 +38,8 @@ import {resetContestListNavigation} from '../../../utils/resetNav';
 
 interface PropTypes {
   editTeamAPI(payload: any): any;
+  loading: boolean;
+  setLoading(bool: boolean): any;
 }
 
 export default function CapSelectionScreen(props: PropTypes) {
@@ -45,7 +47,7 @@ export default function CapSelectionScreen(props: PropTypes) {
   const dispatch = useDispatch();
   const route = useRoute<any>();
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const playersByRoleSelector = useSelector(playersByRole);
   const matchSelector: any = useSelector(selectedMatch);
@@ -112,33 +114,20 @@ export default function CapSelectionScreen(props: PropTypes) {
   const saveTeam = async () => {
     try {
       if (captain_key && vc_key) {
-        setLoading(true);
         const createTeamObj = createTeamObjCreator();
         // console.log(route.params.mutation);
         // return;
         if (route.params.mutation) {
           // is edit ?
           if (route.params.mutation.edit) {
-            // props.editTeamAPI(createTeamObj);
-            const team_key = route.params.mutation.team_key;
-            const obj = {...createTeamObj};
-            obj.team_key = team_key;
-            setLoading(true);
-            const response = await editTeamRemote(obj);
-            setLoading(false);
-            if (response) {
-              dispatch(clearTeamAction());
-              resetContestListNavigation(navigation, {
-                match_key: selected_match.match_key,
-                contest_key: selected_contest,
-                // team_key: response.team_key,
-              });
-            }
+            props.editTeamAPI(createTeamObj);
             return;
           }
-          return;
+          // is clone, intergrity check PENDING
         }
+        props.setLoading(true);
         const response = await createTeamRemote(createTeamObj);
+        props.setLoading(false);
         if (response) {
           dispatch(clearTeamAction());
           resetContestListNavigation(navigation, {
@@ -149,16 +138,15 @@ export default function CapSelectionScreen(props: PropTypes) {
           return;
         } else {
           setTimeout(() => {
-            errorBox('Failed to create a Team');
+            errorBox('Failed to create/update a Team');
           }, 500);
         }
       } else {
         errorBox('Please select captain and vice captain');
       }
     } catch (err) {
+      props.setLoading(false);
       log(err);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -273,7 +261,7 @@ export default function CapSelectionScreen(props: PropTypes) {
         />
       </View>
 
-      {loading && <BlockScreenByLoading />}
+      {props.loading && <BlockScreenByLoading />}
     </View>
   );
 }

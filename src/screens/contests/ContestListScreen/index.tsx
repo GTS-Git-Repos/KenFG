@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {selectedMatch, userInfo} from '../../../store/selectors';
 import ContestListScreen from './contest.list.screen';
 import ContestScreenLoading from './atoms/screen.loading.contest';
@@ -11,9 +11,16 @@ import {
 import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
 import {useNavigation} from '@react-navigation/core';
 import {creditsLeftCalculator} from '../../../constructors/teams.constructor';
+import {errorBox} from '../../../utils/snakBars';
+import {
+  updateCaptain,
+  updatePlayer,
+  updateVCaptain,
+} from '../../../store/actions/teamActions';
 
 export default function ContestListHOC() {
   const navigation = useNavigation<any>();
+  const dispatch = useDispatch();
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
   const isScreenReady = useIsScreenReady();
@@ -35,8 +42,7 @@ export default function ContestListHOC() {
     }
   }, [joined]);
 
-  const teamPreviewPress = (team_key: any) => {
-    console.log(team_key);
+  const teamPreviewPress = (team_key: any): any => {
     const team = teams.find((item: any) => item.team_key === team_key);
     if (team) {
       // console.log(JSON.stringify(team));
@@ -61,6 +67,40 @@ export default function ContestListHOC() {
     }
   };
 
+  const teamMutateAction = (team_key: any) => {
+    console.log(team_key);
+    try {
+      const team = teams.find((item: any) => item.team_key === team_key);
+
+      const players = [];
+      if (team) {
+        // console.log(team.keepers);
+        players.push(...team.keepers);
+        players.push(...team.all_rounder);
+        players.push(...team.batsman);
+        players.push(...team.bowler);
+        // console.log(players);
+        // return;
+        dispatch(updatePlayer(players));
+        dispatch(updateCaptain(team.cap.key));
+        dispatch(updateVCaptain(team.vc.key));
+        const params = {
+          edit: true,
+          clone: false,
+          team_key: team_key,
+        };
+        // console.log(params);
+        // return;
+        navigation.navigate('TeamFormationScreen', {
+          mutation: params,
+        });
+      }
+    } catch (err) {
+      console.log('teamMutateAction', err);
+      errorBox('Failed to mutate');
+    }
+  };
+
   if (!isScreenReady || !contestsAPI) {
     return <ContestScreenLoading title={''} />;
   }
@@ -76,6 +116,7 @@ export default function ContestListHOC() {
       teamsAPI={teamsAPI}
       teamsAPILive={teamsAPILive}
       teamPreviewPress={teamPreviewPress}
+      teamMutateAction={teamMutateAction}
     />
   );
 }

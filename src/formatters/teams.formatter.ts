@@ -34,7 +34,7 @@ export const parseJoinedTeamsAPI = (payload: any) => {
         bowler,
       );
 
-      console.log('>>>>>>>>>', team);
+      // console.log('>>>>>>>>>', team);
 
       teamData.push({
         team_key: team.team_key,

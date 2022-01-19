@@ -31,8 +31,7 @@ export const extractJoinedContestAPIResponse = (payload: any) => {
 
       const joinedTeam = [];
       for (const team of contestMeta.contest_team) {
-        const teamMeta = teams.find((item: any) => item.teams_key == team);
-
+        const teamMeta = teams.find((item: any) => item.team_key == team);
         if (teamMeta) {
           const allPlayers = teamMeta.players.players;
           const players = splitRoleWisePlayersPayload(allPlayers);

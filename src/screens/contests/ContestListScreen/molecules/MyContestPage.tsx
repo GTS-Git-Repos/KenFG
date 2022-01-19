@@ -12,6 +12,7 @@ interface PropTypes {
   joined: any;
   status: any;
   teamPreviewPress(team_key: string): any;
+  teamMutateAction(team_key: any): any;
 }
 
 export default function MyContestPage(props: PropTypes) {
@@ -48,6 +49,7 @@ export default function MyContestPage(props: PropTypes) {
             contest_teams={item.contestMeta.contest_team}
             joinedTeam={item.joinedTeam}
             teamPreviewPress={props.teamPreviewPress}
+            teamMutateAction={props.teamMutateAction}
           />
         );
       })}

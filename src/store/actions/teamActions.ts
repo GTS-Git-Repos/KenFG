@@ -40,14 +40,14 @@ export const updateCreditsAction = (payload: number) => ({
   payload,
 });
 
-export const updateCaptain = (payload: number) => ({
+export const updateCaptain = (player_key: string) => ({
   type: UPDATE_CAPTAIN,
-  payload: payload,
+  payload: player_key,
 });
 
-export const updateVCaptain = (key: string) => ({
+export const updateVCaptain = (player_key: string) => ({
   type: UPDATE_VC_CAPTAIN,
-  payload: key,
+  payload: player_key,
 });
 
 export const clearTeamAction = () => ({

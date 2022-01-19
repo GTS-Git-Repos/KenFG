@@ -1,6 +1,12 @@
 import React, {useState} from 'react';
 import tailwind from '../../../tailwind';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ToastAndroid,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {
@@ -33,6 +39,7 @@ interface PropTypes {
   contest_teams: Array<string>;
   joinedTeam: Array<any>;
   teamPreviewPress(team_key: string): any;
+  teamMutateAction(team_key: any): any;
 }
 
 interface TeamInfoTypes {
@@ -41,6 +48,7 @@ interface TeamInfoTypes {
   cap: any;
   v_c: any;
   teamPreviewPress(team_key: string): any;
+  teamMutateAction(team_key: any): any;
 }
 
 export default function ContestCard(props: PropTypes) {
@@ -79,6 +87,7 @@ export default function ContestCard(props: PropTypes) {
                     cap={item.t_cap}
                     v_c={item.t_vc}
                     teamPreviewPress={props.teamPreviewPress}
+                    teamMutateAction={props.teamMutateAction}
                   />
                 </View>
               );
@@ -197,10 +206,19 @@ const TeamInfo = (props: TeamInfoTypes) => {
       </TouchableOpacity>
 
       <View style={[tailwind('flex-row items-center')]}>
-        <TouchableOpacity style={[tailwind('mx-1')]}>
+        <TouchableOpacity
+          style={[tailwind('mx-1')]}
+          onPress={() => props.teamMutateAction(props.team_key)}>
           <EditIcon background={true} />
         </TouchableOpacity>
-        <TouchableOpacity style={[tailwind('mx-1')]}>
+        <TouchableOpacity
+          style={[tailwind('mx-1')]}
+          onPress={() => {
+            ToastAndroid.show(
+              'Switch Teams Not available currently ',
+              ToastAndroid.SHORT,
+            );
+          }}>
           <SwitchIcon />
         </TouchableOpacity>
       </View>

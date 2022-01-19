@@ -4,7 +4,11 @@ import {View, ScrollView, Text, ActivityIndicator} from 'react-native';
 import {TeamsCard} from '../../../../sharedComponents';
 import {log} from '../../../../utils/logs';
 import NoTeams from '../atoms/no.teams';
-import {updatePlayer} from '../../../../store/actions/teamActions';
+import {
+  updateCaptain,
+  updatePlayer,
+  updateVCaptain,
+} from '../../../../store/actions/teamActions';
 import {creditsLeftCalculator} from '../../../../constructors/teams.constructor';
 import {useNavigation} from '@react-navigation/native';
 import {errorBox} from '../../../../utils/snakBars';
@@ -49,9 +53,8 @@ export default function MyTeamsPage(props: PropTypes) {
   };
 
   const mutateTeam = (team_key: string, edit: boolean, clone: boolean) => {
-  
     const team = props.teams.find((item: any) => item.team_key === team_key);
-   
+
     const players = [];
     if (team) {
       // console.log(team.keepers);
@@ -59,9 +62,11 @@ export default function MyTeamsPage(props: PropTypes) {
       players.push(...team.all_rounder);
       players.push(...team.batsman);
       players.push(...team.bowler);
-      // console.log('>>>', players);
+      // console.log('>>>', team.cap);
       // return
       dispatch(updatePlayer(players));
+      dispatch(updateCaptain(team.cap.key));
+      dispatch(updateVCaptain(team.vc.key));
       const params = {
         edit: edit ? true : false,
         clone: clone ? true : false,
@@ -89,8 +94,6 @@ export default function MyTeamsPage(props: PropTypes) {
       {props.live && <TeamsLoading />}
 
       {props.teams.map((item: any) => {
-        console.log(item.team_key);
-
         return (
           <TeamsCard
             team_a={item.team_a}

@@ -50,7 +50,8 @@ interface PropTypes {
   teams: any;
   teamsAPI: any;
   teamsAPILive: any;
-  teamPreviewPress(): any;
+  teamPreviewPress(team_key: any): any;
+  teamMutateAction(team_key: any): any;
 }
 
 export default function ContestListScreen(props: PropTypes) {
@@ -119,17 +120,19 @@ export default function ContestListScreen(props: PropTypes) {
         userWallet,
       );
       if (!walletStatus.status) {
+        errorBox('You do not have enough amount in your wallet!');
         // go to wallet screen with needed amount in route params
       }
       if (props.teams?.length > 0) {
         navigation.navigate('TeamSelectionScreen');
       } else {
-        navigation.navigate('TeamFormationScreen',{
-          mutation:false
+        navigation.navigate('TeamFormationScreen', {
+          mutation: false,
         });
       }
     } catch (err) {
       console.log('proceedToJoin', err);
+      errorBox('Unhandled Error');
     }
   };
 
@@ -189,6 +192,7 @@ export default function ContestListScreen(props: PropTypes) {
             joined={props.joined}
             status={props.joinedAPI}
             teamPreviewPress={props.teamPreviewPress}
+            teamMutateAction={props.teamMutateAction}
           />
         </View>
         <View style={{width: width}}>
