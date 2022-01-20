@@ -29,9 +29,9 @@ export default function MyMatchesCard(props: PropTypes) {
     let interval: any = null;
     try {
       if (isMounted.current) {
-        interval = setInterval(() => {
-          setCountDown(getCountDown(props.start_time));
-        }, 1000);
+        // interval = setInterval(() => {
+        //   setCountDown(getCountDown(props.start_time));
+        // }, 1000);
       }
     } catch (err) {
       console.log(err);

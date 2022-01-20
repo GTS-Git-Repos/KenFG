@@ -26,6 +26,7 @@ export const queryClient = new QueryClient();
 LogBox.ignoreLogs([
   'Setting a timer',
   'Warning: Cannot record touch end without a touch start.',
+  'source.uri should not be an empty string',
 ]);
 
 if (__DEV__ === false) {

@@ -21,7 +21,7 @@ export default function TopConditions(props: PropTypes) {
       </Text>
       <View style={[tailwind('flex-row items-center')]}>
         <TouchableOpacity
-          onPress={() => props.filterSheet?.current?.open()}
+          onPress={() => {}}
           style={[tailwind('flex-row items-center')]}>
           <Image
             resizeMode="contain"
@@ -29,7 +29,6 @@ export default function TopConditions(props: PropTypes) {
             style={[tailwind(''), {width: 20, height: 20}]}
           />
         </TouchableOpacity>
-       
       </View>
     </View>
   );

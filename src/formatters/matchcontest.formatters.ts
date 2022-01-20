@@ -1,5 +1,6 @@
 import {covertInputTimeStringToDate} from './../utils/comman';
 import {splitRoleWisePlayersPayload} from './teams.formatter';
+import {FLAG_IMG_URL} from '../constants/appContants';
 
 export const groupAllContestsAPIRmeote = (payload: any) => {
   try {
@@ -76,6 +77,12 @@ export const extractDataFromUpcommingMatchesAPI = (payload: any) => {
     for (const u_match of u_matches) {
       let obj = {...u_match};
       obj.start_at = covertInputTimeStringToDate(u_match.teams.start_at);
+      obj.teams.a.a_flag = `${FLAG_IMG_URL}${convertTeamCodeToUppercase(
+        u_match.teams.a.key,
+      )}.png`;
+      obj.teams.b.b_flag = `${FLAG_IMG_URL}${convertTeamCodeToUppercase(
+        u_match.teams.b.key,
+      )}.png`;
       // delete obj.teams.start_at;
       upcomming.push(obj);
     }
@@ -92,6 +99,10 @@ export const extractDataFromUpcommingMatchesAPI = (payload: any) => {
 
     return false;
   }
+};
+
+export const convertTeamCodeToUppercase = (team_key: string) => {
+  return team_key.toUpperCase();
 };
 
 export const parseJoinedMatchesAPI = (payload: any) => {

@@ -117,7 +117,9 @@ export default function TeamFormationHOC() {
     return <CreateTeamLoading text={``} />;
   }
   if (playersAPI && !players) {
-    return <LoadFailedTeamFormation />;
+    return (
+      <LoadFailedTeamFormation loading={false} text={''} actionText={''} />
+    );
   }
 
   return (

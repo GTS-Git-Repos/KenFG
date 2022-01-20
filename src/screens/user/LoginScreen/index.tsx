@@ -23,7 +23,7 @@ const log = console.log;
 export default function LoginScreen() {
   const navigation = useNavigation<any>();
 
-  const [mobile, setMobile] = useState('9867543210');
+  const [mobile, setMobile] = useState('');
   const [loading, setLoading] = useState(false);
   const [showHint, setShowHint] = useState(true);
 

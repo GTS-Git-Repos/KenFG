@@ -13,6 +13,7 @@ import {
 import {addSeconds, differenceInSeconds, format} from 'date-fns';
 import {subSeconds} from 'date-fns/esm';
 import {getCountDown} from '../../../../../utils/formatters';
+import FastImage from 'react-native-fast-image';
 const log = console.log;
 
 interface PropTypes {
@@ -27,25 +28,33 @@ interface PropTypes {
   start_at: Date;
 }
 
+interface TeamPropShape {
+  team_a_name: string;
+  team_b_name: string;
+  team_a_flag: string;
+  team_b_flag: string;
+  set_team_a_flag: any;
+  set_team_b_flag: any;
+}
+
 export default function UpcommingMatches(props: PropTypes) {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   const isMounted = useRef(true);
   const [currentTime, setCurrentTime] = useState<any>('00:00:00');
-
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     //  Runs side effect
-  //   }, []),
-  // );
+  const [team_a_flag, set_team_a_flag] = useState('');
+  const [team_b_flag, set_team_b_flag] = useState('');
 
   useEffect(() => {
     let interval: any = null;
     try {
+      set_team_a_flag(props.team_a_flag);
+      set_team_b_flag(props.team_b_flag);
+
       if (isMounted.current) {
-        interval = setInterval(() => {
-          setCurrentTime(getCountDown(props.start_at));
-        }, 5000);
+        // interval = setInterval(() => {
+        //   setCurrentTime(getCountDown(props.start_at));
+        // }, 5000);
       }
     } catch (err) {
       console.log(err);
@@ -107,6 +116,10 @@ export default function UpcommingMatches(props: PropTypes) {
         <Teams
           team_a_name={props.team_a_name}
           team_b_name={props.team_b_name}
+          team_a_flag={team_a_flag}
+          team_b_flag={team_b_flag}
+          set_team_a_flag={set_team_a_flag}
+          set_team_b_flag={set_team_b_flag}
         />
         <PrizeandStatus price={props.price} />
 
@@ -136,19 +149,7 @@ export default function UpcommingMatches(props: PropTypes) {
   );
 }
 
-const PlaceHolderImage = (props: any) => {
-  return (
-    <View style={{width: 45, height: 25}}>
-      <Image
-        resizeMode="contain"
-        source={props.image}
-        style={[tailwind(''), {width: 45, height: 25}]}
-      />
-    </View>
-  );
-};
-
-const Teams = (props: any) => {
+const Teams = (props: TeamPropShape) => {
   return (
     <View
       style={[
@@ -156,7 +157,19 @@ const Teams = (props: any) => {
         {paddingHorizontal: 16, paddingTop: 6},
       ]}>
       <View style={[tailwind('')]}>
-        <PlaceHolderImage color="green" image={assets.ENG} />
+        <View style={{width: 45, height: 25}}>
+          <FastImage
+            style={{width: 45, height: 25}}
+            source={{
+              uri: props.team_a_flag,
+              priority: FastImage.priority.normal,
+            }}
+            onError={e =>
+              props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
+            }
+            resizeMode={FastImage.resizeMode.contain}
+          />
+        </View>
         <Text
           style={[
             tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
@@ -171,7 +184,19 @@ const Teams = (props: any) => {
       </Text>
 
       <View style={[tailwind('')]}>
-        <PlaceHolderImage color="red" image={assets.AUS} />
+        <View style={{width: 45, height: 25}}>
+          <FastImage
+            style={{width: 45, height: 25}}
+            source={{
+              uri: props.team_b_flag,
+              priority: FastImage.priority.normal,
+            }}
+            onError={e =>
+              props.set_team_b_flag('http://kenfg.com/images/flag/IND.png')
+            }
+            resizeMode={FastImage.resizeMode.contain}
+          />
+        </View>
         <Text
           style={[
             tailwind('font-bold uppercase font-10 pt-0.5 text-center'),

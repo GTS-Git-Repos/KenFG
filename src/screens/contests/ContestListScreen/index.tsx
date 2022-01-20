@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectedMatch, userInfo} from '../../../store/selectors';
 import ContestListScreen from './contest.list.screen';
@@ -9,7 +9,7 @@ import {
   useGetTeams,
 } from './contest.workers';
 import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
-import {useNavigation} from '@react-navigation/core';
+import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
 import {creditsLeftCalculator} from '../../../constructors/teams.constructor';
 import {errorBox} from '../../../utils/snakBars';
 import {
@@ -17,30 +17,40 @@ import {
   updatePlayer,
   updateVCaptain,
 } from '../../../store/actions/teamActions';
+import PagerView from 'react-native-pager-view';
 
 export default function ContestListHOC() {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
+  const pagerRef = useRef<PagerView>(null);
+  const route = useRoute<any>();
+
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
   const isScreenReady = useIsScreenReady();
   // const countDown = useCountDown(matchSelector.start_at, false);
 
+  const [selectedTab, setSelectedTab] = useState(0);
+
   const {contests, contestsAPI} = useContestList(matchSelector.match_key);
-  const {joined, joinedAPI, joinedAPILive} = useJoinedContests(
-    matchSelector.match_key,
-    userSelector.mobile,
-  );
-  const {teams, teamsAPI, teamsAPILive}: any = useGetTeams(
+  const {joined, joinedAPI, joinedAPILive, refetchJoinedContest} =
+    useJoinedContests(matchSelector.match_key, userSelector.mobile);
+  const {teams, teamsAPI, teamsAPILive, refetchTeams}: any = useGetTeams(
     matchSelector.match_key,
     userSelector.mobile,
   );
 
   useEffect(() => {
-    if (joined) {
-      // console.log('>>>', JSON.stringify(joined));
-    }
-  }, [joined]);
+    console.log('Contest List Params -->', route.params);
+  }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      // console.log('Focused');
+      refetchTeams();
+      refetchJoinedContest();
+    }, []),
+  );
 
   const teamPreviewPress = (team_key: any): any => {
     const team = teams.find((item: any) => item.team_key === team_key);
@@ -68,10 +78,9 @@ export default function ContestListHOC() {
   };
 
   const teamMutateAction = (team_key: any) => {
-    console.log(team_key);
+    // console.log(team_key);
     try {
       const team = teams.find((item: any) => item.team_key === team_key);
-
       const players = [];
       if (team) {
         // console.log(team.keepers);
@@ -117,6 +126,10 @@ export default function ContestListHOC() {
       teamsAPILive={teamsAPILive}
       teamPreviewPress={teamPreviewPress}
       teamMutateAction={teamMutateAction}
+      pagerRef={pagerRef}
+      selectedTab={selectedTab}
+      setSelectedTab={setSelectedTab}
+      to={route?.params?.params?.to}
     />
   );
 }

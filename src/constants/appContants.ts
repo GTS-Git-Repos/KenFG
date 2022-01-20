@@ -33,3 +33,5 @@ export const minRoles: any = {
   keeper: 1,
   all_rounder: 1,
 };
+
+export const FLAG_IMG_URL = 'http://kenfg.com/images/flag/';

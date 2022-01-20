@@ -110,8 +110,8 @@ export const updatePlayerAction = (payload: any) => {
       // sum all the must need to fil slots
       let must_need = sumOfMustNeedToFillSlots(team_count);
       // check is the must need fill slot greater than open slots DENY the insertion or else allow to increment
-      log('open slots', openSlots);
-      log('must_need', must_need);
+      // log('open slots', openSlots);
+      // log('must_need', must_need);
       // 3 less than 2
       // log(team_count)
       // log(team_count[payload.role].must_need < 0);

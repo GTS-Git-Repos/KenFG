@@ -7,6 +7,7 @@ const requestServer = function (
 ): any {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 8000);
+  
   return new Promise((resolve, reject) => {
     let options: any = {
       signal: controller.signal,
@@ -40,7 +41,14 @@ const requestServer = function (
         } else {
           console.log('>> Status: ', serverResponse.status);
           ErrorRequest(url, payload);
-          reject('Invalid Response');
+          serverResponse
+            .json()
+            .then(data => {
+              resolve({status: serverResponse.status, data});
+            })
+            .catch(err => {
+              reject('Parse Failed');
+            });
         }
       })
       .catch(err => {

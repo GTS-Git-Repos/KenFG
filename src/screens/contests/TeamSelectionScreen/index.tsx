@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TeamSelectionScreen from './team.selection.screen';
 import {useRoute} from '@react-navigation/native';
 import {selectedMatch, userInfo} from '../../../store/selectors';
@@ -12,6 +12,7 @@ export default function TeamSelectionHOC() {
   const userInfoSelector: any = useSelector(userInfo);
   const matchSelector: any = useSelector(selectedMatch);
   const isScreenReady = useIsScreenReady();
+  const [showJoinModal, setShowJoinModal] = useState(false);
 
   const teams = useQuery(
     ['teams', matchSelector.match_key, userInfoSelector?.mobile],
@@ -20,9 +21,16 @@ export default function TeamSelectionHOC() {
 
   const route = useRoute();
 
-  if (!isScreenReady) {
+  if (!isScreenReady || !teams) {
     return <LoadingSpinner title={'Select Team'} />;
   }
 
-  return <TeamSelectionScreen teams={teams.data} status={teams.status} />;
+  return (
+    <TeamSelectionScreen
+      teams={teams.data}
+      status={teams.status}
+      showJoinModal={showJoinModal}
+      setShowJoinModal={setShowJoinModal}
+    />
+  );
 }

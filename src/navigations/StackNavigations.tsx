@@ -78,11 +78,14 @@ export function MyMatches(props: any) {
 }
 
 export function Contest(props: any) {
+  // console.log('i am receiving', props.route);
+
   return (
     <ContestStack.Navigator screenOptions={StackConfig}>
       <ContestStack.Screen
         name="ContestListScreen"
         component={ContestListScreen}
+        initialParams={props.route}
       />
 
       <ContestStack.Screen

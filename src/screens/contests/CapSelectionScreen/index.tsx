@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/core';
 import CapSelectionScreen from './cap.selection.screen';
-import {editTeamRemote} from '../../../remote/matchesRemote';
+import {createTeamRemote, editTeamRemote} from '../../../remote/matchesRemote';
 import {errorBox} from '../../../utils/snakBars';
 import {clearTeamAction} from '../../../store/actions/teamActions';
 import {useDispatch, useSelector} from 'react-redux';
 import {resetContestListNavigation} from '../../../utils/resetNav';
 import {selectedMatch} from '../../../store/selectors';
+import {StackActions} from '@react-navigation/native';
 const log = console.log;
 
 export default function CapSelectionHOC() {
@@ -25,18 +26,43 @@ export default function CapSelectionHOC() {
       const response = await editTeamRemote(obj);
       setLoading(false);
       if (!response) {
-        throw 'Failed';
+        throw 'Failed to Edit a Team !!';
       }
       dispatch(clearTeamAction());
-      resetContestListNavigation(navigation, {
-        match_key: matchSelector.match_key,
-        // contest_key: selected_contest,
-        // team_key: response.team_key,
-      });
+      navigation.dispatch(StackActions.popToTop());
+      // return;
+      // resetContestListNavigation(navigation, {
+      //   match_key: matchSelector.match_key,
+      //   to: 3,
+      // });
     } catch (err) {
-      console.log('editTeamAPI', editTeamAPI);
+      console.log('editTeamAPI Error ->', err);
       setTimeout(() => {
         errorBox('Failed to Edit');
+      }, 500);
+    }
+  };
+
+  const cloneAPI = async (payload: any) => {
+    try {
+      setLoading(true);
+      const response = await createTeamRemote(payload);
+      setLoading(false);
+      if (!response) {
+        throw 'Failed to Clone a Team !!';
+        return;
+      }
+      dispatch(clearTeamAction());
+      navigation.dispatch(StackActions.popToTop());
+      return;
+      // resetContestListNavigation(navigation, {
+      //   match_key: matchSelector.match_key,
+      //   to: 3,
+      // });
+    } catch (err) {
+      console.log('cloneAPI Error -->', err);
+      setTimeout(() => {
+        errorBox('Failed to Clone');
       }, 500);
     }
   };
@@ -46,6 +72,11 @@ export default function CapSelectionHOC() {
       editTeamAPI={editTeamAPI}
       loading={loading}
       setLoading={setLoading}
+      cloneAPI={cloneAPI}
     />
   );
 }
+
+/**
+ * to: 3  => edit and clone
+ */

@@ -39,7 +39,9 @@ export default function SignupScreen() {
     }
   }
 
-  const [mobile, setMobile] = useState('9876543210');
+  const [mobile, setMobile] = useState('');
+  const [inviteCode, setInviteCode] = useState('');
+
   const [ref, setRef] = useState('');
   const [showHint, setShowHint] = useState(true);
   const [showInvite, setShowInvite] = useState(false);
@@ -147,7 +149,8 @@ export default function SignupScreen() {
               </Text>
               <TextInput
                 maxLength={7}
-                value={'98777'}
+                value={inviteCode}
+                onChangeText={e => setInviteCode(e)}
                 style={[
                   tailwind('border-b font-bold text-light font-20'),
                   {borderColor: '#8797B14D', height: 40},

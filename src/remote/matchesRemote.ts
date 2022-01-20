@@ -225,20 +225,20 @@ export const getJoinedContestRemote = async (params: any) => {
 };
 
 export const joinContestRemote = async (payload: any) => {
-  try {
+  try {    
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_join_contest,
       payload,
     );
     if (response.status === 200) {
-      return true;
+      return {status: true};
     } else {
-      failedLog('joinContestRemote()', response);
+      return {status: false, msg: response.data?.message};
     }
   } catch (err) {
     console.log(err);
-    return false;
+    return {status: false, msg: 'unhandled error'};
   }
 };
 

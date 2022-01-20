@@ -22,10 +22,11 @@ export const useJoinedContests = (match_key: string, user_id: string) => {
     data: joined,
     isSuccess: joinedAPI,
     isFetching: joinedAPILive,
+    refetch: refetchJoinedContest,
   } = useQuery(['joined_contest', match_key, user_id], getJoinedContestRemote, {
     notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
   });
-  return {joined, joinedAPI, joinedAPILive};
+  return {joined, joinedAPI, joinedAPILive, refetchJoinedContest};
 };
 
 export const useGetTeams = (match_key: string, user_id: string) => {
@@ -33,8 +34,9 @@ export const useGetTeams = (match_key: string, user_id: string) => {
     data: teams,
     isSuccess: teamsAPI,
     isFetching: teamsAPILive,
+    refetch: refetchTeams,
   } = useQuery(['teams', match_key, user_id], getJoinedTeamsRemote, {
     notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
   });
-  return {teams, teamsAPI, teamsAPILive};
+  return {teams, teamsAPI, teamsAPILive, refetchTeams};
 };

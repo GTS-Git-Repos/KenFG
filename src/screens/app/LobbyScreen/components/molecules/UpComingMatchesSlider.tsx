@@ -42,9 +42,9 @@ export default function UpComingMatchesSlider(props: PropTypes) {
               match_key={item.key}
               tournament_name={item?.teams?.tournament?.name}
               team_a_name={item?.teams?.a?.code}
-              team_a_flag={''}
+              team_a_flag={item.teams.a.a_flag}
               team_b_name={item?.teams?.b?.code}
-              team_b_flag={''}
+              team_b_flag={item.teams.b.b_flag}
               tournament_shortName={item?.teams?.tournament?.short_name}
               price={item?.teams?.price}
               start_at={item.start_at}

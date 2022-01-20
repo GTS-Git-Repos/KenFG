@@ -22,6 +22,7 @@ import SocialLogin from './molecules/SocialLogin';
 import CurrentLiveStatus from './molecules/CurrentLiveStatus';
 import SocialMediaShare from './molecules/SocialMediaShare';
 import TeamScrollBoardByInnings from './molecules/team.scoreboard.innings';
+import JoinContestModal from './molecules/join.contest.modal.shared';
 
 import WalletIcon from './icons/WalletIcon';
 import MoneyIcon from './icons/MoneyIcon';
@@ -66,6 +67,7 @@ export {
   BlockScreenByLoading,
   ButtonComponent,
   SecondaryButton,
+  JoinContestModal,
   BottomLine,
   FullScreenLoading,
   LoadingSpinner,

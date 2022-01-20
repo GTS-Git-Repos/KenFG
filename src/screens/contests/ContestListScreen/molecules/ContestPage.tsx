@@ -14,7 +14,7 @@ interface PropTypes {
   navigate(contest_key: string): any;
   status: string;
   data: any;
-  selectedFilter: null | string;
+  selectedFilter: string;
   setSelectedFilter(filter: string): any;
   proceedToJoin(contest_key: string): any;
 }
@@ -41,6 +41,23 @@ export default function ContestPage(props: PropTypes) {
         actionText={'VIEW MATCHES'}
         noContentAction={noContentAction}
       />
+    );
+  }
+
+  if (!(props.selectedFilter === 'All')) {
+    return (
+      <View style={[tailwind('h-full')]}>
+        <FilterTab
+          selectedFilter={props.selectedFilter}
+          setSelectedFilter={props.setSelectedFilter}
+        />
+        <NoContent
+          title={`Currently No Contests are in ${props.selectedFilter} Category`}
+          subtitle={'try again later or check other Categories'}
+          actionText={'VIEW MATCHES'}
+          noContentAction={noContentAction}
+        />
+      </View>
     );
   }
 

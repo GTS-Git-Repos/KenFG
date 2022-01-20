@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity, Alert} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import {
@@ -7,6 +7,7 @@ import {
   BlockScreenByLoading,
   TeamsCard,
   TopBar,
+  JoinContestModal,
 } from '../../../sharedComponents';
 
 import {selectedMatch, userInfo} from '../../../store/selectors';
@@ -17,7 +18,8 @@ import {isTeamSelected} from './functions';
 import {errorBox} from '../../../utils/snakBars';
 import {joinContestRemote} from '../../../remote/matchesRemote';
 import {resetContestListNavigation} from '../../../utils/resetNav';
-
+import Modal from 'react-native-modal';
+import {FlatList} from 'react-native-gesture-handler';
 const log = console.log;
 
 export default function TeamSelectionScreen(props: any) {
@@ -27,6 +29,8 @@ export default function TeamSelectionScreen(props: any) {
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
+
+  // console.log(matchSelector);
 
   function selectTeamAction(team_key: any) {
     try {
@@ -50,31 +54,46 @@ export default function TeamSelectionScreen(props: any) {
     }
   }
 
-  async function joinContestWithTeam() {
+  function proceedToJoinPress() {
     try {
       if (choosenTeams.length === 0) {
         errorBox('Please select any one of the Team');
         return;
       }
+      // console.log(obj);
+      props.setShowJoinModal(true);
+    } catch (err) {
+      console.log('proceedToJoinPress err -->', proceedToJoinPress);
+    }
+  }
+
+  async function joinContestWithTeam() {
+    try {
       const obj = {
         match_key: matchSelector.match_key,
         contest_key: matchSelector.joinContest.contestKey,
         team_key: choosenTeams.join(','),
         player_key: userSelector.mobile,
       };
-
       setLoading(true);
-      const response =   await joinContestRemote(obj);
+
+      const response = await joinContestRemote(obj);
+
       setLoading(false);
-      if (response) {
-        resetContestListNavigation(navigation, {});
-      } else {
+      if (!response.status) {
+        setLoading(false);
         setTimeout(() => {
-          errorBox('Please select any one of the Team');
+          errorBox(response.msg);
         }, 1000);
+        return;
       }
+      resetContestListNavigation(navigation, {
+        match_key: matchSelector.match_key,
+        to: 1,
+      });
     } catch (err) {
       setLoading(false);
+      Alert.alert('Failed to Join Contest', 'something went wrong');
     }
     console.log(1);
   }
@@ -83,12 +102,13 @@ export default function TeamSelectionScreen(props: any) {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Select Team'} />
       <Info maxTeam={matchSelector.joinContest.maxTeam} />
-      <ScrollView contentContainerStyle={[tailwind('m-3')]}>
-        {props.teams.map((item: any) => {
+      <FlatList
+        data={props.teams}
+        renderItem={({item}) => {
           return (
             <View
               key={item.team_key}
-              style={[tailwind('flex-row items-center')]}>
+              style={[tailwind('flex-row mx-2 items-center')]}>
               <View style={[tailwind(''), {flex: 9}]}>
                 <TeamsCard
                   team_a={item.team_a}
@@ -115,13 +135,38 @@ export default function TeamSelectionScreen(props: any) {
               </TouchableOpacity>
             </View>
           );
+        }}
+      />
+
+      {/* <ScrollView contentContainerStyle={[tailwind('m-3')]}>
+        {props.teams.map((item: any) => {
+          return (
+            
+          );
         })}
 
-        <View style={[tailwind('h-20')]}></View>
-      </ScrollView>
-      <TouchableOpacity onPress={joinContestWithTeam} style={[tailwind('m-3')]}>
+      
+      </ScrollView> */}
+      {/* <View style={[tailwind('h-20')]}></View> */}
+      <TouchableOpacity onPress={proceedToJoinPress} style={[tailwind('m-3')]}>
         <ButtonComponent text={'Join Contest'} />
       </TouchableOpacity>
+      <Modal
+        isVisible={props.showJoinModal}
+        animationInTiming={150}
+        animationOutTiming={150}
+        useNativeDriver={true}
+        useNativeDriverForBackdrop={true}
+        hideModalContentWhileAnimating={true}
+        backdropTransitionOutTiming={0}
+        scrollHorizontal={true}>
+        <JoinContestModal
+          setShowJoinModal={props.setShowJoinModal}
+          joinContestWithTeam={joinContestWithTeam}
+          entryAmount={matchSelector?.joinContest?.entryAmount}
+        />
+      </Modal>
+
       {loading && <BlockScreenByLoading />}
     </View>
   );

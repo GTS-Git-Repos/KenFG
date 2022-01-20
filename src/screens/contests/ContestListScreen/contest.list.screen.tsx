@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {View, useWindowDimensions, ScrollView, FlatList} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {View, useWindowDimensions} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {
   useFocusEffect,
@@ -7,23 +7,14 @@ import {
   useRoute,
 } from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
-import {
-  contestListsRemote,
-  getJoinedTeamsRemote,
-  joinContestRemote,
-} from '../../../remote/matchesRemote';
-import {
-  useCountDown,
-  useIsScreenReady,
-  useRenderCount,
-} from '../../../utils/customHoooks';
+import {joinContestRemote} from '../../../remote/matchesRemote';
+import {useCountDown} from '../../../utils/customHoooks';
 import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
 import {BlockScreenByLoading} from '../../../sharedComponents';
 import TabsContest from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
-import {useQuery} from 'react-query';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   selectedMatch,
@@ -54,6 +45,10 @@ interface PropTypes {
   teams: any;
   teamsAPI: any;
   teamsAPILive: any;
+  pagerRef: any;
+  selectedTab: any;
+  to: any;
+  setSelectedTab(index: number): any;
   teamPreviewPress(team_key: any): any;
   teamMutateAction(team_key: any): any;
 }
@@ -64,13 +59,11 @@ export default function ContestListScreen(props: PropTypes) {
   // const renderCount = useRenderCount('ContestListScreen')
 
   const {width} = useWindowDimensions();
-  const pagerRef = useRef<any>(null);
   const dispatch = useDispatch();
 
-  const [selectedTab, setSelectedTab] = useState(0);
   const [showJoinModal, setShowJoinModal] = useState(false);
   const [loading, setLoading] = useState<any>(false);
-  const [selectedFilter, setSelectedFilter] = useState<any>(null);
+  const [selectedFilter, setSelectedFilter] = useState<any>('All');
   // const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
 
   const userInfoSelector: any = useSelector(userInfo);
@@ -83,13 +76,19 @@ export default function ContestListScreen(props: PropTypes) {
     state => state.app.selected_contest,
   );
 
+  useEffect(() => {
+    if (props.to === 3) {
+      props.pagerRef?.current?.setPage(2);
+    }
+  }, [props.to]);
+
   // Business logic
   const onPageSelectedAction = (e: any) => {
-    setSelectedTab(e.nativeEvent.position);
+    props.setSelectedTab(e.nativeEvent.position);
   };
 
   const onTabPressed = (index: number) => {
-    pagerRef.current?.setPage(index);
+    props.pagerRef.current?.setPage(index);
   };
 
   const navigate = (contest_key: string) => {
@@ -154,7 +153,7 @@ export default function ContestListScreen(props: PropTypes) {
       const response = await joinContestRemote(payload);
       if (response) {
         setShowJoinModal(false);
-        pagerRef.current?.setPage(1);
+        props.pagerRef.current?.setPage(1);
       } else {
         errorBox('Failed to join Contest');
       }
@@ -170,17 +169,16 @@ export default function ContestListScreen(props: PropTypes) {
       <TopBarContest title={matchSelector?.titleString} subtitle={timeStamp} />
       <View style={[tailwind('')]}>
         <TabsContest
-          selectedTab={selectedTab}
+          selectedTab={props.selectedTab}
           contest_count={props?.joined?.length}
           teamsCount={props?.teams?.length}
           onTabPressed={onTabPressed}
         />
       </View>
       <PagerView
-        ref={pagerRef}
+        ref={props.pagerRef}
         onPageSelected={onPageSelectedAction}
-        style={[{flex: 1}]}
-        initialPage={selectedTab}>
+        style={[{flex: 1}]}>
         <View style={{width: width}}>
           <ContestPage
             navigate={navigate}
@@ -198,7 +196,7 @@ export default function ContestListScreen(props: PropTypes) {
             teamPreviewPress={props.teamPreviewPress}
             teamMutateAction={props.teamMutateAction}
             timeStamp={timeStamp}
-            pagerRef={pagerRef}
+            pagerRef={props.pagerRef}
           />
         </View>
         <View style={{width: width}}>
@@ -207,8 +205,7 @@ export default function ContestListScreen(props: PropTypes) {
             status={props.teamsAPI}
             live={props.teamsAPILive}
             timeStamp={timeStamp}
-            pagerRef={pagerRef}
-
+            pagerRef={props.pagerRef}
           />
         </View>
       </PagerView>

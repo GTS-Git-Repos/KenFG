@@ -35,9 +35,11 @@ import {errorBox} from '../../../utils/snakBars';
 import {createTeamRemote, editTeamRemote} from '../../../remote/matchesRemote';
 import {createTeamObjCreator} from '../../../workers/objCreators';
 import {resetContestListNavigation} from '../../../utils/resetNav';
+import {StackActions} from '@react-navigation/native';
 
 interface PropTypes {
   editTeamAPI(payload: any): any;
+  cloneAPI(payload: any): any;
   loading: boolean;
   setLoading(bool: boolean): any;
 }
@@ -123,7 +125,10 @@ export default function CapSelectionScreen(props: PropTypes) {
             props.editTeamAPI(createTeamObj);
             return;
           }
-          // is clone, intergrity check PENDING
+          if (route.params.mutation.clone) {
+            props.cloneAPI(createTeamObj);
+            return;
+          }
         }
         props.setLoading(true);
         const response = await createTeamRemote(createTeamObj);

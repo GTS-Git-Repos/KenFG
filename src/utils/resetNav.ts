@@ -28,7 +28,7 @@ export const resetAuthNavigation = async (navigation: any) => {
 
 export const resetContestListNavigation = async (
   navigation: any,
-  params: any,
+  route_params: any,
 ) => {
   navigation.dispatch(
     CommonActions.reset({
@@ -39,7 +39,7 @@ export const resetContestListNavigation = async (
         },
         {
           name: 'Contest',
-          params: params,
+          params: route_params,  
         },
       ],
     }),
