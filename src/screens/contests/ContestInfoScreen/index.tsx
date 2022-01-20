@@ -12,7 +12,7 @@ import {contestListsRemote} from '../../../remote/matchesRemote';
 import {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 import CreateTeamButton from './atoms/CreateTeamButton';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import ContestInfoPageLoading from './atoms/ContestInfoPageLoading';
 import PagerView from 'react-native-pager-view';
 import {
@@ -20,10 +20,13 @@ import {
   userInfo,
   userWalletAmount,
 } from '../../../store/selectors';
+import {useGetTeams} from '../ContestListScreen/contest.workers';
+import {joinContestRequestAction} from '../../../store/actions/appActions';
 
 export default function ContestInfoScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
+  const dispatch = useDispatch();
   const tabOffset = useSharedValue<any>(0);
   const isScreenReady = useIsScreenReady();
 
@@ -35,6 +38,13 @@ export default function ContestInfoScreen() {
   const userInfoSelector: any = useSelector(userInfo);
   const userWallet: any = useSelector(userWalletAmount);
   const matchSelector: any = useSelector(selectedMatch);
+
+  // console.log(matchSelector);
+
+  const {teams}: any = useGetTeams(
+    matchSelector.match_key,
+    userInfoSelector.mobile,
+  );
 
   const countDown = useCountDown(matchSelector.start_at, false);
 
@@ -58,9 +68,22 @@ export default function ContestInfoScreen() {
   // Bussiness logic
 
   const proceedToJoin = (contest_key: string) => {
-    navigation.navigate('TeamFormationScreen', {
-      mutation: false,
-    });
+    if (teams.length > 0) {
+      dispatch(
+        joinContestRequestAction({
+          contestKey: contest_key,
+          entryAmount: contestInfo.entry,
+          maxTeam: contestInfo.max_entry,
+        }),
+      );
+      navigation.navigate('TeamSelectionScreen', {
+        mutation: false,
+      });
+    } else {
+      navigation.navigate('TeamFormationScreen', {
+        mutation: false,
+      });
+    }
   };
 
   const onPageSelectedAction = (e: any) => {

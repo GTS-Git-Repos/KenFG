@@ -18,7 +18,7 @@ export default function LearderBoard(props: PropTypes) {
 
   const navigate = (matchStarted: boolean) => {
     if (matchStarted) {
-      navigation.navigate('CompareTeamsScreen');
+      // navigation.navigate('CompareTeamsScreen');
     } else {
       errorBox('Please wait till the match starts to view other teams');
     }

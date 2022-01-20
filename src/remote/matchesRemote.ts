@@ -111,15 +111,15 @@ export const contestInfoRemote = async (params: any) => {
   }
 };
 
-export const liveMatchMetaRemote = async (payload: any) => {
+export const liveMatchMetaRemote = async (params: any) => {
   try {
     return liveTestMatchFormat(CompletedTestMatchMeta);
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_live_match,
       {
-        match_key: 'rsaind_2021_test_02',
-        mobile: '99876543210',
+        match_key: params.queryKey[1],
+        mobile: params.queryKey[2],
         data_key: 'all',
       },
     );

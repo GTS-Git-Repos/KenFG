@@ -30,6 +30,7 @@ export const useJoinedContests = (match_key: string, user_id: string) => {
 };
 
 export const useGetTeams = (match_key: string, user_id: string) => {
+  // need to put on shared place
   const {
     data: teams,
     isSuccess: teamsAPI,

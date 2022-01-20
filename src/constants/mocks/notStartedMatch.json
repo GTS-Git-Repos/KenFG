@@ -1,0 +1,1594 @@
+{
+    "message": "pull success",
+    "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJrZW5mZy5jb20iLCJpYXQiOjE2NDI3MDE3NjgsIm5iZiI6MTY0MjcwMTc3OCwiZXhwIjoxNjQyNzAxODI4LCJkYXRhIjp7Im1vYmlsZSI6Ijk5ODc2NTQzMjEwIn19.UTQKbOcJvYySyc3n0eoNi3DA__mVtGm45za_3UDf0aA",
+    "data": {
+        "data": {
+            "key": "sst20_2021_g27",
+            "name": "Canterbury Kings vs Northern Knights",
+            "short_name": "CK vs NK",
+            "sub_title": "27th Match",
+            "teams": {
+                "a": {
+                    "key": "ck",
+                    "code": "CK",
+                    "name": "Canterbury Kings"
+                },
+                "b": {
+                    "key": "nk",
+                    "code": "NK",
+                    "name": "Northern Knights"
+                }
+            },
+            "start_at": 1642743600,
+            "venue": {
+                "key": "c__stadium__hagley_oval__d3aba",
+                "name": "Hagley Oval",
+                "city": "Christchurch",
+                "country": {
+                    "short_code": "NZ",
+                    "code": "NZL",
+                    "name": "New Zealand",
+                    "official_name": "New Zealand",
+                    "is_region": false
+                }
+            },
+            "tournament": {
+                "key": "sst20_2021",
+                "name": "Super Smash 2021-22",
+                "short_name": "SS T20 2021"
+            },
+            "association": {
+                "key": "c__board__nzc__7252b",
+                "code": "NZC",
+                "name": "New Zealand Cricket",
+                "country": {
+                    "short_code": "NZ",
+                    "code": "NZL",
+                    "name": "New Zealand",
+                    "official_name": "New Zealand",
+                    "is_region": false
+                },
+                "parent": null
+            },
+            "metric_group": "MG100",
+            "status": "not_started",
+            "winner": null,
+            "messages": [],
+            "gender": "male",
+            "sport": "cricket",
+            "format": "t20",
+            "title": "Canterbury Kings vs Northern Knights - 27th Match - Super Smash 2021-22",
+            "play_status": "scheduled",
+            "start_at_local": 1642786800,
+            "toss": null,
+            "play": null,
+            "players": {
+                "t_boult": {
+                    "player": {
+                        "key": "t_boult",
+                        "name": "Trent Boult",
+                        "jersey_name": "Trent Boult",
+                        "legal_name": "Trent Boult",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "left_arm",
+                            "pace": "slow",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "p_bocock": {
+                    "player": {
+                        "key": "p_bocock",
+                        "name": "Peter Bocock",
+                        "jersey_name": "Peter Bocock",
+                        "legal_name": "Peter Bocock",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "keeper",
+                        "roles": [
+                            "keeper"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "keep",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "m_henry": {
+                    "player": {
+                        "key": "m_henry",
+                        "name": "Matt Henry",
+                        "jersey_name": "Matt Henry",
+                        "legal_name": "Matt Henry",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "fast_medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "lj_carter": {
+                    "player": {
+                        "key": "lj_carter",
+                        "name": "Leo Carter",
+                        "jersey_name": "Leo Carter",
+                        "legal_name": "Leo Carter",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "c__player__kristian_clarke__98a79": {
+                    "player": {
+                        "key": "c__player__kristian_clarke__98a79",
+                        "name": "Kristian Clarke",
+                        "jersey_name": "Kristian Clarke",
+                        "legal_name": "Kristian Clarke",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "i_sodhi": {
+                    "player": {
+                        "key": "i_sodhi",
+                        "name": "Ish Sodhi",
+                        "jersey_name": "Ish Sodhi",
+                        "legal_name": "Ish Sodhi",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "slow",
+                            "bowling_type": "leg_break"
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "c__player__anurag_verma__2e328": {
+                    "player": {
+                        "key": "c__player__anurag_verma__2e328",
+                        "name": "Anurag Verma",
+                        "jersey_name": "Anurag Verma",
+                        "legal_name": "Anurag Verma",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "slow",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "c__player__matthew_hay__d5698": {
+                    "player": {
+                        "key": "c__player__matthew_hay__d5698",
+                        "name": "Matthew Hay",
+                        "jersey_name": "Matthew Hay",
+                        "legal_name": "Matthew Hay",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "slow",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "t_astle": {
+                    "player": {
+                        "key": "t_astle",
+                        "name": "Todd Astle",
+                        "jersey_name": "Todd Astle",
+                        "legal_name": "Todd Astle",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "slow",
+                            "bowling_type": "leg_break"
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "c__player__katene_clarke__c98ca": {
+                    "player": {
+                        "key": "c__player__katene_clarke__c98ca",
+                        "name": "Katene Clarke",
+                        "jersey_name": "Katene Clarke",
+                        "legal_name": "Katene Clarke",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "fast_medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "wil_williams": {
+                    "player": {
+                        "key": "wil_williams",
+                        "name": "Will Williams",
+                        "jersey_name": "Will Williams",
+                        "legal_name": "Will Williams",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "ate_hazeldine": {
+                    "player": {
+                        "key": "ate_hazeldine",
+                        "name": "Andrew Hazeldine",
+                        "jersey_name": "Andrew Hazeldine",
+                        "legal_name": "Andrew Hazeldine",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "GB",
+                            "code": "GBR",
+                            "name": "United Kingdom",
+                            "official_name": "United Kingdom of Great Britain and Northern Ireland",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "fw_sheat": {
+                    "player": {
+                        "key": "fw_sheat",
+                        "name": "Fraser Sheat",
+                        "jersey_name": "Fraser Sheat",
+                        "legal_name": "Fraser Sheat",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "c__player__harry_chamberlain__fbe9f": {
+                    "player": {
+                        "key": "c__player__harry_chamberlain__fbe9f",
+                        "name": "Harry Chamberlain",
+                        "jersey_name": "Harry Chamberlain",
+                        "legal_name": "Harry Chamberlain",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": null,
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "hb_shipley": {
+                    "player": {
+                        "key": "hb_shipley",
+                        "name": "Henry Shipley",
+                        "jersey_name": "Henry Shipley",
+                        "legal_name": "Henry Shipley",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "t_seifert": {
+                    "player": {
+                        "key": "t_seifert",
+                        "name": "Tim Seifert",
+                        "jersey_name": "Tim Seifert",
+                        "legal_name": "Tim Seifert",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "keeper",
+                        "roles": [
+                            "keeper"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "keep",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "tfv_woerkom": {
+                    "player": {
+                        "key": "tfv_woerkom",
+                        "name": "Theo van Woerkom",
+                        "jersey_name": "Theo van Woerkom",
+                        "legal_name": "Theo van Woerkom",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "s_kuggeleijn": {
+                    "player": {
+                        "key": "s_kuggeleijn",
+                        "name": "Scott Kuggeleijn",
+                        "jersey_name": "Scott Kuggeleijn",
+                        "legal_name": "Scott Kuggeleijn",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium_fast",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "cj_bowes": {
+                    "player": {
+                        "key": "cj_bowes",
+                        "name": "Chad Bowes",
+                        "jersey_name": "Chad Bowes",
+                        "legal_name": "Chad Bowes",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "ZA",
+                            "code": "ZAF",
+                            "name": "South Africa",
+                            "official_name": "Republic of South Africa",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "j_walker": {
+                    "player": {
+                        "key": "j_walker",
+                        "name": "Joe Walker",
+                        "jersey_name": "Joe Walker",
+                        "legal_name": "Joe Walker",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "slow",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "cd_fletcher": {
+                    "player": {
+                        "key": "cd_fletcher",
+                        "name": "Cameron Fletcher",
+                        "jersey_name": "Cameron Fletcher",
+                        "legal_name": "Cameron Fletcher",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "keeper",
+                        "roles": [
+                            "keeper"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "keep",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "t_latham": {
+                    "player": {
+                        "key": "t_latham",
+                        "name": "Tom Latham",
+                        "jersey_name": "Tom Latham",
+                        "legal_name": "Tom Latham",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "keeper",
+                        "roles": [
+                            "keeper"
+                        ],
+                        "batting_style": "left_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "keep",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "mat_fisher": {
+                    "player": {
+                        "key": "mat_fisher",
+                        "name": "Matthew Fisher",
+                        "jersey_name": "Matthew Fisher",
+                        "legal_name": "Matthew Fisher",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "b_hompton": {
+                    "player": {
+                        "key": "b_hompton",
+                        "name": "Brett Hampton",
+                        "jersey_name": "Brett Hampton",
+                        "legal_name": "Brett Hampton",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "jo_carter": {
+                    "player": {
+                        "key": "jo_carter",
+                        "name": "Joe Carter",
+                        "jersey_name": "Joe Carter",
+                        "legal_name": "Joe Carter",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": null,
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "j_raval": {
+                    "player": {
+                        "key": "j_raval",
+                        "name": "Jeet Raval",
+                        "jersey_name": "Jeet Raval",
+                        "legal_name": "Jeet Raval",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "left_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "slow",
+                            "bowling_type": "leg_break"
+                        },
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "f_walker": {
+                    "player": {
+                        "key": "f_walker",
+                        "name": "FL Walker",
+                        "jersey_name": "FL Walker",
+                        "legal_name": "FL Walker",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "n_wagner": {
+                    "player": {
+                        "key": "n_wagner",
+                        "name": "Neil Wagner",
+                        "jersey_name": "Neil Wagner",
+                        "legal_name": "Neil Wagner",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "left_hand",
+                        "bowling_style": {
+                            "arm": "left_arm",
+                            "pace": "medium_fast",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "h_nicholls": {
+                    "player": {
+                        "key": "h_nicholls",
+                        "name": "Henry Nicholls",
+                        "jersey_name": "Henry Nicholls",
+                        "legal_name": "Henry Nicholls",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "left_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "slow",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "h_cooper": {
+                    "player": {
+                        "key": "h_cooper",
+                        "name": "Henry Cooper",
+                        "jersey_name": "Henry Cooper",
+                        "legal_name": "Henry Cooper",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "kj_mcclure": {
+                    "player": {
+                        "key": "kj_mcclure",
+                        "name": "Ken McClure",
+                        "jersey_name": "Ken McClure",
+                        "legal_name": "Ken McClure",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "slow",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "z_gibson": {
+                    "player": {
+                        "key": "z_gibson",
+                        "name": "Zak Gibson",
+                        "jersey_name": "Zak Gibson",
+                        "legal_name": "Zak Gibson",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "bp_coburn": {
+                    "player": {
+                        "key": "bp_coburn",
+                        "name": "Blake Coburn",
+                        "jersey_name": "Blake Coburn",
+                        "legal_name": "Blake Coburn",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "m_santner": {
+                    "player": {
+                        "key": "m_santner",
+                        "name": "Mitchell Santner",
+                        "jersey_name": "Mitchell Santner",
+                        "legal_name": "Mitchell Santner",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "left_hand",
+                        "bowling_style": {
+                            "arm": "left_arm",
+                            "pace": "slow",
+                            "bowling_type": "orthodox"
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "b_randell": {
+                    "player": {
+                        "key": "b_randell",
+                        "name": "Brett Randell",
+                        "jersey_name": "Brett Randell",
+                        "legal_name": "Brett Randell",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "ce_mcconchie": {
+                    "player": {
+                        "key": "ce_mcconchie",
+                        "name": "Cole McConchie",
+                        "jersey_name": "Cole McConchie",
+                        "legal_name": "Cole McConchie",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "slow",
+                            "bowling_type": "off_break"
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "d_mitchell": {
+                    "player": {
+                        "key": "d_mitchell",
+                        "name": "Daryl Mitchell",
+                        "jersey_name": "Daryl Mitchell",
+                        "legal_name": "Daryl Mitchell",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "cd_grandhomme": {
+                    "player": {
+                        "key": "cd_grandhomme",
+                        "name": "Colin de Grandhomme",
+                        "jersey_name": "Colin de Grandhomme",
+                        "legal_name": "Colin de Grandhomme",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "all_rounder",
+                        "roles": [
+                            "all_rounder"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "fast_medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "ej_nuttall": {
+                    "player": {
+                        "key": "ej_nuttall",
+                        "name": "Ed Nuttall",
+                        "jersey_name": "Ed Nuttall",
+                        "legal_name": "Ed Nuttall",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "left_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "c__player__mitchell_hay__9f9f3": {
+                    "player": {
+                        "key": "c__player__mitchell_hay__9f9f3",
+                        "name": "Mitchell Hay",
+                        "jersey_name": "Mitchell Hay",
+                        "legal_name": "Mitchell Hay",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "keeper",
+                        "roles": [
+                            "keeper"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": null,
+                        "skills": [
+                            "keep",
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "c__player__william_orourke__43894": {
+                    "player": {
+                        "key": "c__player__william_orourke__43894",
+                        "name": "William O'Rourke",
+                        "jersey_name": "William O'Rourke",
+                        "legal_name": "William O'Rourke",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "fast_medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "k_williamson": {
+                    "player": {
+                        "key": "k_williamson",
+                        "name": "KS Williamson",
+                        "jersey_name": "KS Williamson",
+                        "legal_name": "KS Williamson",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "slow",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "s_davey": {
+                    "player": {
+                        "key": "s_davey",
+                        "name": "Sean Davey",
+                        "jersey_name": "Sean Davey",
+                        "legal_name": "Sean Davey",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                },
+                "b_popli": {
+                    "player": {
+                        "key": "b_popli",
+                        "name": "Bharat Popli",
+                        "jersey_name": "Bharat Popli",
+                        "legal_name": "Bharat Popli",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": null,
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "jct_boyle": {
+                    "player": {
+                        "key": "jct_boyle",
+                        "name": "Jack Boyle",
+                        "jersey_name": "Jack Boyle",
+                        "legal_name": "Jack Boyle",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "batsman",
+                        "roles": [
+                            "batsman"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bat"
+                        ]
+                    },
+                    "score": {}
+                },
+                "t_southee": {
+                    "player": {
+                        "key": "t_southee",
+                        "name": "TG Southee",
+                        "jersey_name": "TG Southee",
+                        "legal_name": "TG Southee",
+                        "gender": "male",
+                        "nationality": {
+                            "short_code": "NZ",
+                            "code": "NZL",
+                            "name": "New Zealand",
+                            "official_name": "New Zealand",
+                            "is_region": false
+                        },
+                        "date_of_birth": null,
+                        "seasonal_role": "bowler",
+                        "roles": [
+                            "bowler"
+                        ],
+                        "batting_style": "right_hand",
+                        "bowling_style": {
+                            "arm": "right_arm",
+                            "pace": "fast_medium",
+                            "bowling_type": null
+                        },
+                        "skills": [
+                            "bowl"
+                        ]
+                    },
+                    "score": {}
+                }
+            },
+            "notes": [],
+            "data_review": {
+                "schedule": true,
+                "venue": true,
+                "result": false,
+                "pom": false,
+                "score": false,
+                "players": true,
+                "playing_xi": false,
+                "score_reviewed_ball_index": null,
+                "team_a": true,
+                "team_b": true,
+                "good_to_close": false,
+                "note": null
+            },
+            "squad": {
+                "a": {
+                    "player_keys": [
+                        "m_henry",
+                        "lj_carter",
+                        "c__player__matthew_hay__d5698",
+                        "t_astle",
+                        "wil_williams",
+                        "ate_hazeldine",
+                        "fw_sheat",
+                        "c__player__harry_chamberlain__fbe9f",
+                        "hb_shipley",
+                        "tfv_woerkom",
+                        "cj_bowes",
+                        "cd_fletcher",
+                        "t_latham",
+                        "h_nicholls",
+                        "kj_mcclure",
+                        "bp_coburn",
+                        "ce_mcconchie",
+                        "d_mitchell",
+                        "ej_nuttall",
+                        "c__player__mitchell_hay__9f9f3",
+                        "c__player__william_orourke__43894",
+                        "s_davey",
+                        "jct_boyle"
+                    ],
+                    "captain": null,
+                    "keeper": null,
+                    "playing_xi": []
+                },
+                "b": {
+                    "player_keys": [
+                        "p_bocock",
+                        "c__player__kristian_clarke__98a79",
+                        "i_sodhi",
+                        "c__player__anurag_verma__2e328",
+                        "c__player__katene_clarke__c98ca",
+                        "t_seifert",
+                        "s_kuggeleijn",
+                        "j_walker",
+                        "t_boult",
+                        "m_santner",
+                        "b_hompton",
+                        "jo_carter",
+                        "j_raval",
+                        "n_wagner",
+                        "h_cooper",
+                        "z_gibson",
+                        "cd_grandhomme",
+                        "f_walker",
+                        "mat_fisher",
+                        "b_randell",
+                        "k_williamson",
+                        "b_popli",
+                        "t_southee"
+                    ],
+                    "captain": null,
+                    "keeper": null,
+                    "playing_xi": []
+                }
+            },
+            "estimated_end_date": 1642758000,
+            "completed_date_approximate": null,
+            "umpires": {
+                "match_umpires": null,
+                "tv_umpires": null,
+                "reserve_umpires": null,
+                "match_referee": null
+            }
+        },
+        "cache": {
+            "key": "RS:CK:Match:sst20_2021_g27:detail:5.0",
+            "expires": 1642702367.983579,
+            "etag": "ET:RS:CK:Match:sst20_2021_g27:detail:5.0:1642702208.04613:0",
+            "max_age": 300
+        },
+        "schema": {
+            "major_version": "5.0",
+            "minor_version": "1"
+        },
+        "error": null,
+        "http_status_code": 200
+    },
+    "expireAt": 1642701828
+}

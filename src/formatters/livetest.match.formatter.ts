@@ -1,3 +1,5 @@
+// A file that parse Match Meta Information
+
 import {
   calculateTeamScore,
   getCurrentBowlerData,
@@ -16,9 +18,9 @@ export const liveTestMatchFormat = (payload: any) => {
     const teams = payload.teams;
     const matchStatus = payload.status;
     const play = payload.play;
-    const live = payload.play.live;
-    const inningsOrder = play.innings_order;
-    const allInnings = play.innings;
+    const live = payload?.play?.live;
+    const inningsOrder = play?.innings_order;
+    const allInnings = play?.innings;
     const allPlayers = payload.players;
 
     const playStatus = payload.play_status;
@@ -33,6 +35,7 @@ export const liveTestMatchFormat = (payload: any) => {
     const teamBMeta = getTeamMetaData(payload, 'b');
     const teamAScore = calculateTeamScore(payload, 'a', teams);
     const teamBScore = calculateTeamScore(payload, 'b', teams);
+
     const notification = getNotificationString(playStatus, play);
 
     if (live) {
@@ -81,7 +84,6 @@ export const liveTestMatchFormat = (payload: any) => {
       lastOverData,
       innings: inningsData,
     };
-
     return liveObj;
   } catch (err) {
     console.log(err);

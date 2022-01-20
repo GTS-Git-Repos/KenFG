@@ -3,7 +3,7 @@ import {View, StyleSheet, Text, useWindowDimensions} from 'react-native';
 import tailwind from '../../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../../utils/customHoooks';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 // import assets from 'assets';
 import {
   TopBar,
@@ -26,20 +26,25 @@ import BreakupModalSheet from './molecules/BreakupModalSheet';
 import PlayersStats from '../LiveMatchScreen/molecules/PlayersStats';
 import {useQuery} from 'react-query';
 import {liveMatchMetaRemote} from '../../../remote/matchesRemote';
+import {useSelector} from 'react-redux';
+import {selectedMatch, userInfo} from '../../../store/selectors';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
 
 export default function ContestLiveMatchScreen() {
   const navigation = useNavigation<any>();
+  const route = useRoute<any>();
   const pagerRef = useRef<any>();
   const breakUpSheet = useRef();
   const {width} = useWindowDimensions();
+  const useMeta = useSelector(userInfo);
+  // const matchSelector = useSelector(selectedMatch);
 
   const [selectedTab, setSelectedTab] = useState(0);
 
   const {data, isLoading, isSuccess} = useQuery(
-    'matchMeta',
+    ['matchMeta', route.params.match_key, useMeta.mobile],
     liveMatchMetaRemote,
     {
       staleTime: 8000,
@@ -150,3 +155,8 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
   },
 });
+
+/**
+ * Route Params:
+ * match_key [*]
+ */

@@ -21,11 +21,11 @@ export default function UpcommingPage(props: PropTypes) {
     navigation.navigate('LiveMatchScreen');
   };
 
-  if (props.selectedTab !== 0 || !props.matchesAPI) {
+  if (!props.matchesAPI) {
     return <NoContest text={''} actionText={''} loading={true} />;
   }
 
-  if (props.matchesAPI && !props.matches) {
+  if (props.matchesAPI && (!props.matches || props.matches?.length === 0)) {
     return (
       <NoContest
         text={"You haven't joined any contests"}

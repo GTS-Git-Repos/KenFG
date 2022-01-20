@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   Dimensions,
+  ToastAndroid,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {BottomLine, SwitchIcon} from '..';
@@ -110,8 +111,12 @@ export default function HorizontalProfile(props: PropTypes) {
           {/* Switch */}
           {props.currentUser ? (
             <TouchableOpacity
-              onPress={() => navigation.navigate('TeamsListScreen')}
-              style={[tailwind('')]}>
+              onPress={() => {
+                ToastAndroid.show(
+                  'Team Switch is Not available currently!',
+                  ToastAndroid.SHORT,
+                );
+              }}>
               <SwitchIcon />
             </TouchableOpacity>
           ) : (

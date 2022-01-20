@@ -9,6 +9,8 @@ interface PropTypes {
   selectedTab: any;
   matches: any;
   matchesAPI:any,
+  onPressMyMatchCard(match_key: string): any;
+
 }
 
 export default function LivePage(props: PropTypes) {
