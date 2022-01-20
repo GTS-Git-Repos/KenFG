@@ -11,19 +11,24 @@ import {
 import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
 import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
 import {creditsLeftCalculator} from '../../../constructors/teams.constructor';
-import {errorBox} from '../../../utils/snakBars';
+import {errorBox, infoBox} from '../../../utils/snakBars';
 import {
   updateCaptain,
   updatePlayer,
   updateVCaptain,
 } from '../../../store/actions/teamActions';
 import PagerView from 'react-native-pager-view';
+import {joinContestRemote} from '../../../remote/matchesRemote';
+import {Alert} from 'react-native';
 
 export default function ContestListHOC() {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   const pagerRef = useRef<PagerView>(null);
   const route = useRoute<any>();
+
+  const [showJoinModal, setShowJoinModal] = useState(false);
+  const [loading, setLoading] = useState<any>(false);
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
@@ -33,8 +38,10 @@ export default function ContestListHOC() {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const {contests, contestsAPI} = useContestList(matchSelector.match_key);
+
   const {joined, joinedAPI, joinedAPILive, refetchJoinedContest} =
     useJoinedContests(matchSelector.match_key, userSelector.mobile);
+
   const {teams, teamsAPI, teamsAPILive, refetchTeams}: any = useGetTeams(
     matchSelector.match_key,
     userSelector.mobile,
@@ -42,6 +49,15 @@ export default function ContestListHOC() {
 
   useEffect(() => {
     console.log('Contest List Params -->', route.params);
+    // console.log('matchSelector', matchSelector);
+
+    if (route.params) {
+      const autoJoinParams = route?.params?.params;
+      console.log(autoJoinParams);
+      if (autoJoinParams?.autoJoin) {
+        setShowJoinModal(true);
+      }
+    }
   }, []);
 
   useFocusEffect(
@@ -110,6 +126,38 @@ export default function ContestListHOC() {
     }
   };
 
+  async function joinContestWithTeam() {
+    try {
+      const obj = {
+        match_key: matchSelector.match_key,
+        contest_key: matchSelector.joinContest.contestKey,
+        team_key: route.params.params.team_key,
+        player_key: userSelector.mobile,
+      };
+      setLoading(true);
+      const response = await joinContestRemote(obj);
+      console.log('response', response);
+      setLoading(false);
+      if (!response.status) {
+        setLoading(false);
+        setTimeout(() => {
+          errorBox(response.msg);
+        }, 1000);
+        return;
+      }
+      setShowJoinModal(false);
+      infoBox('Contest Succefully Joined');
+      refetchJoinedContest();
+      // go contest page
+      setTimeout(() => {
+        pagerRef?.current?.setPage(1);
+      }, 500);
+    } catch (err) {
+      setLoading(false);
+      Alert.alert('Failed to Join Contest', 'something went wrong');
+    }
+  }
+
   if (!isScreenReady || !contestsAPI) {
     return <ContestScreenLoading title={''} />;
   }
@@ -130,6 +178,12 @@ export default function ContestListHOC() {
       selectedTab={selectedTab}
       setSelectedTab={setSelectedTab}
       to={route?.params?.params?.to}
+      showJoinModal={showJoinModal}
+      setShowJoinModal={setShowJoinModal}
+      entryAmount={matchSelector?.joinContest?.entryAmount}
+      joinContestWithTeam={joinContestWithTeam}
+      loading={loading}
+      setLoading={setLoading}
     />
   );
 }

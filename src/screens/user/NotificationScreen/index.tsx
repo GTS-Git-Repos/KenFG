@@ -1,11 +1,11 @@
 import React, {useRef} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useIsScreenReady} from '../../../utils/customHoooks';
 import {useNavigation} from '@react-navigation/native';
 import {Modalize} from 'react-native-modalize';
 
-// import assets from 'assets';
+import assets from '../../../constants/assets_manifest';
 import {TopBar} from '../../../sharedComponents';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -24,9 +24,28 @@ export default function NotificationScreen() {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Notifications'} />
       <NotificationsToolbar filterSheet={filterSheet} />
+      {/* <PromoNotification />
       <PromoNotification />
-      <PromoNotification />
-      <PromoNotification />
+      <PromoNotification /> */}
+
+      <View style={[tailwind(''), {paddingVertical: 59}]}>
+        <Text style={[tailwind('font-bold text-center text-white font-18')]}>
+          You have no Notifications
+        </Text>
+        <View style={[tailwind('flex-row pt-2 justify-center')]}>
+          <Image
+            resizeMode="contain"
+            source={assets.coin}
+            style={{width: '90%', height: 142}}
+          />
+        </View>
+        <Text
+          style={[
+            tailwind('font-regular text-center mx-7 text-white font-14'),
+          ]}>
+          check back later
+        </Text>
+      </View>
 
       <Modalize
         ref={filterSheet}

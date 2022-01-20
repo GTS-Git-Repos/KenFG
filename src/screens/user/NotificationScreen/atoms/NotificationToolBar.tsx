@@ -18,7 +18,7 @@ export default function NotificationsToolbar(props: PropTypes) {
         ),
       ]}>
       <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-        You have unread notifications
+        You have no notifications
       </Text>
       <View style={[tailwind('flex-row items-center')]}>
         <TouchableOpacity onPress={() => props.filterSheet?.current?.open()}>

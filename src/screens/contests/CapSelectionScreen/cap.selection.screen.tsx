@@ -135,11 +135,19 @@ export default function CapSelectionScreen(props: PropTypes) {
         props.setLoading(false);
         if (response) {
           dispatch(clearTeamAction());
-          resetContestListNavigation(navigation, {
-            match_key: selected_match.match_key,
-            contest_key: selected_contest,
-            team_key: response.team_key,
-          });
+          if (matchSelector.joinContest) {
+            resetContestListNavigation(navigation, {
+              autoJoin: true,
+              match_key: matchSelector.match_key,
+              contest_key: matchSelector.joinContest.contestKey,
+              team_key: response.team_key,
+            });
+          } else {
+            resetContestListNavigation(navigation, {
+              autoJoin: false,
+            });
+          }
+
           return;
         } else {
           setTimeout(() => {

@@ -10,7 +10,10 @@ import PagerView from 'react-native-pager-view';
 import {joinContestRemote} from '../../../remote/matchesRemote';
 import {useCountDown} from '../../../utils/customHoooks';
 import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
-import {BlockScreenByLoading} from '../../../sharedComponents';
+import {
+  BlockScreenByLoading,
+  JoinContestModal,
+} from '../../../sharedComponents';
 import TabsContest from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
@@ -26,7 +29,6 @@ import {
   joinContestRequestAction,
   updateSelectedContestAction,
 } from '../../../store/actions/appActions';
-import JoinContestModal from './molecules/JoinContestModal';
 import Modal from 'react-native-modal';
 import {errorBox} from '../../../utils/snakBars';
 import {
@@ -48,6 +50,10 @@ interface PropTypes {
   pagerRef: any;
   selectedTab: any;
   to: any;
+  showJoinModal: any;
+  entryAmount: any;
+  joinContestWithTeam(): any;
+  setShowJoinModal(any: boolean): any;
   setSelectedTab(index: number): any;
   teamPreviewPress(team_key: any): any;
   teamMutateAction(team_key: any): any;
@@ -61,7 +67,6 @@ export default function ContestListScreen(props: PropTypes) {
   const {width} = useWindowDimensions();
   const dispatch = useDispatch();
 
-  const [showJoinModal, setShowJoinModal] = useState(false);
   const [loading, setLoading] = useState<any>(false);
   const [selectedFilter, setSelectedFilter] = useState<any>('All');
   // const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
@@ -76,11 +81,11 @@ export default function ContestListScreen(props: PropTypes) {
     state => state.app.selected_contest,
   );
 
-  useEffect(() => {
-    if (props.to === 3) {
-      props.pagerRef?.current?.setPage(2);
-    }
-  }, [props.to]);
+  // useEffect(() => {
+  //   if (props.to === 3) {
+  //     props.pagerRef?.current?.setPage(2);
+  //   }
+  // }, [props.to]);
 
   // Business logic
   const onPageSelectedAction = (e: any) => {
@@ -213,7 +218,7 @@ export default function ContestListScreen(props: PropTypes) {
       {props.contests && <CreateTeamButton />}
 
       <Modal
-        isVisible={showJoinModal}
+        isVisible={props.showJoinModal}
         animationInTiming={150}
         animationOutTiming={150}
         useNativeDriver={true}
@@ -222,8 +227,9 @@ export default function ContestListScreen(props: PropTypes) {
         backdropTransitionOutTiming={0}
         scrollHorizontal={true}>
         <JoinContestModal
-          setShowJoinModal={setShowJoinModal}
-          joinContest={joinContest}
+          setShowJoinModal={props.setShowJoinModal}
+          joinContestWithTeam={props.joinContestWithTeam}
+          entryAmount={props.entryAmount}
         />
       </Modal>
       {loading && <BlockScreenByLoading />}

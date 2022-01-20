@@ -78,6 +78,7 @@ export default function TeamSelectionScreen(props: any) {
       setLoading(true);
 
       const response = await joinContestRemote(obj);
+      console.log('response', response);
 
       setLoading(false);
       if (!response.status) {
@@ -137,17 +138,6 @@ export default function TeamSelectionScreen(props: any) {
           );
         }}
       />
-
-      {/* <ScrollView contentContainerStyle={[tailwind('m-3')]}>
-        {props.teams.map((item: any) => {
-          return (
-            
-          );
-        })}
-
-      
-      </ScrollView> */}
-      {/* <View style={[tailwind('h-20')]}></View> */}
       <TouchableOpacity onPress={proceedToJoinPress} style={[tailwind('m-3')]}>
         <ButtonComponent text={'Join Contest'} />
       </TouchableOpacity>
