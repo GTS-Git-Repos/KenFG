@@ -5,17 +5,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 interface PropTypes {
   amount: string;
 }
 
 export default function LobbyTopBar(props: PropTypes) {
   const navigation = useNavigation<any>();
-
-
-
-
   return (
     <View>
       <View style={[tailwind('flex-row justify-between')]}>
@@ -44,7 +40,7 @@ export default function LobbyTopBar(props: PropTypes) {
         </View>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate('WalletScreen')}
+          onPress={() => navigation.navigate('Wallet')}
           style={[
             tailwind('flex-row items-end justify-end px-2'),
             {position: 'relative', right: 16},

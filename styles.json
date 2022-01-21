@@ -80,6 +80,10 @@
   "bg-green": {
     "backgroundColor": "#00513B"
   },
+  "border-green": {
+    "--tw-border-opacity": 1,
+    "borderColor": "#00513B"
+  },
   "shadow": {
     "shadowColor": "#000",
     "shadowOffset": {

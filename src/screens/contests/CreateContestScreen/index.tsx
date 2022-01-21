@@ -23,7 +23,7 @@ export default function PrivateContestCreateHOC() {
       if (!contests) {
         throw 'no contest found';
       }
-      // console.log(contest);
+      // initiate join contest action
       dispatch(
         joinContestRequestAction({
           contestKey: contest.pc_id,
@@ -39,11 +39,9 @@ export default function PrivateContestCreateHOC() {
         });
       }
     } catch (err) {
-      console.log('joinRequestPrivateContest', joinRequestPrivateContest);
+      console.log('joinRequestPrivateContest err ->', err);
     }
   }
-
-  
 
   return (
     <PrivateContestCreateScreen

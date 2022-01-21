@@ -103,23 +103,26 @@ export default function CustomDrawer(props: any) {
         hideModalContentWhileAnimating={true}
         backdropTransitionOutTiming={0}
         scrollHorizontal={true}>
-        <View style={[tailwind('bg-white px-6 pt-6 pb-3 bg-dark-3 rounded')]}>
-          <Text style={[tailwind('font-bold text-light font-18')]}>
+        <View style={[tailwind('p-6 bg-dark-4 rounded border border-gray-900')]}>
+          <Text style={[tailwind('font-bold text-white font-17')]}>
             Do you want to Logout ?
           </Text>
+          <Text style={[tailwind('pt-2 font-regular text-white font-12')]}>
+            This will logged out from the app, Press YES to proceed
+          </Text>
 
-          <View style={[tailwind('flex-row items-center mt-4')]}>
-            <TouchableOpacity onPress={logout} style={[tailwind('py-4 pr-7')]}>
+          <View style={[tailwind('flex-row items-center justify-end')]}>
+            <TouchableOpacity onPress={logout} style={[tailwind('px-6 pt-2')]}>
               <Text
-                style={[tailwind('font-regular uppercase text-light font-15')]}>
+                style={[tailwind('font-bold uppercase text-white font-15')]}>
                 Yes
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setLogoutModal(false)}
-              style={[tailwind('px-4 py-4')]}>
+              style={[tailwind('pt-2')]}>
               <Text
-                style={[tailwind('font-regular uppercase text-light font-15')]}>
+                style={[tailwind('font-bold uppercase text-white font-15')]}>
                 No
               </Text>
             </TouchableOpacity>

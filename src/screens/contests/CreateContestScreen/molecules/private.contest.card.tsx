@@ -14,9 +14,9 @@ interface PropTypes {
   contest_key: string;
   contest_name: string;
   hosted_by: string;
-  amount: string;
-  entry: string;
-  max_team: number;
+  entry_amount: string;
+  price_amount: string;
+  max_entry: string;
   joinRequestPrivateContest(team_key: string): any;
 }
 
@@ -27,16 +27,16 @@ export default function PrivateContestCard(props: PropTypes) {
         <ContestMetaSection
           contest_name={props.contest_name}
           hosted_by={props.hosted_by}
-          entry={props.entry}
+          entry={props.entry_amount}
         />
         <JoinContest
           contest_key={props.contest_key}
           joinRequestPrivateContest={props.joinRequestPrivateContest}
-          amount={props.amount}
+          amount={props.entry_amount}
         />
         <ProgressBar />
       </View>
-      <Footer />
+      <Footer max_entry={props.max_entry} />
     </View>
   );
 }
@@ -141,7 +141,7 @@ const Footer = (props: any) => {
           <View style={[tailwind('flex-row items-center')]}>
             <MIcon />
             <Text style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
-              upto 20
+              upto {props.max_entry}
             </Text>
           </View>
         </View>

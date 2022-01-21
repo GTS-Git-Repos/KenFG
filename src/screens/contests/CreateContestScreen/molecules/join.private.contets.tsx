@@ -24,6 +24,7 @@ export default function JoinedContestListPage(props: PropTypes) {
       </Text>
     );
   }
+  // console.log(JSON.stringify(props.contests));
 
   return (
     <View style={[tailwind('m-2 bg-dark')]}>
@@ -32,13 +33,12 @@ export default function JoinedContestListPage(props: PropTypes) {
         renderItem={({item}) => {
           return (
             <PrivateContestCard
-              key={item.pc_id}
-              contest_key={item.pc_id}
-              contest_name={item.pcname}
-              hosted_by={item.pcname}
-              amount={'10 Lakhs'}
-              entry={item.entry_fee}
-              max_team={10}
+              contest_key={''}
+              contest_name={''}
+              hosted_by={''}
+              entry_amount={''}
+              price_amount={''}
+              max_entry={''}
               joinRequestPrivateContest={props.joinRequestPrivateContest}
             />
           );

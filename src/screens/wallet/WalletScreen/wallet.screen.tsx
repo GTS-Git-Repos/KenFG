@@ -1,12 +1,10 @@
 import React, {useRef} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
-import {TopBar} from '../../../sharedComponents';
+import {ButtonComponent, TopBar} from '../../../sharedComponents';
 import {Modalize} from 'react-native-modalize';
-import AddMoneyButton from './atoms/addmoney.btn.wallet';
 import Actions from './atoms/Actions';
-import AddMoneySheet from './molecules/addmoney.sheet.wallet';
 import AmountStatusWallet from './atoms/amount.status.wallet';
 
 import {useSelector} from 'react-redux';
@@ -17,11 +15,9 @@ const log = console.log;
 
 export default function WalletScreen() {
   const addMoneySheet = useRef(null);
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const userInfoSelector: any = useSelector(userInfo);
-
-  console.log(userInfoSelector);
 
   return (
     <View style={tailwind('h-full bg-dark')}>
@@ -52,19 +48,12 @@ export default function WalletScreen() {
           <Actions text={'Refer and Earn'} goto="InviteScreen" />
         </View>
       </ScrollView>
-      <AddMoneyButton addMoneySheet={addMoneySheet} />
-
-      <Modalize
-        ref={addMoneySheet}
-        useNativeDriver={true}
-        modalTopOffset={100}
-        adjustToContentHeight={true}
-        disableScrollIfPossible={false}
-        closeOnOverlayTap={true}>
-        <View>
-          <AddMoneySheet />
-        </View>
-      </Modalize>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('AddCashScreen')}
+        style={[tailwind('mx-4 my-2')]}>
+        <ButtonComponent text={'ADD CASH'} />
+      </TouchableOpacity>
+      {/* <AddMoneyButton addMoneySheet={addMoneySheet} /> */}
     </View>
   );
 }

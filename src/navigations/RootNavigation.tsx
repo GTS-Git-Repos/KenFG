@@ -10,11 +10,10 @@ import {
 } from '@react-navigation/stack';
 
 import {DrawerNav} from './DrawerNavigation';
-import {Auth, More, Contest} from './StackNavigations';
+import {Auth, More, Contest, Wallet} from './StackNavigations';
 
 import InitialScreen from '../screens/app/InitialScreen';
 import NotificationScreen from '../screens/user/NotificationScreen';
-import WalletScreen from '../screens/wallet/WalletScreen';
 import ProfileEditScreen from '../screens/user/ProfileEditScreen';
 import AccountProfileScreen from '../screens/user/AccountProfileScreen';
 
@@ -72,6 +71,7 @@ export default function RootNavigation() {
           <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
           <RootNavigator.Screen component={More} name="More" />
           <RootNavigator.Screen component={Contest} name="Contest" />
+          <RootNavigator.Screen component={Wallet} name="Wallet" />
 
           <RootNavigator.Screen
             name="TeamSelectionScreen"
@@ -104,8 +104,6 @@ export default function RootNavigation() {
             component={CompletedMatchScreen}
             name="CompletedMatchScreen"
           />
-
-          <RootNavigator.Screen component={WalletScreen} name="WalletScreen" />
           <RootNavigator.Screen
             component={ProfileEditScreen}
             name="ProfileEditScreen"

@@ -30,7 +30,6 @@ export default function MyMatches(props: PropTypes) {
 
   const onPageSelectedAction = (e: any) => {
     const position = e.nativeEvent.position;
-    setSelectedTab(e.nativeEvent.position);
     if (position === 0) {
       props.setStatus('notstarted');
     }
@@ -40,6 +39,7 @@ export default function MyMatches(props: PropTypes) {
     if (position === 2) {
       props.setStatus('completed');
     }
+    setSelectedTab(e.nativeEvent.position);
   };
 
   const onTabPressed = (index: number) => {

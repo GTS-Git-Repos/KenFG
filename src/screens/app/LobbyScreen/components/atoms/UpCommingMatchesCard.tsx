@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import tailwind from '../../../../../../tailwind';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import {useFocusEffect, useNavigation} from '@react-navigation/core';
@@ -157,16 +157,16 @@ const Teams = (props: TeamPropShape) => {
         {paddingHorizontal: 16, paddingTop: 6},
       ]}>
       <View style={[tailwind('')]}>
-        <View style={{width: 45, height: 25}}>
+        <View style={styles.flagWrapper}>
           <FastImage
             style={{width: 45, height: 25}}
             source={{
               uri: props.team_a_flag,
               priority: FastImage.priority.normal,
             }}
-            onError={e =>
-              props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
-            }
+            // onError={e =>
+            //   props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
+            // }
             resizeMode={FastImage.resizeMode.contain}
           />
         </View>
@@ -184,16 +184,16 @@ const Teams = (props: TeamPropShape) => {
       </Text>
 
       <View style={[tailwind('')]}>
-        <View style={{width: 45, height: 25}}>
+        <View style={styles.flagWrapper}>
           <FastImage
             style={{width: 45, height: 25}}
             source={{
               uri: props.team_b_flag,
               priority: FastImage.priority.normal,
             }}
-            onError={e =>
-              props.set_team_b_flag('http://kenfg.com/images/flag/IND.png')
-            }
+            // onError={e =>
+            //   props.set_team_b_flag('http://kenfg.com/images/flag/IND.png')
+            // }
             resizeMode={FastImage.resizeMode.contain}
           />
         </View>
@@ -237,3 +237,12 @@ const PrizeandStatus = (props: any) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  flagWrapper: {
+    width: 45,
+    height: 25,
+    backgroundColor: '#0c1320',
+    borderRadius: 2,
+  },
+});

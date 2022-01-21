@@ -13,11 +13,14 @@ import NotificationScreen from '../screens/user/NotificationScreen';
 import WalletScreen from '../screens/wallet/WalletScreen';
 import TransactionListScreen from '../screens/wallet/TransactionListScreen';
 import SignupScreen from '../screens/user/SignupScreen';
+
 import FantasyTeamNameScreen from '../screens/leaderboard/FantasyTeamNameScreen';
 import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
 
 import TeamFormationScreen from '../screens/contests/TeamFormationScreen';
 import CompareTeamsScreen from '../screens/matches/CompareTeamsScreen';
+
+import AddCashScreen from '../screens/wallet/AddCashScreen';
 
 import LoginScreen from '../screens/user/LoginScreen';
 import OTPScreen from '../screens/user/OTPScreen';
@@ -39,6 +42,7 @@ const StackConfig = {
 
 const HomeStack = createStackNavigator();
 const ContestStack = createStackNavigator();
+const WalletStatck = createStackNavigator();
 const MyMatch = createStackNavigator();
 const MatchStack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -107,6 +111,16 @@ export function Contest(props: any) {
         component={TeamPreviewScreen}
       />
     </ContestStack.Navigator>
+  );
+}
+
+export function Wallet(props: any) {
+  return (
+    <WalletStatck.Navigator screenOptions={StackConfig}>
+      
+      <WalletStatck.Screen name="WalletScreen" component={WalletScreen} />
+      <WalletStatck.Screen name="AddCashScreen" component={AddCashScreen} />
+    </WalletStatck.Navigator>
   );
 }
 

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import tailwind from '../../../../../../tailwind';
 import {View, StyleSheet, Text} from 'react-native';
 import SubTitle from '../SubTitle';
-
+import UpcommingMatchTitle from './upcomming.match.title';
 import ImageSlider from './ImageSlider';
 import UpComingMatchesSlider from './UpComingMatchesSlider';
 
@@ -22,7 +22,7 @@ export default function CricketPage(props: PropTypes) {
         />
       </View>
       <View style={[tailwind('px-5 pt-4')]}>
-        <SubTitle text={'Upcoming'} />
+        <UpcommingMatchTitle />
       </View>
       <UpComingMatchesSlider data={props.upcomming} status={props.upcomming} />
     </View>

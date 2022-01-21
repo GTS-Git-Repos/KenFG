@@ -23,6 +23,7 @@ import CurrentLiveStatus from './molecules/CurrentLiveStatus';
 import SocialMediaShare from './molecules/SocialMediaShare';
 import TeamScrollBoardByInnings from './molecules/team.scoreboard.innings';
 import JoinContestModal from './molecules/join.contest.modal.shared';
+import ContestTypeSwitch from './molecules/contest.type.swicth';
 
 import WalletIcon from './icons/WalletIcon';
 import MoneyIcon from './icons/MoneyIcon';
@@ -63,6 +64,7 @@ import ReferPeopleIcon from './icons/ReferPeopleIcon';
 export {
   TopBar,
   TopbarContest,
+  ContestTypeSwitch,
   ProgressbarShared,
   BlockScreenByLoading,
   ButtonComponent,

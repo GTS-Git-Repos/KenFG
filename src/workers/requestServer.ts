@@ -6,8 +6,8 @@ const requestServer = function (
   payload?: any,
 ): any {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 8000);
-  
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
+
   return new Promise((resolve, reject) => {
     let options: any = {
       signal: controller.signal,

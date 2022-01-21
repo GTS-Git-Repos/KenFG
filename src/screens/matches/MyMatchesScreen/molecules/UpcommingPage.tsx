@@ -35,8 +35,6 @@ export default function UpcommingPage(props: PropTypes) {
     );
   }
 
-  // console.log(props.matches.length);
-
   return (
     <View style={[tailwind('m-3')]}>
       {props.matches.map((item: any) => {
