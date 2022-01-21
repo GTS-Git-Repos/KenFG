@@ -52,7 +52,7 @@ export default function TeamFormationHOC() {
     if (route.params.mutation) {
       log('TeamFormationParams -->', route.params.mutation);
     } else {
-      dispatch(clearTeamAction());
+      // dispatch(clearTeamAction());
     }
   }, []);
 

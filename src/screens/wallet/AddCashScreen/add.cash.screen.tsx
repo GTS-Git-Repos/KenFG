@@ -21,7 +21,7 @@ export default function AddCashScreen(props: PropTypes) {
   const [amount, setAmount] = useState('');
   const [code, setCode] = useState('');
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   return (
     <View style={tailwind('h-full bg-dark')}>
@@ -33,7 +33,9 @@ export default function AddCashScreen(props: PropTypes) {
         <CouponCardAddCash />
         <CouponCardAddCash />
       </ScrollView>
-      <TouchableOpacity style={[tailwind('m-3')]}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('PaymentOptionScreen')}
+        style={[tailwind('m-3')]}>
         <ButtonComponent text={'NEXT'} />
       </TouchableOpacity>
     </View>

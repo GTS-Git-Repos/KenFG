@@ -7,6 +7,7 @@ import assets from '../../../constants/assets_manifest';
 import MatchGroundTopBar from './atoms/MatchGroundTopar';
 import MatchStats from './atoms/MatchStats';
 import CategoryPlayers from './blocks/CategoryPlayers';
+import { log } from '../../../utils/logs';
 
 export default function TeamPreViewScreen() {
   const route = useRoute<any>();

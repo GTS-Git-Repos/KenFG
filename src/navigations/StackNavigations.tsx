@@ -21,6 +21,7 @@ import TeamFormationScreen from '../screens/contests/TeamFormationScreen';
 import CompareTeamsScreen from '../screens/matches/CompareTeamsScreen';
 
 import AddCashScreen from '../screens/wallet/AddCashScreen';
+import PaymentOptionScreen from '../screens/wallet/PaymentOptionScreen';
 
 import LoginScreen from '../screens/user/LoginScreen';
 import OTPScreen from '../screens/user/OTPScreen';
@@ -117,9 +118,12 @@ export function Contest(props: any) {
 export function Wallet(props: any) {
   return (
     <WalletStatck.Navigator screenOptions={StackConfig}>
-      
       <WalletStatck.Screen name="WalletScreen" component={WalletScreen} />
       <WalletStatck.Screen name="AddCashScreen" component={AddCashScreen} />
+      <WalletStatck.Screen
+        name="PaymentOptionScreen"
+        component={PaymentOptionScreen}
+      />
     </WalletStatck.Navigator>
   );
 }

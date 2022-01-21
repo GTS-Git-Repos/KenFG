@@ -142,7 +142,10 @@ export const createTeamRemote = async (payload: any) => {
       payload,
     );
     if (response.status === 200) {
-      return response.data.data;
+      return {status: true, data: response.data.data};
+    }
+    if (response.status === 400) {
+      return {status: false, msg: response.data?.message};
     } else {
       failedLog('createTeamRemote()', response);
     }

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/core';
 import CapSelectionScreen from './cap.selection.screen';
 import {createTeamRemote, editTeamRemote} from '../../../remote/matchesRemote';
-import {errorBox} from '../../../utils/snakBars';
+import {errorBox, infoBox} from '../../../utils/snakBars';
 import {clearTeamAction} from '../../../store/actions/teamActions';
 import {useDispatch, useSelector} from 'react-redux';
 import {resetContestListNavigation} from '../../../utils/resetNav';
@@ -48,8 +48,11 @@ export default function CapSelectionHOC() {
       setLoading(true);
       const response = await createTeamRemote(payload);
       setLoading(false);
-      if (!response) {
-        throw 'Failed to Clone a Team !!';
+      if (!response.status) {
+        setTimeout(() => {
+          errorBox(response.msg);
+        }, 500);
+        // throw 'Failed to Clone a Team !!';
         return;
       }
       dispatch(clearTeamAction());

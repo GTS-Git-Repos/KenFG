@@ -42,7 +42,7 @@ export default function MatchStats(props: PropTypes) {
           {props.team_a.count} : {props.team_b.count}
         </Text>
 
-        <TeamTag teamname={props.team_a.key} team1={false} />
+        <TeamTag teamname={props.team_b.key} team1={false} />
       </View>
 
       <View style={[tailwind(''), {flex: 3}]}>

@@ -1,6 +1,6 @@
 import React from 'react';
-import AddCashScreen from './add.cash.screen';
+import PaymentOptionScreen from './payment.options.screen';
 
 export default function AddCashScreenHOC() {
-  return <AddCashScreen from={'1'} />;
+  return <PaymentOptionScreen from={'1'} />;
 }

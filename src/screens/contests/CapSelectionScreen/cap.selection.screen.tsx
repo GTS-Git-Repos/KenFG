@@ -31,7 +31,7 @@ import {
   clearTeamAction,
 } from '../../../store/actions/teamActions';
 import {isPlayerCaptain, isPlayerViceCaptain} from '../../../store/store_utils';
-import {errorBox} from '../../../utils/snakBars';
+import {errorBox, infoBox} from '../../../utils/snakBars';
 import {createTeamRemote, editTeamRemote} from '../../../remote/matchesRemote';
 import {createTeamObjCreator} from '../../../workers/objCreators';
 import {resetContestListNavigation} from '../../../utils/resetNav';
@@ -85,6 +85,7 @@ export default function CapSelectionScreen(props: PropTypes) {
 
   const navigateToTeamPreviewScreeen = () => {
     // Need to move to formatters
+
     navigation.navigate('TeamPreviewScreen', {
       from: 1,
       keepers: playersState.filter(
@@ -133,16 +134,17 @@ export default function CapSelectionScreen(props: PropTypes) {
         props.setLoading(true);
         const response = await createTeamRemote(createTeamObj);
         props.setLoading(false);
-        if (response) {
+        if (response.status) {
           dispatch(clearTeamAction());
           if (matchSelector.joinContest) {
             resetContestListNavigation(navigation, {
               autoJoin: true,
               match_key: matchSelector.match_key,
               contest_key: matchSelector.joinContest.contestKey,
-              team_key: response.team_key,
+              team_key: response.data.team_key,
             });
           } else {
+            infoBox('Team Created !!');
             resetContestListNavigation(navigation, {
               autoJoin: false,
             });

@@ -146,29 +146,6 @@ export default function ContestListScreen(props: PropTypes) {
     }
   };
 
-  const joinContest = async () => {
-    try {
-      const payload = {
-        match_key: matchSelector.match_key,
-        contest_key: selectedContestState,
-        team_key: route.params.team_key,
-        player_key: userInfoSelector.mobile,
-      };
-      setLoading(true);
-      const response = await joinContestRemote(payload);
-      if (response) {
-        setShowJoinModal(false);
-        props.pagerRef.current?.setPage(1);
-      } else {
-        errorBox('Failed to join Contest');
-      }
-    } catch (err) {
-      log('joinContest', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarContest title={matchSelector?.titleString} subtitle={timeStamp} />
