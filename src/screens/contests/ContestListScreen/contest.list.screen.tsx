@@ -125,14 +125,6 @@ export default function ContestListScreen(props: PropTypes) {
           maxTeam: contest.max_entry,
         }),
       );
-      const walletStatus: any = isWalletHaveContestAmount(
-        contest.entry,
-        userWallet,
-      );
-      if (!walletStatus.status) {
-        errorBox('You do not have enough amount in your wallet!');
-        // go to wallet screen with needed amount in route params
-      }
       if (props.teams?.length > 0) {
         navigation.navigate('TeamSelectionScreen');
       } else {

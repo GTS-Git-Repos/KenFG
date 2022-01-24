@@ -3,10 +3,18 @@ import tailwind from '../../../../../../tailwind';
 import {View, useWindowDimensions, Text, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../../constants/assets_manifest';
+import FastImage from 'react-native-fast-image';
 
 interface PropTypes {
-  text?: string;
+  team_a: string;
+  team_b: string;
 }
+
+
+/**
+ * is it used anywhere ? 
+ * 
+ */
 
 export default function TeamsMyMatchCard(props: PropTypes) {
   const {width} = useWindowDimensions();
@@ -20,10 +28,16 @@ export default function TeamsMyMatchCard(props: PropTypes) {
               tailwind('mb-2'),
               {backgroundColor: '#FB7700', height: 50 / 2, width: 10},
             ]}></View>
-          <Image
-            resizeMode="cover"
-            source={assets.australia_flag}
-            style={[tailwind('relative'), {width: 50, height: 50, right: 1}]}
+          <FastImage
+            style={{width: 45, height: 25}}
+            source={{
+              uri: `http://kenfg.com/images/flag/${props.team_a.toUpperCase()}`,
+              priority: FastImage.priority.normal,
+            }}
+            // onError={e =>
+            //   props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
+            // }
+            resizeMode={FastImage.resizeMode.contain}
           />
         </View>
         <Text
@@ -37,10 +51,16 @@ export default function TeamsMyMatchCard(props: PropTypes) {
 
       <View style={[tailwind('flex-col justify-between')]}>
         <View style={[tailwind('flex-row items-center')]}>
-          <Image
-            resizeMode="contain"
-            source={assets.running_clock}
-            style={[tailwind(''), {width: 16, height: 16}]}
+          <FastImage
+            style={{width: 45, height: 25}}
+            source={{
+              uri: `http://kenfg.com/images/flag/${props.team_b.toUpperCase()}`,
+              priority: FastImage.priority.normal,
+            }}
+            // onError={e =>
+            //   props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
+            // }
+            resizeMode={FastImage.resizeMode.contain}
           />
           <Text style={[tailwind('font-bold text-white px-1')]}>2h:23:32</Text>
         </View>

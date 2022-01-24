@@ -17,6 +17,7 @@ export default function ContestTypeSwitch(props: PropTypes) {
           tailwind('flex-row items-center rounded-xl border border-gray-700'),
         ]}>
         <TouchableOpacity
+          activeOpacity={0.6}
           style={[
             tailwind('bg-secondary  rounded-l-full  '),
             styles.buttonRoot,
@@ -26,6 +27,7 @@ export default function ContestTypeSwitch(props: PropTypes) {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
+          activeOpacity={0.6}
           style={[tailwind('rounded-r-full'), styles.buttonRoot]}>
           <Text style={[tailwind('font-regular text-white font-12')]}>
             2nd Innings

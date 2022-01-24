@@ -1,8 +1,9 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, Image} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
+import FastImage from 'react-native-fast-image';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
@@ -25,11 +26,19 @@ export default function Team1(props: PropTypes) {
       <View
         style={[tailwind('flex-row justify-center items-center'), {flex: 8}]}>
         <View style={[tailwind('flex-col items-center')]}>
-          <Image
-            resizeMode="contain"
-            source={props.reverseUI ? assets.ENG : assets.AUS}
-            style={[tailwind(''), {aspectRatio: 16 / 9, width: 45, height: 25}]}
-          />
+          <View style={styles.flagWrapper}>
+            <FastImage
+              style={{width: 45, height: 25}}
+              source={{
+                uri: `http://kenfg.com/images/flag/${props.teamname.toUpperCase()}`,
+                priority: FastImage.priority.normal,
+              }}
+              // onError={e =>
+              //   props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
+              // }
+              resizeMode={FastImage.resizeMode.contain}
+            />
+          </View>
           <Text
             allowFontScaling={true}
             adjustsFontSizeToFit={true}
@@ -69,3 +78,12 @@ export default function Team1(props: PropTypes) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  flagWrapper: {
+    width: 45,
+    height: 25,
+    backgroundColor: '#0c1320',
+    borderRadius: 2,
+  },
+});
