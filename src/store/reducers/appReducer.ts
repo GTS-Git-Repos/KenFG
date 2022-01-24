@@ -9,6 +9,7 @@ const initialState = {
   error: null,
   ip: null,
   selected_match: null,
+  // need to remove that, join contest request is an alternate
   selected_contest: null,
   joinContestRequest: null,
 };
@@ -37,6 +38,7 @@ const App = (state = initialState, action: actionShape): any => {
         selected_match: action.payload,
       };
     case UPDATE_SELECTED_CONTEST: {
+      console.log('DEPRECATED UPDATE_SELECTED_CONTEST');
       return {
         ...state,
         selected_contest: action.payload,

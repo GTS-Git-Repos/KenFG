@@ -14,6 +14,7 @@ import {selectedMatch} from '../../../store/selectors';
 import {Modalize} from 'react-native-modalize';
 import AcceptTermsSheet from './atoms/AcceptTermsSheet';
 import JoinPrivateContest from './molecules/join.private.contets';
+import {useCountDown} from '../../../utils/customHoooks';
 const log = console.log;
 
 interface PropTypes {
@@ -33,6 +34,7 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
   const [canCreateContest, setCanCreateContest] = useState(true);
 
   const matchSelector: any = useSelector(selectedMatch);
+  const countDown = useCountDown(matchSelector.start_at, false);
 
   const onPageSelectedAction = (e: any) => {
     setActiveIndex(e.nativeEvent.position);
@@ -52,7 +54,7 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
       <TeamsSection
         team_a={matchSelector.team_a}
         team_b={matchSelector.team_b}
-        start_at={''}
+        start_at={countDown}
         match_name={matchSelector.name}
       />
 

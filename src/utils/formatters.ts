@@ -10,7 +10,7 @@ export const decodeJwt = (jwt: string) => {
   }
 };
 
-export const getCountDown = (inputDate: Date) => {
+export const getCountDown = (inputDate: Date): string => {
   // console.log('NEED TO MOVE COMMAN UTILS');
   try {
     const id = new Date(inputDate);

@@ -27,7 +27,7 @@ export default function TeamsSection(props: PropTypes) {
         <Team2 team_b={props.team_b} />
       </View>
       <Text style={[tailwind('font-regular text-center text-dark-1 font-12')]}>
-        29m 22s left
+        {props.start_at} left
       </Text>
     </View>
   );

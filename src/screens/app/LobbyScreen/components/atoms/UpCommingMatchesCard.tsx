@@ -1,4 +1,10 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import tailwind from '../../../../../../tailwind';
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -45,7 +51,7 @@ export default function UpcommingMatches(props: PropTypes) {
   const [team_a_flag, set_team_a_flag] = useState('');
   const [team_b_flag, set_team_b_flag] = useState('');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let interval: any = null;
     try {
       set_team_a_flag(props.team_a_flag);
@@ -54,7 +60,7 @@ export default function UpcommingMatches(props: PropTypes) {
       if (isMounted.current) {
         // interval = setInterval(() => {
         //   setCurrentTime(getCountDown(props.start_at));
-        // }, 5000);
+        // }, 1000);
       }
     } catch (err) {
       console.log(err);
@@ -64,6 +70,26 @@ export default function UpcommingMatches(props: PropTypes) {
       isMounted.current = false;
       clearInterval(interval);
     };
+  }, []);
+
+  useEffect(() => {
+    // let interval: any = null;
+    // try {
+    //   set_team_a_flag(props.team_a_flag);
+    //   set_team_b_flag(props.team_b_flag);
+    //   if (isMounted.current) {
+    //     interval = setInterval(() => {
+    //       setCurrentTime(getCountDown(props.start_at));
+    //     }, 1000);
+    //   }
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    // return () => {
+    //   log('Unmounted');
+    //   isMounted.current = false;
+    //   clearInterval(interval);
+    // };
   }, []);
 
   const navigateToContestList = () => {

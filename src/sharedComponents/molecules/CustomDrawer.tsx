@@ -103,7 +103,8 @@ export default function CustomDrawer(props: any) {
         hideModalContentWhileAnimating={true}
         backdropTransitionOutTiming={0}
         scrollHorizontal={true}>
-        <View style={[tailwind('p-6 bg-dark-4 rounded border border-gray-900')]}>
+        <View
+          style={[tailwind('p-6 bg-dark-4 rounded border border-gray-900')]}>
           <Text style={[tailwind('font-bold text-white font-17')]}>
             Do you want to Logout ?
           </Text>
@@ -232,7 +233,7 @@ const AppVersion = (props: any) => {
             Version 0.1
           </Text>
           <Text style={[tailwind('font-regular py-1 text-dark-1 font-11')]}>
-            17/1/22-3:37PM
+            24/1/22-04:10PM
           </Text>
         </View>
         {/* <View style={[tailwind('justify-end items-end'), {flex: 3}]}>
