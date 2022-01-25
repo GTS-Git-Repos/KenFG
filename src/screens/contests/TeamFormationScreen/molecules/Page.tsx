@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, ScrollView, Text} from 'react-native';
+import {View, FlatList, ActivityIndicator} from 'react-native';
 import TabCondtion from '../atoms/TabCondtions';
 import SortTabs from '../atoms/SortTabs';
 import Player from './Players';
 import {currentPlayerStatus} from '../../../../store/store_utils';
-import {BottomLine} from '../../../../sharedComponents';
 
 interface PropTypes {
+  sortByLowCredits: boolean;
+  setSortByLowCredits(bool: boolean): any;
   filterSheet: any;
+  filters: any;
   id: string;
   title: string;
   data: [];
@@ -16,12 +18,52 @@ interface PropTypes {
   rolesCountSelector: any;
   index: number;
   activeIndex: number;
-  team_a: string;
+  team_a_key: string;
+  team_b_key: string;
 }
 
 export default function Page(props: PropTypes) {
-  if (props.index !== props.activeIndex) {
-    return null;
+  const [playersMeta, setPlayersMeta]: any = useState(props.data);
+  const position = props.index - props.activeIndex;
+
+  useEffect(() => {
+    if (props.filters === props.team_a_key) {
+      const team_a_players = props.data.filter(
+        (item: any) => item.team_key === props.team_a_key,
+      );
+      setPlayersMeta(team_a_players);
+    } else if (props.filters === props.team_b_key) {
+      const team_b_players = props.data.filter(
+        (item: any) => item.team_key === props.team_b_key,
+      );
+      setPlayersMeta(team_b_players);
+    } else {
+      setPlayersMeta(props.data);
+    }
+  }, [props.filters]);
+
+  useEffect(() => {
+    if (props.sortByLowCredits) {
+      const res = playersMeta.sort((a: any, b: any) => {
+        return b.points - a.points;
+      });
+      setPlayersMeta(res);
+    } else {
+      const res = playersMeta.sort((a: any, b: any) => {
+        return a.points - b.points;
+      });
+      setPlayersMeta(res);
+    }
+  }, [props.sortByLowCredits]);
+
+  if (position < -1 || position > 1) {
+    return (
+      <ActivityIndicator
+        style={[tailwind('mt-10')]}
+        size={'large'}
+        color="#d1b45a"
+      />
+    );
   }
 
   if (!props.data) {
@@ -31,18 +73,25 @@ export default function Page(props: PropTypes) {
   return (
     <View>
       <View style={[tailwind('bg-dark')]}>
-        <TabCondtion text={props.title} filterSheet={props.filterSheet} />
-        <BottomLine />
-        <SortTabs />
+        <TabCondtion
+          text={props.title}
+          filterSheet={props.filterSheet}
+          filters={props.filters}
+        />
+
+        <SortTabs
+          sortByLowCredits={props.sortByLowCredits}
+          setSortByLowCredits={props.setSortByLowCredits}
+        />
       </View>
-      <ScrollView style={[tailwind('')]}>
-        {props.data.map((item: any) => {
+      <FlatList
+        data={playersMeta.sort()}
+        renderItem={({item}) => {
           return (
             <Player
-              key={item.key}
               player_key={item.key}
               teamname={item.team_key}
-              isTeam_a={props.team_a === item.team_key}
+              isTeam_a={props.team_a_key === item.team_key}
               role={item.seasonal_role}
               image={''}
               name={item.name}
@@ -58,10 +107,12 @@ export default function Page(props: PropTypes) {
               checkPlayerSelection={props.checkPlayerSelection}
             />
           );
-        })}
-
-        <View style={[tailwind('h-40')]}></View>
-      </ScrollView>
+        }}
+        keyExtractor={item => item.key}
+        initialNumToRender={5}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: 130}}
+      />
     </View>
   );
 }

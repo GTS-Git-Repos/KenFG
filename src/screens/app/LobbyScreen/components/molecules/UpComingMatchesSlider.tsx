@@ -1,14 +1,12 @@
 import React from 'react';
 import tailwind from '../../../../../../tailwind';
 import UpCommingMatchesCard from '../atoms/UpCommingMatchesCard';
-import {View, Image, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-
-type data = undefined | boolean | [];
+import {View, Text, TouchableOpacity} from 'react-native';
 
 interface PropTypes {
   data: any;
   status: any;
+  navigateToMatchContests(match_key: string): any;
 }
 
 export default function UpComingMatchesSlider(props: PropTypes) {
@@ -37,7 +35,10 @@ export default function UpComingMatchesSlider(props: PropTypes) {
     <View style={[tailwind('flex-row pt-1 px-1 flex-wrap')]}>
       {props.data.map((item: any) => {
         return (
-          <View key={item.key} style={[tailwind('w-6/12')]}>
+          <TouchableOpacity
+            onPress={() => props.navigateToMatchContests(item.key)}
+            key={item.key}
+            style={[tailwind('w-6/12')]}>
             <UpCommingMatchesCard
               match_key={item.key}
               tournament_name={item?.teams?.tournament?.name}
@@ -49,7 +50,7 @@ export default function UpComingMatchesSlider(props: PropTypes) {
               price={item?.teams?.price}
               start_at={item.start_at}
             />
-          </View>
+          </TouchableOpacity>
         );
       })}
     </View>

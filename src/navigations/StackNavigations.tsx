@@ -4,6 +4,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import ContestListScreen from '../screens/contests/ContestListScreen';
 import ContestInfoScreen from '../screens/contests/ContestInfoScreen';
+import CreateContestScreen from '../screens/contests/CreateContestScreen';
+import WinningsListScreen from '../screens/contests/WinningsListScreen';
+
 import LiveMatchScreen from '../screens/matches/LiveMatchScreen';
 import TeamPreviewScreen from '../screens/contests/TeamPreviewScreen';
 import AccountProfileScreen from '../screens/user/AccountProfileScreen';
@@ -83,8 +86,6 @@ export function MyMatches(props: any) {
 }
 
 export function Contest(props: any) {
-  // console.log('i am receiving', props.route);
-
   return (
     <ContestStack.Navigator screenOptions={StackConfig}>
       <ContestStack.Screen
@@ -97,6 +98,15 @@ export function Contest(props: any) {
         component={ContestInfoScreen}
         name="ContestInfoScreen"
       />
+      <ContestStack.Screen
+        component={CreateContestScreen}
+        name="CreateContestScreen"
+      />
+      <ContestStack.Screen
+        component={WinningsListScreen}
+        name="WinningsListScreen"
+      />
+
       <ContestStack.Screen name="TeamsListScreen" component={TeamsListScreen} />
       <ContestStack.Screen
         name="TeamFormationScreen"

@@ -45,6 +45,8 @@ export const selectedMatch = createSelector(
         name: match.name,
         team_a: match.team_a,
         team_b: match.team_b,
+        team_a_name: match.team_a_name,
+        team_b_name: match.team_b_name,
         titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),
         start_at: match.start_at,
         joinContest: contest,

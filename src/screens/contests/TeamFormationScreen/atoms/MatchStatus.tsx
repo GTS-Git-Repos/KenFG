@@ -7,9 +7,9 @@ interface PropTypes {
   text: string;
 }
 
-export default function MatchStatus(props: PropTypes) {
+function MatchStatus(props: PropTypes) {
   return (
-    <View style={[tailwind('py-3')]}>
+    <View style={[tailwind('py-3 border-b border-gray-800')]}>
       <Text
         style={[
           tailwind('font-bold text-center text-dark-1 font-12'),
@@ -20,3 +20,5 @@ export default function MatchStatus(props: PropTypes) {
     </View>
   );
 }
+
+export default React.memo(MatchStatus);

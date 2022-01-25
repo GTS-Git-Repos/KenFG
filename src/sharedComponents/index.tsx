@@ -13,6 +13,7 @@ import TabsBottomLine from './atoms/TabsBottomLine';
 import LoadingSpinner from './atoms/Loading.Spinnner';
 import SecondaryButton from './atoms/secondaryButton';
 import ProgressbarShared from './atoms/progressbar.shared';
+import WinningsListRank from './atoms/winnings.list.rank';
 
 import ContestCard from './molecules/contest.card.shared';
 import TeamsCard from './molecules/TeamsCard';
@@ -24,6 +25,8 @@ import SocialMediaShare from './molecules/SocialMediaShare';
 import TeamScrollBoardByInnings from './molecules/team.scoreboard.innings';
 import JoinContestModal from './molecules/join.contest.modal.shared';
 import ContestTypeSwitch from './molecules/contest.type.swicth';
+import PrivateContestTeams from './molecules/private.contest.teams';
+import PriceDistributionSwitch from './molecules/price.distribution.switch';
 
 import WalletIcon from './icons/WalletIcon';
 import MoneyIcon from './icons/MoneyIcon';
@@ -69,6 +72,8 @@ export {
   BlockScreenByLoading,
   ButtonComponent,
   SecondaryButton,
+  PrivateContestTeams,
+  WinningsListRank,
   JoinContestModal,
   BottomLine,
   FullScreenLoading,
@@ -77,6 +82,7 @@ export {
   TeamCode,
   Projection,
   ContestScreenLoading,
+  PriceDistributionSwitch,
   CurrentLiveStatus,
   TeamsCard,
   HorizontalProfile,

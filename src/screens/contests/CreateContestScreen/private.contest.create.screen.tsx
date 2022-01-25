@@ -3,9 +3,9 @@ import {View, useWindowDimensions} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import CreateContestTopBar from './atoms/CreateContestTopBar';
-import TeamsSection from './atoms/TeamsSection';
 import CreateContestTabs from './molecules/CreateContestTabs';
 import PagerView from 'react-native-pager-view';
+import {PrivateContestTeams} from '../../../sharedComponents/';
 import CreateTeamPage from './molecules/CreateTeamPage';
 import ShareContestPage from './molecules/ShareContestPage';
 import PrivateContestBanner from './atoms/private.contest.banner';
@@ -51,7 +51,7 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
     <View style={tailwind('h-full bg-dark')}>
       <CreateContestTopBar wallet={props.wallet} />
 
-      <TeamsSection
+      <PrivateContestTeams
         team_a={matchSelector.team_a}
         team_b={matchSelector.team_b}
         start_at={countDown}

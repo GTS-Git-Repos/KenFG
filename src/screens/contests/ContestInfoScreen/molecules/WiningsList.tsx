@@ -1,10 +1,11 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, useWindowDimensions, ScrollView} from 'react-native';
-// import Icon from 'react-native-vector-icons/Ionicons';
-import HeaderWinningList from '../atoms/HeaderWinningList';
-import WinningListRankings from '../atoms/WinningListRankings';
 import CreateTeamButton from '../atoms/CreateTeamButton';
+import {
+  PriceDistributionSwitch,
+  WinningsListRank,
+} from '../../../../sharedComponents';
 const log = console.log;
 
 interface itemTypes {
@@ -18,16 +19,13 @@ interface PropTypes {
 
 export default function WinningsList(props: PropTypes) {
   const {width} = useWindowDimensions();
+
   return (
     <ScrollView contentContainerStyle={{width: width}}>
-      <HeaderWinningList />
+      <PriceDistributionSwitch action={() => {}} />
       {props.data.map((item: any) => {
         return (
-          <WinningListRankings
-            key={item.key}
-            rank={item.key}
-            value={item.value}
-          />
+          <WinningsListRank key={item.key} rank={item.key} value={item.value} />
         );
       })}
 

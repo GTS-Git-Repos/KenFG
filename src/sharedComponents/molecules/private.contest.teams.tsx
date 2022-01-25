@@ -1,9 +1,9 @@
 import React from 'react';
-import tailwind from '../../../../../tailwind';
+import tailwind from '../../../tailwind';
 import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
+import FastImage from 'react-native-fast-image';
 
 interface PropTypes {
   match_name: string;
@@ -26,7 +26,7 @@ export default function TeamsSection(props: PropTypes) {
         </Text>
         <Team2 team_b={props.team_b} />
       </View>
-      <Text style={[tailwind('font-regular text-center text-dark-1 font-12')]}>
+      <Text style={[tailwind('font-bold text-center text-dark-1 font-12')]}>
         {props.start_at} left
       </Text>
     </View>
@@ -36,10 +36,16 @@ export default function TeamsSection(props: PropTypes) {
 const Team1 = (props: any) => {
   return (
     <View style={[tailwind('flex-row items-center')]}>
-      <Image
-        resizeMode="contain"
-        source={assets.AUS}
+      <FastImage
         style={{width: 45, height: 25}}
+        source={{
+          uri: `http://kenfg.com/images/flag/${props.team_a?.toUpperCase()}`,
+          priority: FastImage.priority.normal,
+        }}
+        // onError={e =>
+        //   props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
+        // }
+        resizeMode={FastImage.resizeMode.contain}
       />
       <View style={[tailwind('px-3')]}>
         <LinearGradient
@@ -76,10 +82,16 @@ const Team2 = (props: any) => {
           </Text>
         </LinearGradient>
       </View>
-      <Image
-        resizeMode="contain"
-        source={assets.ENG}
+      <FastImage
         style={{width: 45, height: 25}}
+        source={{
+          uri: `http://kenfg.com/images/flag/${props.team_b?.toUpperCase()}`,
+          priority: FastImage.priority.normal,
+        }}
+        // onError={e =>
+        //   props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
+        // }
+        resizeMode={FastImage.resizeMode.contain}
       />
     </View>
   );

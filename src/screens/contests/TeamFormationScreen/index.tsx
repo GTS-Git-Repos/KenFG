@@ -1,5 +1,5 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {errorBox} from '../../../utils/snakBars';
 import {
@@ -22,12 +22,18 @@ import CreateTeamLoading from './atoms/CreateTeamLoading';
 import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
 import TeamFormationScreen from './team.formation.screen';
 import {useMatchPlayers} from './teamformation.workers';
+import {Modalize} from 'react-native-modalize';
 const log = console.log;
 
 export default function TeamFormationHOC() {
   const dispatch = useDispatch();
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
+  const filterSheet = useRef<Modalize>();
+
+  const [filters, setFilter] = useState<any>(null);
+  const [sortByLowCredits, setSortByLowCredits] = useState<boolean>(false);
+
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
   const countDown = useCountDown(matchSelector.start_at, false);
@@ -131,6 +137,11 @@ export default function TeamFormationHOC() {
       match={matchSelector}
       navigateToCapSelection={navigateToCapSelection}
       navigateToTeamPreviewScreeen={navigateToTeamPreviewScreeen}
+      filterSheet={filterSheet}
+      filters={filters}
+      setFilter={setFilter}
+      sortByLowCredits={sortByLowCredits}
+      setSortByLowCredits={setSortByLowCredits}
     />
   );
 }

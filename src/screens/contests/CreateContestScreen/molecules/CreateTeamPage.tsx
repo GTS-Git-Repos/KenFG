@@ -1,16 +1,17 @@
 import React, {useEffect, useRef, useState} from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import {
   BlockScreenByLoading,
   ButtonComponent,
 } from '../../../../sharedComponents';
 import CreateContestInput from './CreateContestInput';
-import JoinContestListPage from './JoinContestListPage';
 import {useSelector} from 'react-redux';
 import {selectedMatch, userInfo} from '../../../../store/selectors';
 import {errorBox, infoBox} from '../../../../utils/snakBars';
 import {createContestRemote} from '../../../../remote/matchesRemote';
+import {toWiningsList} from '../../../../store/actions/navigationActions';
+import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   activeIndex: number;
@@ -18,6 +19,7 @@ interface PropTypes {
 }
 
 export default function CreateTeamPage(props: PropTypes) {
+  const navigation = useNavigation();
   const userInfoSelector: any = useSelector(userInfo);
   const matchSelector: any = useSelector(selectedMatch);
 
@@ -37,6 +39,10 @@ export default function CreateTeamPage(props: PropTypes) {
       setContestName(userInfoSelector.name);
     }
   }, []);
+
+  const navigateToWinningsList = () => {
+    toWiningsList(navigation);
+  };
 
   const createContest = async () => {
     if (
@@ -75,8 +81,6 @@ export default function CreateTeamPage(props: PropTypes) {
       infoBox('Contest Created');
     }, 500);
     props.pageRef?.current?.setPage(1);
-
-    console.log(obj);
   };
 
   return (
@@ -95,6 +99,7 @@ export default function CreateTeamPage(props: PropTypes) {
           setAllowMultiple={setAllowMultiple}
           perUserTeam={perUserTeam}
           setPerUserTeam={setPerUserTeam}
+          navigateToWinningsList={navigateToWinningsList}
         />
         <TouchableOpacity onPress={createContest} style={[tailwind('m-4')]}>
           <ButtonComponent text={'CREATE & EARN Rs.2,00,000'} />

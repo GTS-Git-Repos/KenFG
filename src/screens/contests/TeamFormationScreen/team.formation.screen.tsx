@@ -7,7 +7,6 @@ import TopBarCreateTeam from './atoms/TopBarCreateTeam';
 import MatchStatus from './atoms/MatchStatus';
 import TeamInfo from './molecules/TeamInfo';
 import SelectionIndicator from './atoms/SelectionIndicator';
-import Line from './atoms/Line';
 import BottomAction from './molecules/BottomAction';
 import Page from './molecules/Page';
 import {Modalize} from 'react-native-modalize';
@@ -19,8 +18,7 @@ import {
 import {useSelector, useDispatch} from 'react-redux';
 import {errorBox} from '../../../utils/snakBars';
 import ClearTeamSheet from './atoms/ClearTeamSheet';
-import CreateTeamFilterSheetTitle from './atoms/CreateTeamFilterSheetTitle';
-import PlayerFilterSheet from './molecules/PlayerFilterSheet';
+import FilterByTeamSheet from './atoms/filterByTeam.teamformationSheet';
 import ScrollTabs from './molecules/ScrollTabs';
 import {log} from '../../../utils/logs';
 
@@ -29,7 +27,12 @@ interface PropTypes {
   rolesCount: any;
   creditsLeft: number;
   match: any;
-  countDown:any,
+  countDown: any;
+  filterSheet: any;
+  filters: any;
+  sortByLowCredits: boolean;
+  setSortByLowCredits(bool: boolean): any;
+  setFilter(team_key: string): any;
   navigateToCapSelection(): any;
   navigateToTeamPreviewScreeen(): any;
 }
@@ -38,7 +41,6 @@ export default function TeamFormationScreen(props: PropTypes) {
   const pageRef = useRef<PagerView>(null);
   const clearRef = useRef<any>(null);
   const dispatch = useDispatch();
-  const filterSheet = useRef<Modalize>();
 
   const ErrorMessageState: any = useSelector<any>(
     state => state.team.error_message,
@@ -69,13 +71,13 @@ export default function TeamFormationScreen(props: PropTypes) {
     clearRef?.current?.close();
   };
 
+
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarCreateTeam countDown={props.countDown} />
       <LinearGradient colors={['#172338', '#0D1320']}>
         <LinearGradient colors={['#172338', '#0D1320']}>
           <MatchStatus text={'MAX 7 PLAYERS FROM A TEAM'} />
-          <Line />
 
           <TeamInfo
             teamname1={props.match.team_a}
@@ -85,7 +87,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             credits_left={props.creditsLeft}
           />
         </LinearGradient>
-        <Line />
+
         <SelectionIndicator
           clearRef={clearRef}
           count={
@@ -107,11 +109,15 @@ export default function TeamFormationScreen(props: PropTypes) {
       <PagerView
         ref={pageRef}
         onPageSelected={onPageSelectedAction}
+        offscreenPageLimit={2}
         style={{flex: 1}}
         initialPage={0}>
         <View>
           <Page
-            filterSheet={filterSheet}
+            sortByLowCredits={props.sortByLowCredits}
+            setSortByLowCredits={props.setSortByLowCredits}
+            filterSheet={props.filterSheet}
+            filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
             id={'wkt'}
             title={'Select 1-4 Wicket Keepers'}
@@ -119,12 +125,16 @@ export default function TeamFormationScreen(props: PropTypes) {
             rolesCountSelector={props.rolesCount}
             index={0}
             activeIndex={activeIndex}
-            team_a={props.match.team_a}
+            team_a_key={props.match.team_a}
+            team_b_key={props.match.team_b}
           />
         </View>
         <View>
           <Page
-            filterSheet={filterSheet}
+            sortByLowCredits={props.sortByLowCredits}
+            setSortByLowCredits={props.setSortByLowCredits}
+            filterSheet={props.filterSheet}
+            filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
             id={'bat'}
             title={'Select 3-6 Batters'}
@@ -132,12 +142,16 @@ export default function TeamFormationScreen(props: PropTypes) {
             rolesCountSelector={props.rolesCount}
             index={1}
             activeIndex={activeIndex}
-            team_a={props.match.team_a}
+            team_a_key={props.match.team_a}
+            team_b_key={props.match.team_b}
           />
         </View>
         <View>
           <Page
-            filterSheet={filterSheet}
+            sortByLowCredits={props.sortByLowCredits}
+            setSortByLowCredits={props.setSortByLowCredits}
+            filterSheet={props.filterSheet}
+            filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
             id={'ar'}
             title={'Select 1-4 All Rounders'}
@@ -145,12 +159,16 @@ export default function TeamFormationScreen(props: PropTypes) {
             rolesCountSelector={props.rolesCount}
             index={2}
             activeIndex={activeIndex}
-            team_a={props.match.team_a}
+            team_a_key={props.match.team_a}
+            team_b_key={props.match.team_b}
           />
         </View>
         <View>
           <Page
-            filterSheet={filterSheet}
+            sortByLowCredits={props.sortByLowCredits}
+            setSortByLowCredits={props.setSortByLowCredits}
+            filterSheet={props.filterSheet}
+            filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
             id={'bwl'}
             title={'Select 3-6 Bowlers'}
@@ -158,7 +176,8 @@ export default function TeamFormationScreen(props: PropTypes) {
             rolesCountSelector={props.rolesCount}
             index={3}
             activeIndex={activeIndex}
-            team_a={props.match.team_a}
+            team_a_key={props.match.team_a}
+            team_b_key={props.match.team_b}
           />
         </View>
       </PagerView>
@@ -180,15 +199,22 @@ export default function TeamFormationScreen(props: PropTypes) {
         <ClearTeamSheet clearTeam={clearTeam} clearRef={clearRef} />
       </Modalize>
 
+      {/* {console.log(props.match)} */}
+
       <Modalize
-        ref={filterSheet}
+        ref={props.filterSheet}
         useNativeDriver={true}
         modalTopOffset={100}
-        adjustToContentHeight={true}
-        HeaderComponent={
-          <CreateTeamFilterSheetTitle filterSheet={filterSheet} />
-        }>
-        <PlayerFilterSheet />
+        adjustToContentHeight={true}>
+        <FilterByTeamSheet
+          filterSheet={props.filterSheet}
+          team_a_key={props.match.team_a}
+          team_b_key={props.match.team_b}
+          team_a_name={props.match.team_a_name}
+          team_b_name={props.match.team_b_name}
+          filters={props.filters}
+          setFilter={props.setFilter}
+        />
       </Modalize>
     </View>
   );

@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/core';
 import React from 'react';
+import {Alert} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {joinContestRequestAction} from '../../../store/actions/appActions';
 import {selectedMatch, userInfo} from '../../../store/selectors';
@@ -17,8 +18,12 @@ export default function PrivateContestCreateHOC() {
 
   const {teams} = useGetTeams(matchSelector.match_key, userSelector.mobile);
 
+ 
+
   function joinRequestPrivateContest(contest_key: string) {
     try {
+      Alert.alert('Need to change', 'joinRequestPrivateContest');
+      return;
       const contest = contests.find((item: any) => item.pc_id === contest_key);
       if (!contests) {
         throw 'no contest found';

@@ -79,11 +79,6 @@ export default function RootNavigation() {
           />
 
           <RootNavigator.Screen
-            component={CreateContestScreen}
-            name="CreateContestScreen"
-          />
-
-          <RootNavigator.Screen
             component={NotificationScreen}
             name="NotificationScreen"
           />

@@ -35,7 +35,7 @@ import {
   isMatchTimeExhausted,
   isWalletHaveContestAmount,
 } from '../../../utils/comman';
-import {navigateToTeamFormationWith_AutoJoin} from '../../../store/actions/navigationActions';
+import {navigateWith_AutoJoin} from '../../../store/actions/navigationActions';
 
 const log = console.log;
 
@@ -118,20 +118,12 @@ export default function ContestListScreen(props: PropTypes) {
         errorBox('Time Exhausted');
         return;
       }
-      if (props.teams?.length > 0) {
-        navigation.navigate('TeamSelectionScreen');
-      } else {
-        navigateToTeamFormationWith_AutoJoin(navigation, {
-          contestKey: contest.key,
-          entryAmount: contest.entry,
-          maxTeam: contest.max_entry,
-        });
-        return;
 
-        navigation.navigate('TeamFormationScreen', {
-          mutation: false,
-        });
-      }
+      navigateWith_AutoJoin(navigation, props.teams.length, {
+        contestKey: contest.key,
+        entryAmount: contest.entry,
+        maxTeam: contest.max_entry,
+      });
     } catch (err) {
       console.log('proceedToJoin', err);
       errorBox('Unhandled Error');

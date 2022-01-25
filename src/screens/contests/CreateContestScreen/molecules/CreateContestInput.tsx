@@ -19,6 +19,7 @@ interface PropTypes {
   setAllowMultiple(input: any): any;
   perUserTeam: string;
   setPerUserTeam(input: any): any;
+  navigateToWinningsList(): any;
 }
 
 export default function CreateContestInput(props: PropTypes) {
@@ -55,12 +56,13 @@ export default function CreateContestInput(props: PropTypes) {
             isNumber={true}
             onChangeText={props.setWinners}
           />
-          <Text
-            style={[
-              tailwind('font-bold text-right pt-2 text-green-600 font-14'),
-            ]}>
-            View Winnings & Leaderboard
-          </Text>
+          <TouchableOpacity
+            style={[tailwind('flex-row justify-end pt-2')]}
+            onPress={props.navigateToWinningsList}>
+            <Text style={[tailwind('font-bold text-green-600 font-14')]}>
+              View Winnings & Leaderboard
+            </Text>
+          </TouchableOpacity>
         </View>
         <AllowMultipleTeam
           selected={props.allowMultiple}

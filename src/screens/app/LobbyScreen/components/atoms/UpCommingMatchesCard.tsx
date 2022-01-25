@@ -20,6 +20,7 @@ import {addSeconds, differenceInSeconds, format} from 'date-fns';
 import {subSeconds} from 'date-fns/esm';
 import {getCountDown} from '../../../../../utils/formatters';
 import FastImage from 'react-native-fast-image';
+import {navigateMatchContestsAction} from '../../../../../store/actions/navigationActions';
 const log = console.log;
 
 interface PropTypes {
@@ -92,24 +93,28 @@ export default function UpcommingMatches(props: PropTypes) {
     // };
   }, []);
 
-  const navigateToContestList = () => {
-    dispatch(updateSelectedContestAction(null));
-    dispatch(
-      updateSelectedMatchAction({
-        match_key: props.match_key,
-        name: props.tournament_name,
-        team_a: props.team_a_name,
-        team_b: props.team_b_name,
-        start_at: props.start_at,
-      }),
-    );
-    navigation.navigate('Contest');
-  };
+  // const navigateToContestList = () => {
+  //   console.log(props);
+
+  //   console.log({
+  //     match_key: props.match_key,
+  //     name: props.tournament_name,
+  //     team_a: props.team_a_name,
+  //     team_b: props.team_b_name,
+  //     start_at: props.start_at,
+  //   });
+
+  //   return;
+  //   navigateMatchContestsAction(navigation);
+  //   return;
+  //   dispatch(updateSelectedContestAction(null));
+
+  //   dispatch(updateSelectedMatchAction());
+  //   navigation.navigate('Contest');
+  // };
 
   return (
-    <TouchableOpacity
-      onPress={navigateToContestList}
-      style={[tailwind('p-1'), {flex: 6}]}>
+    <View style={[tailwind('p-1'), {flex: 6}]}>
       <View
         style={[
           tailwind('bg-primary  border border-gray-800 rounded px-2'),
@@ -171,7 +176,7 @@ export default function UpcommingMatches(props: PropTypes) {
           </Text>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
 

@@ -1,9 +1,7 @@
 import React from 'react';
-import tailwind from '../../../../../tailwind';
+import tailwind from '../../../tailwind';
 import {View, Text} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import {BottomLine, RankIcon} from '../../../../sharedComponents';
-// import Icon from 'react-native-vector-icons/Ionicons';
+import {RankIcon} from '../';
 
 interface PropTypes {
   rank: string;
@@ -33,9 +31,6 @@ export default function WinningListRankings(props: PropTypes) {
           </Text>
         </View>
       </View>
-      {/* <View style={[tailwind('pt-3')]}>
-        <BottomLine />
-      </View> */}
     </View>
   );
 }

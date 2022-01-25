@@ -21,8 +21,7 @@ import {
   userWalletAmount,
 } from '../../../store/selectors';
 import {useGetTeams} from '../ContestListScreen/contest.workers';
-import {joinContestRequestAction} from '../../../store/actions/appActions';
-import {navigateToTeamFormationWith_AutoJoin} from '../../../store/actions/navigationActions';
+import {navigateWith_AutoJoin} from '../../../store/actions/navigationActions';
 
 export default function ContestInfoScreen() {
   const navigation = useNavigation<any>();
@@ -70,7 +69,7 @@ export default function ContestInfoScreen() {
   console.log(contestInfo);
 
   const proceedToJoin = () => {
-    navigateToTeamFormationWith_AutoJoin(navigation, {
+    navigateWith_AutoJoin(navigation, 0, {
       contestKey: contestInfo.key,
       entryAmount: contestInfo.entry,
       maxTeam: contestInfo.max_entry,
