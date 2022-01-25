@@ -12,6 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import {
+  NoContentShared,
   ReferPeopleIcon,
   ShareIcon,
   SocialMediaShare,
@@ -19,16 +20,33 @@ import {
 import ShareWebLink from './ShareWebLink';
 
 interface PropTypes {
+  pagerRef: any;
   activeIndex: number;
 }
 
 export default function ShareContestPage(props: PropTypes) {
   
+  function actionPress() {
+    props?.pagerRef?.current?.setPage(0);
+  }
+
   const moreShareBtn = async () => {
     const result = await Share.share({
       message: 'Share this Contest',
     });
   };
+
+  if (true) {
+    return (
+      <NoContentShared
+        loading={false}
+        text={'No Contests to share'}
+        subtext="You did't create any contests yet"
+        actionText={'Create a Contest'}
+        actionPress={actionPress}
+      />
+    );
+  }
 
   return (
     <ScrollView contentContainerStyle={[tailwind('bg-dark-3 px-4 py-4 ')]}>

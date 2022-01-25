@@ -28,7 +28,7 @@ interface PropTypes {
 
 export default function PrivateContestCreateScreen(props: PropTypes) {
   const {width} = useWindowDimensions();
-  const pageRef = useRef(null);
+  const pagerRef = useRef(null);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [canCreateContest, setCanCreateContest] = useState(true);
@@ -40,7 +40,7 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
     setActiveIndex(e.nativeEvent.position);
   };
   const onTabPressed = (index: number) => {
-    pageRef.current?.setPage(index);
+    pagerRef.current?.setPage(index);
   };
 
   if (!canCreateContest) {
@@ -64,19 +64,19 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
       />
 
       <PagerView
-        ref={pageRef}
+        ref={pagerRef}
         onPageSelected={onPageSelectedAction}
         style={{flex: 1}}
         initialPage={0}>
         <View style={[{width: width}]}>
           <CreateTeamPage
             activeIndex={activeIndex}
-            pageRef={pageRef}
+            pagerRef={pagerRef}
             refetch={props.refetch}
           />
         </View>
         <View style={[{width: width}]}>
-          <ShareContestPage activeIndex={activeIndex} />
+          <ShareContestPage activeIndex={activeIndex} pagerRef={pagerRef} />
         </View>
         <View style={[{width: width}]}>
           <JoinPrivateContest

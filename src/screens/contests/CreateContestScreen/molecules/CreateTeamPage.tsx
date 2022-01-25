@@ -15,7 +15,7 @@ import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   activeIndex: number;
-  pageRef: any;
+  pagerRef: any;
 }
 
 export default function CreateTeamPage(props: PropTypes) {
@@ -80,32 +80,34 @@ export default function CreateTeamPage(props: PropTypes) {
     setTimeout(() => {
       infoBox('Contest Created');
     }, 500);
-    props.pageRef?.current?.setPage(1);
+    props.pagerRef?.current?.setPage(1);
   };
 
   return (
-    <ScrollView keyboardShouldPersistTaps="handled">
-      <View style={[tailwind('my-2')]}>
-        <CreateContestInput
-          contestName={contestName}
-          setContestName={setContestName}
-          allowedTeams={allowedTeams}
-          setAllowedTeams={setAllowedTeams}
-          entryFee={entryFee}
-          setEntryFee={setEntryFee}
-          winners={winners}
-          setWinners={setWinners}
-          allowMultiple={allowMultiple}
-          setAllowMultiple={setAllowMultiple}
-          perUserTeam={perUserTeam}
-          setPerUserTeam={setPerUserTeam}
-          navigateToWinningsList={navigateToWinningsList}
-        />
-        <TouchableOpacity onPress={createContest} style={[tailwind('m-4')]}>
-          <ButtonComponent text={'CREATE & EARN Rs.2,00,000'} />
-        </TouchableOpacity>
-      </View>
-      {loading && <BlockScreenByLoading />}
-    </ScrollView>
+    <View style={[tailwind('h-full')]}>
+      <ScrollView keyboardShouldPersistTaps="handled">
+        <View style={[tailwind('my-2')]}>
+          <CreateContestInput
+            contestName={contestName}
+            setContestName={setContestName}
+            allowedTeams={allowedTeams}
+            setAllowedTeams={setAllowedTeams}
+            entryFee={entryFee}
+            setEntryFee={setEntryFee}
+            winners={winners}
+            setWinners={setWinners}
+            allowMultiple={allowMultiple}
+            setAllowMultiple={setAllowMultiple}
+            perUserTeam={perUserTeam}
+            setPerUserTeam={setPerUserTeam}
+            navigateToWinningsList={navigateToWinningsList}
+          />
+        </View>
+        {loading && <BlockScreenByLoading />}
+      </ScrollView>
+      <TouchableOpacity onPress={createContest} style={[tailwind('m-4')]}>
+        <ButtonComponent text={'CREATE & EARN Rs.2,00,000'} />
+      </TouchableOpacity>
+    </View>
   );
 }

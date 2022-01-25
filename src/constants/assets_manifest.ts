@@ -95,6 +95,7 @@ export default {
   createContestBanner: require('../assets/images/createContestBanner.png'),
   shareToFriends: require('../assets/images/shareToFriends.png'),
   stadium: require('../assets/images/stadium.png'),
+  stadium_2: require('../assets/images/stadium_2.png'),
   coin: require('../assets/images/coin.png'),
 
   // flags

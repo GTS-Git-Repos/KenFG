@@ -3,6 +3,8 @@ import tailwind from '../../../../../tailwind';
 import {View, Text, ActivityIndicator} from 'react-native';
 import PrivateContestCard from './private.contest.card';
 import {FlatList} from 'react-native-gesture-handler';
+import {NoContentShared} from '../../../../sharedComponents';
+import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   activeIndex: number;
@@ -13,18 +15,27 @@ interface PropTypes {
 }
 
 export default function JoinedContestListPage(props: PropTypes) {
+  const navigation = useNavigation();
+
+  function actionPress() {
+    navigation.goBack();
+  }
+
   if (props.contestAPILive) {
     return <ActivityIndicator color="#d1b45a" size="large" />;
   }
   if (props.contestsAPI && (!props.contests || props.contests?.length === 0)) {
     return (
-      <Text
-        style={[tailwind('font-regular p-3 text-center text-dark-1 font-15')]}>
-        No Private Contests Found
-      </Text>
+      <NoContentShared
+        loading={false}
+        text={'No Private contests are available'}
+        subtext="There is no contests are available to join"
+        actionText={'Back to Contests'}
+        actionPress={actionPress}
+      />
     );
   }
-  // console.log(JSON.stringify(props.contests));
+  console.log(JSON.stringify(props.contests));
 
   return (
     <View style={[tailwind('m-2 bg-dark')]}>
@@ -34,16 +45,17 @@ export default function JoinedContestListPage(props: PropTypes) {
           return (
             <PrivateContestCard
               contest_key={''}
-              contest_name={''}
-              hosted_by={''}
-              entry_amount={''}
-              price_amount={''}
-              max_entry={''}
+              contest_name={item.title}
+              hosted_by={item.host}
+              entry_amount={item.entry}
+              price_amount={item.prize.amount}
+              amount_in_letters={item.prize.amount_letters}
+              max_entry={item.max_entry}
               joinRequestPrivateContest={props.joinRequestPrivateContest}
             />
           );
         }}
-        keyExtractor={item => item.pc_id}
+        keyExtractor={item => item.key}
       />
     </View>
   );

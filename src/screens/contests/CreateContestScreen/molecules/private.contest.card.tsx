@@ -17,6 +17,7 @@ interface PropTypes {
   entry_amount: string;
   price_amount: string;
   max_entry: string;
+  amount_in_letters: string;
   joinRequestPrivateContest(team_key: string): any;
 }
 
@@ -36,7 +37,10 @@ export default function PrivateContestCard(props: PropTypes) {
         />
         <ProgressBar />
       </View>
-      <Footer max_entry={props.max_entry} />
+      <Footer
+        amount_in_letters={props.amount_in_letters}
+        max_entry={props.max_entry}
+      />
     </View>
   );
 }
@@ -127,7 +131,7 @@ const Footer = (props: any) => {
             <DollarIcon />
             <Text style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
               {'\u20B9 '}
-              25 lacks
+              {props.amount_in_letters}
             </Text>
           </View>
 
