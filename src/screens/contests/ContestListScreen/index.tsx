@@ -28,7 +28,7 @@ export default function ContestListHOC() {
   const route = useRoute<any>();
 
   const [showJoinModal, setShowJoinModal] = useState(false);
-  const [loading, setLoading] = useState<any>(false);
+  const [loading, setLoading] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);

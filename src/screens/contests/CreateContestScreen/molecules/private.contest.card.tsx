@@ -20,10 +20,11 @@ interface PropTypes {
   max_entry: string;
   amount_in_letters: string;
   onPressContestCard(contest_key: string): any;
-  joinRequestPrivateContest(team_key: string): any;
+  joinContest(team_key: string): any;
 }
 
 export default function PrivateContestCard(props: PropTypes) {
+  
   return (
     <TouchableOpacity
       activeOpacity={0.5}
@@ -37,7 +38,7 @@ export default function PrivateContestCard(props: PropTypes) {
         />
         <JoinContest
           contest_key={props.contest_key}
-          joinRequestPrivateContest={props.joinRequestPrivateContest}
+          joinContest={props.joinContest}
           amount={props.entry_amount}
         />
         <ProgressbarShared spots={'5000'} left={'100'} />
@@ -78,7 +79,7 @@ const JoinContest = (props: any) => {
       </Text>
 
       <TouchableOpacity
-        onPress={() => props.joinRequestPrivateContest(props.contest_key)}
+        onPress={() => props.joinContest(props.contest_key)}
         style={[
           tailwind('rounded px-4 py-1'),
           {

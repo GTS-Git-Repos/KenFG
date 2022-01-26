@@ -5,18 +5,23 @@ import {useDispatch, useSelector} from 'react-redux';
 import {joinContestRequestAction} from '../../../store/actions/appActions';
 import {selectedMatch, userInfo} from '../../../store/selectors';
 import PrivateContestCreateScreen from './private.contest.create.screen';
-import {useGetTeams, usePrivateContestList} from './private.contest.workers';
+import {usePrivateContestList} from './private.contest.workers';
+import {useGetTeams} from '../../../shared_hooks/contest.hooks';
+import { toTeamFormationWithAutoJoin } from '../../../store/actions/navigationActions';
 
 export default function PrivateContestCreateHOC() {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
+  const {teams}:any= useGetTeams(matchSelector.match_key, userSelector.mobile);
+
+
 
   const {contests, contestsAPI, contestAPILive, refetch} =
     usePrivateContestList(matchSelector.match_key, userSelector.mobile);
 
-  const {teams} = useGetTeams(matchSelector.match_key, userSelector.mobile);
+
 
   function onPressContestCard(contest_key:string){
     console.log(1); 
@@ -26,32 +31,17 @@ export default function PrivateContestCreateHOC() {
     console.log(1); 
   }
 
-  function joinRequestPrivateContest(contest_key: string) {
-    try {
-      Alert.alert('Need to change', 'joinRequestPrivateContest');
-      return;
-      const contest = contests.find((item: any) => item.pc_id === contest_key);
-      if (!contests) {
-        throw 'no contest found';
-      }
-      // initiate join contest action
-      dispatch(
-        joinContestRequestAction({
-          contestKey: contest.pc_id,
-          entryAmount: contest.entry_fee,
-          maxTeam: contest.n_teams,
-        }),
-      );
-      if (teams.length > 1) {
-        navigation.navigate('TeamSelectionScreen');
-      } else {
-        navigation.navigate('TeamFormationScreen', {
-          mutation: false,
-        });
-      }
-    } catch (err) {
-      console.log('joinRequestPrivateContest err ->', err);
+  function joinContest(contest_key: string) {
+    const contest = contests.find((item:any)=>item.key === contest_key)
+    if(contest){
+      // console.log(contest);
+      toTeamFormationWithAutoJoin(navigation,teams.length,{
+        contestKey: contest_key,
+        entryAmount: contest.entry,
+        maxTeam:contest.max_entry
+      })
     }
+    return
   }
 
   return (
@@ -60,7 +50,7 @@ export default function PrivateContestCreateHOC() {
       contestsAPI={contestsAPI}
       contestAPILive={contestAPILive}
       refetch={refetch}
-      joinRequestPrivateContest={joinRequestPrivateContest}
+      joinContest={joinContest}
       wallet={userSelector.un_utilized}
       onPressContestCard={onPressContestCard}
       onPressContestShare={onPressContestShare}

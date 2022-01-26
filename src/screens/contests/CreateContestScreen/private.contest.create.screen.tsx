@@ -22,7 +22,7 @@ interface PropTypes {
   contestsAPI: any;
   contestAPILive: any;
   refetch(): any;
-  joinRequestPrivateContest(team_key: string): any;
+  joinContest(team_key: string): any;
   onPressContestShare(contest_key: string): any;
   onPressContestCard(contest_key: string): any;
   wallet: string;
@@ -86,7 +86,7 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
             contests={props.contests}
             contestsAPI={props.contestsAPI}
             contestAPILive={props.contestAPILive}
-            joinRequestPrivateContest={props.joinRequestPrivateContest}
+            joinContest={props.joinContest}
             onPressContestCard={props.onPressContestCard}
           />
         </View>

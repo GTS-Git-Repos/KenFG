@@ -53,6 +53,8 @@ interface PropTypes {
   to: any;
   showJoinModal: any;
   entryAmount: any;
+  loading:boolean,
+  setLoading(value:boolean):any,
   joinContestWithTeam(): any;
   setShowJoinModal(any: boolean): any;
   setSelectedTab(index: number): any;
@@ -68,7 +70,6 @@ export default function ContestListScreen(props: PropTypes) {
   const {width} = useWindowDimensions();
   const dispatch = useDispatch();
 
-  const [loading, setLoading] = useState<any>(false);
   const [selectedFilter, setSelectedFilter] = useState<any>('All');
   // const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
 
@@ -193,7 +194,7 @@ export default function ContestListScreen(props: PropTypes) {
           entryAmount={props.entryAmount}
         />
       </Modal>
-      {loading && <BlockScreenByLoading />}
+      {props.loading && <BlockScreenByLoading />}
     </View>
   );
 }

@@ -41,6 +41,9 @@ export const navigateWith_AutoJoin = (
   numberOfTeams: number,
   payload: JoinContestRequestShape,
 ) => {
+  console.log('DEPRECATED change to -> toTeamFormationWithAutoJoin');
+  
+
   // need to do,any one of the team can be free to join
   store.dispatch(joinContestRequestAction(payload));
   // console.log('numberOfTeams', numberOfTeams);
@@ -62,8 +65,39 @@ export const navigateWith_AutoJoin = (
   }
 };
 
-const navigateToTeamFormationWithOut_AutoJoin = () => {
-  return false;
+export const toTeamFormationWithAutoJoin = (
+  navigation: any,
+  numberOfTeams: number,
+  payload: JoinContestRequestShape,
+) => {
+  store.dispatch(joinContestRequestAction(payload));
+  if (numberOfTeams > 1) {
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'TeamSelectionScreen',
+      }),
+    );
+  } else {
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'TeamFormationScreen',
+        params: {
+          mutation: false,
+        },
+      }),
+    );
+  }
+};
+
+const toTeamFormationNoAutoJoin = (navigation:any) => {
+  navigation.dispatch(
+    CommonActions.navigate({
+      name: 'TeamFormationScreen',
+      params: {
+        mutation: false,
+      },
+    }),
+  );
 };
 
 export const toWiningsList = (navigation: any) => {

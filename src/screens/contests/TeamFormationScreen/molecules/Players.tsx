@@ -170,6 +170,6 @@ const styles = StyleSheet.create({
   },
   disabledUser: {
     backgroundColor: '#172338',
-    opacity: 0.6,
+    opacity: 0.5,
   },
 });

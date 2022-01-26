@@ -16,7 +16,9 @@ export default function EnterAmountAddCash(props: PropTypes) {
         Enter Amount
       </Text>
       <View
-        style={[tailwind('flex-row items-center my-2 border-b border-green')]}>
+        style={[
+          tailwind('flex-row items-center my-2 pb-1 border-b border-green'),
+        ]}>
         <Text
           style={[
             tailwind('font-bold text-white font-20'),
@@ -29,7 +31,7 @@ export default function EnterAmountAddCash(props: PropTypes) {
           keyboardType="number-pad"
           keyboardAppearance="dark"
           onChangeText={e => props.setAmount(e)}
-          style={[tailwind('p-0 px-1 flex-grow font-20 text-white font-bold')]}
+          style={[tailwind('p-0 px-2 flex-grow font-20 text-white font-bold')]}
         />
       </View>
       <View style={[tailwind('flex-row items-center pt-1')]}>

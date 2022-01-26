@@ -18,7 +18,7 @@ interface PropTypes {
   contestAPILive: any;
   contests: any;
   onPressContestCard(contest_key: string): any;
-  joinRequestPrivateContest(team_key: string): any;
+  joinContest(team_key: string): any;
 }
 
 export default function JoinedContestListPage(props: PropTypes) {
@@ -80,14 +80,14 @@ export default function JoinedContestListPage(props: PropTypes) {
         renderItem={({item}) => {
           return (
             <PrivateContestCard
-              contest_key={''}
+              contest_key={item.key}
               contest_name={item.title}
               hosted_by={item.host}
               entry_amount={item.entry}
               price_amount={item.prize.amount}
               amount_in_letters={item.prize.amount_letters}
               max_entry={item.max_entry}
-              joinRequestPrivateContest={props.joinRequestPrivateContest}
+              joinContest={props.joinContest}
               onPressContestCard={props.onPressContestCard}
             />
           );
