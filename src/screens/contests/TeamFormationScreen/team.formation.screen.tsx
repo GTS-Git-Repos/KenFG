@@ -36,6 +36,7 @@ interface PropTypes {
   setFilter(team_key: string): any;
   navigateToCapSelection(): any;
   navigateToTeamPreviewScreeen(): any;
+  onPressPlayerProfile(player_key: string,player_role:string): any;
 }
 
 export default function TeamFormationScreen(props: PropTypes) {
@@ -128,6 +129,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
+            onPressPlayerProfile={props.onPressPlayerProfile}
           />
         </View>
         <View>
@@ -146,6 +148,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
+            onPressPlayerProfile={props.onPressPlayerProfile}
           />
         </View>
         <View>
@@ -164,6 +167,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
+            onPressPlayerProfile={props.onPressPlayerProfile}
           />
         </View>
         <View>
@@ -182,6 +186,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
+            onPressPlayerProfile={props.onPressPlayerProfile}
           />
         </View>
       </PagerView>

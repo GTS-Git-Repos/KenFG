@@ -1,18 +1,11 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import assets from '../../../../constants/assets_manifest';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableOpacityBase,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
-import {BottomLine} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/core';
+import {toPlayerProfile} from '../../../../store/actions/navigationActions';
 
 interface PropTypes {
   player_key: string;
@@ -27,6 +20,7 @@ interface PropTypes {
   isTeam_a: boolean;
   status: number;
   checkPlayerSelection(player_key: string, player_role: string): void;
+  onPressPlayerProfile(player_key: string, player_role: string): any;
 }
 
 export default function Player(props: PropTypes) {
@@ -42,7 +36,9 @@ export default function Player(props: PropTypes) {
         ]}>
         {/* Image */}
         <TouchableOpacity
-          onPress={() => navigation.navigate('PlayerProfileScreen')}
+          onPress={() =>
+            props.onPressPlayerProfile(props.player_key, props.role)
+          }
           activeOpacity={0.5}
           style={[tailwind('ml-4'), {flex: 2}]}>
           <Image

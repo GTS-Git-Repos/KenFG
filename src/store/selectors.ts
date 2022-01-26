@@ -121,7 +121,6 @@ export const blockList = createSelector(
           const keys = all_players[0].keeper.map((item: any) => item.key);
           blockListPlayers.push(...keys);
         }
-        console.log('teams_count.batsman', teams_count.batsman);
 
         if (teams_count.batsman.must_need <= 0) {
           const keys = all_players[0].batsman.map((item: any) => item.key);
@@ -184,8 +183,8 @@ export const blockList = createSelector(
 
       return blockListPlayers;
     } catch (err) {
-      console.log(err);
-      return 0;
+      console.log('blockList --->', err);
+      return [];
     }
   },
 );

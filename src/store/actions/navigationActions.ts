@@ -78,3 +78,16 @@ export const toWiningsList = (navigation: any) => {
   );
   return true;
 };
+
+export const toPlayerProfile = (navigation: any, payload: any) => {
+  // from create contests to winnings list
+  navigation.dispatch(
+    CommonActions.navigate({
+      name: 'PlayerProfileScreen',
+      params: {
+        payload,
+      },
+    }),
+  );
+  return true;
+};

@@ -8,19 +8,21 @@ import {currentPlayerStatus} from '../../../../store/store_utils';
 
 interface PropTypes {
   sortByLowCredits: boolean;
-  setSortByLowCredits(bool: boolean): any;
   filterSheet: any;
   filters: any;
   id: string;
   title: string;
   data: [];
-  checkPlayerSelection(player_key: string, player_role: string): void;
   blockListPlayers: Array<string>;
   rolesCountSelector: any;
   index: number;
   activeIndex: number;
   team_a_key: string;
   team_b_key: string;
+  setSortByLowCredits(bool: boolean): any;
+  checkPlayerSelection(player_key: string, player_role: string): void;
+  onPressPlayerProfile(player_key: string,player_role:string): any;
+
 }
 
 export default function Page(props: PropTypes) {
@@ -102,6 +104,7 @@ export default function Page(props: PropTypes) {
               credits={item.credits}
               status={currentPlayerStatus(item.key, props.blockListPlayers)}
               checkPlayerSelection={props.checkPlayerSelection}
+              onPressPlayerProfile={props.onPressPlayerProfile}
             />
           );
         }}

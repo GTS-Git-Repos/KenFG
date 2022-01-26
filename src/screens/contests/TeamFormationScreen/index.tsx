@@ -24,6 +24,7 @@ import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
 import TeamFormationScreen from './team.formation.screen';
 import {useMatchPlayers} from './teamformation.workers';
 import {Modalize} from 'react-native-modalize';
+import {toPlayerProfile} from '../../../store/actions/navigationActions';
 const log = console.log;
 
 export default function TeamFormationHOC() {
@@ -46,12 +47,10 @@ export default function TeamFormationHOC() {
 
   const isScreenReady = useIsScreenReady();
 
-  const {players, playersAPI} = useMatchPlayers(
+  const {players, playersAPI}: any = useMatchPlayers(
     matchSelector.match_key,
     userSelector.mobile,
   );
-
-  // console.log('blockListPlayers', blockListPlayers);
 
   useEffect(() => {
     dispatch(updateErrorMsgAction(null));
@@ -60,7 +59,7 @@ export default function TeamFormationHOC() {
     if (route.params.mutation) {
       // log('TeamFormationParams -->', route.params.mutation);
     } else {
-      // dispatch(clearTeamAction());
+      dispatch(clearTeamAction());
     }
   }, []);
 
@@ -74,6 +73,15 @@ export default function TeamFormationHOC() {
     dispatch(updateTeamCountAction(rolesCountSelector));
     dispatch(updateCreditsAction(availableCredits));
   }, [selectedPlayers]);
+
+  const onPressPlayerProfile = (player_key: string, player_role: string) => {
+    const player = players[0][player_role].find(
+      (item: any) => item.key === player_key,
+    );
+    if (player) {
+      toPlayerProfile(navigation, player);
+    }
+  };
 
   const navigateToTeamPreviewScreeen = () => {
     // it neeeds to be changed
@@ -145,6 +153,7 @@ export default function TeamFormationHOC() {
       sortByLowCredits={sortByLowCredits}
       setSortByLowCredits={setSortByLowCredits}
       blockListPlayers={blockListPlayers}
+      onPressPlayerProfile={onPressPlayerProfile}
     />
   );
 }

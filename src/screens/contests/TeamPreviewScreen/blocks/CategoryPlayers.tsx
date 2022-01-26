@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {CIcon, VCIcon} from '../../../../sharedComponents';
@@ -12,6 +12,7 @@ interface PropTypes {
   title: string;
   players: any;
   team_a: string;
+  onPressPlayerProfile(player_key: string): any;
 }
 
 interface PlayerPropTypes {
@@ -22,6 +23,7 @@ interface PlayerPropTypes {
   isteam_a: boolean;
   isCaptain: boolean;
   isViceCaptain: boolean;
+  onPressPlayerProfile(player_key: string): any;
 }
 
 export default function CategoryPlayers(props: PropTypes) {
@@ -56,6 +58,7 @@ export default function CategoryPlayers(props: PropTypes) {
               amount={'8.4 crore'}
               isCaptain={props.cap_key === item.key}
               isViceCaptain={props.vc_key === item.key}
+              onPressPlayerProfile={props.onPressPlayerProfile}
             />
           );
         })}
@@ -66,7 +69,9 @@ export default function CategoryPlayers(props: PropTypes) {
 
 const PlayerProfile = (props: PlayerPropTypes) => {
   return (
-    <View style={[tailwind('flex-col px-2 items-center')]}>
+    <TouchableOpacity
+      onPress={() => props.onPressPlayerProfile(props.player_key)}
+      style={[tailwind('flex-col px-2 items-center')]}>
       <Image
         resizeMode="contain"
         source={assets.player}
@@ -87,7 +92,7 @@ const PlayerProfile = (props: PlayerPropTypes) => {
           <VCIcon white={true} />
         </View>
       )}
-    </View>
+    </TouchableOpacity>
   );
 };
 

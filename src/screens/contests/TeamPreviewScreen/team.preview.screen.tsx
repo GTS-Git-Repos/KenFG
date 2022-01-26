@@ -7,9 +7,13 @@ import assets from '../../../constants/assets_manifest';
 import MatchGroundTopBar from './atoms/MatchGroundTopar';
 import MatchStats from './atoms/MatchStats';
 import CategoryPlayers from './blocks/CategoryPlayers';
-import { log } from '../../../utils/logs';
+import {log} from '../../../utils/logs';
 
-export default function TeamPreViewScreen() {
+interface PropTypes {
+  onPressPlayerProfile(player_key: string): any;
+}
+
+export default function TeamPreViewScreen(props: PropTypes) {
   const route = useRoute<any>();
 
   useEffect(() => {
@@ -40,6 +44,7 @@ export default function TeamPreViewScreen() {
             cap_key={route.params.cap_key}
             vc_key={route.params.vc_key}
             team_a={route.params.team_a.key}
+            onPressPlayerProfile={props.onPressPlayerProfile}
           />
           <CategoryPlayers
             title={'BATS MEN'}
@@ -47,6 +52,7 @@ export default function TeamPreViewScreen() {
             cap_key={route.params.cap_key}
             vc_key={route.params.vc_key}
             team_a={route.params.team_a.key}
+            onPressPlayerProfile={props.onPressPlayerProfile}
           />
           <CategoryPlayers
             title={'ALL ROUNDERS'}
@@ -54,6 +60,7 @@ export default function TeamPreViewScreen() {
             cap_key={route.params.cap_key}
             vc_key={route.params.vc_key}
             team_a={route.params.team_a}
+            onPressPlayerProfile={props.onPressPlayerProfile}
           />
           <CategoryPlayers
             title={'BOWLERS'}
@@ -61,6 +68,7 @@ export default function TeamPreViewScreen() {
             cap_key={route.params.cap_key}
             vc_key={route.params.vc_key}
             team_a={route.params.team_a}
+            onPressPlayerProfile={props.onPressPlayerProfile}
           />
         </ImageBackground>
       </ScrollView>
