@@ -1,21 +1,56 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, ActivityIndicator} from 'react-native';
 import PrivateContestCard from './private.contest.card';
 import {FlatList} from 'react-native-gesture-handler';
+import SearchInput from './search.input.privatecontest';
 import {NoContentShared} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/core';
+import {searchContestsRemote} from '../../../../remote/matchesRemote';
+import {useMutation} from 'react-query';
+import {useSelector} from 'react-redux';
+import {selectedMatch} from '../../../../store/selectors';
+import {errorBox} from '../../../../utils/snakBars';
 
 interface PropTypes {
   activeIndex: number;
   contestsAPI: any;
   contestAPILive: any;
   contests: any;
+  onPressContestCard(contest_key: string): any;
   joinRequestPrivateContest(team_key: string): any;
 }
 
 export default function JoinedContestListPage(props: PropTypes) {
   const navigation = useNavigation();
+  const matchMeta: any = useSelector(selectedMatch);
+
+  // console.log(matchMeta);
+
+  const [contests, setContests] = useState([]);
+  const [input, setInput] = useState<any>('');
+
+  const searchContest = useMutation(searchContestsRemote, {
+    onSuccess: (data, variables, context) => {
+      console.log(data);
+    },
+    onError: error => {
+      errorBox('Failed, Please check your internet');
+    },
+  });
+
+  useEffect(() => {
+    if (props.contests) {
+      setContests(props.contests);
+    }
+  }, [props.contests]);
+
+  useEffect(() => {
+    searchContest.mutate({
+      match_key: matchMeta.match_key,
+      input: input,
+    });
+  }, [input]);
 
   function actionPress() {
     navigation.goBack();
@@ -35,12 +70,13 @@ export default function JoinedContestListPage(props: PropTypes) {
       />
     );
   }
-  console.log(JSON.stringify(props.contests));
+  // console.log(JSON.stringify(props.contests));
 
   return (
     <View style={[tailwind('m-2 bg-dark')]}>
+      <SearchInput input={input} setInput={setInput} />
       <FlatList
-        data={props.contests}
+        data={contests}
         renderItem={({item}) => {
           return (
             <PrivateContestCard
@@ -52,6 +88,7 @@ export default function JoinedContestListPage(props: PropTypes) {
               amount_in_letters={item.prize.amount_letters}
               max_entry={item.max_entry}
               joinRequestPrivateContest={props.joinRequestPrivateContest}
+              onPressContestCard={props.onPressContestCard}
             />
           );
         }}

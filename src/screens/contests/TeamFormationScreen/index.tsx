@@ -12,6 +12,7 @@ import {
 } from '../../../store/actions/teamActions';
 import {
   allSelecdtedPlayers,
+  blockList,
   creditLeft,
   rolesCount,
   selectedMatch,
@@ -36,6 +37,7 @@ export default function TeamFormationHOC() {
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
+  const blockListPlayers: any = useSelector(blockList);
   const countDown = useCountDown(matchSelector.start_at, false);
 
   const selectedPlayers: any = useSelector(allSelecdtedPlayers);
@@ -49,16 +51,16 @@ export default function TeamFormationHOC() {
     userSelector.mobile,
   );
 
-  // console.log('matchSelector', JSON.stringify(matchSelector));
+  // console.log('blockListPlayers', blockListPlayers);
 
   useEffect(() => {
     dispatch(updateErrorMsgAction(null));
     dispatch(updateTeamAction([matchSelector.team_a, matchSelector.team_b]));
 
     if (route.params.mutation) {
-      log('TeamFormationParams -->', route.params.mutation);
+      // log('TeamFormationParams -->', route.params.mutation);
     } else {
-      dispatch(clearTeamAction());
+      // dispatch(clearTeamAction());
     }
   }, []);
 
@@ -142,6 +144,7 @@ export default function TeamFormationHOC() {
       setFilter={setFilter}
       sortByLowCredits={sortByLowCredits}
       setSortByLowCredits={setSortByLowCredits}
+      blockListPlayers={blockListPlayers}
     />
   );
 }

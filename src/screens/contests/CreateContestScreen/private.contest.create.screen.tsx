@@ -23,6 +23,8 @@ interface PropTypes {
   contestAPILive: any;
   refetch(): any;
   joinRequestPrivateContest(team_key: string): any;
+  onPressContestShare(contest_key: string): any;
+  onPressContestCard(contest_key: string): any;
   wallet: string;
 }
 
@@ -85,6 +87,7 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
             contestsAPI={props.contestsAPI}
             contestAPILive={props.contestAPILive}
             joinRequestPrivateContest={props.joinRequestPrivateContest}
+            onPressContestCard={props.onPressContestCard}
           />
         </View>
       </PagerView>

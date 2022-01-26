@@ -9,6 +9,7 @@ import {
   MIcon,
   TickIcon,
 } from '../../../../sharedComponents';
+import {ProgressbarShared} from '../../../../sharedComponents';
 
 interface PropTypes {
   contest_key: string;
@@ -18,12 +19,16 @@ interface PropTypes {
   price_amount: string;
   max_entry: string;
   amount_in_letters: string;
+  onPressContestCard(contest_key: string): any;
   joinRequestPrivateContest(team_key: string): any;
 }
 
 export default function PrivateContestCard(props: PropTypes) {
   return (
-    <View style={[tailwind('mb-2 rounded-lg')]}>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={() => props.onPressContestCard(props.contest_key)}
+      style={[tailwind('mb-2 rounded-lg')]}>
       <View style={[tailwind('p-3 bg-dark-3')]}>
         <ContestMetaSection
           contest_name={props.contest_name}
@@ -35,13 +40,13 @@ export default function PrivateContestCard(props: PropTypes) {
           joinRequestPrivateContest={props.joinRequestPrivateContest}
           amount={props.entry_amount}
         />
-        <ProgressBar />
+        <ProgressbarShared spots={'5000'} left={'100'} />
       </View>
       <Footer
         amount_in_letters={props.amount_in_letters}
         max_entry={props.max_entry}
       />
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -87,36 +92,6 @@ const JoinContest = (props: any) => {
           Join
         </Text>
       </TouchableOpacity>
-    </View>
-  );
-};
-
-const ProgressBar = () => {
-  return (
-    <View>
-      <View
-        style={[
-          tailwind('w-full rounded'),
-          {height: 2.5, backgroundColor: '#8797B14D'},
-        ]}>
-        <View
-          style={[
-            tailwind('w-full'),
-            {
-              backgroundColor: '#B2933D',
-              width: `10%`,
-              height: 2.5,
-            },
-          ]}></View>
-      </View>
-      <View style={[tailwind('flex-row justify-between items-center pt-3')]}>
-        <Text style={[tailwind('font-regular text-secondary font-14')]}>
-          12442 spots left
-        </Text>
-        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-          2352 Spots
-        </Text>
-      </View>
     </View>
   );
 };

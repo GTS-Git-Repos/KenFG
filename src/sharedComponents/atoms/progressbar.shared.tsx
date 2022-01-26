@@ -10,7 +10,7 @@ interface PropTypes {
 export default function ProgressBarShared(props: PropTypes) {
   return (
     <View>
-      <View style={[tailwind('mt-3 mb-2')]}>
+      <View style={[tailwind('my-2')]}>
         <View style={[{backgroundColor: '#8797B14D', height: 2.5}]}>
           <View
             style={[

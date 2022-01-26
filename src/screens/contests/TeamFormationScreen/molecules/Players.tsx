@@ -32,16 +32,13 @@ interface PropTypes {
 export default function Player(props: PropTypes) {
   const navigation = useNavigation<any>();
 
-  
-
   return (
     <View>
       <View
         style={[
           tailwind('pt-3 flex-row border-b bg-dark-3 border-gray-800'),
-
-          props.status === 0 ? styles.selectedUser : {},
-          // props.status === -1 ? styles.disabledUser : {},
+          props.status === 0 && styles.selectedUser,
+          props.status === -1 && styles.disabledUser,
         ]}>
         {/* Image */}
         <TouchableOpacity
@@ -54,6 +51,7 @@ export default function Player(props: PropTypes) {
             style={[tailwind(''), {height: 62, width: 70}]}
           />
           <TeamBadge name={props.teamname} team_a={props.isTeam_a} />
+          {/* For Debug */}
           {/* <Text
             style={[
               tailwind('font-regular text-white font-15 absolute inset-0'),

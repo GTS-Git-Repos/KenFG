@@ -5,10 +5,12 @@ import {
   PLAYER_CAN_BE_SELECTED,
   PLAYER_DISABLED,
 } from '../constants/appContants';
+import {errorBox} from '../utils/snakBars';
 const log = console.log;
 
 export function isPlayerSelected(player_key: string) {
   // DEPRECATED
+  errorBox('DEPRECATED isPlayerSelected ');
   const state = store.getState().team;
   const player = state.players.find((item: any) => item.key === player_key);
   if (player) {
@@ -20,40 +22,22 @@ export function isPlayerSelected(player_key: string) {
 
 export function currentPlayerStatus(
   player_key: string,
-  seasonal_role: string,
-  team_key: string,
-): number {
-  try {
-    const {all_players, players, credits_left, team_count} =
-      store.getState().team;
-    const isExists = players.find((item: any) => item.key === player_key);
-    // is player already selected
-    if (isExists) {
-      return PLAYER_ALREADY_SELECTED;
-    }
-    // is 11 players is selected
-    if (players.length === 11) {
-      throw '11 Players selected Tap Continue';
-    }
-    // is one of the team reaches it's maximum
-    const teamsSlot = players.filter(
-      (item: any) => item.team_key === team_key,
-    ).length;
-    if (teamsSlot >= 7) {
-      throw 'Maximum 7 members only per team';
-    }
-    // is credits not enough
-    const inputPlayer = all_players[0][seasonal_role].find(
-      (item: any) => item.key === player_key,
-    );
-    if (inputPlayer.credits > credits_left) {
-      throw 'Credits not enough';
-    }
-
-    return PLAYER_CAN_BE_SELECTED;
-  } catch (err) {
-    console.log(err);
+  blockListPlayers: Array<string>,
+) {
+  // is player already selected
+  const {players} = store.getState().team;
+  const isExists = players.find((item: any) => item.key === player_key);
+  if (isExists) {
+    return PLAYER_ALREADY_SELECTED;
+  }
+  // is in blocklist
+  const isInBlocklist = blockListPlayers.find(
+    (item: any) => item === player_key,
+  );
+  if (isInBlocklist) {
     return PLAYER_DISABLED;
+  } else {
+    return PLAYER_CAN_BE_SELECTED;
   }
 }
 
@@ -82,10 +66,6 @@ export function isPlayerCaptain(player_key: string) {
     return false;
   }
 }
-
-const isAnyRuleReachesMin = () => {
-  return;
-};
 
 export function isPlayerViceCaptain(player_key: string) {
   const state = store.getState().team;

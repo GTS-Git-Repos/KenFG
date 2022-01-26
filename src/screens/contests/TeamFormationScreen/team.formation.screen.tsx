@@ -31,6 +31,7 @@ interface PropTypes {
   filterSheet: any;
   filters: any;
   sortByLowCredits: boolean;
+  blockListPlayers: Array<string>;
   setSortByLowCredits(bool: boolean): any;
   setFilter(team_key: string): any;
   navigateToCapSelection(): any;
@@ -70,7 +71,6 @@ export default function TeamFormationScreen(props: PropTypes) {
     dispatch(clearTeamAction());
     clearRef?.current?.close();
   };
-
 
   return (
     <View style={tailwind('bg-dark h-full')}>
@@ -127,6 +127,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             activeIndex={activeIndex}
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
+            blockListPlayers={props.blockListPlayers}
           />
         </View>
         <View>
@@ -144,6 +145,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             activeIndex={activeIndex}
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
+            blockListPlayers={props.blockListPlayers}
           />
         </View>
         <View>
@@ -161,6 +163,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             activeIndex={activeIndex}
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
+            blockListPlayers={props.blockListPlayers}
           />
         </View>
         <View>
@@ -178,6 +181,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             activeIndex={activeIndex}
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
+            blockListPlayers={props.blockListPlayers}
           />
         </View>
       </PagerView>

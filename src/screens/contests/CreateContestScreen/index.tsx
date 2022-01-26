@@ -18,7 +18,13 @@ export default function PrivateContestCreateHOC() {
 
   const {teams} = useGetTeams(matchSelector.match_key, userSelector.mobile);
 
- 
+  function onPressContestCard(contest_key:string){
+    console.log(1); 
+  }
+
+  function onPressContestShare(contest_key:string){
+    console.log(1); 
+  }
 
   function joinRequestPrivateContest(contest_key: string) {
     try {
@@ -56,6 +62,8 @@ export default function PrivateContestCreateHOC() {
       refetch={refetch}
       joinRequestPrivateContest={joinRequestPrivateContest}
       wallet={userSelector.un_utilized}
+      onPressContestCard={onPressContestCard}
+      onPressContestShare={onPressContestShare}
     />
   );
 }

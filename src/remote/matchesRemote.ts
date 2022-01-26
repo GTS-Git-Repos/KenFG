@@ -28,6 +28,7 @@ const req_create_contest = '/create-private-contest.php';
 const req_get_private_contest = '/private-contest.php';
 const req_matches = '/completed-matches.php';
 const req_edit_team = '/edit-team.php';
+const req_search_contest = '/search-contest.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -86,8 +87,28 @@ export const contestListsRemote = async (params: any) => {
   }
 };
 
+export const searchContestsRemote = async (payload: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.GET,
+      BASE_URL +
+        `${req_search_contest}?m=${payload.match_key}&s=${payload.input}`,
+    );
+    if (response.status === 200) {
+      return response.data.data;
+    } else {
+      failedLog('searchContestsRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
 export const contestInfoRemote = async (params: any) => {
   // DEPRECATED
+  console.log('DEPRECATED REMOVED THAT contestInfoRemote');
+
   try {
     const response = await requestServer(
       METHODS.GET,

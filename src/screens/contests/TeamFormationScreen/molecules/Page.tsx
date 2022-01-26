@@ -15,6 +15,7 @@ interface PropTypes {
   title: string;
   data: [];
   checkPlayerSelection(player_key: string, player_role: string): void;
+  blockListPlayers: Array<string>;
   rolesCountSelector: any;
   index: number;
   activeIndex: number;
@@ -85,7 +86,7 @@ export default function Page(props: PropTypes) {
         />
       </View>
       <FlatList
-        data={playersMeta.sort()}
+        data={playersMeta}
         renderItem={({item}) => {
           return (
             <Player
@@ -99,11 +100,7 @@ export default function Page(props: PropTypes) {
               anounced={true}
               points={item.points}
               credits={item.credits}
-              status={currentPlayerStatus(
-                item.key,
-                item.seasonal_role,
-                item.team_key,
-              )}
+              status={currentPlayerStatus(item.key, props.blockListPlayers)}
               checkPlayerSelection={props.checkPlayerSelection}
             />
           );

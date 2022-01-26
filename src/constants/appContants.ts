@@ -22,12 +22,14 @@ export const PLAYER_ALREADY_SELECTED = 0;
 export const PLAYER_DISABLED = -1;
 
 export const maxRoles: any = {
+  // not used
   bowler: 4,
   batsman: 6,
   keeper: 4,
   all_rounder: 4,
 };
 export const minRoles: any = {
+  // not used
   bowler: 3,
   batsman: 3,
   keeper: 1,

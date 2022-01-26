@@ -2,11 +2,15 @@ import {exp} from 'react-native-reanimated';
 import {createSelector} from 'reselect';
 import {covertInputTimeStringToDate} from '../utils/comman';
 import {rolesConstraints} from '../constants/appContants';
+import {sumOfMustNeedToFillSlots} from './store_utils';
 // const LocationState = (state: any): any => state.app.locationState;
 
 const UserState = (state: any) => state.user.user_info;
+const allPlayersState = (state: any) => state.team.all_players;
 const playersState = (state: any) => state.team.players;
 const TeamsState = (state: any) => state.team.teams;
+const TeamCountState = (state: any) => state.team.team_count;
+
 const SelectedMatchState = (state: any) => state.app.selected_match;
 const JoinContestState = (state: any) => state.app.joinContestRequest;
 
@@ -59,51 +63,126 @@ export const selectedMatch = createSelector(
 );
 
 export const blockList = createSelector(
+  allPlayersState,
   playersState,
   TeamsState,
-  (players, teams) => {
-    // DEPRECATED
+  TeamCountState,
+  (all_players, players, teams, teams_count) => {
     try {
-      let blockList: any = [];
+      let blockListPlayers: any = [];
+      const blockListSet = new Set([]);
       const keeper = players.filter(
         (item: any) => item.seasonal_role === 'keeper',
-      ).length;
+      );
       const batsman = players.filter(
         (item: any) => item.seasonal_role === 'batsman',
-      ).length;
+      );
       const all_rounder = players.filter(
         (item: any) => item.seasonal_role === 'all_rounder',
-      ).length;
+      );
       const bowler = players.filter(
         (item: any) => item.seasonal_role === 'bowler',
-      ).length;
-      const team_a = players.filter(
-        (item: any) => item.team_key === teams[0],
-      ).length;
-      const team_b = players.filter(
-        (item: any) => item.team_key === teams[1],
-      ).length;
+      );
+      const team_a = players.filter((item: any) => item.team_key === teams[0]);
+      const team_b = players.filter((item: any) => item.team_key === teams[1]);
 
-      // Block lisy generation
-      if (keeper >= rolesConstraints['keeper'].max) {
-        blockList.push('keeper');
+      // // is 11 players selected
+      // if(players.length === 11){
+      //   // put all players in block list
+      //   const allPlayers = all_players.
+      // }
+
+      // roles check
+      if (rolesConstraints.keeper.max <= keeper.length) {
+        const keeperKeys = all_players[0].keeper.map((item: any) => item.key);
+        blockListPlayers.push(...keeperKeys);
       }
-      if (batsman >= rolesConstraints['batsman'].max) {
-        blockList.push('batsman');
+      if (rolesConstraints.batsman.max <= batsman.length) {
+        const batsmanKeys = all_players[0].batsman.map((item: any) => item.key);
+        blockListPlayers.push(...batsmanKeys);
       }
-      if (all_rounder >= rolesConstraints['all_rounder'].max) {
-        blockList.push('all_rounder');
+      if (rolesConstraints.all_rounder.max <= all_rounder.length) {
+        const allRounderKeys = all_players[0].all_rounder.map(
+          (item: any) => item.key,
+        );
+        blockListPlayers.push(...allRounderKeys);
       }
-      if (bowler >= rolesConstraints['bowler'].max) {
-        blockList.push('bowler');
+      if (rolesConstraints.bowler.max <= bowler.length) {
+        const bowlerKeys = all_players[0].bowler.map((item: any) => item.key);
+        blockListPlayers.push(...bowlerKeys);
       }
-      if (team_a >= 7) {
-        blockList.push(team_a);
+
+      // Open roles and must need roles check
+      const openSlots = 11 - players.length;
+      const must_need = sumOfMustNeedToFillSlots(teams_count);
+      if (openSlots <= must_need) {
+        // from now on we only want to allow minimum role need to be filled
+        if (teams_count.keeper.must_need <= 0) {
+          const keys = all_players[0].keeper.map((item: any) => item.key);
+          blockListPlayers.push(...keys);
+        }
+        console.log('teams_count.batsman', teams_count.batsman);
+
+        if (teams_count.batsman.must_need <= 0) {
+          const keys = all_players[0].batsman.map((item: any) => item.key);
+          blockListPlayers.push(...keys);
+        }
+        if (teams_count.all_rounder.must_need <= 0) {
+          const keys = all_players[0].all_rounder.map((item: any) => item.key);
+          blockListPlayers.push(...keys);
+        }
+        if (teams_count.bowler.must_need <= 0) {
+          const keys = all_players[0].bowler.map((item: any) => item.key);
+          blockListPlayers.push(...keys);
+        }
       }
-      if (team_b >= 7) {
-        blockList.push(team_b);
+
+      // is team count reached check
+      if (team_a.length >= 7) {
+        const team_a_keepers = all_players[0].keeper
+          .filter((item: any) => item.team_key === teams[0])
+          .map((item: any) => item.key);
+
+        const team_a_batsman = all_players[0].batsman
+          .filter((item: any) => item.team_key === teams[0])
+          .map((item: any) => item.key);
+
+        const team_a_all_rounder = all_players[0].all_rounder
+          .filter((item: any) => item.team_key === teams[0])
+          .map((item: any) => item.key);
+
+        const team_a_bowlers = all_players[0].bowler
+          .filter((item: any) => item.team_key === teams[0])
+          .map((item: any) => item.key);
+        blockListPlayers.push(...team_a_keepers);
+        blockListPlayers.push(...team_a_batsman);
+        blockListPlayers.push(...team_a_all_rounder);
+        blockListPlayers.push(...team_a_bowlers);
       }
-      return blockList;
+
+      if (team_b.length >= 7) {
+        const team_b_keepers = all_players[0].keeper
+          .filter((item: any) => item.team_key === teams[1])
+          .map((item: any) => item.key);
+
+        const team_b_batsman = all_players[0].batsman
+          .filter((item: any) => item.team_key === teams[1])
+          .map((item: any) => item.key);
+
+        const team_b_all_rounder = all_players[0].all_rounder
+          .filter((item: any) => item.team_key === teams[1])
+          .map((item: any) => item.key);
+
+        const team_b_bowlers = all_players[0].bowler
+          .filter((item: any) => item.team_key === teams[1])
+          .map((item: any) => item.key);
+        blockListPlayers.push(...team_b_keepers);
+        blockListPlayers.push(...team_b_batsman);
+        blockListPlayers.push(...team_b_all_rounder);
+        blockListPlayers.push(...team_b_bowlers);
+      }
+
+      return blockListPlayers;
     } catch (err) {
       console.log(err);
       return 0;
