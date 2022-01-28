@@ -2,18 +2,16 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, ScrollView, Text, ActivityIndicator} from 'react-native';
 import {TeamsCard} from '../../../../sharedComponents';
-import {log} from '../../../../utils/logs';
-import NoTeams from '../atoms/no.teams';
 import {
   updateCaptain,
   updatePlayer,
   updateVCaptain,
 } from '../../../../store/actions/teamActions';
-import {creditsLeftCalculator} from '../../../../constructors/teams.constructor';
 import {useNavigation} from '@react-navigation/native';
 import {errorBox} from '../../../../utils/snakBars';
 import {useDispatch} from 'react-redux';
 import NoContent from '../atoms/no.content.contest';
+import {TeamFormationMutationType} from '../../../../types/match';
 
 interface PropTypes {
   teams: any;
@@ -21,65 +19,26 @@ interface PropTypes {
   live: string;
   timeStamp: any;
   pagerRef: any;
+  teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
+  teamPreviewPress(team_key: any): any;
 }
 
 export default function MyTeamsPage(props: PropTypes) {
-  const navigation = useNavigation<any>();
-  const dispatch = useDispatch();
-
   const navigateToPreview = (team_key: string) => {
-    // <<DEPRECATED>> need to move
-    const team = props.teams.find((item: any) => item.team_key === team_key);
-    if (team) {
-      const credits_left = creditsLeftCalculator(
-        team.keepers,
-        team.batsman,
-        team.all_rounder,
-        team.bowler,
-      );
-      // return;
-      navigation.navigate('TeamPreviewScreen', {
-        from: 1,
-        keepers: team.keepers,
-        batsman: team.batsman,
-        all_rounder: team.all_rounder,
-        bowler: team.bowler,
-        cap_key: team.cap.key,
-        vc_key: team.vc.key,
-        team_a: team.team_a,
-        team_b: team.team_b,
-        credits_left: credits_left,
-      });
-    } else {
-      errorBox("Can't preview team !!");
-    }
+    props.teamPreviewPress(team_key);
+    return;
   };
 
   const mutateTeam = (team_key: string, edit: boolean, clone: boolean) => {
+    const params = {
+      edit: edit ? true : false,
+      clone: clone ? true : false,
+    };
     const team = props.teams.find((item: any) => item.team_key === team_key);
-    const players = [];
     if (team) {
-      // console.log(team.keepers);
-      players.push(...team.keepers);
-      players.push(...team.all_rounder);
-      players.push(...team.batsman);
-      players.push(...team.bowler);
-      // console.log('>>>', team.cap);
-      // return
-      dispatch(updatePlayer(players));
-      dispatch(updateCaptain(team.cap.key));
-      dispatch(updateVCaptain(team.vc.key));
-      const params = {
-        edit: edit ? true : false,
-        clone: clone ? true : false,
-        team_key: team_key,
-      };
-      // console.log(params);
-      // return;
-      navigation.navigate('TeamFormationScreen', {
-        mutation: params,
-      });
+      props.teamMutateAction(team_key, params);
     }
+    return;
   };
 
   function noContentAction() {
@@ -102,7 +61,6 @@ export default function MyTeamsPage(props: PropTypes) {
   return (
     <ScrollView contentContainerStyle={[tailwind('m-3')]}>
       {props.live && <TeamsLoading />}
-
       {props.teams.map((item: any) => {
         return (
           <TeamsCard

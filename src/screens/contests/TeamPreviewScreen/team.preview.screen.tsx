@@ -20,6 +20,8 @@ export default function TeamPreViewScreen(props: PropTypes) {
     // log.info(route);
   }, []);
 
+  // return null
+
   if (route.params.credits_left === 100) {
     return <NoPlayersSelected />;
   }

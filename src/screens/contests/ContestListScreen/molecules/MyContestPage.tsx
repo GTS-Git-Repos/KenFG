@@ -4,6 +4,7 @@ import {View, ActivityIndicator, ScrollView} from 'react-native';
 import {JoinedContestCard} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/core';
 import NoContent from '../atoms/no.content.contest';
+import {TeamFormationMutationType} from '../../../../types/match';
 const log = console.log;
 
 interface PropTypes {
@@ -12,15 +13,10 @@ interface PropTypes {
   timeStamp: any;
   pagerRef: any;
   teamPreviewPress(team_key: string): any;
-  teamMutateAction(team_key: any): any;
+  teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
 }
 
 export default function MyContestPage(props: PropTypes) {
-  const navigation = useNavigation<any>();
-
-  const navigate = () => {
-    navigation.navigate('LiveMatchScreen');
-  };
 
   function noContentAction() {
     props.pagerRef.current?.setPage(0);

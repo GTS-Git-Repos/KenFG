@@ -10,7 +10,6 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {
-  BottomLine,
   CIcon,
   CupIcon,
   EditIcon,
@@ -22,7 +21,7 @@ import {
   TickIcon,
   VCIcon,
 } from '../';
-const log = console.log;
+import {TeamFormationMutationType} from '../../types/match';
 
 interface PropTypes {
   match_key: string;
@@ -39,7 +38,7 @@ interface PropTypes {
   contest_teams: Array<string>;
   joinedTeam: Array<any>;
   teamPreviewPress(team_key: string): any;
-  teamMutateAction(team_key: any): any;
+  teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
 }
 
 interface TeamInfoTypes {
@@ -47,13 +46,10 @@ interface TeamInfoTypes {
   code: string;
   cap: any;
   v_c: any;
-  teamPreviewPress(team_key: string): any;
-  teamMutateAction(team_key: any): any;
+  teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
 }
 
 export default function ContestCard(props: PropTypes) {
-  const navigation = useNavigation<any>();
-
   const [open, setOpen] = useState(false);
   return (
     <TouchableOpacity
@@ -208,7 +204,9 @@ const TeamInfo = (props: TeamInfoTypes) => {
       <View style={[tailwind('flex-row items-center')]}>
         <TouchableOpacity
           style={[tailwind('mx-1')]}
-          onPress={() => props.teamMutateAction(props.team_key)}>
+          onPress={() =>
+            props.teamMutateAction(props.team_key, {edit: true, clone: false})
+          }>
           <EditIcon background={true} />
         </TouchableOpacity>
         <TouchableOpacity

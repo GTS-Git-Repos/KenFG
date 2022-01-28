@@ -6,6 +6,9 @@ import {
   joinContestRequestAction,
   updateSelectedMatchAction,
 } from './appActions';
+import {TeamFormationMutationType, TeamPreviewType} from '../../types/match';
+import {updateCaptain, updatePlayer, updateVCaptain} from './teamActions';
+import {errorBox} from '../../utils/snakBars';
 
 interface selectedMatchShape {
   match_key: string;
@@ -42,7 +45,6 @@ export const navigateWith_AutoJoin = (
   payload: JoinContestRequestShape,
 ) => {
   console.log('DEPRECATED change to -> toTeamFormationWithAutoJoin');
-  
 
   // need to do,any one of the team can be free to join
   store.dispatch(joinContestRequestAction(payload));
@@ -89,7 +91,7 @@ export const toTeamFormationWithAutoJoin = (
   }
 };
 
-const toTeamFormationNoAutoJoin = (navigation:any) => {
+export const toTeamFormationNoAutoJoin = (navigation: any) => {
   navigation.dispatch(
     CommonActions.navigate({
       name: 'TeamFormationScreen',
@@ -98,6 +100,32 @@ const toTeamFormationNoAutoJoin = (navigation:any) => {
       },
     }),
   );
+};
+
+export const toTeamFormationWithMutation = (
+  navigation: any,
+  team_key: string,
+  team: any,
+  mutationPayload: TeamFormationMutationType,
+) => {
+  try {
+    const players = [];
+    players.push(
+      ...team.keepers,
+      ...team.all_rounder,
+      ...team.batsman,
+      ...team.bowler,
+    );
+    store.dispatch(updatePlayer(players));
+    store.dispatch(updateCaptain(team.cap.key));
+    store.dispatch(updateVCaptain(team.vc.key));
+    navigation.navigate('TeamFormationScreen', {
+      mutation: {...mutationPayload, team_key: team_key},
+    });
+    return;
+  } catch (err) {
+    errorBox('Failed to Mutate Team !!');
+  }
 };
 
 export const toWiningsList = (navigation: any) => {
@@ -120,6 +148,32 @@ export const toPlayerProfile = (navigation: any, payload: any) => {
       name: 'PlayerProfileScreen',
       params: {
         payload,
+      },
+    }),
+  );
+  return true;
+};
+
+export const toTeamPreview = (navigation: any, payload: TeamPreviewType) => {
+  // console.log(JSON.stringify(payload));
+  const obj = {
+    from: 1,
+    keepers: payload.keepers,
+    batsman: payload.batsman,
+    all_rounder: payload.all_rounder,
+    bowler: payload.bowler,
+    cap_key: payload?.cap?.key,
+    vc_key: payload?.vc?.key,
+    team_a: payload.team_a,
+    team_b: payload.team_b,
+    credits_left: payload.credits_left,
+  };
+  // return;
+  navigation.dispatch(
+    CommonActions.navigate({
+      name: 'TeamPreviewScreen',
+      params: {
+        ...obj,
       },
     }),
   );

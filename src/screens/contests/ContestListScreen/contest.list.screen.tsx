@@ -31,11 +31,9 @@ import {
 } from '../../../store/actions/appActions';
 import Modal from 'react-native-modal';
 import {errorBox} from '../../../utils/snakBars';
-import {
-  isMatchTimeExhausted,
-  isWalletHaveContestAmount,
-} from '../../../utils/comman';
+import {isMatchTimeExhausted} from '../../../utils/comman';
 import {navigateWith_AutoJoin} from '../../../store/actions/navigationActions';
+import {TeamFormationMutationType} from '../../../types/match';
 
 const log = console.log;
 
@@ -53,13 +51,13 @@ interface PropTypes {
   to: any;
   showJoinModal: any;
   entryAmount: any;
-  loading:boolean,
-  setLoading(value:boolean):any,
+  loading: boolean;
+  setLoading(value: boolean): any;
   joinContestWithTeam(): any;
   setShowJoinModal(any: boolean): any;
   setSelectedTab(index: number): any;
-  teamPreviewPress(team_key: any): any;
-  teamMutateAction(team_key: any): any;
+  teamPreviewPress(team_key: string): any;
+  teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
 }
 
 export default function ContestListScreen(props: PropTypes) {
@@ -73,21 +71,9 @@ export default function ContestListScreen(props: PropTypes) {
   const [selectedFilter, setSelectedFilter] = useState<any>('All');
   // const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
 
-  const userInfoSelector: any = useSelector(userInfo);
-  const userWallet: any = useSelector(userWalletAmount);
   const matchSelector: any = useSelector(selectedMatch);
 
   const timeStamp = useCountDown(matchSelector.start_at, false);
-
-  const selectedContestState: any = useSelector<any>(
-    state => state.app.selected_contest,
-  );
-
-  // useEffect(() => {
-  //   if (props.to === 3) {
-  //     props.pagerRef?.current?.setPage(2);
-  //   }
-  // }, [props.to]);
 
   // Business logic
   const onPageSelectedAction = (e: any) => {
@@ -173,6 +159,8 @@ export default function ContestListScreen(props: PropTypes) {
             live={props.teamsAPILive}
             timeStamp={timeStamp}
             pagerRef={props.pagerRef}
+            teamMutateAction={props.teamMutateAction}
+            teamPreviewPress={props.teamPreviewPress}
           />
         </View>
       </PagerView>
