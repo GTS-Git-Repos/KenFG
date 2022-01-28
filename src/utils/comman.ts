@@ -33,7 +33,7 @@ export const getCountDown = (inputDate: Date) => {
   }
 };
 
-export const isMatchTimeExhausted = (time: any): Boolean => {
+export const isMatchTimeExhausted = (time: any): boolean => {
   try {
     const seconds = differenceInSeconds(time, new Date());
     if (seconds > 5) {

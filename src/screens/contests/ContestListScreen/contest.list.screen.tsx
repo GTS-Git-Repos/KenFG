@@ -19,20 +19,15 @@ import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  selectedMatch,
-  userInfo,
-  userWalletAmount,
-} from '../../../store/selectors';
+import {selectedMatch} from '../../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
-import {
-  joinContestRequestAction,
-  updateSelectedContestAction,
-} from '../../../store/actions/appActions';
 import Modal from 'react-native-modal';
 import {errorBox} from '../../../utils/snakBars';
 import {isMatchTimeExhausted} from '../../../utils/comman';
-import {navigateWith_AutoJoin} from '../../../store/actions/navigationActions';
+import {
+  navigateWith_AutoJoin,
+  toTeamFormationWithAutoJoin,
+} from '../../../store/actions/navigationActions';
 import {TeamFormationMutationType} from '../../../types/match';
 
 const log = console.log;
@@ -53,6 +48,7 @@ interface PropTypes {
   entryAmount: any;
   loading: boolean;
   setLoading(value: boolean): any;
+  proceedToJoin(contest_key: string): any;
   joinContestWithTeam(): any;
   setShowJoinModal(any: boolean): any;
   setSelectedTab(index: number): any;
@@ -62,11 +58,8 @@ interface PropTypes {
 
 export default function ContestListScreen(props: PropTypes) {
   const navigation = useNavigation<any>();
-  const route = useRoute<any>();
-  // const renderCount = useRenderCount('ContestListScreen')
 
   const {width} = useWindowDimensions();
-  const dispatch = useDispatch();
 
   const [selectedFilter, setSelectedFilter] = useState<any>('All');
   // const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
@@ -85,7 +78,6 @@ export default function ContestListScreen(props: PropTypes) {
   };
 
   const navigate = (contest_key: string) => {
-    dispatch(updateSelectedContestAction(contest_key));
     navigation.navigate('ContestInfoScreen', {
       contest_key: contest_key,
     });
@@ -99,21 +91,20 @@ export default function ContestListScreen(props: PropTypes) {
       if (!contest) {
         throw 'no contest found';
       }
-      // is time exhausted ?
       const timeExhausted = isMatchTimeExhausted(matchSelector.start_at);
       if (timeExhausted) {
-        errorBox('Time Exhausted');
+        errorBox('Time Exhausted', 500);
         return;
       }
 
-      navigateWith_AutoJoin(navigation, props.teams.length, {
+      toTeamFormationWithAutoJoin(navigation, props.teams.length, {
         contestKey: contest.key,
         entryAmount: contest.entry,
         maxTeam: contest.max_entry,
       });
     } catch (err) {
       console.log('proceedToJoin', err);
-      errorBox('Unhandled Error');
+      errorBox('Unhandled Error', 500);
     }
   };
 
@@ -139,7 +130,7 @@ export default function ContestListScreen(props: PropTypes) {
             data={props.contests}
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
-            proceedToJoin={proceedToJoin}
+            proceedToJoin={props.proceedToJoin}
           />
         </View>
         <View style={{width: width}}>

@@ -69,11 +69,11 @@ export const navigateWith_AutoJoin = (
 
 export const toTeamFormationWithAutoJoin = (
   navigation: any,
-  numberOfTeams: number,
+  hasUnJoinedTeam: boolean,
   payload: JoinContestRequestShape,
 ) => {
   store.dispatch(joinContestRequestAction(payload));
-  if (numberOfTeams > 1) {
+  if (hasUnJoinedTeam) {
     navigation.dispatch(
       CommonActions.navigate({
         name: 'TeamSelectionScreen',

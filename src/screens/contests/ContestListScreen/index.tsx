@@ -3,6 +3,8 @@ import {useSelector} from 'react-redux';
 import {selectedMatch, userInfo} from '../../../store/selectors';
 import ContestListScreen from './contest.list.screen';
 import ContestScreenLoading from './atoms/screen.loading.contest';
+import {TO_TEAMLIST, TO_TEAM_FORMATION} from '../../../constants/appContants';
+
 import {
   useContestList,
   useJoinedContests,
@@ -16,10 +18,12 @@ import PagerView from 'react-native-pager-view';
 import {joinContestRemote} from '../../../remote/matchesRemote';
 import {Alert} from 'react-native';
 import {
+  toTeamFormationWithAutoJoin,
   toTeamFormationWithMutation,
   toTeamPreview,
 } from '../../../store/actions/navigationActions';
 import {TeamFormationMutationType} from '../../../types/match';
+import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 
 export default function ContestListHOC() {
   const navigation = useNavigation<any>();
@@ -35,7 +39,7 @@ export default function ContestListHOC() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const {contests, contestsAPI} = useContestList(matchSelector.match_key);
+  const {contests, contestsAPI}: any = useContestList(matchSelector.match_key);
 
   const {joined, joinedAPI, joinedAPILive, refetchJoinedContest} =
     useJoinedContests(matchSelector.match_key, userSelector.mobile);
@@ -83,6 +87,40 @@ export default function ContestListHOC() {
     return;
   };
 
+  async function proceedToJoin(contest_key: string) {
+    try {
+      const contest = contests.find((item: any) => item.key === contest_key);
+      if (!contest) throw 'no contests';
+      if (contest) {
+        const checkContestJoin = checksBeforeJoinContest(
+          matchSelector.start_at,
+          contest,
+          joined,
+          teams,
+        );
+        if (checkContestJoin.status) {
+          toTeamFormationWithAutoJoin(
+            navigation,
+            checkContestJoin.to === TO_TEAMLIST,
+            {
+              contestKey: contest.key,
+              entryAmount: contest.entry,
+              maxTeam: contest.max_entry,
+            },
+          );
+        } else {
+          throw checkContestJoin.msg;
+        }
+        console.log('checkContestJoin', checkContestJoin);
+      }
+
+      return;
+    } catch (err) {
+      console.log('err', err);
+    }
+    return;
+  }
+
   async function joinContestWithTeam() {
     try {
       const obj = {
@@ -93,22 +131,18 @@ export default function ContestListHOC() {
       };
       setLoading(true);
       const response = await joinContestRemote(obj);
-      console.log('response', response);
       setLoading(false);
       if (!response.status) {
         setLoading(false);
-        setTimeout(() => {
-          errorBox(response.msg);
-        }, 1000);
+        errorBox(response.msg, 500);
         return;
       }
       setShowJoinModal(false);
-      infoBox('Contest Succefully Joined');
       refetchJoinedContest();
-      // go contest page
-      setTimeout(() => {
-        pagerRef?.current?.setPage(1);
-      }, 500);
+      infoBox('Contest Succefully Joined', 500);
+      // setTimeout(() => {
+      //   pagerRef?.current?.setPage(1);
+      // }, 500);
     } catch (err) {
       setLoading(false);
       Alert.alert('Failed to Join Contest', 'something went wrong');
@@ -141,6 +175,7 @@ export default function ContestListHOC() {
       joinContestWithTeam={joinContestWithTeam}
       loading={loading}
       setLoading={setLoading}
+      proceedToJoin={proceedToJoin}
     />
   );
 }

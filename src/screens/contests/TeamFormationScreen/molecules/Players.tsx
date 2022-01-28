@@ -22,10 +22,7 @@ interface PropTypes {
   checkPlayerSelection(player_key: string, player_role: string): void;
   onPressPlayerProfile(player_key: string, player_role: string): any;
 }
-
-export default function Player(props: PropTypes) {
-  const navigation = useNavigation<any>();
-
+function Player(props: PropTypes) {
   return (
     <View>
       <View
@@ -173,3 +170,5 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
 });
+
+export default React.memo(Player);

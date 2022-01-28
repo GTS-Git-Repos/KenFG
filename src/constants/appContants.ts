@@ -21,6 +21,9 @@ export const PLAYER_CAN_BE_SELECTED = 1;
 export const PLAYER_ALREADY_SELECTED = 0;
 export const PLAYER_DISABLED = -1;
 
+export const TO_TEAMLIST = 0;
+export const TO_TEAM_FORMATION = 1;
+
 export const PAYMENT_OPTION = {
   CREDIT: 0,
   DEBIT: 1,

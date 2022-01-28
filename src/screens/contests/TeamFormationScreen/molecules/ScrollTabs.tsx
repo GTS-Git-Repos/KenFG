@@ -30,11 +30,10 @@ const DATA = [
   },
 ];
 
-export default function ScrollTabs(props: PropTypes) {
+function ScrollTabs(props: PropTypes) {
   const flatListRef = useRef<any>();
 
   useEffect(() => {
-    // console.log(flatListRef.current.scrollToIndex);
     flatListRef.current.scrollToIndex({index: props.activeIndex});
   }, [props.activeIndex]);
 
@@ -62,3 +61,5 @@ export default function ScrollTabs(props: PropTypes) {
     </View>
   );
 }
+
+export default React.memo(ScrollTabs);
