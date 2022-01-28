@@ -9,7 +9,7 @@ const requestServer = function (
   const timeoutId = setTimeout(() => controller.abort(), 10000);
 
   return new Promise((resolve, reject) => {
-    let options: any = {
+    const options: any = {
       signal: controller.signal,
       method: method,
       headers: {

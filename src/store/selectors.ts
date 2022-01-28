@@ -1,11 +1,10 @@
-import {exp} from 'react-native-reanimated';
 import {createSelector} from 'reselect';
-import {covertInputTimeStringToDate} from '../utils/comman';
 import {rolesConstraints} from '../constants/appContants';
 import {sumOfMustNeedToFillSlots} from './store_utils';
-// const LocationState = (state: any): any => state.app.locationState;
 
 const UserState = (state: any) => state.user.user_info;
+const CashFreeState = (state: any) => state.app.cashFreeAppId;
+
 const allPlayersState = (state: any) => state.team.all_players;
 const playersState = (state: any) => state.team.players;
 const TeamsState = (state: any) => state.team.teams;
@@ -24,6 +23,12 @@ export const userWalletAmount = createSelector(UserState, userInfo => {
   } catch (err) {
     return 0;
   }
+});
+
+export const appConstantsSelector = createSelector(CashFreeState, cashFree => {
+  return {
+    cashFreeAppId: cashFree,
+  };
 });
 
 export const creditLeft = createSelector(playersState, players => {

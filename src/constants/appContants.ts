@@ -21,6 +21,16 @@ export const PLAYER_CAN_BE_SELECTED = 1;
 export const PLAYER_ALREADY_SELECTED = 0;
 export const PLAYER_DISABLED = -1;
 
+export const PAYMENT_OPTION = {
+  CREDIT: 0,
+  DEBIT: 1,
+  NET_BANKING: 2,
+  GPAY: 3,
+  PHONEPE: 4,
+  PAYTM: 5,
+  UPI: 6,
+};
+
 export const maxRoles: any = {
   // not used
   bowler: 4,

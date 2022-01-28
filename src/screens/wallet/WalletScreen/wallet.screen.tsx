@@ -28,7 +28,7 @@ export default function WalletScreen() {
           winnigs={userInfoSelector.winnings}
           bonus={userInfoSelector.bonus}
           earned={userInfoSelector.winnings}
-          isVerified={false}
+          isVerified={true}
         />
         <View style={[tailwind('')]}>
           <Actions

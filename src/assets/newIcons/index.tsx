@@ -4,7 +4,9 @@ import HomeBottomTabOn from './svgIcons/home.bottomtab.on';
 import HomeBottomTabOff from './svgIcons/home.bottomtab.off';
 import LeaderBottomTabOff from './svgIcons/leader.bottomtab.off';
 import LeaderBottomTabOn from './svgIcons/leader.bottomtab.on';
-
+import CreditCardIcon from './svgIcons/credit.card.icon';
+import DebitCardIcon from './svgIcons/debit.card.icon';
+import BankIcon from './svgIcons/bank.icon';
 import MoreBottomTabOff from './svgIcons/more.bottomtab.off';
 import MoreBottomTabOn from './svgIcons/more.bottomtab.on';
 
@@ -20,4 +22,7 @@ export {
   LeaderBottomTabOff,
   MoreBottomTabOn,
   MoreBottomTabOff,
+  CreditCardIcon,
+  DebitCardIcon,
+  BankIcon,
 };

@@ -4,19 +4,17 @@ import {View, Image, Text, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
 import {useDispatch} from 'react-redux';
-import {updateSelectedContestAction} from '../../../../store/actions/appActions';
 
 export default function CreateTeamButtom(props: any) {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch<any>();
 
   const navigateByButton = () => {
-    dispatch(updateSelectedContestAction(null));
     navigation.navigate('TeamFormationScreen', {
       mutation: false,
     });
   };
-  
+
   return (
     <View
       style={[

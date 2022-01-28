@@ -1,7 +1,6 @@
 import {
   SAVE_IP,
   UPDATE_SELECTED_MATCH,
-  UPDATE_SELECTED_CONTEST,
   UPDATE_JOINCONTEST_REQUEST,
 } from '../actions/actionTypes';
 
@@ -9,9 +8,8 @@ const initialState = {
   error: null,
   ip: null,
   selected_match: null,
-  // need to remove that, join contest request is an alternate
-  selected_contest: null,
   joinContestRequest: null,
+  cashFreeAppId: '122224715b8a570ce3b9253a922221',
 };
 
 interface actionShape {
@@ -37,15 +35,6 @@ const App = (state = initialState, action: actionShape): any => {
         ...state,
         selected_match: action.payload,
       };
-    case UPDATE_SELECTED_CONTEST: {
-      console.log('DEPRECATED UPDATE_SELECTED_CONTEST');
-      return {
-        ...state,
-        selected_contest: action.payload,
-      };
-    }
-    case UPDATE_JOINCONTEST_REQUEST: {
-    }
     default:
       return state;
   }

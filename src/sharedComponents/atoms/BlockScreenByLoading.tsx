@@ -1,15 +1,6 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {
-  View,
-  Image,
-  Modal,
-  StyleSheet,
-  Text,
-  ActivityIndicator,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../constants/assets_manifest';
+import {View, Modal, StyleSheet, Text, ActivityIndicator} from 'react-native';
 
 interface PropTypes {
   text?: string;

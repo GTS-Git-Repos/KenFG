@@ -97,6 +97,11 @@ export default {
   stadium: require('../assets/images/stadium.png'),
   stadium_2: require('../assets/images/stadium_2.png'),
   coin: require('../assets/images/coin.png'),
+  
+  gpay: require('../assets/images/gpay.png'),
+  paytm: require('../assets/images/paytm.png'),
+  phonepe: require('../assets/images/phonepe.png'),
+  upi: require('../assets/images/upi.png'),
 
   // flags
   AUS: require('../assets/images/flags/AUS.png'),

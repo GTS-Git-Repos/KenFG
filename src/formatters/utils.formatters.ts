@@ -1,3 +1,5 @@
+// Match data RAW Api Parsing utilities
+
 const log = console.log;
 
 export const getTeamMetaData = (payload: any, api_key: string) => {

@@ -1,9 +1,10 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import {InfoSquareGrayIcon} from '../../../../assets/newIcons';
+import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   balance: number;
@@ -61,7 +62,7 @@ const Section = (props: any) => {
         </Text>
       </View>
       <View style={[tailwind('flex-row items-center')]}>
-        {!props.verified && <VerifyNow />}
+        {!props.verified && <Withdrawal />}
         <InfoSquareGrayIcon />
       </View>
     </View>
@@ -70,11 +71,25 @@ const Section = (props: any) => {
 
 const VerifyNow = () => {
   return (
-    <View style={[tailwind('rounded py-1 px-2 mr-3'), styles.border]}>
+    <TouchableOpacity
+      style={[tailwind('rounded py-1 px-2 mr-3'), styles.border]}>
       <Text style={[tailwind('font-regular text-white font-14')]}>
         Verify Now
       </Text>
-    </View>
+    </TouchableOpacity>
+  );
+};
+
+const Withdrawal = () => {
+  const navigation = useNavigation<any>();
+  return (
+    <TouchableOpacity
+      onPress={() => navigation.navigate('WithdrawelScreen')}
+      style={[tailwind('rounded py-1 px-2 mr-3'), styles.border]}>
+      <Text style={[tailwind('font-regular text-white font-14')]}>
+        Instant Withdrawal
+      </Text>
+    </TouchableOpacity>
   );
 };
 

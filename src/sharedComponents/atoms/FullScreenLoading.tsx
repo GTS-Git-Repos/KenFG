@@ -12,6 +12,8 @@ interface PropTypes {
 const width = Dimensions.get('window').width;
 
 export default function FullScreenLoading(props: PropTypes) {
+  // DEPRECATED,
+
   return (
     <View style={[tailwind('bg-dark h-full')]}>
       <TopBar text={props.title} />
