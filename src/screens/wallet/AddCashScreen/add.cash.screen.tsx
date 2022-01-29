@@ -7,7 +7,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import EnterAmountAddCash from './molecules/enteramount.addcash';
 import SubTitleAddCash from './atoms/subtitle.addcash';
 
-import {ButtonComponent, TopBar} from '../../../sharedComponents';
+import {
+  ButtonComponent,
+  TopBar,
+  BlockScreenByLoading,
+} from '../../../sharedComponents';
 import EnterCouponAddCash from './molecules/entercoupon.addcash';
 import CouponCardAddCash from './molecules/coupon.card.addcash';
 import {userInfo} from '../../../store/selectors';
@@ -19,6 +23,7 @@ interface PropTypes {
   amount: string;
   setAmount(value: string): any;
   initiatePayment: any;
+  updateWallet: any;
 }
 
 export default function AddCashScreen(props: PropTypes) {
@@ -42,10 +47,11 @@ export default function AddCashScreen(props: PropTypes) {
             player_key: userMeta.mobile,
           })
         }
-        // onPress={() => navigation.navigate('PaymentOptionScreen')}
         style={[tailwind('m-3')]}>
         <ButtonComponent text={'NEXT'} />
       </TouchableOpacity>
+      {props.initiatePayment.isLoading && <BlockScreenByLoading />}
+      {props.updateWallet.isLoading && <BlockScreenByLoading />}
     </View>
   );
 }

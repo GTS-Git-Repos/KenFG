@@ -1,3 +1,5 @@
+// Replace Team did not navigate to anywhere
+
 import React from 'react';
 import {View, Text, Image, Pressable, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';

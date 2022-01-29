@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, ScrollView, TouchableOpacity, Alert} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
@@ -30,13 +30,14 @@ export default function TeamSelectionScreen(props: any) {
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
 
-  // console.log(matchSelector);
+
 
   function selectTeamAction(team_key: any) {
     try {
       if (parseInt(matchSelector.joinContest.maxTeam) < choosenTeams.length) {
         errorBox(
           `You can only select ${matchSelector.joinContest.maxTeam} Teams`,
+          100,
         );
         return;
       }

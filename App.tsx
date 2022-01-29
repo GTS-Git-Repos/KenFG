@@ -8,6 +8,7 @@ import {LogBox, SafeAreaView, StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import {QueryClient, QueryClientProvider} from 'react-query';
 // import SQLite from 'react-native-sqlite-storage';
+import * as Sentry from '@sentry/react-native';
 
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
@@ -17,6 +18,11 @@ import store from './src/store';
 export const queryClient = new QueryClient();
 
 // enableFreeze(true);
+
+Sentry.init({
+  dsn: 'https://7e7f29d7464d49ecabe0a505398c8c00@o1129974.ingest.sentry.io/6173909',
+  tracesSampleRate: 1.0,
+});
 
 LogBox.ignoreLogs([
   'Setting a timer',
@@ -99,4 +105,4 @@ const App: React.FC = (): JSX.Element | null => {
   );
 };
 
-export default App;
+export default Sentry.wrap(App);

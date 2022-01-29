@@ -42,13 +42,16 @@ export function didIWantToGoTeamsPage(
     const joinedTeamsKey = isAlreadyJoined.joinedTeam.map(
       (item: any) => item.teamCode,
     );
+    // console.log('allTeamsKey', allTeamsKey);
+    // console.log('joinedTeamsKey', joinedTeamsKey);
+
     if (allTeamsKey.length === joinedTeamsKey.length) {
       return false;
     } else {
       return true;
     }
   }
-  return false;
+  return true;
 }
 
 export function checksBeforeJoinContest(

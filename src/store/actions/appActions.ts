@@ -1,7 +1,6 @@
 import {
-  SAVE_IP,
+  HANDLE_ERROR,
   UPDATE_SELECTED_MATCH,
-
   UPDATE_JOINCONTEST_REQUEST,
 } from './actionTypes';
 
@@ -11,8 +10,8 @@ interface JoinContestRequestShape {
   maxTeam: string;
 }
 
-export const saveIpAction = (payload: string) => ({
-  type: SAVE_IP,
+export const updateAppError = (payload: string) => ({
+  type: HANDLE_ERROR,
   payload,
 });
 
@@ -20,7 +19,6 @@ export const updateSelectedMatchAction = (payload: any) => ({
   type: UPDATE_SELECTED_MATCH,
   payload,
 });
-
 
 export const joinContestRequestAction = (payload: JoinContestRequestShape) => ({
   type: UPDATE_JOINCONTEST_REQUEST,

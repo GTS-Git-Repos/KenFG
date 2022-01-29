@@ -6,6 +6,7 @@ const req_update_user = '/update-profile.php';
 const req_login = '/login.php';
 const req_verify = '/verify.php';
 const req_getProfile = '/view-profile.php';
+const req_addDeposit = '/update-deposit.php';
 
 export const getUserRemote = async (payload: any) => {
   try {
@@ -40,6 +41,24 @@ export const updateUserRemote = async (payload: any) => {
   } catch (err) {
     console.log(err);
     return false;
+  }
+};
+
+export const updateWalletRemote = async (payload: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_addDeposit,
+      payload,
+    );
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      failedLog('updateWalletRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
   }
 };
 

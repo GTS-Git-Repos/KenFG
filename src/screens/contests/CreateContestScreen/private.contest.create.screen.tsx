@@ -110,7 +110,7 @@ const ContestBannerSection = (props: any) => {
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <CreateContestTopBar />
+      <CreateContestTopBar wallet={'1000'} />
 
       <TeamsSection
         team_a={matchSelector.team_a}

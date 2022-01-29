@@ -146,7 +146,7 @@ export const toTeamFormationWithMutation = (
     });
     return;
   } catch (err) {
-    errorBox('Failed to Mutate Team !!');
+    errorBox('Failed to Mutate Team !!', 0);
   }
 };
 

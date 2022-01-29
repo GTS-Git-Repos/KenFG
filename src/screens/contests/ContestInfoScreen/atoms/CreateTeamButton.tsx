@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
-import {updateSelectedContestAction} from '../../../../store/actions/appActions';
 import {useDispatch} from 'react-redux';
 
 export default function CreateTeamButtom() {
@@ -13,7 +12,6 @@ export default function CreateTeamButtom() {
   const dispatch = useDispatch();
 
   const navigate = () => {
-    dispatch(updateSelectedContestAction(null));
     navigation.navigate('TeamFormationScreen', {
       mutation: false,
     });

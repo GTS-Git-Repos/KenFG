@@ -83,31 +83,6 @@ export default function ContestListScreen(props: PropTypes) {
     });
   };
 
-  const proceedToJoin = (contest_key: string) => {
-    try {
-      const contest = props.contests.find(
-        (item: any) => item.key === contest_key,
-      );
-      if (!contest) {
-        throw 'no contest found';
-      }
-      const timeExhausted = isMatchTimeExhausted(matchSelector.start_at);
-      if (timeExhausted) {
-        errorBox('Time Exhausted', 500);
-        return;
-      }
-
-      toTeamFormationWithAutoJoin(navigation, props.teams.length, {
-        contestKey: contest.key,
-        entryAmount: contest.entry,
-        maxTeam: contest.max_entry,
-      });
-    } catch (err) {
-      console.log('proceedToJoin', err);
-      errorBox('Unhandled Error', 500);
-    }
-  };
-
   return (
     <View style={tailwind('bg-dark h-full')}>
       <TopBarContest title={matchSelector?.titleString} subtitle={timeStamp} />

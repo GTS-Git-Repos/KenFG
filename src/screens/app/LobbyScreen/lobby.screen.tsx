@@ -1,19 +1,19 @@
 import React, {useState} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
-import {useSelector, useDispatch} from 'react-redux';
-import {useNavigation, useRoute} from '@react-navigation/native';
-
+import {useSelector} from 'react-redux';
 import LobbyTopBar from './components/LobbyTopBar';
 import LobbyNav from './components/LobbyNav';
 
 import CricketPage from './components/molecules/CricketPage';
 import MyMatchCard from './components/molecules/mymatch.card.lobby';
 import SubTitle from './components/SubTitle';
+
 import {
-  updateSelectedContestAction,
-  updateSelectedMatchAction,
-} from '../../../store/actions/appActions';
+  navigateMatchContestsAction,
+  toContestLiveMatch,
+} from '../../../store/actions/navigationActions';
+import {useNavigation} from '@react-navigation/core';
 
 const log = console.log;
 
@@ -24,28 +24,28 @@ interface PropTypes {
 }
 
 export default function LobbyScreen(props: PropTypes) {
-  const route = useRoute();
-  const navigation = useNavigation<any>();
-  const dispatch = useDispatch();
-
+  const navigation = useNavigation();
   const [cricket, setCricket] = useState(true);
 
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
   function onPressMyMatchCard(match_key: string) {
-    // check match current status and navigate based on that
-    // console.log(props.myMatches);
+    if (props.myMatches.status === 'completed') {
+      toContestLiveMatch(navigation, match_key);
+    } else {
+      const obj = {
+        match_key: match_key,
+        name: props.myMatches.teams.tournament.short_name,
+        team_a: props.myMatches.teams.a.key,
+        team_b: props.myMatches.teams.b.key,
+        team_a_name: props.myMatches.teams.a.name,
+        team_b_name: props.myMatches.teams.b.name,
+        start_at: props.myMatches.start_at,
+      };
+      navigateMatchContestsAction(navigation, obj);
+    }
 
-    const obj = {
-      match_key: match_key,
-      name: props.myMatches.teams.tournament.short_name,
-      team_a: props.myMatches.teams.a.code,
-      team_b: props.myMatches.teams.b.code,
-      start_at: props.myMatches.teams.start_at,
-    };
-    dispatch(updateSelectedContestAction(null));
-    dispatch(updateSelectedMatchAction(obj));
-    navigation.navigate('Contest');
+    console.log(match_key);
   }
 
   return (
