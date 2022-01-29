@@ -3,18 +3,11 @@ import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 
-import {
-  LogBox,
-  SafeAreaView,
-  StatusBar,
-  NativeModule,
-  NativeModules,
-} from 'react-native';
-
+import {LogBox, SafeAreaView, StatusBar} from 'react-native';
+// import {enableFreeze} from 'react-native-screens';
 import {Provider} from 'react-redux';
 import {QueryClient, QueryClientProvider} from 'react-query';
-import {Host, Portal} from 'react-native-portalize';
-import SQLite from 'react-native-sqlite-storage';
+// import SQLite from 'react-native-sqlite-storage';
 
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
@@ -22,6 +15,8 @@ import RootNavigation from './src/navigations/RootNavigation';
 import store from './src/store';
 
 export const queryClient = new QueryClient();
+
+// enableFreeze(true);
 
 LogBox.ignoreLogs([
   'Setting a timer',
@@ -32,7 +27,6 @@ LogBox.ignoreLogs([
 if (__DEV__ === false) {
   console.log = () => {};
 }
-
 const App: React.FC = (): JSX.Element | null => {
   useEffect(() => {
     SplashScreen.hide();

@@ -10,22 +10,18 @@ import {
 } from '@react-navigation/stack';
 
 import {DrawerNav} from './DrawerNavigation';
-import {Auth, More, Contest, Wallet} from './StackNavigations';
+import {Auth, More, Contest, Wallet, Match} from './StackNavigations';
 
 import InitialScreen from '../screens/app/InitialScreen';
 import NotificationScreen from '../screens/user/NotificationScreen';
 import ProfileEditScreen from '../screens/user/ProfileEditScreen';
 import AccountProfileScreen from '../screens/user/AccountProfileScreen';
 
-import LiveMatchScreen from '../screens/matches/LiveMatchScreen';
-import CompareTeamsScreen from '../screens/matches/CompareTeamsScreen';
 import HowToPlayScreen from '../screens/app/HowToPlayScreen';
 import DailyLeaderBoardScreen from '../screens/leaderboard/DailyLeaderBoardScreen';
 
-import ContestsLiveMatchScreen from '../screens/matches/ContestsLiveMatchScreen';
 import CompletedMatchScreen from '../screens/matches/CompletedMatchScreen';
 import MonthlyLeaderBoardScreen from '../screens/leaderboard/MonthlyLeaderBoardScreen';
-import CreateContestScreen from '../screens/contests/CreateContestScreen';
 
 import TeamsListScreen from '../screens/contests/TeamsListScreen';
 
@@ -39,12 +35,7 @@ import LeaderProfileScreen from '../screens/leaderboard/LeaderProfileScreen';
 import AffliatedScreen from '../screens/user/AffliatedScreen';
 import AchievementsScreen from '../screens/user/AchievementsScreen';
 import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScreen';
-import TeamFormationScreen from '../screens/contests/TeamFormationScreen';
 import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
-
-// import TransactionListScreen from '../screens/wallet/TransactionListScreen';
-// import VerifyAccountScreen from '../screens/wallet/VerifyAccountScreen';
-// import ManagePaymentsScreen from '../screens/wallet/ManagePaymentsScreen';
 
 const RootNavigator = createStackNavigator();
 // const RootNavigator = createNativeStackNavigator();
@@ -62,10 +53,6 @@ export default function RootNavigation() {
           screenOptions={StackConfig}
           initialRouteName="InitialScreen">
           <RootNavigator.Screen
-            component={TeamFormationScreen}
-            name="TeamFormationScreen"
-          />
-          <RootNavigator.Screen
             component={InitialScreen}
             name="InitialScreen"
           />
@@ -73,6 +60,7 @@ export default function RootNavigation() {
           <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
           <RootNavigator.Screen component={More} name="More" />
           <RootNavigator.Screen component={Contest} name="Contest" />
+          <RootNavigator.Screen component={Match} name="Match" />
           <RootNavigator.Screen component={Wallet} name="Wallet" />
 
           <RootNavigator.Screen
@@ -84,10 +72,7 @@ export default function RootNavigation() {
             component={NotificationScreen}
             name="NotificationScreen"
           />
-          {/* <RootNavigator.Screen
-            component={ManagePaymentsScreen}
-            name="ManagePaymentsScreen"
-          /> */}
+
           <RootNavigator.Screen
             component={LeaderBoardListsScreen}
             name="LeaderBoardListsScreen"
@@ -121,15 +106,6 @@ export default function RootNavigation() {
             component={LeaderProfileScreen}
             name="LeaderProfileScreen"
           />
-          <RootNavigator.Screen
-            component={LiveMatchScreen}
-            name="LiveMatchScreen"
-          />
-
-          <RootNavigator.Screen
-            component={CompareTeamsScreen}
-            name="CompareTeamsScreen"
-          />
 
           <RootNavigator.Screen
             component={HowToPlayScreen}
@@ -144,19 +120,10 @@ export default function RootNavigation() {
             component={DailyLeaderBoardScreen}
             name="DailyLeaderBoardScreen"
           />
-          {/* <RootNavigator.Screen
-            component={TransactionListScreen}
-            name="TransactionListScreen"
-          /> */}
-
 
           <RootNavigator.Screen
             component={TeamsListScreen}
             name="TeamsListScreen"
-          />
-          <RootNavigator.Screen
-            component={ContestsLiveMatchScreen}
-            name="ContestsLiveMatchScreen"
           />
 
           <RootNavigator.Screen

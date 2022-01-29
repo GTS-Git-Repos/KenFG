@@ -2,10 +2,9 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import assets from '../../../../constants/assets_manifest';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {useRenderCount} from '../../../../utils/customHoooks';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/core';
-import {toPlayerProfile} from '../../../../store/actions/navigationActions';
 
 interface PropTypes {
   player_key: string;
@@ -23,6 +22,8 @@ interface PropTypes {
   onPressPlayerProfile(player_key: string, player_role: string): any;
 }
 function Player(props: PropTypes) {
+  // useRenderCount(`${props.player_key}`);
+
   return (
     <View>
       <View

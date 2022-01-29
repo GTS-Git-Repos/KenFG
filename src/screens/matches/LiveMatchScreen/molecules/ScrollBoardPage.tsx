@@ -19,6 +19,7 @@ const log = console.log;
 interface PropTypes {
   index: number;
   activeIndex: number;
+  innings: Array<any>;
 }
 interface OverallTeamShape {
   has_points: boolean;
@@ -35,19 +36,11 @@ export default function ScrollBoardPage(props: PropTypes) {
   const scrollRef = useRef<ScrollView>();
   const [openedInnings, setOpenedInnings] = useState<any>(0);
 
-  const {data, isLoading, isSuccess} = useQuery(
-    'matchMeta',
-    liveMatchMetaRemote,
-    {
-      staleTime: 8000,
-    },
-  );
-
   useEffect(() => {
-    if (data) {
-      setOpenedInnings(data.innings.length - 1);
+    if (props.innings) {
+      setOpenedInnings(props.innings.length - 1);
     }
-  }, [data]);
+  }, [props.innings]);
 
   const openInningsTab = (index: number) => {
     scrollRef.current?.scrollTo({
@@ -66,22 +59,15 @@ export default function ScrollBoardPage(props: PropTypes) {
     }
   };
 
-  if (isLoading) {
-    return <ActivityIndicator color="0c1320" />;
-  }
-  if (isSuccess && !data) {
-    return null;
-  }
-
   if (props.index !== props.activeIndex) {
-    return null;
+    return <ActivityIndicator color="#0c1320" />;
   }
   return (
     <View>
       <ScrollView ref={scrollRef}>
         <View>
           <View style={[tailwind('h-3')]}></View>
-          {data.innings.map((item: any, index: any) => {
+          {props.innings.map((item: any, index: any) => {
             return (
               <TeamScrollBoardByInnings
                 index={index}

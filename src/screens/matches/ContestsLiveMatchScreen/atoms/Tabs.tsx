@@ -24,7 +24,7 @@ const DATA = [
   },
   {
     key: 'leaderboard',
-    tabName: 'My Teams(1)',
+    tabName: 'My Teams(2)',
   },
   {
     key: 'ScoreBoard',

@@ -30,7 +30,7 @@ export function didIWantToGoTeamsPage(
   joinedContests: any,
   AllTeams: any,
 ) {
-  if (AllTeams.length === 0) {
+  if (!AllTeams || AllTeams.length === 0) {
     return false;
   }
   const isAlreadyJoined = joinedContests.find(

@@ -102,6 +102,28 @@ export const toTeamFormationNoAutoJoin = (navigation: any) => {
   );
 };
 
+export const toContestLiveMatch = (navigation: any, match_key: string) => {
+  navigation.dispatch(
+    CommonActions.navigate({
+      name: 'Match',
+      params: {
+        match_key,
+      },
+    }),
+  );
+};
+
+export const toLiveMatch = (navigation: any, match_key: string) => {
+  navigation.dispatch(
+    CommonActions.navigate({
+      name: 'LiveMatchScreen',
+      params: {
+        match_key,
+      },
+    }),
+  );
+};
+
 export const toTeamFormationWithMutation = (
   navigation: any,
   team_key: string,

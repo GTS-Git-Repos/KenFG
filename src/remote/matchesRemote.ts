@@ -134,7 +134,7 @@ export const contestInfoRemote = async (params: any) => {
 
 export const liveMatchMetaRemote = async (params: any) => {
   try {
-    return liveTestMatchFormat(CompletedTestMatchMeta);
+    // return liveTestMatchFormat(CompletedTestMatchMeta);
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_live_match,
@@ -147,7 +147,7 @@ export const liveMatchMetaRemote = async (params: any) => {
     if (response.status === 200) {
       return liveTestMatchFormat(response.data.data.data);
     } else {
-      failedLog('createTeamRemote()', response);
+      failedLog('liveMatchMetaRemote()', response);
     }
   } catch (err) {
     console.log(err);

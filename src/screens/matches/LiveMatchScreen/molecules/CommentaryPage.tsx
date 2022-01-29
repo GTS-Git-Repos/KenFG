@@ -1,6 +1,13 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, Dimensions, ScrollView, Text} from 'react-native';
+import {
+  View,
+  Image,
+  Dimensions,
+  ScrollView,
+  Text,
+  ActivityIndicator,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
@@ -11,9 +18,17 @@ interface PropTypes {
 }
 
 export default function CommentaryPage(props: PropTypes) {
+
   if (props.index !== props.activeIndex) {
-    return null;
+    return (
+      <ActivityIndicator
+        style={[tailwind('mt-10')]}
+        size={'large'}
+        color="#d1b45a"
+      />
+    );
   }
+  
   return (
     <View>
       <ScrollView>

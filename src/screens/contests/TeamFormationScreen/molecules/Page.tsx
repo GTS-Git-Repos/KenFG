@@ -21,8 +21,7 @@ interface PropTypes {
   team_b_key: string;
   setSortByLowCredits(bool: boolean): any;
   checkPlayerSelection(player_key: string, player_role: string): void;
-  onPressPlayerProfile(player_key: string,player_role:string): any;
-
+  onPressPlayerProfile(player_key: string, player_role: string): any;
 }
 
 export default function Page(props: PropTypes) {
@@ -46,20 +45,30 @@ export default function Page(props: PropTypes) {
   }, [props.filters]);
 
   useEffect(() => {
-    if (props.sortByLowCredits) {
-      const res = playersMeta.sort((a: any, b: any) => {
-        return b.points - a.points;
-      });
-      setPlayersMeta(res);
-    } else {
-      const res = playersMeta.sort((a: any, b: any) => {
-        return a.points - b.points;
-      });
-      setPlayersMeta(res);
-    }
+    // if (props.sortByLowCredits) {
+    //   const res = playersMeta.sort((a: any, b: any) => {
+    //     return b.points - a.points;
+    //   });
+    //   setPlayersMeta(res);
+    // } else {
+    //   const res = playersMeta.sort((a: any, b: any) => {
+    //     return a.points - b.points;
+    //   });
+    //   setPlayersMeta(res);
+    // }
   }, [props.sortByLowCredits]);
 
-  if (position < -1 || position > 1) {
+  // if (position < -1 || position > 1 || props.activeIndex === props.index) {
+  //   return (
+  //     <ActivityIndicator
+  //       style={[tailwind('mt-10')]}
+  //       size={'large'}
+  //       color="#d1b45a"
+  //     />
+  //   );
+  // }
+
+  if (props.index != props.activeIndex) {
     return (
       <ActivityIndicator
         style={[tailwind('mt-10')]}

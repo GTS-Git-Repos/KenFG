@@ -27,6 +27,8 @@ import JoinContestModal from './molecules/join.contest.modal.shared';
 import ContestTypeSwitch from './molecules/contest.type.swicth';
 import PrivateContestTeams from './molecules/private.contest.teams';
 import PriceDistributionSwitch from './molecules/price.distribution.switch';
+import MatchTeamCard from './molecules/match.team.card';
+
 import NoContentShared from './atoms/no.content.shared';
 
 import WalletIcon from './icons/WalletIcon';
@@ -77,6 +79,7 @@ export {
   WinningsListRank,
   JoinContestModal,
   BottomLine,
+  MatchTeamCard,
   NoContentShared,
   FullScreenLoading,
   LoadingSpinner,

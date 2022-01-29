@@ -36,7 +36,7 @@ interface PropTypes {
   setFilter(team_key: string): any;
   navigateToCapSelection(): any;
   navigateToTeamPreviewScreeen(): any;
-  onPressPlayerProfile(player_key: string,player_role:string): any;
+  onPressPlayerProfile(player_key: string, player_role: string): any;
 }
 
 export default function TeamFormationScreen(props: PropTypes) {
@@ -52,7 +52,7 @@ export default function TeamFormationScreen(props: PropTypes) {
 
   useEffect(() => {
     if (ErrorMessageState?.message) {
-      errorBox(ErrorMessageState?.message);
+      errorBox(ErrorMessageState?.message, 0);
     }
   }, [ErrorMessageState]);
 

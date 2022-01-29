@@ -17,6 +17,7 @@ const config = {
 export default function BottomTabNavigation() {
   return (
     <BottomTab.Navigator
+      detachInactiveScreens={true}
       screenOptions={config}
       initialRouteName="Home"
       tabBar={props => <CustomBottomTab {...props} />}>

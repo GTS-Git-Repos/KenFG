@@ -13,19 +13,25 @@ import AccountProfileScreen from '../screens/user/AccountProfileScreen';
 import CapSelectionScreen from '../screens/contests/CapSelectionScreen';
 import TeamsListScreen from '../screens/contests/TeamsListScreen';
 import NotificationScreen from '../screens/user/NotificationScreen';
+
+// wallet screen imports
 import WalletScreen from '../screens/wallet/WalletScreen';
 import TransactionListScreen from '../screens/wallet/TransactionListScreen';
+import ManagePaymentsScreen from '../screens/wallet/ManagePaymentsScreen';
+import AddCashScreen from '../screens/wallet/AddCashScreen';
+import VerifyAccountScreen from '../screens/wallet/VerifyAccountScreen';
+import PaymentOptionScreen from '../screens/wallet/PaymentOptionScreen';
+import WithdrawelScreen from '../screens/wallet/WithdrawelScreen';
+
+// Match points Screen Imports
+import ContestsLiveMatchScreen from '../screens/matches/ContestsLiveMatchScreen';
+
 import SignupScreen from '../screens/user/SignupScreen';
 
 import FantasyTeamNameScreen from '../screens/leaderboard/FantasyTeamNameScreen';
-import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
 
 import TeamFormationScreen from '../screens/contests/TeamFormationScreen';
 import CompareTeamsScreen from '../screens/matches/CompareTeamsScreen';
-
-import AddCashScreen from '../screens/wallet/AddCashScreen';
-import PaymentOptionScreen from '../screens/wallet/PaymentOptionScreen';
-import WithdrawelScreen from '../screens/wallet/WithdrawelScreen';
 
 import LoginScreen from '../screens/user/LoginScreen';
 import OTPScreen from '../screens/user/OTPScreen';
@@ -88,7 +94,9 @@ export function MyMatches(props: any) {
 
 export function Contest(props: any) {
   return (
-    <ContestStack.Navigator screenOptions={StackConfig}>
+    <ContestStack.Navigator
+      detachInactiveScreens={true}
+      screenOptions={StackConfig}>
       <ContestStack.Screen
         name="ContestListScreen"
         component={ContestListScreen}
@@ -132,12 +140,24 @@ export function Wallet(props: any) {
       <WalletStack.Screen name="WalletScreen" component={WalletScreen} />
       <WalletStack.Screen name="AddCashScreen" component={AddCashScreen} />
       <WalletStack.Screen
+        name="TransactionListScreen"
+        component={TransactionListScreen}
+      />
+      <WalletStack.Screen
         name="PaymentOptionScreen"
         component={PaymentOptionScreen}
       />
       <WalletStack.Screen
+        component={ManagePaymentsScreen}
+        name="ManagePaymentsScreen"
+      />
+      <WalletStack.Screen
         name="WithdrawelScreen"
         component={WithdrawelScreen}
+      />
+      <WalletStack.Screen
+        name="VerifyAccountScreen"
+        component={VerifyAccountScreen}
       />
     </WalletStack.Navigator>
   );
@@ -146,6 +166,11 @@ export function Wallet(props: any) {
 export function Match(props: any) {
   return (
     <MatchStack.Navigator screenOptions={StackConfig}>
+      <MatchStack.Screen
+        name="ContestsLiveMatchScreen"
+        component={ContestsLiveMatchScreen}
+        initialParams={props.route.params}
+      />
       <MatchStack.Screen name="LiveMatchScreen" component={LiveMatchScreen} />
       <MatchStack.Screen
         name="CompareTeamsScreen"

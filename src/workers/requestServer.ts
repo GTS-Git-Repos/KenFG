@@ -64,6 +64,7 @@ const requestServer = function (
 export default requestServer;
 
 const logRequest = (url: string, payload: any) => {
+  // return;
   console.log(`\x1b[32m  Request ${url} : ${JSON.stringify(payload)} \x1b[0m`);
 };
 const ErrorRequest = (url: string, payload: any) => {

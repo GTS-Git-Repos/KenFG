@@ -10,18 +10,17 @@ import {
   RankIcon,
   TickIcon,
 } from '../../../../sharedComponents';
-import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
+  onPressContest(): any;
   breakUpSheet?: any;
 }
 
 export default function MyContestStatus(props: PropTypes) {
-  const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
       activeOpacity={0.6}
-      onPress={() => navigation.navigate('LiveMatchScreen')}
+      onPress={props.onPressContest}
       style={[tailwind('bg-dark-3 rounded my-2 mx-3')]}>
       <TopSection />
       <ContestAttributes amount="10,000" />

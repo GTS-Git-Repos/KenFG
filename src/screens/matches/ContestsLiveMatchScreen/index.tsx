@@ -24,50 +24,46 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Modalize} from 'react-native-modalize';
 import BreakupModalSheet from './molecules/BreakupModalSheet';
 import PlayersStats from '../LiveMatchScreen/molecules/PlayersStats';
-import {useQuery} from 'react-query';
-import {liveMatchMetaRemote} from '../../../remote/matchesRemote';
 import {useSelector} from 'react-redux';
-import {selectedMatch, userInfo} from '../../../store/selectors';
+import {userInfo} from '../../../store/selectors';
+import {useMatchMeta} from '../../../shared_hooks/contest.hooks';
+import {toLiveMatch} from '../../../store/actions/navigationActions';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
 
 export default function ContestLiveMatchScreen() {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation();
   const route = useRoute<any>();
   const pagerRef = useRef<any>();
   const breakUpSheet = useRef();
   const {width} = useWindowDimensions();
-  const useMeta = useSelector(userInfo);
-  // const matchSelector = useSelector(selectedMatch);
+  const userMeta = useSelector(userInfo);
 
-  const [selectedTab, setSelectedTab] = useState(0);
-
-  const {data, isLoading, isSuccess} = useQuery(
-    ['matchMeta', route.params.match_key, useMeta.mobile],
-    liveMatchMetaRemote,
-    {
-      staleTime: 8000,
-    },
+  const {matchMeta, matchAPI}: any = useMatchMeta(
+    route.params.match_key,
+    userMeta.mobile,
   );
 
-  useEffect(() => {
-    if (data) {
-      // console.log('Match Data --> \n', JSON.stringify(data));
-    }
-  }, [data]);
+  const [selectedTab, setSelectedTab] = useState(0);
 
   const onTabPressed = (index: number) => {
     pagerRef.current?.setPage(index);
   };
+
   const onPageSelectedAction = (e: any) => {
     setSelectedTab(e.nativeEvent.position);
   };
 
-  if (isLoading) {
-    return <LoadingSpinner title={'RSA vs IND'} />;
+  const onPressContest = (e: any): any => {
+    toLiveMatch(navigation, route.params.match_key);
+  };
+
+  if (!matchAPI) {
+    return <LoadingSpinner title={'Loading...'} />;
   }
-  if (isSuccess && !data) {
+
+  if (!matchAPI && !matchMeta) {
     return (
       <Text style={[tailwind('font-regular text-white font-15')]}>
         Failed to Load
@@ -77,31 +73,31 @@ export default function ContestLiveMatchScreen() {
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={data?.match?.short_name} />
+      <TopBar text={matchMeta?.match?.short_name} />
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         colors={['#172338', '#0D1320']}
         style={[tailwind('p-3 bg-dark-3')]}>
         <MatchStat
-          matchStatus={data.matchStatus}
+          matchStatus={matchMeta.matchStatus}
           completed={false}
-          team_a={data.team_a}
-          team_b={data.team_b}
-          score_a={data.score_a}
-          score_b={data.score_b}
+          team_a={matchMeta.team_a}
+          team_b={matchMeta.team_b}
+          score_a={matchMeta.score_a}
+          score_b={matchMeta.score_b}
         />
-        {data.notification && (
-          <Projection completed={false} msg={data.notification} />
+        {matchMeta.notification && (
+          <Projection completed={false} msg={matchMeta.notification} />
         )}
 
         <View style={[tailwind('my-2 border-b border-gray-800')]}></View>
 
         <CurrentLiveStatus
-          striker={data.striker}
-          nonStriker={data.nonStriker}
-          bowler={data.bowler}
-          lastOverData={data.lastOverData}
+          striker={matchMeta.striker}
+          nonStriker={matchMeta.nonStriker}
+          bowler={matchMeta.bowler}
+          lastOverData={matchMeta.lastOverData}
         />
         {/* <ExpertsStats /> */}
       </LinearGradient>
@@ -116,7 +112,11 @@ export default function ContestLiveMatchScreen() {
         style={[{flex: 1}]}
         initialPage={selectedTab}>
         <View style={{width: width}}>
-          <MyContestPage index={0} activeIndex={selectedTab} />
+          <MyContestPage
+            index={0}
+            activeIndex={selectedTab}
+            onPressContest={onPressContest}
+          />
         </View>
         <View style={{width: width}}>
           <ContestLiveMyTeamsPage index={1} activeIndex={selectedTab} />
@@ -125,7 +125,11 @@ export default function ContestLiveMatchScreen() {
           <CommentaryPage index={2} activeIndex={selectedTab} />
         </View>
         <View style={{width: width}}>
-          <ScrollBoardPage index={3} activeIndex={selectedTab} />
+          <ScrollBoardPage
+            index={3}
+            activeIndex={selectedTab}
+            innings={matchMeta.innings}
+          />
         </View>
         <View style={{width: width}}>
           <PlayersStats index={4} activeIndex={selectedTab} />
