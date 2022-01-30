@@ -274,7 +274,7 @@ export const joinContestRemote = async (payload: any) => {
       BASE_URL + req_join_contest,
       payload,
     );
-    if (response.status === 200) {
+    if (response.status) {
       return {status: true};
     } else {
       return {status: false, msg: response.data?.message};

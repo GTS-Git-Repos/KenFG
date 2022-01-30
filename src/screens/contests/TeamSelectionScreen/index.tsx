@@ -39,6 +39,7 @@ export default function TeamSelectionHOC() {
       if (isJoined) {
         const joinedTeamsKeys = isJoined.contestMeta.contest_team;
         const AllTeamsKeys = teams.map((item: any) => item.team_key);
+
         const availableTeamsKey = [];
         const unAvailableTeamsKey = [];
         for (const teamKey of AllTeamsKeys) {
@@ -70,13 +71,11 @@ export default function TeamSelectionHOC() {
         }
         setAvailableTeams(availableTeams);
         setUnavailableTeams(unAvailableTeams);
+      } else {
+        setAvailableTeams(teams);
       }
     }
   }, [teams]);
-
-  function isTeamSelected() {
-    return true;
-  }
 
   if (!isScreenReady || !teams) {
     return <LoadingSpinner title={'Select Team'} />;

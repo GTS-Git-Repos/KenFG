@@ -36,7 +36,6 @@ export default function TeamSelectionScreen(props: PropTypes) {
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
 
-
   function selectTeamAction(team_key: string) {
     try {
       if (parseInt(matchSelector.joinContest.maxTeam) < choosenTeams.length) {
@@ -133,13 +132,18 @@ export default function TeamSelectionScreen(props: PropTypes) {
               <TouchableOpacity
                 onPress={() => selectTeamAction(item.team_key)}
                 style={[tailwind('flex-row justify-center'), {flex: 1}]}>
-                <CheckBoxSelectedTeam selected={false} />
+                <CheckBoxSelectedTeam
+                  team_key={item.team_key}
+                  choosenTeams={choosenTeams}
+                />
               </TouchableOpacity>
             </View>
           );
         })}
+        {props.unavailableTeams.length > 0 && (
+          <SubTitle text={'Already Joined'} />
+        )}
 
-        <SubTitle text={'Already Joined'} />
         <View style={[tailwind('px-4')]}>
           {props.unavailableTeams.map((item: any) => {
             return (
@@ -180,7 +184,9 @@ export default function TeamSelectionScreen(props: PropTypes) {
         <JoinContestModal
           setShowJoinModal={props.setShowJoinModal}
           joinContestWithTeam={joinContestWithTeam}
-          entryAmount={matchSelector?.joinContest?.entryAmount}
+          entryAmount={
+            matchSelector?.joinContest?.entryAmount * choosenTeams.length
+          }
         />
       </Modal>
 

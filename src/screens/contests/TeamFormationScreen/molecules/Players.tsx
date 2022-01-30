@@ -112,7 +112,12 @@ function Player(props: PropTypes) {
               ]}>
               {props.credits}
             </Text>
-            {props.status === 0 ? <AddedButton /> : <AddButton />}
+
+            {props.status === 0 ? (
+              <AddedButton />
+            ) : (
+              <AddButton status={props.status} />
+            )}
           </View>
         </TouchableOpacity>
       </View>
@@ -134,7 +139,11 @@ const TeamBadge = (props: any) => {
   );
 };
 
-const AddButton = () => {
+const AddButton = (props: any) => {
+  if (props.status === -1) {
+    return null;
+  }
+
   return (
     <LinearGradient
       colors={['#006A4D', '#00513B']}
