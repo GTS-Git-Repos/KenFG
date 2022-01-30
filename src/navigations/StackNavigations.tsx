@@ -6,12 +6,12 @@ import ContestListScreen from '../screens/contests/ContestListScreen';
 import ContestInfoScreen from '../screens/contests/ContestInfoScreen';
 import CreateContestScreen from '../screens/contests/CreateContestScreen';
 import WinningsListScreen from '../screens/contests/WinningsListScreen';
+import SwitchTeamScreen from '../screens/contests/SwitchTeamScreen';
 
 import LiveMatchScreen from '../screens/matches/LiveMatchScreen';
 import TeamPreviewScreen from '../screens/contests/TeamPreviewScreen';
 import AccountProfileScreen from '../screens/user/AccountProfileScreen';
 import CapSelectionScreen from '../screens/contests/CapSelectionScreen';
-import TeamsListScreen from '../screens/contests/TeamsListScreen';
 import NotificationScreen from '../screens/user/NotificationScreen';
 
 // wallet screen imports
@@ -116,7 +116,10 @@ export function Contest(props: any) {
         name="WinningsListScreen"
       />
 
-      <ContestStack.Screen name="TeamsListScreen" component={TeamsListScreen} />
+      <ContestStack.Screen
+        name="SwitchTeamScreen"
+        component={SwitchTeamScreen}
+      />
       <ContestStack.Screen
         name="TeamFormationScreen"
         component={TeamFormationScreen}

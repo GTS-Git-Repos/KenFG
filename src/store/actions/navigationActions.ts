@@ -6,7 +6,7 @@ import {
   joinContestRequestAction,
   updateSelectedMatchAction,
 } from './appActions';
-import {TeamFormationMutationType, TeamPreviewType} from '../../types/match';
+import {SwitchTeamType, TeamFormationMutationType, TeamPreviewType} from '../../types/match';
 import {updateCaptain, updatePlayer, updateVCaptain} from './teamActions';
 import {errorBox} from '../../utils/snakBars';
 
@@ -201,3 +201,14 @@ export const toTeamPreview = (navigation: any, payload: TeamPreviewType) => {
   );
   return true;
 };
+
+export const toSwitchTeam = (navigation:any,payload:SwitchTeamType) =>{
+  navigation.dispatch(
+    CommonActions.navigate({
+      name: 'SwitchTeamScreen',
+      params: {
+        ...payload,
+      },
+    }),
+  );
+}

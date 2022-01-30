@@ -29,6 +29,7 @@ const req_get_private_contest = '/private-contest.php';
 const req_matches = '/completed-matches.php';
 const req_edit_team = '/edit-team.php';
 const req_search_contest = '/search-contest.php';
+const req_edit_contest = '/edit-contest.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -98,6 +99,24 @@ export const searchContestsRemote = async (payload: any) => {
       return response.data.data;
     } else {
       failedLog('searchContestsRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const switchTeamInContestRemote = async (payload: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.GET,
+      BASE_URL + req_edit_contest,
+      payload,
+    );
+    if (response.status === 200) {
+      return true;
+    } else {
+      failedLog('switchTeamInContestRemote', response);
     }
   } catch (err) {
     console.log(err);

@@ -24,12 +24,20 @@ export default function TeamSelectionHOC() {
     ['teams', matchSelector.match_key, userMeta?.mobile],
     getJoinedTeamsRemote,
   );
-  const {joined, joinedAPI, joinedAPILive, refetchJoinedContest} =
-    useJoinedContests(matchSelector.match_key, userMeta.mobile);
+  const {joined}: any = useJoinedContests(
+    matchSelector.match_key,
+    userMeta.mobile,
+  );
 
   useEffect(() => {
     if (teams.data) {
-      console.log('dd', route);
+      const isJoined = joined.find(
+        (item: any) =>
+          item.contestMeta.contest_code === matchSelector.contestKey,
+      );
+      console.log('isJoined', isJoined);
+
+      console.log(matchSelector);
     }
   }, [teams.data]);
 

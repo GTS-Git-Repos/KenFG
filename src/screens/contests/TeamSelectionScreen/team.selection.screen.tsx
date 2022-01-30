@@ -25,14 +25,12 @@ const log = console.log;
 export default function TeamSelectionScreen(props: any) {
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
-  const [choosenTeams, setChoosenTeams] = useState([]);
+  const [choosenTeams, setChoosenTeams] = useState<Array<string>>([]);
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
 
-
-
-  function selectTeamAction(team_key: any) {
+  function selectTeamAction(team_key: string) {
     try {
       if (parseInt(matchSelector.joinContest.maxTeam) < choosenTeams.length) {
         errorBox(
@@ -41,7 +39,7 @@ export default function TeamSelectionScreen(props: any) {
         );
         return;
       }
-      const clone = [...choosenTeams];
+      const clone: Array<string> = [...choosenTeams];
       const isExist = clone.findIndex((item: any) => item === team_key);
       if (isExist === -1) {
         clone.push(team_key);
@@ -58,7 +56,7 @@ export default function TeamSelectionScreen(props: any) {
   function proceedToJoinPress() {
     try {
       if (choosenTeams.length === 0) {
-        errorBox('Please select any one of the Team');
+        errorBox('Please select any one of the Team', 0);
         return;
       }
       // console.log(obj);
@@ -84,9 +82,7 @@ export default function TeamSelectionScreen(props: any) {
       setLoading(false);
       if (!response.status) {
         setLoading(false);
-        setTimeout(() => {
-          errorBox(response.msg);
-        }, 1000);
+        errorBox(response.msg, 1000);
         return;
       }
       resetContestListNavigation(navigation, {

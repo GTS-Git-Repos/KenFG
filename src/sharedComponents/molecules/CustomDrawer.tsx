@@ -15,7 +15,6 @@ import {useNavigation} from '@react-navigation/core';
 import {useSelector} from 'react-redux';
 import Modal from 'react-native-modal';
 import {removeToken} from '../../utils/authTokenUtils';
-//@ts-expect-error
 import RNRestart from 'react-native-restart';
 import LinearGradient from 'react-native-linear-gradient';
 const log = console.log;
@@ -39,12 +38,13 @@ export default function CustomDrawer(props: any) {
       <ScrollView>
         <UserInfo name={userInfoState?.name} />
         <Links
-          to="WalletScreen"
+          to="Wallet"
           icon={assets.drawer_wallet}
           text="My Balance"
           children={
             <Text style={[tailwind('font-regular text-brown-1 font-13')]}>
-              {'\u20B9'}00.00
+              {'\u20B9 '}
+              {userInfoState.un_utilized}
             </Text>
           }
         />
@@ -210,12 +210,12 @@ const Links = (props: any) => {
           />
         </View>
       </View>
-      <View style={[tailwind(''), {flex: 7}]}>
+      <View style={[tailwind(''), {flex: 6}]}>
         <Text style={[tailwind('font-regular text-light font-13')]}>
           {props.text}
         </Text>
       </View>
-      <View style={[tailwind('items-end'), {flex: 3}]}>
+      <View style={[tailwind('items-end'), {flex: 4}]}>
         {props.children && props.children}
       </View>
     </TouchableOpacity>

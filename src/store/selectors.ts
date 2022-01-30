@@ -1,4 +1,5 @@
 import {createSelector} from 'reselect';
+import {SelectedMatchType} from '../types/match';
 import {rolesConstraints} from '../constants/appContants';
 import {sumOfMustNeedToFillSlots} from './store_utils';
 
@@ -47,23 +48,18 @@ export const creditLeft = createSelector(playersState, players => {
 export const selectedMatch = createSelector(
   SelectedMatchState,
   JoinContestState,
-  (match, contest) => {
-    try {
-      return {
-        match_key: match.match_key,
-        name: match.name,
-        team_a: match.team_a,
-        team_b: match.team_b,
-        team_a_name: match.team_a_name,
-        team_b_name: match.team_b_name,
-        titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),
-        start_at: match.start_at,
-        joinContest: contest,
-      };
-    } catch (err) {
-      console.log('selectedMatch Selector', selectedMatch);
-      return false;
-    }
+  (match, contest): SelectedMatchType => {
+    return {
+      match_key: match.match_key,
+      name: match.name,
+      team_a: match.team_a,
+      team_b: match.team_b,
+      team_a_name: match.team_a_name,
+      team_b_name: match.team_b_name,
+      titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),
+      start_at: match.start_at,
+      joinContest: contest,
+    };
   },
 );
 

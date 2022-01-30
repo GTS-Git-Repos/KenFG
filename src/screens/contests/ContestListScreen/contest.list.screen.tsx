@@ -54,6 +54,7 @@ interface PropTypes {
   setSelectedTab(index: number): any;
   teamPreviewPress(team_key: string): any;
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
+  onPressTeamSwitch(team_key:string,contest_key:string):void
 }
 
 export default function ContestListScreen(props: PropTypes) {
@@ -116,6 +117,7 @@ export default function ContestListScreen(props: PropTypes) {
             teamMutateAction={props.teamMutateAction}
             timeStamp={timeStamp}
             pagerRef={props.pagerRef}
+            onPressTeamSwitch={props.onPressTeamSwitch}
           />
         </View>
         <View style={{width: width}}>

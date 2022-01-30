@@ -8,7 +8,6 @@ import {
   ToastAndroid,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
 import {
   CIcon,
   CupIcon,
@@ -38,18 +37,22 @@ interface PropTypes {
   contest_teams: Array<string>;
   joinedTeam: Array<any>;
   teamPreviewPress(team_key: string): any;
+  onPressTeamSwitch(team_key: string): void;
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
 }
 
 interface TeamInfoTypes {
+  contest_key: string;
   team_key: string;
   code: string;
   cap: any;
   v_c: any;
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
+  teamPreviewPress(team_key: string): any;
+  onPressTeamSwitch(team_key: string, contest_key: string): void;
 }
 
-export default function ContestCard(props: PropTypes) {
+export default function JoinedContestCard(props: PropTypes) {
   const [open, setOpen] = useState(false);
   return (
     <TouchableOpacity
@@ -78,12 +81,14 @@ export default function ContestCard(props: PropTypes) {
               return (
                 <View key={index} style={[tailwind('pb-1')]}>
                   <TeamInfo
+                    contest_key={props.contest_key}
                     team_key={item.teamCode}
                     code={item.teamCode}
                     cap={item.t_cap}
                     v_c={item.t_vc}
                     teamPreviewPress={props.teamPreviewPress}
                     teamMutateAction={props.teamMutateAction}
+                    onPressTeamSwitch={props.onPressTeamSwitch}
                   />
                 </View>
               );
@@ -211,12 +216,9 @@ const TeamInfo = (props: TeamInfoTypes) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={[tailwind('mx-1')]}
-          onPress={() => {
-            ToastAndroid.show(
-              'Switch Teams Not available currently ',
-              ToastAndroid.SHORT,
-            );
-          }}>
+          onPress={() =>
+            props.onPressTeamSwitch(props.team_key, props.contest_key)
+          }>
           <SwitchIcon />
         </TouchableOpacity>
       </View>

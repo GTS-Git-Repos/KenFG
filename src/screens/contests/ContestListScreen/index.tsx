@@ -18,6 +18,7 @@ import PagerView from 'react-native-pager-view';
 import {joinContestRemote} from '../../../remote/matchesRemote';
 import {Alert} from 'react-native';
 import {
+  toSwitchTeam,
   toTeamFormationWithAutoJoin,
   toTeamFormationWithMutation,
   toTeamPreview,
@@ -87,6 +88,15 @@ export default function ContestListHOC() {
     return;
   };
 
+  const onPressTeamSwitch = (team_key: string, contest_key: string): void => {
+    toSwitchTeam(navigation, {
+      match_key: matchSelector.match_key,
+      contest_key: contest_key,
+      old_team_key: team_key,
+      player_key: userSelector.mobile,
+    });
+  };
+
   async function proceedToJoin(contest_key: string) {
     try {
       const contest = contests.find((item: any) => item.key === contest_key);
@@ -113,7 +123,6 @@ export default function ContestListHOC() {
         }
         console.log('checkContestJoin', checkContestJoin);
       }
-
       return;
     } catch (err) {
       console.log('err', err);
@@ -176,6 +185,7 @@ export default function ContestListHOC() {
       loading={loading}
       setLoading={setLoading}
       proceedToJoin={proceedToJoin}
+      onPressTeamSwitch={onPressTeamSwitch}
     />
   );
 }

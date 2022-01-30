@@ -31,3 +31,22 @@ export interface TeamFormationMutationType {
   edit: boolean;
   clone: boolean;
 }
+
+export interface SwitchTeamType {
+  match_key: string;
+  contest_key: string;
+  old_team_key: string;
+  player_key: string;
+}
+
+export interface SelectedMatchType {
+  joinContest: null | any;
+  match_key: string;
+  name: string;
+  start_at: string;
+  team_a: string;
+  team_a_name: string;
+  team_b: string;
+  team_b_name: string;
+  titleString: string;
+}
