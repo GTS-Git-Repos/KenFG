@@ -68,6 +68,7 @@ export default function LobbyScreen(props: PropTypes) {
               <MyMatchCard
                 match_key={props.myMatches.key}
                 team_a={props.myMatches.teams.a}
+                status={props.myMatches.status}
                 team_b={props.myMatches.teams.b}
                 tournament_name={props.myMatches.teams.tournament.short_name}
                 start_time={props.myMatches.start_at}

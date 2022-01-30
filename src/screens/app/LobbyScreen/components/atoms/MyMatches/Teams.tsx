@@ -7,6 +7,7 @@ import FastImage from 'react-native-fast-image';
 interface PropTypes {
   team_a: any;
   team_b: any;
+  status: string;
   countDown: string;
 }
 
@@ -47,7 +48,12 @@ export default function Teams(props: PropTypes) {
       {/* Count down */}
 
       <View style={[tailwind('justify-between items-center'), {flex: 4}]}>
-        <CountDown countDown={props.countDown} />
+        {props.status === 'completed' ? (
+          <IsCompleted />
+        ) : (
+          <CountDown countDown={props.countDown} />
+        )}
+
         {/* <IsLive /> */}
       </View>
 
@@ -87,13 +93,32 @@ export default function Teams(props: PropTypes) {
 
 const IsLive = () => {
   return (
-    <View style={[tailwind('flex-row items-center')]}>
+    <View style={[tailwind('flex-row pt-2 items-center')]}>
       <Text
         style={[
           tailwind('font-regular text-center pr-1 font-10'),
-          {fontSize: 14, color: '#FEFEFF'},
+          {fontSize: 13, color: '#FEFEFF'},
         ]}>
         LIVE
+      </Text>
+      <View
+        style={[
+          tailwind('rounded-full'),
+          {backgroundColor: 'green', width: 5, height: 5},
+        ]}></View>
+    </View>
+  );
+};
+
+const IsCompleted = () => {
+  return (
+    <View style={[tailwind('flex-row pt-2 items-center')]}>
+      <Text
+        style={[
+          tailwind('font-regular text-center pr-1 font-10'),
+          {fontSize: 13, color: '#FEFEFF'},
+        ]}>
+        COMPLETED
       </Text>
       <View
         style={[

@@ -9,26 +9,33 @@ import {
   TopBar,
   JoinContestModal,
 } from '../../../sharedComponents';
-
 import {selectedMatch, userInfo} from '../../../store/selectors';
 import {useSelector} from 'react-redux';
 import Info from './atoms/info.teamselection';
 import CheckBoxSelectedTeam from './molecules/checbox.selectteam';
-import {isTeamSelected} from './functions';
 import {errorBox} from '../../../utils/snakBars';
 import {joinContestRemote} from '../../../remote/matchesRemote';
 import {resetContestListNavigation} from '../../../utils/resetNav';
+import SubTitle from './atoms/subtitle.teamselection';
 import Modal from 'react-native-modal';
-import {FlatList} from 'react-native-gesture-handler';
 const log = console.log;
 
-export default function TeamSelectionScreen(props: any) {
+interface PropTypes {
+  teams: any;
+  showJoinModal: any;
+  setShowJoinModal: any;
+  availableTeams: any;
+  unavailableTeams: any;
+}
+
+export default function TeamSelectionScreen(props: PropTypes) {
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
   const [choosenTeams, setChoosenTeams] = useState<Array<string>>([]);
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
+
 
   function selectTeamAction(team_key: string) {
     try {
@@ -100,9 +107,8 @@ export default function TeamSelectionScreen(props: any) {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Select Team'} />
       <Info maxTeam={matchSelector.joinContest.maxTeam} />
-      <FlatList
-        data={props.teams}
-        renderItem={({item}) => {
+      <ScrollView>
+        {props.availableTeams.map((item: any) => {
           return (
             <View
               key={item.team_key}
@@ -127,14 +133,38 @@ export default function TeamSelectionScreen(props: any) {
               <TouchableOpacity
                 onPress={() => selectTeamAction(item.team_key)}
                 style={[tailwind('flex-row justify-center'), {flex: 1}]}>
-                <CheckBoxSelectedTeam
-                  selected={isTeamSelected(choosenTeams, item.team_key)}
-                />
+                <CheckBoxSelectedTeam selected={false} />
               </TouchableOpacity>
             </View>
           );
-        }}
-      />
+        })}
+
+        <SubTitle text={'Already Joined'} />
+        <View style={[tailwind('px-4')]}>
+          {props.unavailableTeams.map((item: any) => {
+            return (
+              <TouchableOpacity key={item.team_key}>
+                <TeamsCard
+                  team_a={item.team_a}
+                  team_b={item.team_b}
+                  team_key={item.team_key}
+                  canModify={false}
+                  current={false}
+                  keepers={item.keepers}
+                  batsman={item.batsman}
+                  all_rounder={item.all_rounder}
+                  bowler={item.bowler}
+                  cap={item.cap}
+                  vc={item.vc}
+                  navigateToPreview={() => {}}
+                  mutateTeam={() => {}}
+                />
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      </ScrollView>
+
       <TouchableOpacity onPress={proceedToJoinPress} style={[tailwind('m-3')]}>
         <ButtonComponent text={'Join Contest'} />
       </TouchableOpacity>

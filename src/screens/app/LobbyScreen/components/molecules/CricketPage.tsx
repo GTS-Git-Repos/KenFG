@@ -20,8 +20,7 @@ export default function CricketPage(props: PropTypes) {
   const navigateToMatchContests = (match_key: string) => {
     const match = props.upcomming.find((item: any) => item.key === match_key);
     if (match) {
-      // console.log(match);
-      navigateMatchContestsAction(navigation, {
+      const obj = {
         match_key: match.key,
         name: match.teams.tournament.short_name,
         team_a: match.teams.a.key,
@@ -29,9 +28,10 @@ export default function CricketPage(props: PropTypes) {
         team_a_name: match.teams.a.name,
         team_b_name: match.teams.b.name,
         start_at: match.start_at,
-      });
+      };
+      navigateMatchContestsAction(navigation, obj);
     } else {
-      errorBox('No Match Found');
+      errorBox('No Match Found', 200);
     }
   };
 

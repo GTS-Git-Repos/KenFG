@@ -16,6 +16,7 @@ import {useNavigation} from '@react-navigation/core';
 interface PropTypes {
   activeIndex: number;
   pagerRef: any;
+  refetch(): any;
 }
 
 export default function CreateTeamPage(props: PropTypes) {
@@ -52,10 +53,10 @@ export default function CreateTeamPage(props: PropTypes) {
       !winners ||
       !perUserTeam
     ) {
-      errorBox('All Fields are Required');
+      errorBox('All Fields are Required', 0);
       return;
     }
-    let obj = {
+    const obj = {
       player_key: userInfoSelector.mobile,
       mobile: userInfoSelector.mobile,
       match_key: matchSelector.match_key,
@@ -71,15 +72,11 @@ export default function CreateTeamPage(props: PropTypes) {
     setLoading(false);
     props.refetch();
     if (!response) {
-      setTimeout(() => {
-        errorBox('Failed to Create Contest !!');
-      }, 500);
+      errorBox('Failed to Create Contest !!', 500);
       return;
     }
 
-    setTimeout(() => {
-      infoBox('Contest Created');
-    }, 500);
+    infoBox('Contest Created',500);
     props.pagerRef?.current?.setPage(1);
   };
 

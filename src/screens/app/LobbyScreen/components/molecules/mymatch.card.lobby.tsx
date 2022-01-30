@@ -16,6 +16,7 @@ interface PropTypes {
   start_time: Date;
   teamCount: any;
   contestCount: any;
+  status:string;
   onPressMyMatchCard(match_key: string): any;
 }
 
@@ -59,6 +60,7 @@ export default function MyMatchesCard(props: PropTypes) {
         countDown={countDown}
         team_a={props.team_a}
         team_b={props.team_b}
+        status={props.status}
       />
       <SlideAddMyMatchCard />
     </TouchableOpacity>

@@ -35,7 +35,7 @@ export default function JoinedContestListPage(props: PropTypes) {
       console.log(data);
     },
     onError: error => {
-      errorBox('Failed, Please check your internet');
+      errorBox('Failed, Please check your internet', 500);
     },
   });
 
@@ -73,7 +73,7 @@ export default function JoinedContestListPage(props: PropTypes) {
   // console.log(JSON.stringify(props.contests));
 
   return (
-    <View style={[tailwind('m-2 bg-dark')]}>
+    <View style={[tailwind('p-2 h-full bg-dark')]}>
       <SearchInput input={input} setInput={setInput} />
       <FlatList
         data={contests}

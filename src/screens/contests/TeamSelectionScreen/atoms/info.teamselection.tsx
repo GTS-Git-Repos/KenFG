@@ -10,8 +10,8 @@ interface PropTypes {
 
 export default function InfoTeamSelection(props: PropTypes) {
   return (
-    <View style={[tailwind('p-2 bg-dark-3')]}>
-      <Text style={[tailwind('font-regular text-center text-white font-13')]}>
+    <View style={[tailwind('p-3 bg-dark-3')]}>
+      <Text style={[tailwind('font-regular text-white font-14')]}>
         You can select upto {props.maxTeam} Teams for joining this contest
       </Text>
     </View>
