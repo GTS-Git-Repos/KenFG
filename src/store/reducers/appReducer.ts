@@ -2,6 +2,7 @@ import {
   SAVE_IP,
   UPDATE_SELECTED_MATCH,
   UPDATE_JOINCONTEST_REQUEST,
+  UPDATE_FULL_MATCH,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   ip: null,
   selected_match: null,
   joinContestRequest: null,
+  isFullMatch: true,
   cashFreeAppId: '122224715b8a570ce3b9253a922221',
 };
 
@@ -19,10 +21,10 @@ interface actionShape {
 
 const App = (state = initialState, action: actionShape): any => {
   switch (action.type) {
-    case SAVE_IP:
+    case UPDATE_FULL_MATCH:
       return {
         ...state,
-        ip: action.payload,
+        isFullMatch: action.payload,
       };
     case UPDATE_JOINCONTEST_REQUEST: {
       return {

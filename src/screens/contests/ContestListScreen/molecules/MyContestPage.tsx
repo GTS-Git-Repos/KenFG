@@ -2,7 +2,6 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, ActivityIndicator, ScrollView} from 'react-native';
 import {JoinedContestCard} from '../../../../sharedComponents';
-import {useNavigation} from '@react-navigation/core';
 import NoContent from '../atoms/no.content.contest';
 import {TeamFormationMutationType} from '../../../../types/match';
 const log = console.log;
@@ -12,18 +11,33 @@ interface PropTypes {
   status: any;
   timeStamp: any;
   pagerRef: any;
+  selectedTab: number;
+  index: number;
   teamPreviewPress(team_key: string): any;
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
-  onPressTeamSwitch(team_key:string,contest_key:string):void
-
+  onPressTeamSwitch(team_key: string, contest_key: string): void;
+  onPressJoinedContest(contest_key: string): void;
 }
 
 export default function MyContestPage(props: PropTypes) {
+  const isActiveTab = props.index === props.selectedTab;
 
   function noContentAction() {
     props.pagerRef.current?.setPage(0);
   }
 
+
+  if (!props.status || !isActiveTab) {
+    return (
+      <ActivityIndicator
+        style={[tailwind('mt-10')]}
+        color="#d1b45a"
+        size="large"
+      />
+    );
+  }
+
+ 
   if (!props.status) {
     return <ActivityIndicator size={'large'} color="#d1b45a" />;
   }
@@ -60,6 +74,7 @@ export default function MyContestPage(props: PropTypes) {
             teamPreviewPress={props.teamPreviewPress}
             teamMutateAction={props.teamMutateAction}
             onPressTeamSwitch={props.onPressTeamSwitch}
+            onPressJoinedContest={props.onPressJoinedContest}
           />
         );
       })}

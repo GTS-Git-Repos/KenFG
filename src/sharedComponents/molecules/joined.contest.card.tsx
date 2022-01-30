@@ -39,6 +39,7 @@ interface PropTypes {
   teamPreviewPress(team_key: string): any;
   onPressTeamSwitch(team_key: string): void;
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
+  onPressJoinedContest(contest_key: string): void;
 }
 
 interface TeamInfoTypes {
@@ -57,7 +58,7 @@ export default function JoinedContestCard(props: PropTypes) {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
-      onPress={() => {}}
+      onPress={() => props.onPressJoinedContest(props.contest_key)}
       style={[tailwind('rounded mb-2 bg-dark-3')]}>
       <TopSection
         title={props.contest_name}

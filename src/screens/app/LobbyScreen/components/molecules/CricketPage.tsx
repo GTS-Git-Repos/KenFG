@@ -10,8 +10,10 @@ import {navigateMatchContestsAction} from '../../../../../store/actions/navigati
 import {errorBox} from '../../../../../utils/snakBars';
 
 interface PropTypes {
+  isFullMatch:boolean,
   banners: Array<any>;
   upcomming: Array<any>;
+  onPressMatchType(match_type:number):void
 }
 
 export default function CricketPage(props: PropTypes) {
@@ -46,7 +48,7 @@ export default function CricketPage(props: PropTypes) {
         />
       </View>
       <View style={[tailwind('px-5 pt-4')]}>
-        <UpcommingMatchTitle />
+        <UpcommingMatchTitle isFullMatch={props.isFullMatch} onPressMatchType={props.onPressMatchType} />
       </View>
       <UpComingMatchesSlider
         data={props.upcomming}

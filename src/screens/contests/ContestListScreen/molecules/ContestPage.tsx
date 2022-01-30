@@ -1,11 +1,9 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, ScrollView} from 'react-native';
-import {ContestCard, FullScreenLoading} from '../../../../sharedComponents';
+import {View, ActivityIndicator, ScrollView} from 'react-native';
+import {ContestCard} from '../../../../sharedComponents';
 import FilterTab from './Filtertab';
-import {contestListsTypes} from '../../../../types/api';
 import ContestSubTitle from '../atoms/ContestSubTitle';
-import LoadFailedContestList from '../atoms/loadfailed.contestlist';
 import NoContent from '../atoms/no.content.contest';
 import {useNavigation} from '@react-navigation/core';
 const log = console.log;
@@ -15,22 +13,29 @@ interface PropTypes {
   status: string;
   data: any;
   selectedFilter: string;
+  selectedTab: number;
+  index: number;
+  isFullMatch: boolean;
   setSelectedFilter(filter: string): any;
   proceedToJoin(contest_key: string): any;
 }
 
 export default function ContestPage(props: PropTypes) {
+  const isActiveTab = props.index === props.selectedTab;
+
   const navigation = useNavigation();
 
   function noContentAction() {
     navigation.goBack();
   }
 
-  if (!props.status) {
+  if (!props.status || !isActiveTab) {
     return (
-      <Text style={[tailwind('font-regular text-white font-15')]}>
-        Loading...
-      </Text>
+      <ActivityIndicator
+        style={[tailwind('mt-10')]}
+        color="#d1b45a"
+        size="large"
+      />
     );
   }
   if (props.status && !props.data) {
@@ -50,6 +55,7 @@ export default function ContestPage(props: PropTypes) {
         <FilterTab
           selectedFilter={props.selectedFilter}
           setSelectedFilter={props.setSelectedFilter}
+          isFullMatch={props.isFullMatch}
         />
         <NoContent
           title={`Currently No Contests are in ${props.selectedFilter} Category`}
@@ -66,6 +72,7 @@ export default function ContestPage(props: PropTypes) {
       <FilterTab
         selectedFilter={props.selectedFilter}
         setSelectedFilter={props.setSelectedFilter}
+        isFullMatch={props.isFullMatch}
       />
       <ContestSubTitle
         title={'Mega Contest'}

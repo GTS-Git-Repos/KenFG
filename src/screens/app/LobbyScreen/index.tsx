@@ -1,13 +1,23 @@
 import React, {useEffect} from 'react';
-import {useSelector} from 'react-redux';
-import {userInfo} from '../../../store/selectors';
+import {useDispatch, useSelector} from 'react-redux';
+import {updateFullMatchAction} from '../../../store/actions/appActions';
+import {userInfo, isFulMatchSelector} from '../../../store/selectors';
 import LobbyScreenLoading from './components/lobbyscreen.loading';
 import LobbyScreen from './lobby.screen';
 import {useLobbyMeta} from './lobby.workers';
 
 export default function LobbyScreenHOC() {
+  const dispatch = useDispatch();
   const userSelector = useSelector(userInfo);
-  const {lobbyMeta, lobbyAPI}: any = useLobbyMeta(userSelector.mobile);
+  const isFullMatch = useSelector(isFulMatchSelector);
+  const {lobbyMeta, lobbyAPI, lobbyLive}: any = useLobbyMeta(
+    userSelector.mobile,
+    isFullMatch,
+  );
+
+  const onPressMatchType = (match_type: number) => {
+    dispatch(updateFullMatchAction(match_type === 1 ? true : false));
+  };
 
   if (!lobbyAPI) {
     return <LobbyScreenLoading failed={false} />;
@@ -15,7 +25,6 @@ export default function LobbyScreenHOC() {
   if (lobbyAPI && !lobbyMeta) {
     return <LobbyScreenLoading failed={true} />;
   }
-  // return null;
   return (
     <LobbyScreen
       myMatches={
@@ -23,6 +32,8 @@ export default function LobbyScreenHOC() {
       }
       banners={lobbyMeta.banners}
       upcomming={lobbyMeta.upcomming}
+      isFullMatch={isFullMatch}
+      onPressMatchType={onPressMatchType}
     />
   );
 }

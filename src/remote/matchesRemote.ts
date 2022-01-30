@@ -36,7 +36,7 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_upcomming_mathces_banner,
-      {player_key: params.queryKey[1]},
+      {player_key: params.queryKey[1], isFullMatch: params.queryKey[2] ? 1 : 0},
     );
     if (response.status === 200) {
       const data = extractDataFromUpcommingMatchesAPI(response.data.data);
@@ -75,7 +75,10 @@ export const contestListsRemote = async (params: any) => {
   try {
     const response = await requestServer(
       METHODS.GET,
-      BASE_URL + `${req_contest_list}?m=${params.queryKey[1]}`,
+      BASE_URL +
+        `${req_contest_list}?m=${params.queryKey[1]}?full=${
+          params.queryKey[2] ? '1' : '0'
+        }`,
     );
     if (response.status === 200) {
       return groupAllContestsAPIRmeote(response.data.data);
@@ -235,7 +238,11 @@ export const getJoinedTeamsRemote = async (params: any) => {
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_view_team,
-      {match_key: params.queryKey[1], player_key: params.queryKey[2]},
+      {
+        match_key: params.queryKey[1],
+        player_key: params.queryKey[2],
+        isFullMatch: params.queryKey[3] ? 1 : 0,
+      },
     );
 
     if (response.status === 200 && response.data.data) {
@@ -254,7 +261,11 @@ export const getJoinedContestRemote = async (params: any) => {
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_my_contest,
-      {match_key: params.queryKey[1], player_key: params.queryKey[2]},
+      {
+        match_key: params.queryKey[1],
+        player_key: params.queryKey[2],
+        isFullMatch: params.queryKey[3] ? 1 : 0,
+      },
     );
     if (response.status === 200) {
       return extractJoinedContestAPIResponse(response.data.data);

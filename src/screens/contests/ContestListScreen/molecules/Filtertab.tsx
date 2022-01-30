@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 interface PropTypes {
   selectedFilter: null | string;
   setSelectedFilter(filter: string): any;
+  isFullMatch: boolean;
 }
 
 const TABS = [
@@ -177,7 +178,8 @@ function FilterTabs(props: PropTypes) {
             </View>
           </TouchableOpacity>
         </View>
-        <SecondInnings />
+
+        <SecondInnings isFullMatch={props.isFullMatch} />
       </View>
       {props.selectedFilter !== null ? <SortBy /> : null}
     </View>
@@ -251,10 +253,21 @@ const ArrrowDown = () => {
   );
 };
 
-const SecondInnings = () => {
+const SecondInnings = (props: any) => {
   return (
-    <View style={[tailwind(''), styles.siroot]}>
-      <Text style={[tailwind('font-regular text-center text-white font-12')]}>
+    <View
+      style={[
+        tailwind(`${props.isFullMatch ? 'bg-secondary' : ''}`),
+        styles.siroot,
+      ]}>
+      <Text
+        style={[
+          tailwind(
+            `font-regular text-center ${
+              props.isFullMatch ? 'text-brown-5' : 'text-white'
+            } font-12`,
+          ),
+        ]}>
         Second Innings
       </Text>
     </View>
@@ -288,4 +301,4 @@ const styles = StyleSheet.create({
   SortBy: {},
 });
 
-export default React.memo(FilterTabs)
+export default React.memo(FilterTabs);

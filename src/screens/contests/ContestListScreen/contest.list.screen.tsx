@@ -1,13 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {View, useWindowDimensions} from 'react-native';
 import tailwind from '../../../../tailwind';
-import {
-  useFocusEffect,
-  useNavigation,
-  useRoute,
-} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
-import {joinContestRemote} from '../../../remote/matchesRemote';
 import {useCountDown} from '../../../utils/customHoooks';
 import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
 import {
@@ -18,16 +13,12 @@ import TabsContest from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {selectedMatch} from '../../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import Modal from 'react-native-modal';
 import {errorBox} from '../../../utils/snakBars';
 import {isMatchTimeExhausted} from '../../../utils/comman';
-import {
-  navigateWith_AutoJoin,
-  toTeamFormationWithAutoJoin,
-} from '../../../store/actions/navigationActions';
 import {TeamFormationMutationType} from '../../../types/match';
 
 const log = console.log;
@@ -41,6 +32,7 @@ interface PropTypes {
   teams: any;
   teamsAPI: any;
   teamsAPILive: any;
+  isFullMatch: boolean;
   pagerRef: any;
   selectedTab: any;
   to: any;
@@ -54,7 +46,8 @@ interface PropTypes {
   setSelectedTab(index: number): any;
   teamPreviewPress(team_key: string): any;
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
-  onPressTeamSwitch(team_key:string,contest_key:string):void
+  onPressTeamSwitch(team_key: string, contest_key: string): void;
+  onPressJoinedContest(contest_key: string): void;
 }
 
 export default function ContestListScreen(props: PropTypes) {
@@ -63,7 +56,6 @@ export default function ContestListScreen(props: PropTypes) {
   const {width} = useWindowDimensions();
 
   const [selectedFilter, setSelectedFilter] = useState<any>('All');
-  // const [currentTime, setCurrentTime] = useState<any>('00h:00m:00s');
 
   const matchSelector: any = useSelector(selectedMatch);
 
@@ -107,6 +99,9 @@ export default function ContestListScreen(props: PropTypes) {
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
             proceedToJoin={props.proceedToJoin}
+            index={0}
+            selectedTab={props.selectedTab}
+            isFullMatch={props.isFullMatch}
           />
         </View>
         <View style={{width: width}}>
@@ -118,6 +113,9 @@ export default function ContestListScreen(props: PropTypes) {
             timeStamp={timeStamp}
             pagerRef={props.pagerRef}
             onPressTeamSwitch={props.onPressTeamSwitch}
+            onPressJoinedContest={props.onPressJoinedContest}
+            index={1}
+            selectedTab={props.selectedTab}
           />
         </View>
         <View style={{width: width}}>
@@ -129,6 +127,8 @@ export default function ContestListScreen(props: PropTypes) {
             pagerRef={props.pagerRef}
             teamMutateAction={props.teamMutateAction}
             teamPreviewPress={props.teamPreviewPress}
+            index={2}
+            selectedTab={props.selectedTab}
           />
         </View>
       </PagerView>

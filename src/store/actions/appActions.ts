@@ -2,6 +2,7 @@ import {
   HANDLE_ERROR,
   UPDATE_SELECTED_MATCH,
   UPDATE_JOINCONTEST_REQUEST,
+  UPDATE_FULL_MATCH,
 } from './actionTypes';
 
 interface JoinContestRequestShape {
@@ -22,5 +23,10 @@ export const updateSelectedMatchAction = (payload: any) => ({
 
 export const joinContestRequestAction = (payload: JoinContestRequestShape) => ({
   type: UPDATE_JOINCONTEST_REQUEST,
+  payload,
+});
+
+export const updateFullMatchAction = (payload: boolean) => ({
+  type: UPDATE_FULL_MATCH,
   payload,
 });

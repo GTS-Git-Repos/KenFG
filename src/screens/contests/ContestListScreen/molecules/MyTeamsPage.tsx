@@ -14,6 +14,8 @@ import NoContent from '../atoms/no.content.contest';
 import {TeamFormationMutationType} from '../../../../types/match';
 
 interface PropTypes {
+  selectedTab: number;
+  index: number;
   teams: any;
   status: string;
   live: string;
@@ -24,6 +26,8 @@ interface PropTypes {
 }
 
 export default function MyTeamsPage(props: PropTypes) {
+  const isActiveTab = props.index === props.selectedTab;
+
   const navigateToPreview = (team_key: string) => {
     props.teamPreviewPress(team_key);
     return;
@@ -45,6 +49,16 @@ export default function MyTeamsPage(props: PropTypes) {
     props.pagerRef?.current?.setPage(0);
   }
 
+  if (!isActiveTab) {
+    return (
+      <ActivityIndicator
+        style={[tailwind('mt-10')]}
+        color="#d1b45a"
+        size="large"
+      />
+    );
+  }
+
   if (!props.status) {
     return <TeamsLoading />;
   }
@@ -53,7 +67,7 @@ export default function MyTeamsPage(props: PropTypes) {
       <NoContent
         title={'The first move to get your fortune'}
         subtitle={'It’s your time where skills & knowledge meets action'}
-        actionText={'CREATE TEAM'}
+        actionText={'VIEW CONTESTS'}
         noContentAction={noContentAction}
       />
     );

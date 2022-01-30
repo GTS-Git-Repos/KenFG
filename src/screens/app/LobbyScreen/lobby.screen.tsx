@@ -21,6 +21,8 @@ interface PropTypes {
   myMatches: any;
   banners: Array<any>;
   upcomming: Array<any>;
+  isFullMatch: boolean;
+  onPressMatchType(match_type: number): void;
 }
 
 export default function LobbyScreen(props: PropTypes) {
@@ -44,8 +46,6 @@ export default function LobbyScreen(props: PropTypes) {
       };
       navigateMatchContestsAction(navigation, obj);
     }
-
-    console.log(match_key);
   }
 
   return (
@@ -83,7 +83,12 @@ export default function LobbyScreen(props: PropTypes) {
 
       <ScrollView fadingEdgeLength={50}>
         {cricket ? (
-          <CricketPage banners={props.banners} upcomming={props.upcomming} />
+          <CricketPage
+            banners={props.banners}
+            upcomming={props.upcomming}
+            isFullMatch={props.isFullMatch}
+            onPressMatchType={props.onPressMatchType}
+          />
         ) : (
           <View style={[tailwind('py-10')]}>
             <Text

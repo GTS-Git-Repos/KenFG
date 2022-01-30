@@ -5,6 +5,7 @@ import {sumOfMustNeedToFillSlots} from './store_utils';
 
 const UserState = (state: any) => state.user.user_info;
 const CashFreeState = (state: any) => state.app.cashFreeAppId;
+const isFullMatchState = (state: any) => state.app.isFullMatch;
 
 const allPlayersState = (state: any) => state.team.all_players;
 const playersState = (state: any) => state.team.players;
@@ -25,6 +26,13 @@ export const userWalletAmount = createSelector(UserState, userInfo => {
     return 0;
   }
 });
+
+export const isFulMatchSelector = createSelector(
+  isFullMatchState,
+  isFullMatch => {
+    return isFullMatch;
+  },
+);
 
 export const appConstantsSelector = createSelector(CashFreeState, cashFree => {
   return {

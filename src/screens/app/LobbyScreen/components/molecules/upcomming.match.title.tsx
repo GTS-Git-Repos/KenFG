@@ -5,7 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {ContestTypeSwitch} from '../../../../../sharedComponents';
 
 interface PropTypes {
-  text?: string;
+  isFullMatch: boolean;
+  onPressMatchType(match_type: number): void;
 }
 
 export default function upcommingMatchTitle(props: PropTypes) {
@@ -15,7 +16,10 @@ export default function upcommingMatchTitle(props: PropTypes) {
         style={[tailwind('font-bold uppercase font-12'), {color: '#8797B1'}]}>
         Upcomming
       </Text>
-      <ContestTypeSwitch />
+      <ContestTypeSwitch
+        isFullMatch={props.isFullMatch}
+        onPressMatchType={props.onPressMatchType}
+      />
     </View>
   );
 }

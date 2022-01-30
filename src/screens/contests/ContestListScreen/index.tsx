@@ -1,15 +1,15 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {useSelector} from 'react-redux';
-import {selectedMatch, userInfo} from '../../../store/selectors';
+import {
+  isFulMatchSelector,
+  selectedMatch,
+  userInfo,
+} from '../../../store/selectors';
 import ContestListScreen from './contest.list.screen';
 import ContestScreenLoading from './atoms/screen.loading.contest';
-import {TO_TEAMLIST, TO_TEAM_FORMATION} from '../../../constants/appContants';
+import {TO_TEAMLIST} from '../../../constants/appContants';
 
-import {
-  useContestList,
-  useJoinedContests,
-  useGetTeams,
-} from './contest.workers';
+import {useContestList} from './contest.workers';
 import {useIsScreenReady} from '../../../utils/customHoooks';
 import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
 import {errorBox, infoBox} from '../../../utils/snakBars';
@@ -23,6 +23,10 @@ import {
   toTeamFormationWithMutation,
   toTeamPreview,
 } from '../../../store/actions/navigationActions';
+import {
+  useGetTeams,
+  useJoinedContests,
+} from '../../../shared_hooks/contest.hooks';
 import {TeamFormationMutationType} from '../../../types/match';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 
@@ -35,19 +39,28 @@ export default function ContestListHOC() {
   const [loading, setLoading] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
+  const isFullMatch: boolean = useSelector(isFulMatchSelector);
   const userSelector: any = useSelector(userInfo);
   const isScreenReady = useIsScreenReady();
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const {contests, contestsAPI}: any = useContestList(matchSelector.match_key);
+  const {contests, contestsAPI}: any = useContestList(
+    matchSelector.match_key,
+    isFullMatch,
+  );
 
-  const {joined, joinedAPI, joinedAPILive, refetchJoinedContest} =
-    useJoinedContests(matchSelector.match_key, userSelector.mobile);
+  const {joined, joinedAPI, joinedAPILive, refetchJoinedContest}: any =
+    useJoinedContests(
+      matchSelector.match_key,
+      userSelector.mobile,
+      isFullMatch,
+    );
 
   const {teams, teamsAPI, teamsAPILive, refetchTeams}: any = useGetTeams(
     matchSelector.match_key,
     userSelector.mobile,
+    isFullMatch,
   );
 
   useEffect(() => {
@@ -86,6 +99,15 @@ export default function ContestListHOC() {
       toTeamFormationWithMutation(navigation, team_key, team, mutationObj);
     }
     return;
+  };
+
+  const onPressJoinedContest = (contest_key: string): void => {
+    const contest = joined.find(
+      (item: any) => item.contestMeta.contest_code === contest_key,
+    );
+    if (contest) {
+      console.log(joined);
+    }
   };
 
   const onPressTeamSwitch = (team_key: string, contest_key: string): void => {
@@ -172,6 +194,7 @@ export default function ContestListHOC() {
       teams={teams}
       teamsAPI={teamsAPI}
       teamsAPILive={teamsAPILive}
+      isFullMatch={isFullMatch}
       teamPreviewPress={teamPreviewPress}
       teamMutateAction={teamMutateAction}
       pagerRef={pagerRef}
@@ -186,6 +209,7 @@ export default function ContestListHOC() {
       setLoading={setLoading}
       proceedToJoin={proceedToJoin}
       onPressTeamSwitch={onPressTeamSwitch}
+      onPressJoinedContest={onPressJoinedContest}
     />
   );
 }
