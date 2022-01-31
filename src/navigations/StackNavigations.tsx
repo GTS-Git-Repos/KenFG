@@ -2,7 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 // import {createNativeStackNavigator as createStackNavigator} from '@react-navigation/native-stack';
 
+// Contests
 import ContestListScreen from '../screens/contests/ContestListScreen';
+import SI_ContestListsScreen from '../screens/contests/SI_ContestListsScreen';
 import ContestInfoScreen from '../screens/contests/ContestInfoScreen';
 import CreateContestScreen from '../screens/contests/CreateContestScreen';
 import WinningsListScreen from '../screens/contests/WinningsListScreen';
@@ -100,6 +102,51 @@ export function Contest(props: any) {
       <ContestStack.Screen
         name="ContestListScreen"
         component={ContestListScreen}
+        initialParams={props.route}
+      />
+
+      <ContestStack.Screen
+        component={ContestInfoScreen}
+        name="ContestInfoScreen"
+      />
+      <ContestStack.Screen
+        component={CreateContestScreen}
+        name="CreateContestScreen"
+      />
+      <ContestStack.Screen
+        component={WinningsListScreen}
+        name="WinningsListScreen"
+      />
+
+      <ContestStack.Screen
+        name="SwitchTeamScreen"
+        component={SwitchTeamScreen}
+      />
+      <ContestStack.Screen
+        name="TeamFormationScreen"
+        component={TeamFormationScreen}
+      />
+      <ContestStack.Screen
+        name="CapSelectionScreen"
+        component={CapSelectionScreen}
+      />
+
+      <ContestStack.Screen
+        name="TeamPreviewScreen"
+        component={TeamPreviewScreen}
+      />
+    </ContestStack.Navigator>
+  );
+}
+
+export function SecondInningsContest(props: any) {
+  return (
+    <ContestStack.Navigator
+      detachInactiveScreens={true}
+      screenOptions={StackConfig}>
+      <ContestStack.Screen
+        name="SI_ContestListsScreen"
+        component={SI_ContestListsScreen}
         initialParams={props.route}
       />
 

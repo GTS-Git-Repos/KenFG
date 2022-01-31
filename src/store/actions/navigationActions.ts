@@ -43,6 +43,25 @@ export const navigateMatchContestsAction = (
   return false;
 };
 
+export const toSecondInningsContestList = (navigation: any, payload: any) => {
+  store.dispatch(updateSelectedMatchAction(payload));
+  navigation.dispatch(
+    CommonActions.navigate({
+      name: 'SecondInningsContest',
+    }),
+  );
+  return true;
+};
+
+// export const toContestWinningsList = (navigation: any,contest_key:string) => {
+//   navigation.dispatch(
+//     CommonActions.navigate({
+//       name: 'ContestInfoScreen',
+//     }),
+//   );
+//   return true;
+// };
+
 export const navigateWith_AutoJoin = (
   navigation: any,
   numberOfTeams: number,

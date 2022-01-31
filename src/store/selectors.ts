@@ -27,6 +27,7 @@ export const userWalletAmount = createSelector(UserState, userInfo => {
   }
 });
 
+// fix that spelling
 export const isFulMatchSelector = createSelector(
   isFullMatchState,
   isFullMatch => {

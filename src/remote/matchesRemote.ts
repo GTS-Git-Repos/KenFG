@@ -76,7 +76,7 @@ export const contestListsRemote = async (params: any) => {
     const response = await requestServer(
       METHODS.GET,
       BASE_URL +
-        `${req_contest_list}?m=${params.queryKey[1]}?full=${
+        `${req_contest_list}?m=${params.queryKey[1]}&?full=${
           params.queryKey[2] ? '1' : '0'
         }`,
     );

@@ -9,7 +9,6 @@ interface PropTypes {
   selectedFilter: null | string;
   setSelectedFilter(filter: string): any;
   isFullMatch: boolean;
-  onPressSecondInnings(): any;
 }
 
 const TABS = [
@@ -180,9 +179,6 @@ function FilterTabs(props: PropTypes) {
             </View>
           </TouchableOpacity>
         </View>
-        <SecondInnings onPressSecondInnings={props.onPressSecondInnings} />
-
-        {/* {props.isFullMatch ? <SecondInnings /> : <FullContest />} */}
       </View>
       {props.selectedFilter !== null ? <SortBy /> : null}
     </View>
@@ -259,7 +255,6 @@ const ArrrowDown = () => {
 const SecondInnings = (props: any) => {
   return (
     <TouchableOpacity
-      onPress={() => props.onPressSecondInnings()}
       style={[
         styles.siroot,
         tailwind('flex-row items-center px-4 justify-between'),

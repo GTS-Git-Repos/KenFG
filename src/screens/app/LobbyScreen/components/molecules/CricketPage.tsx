@@ -6,14 +6,17 @@ import UpcommingMatchTitle from './upcomming.match.title';
 import ImageSlider from './ImageSlider';
 import UpComingMatchesSlider from './UpComingMatchesSlider';
 import {useNavigation} from '@react-navigation/native';
-import {navigateMatchContestsAction} from '../../../../../store/actions/navigationActions';
+import {
+  navigateMatchContestsAction,
+  toSecondInningsContestList,
+} from '../../../../../store/actions/navigationActions';
 import {errorBox} from '../../../../../utils/snakBars';
 
 interface PropTypes {
-  isFullMatch:boolean,
+  isFullMatch: boolean;
   banners: Array<any>;
   upcomming: Array<any>;
-  onPressMatchType(match_type:number):void
+  onPressMatchType(match_type: number): void;
 }
 
 export default function CricketPage(props: PropTypes) {
@@ -31,7 +34,11 @@ export default function CricketPage(props: PropTypes) {
         team_b_name: match.teams.b.name,
         start_at: match.start_at,
       };
-      navigateMatchContestsAction(navigation, obj);
+      if (props.isFullMatch) {
+        navigateMatchContestsAction(navigation, obj);
+      } else {
+        toSecondInningsContestList(navigation, obj);
+      }
     } else {
       errorBox('No Match Found', 200);
     }
@@ -48,7 +55,10 @@ export default function CricketPage(props: PropTypes) {
         />
       </View>
       <View style={[tailwind('px-5 pt-4')]}>
-        <UpcommingMatchTitle isFullMatch={props.isFullMatch} onPressMatchType={props.onPressMatchType} />
+        <UpcommingMatchTitle
+          isFullMatch={props.isFullMatch}
+          onPressMatchType={props.onPressMatchType}
+        />
       </View>
       <UpComingMatchesSlider
         data={props.upcomming}

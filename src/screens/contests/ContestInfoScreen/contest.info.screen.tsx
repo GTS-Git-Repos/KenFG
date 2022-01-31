@@ -12,21 +12,15 @@ import {contestListsRemote} from '../../../remote/matchesRemote';
 import {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 import CreateTeamButton from './atoms/CreateTeamButton';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import ContestInfoPageLoading from './atoms/ContestInfoPageLoading';
 import PagerView from 'react-native-pager-view';
-import {
-  selectedMatch,
-  userInfo,
-  userWalletAmount,
-} from '../../../store/selectors';
-import {useGetTeams} from '../ContestListScreen/contest.workers';
+import {selectedMatch} from '../../../store/selectors';
 import {navigateWith_AutoJoin} from '../../../store/actions/navigationActions';
 
 export default function ContestInfoScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
-  const dispatch = useDispatch();
   const tabOffset = useSharedValue<any>(0);
   const isScreenReady = useIsScreenReady();
 
@@ -35,22 +29,11 @@ export default function ContestInfoScreen() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [contestInfo, setContestInfo]: any = useState(null);
 
-  const userInfoSelector: any = useSelector(userInfo);
-  const userWallet: any = useSelector(userWalletAmount);
   const matchSelector: any = useSelector(selectedMatch);
-
-  // console.log(matchSelector);
-
-  const {teams}: any = useGetTeams(
-    matchSelector.match_key,
-    userInfoSelector.mobile,
-  );
 
   const countDown = useCountDown(matchSelector.start_at, false);
 
-  // console.log(countDown);
-
-  const {data, isLoading, isSuccess} = useQuery(
+  const {data} = useQuery(
     ['contests', matchSelector.match_key],
     contestListsRemote,
     {staleTime: 8000},

@@ -10,7 +10,14 @@ import {
 } from '@react-navigation/stack';
 
 import {DrawerNav} from './DrawerNavigation';
-import {Auth, More, Contest, Wallet, Match} from './StackNavigations';
+import {
+  Auth,
+  More,
+  Contest,
+  Wallet,
+  Match,
+  SecondInningsContest,
+} from './StackNavigations';
 
 import InitialScreen from '../screens/app/InitialScreen';
 import NotificationScreen from '../screens/user/NotificationScreen';
@@ -60,6 +67,10 @@ export default function RootNavigation() {
           <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
           <RootNavigator.Screen component={More} name="More" />
           <RootNavigator.Screen component={Contest} name="Contest" />
+          <RootNavigator.Screen
+            component={SecondInningsContest}
+            name="SecondInningsContest"
+          />
           <RootNavigator.Screen component={Match} name="Match" />
           <RootNavigator.Screen component={Wallet} name="Wallet" />
 

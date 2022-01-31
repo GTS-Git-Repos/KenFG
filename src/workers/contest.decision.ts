@@ -33,6 +33,9 @@ export function didIWantToGoTeamsPage(
   if (!AllTeams || AllTeams.length === 0) {
     return false;
   }
+  if (!joinedContests) {
+    return true;
+  }
   const isAlreadyJoined = joinedContests.find(
     (item: any) => item.contestMeta.contest_code === contest.key,
   );
@@ -69,6 +72,7 @@ export function checksBeforeJoinContest(
       joinedContests,
       AllTeams,
     );
+
     if (isAnyTeamAvailableToJoin) {
       return {status: true, to: TO_TEAMLIST};
     } else {

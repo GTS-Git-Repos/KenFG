@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import TeamSelectionScreen from './team.selection.screen';
 import {useRoute} from '@react-navigation/native';
-import {selectedMatch, userInfo} from '../../../store/selectors';
+import {
+  isFulMatchSelector,
+  selectedMatch,
+  userInfo,
+} from '../../../store/selectors';
 import {useSelector} from 'react-redux';
-import {getJoinedTeamsRemote} from '../../../remote/matchesRemote';
-import {useQuery} from 'react-query';
 import {useIsScreenReady} from '../../../utils/customHoooks';
 import {
   useGetTeams,
@@ -17,13 +19,19 @@ export default function TeamSelectionHOC() {
 
   const userMeta: any = useSelector(userInfo);
   const matchSelector: any = useSelector(selectedMatch);
+  const isFullMatch: any = useSelector(isFulMatchSelector);
   const isScreenReady = useIsScreenReady();
   const [showJoinModal, setShowJoinModal] = useState(false);
 
-  const {teams}: any = useGetTeams(matchSelector.match_key, userMeta?.mobile);
+  const {teams}: any = useGetTeams(
+    matchSelector.match_key,
+    userMeta?.mobile,
+    isFullMatch,
+  );
   const {joined}: any = useJoinedContests(
     matchSelector.match_key,
     userMeta.mobile,
+    isFullMatch,
   );
 
   const [availableTeams, setAvailableTeams] = useState<any>([]);
@@ -31,6 +39,22 @@ export default function TeamSelectionHOC() {
 
   useEffect(() => {
     if (teams) {
+      const AllTeamsKeys = teams.map((item: any) => item.team_key);
+      if (!joined) {
+        const availableTeams = [];
+
+        for (const a_team_key of AllTeamsKeys) {
+          const teamData = teams.find(
+            (item: any) => item.team_key === a_team_key,
+          );
+          if (teamData) {
+            availableTeams.push(teamData);
+          }
+        }
+        setAvailableTeams(availableTeams);
+        return;
+      }
+
       const isJoined = joined.find(
         (item: any) =>
           item.contestMeta.contest_code ===
@@ -38,7 +62,6 @@ export default function TeamSelectionHOC() {
       );
       if (isJoined) {
         const joinedTeamsKeys = isJoined.contestMeta.contest_team;
-        const AllTeamsKeys = teams.map((item: any) => item.team_key);
 
         const availableTeamsKey = [];
         const unAvailableTeamsKey = [];

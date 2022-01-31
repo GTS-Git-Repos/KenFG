@@ -33,13 +33,19 @@ export default function EnterAmountAddCash(props: PropTypes) {
         />
       </View>
       <View style={[tailwind('flex-row items-center pt-1')]}>
-        {['100', '200', '300'].map((item: any) => {
+        {['1000', '2000', '5000'].map((item: any) => {
           return (
             <TouchableOpacity
               key={item}
               onPress={() => props.setAmount(item)}
               style={[
-                tailwind('border border-gray-700 mr-2 rounded-2xl py-1'),
+                tailwind(`border mr-2 rounded-2xl py-1
+                ${
+                  props.amount === item
+                    ? 'border-green-500'
+                    : ' border-gray-700'
+                }
+                `),
                 {flex: 4},
               ]}>
               <Text

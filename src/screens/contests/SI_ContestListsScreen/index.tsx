@@ -5,7 +5,7 @@ import {
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
-import ContestListScreen from './contest.list.screen';
+import SecondContestListScreen from './si.contest.list.screen';
 import ContestScreenLoading from './atoms/screen.loading.contest';
 import {TO_TEAMLIST} from '../../../constants/appContants';
 
@@ -18,7 +18,6 @@ import PagerView from 'react-native-pager-view';
 import {joinContestRemote} from '../../../remote/matchesRemote';
 import {Alert} from 'react-native';
 import {
-  toSecondInningsContestList,
   toSwitchTeam,
   toTeamFormationWithAutoJoin,
   toTeamFormationWithMutation,
@@ -31,7 +30,7 @@ import {
 import {TeamFormationMutationType} from '../../../types/match';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 
-export default function ContestListHOC() {
+export default function SIContestListHOC() {
   const navigation = useNavigation<any>();
   const pagerRef = useRef<PagerView>(null);
   const route = useRoute<any>();
@@ -40,7 +39,9 @@ export default function ContestListHOC() {
   const [loading, setLoading] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
-  const isFullMatch: boolean = useSelector(isFulMatchSelector);
+
+  const isFullMatch = false;
+
   const userSelector: any = useSelector(userInfo);
   const isScreenReady = useIsScreenReady();
 
@@ -65,7 +66,7 @@ export default function ContestListHOC() {
   );
 
   useEffect(() => {
-    console.log('Contest List Params -->', route.params);
+    console.log('Second InningsContest List Params -->', route.params);
     if (route.params) {
       const autoJoinParams = route?.params?.params;
       console.log(autoJoinParams);
@@ -91,10 +92,6 @@ export default function ContestListHOC() {
     }
   };
 
-  function onPressSecondInnings() {
-    toSecondInningsContestList(navigation, matchSelector);
-  }
-
   const teamMutateAction = (
     team_key: any,
     mutationObj: TeamFormationMutationType,
@@ -111,7 +108,6 @@ export default function ContestListHOC() {
       (item: any) => item.contestMeta.contest_code === contest_key,
     );
     if (contest) {
-      // console.log(joined[0].contestMeta.contest_code);
       navigation.navigate('ContestInfoScreen', {
         contest_key: joined[0].contestMeta.contest_code,
       });
@@ -138,7 +134,6 @@ export default function ContestListHOC() {
           joined,
           teams,
         );
-
         if (checkContestJoin.status) {
           toTeamFormationWithAutoJoin(
             navigation,
@@ -194,7 +189,7 @@ export default function ContestListHOC() {
   }
 
   return (
-    <ContestListScreen
+    <SecondContestListScreen
       contests={contests}
       contestsAPI={contestsAPI}
       joined={joined}
@@ -219,7 +214,6 @@ export default function ContestListHOC() {
       proceedToJoin={proceedToJoin}
       onPressTeamSwitch={onPressTeamSwitch}
       onPressJoinedContest={onPressJoinedContest}
-      onPressSecondInnings={onPressSecondInnings}
     />
   );
 }

@@ -18,7 +18,6 @@ interface PropTypes {
   isFullMatch: boolean;
   setSelectedFilter(filter: string): any;
   proceedToJoin(contest_key: string): any;
-  onPressSecondInnings(): any;
 }
 
 export default function ContestPage(props: PropTypes) {
@@ -74,7 +73,6 @@ export default function ContestPage(props: PropTypes) {
         selectedFilter={props.selectedFilter}
         setSelectedFilter={props.setSelectedFilter}
         isFullMatch={props.isFullMatch}
-        onPressSecondInnings={props.onPressSecondInnings}
       />
       <ContestSubTitle
         title={'Mega Contest'}
