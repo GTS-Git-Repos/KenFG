@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {liveTeamShape} from '../../types/api';
 
 interface PropTypes {
-  completed: boolean;
   matchStatus: string;
   team_a: any;
   team_b: any;
@@ -14,6 +13,8 @@ interface PropTypes {
 }
 
 export default function MatchStat(props: PropTypes) {
+  
+
   return (
     <View style={[tailwind('flex-row items-center justify-between')]}>
       <View style={[tailwind('flex-col'), {flex: 4}]}>

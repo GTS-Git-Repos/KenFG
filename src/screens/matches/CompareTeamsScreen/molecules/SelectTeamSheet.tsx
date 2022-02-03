@@ -16,13 +16,13 @@ export default function SelectTeamSheet(props: PropTypes) {
         style={[
           tailwind('bg-dark-3 flex-row items-center justify-between px-4 py-3'),
         ]}>
-        <Text style={[tailwind('font-bold text-light font-15')]}>
+        <Text style={[tailwind('font-bold text-white uppercase font-15')]}>
           {props.name}
         </Text>
         <View style={[tailwind('flex-row items-center')]}>
-          <Text style={[tailwind('font-regular text-light pr-2 font-15')]}>
+          {/* <Text style={[tailwind('font-regular text-light pr-2 font-15')]}>
             493.32
-          </Text>
+          </Text> */}
           <RankIcon golden={false} />
           <Text style={[tailwind('font-regular text-dark-1 pl-1 font-15')]}>
             325222

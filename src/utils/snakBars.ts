@@ -29,3 +29,4 @@ export const errorBox = (message: string, secondsDelay: number) => {
     });
   }, (secondsDelay ??= 0));
 };
+

@@ -43,6 +43,7 @@ import AffliatedScreen from '../screens/user/AffliatedScreen';
 import AchievementsScreen from '../screens/user/AchievementsScreen';
 import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScreen';
 import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
+import LiveMatchScreen from '../screens/matches/LiveMatchScreen/live.match.screen';
 
 const RootNavigator = createStackNavigator();
 // const RootNavigator = createNativeStackNavigator();
@@ -58,7 +59,12 @@ export default function RootNavigation() {
       <Host>
         <RootNavigator.Navigator
           screenOptions={StackConfig}
-          initialRouteName="InitialScreen">
+          initialRouteName="LiveMatchScreen">
+          <RootNavigator.Screen
+            component={LiveMatchScreen}
+            name="LiveMatchScreen"
+          />
+
           <RootNavigator.Screen
             component={InitialScreen}
             name="InitialScreen"

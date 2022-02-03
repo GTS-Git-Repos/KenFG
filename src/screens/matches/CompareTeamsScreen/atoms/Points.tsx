@@ -7,7 +7,8 @@ import Svg, {Line, Rect} from 'react-native-svg';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
-  text?: string;
+  selected_team: any;
+  op_team: any;
 }
 
 export default function Points(props: PropTypes) {
@@ -19,9 +20,6 @@ export default function Points(props: PropTypes) {
         ]}>
         Total Points
       </Text>
-      {/* <View style={[tailwind('mx-24')]}>
-        <BottomLine />
-      </View> */}
 
       <View
         style={[
@@ -35,7 +33,7 @@ export default function Points(props: PropTypes) {
             tailwind('font-bold text-right text-light'),
             {fontSize: 26, color: '#172338'},
           ]}>
-          384.4
+          {props.selected_team.points}
         </Text>
 
         <Svg
@@ -58,47 +56,9 @@ export default function Points(props: PropTypes) {
             tailwind('font-bold text-right text-light'),
             {fontSize: 26, color: '#172338'},
           ]}>
-          499.0
+          {props.op_team.points}
         </Text>
       </View>
-
-      {/* <View style={[tailwind('flex-row justify-center py-2 items-center')]}>
-        <View style={[tailwind(''), {flex: 10 / 3}]}>
-          <Text
-            style={[
-              tailwind('font-bold text-right text-light'),
-              {fontSize: 26},
-            ]}>
-            384.4
-          </Text>
-        </View>
-        <View style={[tailwind('flex-row justify-center'), {flex: 1}]}>
-          <Svg width={'1'} height={'26'}>
-            <Line
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="100"
-              stroke="#FFFFFF"
-              strokeWidth="2"
-            />
-          </Svg>
-        </View>
-
-        <View style={[tailwind(''), {flex: 10 / 3}]}>
-          <Text
-            style={[
-              tailwind('font-bold text-left text-light'),
-              {fontSize: 26},
-            ]}>
-            499
-          </Text>
-        </View>
-      </View>
-
-      <View style={[tailwind('mx-12')]}>
-        <BottomLine />
-      </View> */}
     </View>
   );
 }

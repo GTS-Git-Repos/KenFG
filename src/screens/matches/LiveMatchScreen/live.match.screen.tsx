@@ -22,7 +22,6 @@ import CommentaryPage from './molecules/CommentaryPage';
 import PlayersStats from './molecules/PlayersStats';
 import WinningsPage from './molecules/WinningsPage';
 import LinearGradient from 'react-native-linear-gradient';
-import LiveMatchLoading from './atoms/LiveMatchLoading';
 import LiveMatchTopBar from './atoms/LiveMatchTopBar';
 
 // import Icon from 'react-native-vector-icons/Ionicons';
@@ -31,9 +30,12 @@ const log = console.log;
 interface PropTypes {
   matchAPI: any;
   matchMeta: any;
+  onPressCompareTeam(src_team_key: string, opp_team_key: string): void;
 }
 
 export default function LiveMatchScreen(props: PropTypes) {
+  // console.log(JSON.stringify(props.matchMeta));
+
   const pageRef = useRef(null);
   const isScreenReady = useIsScreenReady();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -66,12 +68,11 @@ export default function LiveMatchScreen(props: PropTypes) {
         colors={['#172338', '#0D1320']}
         style={[tailwind('p-3 bg-dark-3')]}>
         <MatchStat
-          completed={false}
           team_a={props.matchMeta.team_a}
           team_b={props.matchMeta.team_b}
           score_a={props.matchMeta.score_a}
           score_b={props.matchMeta.score_b}
-          matchStatus={''}
+          matchStatus={props.matchMeta.matchStatus}
         />
 
         <Projection completed={false} msg={props.matchMeta.notification} />
@@ -97,7 +98,11 @@ export default function LiveMatchScreen(props: PropTypes) {
         onPageSelected={onPageSelectedAction}
         style={{flex: 1}}>
         <View>
-          <LeaderBoardPage index={0} activeIndex={activeIndex} />
+          <LeaderBoardPage
+            onPressCompareTeam={props.onPressCompareTeam}
+            index={0}
+            activeIndex={activeIndex}
+          />
         </View>
         <View>
           <WinningsPage index={1} activeIndex={activeIndex} />

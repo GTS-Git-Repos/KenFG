@@ -11,6 +11,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
+import {errorBox} from '../../../../utils/snakBars';
 
 interface PropTypes {
   image: string;
@@ -18,18 +19,22 @@ interface PropTypes {
   teamCode: string;
   points: number;
   rank: string;
+  isComparisonActive: boolean;
+  onPressCompareTeam(src_team_key: string, opp_team_key: string): void;
 }
 
 export default function HorizontalProfile(props: PropTypes) {
-  const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
       style={[
-        tailwind(
-          'px-4 bg-dark-3 flex-row items-center border-b border-gray-800',
-        ),
+        styles.playerRoot,
+        props.isComparisonActive && styles.playerRootSelected,
       ]}
-      onPress={() => navigation.navigate('CompareTeamsScreen')}>
+      onPress={() => {
+        props.isComparisonActive
+          ? props.onPressCompareTeam('1', '1')
+          : errorBox('Team preview is disable', 0);
+      }}>
       <View style={[tailwind('flex-row items-center pt-2'), {flex: 5}]}>
         <Image
           resizeMode="contain"
@@ -74,10 +79,20 @@ const TeamTag = (props: any) => {
 const styles = StyleSheet.create({
   root: {
     borderTopColor: '#8797B180',
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
-    borderBottomColor: 'transparent',
     borderWidth: 1,
     borderStyle: 'solid',
+  },
+  playerRoot: {
+    alignItems: 'center',
+    backgroundColor: '#172338',
+    borderColor: 'rgba(31, 41, 55, 1)',
+    borderBottomWidth: 1,
+    flexDirection: 'row',
+    paddingLeft: 16,
+    paddingRight: 16,
+  },
+  playerRootSelected: {
+    backgroundColor: '#3C362C',
+    opacity: 1,
   },
 });

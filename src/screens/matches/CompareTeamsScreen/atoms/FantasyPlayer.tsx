@@ -9,6 +9,8 @@ interface PropTypes {
   player1?: string;
   player2?: string;
   selectSheet: any;
+  selected_team: any;
+  op_team: any;
   selectOpponentSheet: any;
 }
 
@@ -28,8 +30,11 @@ export default function FantasyPlayer(props: PropTypes) {
                 'border border-gray-500 p-1 flex-row items-center justify-between rounded-2xl',
               ),
             ]}>
-            <Text style={[tailwind('font-regular px-1 text-dark-1 font-14')]}>
-              Team 1
+            <Text
+              style={[
+                tailwind('font-regular px-1 uppercase text-dark-1 font-14'),
+              ]}>
+              {props.selected_team.team_key}
             </Text>
             <Icon name="chevron-down-outline" size={16} color="gray" />
           </TouchableOpacity>
@@ -40,7 +45,7 @@ export default function FantasyPlayer(props: PropTypes) {
                   'font-regular text-light font-15 py-2 px-1 text-right',
                 ),
               ]}>
-              8368
+              {props.selected_team.team_rank}
             </Text>
             <RankIcon golden={true} />
           </View>
@@ -76,8 +81,11 @@ export default function FantasyPlayer(props: PropTypes) {
                 'border border-gray-500 p-1 flex-row items-center justify-between rounded-2xl',
               ),
             ]}>
-            <Text style={[tailwind('font-regular px-1 text-dark-1 font-14')]}>
-              Team 7
+            <Text
+              style={[
+                tailwind('font-regular uppercase px-1 text-dark-1 font-14'),
+              ]}>
+              {props.op_team.team_key}
             </Text>
             <Icon name="chevron-down-outline" size={16} color="gray" />
           </TouchableOpacity>
@@ -87,7 +95,7 @@ export default function FantasyPlayer(props: PropTypes) {
               style={[
                 tailwind('font-regular text-light font-15 py-2 px-1 text-left'),
               ]}>
-              1
+              {props.op_team.team_rank}
             </Text>
           </View>
         </View>

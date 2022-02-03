@@ -147,6 +147,14 @@ export const toLiveMatch = (navigation: any, match_key: string) => {
   );
 };
 
+export const toCompareTeamScreen = (navigation: any) => {
+  navigation.dispatch(
+    CommonActions.navigate({
+      name: 'CompareTeamsScreen',
+    }),
+  );
+};
+
 export const toTeamFormationWithMutation = (
   navigation: any,
   team_key: string,

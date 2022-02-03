@@ -15,35 +15,6 @@ interface PropTypes {
 export default function PlayerStats(props: PropTypes) {
   return (
     <View style={[tailwind('py-3 bg-dark-3')]}>
-      <Text style={[tailwind('font-bold text-center pt-1 text-light font-16')]}>
-        {props.title}
-      </Text>
-      {props.ahead ? (
-        <View style={[tailwind('flex-row justify-center py-3 items-center')]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-15')]}>
-            You are
-          </Text>
-          <Text style={[tailwind('font-bold px-1 text-green-600 font-16')]}>
-            {props.points}
-          </Text>
-          <Text style={[tailwind('font-regular text-dark-1  font-15')]}>
-            pts ahead
-          </Text>
-        </View>
-      ) : (
-        <View style={[tailwind('flex-row justify-center py-3 items-center')]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-15')]}>
-            You are opponents players are
-          </Text>
-          <Text style={[tailwind('font-bold px-1 text-secondary font-16')]}>
-            {props.points}
-          </Text>
-          <Text style={[tailwind('font-regular text-dark-1  font-15')]}>
-            pts ahead
-          </Text>
-        </View>
-      )}
-      {/* Players */}
       <View style={[tailwind('flex-row px-1 justify-between items-center')]}>
         <View style={[tailwind('border-r border-gray-700'), {flex: 4.5}]}>
           <ComparePlayerProfile

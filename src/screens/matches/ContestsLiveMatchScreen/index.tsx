@@ -81,7 +81,6 @@ export default function ContestLiveMatchScreen() {
         style={[tailwind('p-3 bg-dark-3')]}>
         <MatchStat
           matchStatus={matchMeta.matchStatus}
-          completed={false}
           team_a={matchMeta.team_a}
           team_b={matchMeta.team_b}
           score_a={matchMeta.score_a}
