@@ -5,12 +5,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 
 interface PropTypes {
-  selected_team: any;
-  op_team: any;
+  sel_team_points: number;
+  op_team_points: number;
 }
 
 export default function Status(props: PropTypes) {
-  if (props.selected_team.points > props.op_team.points) {
+  
+
+  if (props.sel_team_points > props.op_team_points) {
     return (
       <View
         style={[tailwind('pt-3 pb-5 flex-row items-center justify-center')]}>
@@ -21,7 +23,7 @@ export default function Status(props: PropTypes) {
           style={[
             tailwind('font-bold text-center px-2 text-secondary font-15'),
           ]}>
-          {props.selected_team.points - props.op_team.points} pts
+          {props.sel_team_points - props.op_team_points} pts
         </Text>
       </View>
     );
@@ -36,7 +38,7 @@ export default function Status(props: PropTypes) {
           style={[
             tailwind('font-bold text-center px-2 text-secondary font-15'),
           ]}>
-          {props.op_team.points - props.selected_team.points} pts
+          {props.op_team_points - props.sel_team_points} pts
         </Text>
       </View>
     );

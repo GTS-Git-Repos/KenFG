@@ -28,12 +28,12 @@
                     "seasonal_role": "keeper"
                 },
                 {
-                    "key": "m_wade",
-                    "name": "Matthew Wade",
-                    "points": 9.5,
-                    "credits": 9.5,
-                    "team_key": "hbh",
-                    "seasonal_role": "keeper"
+                    "key": "c__player__thomas_fraser_rogers__e16b7",
+                    "name": "Thomas Fraser Rogers",
+                    "points": 8,
+                    "credits": 8,
+                    "team_key": "mls",
+                    "seasonal_role": "batsman"
                 },
                 {
                     "key": "cal_jewell",
@@ -130,12 +130,12 @@
                     "seasonal_role": "keeper"
                 },
                 {
-                    "key": "c__player__thomas_fraser_rogers__e16b7",
-                    "name": "Thomas Fraser Rogers",
-                    "points": 8,
-                    "credits": 8,
-                    "team_key": "mls",
-                    "seasonal_role": "batsman"
+                    "key": "m_wade",
+                    "name": "Matthew Wade",
+                    "points": 9.5,
+                    "credits": 9.5,
+                    "team_key": "hbh",
+                    "seasonal_role": "keeper"
                 },
                 {
                     "key": "m_stoinis",

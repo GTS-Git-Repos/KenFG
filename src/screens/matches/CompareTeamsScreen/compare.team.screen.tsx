@@ -1,33 +1,38 @@
 import React, {useRef} from 'react';
-import {View, Text, ScrollView, Image} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
-// import assets from 'assets';
-import {TopBar, FullScreenLoading} from '../../../sharedComponents';
+import {BlockScreenByLoading} from '../../../sharedComponents';
 import {useIsScreenReady} from '../../../utils/customHoooks';
 
-import Icon from 'react-native-vector-icons/Ionicons';
-import {useQuery} from 'react-query';
 import SelectTeamSheet from './molecules/SelectTeamSheet';
 import FantasyPlayer from './atoms/FantasyPlayer';
-import Points from './atoms/Points';
-import Status from './atoms/Status';
-import PlayerStats from './molecules/PlayersStats';
 import {Modalize} from 'react-native-modalize';
 import SelectTeamHeader from './atoms/SelectTeamHeader';
 import TopBarCompareTeam from './atoms/TopBarCompareTeam';
 import CompareTeamLoading from './atoms/CompareTeamLoading';
+import Points from './atoms/Points';
+import Status from './atoms/Status';
 
 const log = console.log;
 
+interface setCompareTeamType {
+  src_player: string;
+  opp_player: string;
+  src_playerTeams: Array<string>;
+  opp_playerTeams: Array<string>;
+  srcTeam: TeamType;
+  opTeam: TeamType;
+}
+
+interface TeamType {
+  team_key: string;
+  rank: string;
+  points: number;
+}
+
 interface PropTypes {
-  f_1: string;
-  f_2: string;
-  f_1_teams: Array<any>;
-  f_2_teams: Array<any>;
-  selected_team: string;
-  op_team: string;
+  compareTeam: setCompareTeamType;
+  loading: boolean;
   diff_players: Array<any>;
   comman_players: Array<any>;
 }
@@ -39,7 +44,6 @@ interface SectionType {
 }
 
 export default function CompareTeamScreen(props: PropTypes) {
-  const navigation = useNavigation();
   const selectSheet = useRef(null);
   const selectOpponentSheet = useRef(null);
 
@@ -55,15 +59,21 @@ export default function CompareTeamScreen(props: PropTypes) {
       <ScrollView>
         <View style={[tailwind('bg-dark-3')]}>
           <FantasyPlayer
-            player1={props.f_1}
-            player2={props.f_2}
+            player1={props.compareTeam.src_player}
+            player2={props.compareTeam.opp_player}
+            srcTeam={props.compareTeam.srcTeam}
+            opTeam={props.compareTeam.opTeam}
             selectSheet={selectSheet}
             selectOpponentSheet={selectOpponentSheet}
-            selected_team={props.selected_team}
-            op_team={props.op_team}
           />
-          <Points selected_team={props.selected_team} op_team={props.op_team} />
-          <Status selected_team={props.selected_team} op_team={props.op_team} />
+          <Points
+            sel_team_points={props.compareTeam.srcTeam.points}
+            op_team_points={props.compareTeam.opTeam.points}
+          />
+          <Status
+            sel_team_points={props.compareTeam.srcTeam.points}
+            op_team_points={props.compareTeam.opTeam.points}
+          />
         </View>
         <View style={[tailwind('h-2 bg-dark-4')]}></View>
         <Title
@@ -85,7 +95,7 @@ export default function CompareTeamScreen(props: PropTypes) {
         disableScrollIfPossible={false}
         closeOnOverlayTap={true}>
         <View style={[tailwind('')]}>
-          {props.f_1_teams.map(item => {
+          {props.compareTeam.src_playerTeams.map(item => {
             return <SelectTeamSheet name={item} key={item} />;
           })}
         </View>
@@ -102,11 +112,13 @@ export default function CompareTeamScreen(props: PropTypes) {
         disableScrollIfPossible={false}
         closeOnOverlayTap={true}>
         <View style={[tailwind('')]}>
-          {['Team1', 'Team2', 'Team3', 'Team4', 'Team5'].map(item => {
+          {props.compareTeam.opp_playerTeams.map(item => {
             return <SelectTeamSheet name={item} key={item} />;
           })}
         </View>
       </Modalize>
+
+      {props.loading && <BlockScreenByLoading />}
     </View>
   );
 }

@@ -4,6 +4,7 @@ import {log} from '../utils/logs';
 import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
 // import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
 import CompletedTestMatchMeta from '../constants/mocks/completedTestMatch3i.json';
+import compareTeamMeta from '../constants/mocks/mockCompareTeam.json';
 
 import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
 import {parseJoinedTeamsAPI} from '../formatters/teams.formatter';
@@ -12,6 +13,7 @@ import {
   extractDataFromUpcommingMatchesAPI,
   extractJoinedContestAPIResponse,
   groupAllContestsAPIRmeote,
+  normalizeCompareTeamsRemote,
   parseJoinedMatchesAPI,
 } from '../formatters/matchcontest.formatters';
 
@@ -156,7 +158,8 @@ export const contestInfoRemote = async (params: any) => {
 
 export const liveMatchMetaRemote = async (params: any) => {
   try {
-    // return liveTestMatchFormat(CompletedTestMatchMeta);
+    return liveTestMatchFormat(CompletedTestMatchMeta);
+
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_live_match,
@@ -175,6 +178,10 @@ export const liveMatchMetaRemote = async (params: any) => {
     console.log(err);
     return false;
   }
+};
+
+export const compareTeamsRemote = async (params: any) => {
+  return normalizeCompareTeamsRemote(compareTeamMeta);
 };
 
 export const createTeamRemote = async (payload: any) => {

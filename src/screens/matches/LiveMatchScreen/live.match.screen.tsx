@@ -34,9 +34,7 @@ interface PropTypes {
 }
 
 export default function LiveMatchScreen(props: PropTypes) {
-  // console.log(JSON.stringify(props.matchMeta));
-
-  const pageRef = useRef(null);
+  const pageRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
   const [activeIndex, setActiveIndex] = useState(0);
 

@@ -7,8 +7,8 @@ import Svg, {Line, Rect} from 'react-native-svg';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
-  selected_team: any;
-  op_team: any;
+  sel_team_points: number;
+  op_team_points: number;
 }
 
 export default function Points(props: PropTypes) {
@@ -33,7 +33,7 @@ export default function Points(props: PropTypes) {
             tailwind('font-bold text-right text-light'),
             {fontSize: 26, color: '#172338'},
           ]}>
-          {props.selected_team.points}
+          {props.sel_team_points}
         </Text>
 
         <Svg
@@ -56,7 +56,7 @@ export default function Points(props: PropTypes) {
             tailwind('font-bold text-right text-light'),
             {fontSize: 26, color: '#172338'},
           ]}>
-          {props.op_team.points}
+          {props.op_team_points}
         </Text>
       </View>
     </View>

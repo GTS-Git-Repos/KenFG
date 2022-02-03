@@ -121,11 +121,7 @@ export const parseJoinedMatchesAPI = (payload: any) => {
   }
 };
 
-export const TeamPreviewDataFromAPIPlayers = (payload: any) => {
-  // need to implement
-  try {
-    console.log(payload);
-  } catch (err) {
-    return false;
-  }
+export const normalizeCompareTeamsRemote = (payload: any) => {
+  // if normalize need to do
+  return payload;
 };

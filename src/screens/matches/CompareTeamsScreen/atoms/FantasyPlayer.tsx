@@ -6,12 +6,18 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {RankIcon} from '../../../../sharedComponents';
 
 interface PropTypes {
-  player1?: string;
-  player2?: string;
+  player1: string;
+  player2: string;
+  srcTeam: TeamType;
+  opTeam: TeamType;
   selectSheet: any;
-  selected_team: any;
-  op_team: any;
   selectOpponentSheet: any;
+}
+
+interface TeamType {
+  team_key: string;
+  rank: string;
+  points: number;
 }
 
 export default function FantasyPlayer(props: PropTypes) {
@@ -34,7 +40,7 @@ export default function FantasyPlayer(props: PropTypes) {
               style={[
                 tailwind('font-regular px-1 uppercase text-dark-1 font-14'),
               ]}>
-              {props.selected_team.team_key}
+              {props.srcTeam.team_key}
             </Text>
             <Icon name="chevron-down-outline" size={16} color="gray" />
           </TouchableOpacity>
@@ -45,7 +51,7 @@ export default function FantasyPlayer(props: PropTypes) {
                   'font-regular text-light font-15 py-2 px-1 text-right',
                 ),
               ]}>
-              {props.selected_team.team_rank}
+              {props.srcTeam.rank}
             </Text>
             <RankIcon golden={true} />
           </View>
@@ -85,7 +91,7 @@ export default function FantasyPlayer(props: PropTypes) {
               style={[
                 tailwind('font-regular uppercase px-1 text-dark-1 font-14'),
               ]}>
-              {props.op_team.team_key}
+              {props.opTeam.team_key}
             </Text>
             <Icon name="chevron-down-outline" size={16} color="gray" />
           </TouchableOpacity>
@@ -95,7 +101,7 @@ export default function FantasyPlayer(props: PropTypes) {
               style={[
                 tailwind('font-regular text-light font-15 py-2 px-1 text-left'),
               ]}>
-              {props.op_team.team_rank}
+              {props.opTeam.rank}
             </Text>
           </View>
         </View>
@@ -104,11 +110,5 @@ export default function FantasyPlayer(props: PropTypes) {
   );
 }
 
-const TEAMTAGSTYLE = tailwind(
-  'font-regular text-center bg-secondary my-2 rounded py-0.5 px-2 font-15',
-);
 const TEXTSTYLE = [tailwind('font-bold py-2 text-light font-18')];
 
-const IMAGESTYLE = [tailwind(''), {width: 50, height: 50}];
-
-const RANKSTYLE = [tailwind('text-light font-bold font-15')];

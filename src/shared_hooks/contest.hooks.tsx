@@ -49,7 +49,6 @@ export const useJoinedContests = (
 };
 
 export const useMatchMeta = (match_key: string, user_id: string) => {
-  // {"match_key":"wieng_2022_t20_03","mobile":"9876543210","data_key":"all"}
   const {
     data: matchMeta,
     isSuccess: matchAPI,
@@ -57,7 +56,6 @@ export const useMatchMeta = (match_key: string, user_id: string) => {
     refetch: refetchMatch,
   } = useQuery(['match', 'wieng_2022_t20_03', user_id], liveMatchMetaRemote, {
     notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
-    staleTime: 1000 * 1000,
   });
   return {matchMeta, matchAPI, matchAPILive, refetchMatch};
 };

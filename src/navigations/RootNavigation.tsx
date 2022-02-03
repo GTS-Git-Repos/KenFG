@@ -43,7 +43,8 @@ import AffliatedScreen from '../screens/user/AffliatedScreen';
 import AchievementsScreen from '../screens/user/AchievementsScreen';
 import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScreen';
 import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
-import LiveMatchScreen from '../screens/matches/LiveMatchScreen/live.match.screen';
+import LiveMatchScreen from '../screens/matches/LiveMatchScreen/';
+import CompareTeamsScreen from '../screens/matches/CompareTeamsScreen';
 
 const RootNavigator = createStackNavigator();
 // const RootNavigator = createNativeStackNavigator();
@@ -63,6 +64,10 @@ export default function RootNavigation() {
           <RootNavigator.Screen
             component={LiveMatchScreen}
             name="LiveMatchScreen"
+          />
+          <RootNavigator.Screen
+            component={CompareTeamsScreen}
+            name="CompareTeamsScreen"
           />
 
           <RootNavigator.Screen

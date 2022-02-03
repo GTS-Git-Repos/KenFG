@@ -7,13 +7,13 @@ import {userInfo} from '../../../store/selectors';
 import {toCompareTeamScreen} from '../../../store/actions/navigationActions';
 
 export default function LiveMatchHOC() {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const route = useRoute<any>();
   const userMeta: any = useSelector<any>(userInfo);
 
   const {matchMeta, matchAPI}: any = useMatchMeta(
-    route.params.match_key,
-    userMeta.mobile,
+    route?.params?.match_key,
+    userMeta?.mobile,
   );
 
   function onPressCompareTeam(src_team_key: string, opp_team_key: string) {
