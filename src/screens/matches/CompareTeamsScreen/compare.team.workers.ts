@@ -1,4 +1,4 @@
-import {differenceBy} from 'lodash';
+import {differenceBy, intersectionBy, remove} from 'lodash';
 
 interface TeamPlayersType {
   code: string;
@@ -7,9 +7,16 @@ interface TeamPlayersType {
   players: Array<any>;
 }
 
-export const filterDiffrentPlayers = (f_1_teams: any, f_2_teams: any) => {
-  console.log(f_1_teams);
-};
+interface FilterPlayersType {
+  commanPlayers: FilterPlayersType;
+  diffPlayers: FilterPlayersType;
+}
+
+interface FilterPlayersType {
+  points: number;
+  srcTeamPlayers: any;
+  oppTeamPlayers: any;
+}
 
 export const totalTeamPoints = (
   sel_team: TeamPlayersType,
@@ -75,7 +82,7 @@ export function diffPlayersByTeam(
   const diffPlayers = differenceBy(src_team, op_team, 'key');
   const src_team_players = [];
   const op_team_players = [];
-  
+
   for (const player of diffPlayers) {
     if (srcTeamKeys.includes(player.key)) {
       src_team_players.push(player);
@@ -86,4 +93,40 @@ export function diffPlayersByTeam(
   // console.log('diffPlayers', diffPlayers);
 
   return diffPlayers;
+}
+
+export function extractPlayers(srcTeam: any, OppTeam: any): FilterPlayersType {
+  
+  const commanPlayers = intersectionBy(srcTeam.players, OppTeam.players, 'key');
+  const diffPlayersrcTeam = srcTeam.players.filter((item: any) => {
+    const isExists = commanPlayers.find((find_item: any) => {
+      find_item.key === item.key;
+    });
+    if (isExists) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  const diffPlayerOppTeam = OppTeam.players.filter((item: any) => {
+    const isExists = commanPlayers.find((find_item: any) => {
+      find_item.key === item.key;
+    });
+    if (isExists) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  const commanPlayersPoints = commanPlayers.reduce(
+    (prev: number, item: any) => {
+      return (prev += item.points);
+    },
+    0,
+  );
+  console.log('commanPlayersPoints', commanPlayersPoints);
+
+  return 1;
 }

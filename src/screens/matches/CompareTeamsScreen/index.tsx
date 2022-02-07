@@ -3,6 +3,7 @@ import CompareTeamScreen from './compare.team.screen';
 import mockCompare from '../../../constants/mocks/mockCompareTeam.json';
 import {
   diffPlayersByTeam,
+  extractPlayers,
   filterExistPlayers,
   totalTeamPoints,
 } from './compare.team.workers';
@@ -18,6 +19,7 @@ interface setCompareTeamType {
 }
 
 interface TeamType {
+  uuid: string;
   team_key: string;
   rank: string;
   points: number;
@@ -58,6 +60,7 @@ export default function CompareTeamHOC() {
         opp_player: compareMeta[1].name,
         opp_playerTeams: compareMeta[1].teams,
         srcTeam: {
+          uuid: compareMeta[0][sel_team_key].uuid,
           team_key: sel_team_key,
           rank: compareMeta[0][sel_team_key].rank,
           points: points[0],
@@ -66,6 +69,7 @@ export default function CompareTeamHOC() {
           players: compareMeta[0][sel_team_key].players,
         },
         opTeam: {
+          uuid: compareMeta[1][sel_team_key].uuid,
           team_key: opp_team_key,
           rank: compareMeta[1][opp_team_key].rank,
           points: points[1],
@@ -78,16 +82,28 @@ export default function CompareTeamHOC() {
   }, [compareMeta]);
 
   useEffect(() => {
-    const srcTeamKeys = compareTeam?.srcTeam.players.map(
-      (item: any) => item.key,
-    );
+    const srcTeam = {...compareTeam?.srcTeam};
+    const oppTeam = {...compareTeam?.opTeam};
+    const paddedTeamAPlayers = compareTeam?.srcTeam.players.map((item: any) => {
+      return {
+        ...item,
+        uuid: compareTeam.srcTeam.uuid,
+      };
+    });
+    const paddedTeamBPlayers = compareTeam?.opTeam.players.map((item: any) => {
+      return {
+        ...item,
+        uuid: compareTeam.srcTeam.uuid,
+      };
+    });
+    // attach padded players
+    delete srcTeam.players;
+    delete oppTeam.players;
+    srcTeam.players = paddedTeamAPlayers;
+    oppTeam.players = paddedTeamBPlayers;
 
-    const diffrentPlayers = diffPlayersByTeam(
-      compareTeam?.srcTeam.players,
-      compareTeam?.opTeam.players,
-      srcTeamKeys,
-    );
-    // console.log('diffrentPlayers',diffrentPlayers);
+    const extract_players = extractPlayers(srcTeam, oppTeam);
+    // console.log('extract_players -->', extract_players);
   }, [compareTeam]);
 
   if (!compareMeta) {

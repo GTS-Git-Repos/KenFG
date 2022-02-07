@@ -1,11 +1,13 @@
 [
     {
+        "player_key": "8877",
         "name": "FP one",
         "teams": [
             "t1",
             "t2"
         ],
         "t1": {
+            "uuid": "8877_t1",
             "code": "t1",
             "rank": 22,
             "cap": "b_mcdermott",
@@ -100,14 +102,113 @@
                     "seasonal_role": "bowler"
                 }
             ]
+        },
+        "t2": {
+            "uuid": "8877_t2",
+            "code": "t1",
+            "rank": 22,
+            "cap": "b_mcdermott",
+            "vc": "cal_jewell",
+            "players": [
+                {
+                    "key": "b_mcdermott",
+                    "name": "Ben McDermott",
+                    "points": 11,
+                    "credits": 11,
+                    "team_key": "hbh",
+                    "seasonal_role": "keeper"
+                },
+                {
+                    "key": "joe_clarke",
+                    "name": "Joe Clarke",
+                    "points": 10,
+                    "credits": 10,
+                    "team_key": "mls",
+                    "seasonal_role": "keeper"
+                },
+                {
+                    "key": "c__player__thomas_fraser_rogers__e16b7",
+                    "name": "Thomas Fraser Rogers",
+                    "points": 8,
+                    "credits": 8,
+                    "team_key": "mls",
+                    "seasonal_role": "batsman"
+                },
+                {
+                    "key": "cal_jewell",
+                    "name": "Caleb Jewell",
+                    "points": 8.5,
+                    "credits": 8.5,
+                    "team_key": "hbh",
+                    "seasonal_role": "batsman"
+                },
+                {
+                    "key": "c__player__thomas_fraser_rogers__e16b7",
+                    "name": "Thomas Fraser Rogers",
+                    "points": 8,
+                    "credits": 8,
+                    "team_key": "mls",
+                    "seasonal_role": "batsman"
+                },
+                {
+                    "key": "m_stoinis",
+                    "name": "Marcus Stoinis",
+                    "points": 8,
+                    "credits": 8,
+                    "team_key": "mls",
+                    "seasonal_role": "batsman"
+                },
+                {
+                    "key": "c__player__nick_larkin__2246b",
+                    "name": "Nick Larkin",
+                    "points": 8,
+                    "credits": 8,
+                    "team_key": "mls",
+                    "seasonal_role": "batsman"
+                },
+                {
+                    "key": "c__player__lachlan_bangs__ad7dd",
+                    "name": "Lachlan Bangs",
+                    "points": 8,
+                    "credits": 8,
+                    "team_key": "mls",
+                    "seasonal_role": "all_rounder"
+                },
+                {
+                    "key": "ts_rogers",
+                    "name": "Thomas Rogers",
+                    "points": 9.5,
+                    "credits": 9.5,
+                    "team_key": "hbh",
+                    "seasonal_role": "bowler"
+                },
+                {
+                    "key": "c__player__sam_elliott__841b7",
+                    "name": "Samuel Elliott",
+                    "points": 8,
+                    "credits": 8,
+                    "team_key": "mls",
+                    "seasonal_role": "bowler"
+                },
+                {
+                    "key": "c__player__will_sanders__3c848",
+                    "name": "Will Sanders",
+                    "points": 8,
+                    "credits": 8,
+                    "team_key": "hbh",
+                    "seasonal_role": "bowler"
+                }
+            ]
         }
     },
     {
+        "player_key": "8888",
         "name": "FP Two",
         "teams": [
             "t1"
         ],
         "t1": {
+            "uuid": "8877_t1",
             "code": "t1",
             "rank": 32,
             "cap": "p_nevill",
