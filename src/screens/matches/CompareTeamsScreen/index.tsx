@@ -7,6 +7,7 @@ import {
   filterExistPlayers,
   totalTeamPoints,
 } from './compare.team.workers';
+import {CompareTeamType} from '../../../types/compareTeam';
 import {useCompareTeams} from '../../../shared_hooks/match_hooks';
 
 interface setCompareTeamType {
@@ -19,7 +20,6 @@ interface setCompareTeamType {
 }
 
 interface TeamType {
-  uuid: string;
   team_key: string;
   rank: string;
   points: number;
@@ -41,6 +41,7 @@ export default function CompareTeamHOC() {
   const [compareTeam, setCompareTeam] = useState<setCompareTeamType | null>(
     null,
   );
+  const [playersData, setPlayersData] = useState<CompareTeamType>(null);
 
   const [diffPlayers, setDiffPlayers] = useState<any>(null);
 
@@ -60,50 +61,44 @@ export default function CompareTeamHOC() {
         opp_player: compareMeta[1].name,
         opp_playerTeams: compareMeta[1].teams,
         srcTeam: {
-          uuid: compareMeta[0][sel_team_key].uuid,
           team_key: sel_team_key,
           rank: compareMeta[0][sel_team_key].rank,
           points: points[0],
           cap_key: compareMeta[0][sel_team_key].cap,
           vc_key: compareMeta[0][sel_team_key].vc,
-          players: compareMeta[0][sel_team_key].players,
+          players: compareMeta[0][sel_team_key].players.map((item: any) => {
+            return {
+              ...item,
+              uuid: compareMeta[0][sel_team_key].uuid,
+            };
+          }),
         },
         opTeam: {
-          uuid: compareMeta[1][sel_team_key].uuid,
           team_key: opp_team_key,
           rank: compareMeta[1][opp_team_key].rank,
           points: points[1],
           cap_key: compareMeta[1][opp_team_key].cap,
           vc_key: compareMeta[1][opp_team_key].vc,
-          players: compareMeta[1][opp_team_key].players,
+          players: compareMeta[1][opp_team_key].players.map((item: any) => {
+            return {
+              ...item,
+              uuid: compareMeta[1][opp_team_key].uuid,
+            };
+          }),
         },
       });
     }
   }, [compareMeta]);
 
   useEffect(() => {
-    const srcTeam = {...compareTeam?.srcTeam};
-    const oppTeam = {...compareTeam?.opTeam};
-    const paddedTeamAPlayers = compareTeam?.srcTeam.players.map((item: any) => {
-      return {
-        ...item,
-        uuid: compareTeam.srcTeam.uuid,
-      };
-    });
-    const paddedTeamBPlayers = compareTeam?.opTeam.players.map((item: any) => {
-      return {
-        ...item,
-        uuid: compareTeam.srcTeam.uuid,
-      };
-    });
-    // attach padded players
-    delete srcTeam.players;
-    delete oppTeam.players;
-    srcTeam.players = paddedTeamAPlayers;
-    oppTeam.players = paddedTeamBPlayers;
+    if (!compareTeam) {
+      return;
+    }
+    const srcTeam = {...compareTeam.srcTeam};
+    const oppTeam = {...compareTeam.opTeam};
 
     const extract_players = extractPlayers(srcTeam, oppTeam);
-    // console.log('extract_players -->', extract_players);
+    setPlayersData(extract_players);
   }, [compareTeam]);
 
   if (!compareMeta) {
@@ -113,9 +108,8 @@ export default function CompareTeamHOC() {
   return (
     <CompareTeamScreen
       compareTeam={compareTeam}
-      diff_players={diffPlayers}
-      comman_players={[]}
       loading={loading}
+      playersData={playersData}
     />
   );
 }

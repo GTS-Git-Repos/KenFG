@@ -1,13 +1,11 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   name: string;
-  title: string;
+  role: string;
   points: string;
   team1: boolean;
 }
@@ -17,7 +15,7 @@ export default function ComparePlayerProfile(props: PropTypes) {
     <View
       style={[
         tailwind(
-          `justify-between px-1 pt-2 border-b border-gray-800 ${
+          `px-1 pt-2 border-b border-gray-800 ${
             props.team1 ? 'flex-row-reverse' : 'flex-row'
           } `,
         ),
@@ -50,7 +48,7 @@ export default function ComparePlayerProfile(props: PropTypes) {
             <Text
               numberOfLines={1}
               style={[tailwind('font-regular text-dark-1 font-12 py-1')]}>
-              {props.title}
+              {props.role}
             </Text>
           </View>
         </View>
@@ -58,13 +56,7 @@ export default function ComparePlayerProfile(props: PropTypes) {
 
       <View
         style={[tailwind('flex-row items-center justify-center'), {flex: 2}]}>
-        <View
-          // start={{x: 0, y: 0}}
-          // end={{x: 1, y: 0}}
-          // colors={
-          //   props.team1 ? ['#172338', '#254987'] : ['#73221D', '#172338']
-          // }
-          style={[tailwind('rounded px-2 py-1 w-12')]}>
+        <View style={[tailwind('rounded px-2 py-1 w-12')]}>
           <Text
             allowFontScaling={true}
             adjustsFontSizeToFit={true}

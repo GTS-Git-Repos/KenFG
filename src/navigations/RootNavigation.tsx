@@ -60,7 +60,7 @@ export default function RootNavigation() {
       <Host>
         <RootNavigator.Navigator
           screenOptions={StackConfig}
-          initialRouteName="LiveMatchScreen">
+          initialRouteName="InitialScreen">
           <RootNavigator.Screen
             component={LiveMatchScreen}
             name="LiveMatchScreen"

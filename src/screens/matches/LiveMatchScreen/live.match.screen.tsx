@@ -7,6 +7,7 @@ import {
   Projection,
   CurrentLiveStatus,
   ExpertsStats,
+  MatchPlayersStats,
   LoadingSpinner,
 } from '../../../sharedComponents';
 
@@ -19,7 +20,6 @@ import LiveMatchTabs from './atoms/LiveMatchTabs';
 import ScrollBoardPage from './molecules/ScrollBoardPage';
 import LeaderBoardPage from './molecules/LeaderBoardPage';
 import CommentaryPage from './molecules/CommentaryPage';
-import PlayersStats from './molecules/PlayersStats';
 import WinningsPage from './molecules/WinningsPage';
 import LinearGradient from 'react-native-linear-gradient';
 import LiveMatchTopBar from './atoms/LiveMatchTopBar';
@@ -116,7 +116,7 @@ export default function LiveMatchScreen(props: PropTypes) {
           <CommentaryPage index={3} activeIndex={activeIndex} />
         </View>
         <View>
-          <PlayersStats index={4} activeIndex={activeIndex} />
+          <MatchPlayersStats index={4} activeIndex={activeIndex} />
         </View>
       </PagerView>
     </View>

@@ -31,7 +31,8 @@ const req_get_private_contest = '/private-contest.php';
 const req_matches = '/completed-matches.php';
 const req_edit_team = '/edit-team.php';
 const req_search_contest = '/search-contest.php';
-const req_edit_contest = '/edit-contest.php';
+
+const req_match_points = '/match-point.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
   try {
@@ -111,50 +112,8 @@ export const searchContestsRemote = async (payload: any) => {
   }
 };
 
-export const switchTeamInContestRemote = async (payload: any) => {
-  try {
-    const response = await requestServer(
-      METHODS.GET,
-      BASE_URL + req_edit_contest,
-      payload,
-    );
-    if (response.status === 200) {
-      return true;
-    } else {
-      failedLog('switchTeamInContestRemote', response);
-    }
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
 
-export const contestInfoRemote = async (params: any) => {
-  // DEPRECATED
-  console.log('DEPRECATED REMOVED THAT contestInfoRemote');
 
-  try {
-    const response = await requestServer(
-      METHODS.GET,
-      BASE_URL + `${req_contest_list}?m=${params.queryKey[1]}`,
-    );
-    if (response.status === 200) {
-      const contest = response.data.data.find(
-        (item: any) => item.key === params.queryKey[2],
-      );
-      if (contest) {
-        return contest;
-      } else {
-        failedLog('No contest Found', '0');
-      }
-    } else {
-      failedLog('contestInfoRemote', response);
-    }
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
 
 export const liveMatchMetaRemote = async (params: any) => {
   try {
@@ -332,6 +291,23 @@ export const getPrivateContestsRemote = async (params: any) => {
       return response.data.data;
     } else {
       failedLog('createContestRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const getMatchPointsRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.GET,
+      BASE_URL + req_match_points,
+    );
+    if (response.status === 200) {
+      return response.data.data;
+    } else {
+      failedLog('getMatchPointsRemote()', response);
     }
   } catch (err) {
     console.log(err);

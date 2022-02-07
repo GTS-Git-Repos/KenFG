@@ -32,6 +32,8 @@ export default function LobbyScreen(props: PropTypes) {
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
   function onPressMyMatchCard(match_key: string) {
+    toContestLiveMatch(navigation, 'wieng_2022_t20_03');
+    return;
     if (props.myMatches.status === 'completed') {
       toContestLiveMatch(navigation, match_key);
     } else {

@@ -10,30 +10,6 @@ import playersListJson from '../constants/mocks/mockplayersList.json';
 // API Routes
 const req_test = '/test.php';
 
-export const ___contestListRemote = async () => {
-  try {
-    return contestListJson;
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
-
-export const ___contestInfoRemote = async (params: any) => {
-  try {
-    const contest = contestListJson.find(
-      (item: contestListsTypes) => item.key === params.queryKey[1],
-    );
-    if (!contest) {
-      throw 'not found';
-    }
-    return contest;
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
-
 const failedLog = (functionname: string, response: any) => {
   console.log(
     `\x1b[35m  Request ${functionname} : ${JSON.stringify(response)} \x1b[0m`,

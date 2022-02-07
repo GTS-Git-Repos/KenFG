@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
-import {selectedMatch, userInfo} from '../../../store/selectors';
+import {
+  isFulMatchSelector,
+  selectedMatch,
+  userInfo,
+} from '../../../store/selectors';
 import {useGetTeams} from '../../../shared_hooks/contest.hooks';
 import SwitchTeamScreen from './switch.team.screen';
 import {SelectedMatchType} from '../../../types/match';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
 import {useMutation} from 'react-query';
-import {switchTeamInContestRemote} from '../../../remote/matchesRemote';
+import {switchTeamInContestRemote} from '../../../remote/contestRemote';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 
 export default function SwitchTeamHOC() {
@@ -23,6 +27,7 @@ export default function SwitchTeamHOC() {
 
   const matchMeta: SelectedMatchType = useSelector(selectedMatch);
   const userMeta = useSelector(userInfo);
+  const isFullMatch: boolean = useSelector(isFulMatchSelector);
   const route = useRoute<RouteProp<RouteParams, 'params'>>();
 
   const switchTeam = useMutation(switchTeamInContestRemote, {
@@ -31,7 +36,7 @@ export default function SwitchTeamHOC() {
       navigation.goBack();
     },
     onError: (error: any) => {
-      errorBox('Failed to Switch', 100);
+      errorBox('Failed to Switch', 500);
     },
   });
 
@@ -40,7 +45,11 @@ export default function SwitchTeamHOC() {
     setSelectedTeam(route.params.old_team_key);
   }, []);
 
-  const {teams}: any = useGetTeams(matchMeta.match_key, userMeta.mobile);
+  const {teams}: any = useGetTeams(
+    matchMeta.match_key,
+    userMeta.mobile,
+    isFullMatch,
+  );
 
   function onPressSwitchTeam() {
     switchTeam.mutate({

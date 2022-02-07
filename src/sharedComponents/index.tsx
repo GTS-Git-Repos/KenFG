@@ -28,6 +28,7 @@ import ContestTypeSwitch from './molecules/contest.type.swicth';
 import PrivateContestTeams from './molecules/private.contest.teams';
 import PriceDistributionSwitch from './molecules/price.distribution.switch';
 import MatchTeamCard from './molecules/match.team.card';
+import MatchPlayersStats from './molecules/match.players.stats.page';
 
 import NoContentShared from './atoms/no.content.shared';
 
@@ -77,6 +78,7 @@ export {
   SecondaryButton,
   PrivateContestTeams,
   WinningsListRank,
+  MatchPlayersStats,
   JoinContestModal,
   BottomLine,
   MatchTeamCard,

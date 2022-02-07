@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import tailwind from '../../../../../../tailwind';
-import {View, StyleSheet, Text, ToastAndroid} from 'react-native';
-import SubTitle from '../SubTitle';
+import {View} from 'react-native';
 import UpcommingMatchTitle from './upcomming.match.title';
 import ImageSlider from './ImageSlider';
 import UpComingMatchesSlider from './UpComingMatchesSlider';

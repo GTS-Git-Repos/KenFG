@@ -3,7 +3,7 @@ import {View, Text, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {BlockScreenByLoading} from '../../../sharedComponents';
 import {useIsScreenReady} from '../../../utils/customHoooks';
-
+import {CompareTeamType} from '../../../types/compareTeam';
 import SelectTeamSheet from './molecules/SelectTeamSheet';
 import FantasyPlayer from './atoms/FantasyPlayer';
 import {Modalize} from 'react-native-modalize';
@@ -12,8 +12,15 @@ import TopBarCompareTeam from './atoms/TopBarCompareTeam';
 import CompareTeamLoading from './atoms/CompareTeamLoading';
 import Points from './atoms/Points';
 import Status from './atoms/Status';
+import PlayerStats from './molecules/PlayersStats';
 
 const log = console.log;
+
+interface PropTypes {
+  compareTeam: setCompareTeamType;
+  loading: boolean;
+  playersData: CompareTeamType;
+}
 
 interface setCompareTeamType {
   src_player: string;
@@ -30,20 +37,13 @@ interface TeamType {
   points: number;
 }
 
-interface PropTypes {
-  compareTeam: setCompareTeamType;
-  loading: boolean;
-  diff_players: Array<any>;
-  comman_players: Array<any>;
-}
-
 interface SectionType {
   title: string;
-  team_a_points: number;
-  team_b_points: number;
+  srcTeamPoints: number;
+  OppTeamPoints: number;
 }
 
-export default function CompareTeamScreen(props: PropTypes) {
+export default function CompareTeamScreenScreem(props: PropTypes) {
   const selectSheet = useRef(null);
   const selectOpponentSheet = useRef(null);
 
@@ -76,12 +76,20 @@ export default function CompareTeamScreen(props: PropTypes) {
           />
         </View>
         <View style={[tailwind('h-2 bg-dark-4')]}></View>
+        <Title title={'Comman Players'} srcTeamPoints={1} OppTeamPoints={33} />
+        <PlayerStats
+          srcTeamPlayers={props.playersData.commanPlayers}
+          oppTeamPlayers={props.playersData.commanPlayers}
+        />
         <Title
           title={'Diffrent Players'}
-          team_a_points={100}
-          team_b_points={232}
+          srcTeamPoints={1}
+          OppTeamPoints={33}
         />
-        {/* <PlayerStats title={'Diffrent Players'} points={150} ahead={false} />*/}
+        <PlayerStats
+          srcTeamPlayers={props.playersData.diffPlayersSrcTeam}
+          oppTeamPlayers={props.playersData.diffPlayersOppTeam}
+        />
       </ScrollView>
 
       <Modalize
@@ -129,13 +137,13 @@ const Title = (props: SectionType) => {
       <Text style={[tailwind('font-bold text-center pt-1 text-light font-16')]}>
         {props.title}
       </Text>
-      {props.team_a_points > props.team_b_points && (
+      {props.srcTeamPoints > props.OppTeamPoints && (
         <View style={[tailwind('flex-row justify-center py-3 items-center')]}>
           <Text style={[tailwind('font-regular text-dark-1 font-15')]}>
             You are
           </Text>
           <Text style={[tailwind('font-bold px-1 text-green-600 font-16')]}>
-            {props.team_a_points - props.team_b_points}
+            {props.srcTeamPoints - props.OppTeamPoints}
           </Text>
           <Text style={[tailwind('font-regular text-dark-1  font-15')]}>
             pts ahead
@@ -143,13 +151,13 @@ const Title = (props: SectionType) => {
         </View>
       )}
 
-      {props.team_a_points < props.team_b_points && (
+      {props.srcTeamPoints < props.OppTeamPoints && (
         <View style={[tailwind('flex-row justify-center py-3 items-center')]}>
           <Text style={[tailwind('font-regular text-dark-1 font-15')]}>
             You are opponents player are
           </Text>
           <Text style={[tailwind('font-bold px-1 text-green-600 font-16')]}>
-            {props.team_b_points - props.team_a_points}
+            {props.OppTeamPoints - props.srcTeamPoints}
           </Text>
           <Text style={[tailwind('font-regular text-dark-1  font-15')]}>
             pts ahead
@@ -157,13 +165,13 @@ const Title = (props: SectionType) => {
         </View>
       )}
 
-      {props.team_a_points === props.team_b_points && (
+      {props.srcTeamPoints === props.OppTeamPoints && (
         <View style={[tailwind('flex-row justify-center py-3 items-center')]}>
           <Text style={[tailwind('font-regular text-dark-1 font-15')]}>
             You both are Equal Points
           </Text>
           <Text style={[tailwind('font-bold px-1 text-green-600 font-16')]}>
-            {props.team_a_points}
+            {props.srcTeamPoints}
           </Text>
         </View>
       )}

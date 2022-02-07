@@ -1,20 +1,17 @@
 import React from 'react';
-import tailwind from '../../../../../tailwind';
+import tailwind from '../../../tailwind';
 import {View, Image, Text, TouchableOpacity, ScrollView} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
-import LinearGradient from 'react-native-linear-gradient';
-import {BottomLine} from '../../../../sharedComponents';
+import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/native';
 // @ts-ignore
-import contestPlayerStats from '../../../../constants/mocks/contestPlayerStats.json';
+import contestPlayerStats from '../../constants/mocks/contestPlayerStats.json';
 
 interface PropTypes {
   index: number;
   activeIndex: number;
 }
 
-export default function PlayersStats(props: PropTypes) {
+export default function MatchPlayersStatsPage(props: PropTypes) {
   const navigation = useNavigation<any>();
 
   return (
@@ -72,19 +69,19 @@ export default function PlayersStats(props: PropTypes) {
                   activeOpacity={0.5}
                   onPress={() => navigation.navigate('MyContestPlayersScreen')}
                   style={[tailwind('flex-row flex-grow items-center mt-2')]}>
-                  <View style={[tailwind('px-2'), {width: 62}]}>
+                  <View style={[tailwind('px-2'), {width: 80}]}>
                     <Text
                       style={[tailwind('font-regular text-dark-1 font-14')]}>
                       {item.points}
                     </Text>
                   </View>
-                  <View style={[tailwind(''), {width: 62}]}>
+                  <View style={[tailwind(''), {width: 65}]}>
                     <Text
                       style={[tailwind('font-regular text-dark-1 font-14')]}>
                       {item.sell_by} %
                     </Text>
                   </View>
-                  <View style={[tailwind(''), {width: 62}]}>
+                  <View style={[tailwind(''), {width: 65}]}>
                     <Text
                       style={[tailwind('font-regular text-dark-1 font-14')]}>
                       {item.c_by} %
@@ -166,7 +163,7 @@ const TableRow = () => {
           {width: 62},
         ]}>
         <Text style={[tailwind('font-regular text-dark-1 font-12 uppercase')]}>
-          L BY
+          SEL BY
         </Text>
       </View>
       <View

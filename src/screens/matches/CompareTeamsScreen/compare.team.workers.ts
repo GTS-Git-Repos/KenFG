@@ -1,4 +1,6 @@
-import {differenceBy, intersectionBy, remove} from 'lodash';
+import {differenceBy, groupBy, intersectionBy, remove} from 'lodash';
+import {playersByRole} from 'src/store/selectors';
+import {CompareTeamType} from '../../../types/compareTeam';
 
 interface TeamPlayersType {
   code: string;
@@ -95,38 +97,119 @@ export function diffPlayersByTeam(
   return diffPlayers;
 }
 
-export function extractPlayers(srcTeam: any, OppTeam: any): FilterPlayersType {
-  
-  const commanPlayers = intersectionBy(srcTeam.players, OppTeam.players, 'key');
-  const diffPlayersrcTeam = srcTeam.players.filter((item: any) => {
-    const isExists = commanPlayers.find((find_item: any) => {
-      find_item.key === item.key;
-    });
-    if (isExists) {
-      return false;
-    } else {
-      return true;
-    }
-  });
-
-  const diffPlayerOppTeam = OppTeam.players.filter((item: any) => {
-    const isExists = commanPlayers.find((find_item: any) => {
-      find_item.key === item.key;
-    });
-    if (isExists) {
-      return false;
-    } else {
-      return true;
-    }
-  });
-
-  const commanPlayersPoints = commanPlayers.reduce(
-    (prev: number, item: any) => {
-      return (prev += item.points);
-    },
-    0,
+export function extractPlayers(srcTeam: any, OppTeam: any): CompareTeamType {
+  const extractCommanPlayers = intersectionBy(
+    srcTeam.players,
+    OppTeam.players,
+    'key',
   );
-  console.log('commanPlayersPoints', commanPlayersPoints);
+  const commanPlayers = structurePlayers(
+    extractCommanPlayers,
+    srcTeam.cap,
+    srcTeam.vc,
+    OppTeam.cap,
+    OppTeam.vc,
+  );
+  const commanPlayersScore = playersScoreCal(commanPlayers);
 
-  return 1;
+  const extractDiffPlayerSrcTeam = srcTeam.players.filter((item: any) => {
+    const isExists = extractCommanPlayers.find(
+      (find_item: any) => find_item.key === item.key,
+    );
+    if (isExists) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  const extractDiffPlayerOppTeam = OppTeam.players.filter((item: any) => {
+    const isExists = extractCommanPlayers.find(
+      (find_item: any) => find_item.key === item.key,
+    );
+    if (isExists) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  const diffPlayersSrcTeam = structurePlayers(
+    extractDiffPlayerSrcTeam,
+    srcTeam.cap,
+    srcTeam.vc,
+    OppTeam.cap,
+    OppTeam.vc,
+  );
+  const diffPlayersOppTeam = structurePlayers(
+    extractDiffPlayerOppTeam,
+    srcTeam.cap,
+    srcTeam.vc,
+    OppTeam.cap,
+    OppTeam.vc,
+  );
+  const DiffPlayersSrcTeamScore = playersScoreCal(diffPlayersSrcTeam);
+  const DiffPlayersOppTeamScore = playersScoreCal(diffPlayersOppTeam);
+
+  return {
+    commanPlayers,
+    commanPlayersScore,
+    diffPlayersSrcTeam,
+    diffPlayersOppTeam,
+    diffPlayerScore: DiffPlayersSrcTeamScore + DiffPlayersOppTeamScore,
+  };
+}
+
+function playersScoreCal(players: any): number {
+  return players.reduce((prev: number, item: any) => {
+    return (prev += item.calc_points);
+  }, 0);
+}
+
+function structurePlayers(
+  players: any,
+  src_cap: string,
+  src_vc: string,
+  opp_cap: string,
+  opp_vc: string,
+): Array<any> {
+  return players.map((item: any) => {
+    if (item.key === src_cap || item.key === opp_cap) {
+      return {
+        ...item,
+        cap: true,
+        vc: false,
+        calc_points: item.points * 2,
+      };
+    } else if (item.key === src_vc || item.key === opp_vc) {
+      return {
+        ...item,
+        cap: false,
+        vc: true,
+        calc_points: item.points * 1.5,
+      };
+    } else {
+      return {
+        ...item,
+        cap: false,
+        vc: false,
+        calc_points: item.points,
+      };
+    }
+  });
+}
+
+export function PlayerRole(team_key: string, role: string) {
+  let playerRole = '';
+  if (role === 'keeper') {
+    playerRole = 'Keep';
+  } else if (role === 'batsman') {
+    playerRole = 'Bat';
+  } else if (role === 'all_rounder') {
+    playerRole = 'AR';
+  } else {
+    playerRole = 'Bowl';
+  }
+  const teamKey = team_key;
+  return `${teamKey.toUpperCase()} ${playerRole}`;
 }

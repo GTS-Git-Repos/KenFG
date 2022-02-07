@@ -34,8 +34,10 @@ const requestServer = function (
                 resolve({status: serverResponse.status, data});
               })
               .catch(err => {
+                console.log(err);
+
                 ErrorRequest(url, payload);
-                reject('Parse Failed');
+                reject('Parse Failed On Success');
               });
           }
         } else {
@@ -47,7 +49,7 @@ const requestServer = function (
               resolve({status: serverResponse.status, data});
             })
             .catch(err => {
-              reject('Parse Failed');
+              reject('Parse Failed On Failed');
             });
         }
       })
