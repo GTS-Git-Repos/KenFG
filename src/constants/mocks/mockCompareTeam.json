@@ -3,8 +3,7 @@
         "player_key": "8877",
         "name": "FP one",
         "teams": [
-            "t1",
-            "t2"
+            "t1"
         ],
         "t1": {
             "uuid": "8877_t1",
@@ -30,12 +29,12 @@
                     "seasonal_role": "keeper"
                 },
                 {
-                    "key": "c__player__thomas_fraser_rogers__e16b7",
-                    "name": "Thomas Fraser Rogers",
+                    "key": "c__player__gabe_t_bell__cdfb7",
+                    "name": "Gabe T Bell",
                     "points": 8,
                     "credits": 8,
-                    "team_key": "mls",
-                    "seasonal_role": "batsman"
+                    "team_key": "hbh",
+                    "seasonal_role": "bowler"
                 },
                 {
                     "key": "cal_jewell",

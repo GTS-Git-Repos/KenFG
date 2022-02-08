@@ -14,13 +14,16 @@ export default function PlayersStats(props: PropTypes) {
     <View style={[tailwind('py-3 bg-dark-3')]}>
       <View style={[tailwind('flex-row px-1')]}>
         <View style={[tailwind('border-r border-gray-700'), {flex: 4.5}]}>
-          {props.srcTeamPlayers.map((item: any, index: number) => {
+          {props.srcTeamPlayers.map((item: any) => {
             return (
               <ComparePlayerProfile
                 key={`${item.uuid}${item.key}`}
                 name={item.name}
                 role={PlayerRole(item.team_key, item.seasonal_role)}
                 points={item.points}
+                calc_points={item.calc_points}
+                isCaptain={item.cap}
+                inViceCaptain={item.vc}
                 team1={false}
               />
             );
@@ -36,6 +39,9 @@ export default function PlayersStats(props: PropTypes) {
                 role={PlayerRole(item.team_key, item.seasonal_role)}
                 points={item.points}
                 team1={false}
+                calc_points={item.calc_points}
+                isCaptain={item.cap}
+                inViceCaptain={item.vc}
               />
             );
           })}

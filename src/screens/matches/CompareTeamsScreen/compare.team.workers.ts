@@ -103,12 +103,13 @@ export function extractPlayers(srcTeam: any, OppTeam: any): CompareTeamType {
     OppTeam.players,
     'key',
   );
+
   const commanPlayers = structurePlayers(
     extractCommanPlayers,
-    srcTeam.cap,
-    srcTeam.vc,
-    OppTeam.cap,
-    OppTeam.vc,
+    srcTeam.cap_key,
+    srcTeam.vc_key,
+    OppTeam.cap_key,
+    OppTeam.cap_key,
   );
   const commanPlayersScore = playersScoreCal(commanPlayers);
 
@@ -136,22 +137,24 @@ export function extractPlayers(srcTeam: any, OppTeam: any): CompareTeamType {
 
   const diffPlayersSrcTeam = structurePlayers(
     extractDiffPlayerSrcTeam,
-    srcTeam.cap,
-    srcTeam.vc,
-    OppTeam.cap,
-    OppTeam.vc,
+    srcTeam.cap_key,
+    srcTeam.vc_key,
+    OppTeam.cap_key,
+    OppTeam.vc_key,
   );
   const diffPlayersOppTeam = structurePlayers(
     extractDiffPlayerOppTeam,
-    srcTeam.cap,
-    srcTeam.vc,
-    OppTeam.cap,
-    OppTeam.vc,
+    srcTeam.cap_key,
+    srcTeam.vc_key,
+    OppTeam.cap_key,
+    OppTeam.vc_key,
   );
   const DiffPlayersSrcTeamScore = playersScoreCal(diffPlayersSrcTeam);
   const DiffPlayersOppTeamScore = playersScoreCal(diffPlayersOppTeam);
 
-  return {
+  // console.log('diffPlayersSrcTeam', diffPlayersSrcTeam);
+
+  return {  
     commanPlayers,
     commanPlayersScore,
     diffPlayersSrcTeam,

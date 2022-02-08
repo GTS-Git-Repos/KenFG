@@ -2,12 +2,16 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
+import {CapWithVSIcon, CIcon, VCIcon} from '../../../../sharedComponents';
 
 interface PropTypes {
   name: string;
   role: string;
   points: string;
   team1: boolean;
+  calc_points: number;
+  isCaptain: boolean;
+  inViceCaptain: boolean;
 }
 
 export default function ComparePlayerProfile(props: PropTypes) {
@@ -37,6 +41,10 @@ export default function ComparePlayerProfile(props: PropTypes) {
             source={assets.player}
             style={[{width: 40, height: 40}]}
           />
+          <View style={[tailwind('absolute inset-0')]}>
+            {props.isCaptain && <CIcon white={false} />}
+            {props.inViceCaptain && <VCIcon white={false} />}
+          </View>
         </View>
         <View style={[tailwind('')]}>
           <View style={[tailwind('px-2')]}>
@@ -61,7 +69,7 @@ export default function ComparePlayerProfile(props: PropTypes) {
             allowFontScaling={true}
             adjustsFontSizeToFit={true}
             style={[tailwind('font-bold text-white text-center font-14')]}>
-            {props.points}
+            {props.calc_points}
           </Text>
         </View>
       </View>
