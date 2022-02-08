@@ -1,4 +1,10 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import {useSelector} from 'react-redux';
 import {
   isFulMatchSelector,
@@ -28,10 +34,25 @@ import {
   useGetTeams,
   useJoinedContests,
 } from '../../../shared_hooks/contest.hooks';
+import {
+  contestReducer,
+  matchContestsState,
+  sortStatusSelector,
+} from './contest.list.controller';
+import {allContestsSelector} from './contest.list.controller';
 import {TeamFormationMutationType} from '../../../types/match';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 
 export default function ContestListHOC() {
+  const [contestState, contestDispatch] = useReducer(
+    contestReducer,
+    matchContestsState,
+  );
+  const allContests = allContestsSelector(contestState);
+  const sortStatus = sortStatusSelector(contestState);
+
+  console.log('state -->', sortStatus);
+
   const navigation = useNavigation<any>();
   const pagerRef = useRef<PagerView>(null);
   const route = useRoute<any>();
@@ -65,6 +86,12 @@ export default function ContestListHOC() {
   );
 
   useEffect(() => {
+    if (contests) {
+      contestDispatch({type: 'UPDATE_CONTESTS', payload: contests});
+    }
+  }, [contests]);
+
+  useEffect(() => {
     console.log('Contest List Params -->', route.params);
     if (route.params) {
       const autoJoinParams = route?.params?.params;
@@ -82,6 +109,10 @@ export default function ContestListHOC() {
       refetchJoinedContest();
     }, []),
   );
+
+  function sortByOnPress(sortBy:any){
+    contestDispatch({type:"UPDATE_SORT",payload:sortBy})
+  }
 
   const teamPreviewPress = (team_key: any): any => {
     const team = teams.find((item: any) => item.team_key === team_key);
@@ -195,7 +226,7 @@ export default function ContestListHOC() {
 
   return (
     <ContestListScreen
-      contests={contests}
+      contests={allContests}
       contestsAPI={contestsAPI}
       joined={joined}
       joinedAPI={joinedAPI}
@@ -206,6 +237,7 @@ export default function ContestListHOC() {
       isFullMatch={isFullMatch}
       teamPreviewPress={teamPreviewPress}
       teamMutateAction={teamMutateAction}
+      sortByOnPress={sortByOnPress}
       pagerRef={pagerRef}
       selectedTab={selectedTab}
       setSelectedTab={setSelectedTab}
@@ -220,6 +252,7 @@ export default function ContestListHOC() {
       onPressTeamSwitch={onPressTeamSwitch}
       onPressJoinedContest={onPressJoinedContest}
       onPressSecondInnings={onPressSecondInnings}
+      sortStatus={sortStatus}
     />
   );
 }

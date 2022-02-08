@@ -1,5 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
+import {DownArrowIcon,TopArrowIcon} from "../../../../sharedComponents"
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Svg, {Defs, LinearGradient, Path, Stop} from 'react-native-svg';
 import {useNavigation} from '@react-navigation/native';
@@ -10,6 +11,8 @@ interface PropTypes {
   setSelectedFilter(filter: string): any;
   isFullMatch: boolean;
   onPressSecondInnings(): any;
+  sortByOnPress():any,
+  sortStatus: any;
 }
 
 const TABS = [
@@ -184,12 +187,12 @@ function FilterTabs(props: PropTypes) {
 
         {/* {props.isFullMatch ? <SecondInnings /> : <FullContest />} */}
       </View>
-      {props.selectedFilter !== null ? <SortBy /> : null}
+      <SortBy sortStatus={props.sortStatus} sortByOnPress={props.sortByOnPress} />
     </View>
   );
 }
 
-const SortBy = () => {
+const SortBy = (props: any) => {
   return (
     <View
       style={[
@@ -198,63 +201,32 @@ const SortBy = () => {
         ),
       ]}>
       <TouchableOpacity
+      onPress={()=>props.sortByOnPress({max_price:!props.sortStatus.max_price,max_entry:null})}
         activeOpacity={0.5}
         style={[tailwind('flex-row items-center px-6')]}>
-        <ArrrowUp />
+          {props.sortStatus.max_price === false && <TopArrowIcon /> }
+        {props.sortStatus.max_price === true && <DownArrowIcon /> }
+
         <Text style={[tailwind('font-regular px-3 text-dark-1 font-13')]}>
           Total Price
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
+       onPress={()=>props.sortByOnPress({max_price:null,max_entry:!props.sortStatus.max_entry})}
         activeOpacity={0.5}
         style={[tailwind('flex-row items-center px-6')]}>
         <Text style={[tailwind('font-regular px-3 text-dark-1 font-13')]}>
           Entry Fee
         </Text>
-        <ArrrowDown />
+        {props.sortStatus.max_entry === false && <TopArrowIcon /> }
+        {props.sortStatus.max_entry === true && <DownArrowIcon /> }
       </TouchableOpacity>
     </View>
   );
 };
 
-const ArrrowUp = () => {
-  return (
-    <Svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-      <Path
-        d="M3.91599 0.979507L3.91599 13.0205"
-        stroke="#C61D24"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <Path
-        d="M6.832 3.90723L3.916 0.979227L1 3.90723"
-        stroke="#C61D24"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </Svg>
-  );
-};
 
-const ArrrowDown = () => {
-  return (
-    <Svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-      <Path
-        d="M4.08398 13.0202L4.08398 0.979248"
-        stroke="#C61D24"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <Path
-        d="M7 10.0925L4.084 13.0205L1.168 10.0925"
-        stroke="#C61D24"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </Svg>
-  );
-};
 
 const SecondInnings = (props: any) => {
   return (

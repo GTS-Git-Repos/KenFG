@@ -19,6 +19,7 @@ interface PropTypes {
   setSelectedFilter(filter: string): any;
   proceedToJoin(contest_key: string): any;
   onPressSecondInnings(): any;
+  sortStatus: any;
 }
 
 export default function ContestPage(props: PropTypes) {
@@ -57,6 +58,8 @@ export default function ContestPage(props: PropTypes) {
           selectedFilter={props.selectedFilter}
           setSelectedFilter={props.setSelectedFilter}
           isFullMatch={props.isFullMatch}
+          sortStatus={props.sortStatus}
+          sortByOnPress={props.sortByOnPress}
         />
         <NoContent
           title={`Currently No Contests are in ${props.selectedFilter} Category`}
@@ -75,6 +78,9 @@ export default function ContestPage(props: PropTypes) {
         setSelectedFilter={props.setSelectedFilter}
         isFullMatch={props.isFullMatch}
         onPressSecondInnings={props.onPressSecondInnings}
+        sortStatus={props.sortStatus}
+        sortByOnPress={props.sortByOnPress}
+
       />
       <ContestSubTitle
         title={'Mega Contest'}

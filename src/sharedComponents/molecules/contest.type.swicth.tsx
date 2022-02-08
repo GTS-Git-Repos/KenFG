@@ -9,6 +9,51 @@ interface PropTypes {
 
 export default function ContestTypeSwitch(props: PropTypes) {
   return (
+    <View style={[tailwind('flex-row items-center justify-between bg-dark-4')]}>
+      <Text style={[tailwind('')]}></Text>
+      <View style={[tailwind('flex-row items-center')]}>
+        <TouchableOpacity
+          onPress={() => props.onPressMatchType(1)}
+          activeOpacity={0.6}
+          style={[
+            tailwind(
+              `rounded-l-xl py-1 ${
+                props.isFullMatch ? 'bg-secondary' : 'bg-dark-3'
+              }`,
+            ),
+            {width: 80},
+          ]}>
+          <Text
+            style={[
+              tailwind('font-regular text-center text-white font-12'),
+              props.isFullMatch && styles.selectedText,
+            ]}>
+            Full Contests
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => props.onPressMatchType(0)}
+          style={[
+            tailwind(
+              `rounded-r-xl py-1 ${
+                !props.isFullMatch ? 'bg-secondary' : 'bg-dark-3'
+              }`,
+            ),
+            {width: 80},
+          ]}>
+          <Text
+            style={[
+              tailwind('font-regular text-center text-white font-12'),
+              !props.isFullMatch && styles.selectedText,
+            ]}>
+            2nd Innings
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+
+  return (
     <View style={[tailwind('flex-row items-center')]}>
       <View
         style={[
@@ -67,5 +112,8 @@ const styles = StyleSheet.create({
   buttonRoot: {
     paddingVertical: 2,
     paddingHorizontal: 8,
+  },
+  selectedText: {
+    color: '#172338',
   },
 });

@@ -49,7 +49,6 @@ export default function ContestInfoScreen() {
   }, [data]);
 
   // Bussiness logic
-  console.log(contestInfo);
 
   const proceedToJoin = () => {
     navigateWith_AutoJoin(navigation, 0, {

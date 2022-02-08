@@ -39,6 +39,7 @@ interface PropTypes {
 }
 
 export default function ContestLiveMatchScreen(props: PropTypes) {
+
   const navigation = useNavigation();
   const route = useRoute<any>();
   const pagerRef = useRef<any>();

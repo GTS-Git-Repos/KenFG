@@ -17,11 +17,14 @@ import {useSelector} from 'react-redux';
 import {selectedMatch} from '../../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import Modal from 'react-native-modal';
-import {errorBox} from '../../../utils/snakBars';
-import {isMatchTimeExhausted} from '../../../utils/comman';
 import {TeamFormationMutationType} from '../../../types/match';
 
 const log = console.log;
+
+interface SortTypes {
+  max_entry: boolean;
+  max_price: boolean;
+}
 
 interface PropTypes {
   contests: any;
@@ -39,6 +42,7 @@ interface PropTypes {
   showJoinModal: any;
   entryAmount: any;
   loading: boolean;
+  sortStatus: SortTypes;
   setLoading(value: boolean): any;
   proceedToJoin(contest_key: string): any;
   joinContestWithTeam(): any;
@@ -49,6 +53,7 @@ interface PropTypes {
   onPressTeamSwitch(team_key: string, contest_key: string): void;
   onPressJoinedContest(contest_key: string): void;
   onPressSecondInnings(): any;
+  sortByOnPress():any
 }
 
 export default function ContestListScreen(props: PropTypes) {
@@ -104,6 +109,8 @@ export default function ContestListScreen(props: PropTypes) {
             selectedTab={props.selectedTab}
             isFullMatch={props.isFullMatch}
             onPressSecondInnings={props.onPressSecondInnings}
+            sortStatus={props.sortStatus}
+            sortByOnPress={props.sortByOnPress}
           />
         </View>
         <View style={{width: width}}>
