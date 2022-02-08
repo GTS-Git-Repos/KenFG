@@ -13,9 +13,7 @@ import {SecondaryButton, TopBar} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
-  loading: boolean;
-  text: string;
-  actionText: string;
+  text?: string;
 }
 
 export default function NoContent(props: PropTypes) {

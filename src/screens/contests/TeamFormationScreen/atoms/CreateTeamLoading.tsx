@@ -6,7 +6,7 @@ import assets from '../../../../constants/assets_manifest';
 import {TopBar} from '../../../../sharedComponents';
 
 interface PropTypes {
-  text: string;
+  text?: string;
 }
 
 export default function CreateTeamLoading(props: PropTypes) {

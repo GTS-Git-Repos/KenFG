@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, FlatList, ActivityIndicator} from 'react-native';
+import {View, FlatList, ActivityIndicator, Text} from 'react-native';
 import TabCondtion from '../atoms/TabCondtions';
 import SortTabs from '../atoms/SortTabs';
 import Player from './Players';
@@ -12,51 +12,23 @@ interface PropTypes {
   filters: any;
   id: string;
   title: string;
-  data: [];
+  data: any;
   blockListPlayers: Array<string>;
   rolesCountSelector: any;
   index: number;
   activeIndex: number;
   team_a_key: string;
   team_b_key: string;
+  sortStatus: any;
   setSortByLowCredits(bool: boolean): any;
   checkPlayerSelection(player_key: string, player_role: string): void;
   onPressPlayerProfile(player_key: string, player_role: string): any;
 }
 
 export default function Page(props: PropTypes) {
-  const [playersMeta, setPlayersMeta]: any = useState(props.data);
   const position = props.index - props.activeIndex;
 
-  useEffect(() => {
-    if (props.filters === props.team_a_key) {
-      const team_a_players = props.data.filter(
-        (item: any) => item.team_key === props.team_a_key,
-      );
-      setPlayersMeta(team_a_players);
-    } else if (props.filters === props.team_b_key) {
-      const team_b_players = props.data.filter(
-        (item: any) => item.team_key === props.team_b_key,
-      );
-      setPlayersMeta(team_b_players);
-    } else {
-      setPlayersMeta(props.data);
-    }
-  }, [props.filters]);
 
-  useEffect(() => {
-    // if (props.sortByLowCredits) {
-    //   const res = playersMeta.sort((a: any, b: any) => {
-    //     return b.points - a.points;
-    //   });
-    //   setPlayersMeta(res);
-    // } else {
-    //   const res = playersMeta.sort((a: any, b: any) => {
-    //     return a.points - b.points;
-    //   });
-    //   setPlayersMeta(res);
-    // }
-  }, [props.sortByLowCredits]);
 
   // if (position < -1 || position > 1 || props.activeIndex === props.index) {
   //   return (
@@ -82,6 +54,10 @@ export default function Page(props: PropTypes) {
     return null;
   }
 
+  if (props.data === []) {
+    return <Text style={[tailwind('text-red-500')]}>No Players Found</Text>;
+  }
+
   return (
     <View>
       <View style={[tailwind('bg-dark')]}>
@@ -92,12 +68,13 @@ export default function Page(props: PropTypes) {
         />
 
         <SortTabs
+          sortStatus={props.sortStatus}
           sortByLowCredits={props.sortByLowCredits}
           setSortByLowCredits={props.setSortByLowCredits}
         />
       </View>
       <FlatList
-        data={playersMeta}
+        data={props.data}
         renderItem={({item}) => {
           return (
             <Player

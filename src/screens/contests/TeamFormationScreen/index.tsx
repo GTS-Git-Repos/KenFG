@@ -1,5 +1,5 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useReducer, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {errorBox} from '../../../utils/snakBars';
 import {
@@ -18,6 +18,12 @@ import {
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
+import {
+  teamFormationState,
+  teamFormationReducer,
+  allPlayersSelector,
+  sortStatusSelector,
+} from './team.formation.controller';
 import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
 import CreateTeamLoading from './atoms/CreateTeamLoading';
 import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
@@ -32,6 +38,15 @@ export default function TeamFormationHOC() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
   const filterSheet = useRef<Modalize>();
+
+  const [formationState, teamFormationDispatch] = useReducer(
+    teamFormationReducer,
+    teamFormationState,
+  );
+  const match_players = allPlayersSelector(formationState);
+  const sortStatus = sortStatusSelector(formationState);
+
+  log('sortStatus >>', sortStatus);
 
   const [filters, setFilter] = useState<any>(null);
   const [sortByLowCredits, setSortByLowCredits] = useState<boolean>(false);
@@ -64,10 +79,16 @@ export default function TeamFormationHOC() {
   }, []);
 
   useEffect(() => {
-    if (players) {
-      dispatch(saveAllPlayersAction(players));
+    if (playersAPI) {
+      if (players) {
+        teamFormationDispatch({type: 'UPDATE_PLAYERS', payload: players});
+        dispatch(saveAllPlayersAction(players));
+      } else {
+        teamFormationDispatch({type: 'UPDATE_PLAYERS', payload: null});
+        dispatch(saveAllPlayersAction(null));
+      }
     }
-  }, [players]);
+  }, [playersAPI]);
 
   useEffect(() => {
     dispatch(updateTeamCountAction(rolesCountSelector));
@@ -125,26 +146,24 @@ export default function TeamFormationHOC() {
         throw 'Team requires total 11 players';
       }
     } catch (err: any) {
-      errorBox(err);
+      errorBox(err, 500);
     }
   };
 
-  if (!isScreenReady || !playersAPI) {
-    return <CreateTeamLoading text={``} />;
-  }
-  if (playersAPI && !players) {
-    return (
-      <LoadFailedTeamFormation loading={false} text={''} actionText={''} />
-    );
+  if (match_players === null) return <LoadFailedTeamFormation />;
+
+  if (!isScreenReady || match_players.length === 0) {
+    return <CreateTeamLoading />;
   }
 
   return (
     <TeamFormationScreen
       countDown={countDown}
-      players={players}
+      players={match_players}
       rolesCount={rolesCountSelector}
       creditsLeft={availableCredits}
       match={matchSelector}
+      sortStatus={sortStatus}
       navigateToCapSelection={navigateToCapSelection}
       navigateToTeamPreviewScreeen={navigateToTeamPreviewScreeen}
       filterSheet={filterSheet}

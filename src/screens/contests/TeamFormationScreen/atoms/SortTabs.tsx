@@ -1,15 +1,17 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {DownArrowIcon, TopArrowIcon} from '../../../../sharedComponents';
 
 interface PropTypes {
+  sortStatus: any;
   sortByLowCredits: boolean;
   setSortByLowCredits(bool: boolean): any;
 }
 
 export default function SortTabs(props: PropTypes) {
+
+
   return (
     <View style={[tailwind('flex-row items-center py-2')]}>
       <View style={[{flex: 2}]}></View>

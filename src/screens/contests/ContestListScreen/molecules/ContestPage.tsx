@@ -40,7 +40,7 @@ export default function ContestPage(props: PropTypes) {
       />
     );
   }
-  if (props.status && !props.data) {
+  if (props.data === null) {
     return (
       <NoContent
         title={'Currently No Contests are open to Join'}

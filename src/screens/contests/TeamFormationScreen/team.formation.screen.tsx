@@ -32,6 +32,7 @@ interface PropTypes {
   filters: any;
   sortByLowCredits: boolean;
   blockListPlayers: Array<string>;
+  sortStatus: any;
   setSortByLowCredits(bool: boolean): any;
   setFilter(team_key: string): any;
   navigateToCapSelection(): any;
@@ -129,6 +130,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
+            sortStatus={props.sortStatus}
             onPressPlayerProfile={props.onPressPlayerProfile}
           />
         </View>
@@ -148,6 +150,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
+            sortStatus={props.sortStatus}
             onPressPlayerProfile={props.onPressPlayerProfile}
           />
         </View>
@@ -167,6 +170,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
+            sortStatus={props.sortStatus}
             onPressPlayerProfile={props.onPressPlayerProfile}
           />
         </View>
@@ -186,6 +190,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_a_key={props.match.team_a}
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
+            sortStatus={props.sortStatus}
             onPressPlayerProfile={props.onPressPlayerProfile}
           />
         </View>

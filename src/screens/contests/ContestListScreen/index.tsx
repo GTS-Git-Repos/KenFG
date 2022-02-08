@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   isFulMatchSelector,
   selectedMatch,
@@ -42,16 +42,16 @@ import {
 import {allContestsSelector} from './contest.list.controller';
 import {TeamFormationMutationType} from '../../../types/match';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
+import {updateUserInfo} from '../../../store/actions/userAction';
 
 export default function ContestListHOC() {
+  const dispatch = useDispatch();
   const [contestState, contestDispatch] = useReducer(
     contestReducer,
     matchContestsState,
   );
   const allContests = allContestsSelector(contestState);
   const sortStatus = sortStatusSelector(contestState);
-
-  console.log('state -->', sortStatus);
 
   const navigation = useNavigation<any>();
   const pagerRef = useRef<PagerView>(null);
@@ -86,10 +86,14 @@ export default function ContestListHOC() {
   );
 
   useEffect(() => {
-    if (contests) {
-      contestDispatch({type: 'UPDATE_CONTESTS', payload: contests});
+    if (contestsAPI) {
+      if (contests) {
+        contestDispatch({type: 'UPDATE_CONTESTS', payload: contests});
+      } else {
+        contestDispatch({type: 'UPDATE_CONTESTS', payload: null});
+      }
     }
-  }, [contests]);
+  }, [contestsAPI]);
 
   useEffect(() => {
     console.log('Contest List Params -->', route.params);
@@ -110,8 +114,8 @@ export default function ContestListHOC() {
     }, []),
   );
 
-  function sortByOnPress(sortBy:any){
-    contestDispatch({type:"UPDATE_SORT",payload:sortBy})
+  function sortByOnPress(sortBy: any) {
+    contestDispatch({type: 'UPDATE_SORT', payload: sortBy});
   }
 
   const teamPreviewPress = (team_key: any): any => {
@@ -210,6 +214,7 @@ export default function ContestListHOC() {
       }
       setShowJoinModal(false);
       refetchJoinedContest();
+      dispatch(updateUserInfo(userSelector.mobile));
       infoBox('Contest Succefully Joined', 500);
       // setTimeout(() => {
       //   pagerRef?.current?.setPage(1);

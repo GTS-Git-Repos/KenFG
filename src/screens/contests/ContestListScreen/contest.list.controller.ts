@@ -6,7 +6,7 @@ import {createSelector} from 'reselect';
 
 // States
 export const matchContestsState = {
-  allContests: null,
+  allContests: [],
   activeFilter: null,
   sortByHighPrice: null,
   sortByHighEntryFee: null,
@@ -30,7 +30,6 @@ export const contestReducer = (state: any, action: any) => {
         sortByHighPrice: action.payload.max_price,
         sortByHighEntryFee:action.payload.max_entry,
       };
-    
     default:
       return state;
   }

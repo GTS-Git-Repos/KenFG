@@ -10,7 +10,7 @@ import {
   JoinContestModal,
 } from '../../../sharedComponents';
 import {selectedMatch, userInfo} from '../../../store/selectors';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Info from './atoms/info.teamselection';
 import CheckBoxSelectedTeam from './molecules/checbox.selectteam';
 import {errorBox} from '../../../utils/snakBars';
@@ -18,6 +18,7 @@ import {joinContestRemote} from '../../../remote/matchesRemote';
 import {resetContestListNavigation} from '../../../utils/resetNav';
 import SubTitle from './atoms/subtitle.teamselection';
 import Modal from 'react-native-modal';
+import { updateUserInfo } from '../../../store/actions/userAction';
 const log = console.log;
 
 interface PropTypes {
@@ -29,6 +30,7 @@ interface PropTypes {
 }
 
 export default function TeamSelectionScreen(props: PropTypes) {
+  const dispatch = useDispatch()
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
   const [choosenTeams, setChoosenTeams] = useState<Array<string>>([]);
@@ -91,6 +93,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
         errorBox(response.msg, 1000);
         return;
       }
+      dispatch(updateUserInfo(userSelector.mobile))
       resetContestListNavigation(navigation, {
         match_key: matchSelector.match_key,
         to: 1,
@@ -99,7 +102,6 @@ export default function TeamSelectionScreen(props: PropTypes) {
       setLoading(false);
       Alert.alert('Failed to Join Contest', 'something went wrong');
     }
-    console.log(1);
   }
 
   return (

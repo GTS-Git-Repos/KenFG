@@ -7,7 +7,7 @@ export const useMatchPlayers = (match_key: string, user_id: string) => {
     getMatchPlayersRemote,
     {
       notifyOnChangeProps: ['data', 'isSuccess'],
-      staleTime: 60 * 5000,
+      staleTime: 60 * 10000,
     },
   );
   return {players, playersAPI};

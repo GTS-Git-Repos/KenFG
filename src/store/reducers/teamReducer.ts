@@ -11,7 +11,6 @@ import {
   UPDATE_ERROR_MESSAGE,
 } from '../actions/actionTypes';
 
-import preloadPlayers from '../../constants/preload/teamformation.preload.json';
 
 const initialState = {
   all_players: [],
