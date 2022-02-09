@@ -2,6 +2,7 @@ import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {SecondaryButton} from '..';
 
 interface PropTypes {
   wallet: string;
@@ -21,16 +22,21 @@ export default function WalletHalfModal(props: PropTypes) {
         style={[tailwind('font-regular text-white text-center font-18 py-2')]}>
         {'\u20B9'} {props.wallet}
       </Text>
+    
+
       <WalletSection
         title="Amount Added (UNUTLISED)"
         amount={props.unutilised}
       />
       <WalletSection title="Winnings" amount={props.winnings} />
       <WalletSection title="Cash Bonus" amount={props.bonus} />
+      {/* <TouchableOpacity>
+        <SecondaryButton text={'Add Money'} />
+      </TouchableOpacity> */}
       <TouchableOpacity
         style={[tailwind('flex-row pt-2 justify-center')]}
         onPress={() => props.setShowWalletModal(false)}>
-        <Icon name="chevron-up-outline" size={20} color="grey" />
+        <Icon name="close-outline" size={20} color="grey" />
       </TouchableOpacity>
     </View>
   );

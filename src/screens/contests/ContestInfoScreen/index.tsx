@@ -6,6 +6,7 @@ import {
   userInfo,
 } from '../../../store/selectors';
 import {
+  useContestLeaderboard,
   useContestList,
   useGetTeams,
   useJoinedContests,
@@ -22,7 +23,7 @@ export default function ContestInfoHOC() {
 
   const [contestInfo, setContestInfo] = useState<any>(null);
   const [current, setCurrent] = useState(false);
-  const [openWallet, setOpenWallet] = useState(false);
+  const [showWalletModal, setShowWalletModal] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
@@ -32,6 +33,12 @@ export default function ContestInfoHOC() {
     matchSelector.match_key,
     userSelector.mobile,
     isFullMatch,
+  );
+
+  const {leaderBoardMeta, leaderBoardAPI}: any = useContestLeaderboard(
+    matchSelector.match_key,
+    route.params.contest_key,
+    userSelector.mobile,
   );
 
   const {joined, joinedAPI}: any = useJoinedContests(
@@ -56,6 +63,14 @@ export default function ContestInfoHOC() {
       }
     }
   }, [contests]);
+
+  function openWallet(input: boolean) {
+    if (input) {
+      setShowWalletModal(true);
+    } else {
+      setShowWalletModal(false);
+    }
+  }
 
   function changePriceDistribution() {
     setCurrent(!current);
@@ -100,7 +115,9 @@ export default function ContestInfoHOC() {
       changePriceDistribution={changePriceDistribution}
       userSelector={userSelector}
       openWallet={openWallet}
-      setOpenWallet={setOpenWallet}
+      showWalletModal={showWalletModal}
+      setShowWalletModal={setShowWalletModal}
+      // setOpenWallet={setOpenWallet}
       proceedToJoin={proceedToJoin}
     />
   );

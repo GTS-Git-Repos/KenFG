@@ -1,14 +1,9 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-import {
-  BackIcon,
-  CapWithVSIcon,
-  ContestBellIcon,
-  WalletIcon,
-} from '../../sharedComponents';
+import {BackIcon, ContestBellIcon, WalletIcon} from '../../sharedComponents';
 
 interface PropTypes {
   title: string;

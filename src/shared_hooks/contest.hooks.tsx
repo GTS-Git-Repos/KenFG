@@ -1,6 +1,7 @@
 // A place where a contest related hooks all are placed
 
 import {useQuery} from 'react-query';
+import {contestleaderBoardRemote} from '../remote/contestRemote';
 import {
   contestListsRemote,
   getJoinedContestRemote,
@@ -86,4 +87,24 @@ export const useMatchMeta = (match_key: string, user_id: string) => {
     notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
   });
   return {matchMeta, matchAPI, matchAPILive, refetchMatch};
+};
+
+export const useContestLeaderboard = (
+  match_key: string,
+  contest_key: string,
+  user_id: string,
+) => {
+  const {
+    data: leaderBoardMeta,
+    isSuccess: leaderBoardAPI,
+    isFetching: leaderBoardLive,
+    refetch: refetchMatch,
+  } = useQuery(
+    ['leaderboard', match_key, contest_key, user_id],
+    contestleaderBoardRemote,
+    {
+      notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
+    },
+  );
+  return {leaderBoardMeta, leaderBoardAPI, leaderBoardLive, refetchMatch};
 };

@@ -20,59 +20,52 @@ export default function LearderBoard(props: PropTypes) {
     if (matchStarted) {
       // navigation.navigate('CompareTeamsScreen');
     } else {
-      errorBox('Please wait till the match starts to view other teams');
+      errorBox('Please wait till the match starts to view other teams', 100);
     }
   };
+
+  const leaderBoardMock = [
+    {
+      name: 'Player 1',
+      teamCode: 'T3',
+    },
+    {
+      name: 'Player 2',
+      teamCode: 'T1',
+    },
+    {
+      name: 'Player 3',
+      teamCode: 'T2',
+    },
+    {
+      name: 'Player 4',
+      teamCode: 'T3',
+    },
+    {
+      name: 'Player 5',
+      teamCode: 'T1',
+    },
+  ];
 
   return (
     <ScrollView contentContainerStyle={{width: width}}>
       <ShareContest />
       <HeaderLeaderBoard />
-      <HorizontalProfile
-        image={'https://t.ly/ZGWf'}
-        name={'Naveen 98758'}
-        teamCode={'T3'}
-        currentUser={true}
-        hasStatus={false}
-        matchStarted={false}
-        navigate={navigate}
-      />
-      <HorizontalProfile
-        image={'https:picsum.photos/300'}
-        name={'Some Name'}
-        teamCode={'T3'}
-        currentUser={false}
-        hasStatus={false}
-        matchStarted={false}
-        navigate={navigate}
-      />
-      <HorizontalProfile
-        image={'https:picsum.photos/100'}
-        name={'The Long Name of someone'}
-        teamCode={'T3'}
-        currentUser={false}
-        hasStatus={false}
-        matchStarted={false}
-        navigate={navigate}
-      />
-      <HorizontalProfile
-        image={'https://t.ly/ZGWf'}
-        name={'Naveen 98758'}
-        teamCode={'T3'}
-        currentUser={false}
-        hasStatus={false}
-        matchStarted={false}
-        navigate={navigate}
-      />
-      <HorizontalProfile
-        image={'https:picsum.photos/300'}
-        name={'Jessie'}
-        teamCode={'T3'}
-        currentUser={false}
-        hasStatus={false}
-        matchStarted={false}
-        navigate={navigate}
-      />
+      {leaderBoardMock.map((item: any, index: number) => {
+        return (
+          <HorizontalProfile
+            key={index.toString()}
+            image={'https://t.ly/ZGWf'}
+            name={item.name}
+            teamCode={item.teamCode}
+            currentUser={false}
+            hasStatus={false}
+            matchStarted={false}
+            navigate={navigate}
+          />
+        );
+      })}
+
       <View style={[tailwind('h-20')]}></View>
     </ScrollView>
   );

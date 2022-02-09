@@ -9,11 +9,9 @@ import {
 } from '../../../sharedComponents';
 import Modal from 'react-native-modal';
 import TabsContestInfo from './atoms/TabsContestInfo';
-import {useQuery} from 'react-query';
 const log = console.log;
 import LearderBoard from './molecules/LeaderBoardList';
 import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
-import {contestListsRemote} from '../../../remote/matchesRemote';
 import {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 import CreateTeamButton from './atoms/CreateTeamButton';
@@ -21,15 +19,16 @@ import {useSelector} from 'react-redux';
 import ContestInfoPageLoading from './atoms/ContestInfoPageLoading';
 import PagerView from 'react-native-pager-view';
 import {selectedMatch} from '../../../store/selectors';
-import {navigateWith_AutoJoin} from '../../../store/actions/navigationActions';
+import {infoBox} from '../../../utils/snakBars';
 
 interface PropTypes {
   contestInfo: any;
   priceDist: boolean;
   userSelector: any;
-  openWallet: boolean;
+  showWalletModal: boolean;
+  openWallet(): any;
   changePriceDistribution(): any;
-  setOpenWallet(input: boolean): any;
+  setShowWalletModal(input: boolean): any;
   proceedToJoin(contest_key: string): any;
 }
 
@@ -64,10 +63,10 @@ export default function ContestInfoScreen(props: PropTypes) {
       <TopbarContest
         title={matchSelector.titleString}
         subtitle={countDown}
-        enableNotification={() => {}}
-        openWallet={function (e: any): void {
-          throw new Error('Function not implemented.');
+        enableNotification={() => {
+          infoBox('Notification Preferrence Updated', 0);
         }}
+        openWallet={props.openWallet}
       />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
@@ -123,10 +122,10 @@ export default function ContestInfoScreen(props: PropTypes) {
         animationIn="zoomInDown"
         animationOut="zoomOutUp"
         backdropOpacity={0.7}
-        isVisible={props.openWallet}
+        isVisible={props.showWalletModal}
         animationInTiming={500}
         animationOutTiming={500}
-        onBackdropPress={() => props.setOpenWallet(false)}
+        onBackdropPress={() => props.setShowWalletModal(false)}
         useNativeDriver={true}
         useNativeDriverForBackdrop={true}
         hideModalContentWhileAnimating={true}
@@ -136,7 +135,7 @@ export default function ContestInfoScreen(props: PropTypes) {
           unutilised={props.userSelector.un_utilized}
           winnings={props.userSelector.winnings}
           bonus={props.userSelector.bonus}
-          setShowWalletModal={props.setOpenWallet}
+          setShowWalletModal={props.setShowWalletModal}
         />
       </Modal>
 
