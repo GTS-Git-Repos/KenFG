@@ -36,10 +36,13 @@ import {createTeamObjCreator} from '../../../workers/objCreators';
 import {resetContestListNavigation} from '../../../utils/resetNav';
 
 interface PropTypes {
+  allPlayers: any;
+  sortStatus: any;
   editTeamAPI(payload: any): any;
   cloneAPI(payload: any): any;
   loading: boolean;
   setLoading(bool: boolean): any;
+  sortByAction(input: any): any;
 }
 
 export default function CapSelectionScreen(props: PropTypes) {
@@ -47,9 +50,6 @@ export default function CapSelectionScreen(props: PropTypes) {
   const dispatch = useDispatch();
   const route = useRoute<any>();
 
-  // const [loading, setLoading] = useState(false);
-
-  const playersByRoleSelector = useSelector(playersByRole);
   const matchSelector: any = useSelector(selectedMatch);
   const rolesCountSelector: any = useSelector(rolesCount);
   const availableCredits = useSelector(creditLeft);
@@ -124,7 +124,7 @@ export default function CapSelectionScreen(props: PropTypes) {
           }
         }
         props.setLoading(true);
-        const response:any = await createTeamRemote(createTeamObj);
+        const response: any = await createTeamRemote(createTeamObj);
         props.setLoading(false);
         if (response.status) {
           dispatch(clearTeamAction());
@@ -144,11 +144,11 @@ export default function CapSelectionScreen(props: PropTypes) {
           return;
         } else {
           setTimeout(() => {
-            errorBox('Failed to create/update a Team',500);
+            errorBox('Failed to create/update a Team', 500);
           }, 500);
         }
       } else {
-        errorBox('Please select captain and vice captain',100);
+        errorBox('Please select captain and vice captain', 100);
       }
     } catch (err) {
       props.setLoading(false);
@@ -172,8 +172,11 @@ export default function CapSelectionScreen(props: PropTypes) {
           </Text>
         </View>
         <BottomLine />
-        <RowHeader />
-        {playersByRoleSelector.keeper.map((item: any) => {
+        <RowHeader
+          sortStatus={props.sortStatus}
+          sortByAction={props.sortByAction}
+        />
+        {props.allPlayers.keeper.map((item: any) => {
           return (
             <PlayerProfile
               key={item.key}
@@ -182,7 +185,7 @@ export default function CapSelectionScreen(props: PropTypes) {
               points={item.points}
               teamname={item.team_key}
               is_team_a={item.team_key === matchSelector.team_a}
-              role={'WK'}
+              seasonRole={item.seasonal_role}
               c={'43.3%'}
               vc={'8.3%'}
               is_captain={isPlayerCaptain(item.key)}
@@ -192,9 +195,11 @@ export default function CapSelectionScreen(props: PropTypes) {
             />
           );
         })}
-        <View style={[tailwind('h-1 bg-dark-4')]} />
+        {props.allPlayers?.batsman?.length > 0 && (
+          <View style={[tailwind('h-1 bg-dark-4')]} />
+        )}
 
-        {playersByRoleSelector.batsman.map((item: any) => {
+        {props.allPlayers.batsman.map((item: any) => {
           return (
             <PlayerProfile
               key={item.key}
@@ -202,8 +207,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
+              seasonRole={item.seasonal_role}
               is_team_a={item.team_key === matchSelector.team_a}
-              role={'BAT'}
               c={'43.3%'}
               vc={'8.3%'}
               is_captain={isPlayerCaptain(item.key)}
@@ -213,9 +218,11 @@ export default function CapSelectionScreen(props: PropTypes) {
             />
           );
         })}
-        <View style={[tailwind('h-1 bg-dark-4')]} />
+        {props.allPlayers?.all_rounder?.length > 0 && (
+          <View style={[tailwind('h-1 bg-dark-4')]} />
+        )}
 
-        {playersByRoleSelector.all_rounder.map((item: any) => {
+        {props.allPlayers.all_rounder.map((item: any) => {
           return (
             <PlayerProfile
               key={item.key}
@@ -223,8 +230,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
+              seasonRole={item.seasonal_role}
               is_team_a={item.team_key === matchSelector.team_a}
-              role={'AR'}
               c={'43.3%'}
               vc={'8.3%'}
               is_captain={isPlayerCaptain(item.key)}
@@ -237,7 +244,7 @@ export default function CapSelectionScreen(props: PropTypes) {
 
         <View style={[tailwind('h-1 bg-dark-4')]} />
 
-        {playersByRoleSelector.bowler.map((item: any) => {
+        {props.allPlayers.bowler.map((item: any) => {
           return (
             <PlayerProfile
               key={item.key}
@@ -245,8 +252,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               name={item.name}
               points={item.points}
               teamname={item.team_key}
+              seasonRole={item.seasonal_role}
               is_team_a={item.team_key === matchSelector.team_a}
-              role={'BOWL'}
               c={'43.3%'}
               vc={'8.3%'}
               is_captain={isPlayerCaptain(item.key)}

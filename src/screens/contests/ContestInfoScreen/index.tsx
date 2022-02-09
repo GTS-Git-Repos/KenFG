@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {
   isFulMatchSelector,
@@ -6,21 +6,33 @@ import {
   userInfo,
 } from '../../../store/selectors';
 import {
+  useContestList,
   useGetTeams,
   useJoinedContests,
 } from '../../../shared_hooks/contest.hooks';
 import ContestInfoScreen from './contest.info.screen';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 import {toTeamFormationWithAutoJoin} from '../../../store/actions/navigationActions';
-import {useNavigation} from '@react-navigation/core';
+import {useNavigation, useRoute} from '@react-navigation/core';
+import {TO_TEAMLIST} from '../../../constants/appContants';
 
 export default function ContestInfoHOC() {
   const navigation = useNavigation();
+  const route: any = useRoute();
+
+  const [contestInfo, setContestInfo] = useState<any>(null);
   const [current, setCurrent] = useState(false);
+  const [openWallet, setOpenWallet] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
   const isFullMatch: boolean = useSelector(isFulMatchSelector);
+
+  const {contests}: any = useContestList(
+    matchSelector.match_key,
+    userSelector.mobile,
+    isFullMatch,
+  );
 
   const {joined, joinedAPI}: any = useJoinedContests(
     matchSelector.match_key,
@@ -34,19 +46,27 @@ export default function ContestInfoHOC() {
     isFullMatch,
   );
 
+  useEffect(() => {
+    if (contests) {
+      const contestInfo = contests.find(
+        (item: any) => item.key === route.params.contest_key,
+      );
+      if (contestInfo) {
+        setContestInfo(contestInfo);
+      }
+    }
+  }, [contests]);
+
   function changePriceDistribution() {
     setCurrent(!current);
   }
 
   async function proceedToJoin(contest_key: string) {
-    return;
     try {
-      const contest = contests.find((item: any) => item.key === contest_key);
-      if (!contest) throw 'no contests';
-      if (contest) {
+      if (contestInfo) {
         const checkContestJoin = checksBeforeJoinContest(
           matchSelector.start_at,
-          contest,
+          contestInfo,
           joined,
           teams,
         );
@@ -56,9 +76,9 @@ export default function ContestInfoHOC() {
             navigation,
             checkContestJoin.to === TO_TEAMLIST,
             {
-              contestKey: contest.key,
-              entryAmount: contest.entry,
-              maxTeam: contest.max_entry,
+              contestKey: contestInfo.key,
+              entryAmount: contestInfo.entry,
+              maxTeam: contestInfo.max_entry,
             },
           );
         } else {
@@ -75,8 +95,13 @@ export default function ContestInfoHOC() {
 
   return (
     <ContestInfoScreen
+      contestInfo={contestInfo}
       priceDist={current}
       changePriceDistribution={changePriceDistribution}
+      userSelector={userSelector}
+      openWallet={openWallet}
+      setOpenWallet={setOpenWallet}
+      proceedToJoin={proceedToJoin}
     />
   );
 }

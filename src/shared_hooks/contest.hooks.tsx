@@ -2,10 +2,38 @@
 
 import {useQuery} from 'react-query';
 import {
+  contestListsRemote,
   getJoinedContestRemote,
   getJoinedTeamsRemote,
   liveMatchMetaRemote,
 } from '../remote/matchesRemote';
+
+// const {data} = useQuery(
+//   ['contests', matchSelector.match_key],
+//   contestListsRemote,
+//   {staleTime: 8000},
+// );
+
+export const useContestList = (
+  match_key: string,
+  user_id: string,
+  isFullMatch: boolean,
+) => {
+  const {
+    data: contests,
+    isSuccess: contestsAPI,
+    isFetching: contestsAPILive,
+    refetch: refetchContests,
+  } = useQuery(
+    ['contests', match_key, user_id, isFullMatch],
+    contestListsRemote,
+    {
+      notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
+      staleTime: 1000 * 60,
+    },
+  );
+  return {contests, contestsAPI, contestsAPILive, refetchContests};
+};
 
 export const useGetTeams = (
   match_key: string,

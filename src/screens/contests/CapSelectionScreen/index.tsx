@@ -8,9 +8,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {playersByRole, selectedMatch} from '../../../store/selectors';
 import {StackActions} from '@react-navigation/native';
 import {
+  allPlayersSelector,
   capSelectionReducer,
   capSelectionState,
+  sortStatusSelector,
 } from './capselection.controller';
+import {useIsScreenReady} from '../../../utils/customHoooks';
+import {FullScreenLoading} from '../../../sharedComponents';
 const log = console.log;
 
 export default function CapSelectionHOC() {
@@ -27,10 +31,17 @@ export default function CapSelectionHOC() {
   const matchSelector: any = useSelector(selectedMatch);
   const playersByRoleSelector = useSelector(playersByRole);
 
+  const allPlayers = allPlayersSelector(capsState);
+  const sortStatus = sortStatusSelector(capsState);
+  console.log('sortStatus >>>', sortStatus);
+
   useEffect(() => {
     capsDispatch({type: 'UPDATE_PLAYERS', payload: playersByRoleSelector});
-    // console.log(playersByRoleSelector);
   }, []);
+
+  function sortByAction(input: any) {
+    capsDispatch({type: 'UPDATE_SORT', payload: input.sortByPoints});
+  }
 
   const editTeamAPI = async (payload: any) => {
     try {
@@ -82,12 +93,19 @@ export default function CapSelectionHOC() {
     }
   };
 
+  if (!allPlayers?.keeper?.length) {
+    return <FullScreenLoading title={''} />;
+  }
+
   return (
     <CapSelectionScreen
+      allPlayers={allPlayers}
+      sortStatus={sortStatus}
       editTeamAPI={editTeamAPI}
       loading={loading}
       setLoading={setLoading}
       cloneAPI={cloneAPI}
+      sortByAction={sortByAction}
     />
   );
 }

@@ -1,10 +1,7 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import {BottomLine} from '../../../../sharedComponents';
-import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   image?: string;
@@ -12,12 +9,12 @@ interface PropTypes {
   name: string;
   points: string;
   teamname: string;
-  role: string;
   c: string;
   vc: string;
   is_captain: boolean;
   is_vice_captain: boolean;
   is_team_a: boolean;
+  seasonRole: string;
   captainSelectAction(player_key: string): any;
   viceCaptainSelect(player_key: string): any;
 }
@@ -49,6 +46,7 @@ export default function PlayerProfile(props: PropTypes) {
         <TeamTag
           teamname={props.teamname}
           role={props.role}
+          seasonRole={props.seasonRole}
           is_team_a={props.is_team_a}
         />
 
@@ -154,17 +152,59 @@ const TeamTag = (props: any) => {
         </Text>
       </View>
       <View style={[tailwind('bg-white rounded-tr')]}>
-        <Text
-          style={[
-            tailwind('font-regular uppercase font-9  text-light'),
-            {
-              paddingHorizontal: 2,
-              paddingVertical: 1,
-              color: '#244785',
-            },
-          ]}>
-          {props.role}
-        </Text>
+        {props.seasonRole === 'keeper' && (
+          <Text
+            style={[
+              tailwind('font-regular uppercase font-9  text-light'),
+              {
+                paddingHorizontal: 2,
+                paddingVertical: 1,
+                color: '#244785',
+              },
+            ]}>
+            WK
+          </Text>
+        )}
+
+        {props.seasonRole === 'batsman' && (
+          <Text
+            style={[
+              tailwind('font-regular uppercase font-9  text-light'),
+              {
+                paddingHorizontal: 2,
+                paddingVertical: 1,
+                color: '#244785',
+              },
+            ]}>
+            BAT
+          </Text>
+        )}
+        {props.seasonRole === 'all_rounder' && (
+          <Text
+            style={[
+              tailwind('font-regular uppercase font-9  text-light'),
+              {
+                paddingHorizontal: 2,
+                paddingVertical: 1,
+                color: '#244785',
+              },
+            ]}>
+            AR
+          </Text>
+        )}
+        {props.seasonRole === 'bowler' && (
+          <Text
+            style={[
+              tailwind('font-regular uppercase font-9  text-light'),
+              {
+                paddingHorizontal: 2,
+                paddingVertical: 1,
+                color: '#244785',
+              },
+            ]}>
+            BOWL
+          </Text>
+        )}
       </View>
     </View>
   );

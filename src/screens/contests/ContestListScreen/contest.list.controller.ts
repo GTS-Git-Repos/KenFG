@@ -1,6 +1,6 @@
 // The controller for contest list screen
 
-import {sortBy} from 'lodash';
+import {orderBy, sortBy} from 'lodash';
 import React, {useReducer} from 'react';
 import {createSelector} from 'reselect';
 
@@ -24,11 +24,11 @@ export const contestReducer = (state: any, action: any) => {
         ...state,
         activeFilter: action.payload,
       };
-    case "UPDATE_SORT":
+    case 'UPDATE_SORT':
       return {
         ...state,
         sortByHighPrice: action.payload.max_price,
-        sortByHighEntryFee:action.payload.max_entry,
+        sortByHighEntryFee: action.payload.max_entry,
       };
     default:
       return state;
@@ -45,10 +45,16 @@ export const allContestsSelector = createSelector(
   (all_contests, sortMaxPrice, sortMaxEntry) => {
     if (sortMaxEntry) {
       const contests = sortBy(all_contests, 'entry');
-        return contests.reverse()
+      return contests.reverse();
     } else if (sortMaxPrice) {
-      const contests = sortBy(all_contests, [(obj: any) => parseInt(obj.prize.amount)]);
-      return contests.reverse()
+      const contests = orderBy(all_contests, contest => contest.prize.amount, [
+        'desc',
+      ]);
+      if (sortMaxPrice === true) {
+        return contests.reverse();
+      } else {
+        return contests;
+      }
     } else {
       return all_contests;
     }

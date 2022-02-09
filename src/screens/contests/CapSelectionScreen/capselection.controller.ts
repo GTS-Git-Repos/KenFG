@@ -34,6 +34,47 @@ const SortByPointsState = (state: any) => state.sortByPoints;
 export const allPlayersSelector = createSelector(
   [AllPlayersState, SortByPointsState],
   (allPlayers, sortFromMaxPoints) => {
-    return allPlayers;
+    if (!allPlayers) return [];
+
+    if (sortFromMaxPoints === null) {
+      return allPlayers;
+    }
+    const flatenPlayers = combinePlayers(allPlayers);
+    const sortPlayers = sortBy(flatenPlayers, 'points');
+    if (sortFromMaxPoints) {
+      return {
+        keeper: sortPlayers,
+        batsman: [],
+        all_rounder: [],
+        bowler: [],
+      };
+    } else {
+      return {keeper: sortPlayers.reverse(), batsman: [], all_rounder: [], bowler: []};
+    }
   },
 );
+
+export const sortStatusSelector = createSelector(
+  [SortByPointsState],
+  sortByPoints => {
+    return {sortByPoints};
+  },
+);
+
+function combinePlayers(playersByRole: any) {
+  return [
+    ...playersByRole.keeper,
+    ...playersByRole.all_rounder,
+    ...playersByRole.batsman,
+    ...playersByRole.bowler,
+  ];
+}
+
+// function splitPlayers(flatenPlayers: any) {
+//   return [
+//     ...playersByRole.keeper,
+//     ...playersByRole.all_rounder,
+//     ...playersByRole.batsman,
+//     ...playersByRole.bowler,
+//   ];
+// }

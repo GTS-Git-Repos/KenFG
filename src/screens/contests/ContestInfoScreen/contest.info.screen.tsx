@@ -2,7 +2,12 @@ import React, {useState, useRef, useEffect} from 'react';
 import {View} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {TopbarContest, ContestCard} from '../../../sharedComponents';
+import {
+  TopbarContest,
+  ContestCard,
+  WalletHalfModal,
+} from '../../../sharedComponents';
+import Modal from 'react-native-modal';
 import TabsContestInfo from './atoms/TabsContestInfo';
 import {useQuery} from 'react-query';
 const log = console.log;
@@ -19,49 +24,28 @@ import {selectedMatch} from '../../../store/selectors';
 import {navigateWith_AutoJoin} from '../../../store/actions/navigationActions';
 
 interface PropTypes {
+  contestInfo: any;
   priceDist: boolean;
+  userSelector: any;
+  openWallet: boolean;
   changePriceDistribution(): any;
+  setOpenWallet(input: boolean): any;
+  proceedToJoin(contest_key: string): any;
 }
 
 export default function ContestInfoScreen(props: PropTypes) {
-  const navigation = useNavigation<any>();
-  const route = useRoute<any>();
   const tabOffset = useSharedValue<any>(0);
   const isScreenReady = useIsScreenReady();
 
-  const pageRef = useRef(null);
+  const pageRef: any = useRef(null);
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [contestInfo, setContestInfo]: any = useState(null);
 
   const matchSelector: any = useSelector(selectedMatch);
 
   const countDown = useCountDown(matchSelector.start_at, false);
 
-  const {data} = useQuery(
-    ['contests', matchSelector.match_key],
-    contestListsRemote,
-    {staleTime: 8000},
-  );
-
-  useEffect(() => {
-    if (data) {
-      const contest = data.find(
-        (item: any) => item.key === route.params.contest_key,
-      );
-      contest ? setContestInfo(contest) : null;
-    }
-  }, [data]);
-
   // Bussiness logic
-
-  const proceedToJoin = () => {
-    navigateWith_AutoJoin(navigation, 0, {
-      contestKey: contestInfo.key,
-      entryAmount: contestInfo.entry,
-      maxTeam: contestInfo.max_entry,
-    });
-  };
 
   const onPageSelectedAction = (e: any) => {
     setActiveIndex(e.nativeEvent.position);
@@ -71,7 +55,7 @@ export default function ContestInfoScreen(props: PropTypes) {
     pageRef.current?.setPage(index);
   };
 
-  if (!contestInfo || isScreenReady === false) {
+  if (!props.contestInfo || isScreenReady === false) {
     return <ContestInfoPageLoading title={matchSelector.titleString} />;
   }
 
@@ -80,9 +64,7 @@ export default function ContestInfoScreen(props: PropTypes) {
       <TopbarContest
         title={matchSelector.titleString}
         subtitle={countDown}
-        enableNotification={function (e: any): void {
-          throw new Error('Function not implemented.');
-        }}
+        enableNotification={() => {}}
         openWallet={function (e: any): void {
           throw new Error('Function not implemented.');
         }}
@@ -90,20 +72,20 @@ export default function ContestInfoScreen(props: PropTypes) {
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
           navigate={() => {}}
-          contest_key={contestInfo.key}
-          match_key={contestInfo.match_key}
-          title={contestInfo.title}
+          contest_key={props.contestInfo.key}
+          match_key={props.contestInfo.match_key}
+          title={props.contestInfo.title}
           total_joined={30}
-          total_spots={contestInfo.total_spots}
-          amount_letters={contestInfo.prize.amount_letters}
-          amount={contestInfo.prize.amount}
-          guaranteed={contestInfo.guaranteed}
-          entry={contestInfo.entry}
-          max_entry={contestInfo.max_entry}
-          bonus={contestInfo.bonus}
-          is_practice={contestInfo.is_practice}
-          contest_type={contestInfo.contest_type}
-          proceedToJoin={proceedToJoin}
+          total_spots={props.contestInfo.total_spots}
+          amount_letters={props.contestInfo.prize.amount_letters}
+          amount={props.contestInfo.prize.amount}
+          guaranteed={props.contestInfo.guaranteed}
+          entry={props.contestInfo.entry}
+          max_entry={props.contestInfo.max_entry}
+          bonus={props.contestInfo.bonus}
+          is_practice={props.contestInfo.is_practice}
+          contest_type={props.contestInfo.contest_type}
+          proceedToJoin={props.proceedToJoin}
         />
       </View>
       <TabsContestInfo
@@ -121,7 +103,7 @@ export default function ContestInfoScreen(props: PropTypes) {
           <WinningsList
             index={0}
             activeIndex={activeIndex}
-            data={contestInfo.prize.winnings}
+            data={props.contestInfo.prize.winnings}
             priceDist={props.priceDist}
             changePriceDistribution={props.changePriceDistribution}
           />
@@ -132,7 +114,7 @@ export default function ContestInfoScreen(props: PropTypes) {
       </PagerView>
 
       {/* Wallet modal */}
-      {/* <Modal
+      <Modal
         style={{
           justifyContent: 'flex-start',
           marginHorizontal: 0,
@@ -141,10 +123,10 @@ export default function ContestInfoScreen(props: PropTypes) {
         animationIn="zoomInDown"
         animationOut="zoomOutUp"
         backdropOpacity={0.7}
-        isVisible={props.showWalletModal}
+        isVisible={props.openWallet}
         animationInTiming={500}
         animationOutTiming={500}
-        onBackdropPress={() => props.setShowWalletModal(false)}
+        onBackdropPress={() => props.setOpenWallet(false)}
         useNativeDriver={true}
         useNativeDriverForBackdrop={true}
         hideModalContentWhileAnimating={true}
@@ -154,9 +136,9 @@ export default function ContestInfoScreen(props: PropTypes) {
           unutilised={props.userSelector.un_utilized}
           winnings={props.userSelector.winnings}
           bonus={props.userSelector.bonus}
-          setShowWalletModal={props.setShowWalletModal}
+          setShowWalletModal={props.setOpenWallet}
         />
-      </Modal> */}
+      </Modal>
 
       <View
         style={[

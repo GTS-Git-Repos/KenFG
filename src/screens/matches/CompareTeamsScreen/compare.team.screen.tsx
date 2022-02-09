@@ -43,7 +43,7 @@ interface SectionType {
   OppTeamPoints: number;
 }
 
-export default function CompareTeamScreenScreem(props: PropTypes) {
+export default function CompareTeamScreen(props: PropTypes) {
   const selectSheet = useRef(null);
   const selectOpponentSheet = useRef(null);
 
