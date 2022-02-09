@@ -29,16 +29,16 @@ interface PropTypes {
   match: any;
   countDown: any;
   filterSheet: any;
-  filters: any;
   sortByLowCredits: boolean;
   blockListPlayers: Array<string>;
   sortStatus: any;
+  filterTeam: any;
   setSortByLowCredits(bool: boolean): any;
-  setFilter(team_key: string): any;
   navigateToCapSelection(): any;
   navigateToTeamPreviewScreeen(): any;
   onPressPlayerProfile(player_key: string, player_role: string): any;
   onSortAction(sort_by: string): any;
+  onTeamFilterAction(input:any):any
 }
 
 export default function TeamFormationScreen(props: PropTypes) {
@@ -118,8 +118,6 @@ export default function TeamFormationScreen(props: PropTypes) {
         <View>
           <Page
             filterSheet={props.filterSheet}
-            filters={props.filters}
-            checkPlayerSelection={checkPlayerSelection}
             id={'wkt'}
             title={'Select 1-4 Wicket Keepers'}
             data={props.players[0]?.keeper}
@@ -130,14 +128,15 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
             sortStatus={props.sortStatus}
+            filterTeam={props.filterTeam}
             onPressPlayerProfile={props.onPressPlayerProfile}
             onSortAction={props.onSortAction}
+            checkPlayerSelection={checkPlayerSelection}
           />
         </View>
         <View>
           <Page
             filterSheet={props.filterSheet}
-            filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
             id={'bat'}
             title={'Select 3-6 Batters'}
@@ -149,6 +148,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
             sortStatus={props.sortStatus}
+            filterTeam={props.filterTeam}
             onPressPlayerProfile={props.onPressPlayerProfile}
             onSortAction={props.onSortAction}
           />
@@ -156,7 +156,6 @@ export default function TeamFormationScreen(props: PropTypes) {
         <View>
           <Page
             filterSheet={props.filterSheet}
-            filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
             id={'ar'}
             title={'Select 1-4 All Rounders'}
@@ -168,6 +167,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
             sortStatus={props.sortStatus}
+            filterTeam={props.filterTeam}
             onPressPlayerProfile={props.onPressPlayerProfile}
             onSortAction={props.onSortAction}
           />
@@ -175,7 +175,6 @@ export default function TeamFormationScreen(props: PropTypes) {
         <View>
           <Page
             filterSheet={props.filterSheet}
-            filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
             id={'bwl'}
             title={'Select 3-6 Bowlers'}
@@ -187,6 +186,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             team_b_key={props.match.team_b}
             blockListPlayers={props.blockListPlayers}
             sortStatus={props.sortStatus}
+            filterTeam={props.filterTeam}
             onPressPlayerProfile={props.onPressPlayerProfile}
             onSortAction={props.onSortAction}
           />
@@ -223,8 +223,8 @@ export default function TeamFormationScreen(props: PropTypes) {
           team_b_key={props.match.team_b}
           team_a_name={props.match.team_a_name}
           team_b_name={props.match.team_b_name}
-          filters={props.filters}
-          setFilter={props.setFilter}
+          filterTeam={props.filterTeam}
+          onTeamFilterAction={props.onTeamFilterAction}
         />
       </Modalize>
     </View>

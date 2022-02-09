@@ -23,6 +23,7 @@ import {
   teamFormationReducer,
   allPlayersSelector,
   sortStatusSelector,
+  filerTeamSelector,
 } from './team.formation.controller';
 import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
 import CreateTeamLoading from './atoms/CreateTeamLoading';
@@ -45,9 +46,10 @@ export default function TeamFormationHOC() {
   );
   const match_players = allPlayersSelector(formationState);
   const sortStatus: any = sortStatusSelector(formationState);
+  const filterTeam: any = filerTeamSelector(formationState);
 
+  console.log('filterTeam >>', filterTeam);
 
-  const [filters, setFilter] = useState<any>(null);
   const [sortByLowCredits, setSortByLowCredits] = useState<boolean>(false);
 
   const matchSelector: any = useSelector(selectedMatch);
@@ -56,7 +58,6 @@ export default function TeamFormationHOC() {
   const countDown = useCountDown(matchSelector.start_at, false);
 
   // log('countDown >>', countDown);
-
 
   const selectedPlayers: any = useSelector(allSelecdtedPlayers);
   const rolesCountSelector: any = useSelector(rolesCount);
@@ -123,6 +124,11 @@ export default function TeamFormationHOC() {
     }
   }
 
+  function onTeamFilterAction(input: any) {
+    filterSheet?.current?.close();
+    teamFormationDispatch({type: 'UPDATE_TEAM_FILTER', payload: input});
+  }
+
   const navigateToTeamPreviewScreeen = () => {
     // it neeeds to be changed
     navigation.navigate('TeamPreviewScreen', {
@@ -183,16 +189,16 @@ export default function TeamFormationHOC() {
       creditsLeft={availableCredits}
       match={matchSelector}
       sortStatus={sortStatus}
+      filterTeam={filterTeam}
       navigateToCapSelection={navigateToCapSelection}
       navigateToTeamPreviewScreeen={navigateToTeamPreviewScreeen}
       filterSheet={filterSheet}
-      filters={filters}
-      setFilter={setFilter}
       sortByLowCredits={sortByLowCredits}
       setSortByLowCredits={setSortByLowCredits}
       blockListPlayers={blockListPlayers}
       onPressPlayerProfile={onPressPlayerProfile}
       onSortAction={onSortAction}
+      onTeamFilterAction={onTeamFilterAction}
     />
   );
 }

@@ -8,7 +8,6 @@ import {currentPlayerStatus} from '../../../../store/store_utils';
 
 interface PropTypes {
   filterSheet: any;
-  filters: any;
   id: string;
   title: string;
   data: any;
@@ -19,6 +18,7 @@ interface PropTypes {
   team_a_key: string;
   team_b_key: string;
   sortStatus: any;
+  filterTeam: any;
   checkPlayerSelection(player_key: string, player_role: string): void;
   onPressPlayerProfile(player_key: string, player_role: string): any;
   onSortAction(sortBy: string): any;
@@ -61,7 +61,7 @@ export default function Page(props: PropTypes) {
         <TabCondtion
           text={props.title}
           filterSheet={props.filterSheet}
-          filters={props.filters}
+          filterTeam={props.filterTeam}
         />
 
         <SortTabs

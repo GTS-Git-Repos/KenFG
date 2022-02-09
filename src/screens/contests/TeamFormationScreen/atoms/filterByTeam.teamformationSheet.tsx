@@ -10,15 +10,13 @@ interface PropTypes {
   team_a_name: string;
   team_b_key: string;
   team_b_name: string;
-  filters: string;
-  setFilter(team_key: string): any;
+  filterTeam: string;
+  onTeamFilterAction(input: any): any;
 }
 
 export default function CreateTeamFilterSheetTitle(props: PropTypes) {
-  const changeFilter = (team_key: any) => {
-    props.setFilter(team_key);
-    props.filterSheet?.current?.close();
-  };
+  // console.log(tailwind('font-bold text-white font-15'));
+
 
   return (
     <View style={[tailwind('bg-dark rounded-t-lg')]}>
@@ -32,36 +30,37 @@ export default function CreateTeamFilterSheetTitle(props: PropTypes) {
         </Text>
         <Text style={[tailwind('px-3')]}></Text>
       </View>
+
+      {/* Team a */}
       <TouchableOpacity
-        onPress={() => changeFilter(props.team_a_key)}
-        style={[
-          tailwind('p-3 mx-4 mb-4 flex-row items-center justify-between'),
-          styles.team_a_border,
-        ]}>
-        <Text style={[tailwind('font-bold text-white font-15')]}>
-          {props.team_a_name}
-        </Text>
-        <RadioButton selected={props.filters === props.team_a_key} />
+        onPress={() => props.onTeamFilterAction(props.team_a_key)}
+        style={[styles.optionWrapper, styles.team_a_border]}>
+        <View>
+          <Text style={tailwind('uppercase text-white font-13 font-bold')}>
+            {props.team_a_key}
+          </Text>
+          <Text style={styles.optionText}>{props.team_a_name}</Text>
+        </View>
+
+        <RadioButton selected={props.filterTeam === props.team_a_key} />
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => props.onTeamFilterAction(props.team_b_key)}
+        style={[styles.optionWrapper, styles.team_b_border]}>
+        <View>
+          <Text style={tailwind('uppercase text-white font-13 font-bold')}>
+            {props.team_b_key}
+          </Text>
+          <Text style={styles.optionText}>{props.team_b_name}</Text>
+        </View>
+        <RadioButton selected={props.filterTeam === props.team_b_key} />
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => changeFilter(props.team_b_key)}
-        style={[
-          tailwind('p-3 mx-4 mb-4 flex-row items-center justify-between'),
-          styles.team_b_border,
-        ]}>
-        <Text style={[tailwind('font-bold text-white font-15')]}>
-          {props.team_b_name}
-        </Text>
-        <RadioButton selected={props.filters === props.team_b_key} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => changeFilter(null)}
-        style={[
-          tailwind('p-3 mx-4 mb-4 flex-row items-center justify-between'),
-          styles.team_both_border,
-        ]}>
-        <Text style={[tailwind('font-bold text-white font-15')]}>Both</Text>
-        <RadioButton selected={props.filters === null} />
+        onPress={() => props.onTeamFilterAction(null)}
+        style={[styles.optionWrapper, styles.team_both_border]}>
+        <Text style={tailwind('text-white font-13 py-1 font-bold')}>Both</Text>
+        <RadioButton selected={props.filterTeam === null} />
       </TouchableOpacity>
     </View>
   );
@@ -91,5 +90,19 @@ const styles = StyleSheet.create({
     borderColor: '#BCA04D',
     borderWidth: 1,
     borderRadius: 5,
+  },
+  optionWrapper: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+    marginHorizontal: 16,
+    padding: 8,
+  },
+  optionText: {
+    color: '#8797B1',
+    fontFamily: 'gadugi-normal',
+    fontSize: 10,
+    paddingTop: 4,
   },
 });

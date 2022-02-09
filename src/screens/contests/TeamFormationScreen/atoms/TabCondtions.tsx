@@ -2,13 +2,11 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {DownArrowIcon} from '../../../../sharedComponents';
 
 interface PropTypes {
   filterSheet: any;
-  filters: any;
   text: string;
+  filterTeam: any;
 }
 
 export default function TopConditions(props: PropTypes) {
@@ -34,7 +32,7 @@ export default function TopConditions(props: PropTypes) {
             style={[tailwind(''), {width: 20, height: 20}]}
           />
         </TouchableOpacity>
-        {props.filters !== null && (
+        {props.filterTeam !== null && (
           <View
             style={[
               tailwind(

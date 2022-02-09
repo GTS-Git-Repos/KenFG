@@ -175,8 +175,6 @@ export default function ContestListScreen(props: PropTypes) {
         />
       </Modal>
 
-      {console.log(props.userSelector)}
-
       <Modal
         style={{
           justifyContent: 'flex-start',

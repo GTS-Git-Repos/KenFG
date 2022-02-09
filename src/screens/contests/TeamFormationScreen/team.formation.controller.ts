@@ -6,6 +6,7 @@ import {createSelector} from 'reselect';
 // States
 export const teamFormationState = {
   players: [],
+  filterTeam: null,
   sortByPoints: null,
   sortByCredits: null,
 };
@@ -23,6 +24,11 @@ export const teamFormationReducer = (state: any, action: any) => {
         sortByPoints: action.payload.sortByPoints,
         sortByCredits: action.payload.sortByCredits,
       };
+    case 'UPDATE_TEAM_FILTER':
+      return {
+        ...state,
+        filterTeam: action.payload,
+      };
     default:
       return state;
   }
@@ -32,17 +38,47 @@ export const teamFormationReducer = (state: any, action: any) => {
 const AllPlayersState = (state: any) => state.players;
 const SortByPointsState = (state: any) => state.sortByPoints;
 const SortByCreditsState = (state: any) => state.sortByCredits;
+const FilterTeamState = (state: any) => state.filterTeam;
 
 export const allPlayersSelector = createSelector(
-  [AllPlayersState, SortByPointsState, SortByCreditsState],
-  (allPlayers, sortByPoints, sortByCredits) => {
+  [AllPlayersState, SortByPointsState, SortByCreditsState, FilterTeamState],
+  (allPlayers, sortByPoints, sortByCredits, filterTeam) => {
+    // in case of null players
+    if (!allPlayers) {
+      return [];
+    }
     if (allPlayers.length === 0) {
       return [];
     }
-    const keeper = allPlayers[0].keeper;
-    const batsman = allPlayers[0].batsman;
-    const all_rounder = allPlayers[0].all_rounder;
-    const bowler = allPlayers[0].bowler;
+    // extract players
+
+    let keeper = allPlayers[0].keeper;
+    let batsman = allPlayers[0].batsman;
+    let all_rounder = allPlayers[0].all_rounder;
+    let bowler = allPlayers[0].bowler;
+
+    // filter by team enabled, it has a team key
+    if (filterTeam) {
+      const filterKeep = keeper.filter(
+        (item: any) => item.team_key === filterTeam,
+      );
+
+      const filterBat = keeper.filter(
+        (item: any) => item.team_key === filterTeam,
+      );
+      const filterAr = keeper.filter(
+        (item: any) => item.team_key === filterTeam,
+      );
+      const filterBow = keeper.filter(
+        (item: any) => item.team_key === filterTeam,
+      );
+      keeper = filterKeep;
+      batsman = filterBat;
+      all_rounder = filterAr;
+      bowler = filterBow;
+    }
+
+    // if sort points filter applied
     if (sortByPoints) {
       const sortedKeepers = sortBy(keeper, 'points');
       const sortedBatsman = sortBy(batsman, 'points');
@@ -50,6 +86,7 @@ export const allPlayersSelector = createSelector(
       const sortedBowler = sortBy(bowler, 'points');
       // console.log(sortedKeepers);
 
+      // from low to high
       if (sortByPoints === true) {
         const players = [
           {
@@ -61,6 +98,7 @@ export const allPlayersSelector = createSelector(
         ];
         return players;
       } else {
+        // from hight to low
         const players = [
           {
             keeper: sortedKeepers.reverse(),
@@ -71,11 +109,14 @@ export const allPlayersSelector = createSelector(
         ];
         return players;
       }
-    } else if (sortByCredits) {
+    }
+    // sort by credits active
+    else if (sortByCredits) {
       const sortedKeepers = sortBy(keeper, 'credits');
       const sortedBatsman = sortBy(batsman, 'credits');
       const sortedAR = sortBy(all_rounder, 'credits');
       const sortedBowler = sortBy(bowler, 'credits');
+      // low to high
       if (sortByCredits === true) {
         const players = [
           {
@@ -87,6 +128,7 @@ export const allPlayersSelector = createSelector(
         ];
         return players;
       } else {
+        // high to low
         const players = [
           {
             keeper: sortedKeepers.reverse(),
@@ -98,7 +140,14 @@ export const allPlayersSelector = createSelector(
         return players;
       }
     } else {
-      return allPlayers;
+      return [
+        {
+          keeper,
+          batsman,
+          all_rounder,
+          bowler,
+        },
+      ];
     }
   },
 );
@@ -110,6 +159,9 @@ export const sortStatusSelector = createSelector(
   },
 );
 
-// function joinPlayers(){
-
-// }
+export const filerTeamSelector = createSelector(
+  [FilterTeamState],
+  filterTeam => {
+    return filterTeam;
+  },
+);

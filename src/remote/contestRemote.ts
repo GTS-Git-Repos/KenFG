@@ -4,6 +4,23 @@ import requestServer from '../workers/requestServer';
 const req_edit_contest = '/edit-contest.php';
 const req_contest_leaderboard = '/leaderboard.php';
 
+export const contestleaderBoardRemote = async (payload: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_contest_leaderboard,
+      payload,
+    );
+    if (response.status === 200) {
+      return true;
+    } else {
+      failedLog('contestleaderBoardRemote', response);
+    }
+  } catch (err) {
+    return false;
+  }
+};
+
 export const switchTeamInContestRemote = async (payload: any) => {
   try {
     const response = await requestServer(

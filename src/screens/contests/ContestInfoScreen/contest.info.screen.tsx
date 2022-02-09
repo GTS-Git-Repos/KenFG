@@ -77,7 +77,16 @@ export default function ContestInfoScreen(props: PropTypes) {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopbarContest title={matchSelector.titleString} subtitle={countDown} />
+      <TopbarContest
+        title={matchSelector.titleString}
+        subtitle={countDown}
+        enableNotification={function (e: any): void {
+          throw new Error('Function not implemented.');
+        }}
+        openWallet={function (e: any): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
           navigate={() => {}}
@@ -121,6 +130,34 @@ export default function ContestInfoScreen(props: PropTypes) {
           <LearderBoard index={1} activeIndex={activeIndex} />
         </View>
       </PagerView>
+
+      {/* Wallet modal */}
+      {/* <Modal
+        style={{
+          justifyContent: 'flex-start',
+          marginHorizontal: 0,
+          marginTop: 50,
+        }}
+        animationIn="zoomInDown"
+        animationOut="zoomOutUp"
+        backdropOpacity={0.7}
+        isVisible={props.showWalletModal}
+        animationInTiming={500}
+        animationOutTiming={500}
+        onBackdropPress={() => props.setShowWalletModal(false)}
+        useNativeDriver={true}
+        useNativeDriverForBackdrop={true}
+        hideModalContentWhileAnimating={true}
+        backdropTransitionOutTiming={0}>
+        <WalletHalfModal
+          wallet={props.userSelector.un_utilized}
+          unutilised={props.userSelector.un_utilized}
+          winnings={props.userSelector.winnings}
+          bonus={props.userSelector.bonus}
+          setShowWalletModal={props.setShowWalletModal}
+        />
+      </Modal> */}
+
       <View
         style={[
           tailwind(
