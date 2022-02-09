@@ -7,7 +7,6 @@ export const normalizeGetPlayersAPI = (payload: any) => {
     const keeper = payload.filter(
       (item: any) => item.seasonal_role === 'keeper',
     );
-    console.log('keeper', keeper.length);
 
     const batsman = payload.filter(
       (item: any) => item.seasonal_role === 'batsman',

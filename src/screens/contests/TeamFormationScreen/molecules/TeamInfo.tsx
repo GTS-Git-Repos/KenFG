@@ -20,7 +20,6 @@ interface PropTypes {
 }
 
 function TeamInfo(props: PropTypes) {
-  log('TeamInfo', props);
 
   return (
     <View style={[tailwind('flex-row'), {padding: 16}]}>

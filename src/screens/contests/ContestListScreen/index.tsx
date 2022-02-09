@@ -58,6 +58,7 @@ export default function ContestListHOC() {
   const route = useRoute<any>();
 
   const [showJoinModal, setShowJoinModal] = useState(false);
+  const [showWalletModal, setShowWalletModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
@@ -224,6 +225,9 @@ export default function ContestListHOC() {
       Alert.alert('Failed to Join Contest', 'something went wrong');
     }
   }
+  const openWallet = (e: any) => {
+    setShowWalletModal(true);
+  };
 
   if (!isScreenReady || !contestsAPI) {
     return <ContestScreenLoading title={''} />;
@@ -231,6 +235,7 @@ export default function ContestListHOC() {
 
   return (
     <ContestListScreen
+      userSelector={userSelector}
       contests={allContests}
       contestsAPI={contestsAPI}
       joined={joined}
@@ -242,6 +247,8 @@ export default function ContestListHOC() {
       isFullMatch={isFullMatch}
       teamPreviewPress={teamPreviewPress}
       teamMutateAction={teamMutateAction}
+      showWalletModal={showWalletModal}
+      setShowWalletModal={setShowWalletModal}
       sortByOnPress={sortByOnPress}
       pagerRef={pagerRef}
       selectedTab={selectedTab}
@@ -257,6 +264,7 @@ export default function ContestListHOC() {
       onPressTeamSwitch={onPressTeamSwitch}
       onPressJoinedContest={onPressJoinedContest}
       onPressSecondInnings={onPressSecondInnings}
+      openWallet={openWallet}
       sortStatus={sortStatus}
     />
   );

@@ -90,6 +90,10 @@ export const navigateWith_AutoJoin = (
   }
 };
 
+/**
+ * It used on user clicks the entry button
+ */
+
 export const toTeamFormationWithAutoJoin = (
   navigation: any,
   hasUnJoinedTeam: boolean,
@@ -114,6 +118,9 @@ export const toTeamFormationWithAutoJoin = (
   }
 };
 
+/**
+ * It used only when a player clicks a create team button
+ */
 export const toTeamFormationNoAutoJoin = (navigation: any) => {
   navigation.dispatch(
     CommonActions.navigate({

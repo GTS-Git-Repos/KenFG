@@ -19,7 +19,6 @@ import PlayerProfile from './molecules/PlayerProfile';
 import CapSelectionAction from './atoms/CapSelectionAction';
 import {useDispatch, useSelector} from 'react-redux';
 import {
-  allSelecdtedPlayers,
   creditLeft,
   playersByRole,
   rolesCount,
@@ -32,10 +31,9 @@ import {
 } from '../../../store/actions/teamActions';
 import {isPlayerCaptain, isPlayerViceCaptain} from '../../../store/store_utils';
 import {errorBox, infoBox} from '../../../utils/snakBars';
-import {createTeamRemote, editTeamRemote} from '../../../remote/matchesRemote';
+import {createTeamRemote} from '../../../remote/matchesRemote';
 import {createTeamObjCreator} from '../../../workers/objCreators';
 import {resetContestListNavigation} from '../../../utils/resetNav';
-import {StackActions} from '@react-navigation/native';
 
 interface PropTypes {
   editTeamAPI(payload: any): any;
@@ -59,12 +57,6 @@ export default function CapSelectionScreen(props: PropTypes) {
   const playersState: any = useSelector<any>(state => state.team.players);
   const captain_key = useSelector<any>(state => state.team.cap_key);
   const vc_key = useSelector<any>(state => state.team.vc_key);
-  const selected_match: any = useSelector<any>(
-    state => state.app.selected_match,
-  );
-  const selected_contest: any = useSelector<any>(
-    state => state.app.selected_contest,
-  );
 
   const captainSelectAction = (player_key: string) => {
     if (vc_key === player_key) {
@@ -132,7 +124,7 @@ export default function CapSelectionScreen(props: PropTypes) {
           }
         }
         props.setLoading(true);
-        const response = await createTeamRemote(createTeamObj);
+        const response:any = await createTeamRemote(createTeamObj);
         props.setLoading(false);
         if (response.status) {
           dispatch(clearTeamAction());
@@ -144,7 +136,6 @@ export default function CapSelectionScreen(props: PropTypes) {
               team_key: response.data.team_key,
             });
           } else {
-            infoBox('Team Created !!');
             resetContestListNavigation(navigation, {
               autoJoin: false,
             });
@@ -153,11 +144,11 @@ export default function CapSelectionScreen(props: PropTypes) {
           return;
         } else {
           setTimeout(() => {
-            errorBox('Failed to create/update a Team');
+            errorBox('Failed to create/update a Team',500);
           }, 500);
         }
       } else {
-        errorBox('Please select captain and vice captain');
+        errorBox('Please select captain and vice captain',100);
       }
     } catch (err) {
       props.setLoading(false);

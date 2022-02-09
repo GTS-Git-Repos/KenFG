@@ -2,6 +2,7 @@ import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 
 const req_edit_contest = '/edit-contest.php';
+const req_contest_leaderboard = '/leaderboard.php';
 
 export const switchTeamInContestRemote = async (payload: any) => {
   try {

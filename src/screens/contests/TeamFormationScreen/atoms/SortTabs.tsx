@@ -1,49 +1,47 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {DownArrowIcon, TopArrowIcon} from '../../../../sharedComponents';
 
 interface PropTypes {
   sortStatus: any;
-  sortByLowCredits: boolean;
-  setSortByLowCredits(bool: boolean): any;
+  onSortAction(sort_by: string): any;
 }
 
 export default function SortTabs(props: PropTypes) {
-
-
   return (
     <View style={[tailwind('flex-row items-center py-2')]}>
       <View style={[{flex: 2}]}></View>
       <View style={[{flex: 4}]}>
-        <Text
-          style={[tailwind('font-bold  font-12 px-2 text-dark-1 uppercase')]}>
-          SELECTED BY
-        </Text>
+        <Text style={styles.filterText}>SELECTED BY</Text>
       </View>
-      <View style={[{flex: 2}]}>
-        <Text
-          style={[
-            tailwind(
-              'font-bold text-center font-12 px-2 text-dark-1 uppercase',
-            ),
-          ]}>
-          POINTS
-        </Text>
-      </View>
+
       <TouchableOpacity
-        onPress={() => props.setSortByLowCredits(!props.sortByLowCredits)}
-        style={[tailwind('flex-row items-center pl-2'), {flex: 2}]}>
-        <Text
-          style={[
-            tailwind('font-bold font-12 text-center  text-dark-1 uppercase'),
-          ]}>
-          CREDITS
-        </Text>
-        <View style={[tailwind('pl-2')]}>
-          {props.sortByLowCredits ? <DownArrowIcon /> : <TopArrowIcon />}
-        </View>
+        onPress={() => props.onSortAction('points')}
+        style={[tailwind('flex-row items-center'), {flex: 2}]}>
+        <Text style={styles.filterText}>POINTS</Text>
+        {props.sortStatus.sortByPoints === false && <DownArrowIcon />}
+        {props.sortStatus.sortByPoints === true && <TopArrowIcon />}
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => props.onSortAction('credits')}
+        style={[tailwind('flex-row items-center pr-2'), {flex: 2}]}>
+        <Text style={styles.filterText}>CREDITS</Text>
+        {props.sortStatus.sortByCredits === false && <DownArrowIcon />}
+        {props.sortStatus.sortByCredits === true && <TopArrowIcon />}
       </TouchableOpacity>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  filterText: {
+    color: '#8797B1',
+    fontFamily: 'gadugi-bold',
+    fontSize: 12,
+    paddingHorizontal: 8,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+});

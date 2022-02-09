@@ -3,10 +3,12 @@ import tailwind from '../../../tailwind';
 import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
 
 interface PropTypes {
+  priceDist: boolean;
   action(option: any): any;
 }
 
 export default function PriceDistributionSwitch(props: PropTypes) {
+
   return (
     <View
       style={[
@@ -15,24 +17,44 @@ export default function PriceDistributionSwitch(props: PropTypes) {
       <Text style={[tailwind('font-bold text-dark-1 uppercase font-13')]}>
         Distribution
       </Text>
-      <TouchableOpacity style={[tailwind('flex-row items-center')]}>
-        <View style={[tailwind('bg-secondary rounded-l-xl py-1'), {width: 80}]}>
+      <TouchableOpacity
+        onPress={() => props.action(props.priceDist)}
+        style={[tailwind('flex-row items-center')]}>
+        <View
+          style={[
+            tailwind(
+              `rounded-l-xl py-1 ${
+                props.priceDist ? 'bg-secondary' : 'bg-dark-3'
+              }`,
+            ),
+            {width: 80},
+          ]}>
           <Text
             style={[
-              tailwind('font-bold text-center text-brown-5 font-13'),
-              styles.selectedText,
+              tailwind('font-bold text-center text-white font-13'),
+              props.priceDist && styles.selectedText,
             ]}>
             Max
           </Text>
         </View>
-        <View style={[tailwind('rounded-r-xl bg-dark-3 py-1'), {width: 80}]}>
+        <TouchableOpacity
+          onPress={() => props.action(props.priceDist)}
+          style={[
+            tailwind(
+              `rounded-r-xl  py-1 ${
+                !props.priceDist ? 'bg-secondary' : 'bg-dark-3'
+              }`,
+            ),
+            {width: 80},
+          ]}>
           <Text
             style={[
               tailwind('font-bold text-center text-white uppercase font-13'),
+              !props.priceDist && styles.selectedText,
             ]}>
             Current
           </Text>
-        </View>
+        </TouchableOpacity>
       </TouchableOpacity>
     </View>
   );

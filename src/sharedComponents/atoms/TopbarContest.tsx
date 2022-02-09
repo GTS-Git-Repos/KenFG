@@ -1,9 +1,7 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
-import assets from '../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {
   BackIcon,
@@ -15,6 +13,8 @@ import {
 interface PropTypes {
   title: string;
   subtitle: string;
+  enableNotification(e: any): void;
+  openWallet(e: any): void;
 }
 
 export default function TopBarContest(props: PropTypes) {
@@ -39,13 +39,15 @@ export default function TopBarContest(props: PropTypes) {
       </View>
 
       <View style={[tailwind('flex flex-row items-center')]}>
-        <TouchableOpacity style={[tailwind('px-1')]}>
+        {/* <TouchableOpacity style={[tailwind('px-1')]}>
           <CapWithVSIcon />
-        </TouchableOpacity>
-        <TouchableOpacity style={[tailwind('px-1')]}>
+        </TouchableOpacity> */}
+        <TouchableOpacity
+          onPress={props.enableNotification}
+          style={[tailwind('px-1')]}>
           <ContestBellIcon />
         </TouchableOpacity>
-        <TouchableOpacity style={[tailwind('px-1')]}>
+        <TouchableOpacity onPress={props.openWallet} style={[tailwind('px-1')]}>
           <WalletIcon darkColor={true} />
         </TouchableOpacity>
       </View>

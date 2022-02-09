@@ -8,6 +8,7 @@ import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
 import {
   BlockScreenByLoading,
   JoinContestModal,
+  WalletHalfModal,
 } from '../../../sharedComponents';
 import TabsContest from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
@@ -18,6 +19,7 @@ import {selectedMatch} from '../../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import Modal from 'react-native-modal';
 import {TeamFormationMutationType} from '../../../types/match';
+import {infoBox} from '../../../utils/snakBars';
 
 const log = console.log;
 
@@ -43,6 +45,9 @@ interface PropTypes {
   entryAmount: any;
   loading: boolean;
   sortStatus: SortTypes;
+  showWalletModal: boolean;
+  userSelector: any;
+  setShowWalletModal(val: boolean): any;
   setLoading(value: boolean): any;
   proceedToJoin(contest_key: string): any;
   joinContestWithTeam(): any;
@@ -53,7 +58,8 @@ interface PropTypes {
   onPressTeamSwitch(team_key: string, contest_key: string): void;
   onPressJoinedContest(contest_key: string): void;
   onPressSecondInnings(): any;
-  sortByOnPress():any
+  sortByOnPress(): any;
+  openWallet(): any;
 }
 
 export default function ContestListScreen(props: PropTypes) {
@@ -72,6 +78,10 @@ export default function ContestListScreen(props: PropTypes) {
     props.setSelectedTab(e.nativeEvent.position);
   };
 
+  const enableNotification = (e: any) => {
+    infoBox('Notification Preferrence Updated', 0);
+  };
+
   const onTabPressed = (index: number) => {
     props.pagerRef.current?.setPage(index);
   };
@@ -84,7 +94,12 @@ export default function ContestListScreen(props: PropTypes) {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
-      <TopBarContest title={matchSelector?.titleString} subtitle={timeStamp} />
+      <TopBarContest
+        title={matchSelector?.titleString}
+        subtitle={timeStamp}
+        enableNotification={enableNotification}
+        openWallet={props.openWallet}
+      />
       <View style={[tailwind('')]}>
         <TabsContest
           selectedTab={props.selectedTab}
@@ -159,6 +174,35 @@ export default function ContestListScreen(props: PropTypes) {
           entryAmount={props.entryAmount}
         />
       </Modal>
+
+      {console.log(props.userSelector)}
+
+      <Modal
+        style={{
+          justifyContent: 'flex-start',
+          marginHorizontal: 0,
+          marginTop: 50,
+        }}
+        animationIn="zoomInDown"
+        animationOut="zoomOutUp"
+        backdropOpacity={0.7}
+        isVisible={props.showWalletModal}
+        animationInTiming={500}
+        animationOutTiming={500}
+        onBackdropPress={() => props.setShowWalletModal(false)}
+        useNativeDriver={true}
+        useNativeDriverForBackdrop={true}
+        hideModalContentWhileAnimating={true}
+        backdropTransitionOutTiming={0}>
+        <WalletHalfModal
+          wallet={props.userSelector.un_utilized}
+          unutilised={props.userSelector.un_utilized}
+          winnings={props.userSelector.winnings}
+          bonus={props.userSelector.bonus}
+          setShowWalletModal={props.setShowWalletModal}
+        />
+      </Modal>
+
       {props.loading && <BlockScreenByLoading />}
     </View>
   );

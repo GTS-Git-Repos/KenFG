@@ -38,6 +38,7 @@ interface PropTypes {
   navigateToCapSelection(): any;
   navigateToTeamPreviewScreeen(): any;
   onPressPlayerProfile(player_key: string, player_role: string): any;
+  onSortAction(sort_by: string): any;
 }
 
 export default function TeamFormationScreen(props: PropTypes) {
@@ -116,8 +117,6 @@ export default function TeamFormationScreen(props: PropTypes) {
         initialPage={0}>
         <View>
           <Page
-            sortByLowCredits={props.sortByLowCredits}
-            setSortByLowCredits={props.setSortByLowCredits}
             filterSheet={props.filterSheet}
             filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
@@ -132,12 +131,11 @@ export default function TeamFormationScreen(props: PropTypes) {
             blockListPlayers={props.blockListPlayers}
             sortStatus={props.sortStatus}
             onPressPlayerProfile={props.onPressPlayerProfile}
+            onSortAction={props.onSortAction}
           />
         </View>
         <View>
           <Page
-            sortByLowCredits={props.sortByLowCredits}
-            setSortByLowCredits={props.setSortByLowCredits}
             filterSheet={props.filterSheet}
             filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
@@ -152,12 +150,11 @@ export default function TeamFormationScreen(props: PropTypes) {
             blockListPlayers={props.blockListPlayers}
             sortStatus={props.sortStatus}
             onPressPlayerProfile={props.onPressPlayerProfile}
+            onSortAction={props.onSortAction}
           />
         </View>
         <View>
           <Page
-            sortByLowCredits={props.sortByLowCredits}
-            setSortByLowCredits={props.setSortByLowCredits}
             filterSheet={props.filterSheet}
             filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
@@ -172,12 +169,11 @@ export default function TeamFormationScreen(props: PropTypes) {
             blockListPlayers={props.blockListPlayers}
             sortStatus={props.sortStatus}
             onPressPlayerProfile={props.onPressPlayerProfile}
+            onSortAction={props.onSortAction}
           />
         </View>
         <View>
           <Page
-            sortByLowCredits={props.sortByLowCredits}
-            setSortByLowCredits={props.setSortByLowCredits}
             filterSheet={props.filterSheet}
             filters={props.filters}
             checkPlayerSelection={checkPlayerSelection}
@@ -192,6 +188,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             blockListPlayers={props.blockListPlayers}
             sortStatus={props.sortStatus}
             onPressPlayerProfile={props.onPressPlayerProfile}
+            onSortAction={props.onSortAction}
           />
         </View>
       </PagerView>

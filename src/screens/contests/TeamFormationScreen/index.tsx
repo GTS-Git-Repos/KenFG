@@ -44,9 +44,8 @@ export default function TeamFormationHOC() {
     teamFormationState,
   );
   const match_players = allPlayersSelector(formationState);
-  const sortStatus = sortStatusSelector(formationState);
+  const sortStatus: any = sortStatusSelector(formationState);
 
-  log('sortStatus >>', sortStatus);
 
   const [filters, setFilter] = useState<any>(null);
   const [sortByLowCredits, setSortByLowCredits] = useState<boolean>(false);
@@ -55,6 +54,9 @@ export default function TeamFormationHOC() {
   const userSelector: any = useSelector(userInfo);
   const blockListPlayers: any = useSelector(blockList);
   const countDown = useCountDown(matchSelector.start_at, false);
+
+  // log('countDown >>', countDown);
+
 
   const selectedPlayers: any = useSelector(allSelecdtedPlayers);
   const rolesCountSelector: any = useSelector(rolesCount);
@@ -103,6 +105,23 @@ export default function TeamFormationHOC() {
       toPlayerProfile(navigation, player);
     }
   };
+
+  function onSortAction(sortBy: string) {
+    if (sortBy === 'credits') {
+      const payload = {
+        sortByPoints: null,
+        sortByCredits: !sortStatus.sortByCredits,
+      };
+
+      teamFormationDispatch({type: 'UPDATE_SORT', payload: payload});
+    } else {
+      const payload = {
+        sortByPoints: !sortStatus.sortByPoints,
+        sortByCredits: null,
+      };
+      teamFormationDispatch({type: 'UPDATE_SORT', payload: payload});
+    }
+  }
 
   const navigateToTeamPreviewScreeen = () => {
     // it neeeds to be changed
@@ -173,6 +192,7 @@ export default function TeamFormationHOC() {
       setSortByLowCredits={setSortByLowCredits}
       blockListPlayers={blockListPlayers}
       onPressPlayerProfile={onPressPlayerProfile}
+      onSortAction={onSortAction}
     />
   );
 }

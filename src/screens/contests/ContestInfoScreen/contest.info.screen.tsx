@@ -18,7 +18,12 @@ import PagerView from 'react-native-pager-view';
 import {selectedMatch} from '../../../store/selectors';
 import {navigateWith_AutoJoin} from '../../../store/actions/navigationActions';
 
-export default function ContestInfoScreen() {
+interface PropTypes {
+  priceDist: boolean;
+  changePriceDistribution(): any;
+}
+
+export default function ContestInfoScreen(props: PropTypes) {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
   const tabOffset = useSharedValue<any>(0);
@@ -108,6 +113,8 @@ export default function ContestInfoScreen() {
             index={0}
             activeIndex={activeIndex}
             data={contestInfo.prize.winnings}
+            priceDist={props.priceDist}
+            changePriceDistribution={props.changePriceDistribution}
           />
         </View>
         <View>

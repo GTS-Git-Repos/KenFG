@@ -26,11 +26,11 @@ export function useCountDown(inputDate: Date, seconds_update: boolean) {
       start: inputDate,
       end: new Date(),
     });
-    const hour = countDown.hours > 10 ? countDown.hours : `0${countDown.hours}`;
+    const hour = countDown.hours >= 10 ? countDown.hours : `0${countDown.hours}`;
     const minutes =
-      countDown.minutes > 10 ? countDown.minutes : `0${countDown.minutes}`;
+      countDown.minutes >= 10 ? countDown.minutes : `0${countDown.minutes}`;
     const seconds =
-      countDown.seconds > 10 ? countDown.seconds : `0${countDown.seconds}`;
+      countDown.seconds >= 10 ? countDown.seconds : `0${countDown.seconds}`;
     if (seconds_update) {
       const timeString = `${hour}h ${minutes}m ${seconds}`;
       return timeString;

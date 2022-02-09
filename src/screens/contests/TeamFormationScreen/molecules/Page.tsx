@@ -7,7 +7,6 @@ import Player from './Players';
 import {currentPlayerStatus} from '../../../../store/store_utils';
 
 interface PropTypes {
-  sortByLowCredits: boolean;
   filterSheet: any;
   filters: any;
   id: string;
@@ -20,15 +19,13 @@ interface PropTypes {
   team_a_key: string;
   team_b_key: string;
   sortStatus: any;
-  setSortByLowCredits(bool: boolean): any;
   checkPlayerSelection(player_key: string, player_role: string): void;
   onPressPlayerProfile(player_key: string, player_role: string): any;
+  onSortAction(sortBy: string): any;
 }
 
 export default function Page(props: PropTypes) {
   const position = props.index - props.activeIndex;
-
-
 
   // if (position < -1 || position > 1 || props.activeIndex === props.index) {
   //   return (
@@ -69,8 +66,7 @@ export default function Page(props: PropTypes) {
 
         <SortTabs
           sortStatus={props.sortStatus}
-          sortByLowCredits={props.sortByLowCredits}
-          setSortByLowCredits={props.setSortByLowCredits}
+          onSortAction={props.onSortAction}
         />
       </View>
       <FlatList

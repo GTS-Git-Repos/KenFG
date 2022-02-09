@@ -15,6 +15,8 @@ interface itemTypes {
 
 interface PropTypes {
   data: Array<itemTypes>;
+  priceDist: boolean;
+  changePriceDistribution(): any;
 }
 
 export default function WinningsList(props: PropTypes) {
@@ -22,7 +24,11 @@ export default function WinningsList(props: PropTypes) {
 
   return (
     <ScrollView contentContainerStyle={{width: width}}>
-      <PriceDistributionSwitch action={() => {}} />
+      <PriceDistributionSwitch
+        priceDist={props.priceDist}
+        action={props.changePriceDistribution}
+      />
+
       {props.data.map((item: any) => {
         return (
           <WinningsListRank key={item.key} rank={item.key} value={item.value} />

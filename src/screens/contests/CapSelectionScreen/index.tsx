@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/core';
 import CapSelectionScreen from './cap.selection.screen';
 import {createTeamRemote, editTeamRemote} from '../../../remote/matchesRemote';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 import {clearTeamAction} from '../../../store/actions/teamActions';
 import {useDispatch, useSelector} from 'react-redux';
-import {resetContestListNavigation} from '../../../utils/resetNav';
-import {selectedMatch} from '../../../store/selectors';
+import {playersByRole, selectedMatch} from '../../../store/selectors';
 import {StackActions} from '@react-navigation/native';
+import {
+  capSelectionReducer,
+  capSelectionState,
+} from './capselection.controller';
 const log = console.log;
 
 export default function CapSelectionHOC() {
@@ -15,7 +18,19 @@ export default function CapSelectionHOC() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
+
+  const [capsState, capsDispatch] = useReducer(
+    capSelectionReducer,
+    capSelectionState,
+  );
+
   const matchSelector: any = useSelector(selectedMatch);
+  const playersByRoleSelector = useSelector(playersByRole);
+
+  useEffect(() => {
+    capsDispatch({type: 'UPDATE_PLAYERS', payload: playersByRoleSelector});
+    // console.log(playersByRoleSelector);
+  }, []);
 
   const editTeamAPI = async (payload: any) => {
     try {
@@ -38,7 +53,7 @@ export default function CapSelectionHOC() {
     } catch (err) {
       console.log('editTeamAPI Error ->', err);
       setTimeout(() => {
-        errorBox('Failed to Edit');
+        errorBox('Failed to Edit', 500);
       }, 500);
     }
   };
@@ -46,15 +61,14 @@ export default function CapSelectionHOC() {
   const cloneAPI = async (payload: any) => {
     try {
       setLoading(true);
-      const response = await createTeamRemote(payload);
+      const response: any = await createTeamRemote(payload);
       setLoading(false);
       if (!response.status) {
-        setTimeout(() => {
-          errorBox(response.msg);
-        }, 500);
+        errorBox(response.msg, 500);
         // throw 'Failed to Clone a Team !!';
         return;
       }
+      infoBox('Team Cloned Successfully', 500);
       dispatch(clearTeamAction());
       navigation.dispatch(StackActions.popToTop());
       return;
@@ -64,9 +78,7 @@ export default function CapSelectionHOC() {
       // });
     } catch (err) {
       console.log('cloneAPI Error -->', err);
-      setTimeout(() => {
-        errorBox('Failed to Clone');
-      }, 500);
+      errorBox('Failed to Clone', 300);
     }
   };
 
