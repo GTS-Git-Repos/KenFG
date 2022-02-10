@@ -12,9 +12,13 @@ import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
 import {useMutation} from 'react-query';
 import {switchTeamInContestRemote} from '../../../remote/contestRemote';
 import {errorBox, infoBox} from '../../../utils/snakBars';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
+import {FullScreenLoading} from '../../../sharedComponents';
 
 export default function SwitchTeamHOC() {
   const navigation = useNavigation();
+  const isScreenReady = useIsScreenReady();
+
   type RouteParams = {
     params: {
       contest_key: string;
@@ -22,7 +26,6 @@ export default function SwitchTeamHOC() {
       alreadyJoinedTeams: Array<any>;
     };
   };
-
   const [selectedTeam, setSelectedTeam] = useState('');
 
   const matchMeta: SelectedMatchType = useSelector(selectedMatch);
@@ -32,7 +35,7 @@ export default function SwitchTeamHOC() {
 
   const switchTeam = useMutation(switchTeamInContestRemote, {
     onSuccess: (response, vars, _) => {
-      infoBox('Team Changed Succesfully !!', 600);
+      infoBox('Team Changed Succesfully !!', 1000);
       navigation.goBack();
     },
     onError: (error: any) => {
@@ -41,7 +44,6 @@ export default function SwitchTeamHOC() {
   });
 
   useEffect(() => {
-    // console.log('route', route.params.old_team_key);
     setSelectedTeam(route.params.old_team_key);
   }, []);
 
@@ -61,6 +63,10 @@ export default function SwitchTeamHOC() {
     });
   }
 
+  if (isScreenReady === false || !teams) {
+    return <FullScreenLoading title={'Switch Teams'} />;
+  }
+
   return (
     <SwitchTeamScreen
       teams={teams}
@@ -69,6 +75,7 @@ export default function SwitchTeamHOC() {
       setSelectedTeam={setSelectedTeam}
       alreadyJoinedTeams={[]}
       onPressSwitchTeam={onPressSwitchTeam}
+      switchTeam={switchTeam}
     />
   );
 }

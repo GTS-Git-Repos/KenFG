@@ -1,7 +1,12 @@
 import React from 'react';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
-import {TopBar, TeamsCard, RadioButton} from '../../../sharedComponents';
+import {
+  TopBar,
+  TeamsCard,
+  RadioButton,
+  BlockScreenByLoading,
+} from '../../../sharedComponents';
 const log = console.log;
 
 import TeamSwitch from './components/TeamSwitch';
@@ -13,6 +18,7 @@ interface PropTypes {
   setSelectedTeam(team_key: string): any;
   alreadyJoinedTeams: Array<string>;
   onPressSwitchTeam(): any;
+  switchTeam: any;
 }
 
 export default function SwitchTeamScreen(props: PropTypes) {
@@ -20,7 +26,7 @@ export default function SwitchTeamScreen(props: PropTypes) {
     <View style={tailwind('bg-dark h-full')}>
       <TopBar text={'Switch Teams'} />
       <Text style={[tailwind('font-regular text-white p-3 bg-dark-3 font-14')]}>
-        Choose a Team to Replace {props.selectedTeam}
+        Choose a Team to Replace {props.old_team_key}
       </Text>
 
       <FlatList
@@ -63,6 +69,7 @@ export default function SwitchTeamScreen(props: PropTypes) {
         current={props.selectedTeam}
         onPressSwitchTeam={props.onPressSwitchTeam}
       />
+      {props.switchTeam.isLoading && <BlockScreenByLoading />}
     </View>
   );
 }

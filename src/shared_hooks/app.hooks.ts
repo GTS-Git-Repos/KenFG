@@ -1,7 +1,18 @@
-import {differenceInSeconds, intervalToDuration} from 'date-fns';
-import {useEffect, useRef} from 'react';
-import {launchImageLibrary} from 'react-native-image-picker';
+import {intervalToDuration} from 'date-fns';
+import {useEffect, useRef, useState} from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
+import {InteractionManager} from 'react-native';
+
+export function useIsScreenReady() {
+  const [screenReady, setScreenReady] = useState(false);
+  useEffect(() => {
+    InteractionManager.runAfterInteractions(() => {
+      setScreenReady(true);
+    });
+  }, []);
+  return screenReady;
+}
+
 export function useCountDown(inputDate: Date) {
   // const [timeStamp, setTimeStamp] = useState('00h:00m:00s');
   let isMounted: any = useRef().current;

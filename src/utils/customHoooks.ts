@@ -3,6 +3,8 @@ import {InteractionManager} from 'react-native';
 import {differenceInSeconds, intervalToDuration} from 'date-fns';
 
 export function useIsScreenReady() {
+  console.log('### DEPRECATED MOVE TO APP HOOKS');
+  
   const [screenReady, setScreenReady] = useState(false);
   useEffect(() => {
     InteractionManager.runAfterInteractions(() => {
