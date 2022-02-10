@@ -13,7 +13,7 @@ export default function MoreSheet(props: PropTypes) {
   const navigation = useNavigation<any>();
 
   return (
-    <View style={[tailwind('bg-dark-3 px-3 py-7 rounded-t-lg')]}>
+    <View style={[tailwind('bg-dark-3 px-3')]}>
       <TouchableOpacity
         onPress={() => navigation.navigate('ProfileEditScreen')}
         style={[tailwind('flex-row items-center p-3')]}>

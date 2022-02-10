@@ -25,7 +25,7 @@ export const usePlayersState = (
     data: playersStatMeta,
     isSuccess: playersStatAPI,
     refetch: refetchMatch,
-  } = useQuery(['match', 'wieng_2022_t20_03', user_id], getMatchPointsRemote, {
+  } = useQuery(['match', 'bblt20_2021_g47', user_id], getMatchPointsRemote, {
     notifyOnChangeProps: ['data', 'isSuccess'],
     enabled: enabled,
     // staleTime: 1000 * 1000,

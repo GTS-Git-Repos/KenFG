@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/core';
 import {BackIcon} from '../../../../sharedComponents';
 
 interface PropTypes {
-  openSheet(): any;
+  moreOptionSheet: any;
 }
 
 export default function AccountProfileTopBar(props: PropTypes) {
@@ -20,7 +20,7 @@ export default function AccountProfileTopBar(props: PropTypes) {
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <BackIcon />
       </TouchableOpacity>
-      <TouchableOpacity onPress={props.openSheet}>
+      <TouchableOpacity onPress={() => props.moreOptionSheet?.current?.open()}>
         <Image
           resizeMode="contain"
           source={assets.vdot}

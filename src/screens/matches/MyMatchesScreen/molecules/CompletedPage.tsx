@@ -12,7 +12,7 @@ interface PropTypes {
 }
 
 export default function CompletedPage(props: PropTypes) {
-  if (!props.matchesAPI) {
+  if (!props.matchesAPI || props.selectedTab !== 2) {
     return <NoContest text={''} actionText={''} loading={true} />;
   }
 

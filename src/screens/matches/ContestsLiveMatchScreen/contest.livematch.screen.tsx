@@ -39,7 +39,6 @@ interface PropTypes {
 }
 
 export default function ContestLiveMatchScreen(props: PropTypes) {
-
   const navigation = useNavigation();
   const route = useRoute<any>();
   const pagerRef = useRef<any>();
@@ -54,11 +53,6 @@ export default function ContestLiveMatchScreen(props: PropTypes) {
   const {matchMeta, matchAPI}: any = useMatchMeta(
     route.params.match_key,
     userMeta.mobile,
-  );
-  const {playersStatMeta, playersStatAPI, refetch}: any = usePlayersState(
-    route.params.match_key,
-    userMeta.mobile,
-    selectedTab === 4,
   );
 
   const onTabPressed = (index: number) => {
@@ -84,6 +78,7 @@ export default function ContestLiveMatchScreen(props: PropTypes) {
       </Text>
     );
   }
+
 
   return (
     <View style={tailwind('h-full bg-dark')}>

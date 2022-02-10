@@ -1,6 +1,7 @@
 import {differenceInSeconds, intervalToDuration} from 'date-fns';
 import {useEffect, useRef} from 'react';
-
+import {launchImageLibrary} from 'react-native-image-picker';
+import ImagePicker from 'react-native-image-crop-picker';
 export function useCountDown(inputDate: Date) {
   // const [timeStamp, setTimeStamp] = useState('00h:00m:00s');
   let isMounted: any = useRef().current;
@@ -32,4 +33,17 @@ export function useCountDown(inputDate: Date) {
     // console.log('useCountDown', err);
     return '';
   }
+}
+
+export function useImageUpload() {
+  async function openLibrary() {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+    });
+  }
+  return {openLibrary};
 }

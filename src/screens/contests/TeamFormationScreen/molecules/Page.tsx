@@ -67,7 +67,7 @@ export default function Page(props: PropTypes) {
         <SortTabs
           sortStatus={props.sortStatus}
           onSortAction={props.onSortAction}
-        />
+        /> 
       </View>
       <FlatList
         data={props.data}

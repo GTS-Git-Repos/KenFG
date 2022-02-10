@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -11,19 +11,22 @@ interface PropTypes {
   name: string;
   username: string;
   level: string;
+  moreOptionSheet: any;
 }
 
 export default function UserProfileCard(props: PropTypes) {
   return (
     <View style={[tailwind('p-3 mt-2 mb-3 flex-row items-center')]}>
       <View style={[tailwind(''), {flex: 2}]}>
-        <View style={[tailwind('rounded-full'), {width: 60, height: 60}]}>
+        <TouchableOpacity
+          onPress={() => props.moreOptionSheet?.current?.open()}
+          style={[tailwind('rounded-full'), {width: 60, height: 60}]}>
           <Image
             resizeMode="contain"
             source={assets.user_temp_profile}
             style={[tailwind('w-full h-full')]}
           />
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={[tailwind(''), {flex: 7}]}>
         <Text

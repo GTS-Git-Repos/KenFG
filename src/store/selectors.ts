@@ -2,6 +2,7 @@ import {createSelector} from 'reselect';
 import {SelectedMatchType} from '../types/match';
 import {rolesConstraints} from '../constants/appContants';
 import {sumOfMustNeedToFillSlots} from './store_utils';
+import {UserMetaType} from 'src/types/user';
 
 const UserState = (state: any) => state.user.user_info;
 const CashFreeState = (state: any) => state.app.cashFreeAppId;
@@ -15,9 +16,12 @@ const TeamCountState = (state: any) => state.team.team_count;
 const SelectedMatchState = (state: any) => state.app.selected_match;
 const JoinContestState = (state: any) => state.app.joinContestRequest;
 
-export const userInfo = createSelector(UserState, userInfo => {
-  return userInfo;
-});
+export const userInfo = createSelector<any, any, UserMetaType>(
+  UserState,
+  userInfo => {
+    return userInfo;
+  },
+);
 
 export const userWalletAmount = createSelector(UserState, userInfo => {
   try {

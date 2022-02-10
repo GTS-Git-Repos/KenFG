@@ -63,13 +63,13 @@ export const allPlayersSelector = createSelector(
         (item: any) => item.team_key === filterTeam,
       );
 
-      const filterBat = keeper.filter(
+      const filterBat = batsman.filter(
         (item: any) => item.team_key === filterTeam,
       );
-      const filterAr = keeper.filter(
+      const filterAr = all_rounder.filter(
         (item: any) => item.team_key === filterTeam,
       );
-      const filterBow = keeper.filter(
+      const filterBow = bowler.filter(
         (item: any) => item.team_key === filterTeam,
       );
       keeper = filterKeep;

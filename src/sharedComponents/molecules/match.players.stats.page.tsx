@@ -13,6 +13,7 @@ interface PropTypes {
 
 export default function MatchPlayersStatsPage(props: PropTypes) {
   const navigation = useNavigation<any>();
+  return null;
 
   return (
     <ScrollView>

@@ -105,4 +105,5 @@ const App: React.FC = (): JSX.Element | null => {
   );
 };
 
-export default Sentry.wrap(App);
+// export default Sentry.wrap(App);
+export default App;

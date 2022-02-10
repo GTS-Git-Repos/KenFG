@@ -1,5 +1,65 @@
 {
-    "mycontests":[
-        
-    ]
+    "mycontests": [
+        {
+            "contestId": "1343",
+            "prize": 100000,
+            "prizeInLetters": "10 Lacks",
+            "spots": "23,43",
+            "entryFee": 23,
+            "isGauranteed": true,
+            "winningPercentage": 23,
+            "endWinningZone": 100,
+            "joinedTeams": [
+                "t1"
+            ]
+        }
+    ],
+    "t1": [
+        {
+            "uuid": "8866_t1",
+            "code": "t1",
+            "rank": 32,
+            "points": 132,
+            "cap_key": "p_nevill",
+            "vc_key": "m_stoinis",
+            "players": [
+                "p_nevill",
+                "m_wade",
+                "m_stoinis",
+                "tom_lammonby"
+            ]
+        }
+    ],
+    "p_nevill": {
+        "key": "p_nevill",
+        "name": "Peter Nevill",
+        "points": 23,
+        "credits": 8,
+        "team_key": "mls",
+        "seasonal_role": "keeper"
+    },
+    "m_wade": {
+        "key": "m_wade",
+        "name": "Matthew Wade",
+        "points": 9.5,
+        "credits": 9.5,
+        "team_key": "hbh",
+        "seasonal_role": "keeper"
+    },
+    "m_stoinis": {
+        "key": "m_stoinis",
+        "name": "Marcus Stoinis",
+        "points": 8,
+        "credits": 8,
+        "team_key": "mls",
+        "seasonal_role": "batsman"
+    },
+    "tom_lammonby": {
+        "key": "tom_lammonby",
+        "name": "Tom Lammonby",
+        "points": 8,
+        "credits": 8,
+        "team_key": "hbh",
+        "seasonal_role": "batsman"
+    }
 }

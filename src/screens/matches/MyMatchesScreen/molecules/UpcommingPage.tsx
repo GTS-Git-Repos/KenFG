@@ -21,7 +21,7 @@ export default function UpcommingPage(props: PropTypes) {
     navigation.navigate('LiveMatchScreen');
   };
 
-  if (!props.matchesAPI) {
+  if (!props.matchesAPI || props.selectedTab !== 0) {
     return <NoContest text={''} actionText={''} loading={true} />;
   }
 
