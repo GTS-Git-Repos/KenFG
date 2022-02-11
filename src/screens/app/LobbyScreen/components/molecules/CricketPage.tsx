@@ -18,7 +18,8 @@ interface PropTypes {
   onPressMatchType(match_type: number): void;
 }
 
-export default function CricketPage(props: PropTypes) {
+export default function 
+CricketPage(props: PropTypes) {
   const navigation = useNavigation();
 
   const navigateToMatchContests = (match_key: string) => {

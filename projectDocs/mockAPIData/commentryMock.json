@@ -6,24 +6,34 @@
                 "uuid": "a_1_0_1",
                 "over": "0.1",
                 "hasfallenWicket": false,
+                "hasExtras":false,
                 "runs": 2,
                 "commentry_text": "some commentry text",
-                "points": [
-                    {
-                        "key": "p_nevill",
-                        "name": "Peter Nevill",
-                        "new_points": 8,
-                        "team_code": [
-                            "t1",
-                            "t2"
-                        ]
-                    }
-                ]
+                "points": {
+                    "teams": [
+                        {
+                            "teamCode": "t1",
+                            "newPoints": 2
+                        },
+                        {
+                            "teamCode": "t2",
+                            "newPoints": 5
+                        }
+                    ],
+                    "players": [
+                        {
+                            "key": "cal_jewell",
+                            "name": "Caleb Jewell",
+                            "newPoints": 7
+                        }
+                    ]
+                }
             },
             {
                 "uuid": "a_1_0_2",
                 "over": "0.2",
                 "hasfallenWicket": false,
+                "hasExtras":false,
                 "runs": 2,
                 "commentry_text": "some commentry text",
                 "points": null
@@ -34,16 +44,21 @@
                 "hasfallenWicket": true,
                 "runs": 0,
                 "commentry_text": "some commentry text",
-                "points": [
-                    {
-                        "key": "m_wade",
-                        "name": "Matthew Wade",
-                        "new_points": 20,
-                        "team_code": [
-                            "t2"
-                        ]
-                    }
-                ]
+                "points": {
+                    "teams": [
+                        {
+                            "teamCode": "t1",
+                            "newPoints": 2
+                        }
+                    ],
+                    "players": [
+                        {
+                            "key": "cal_jewell",
+                            "name": "Caleb Jewell",
+                            "newPoints": 7
+                        }
+                    ]
+                }
             }
         ]
     }

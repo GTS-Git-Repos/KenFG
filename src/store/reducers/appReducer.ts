@@ -1,11 +1,13 @@
 import {
-  SAVE_IP,
   UPDATE_SELECTED_MATCH,
   UPDATE_JOINCONTEST_REQUEST,
   UPDATE_FULL_MATCH,
+  UPDATE_DARK_MODE,
 } from '../actions/actionTypes';
+import {APP_COLORS} from '../../constants/appContants';
 
 const initialState = {
+  darkModeEnabled: true,
   error: null,
   ip: null,
   selected_match: null,
@@ -21,11 +23,17 @@ interface actionShape {
 
 const App = (state = initialState, action: actionShape): any => {
   switch (action.type) {
+    case UPDATE_DARK_MODE:
+      return {
+        ...state,
+        darkModeEnabled: action.payload,
+      };
     case UPDATE_FULL_MATCH:
       return {
         ...state,
         isFullMatch: action.payload,
       };
+
     case UPDATE_JOINCONTEST_REQUEST: {
       return {
         ...state,

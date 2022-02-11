@@ -6,21 +6,12 @@ import React, {
   useState,
 } from 'react';
 import tailwind from '../../../../../../tailwind';
-import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import LinearGradient from 'react-native-linear-gradient';
-import {useFocusEffect, useNavigation} from '@react-navigation/core';
+import {View, Text, StyleSheet, Image} from 'react-native';
+import {useNavigation} from '@react-navigation/core';
 import assets from '../../../../../constants/assets_manifest';
 import {useDispatch} from 'react-redux';
-import {
-  updateSelectedContestAction,
-  updateSelectedMatchAction,
-} from '../../../../../store/actions/appActions';
-import {addSeconds, differenceInSeconds, format} from 'date-fns';
-import {subSeconds} from 'date-fns/esm';
-import {getCountDown} from '../../../../../utils/formatters';
+
 import FastImage from 'react-native-fast-image';
-import {navigateMatchContestsAction} from '../../../../../store/actions/navigationActions';
 const log = console.log;
 
 interface PropTypes {

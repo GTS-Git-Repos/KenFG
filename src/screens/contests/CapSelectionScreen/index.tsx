@@ -13,7 +13,7 @@ import {
   capSelectionState,
   sortStatusSelector,
 } from './capselection.controller';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {FullScreenLoading} from '../../../sharedComponents';
 const log = console.log;
 

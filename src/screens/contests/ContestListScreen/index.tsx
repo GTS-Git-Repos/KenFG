@@ -16,7 +16,7 @@ import ContestScreenLoading from './atoms/screen.loading.contest';
 import {TO_TEAMLIST} from '../../../constants/appContants';
 
 import {useContestList} from './contest.workers';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 
@@ -26,6 +26,7 @@ import {Alert} from 'react-native';
 import {
   toSecondInningsContestList,
   toSwitchTeam,
+  toTeamFormationNoAutoJoin,
   toTeamFormationWithAutoJoin,
   toTeamFormationWithMutation,
   toTeamPreview,
@@ -229,6 +230,10 @@ export default function ContestListHOC() {
     setShowWalletModal(true);
   };
 
+  function onPressCreateTeam() {
+    toTeamFormationNoAutoJoin(navigation);
+  }
+
   if (!isScreenReady || !contestsAPI) {
     return <ContestScreenLoading title={''} />;
   }
@@ -266,6 +271,7 @@ export default function ContestListHOC() {
       onPressSecondInnings={onPressSecondInnings}
       openWallet={openWallet}
       sortStatus={sortStatus}
+      onPressCreateTeam={onPressCreateTeam}
     />
   );
 }

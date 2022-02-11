@@ -3,6 +3,7 @@ import {
   UPDATE_SELECTED_MATCH,
   UPDATE_JOINCONTEST_REQUEST,
   UPDATE_FULL_MATCH,
+  UPDATE_DARK_MODE
 } from './actionTypes';
 
 interface JoinContestRequestShape {
@@ -13,6 +14,11 @@ interface JoinContestRequestShape {
 
 export const updateAppError = (payload: string) => ({
   type: HANDLE_ERROR,
+  payload,
+});
+
+export const updateEnableDarkMode = (payload: boolean) => ({
+  type: UPDATE_DARK_MODE,
   payload,
 });
 

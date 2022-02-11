@@ -27,7 +27,7 @@ export default function CompletedPage(props: PropTypes) {
   }
 
   return (
-    <ScrollView style={[tailwind('m-3')]}>
+    <ScrollView style={[tailwind('mx-3')]}>
       {props.matches.map((item: any) => {
         return (
           <View style={[tailwind('my-2')]} key={item.key}>
@@ -40,6 +40,8 @@ export default function CompletedPage(props: PropTypes) {
               teamCount={item.team_count}
               contestCount={item.contest_count}
               onPressMyMatchCard={props.onPressMyMatchCard}
+              status={item.status}
+
             />
           </View>
         );

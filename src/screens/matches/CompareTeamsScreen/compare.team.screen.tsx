@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {BlockScreenByLoading} from '../../../sharedComponents';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {CompareTeamType} from '../../../types/compareTeam';
 import SelectTeamSheet from './molecules/SelectTeamSheet';
 import FantasyPlayer from './atoms/FantasyPlayer';

@@ -35,7 +35,6 @@ const requestServer = function (
               })
               .catch(err => {
                 console.log(err);
-
                 ErrorRequest(url, payload);
                 reject('Parse Failed On Success');
               });

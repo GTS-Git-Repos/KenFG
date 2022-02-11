@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Image, TextInput, Text, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {
   ButtonComponent,
   TopBar,

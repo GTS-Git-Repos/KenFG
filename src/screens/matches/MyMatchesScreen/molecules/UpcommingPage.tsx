@@ -36,7 +36,7 @@ export default function UpcommingPage(props: PropTypes) {
   }
 
   return (
-    <View style={[tailwind('m-3')]}>
+    <View style={[tailwind('mx-3')]}>
       {props.matches.map((item: any) => {
         return (
           <View style={[tailwind('my-2')]} key={item.key}>
@@ -49,6 +49,7 @@ export default function UpcommingPage(props: PropTypes) {
               teamCount={item.team_count}
               contestCount={item.contest_count}
               onPressMyMatchCard={props.onPressMyMatchCard}
+              status={item.status}
             />
           </View>
         );

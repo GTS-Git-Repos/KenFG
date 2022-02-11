@@ -14,7 +14,7 @@ import {
 import PagerView from 'react-native-pager-view';
 
 import LiveMatchSeparator from './atoms/LiveMatchSeparator';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import LiveMatchTabs from './atoms/LiveMatchTabs';
 
 import ScrollBoardPage from './molecules/ScrollBoardPage';

@@ -2,8 +2,8 @@ import 'react-native-reanimated';
 import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
-
-import {LogBox, SafeAreaView, StatusBar} from 'react-native';
+import tailwind from 'tailwind-rn';
+import {LogBox, SafeAreaView, Text, View, StatusBar} from 'react-native';
 // import {enableFreeze} from 'react-native-screens';
 import {Provider} from 'react-redux';
 import {QueryClient, QueryClientProvider} from 'react-query';
@@ -98,6 +98,7 @@ const App: React.FC = (): JSX.Element | null => {
         <QueryClientProvider client={queryClient}>
           <GestureHandlerRootView style={{flex: 1}}>
             <RootNavigation />
+            
           </GestureHandlerRootView>
         </QueryClientProvider>
       </Provider>

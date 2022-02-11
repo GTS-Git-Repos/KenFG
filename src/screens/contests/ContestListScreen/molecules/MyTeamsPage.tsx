@@ -2,16 +2,11 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, ScrollView, Text, ActivityIndicator} from 'react-native';
 import {TeamsCard} from '../../../../sharedComponents';
-import {
-  updateCaptain,
-  updatePlayer,
-  updateVCaptain,
-} from '../../../../store/actions/teamActions';
 import {useNavigation} from '@react-navigation/native';
 import {errorBox} from '../../../../utils/snakBars';
-import {useDispatch} from 'react-redux';
-import NoContent from '../atoms/no.content.contest';
+import NOTeamsPage from '../atoms/no.teams.page';
 import {TeamFormationMutationType} from '../../../../types/match';
+import CreateTeamButtom from '../atoms/CreateTeamButton';
 
 interface PropTypes {
   selectedTab: number;
@@ -23,6 +18,7 @@ interface PropTypes {
   pagerRef: any;
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
   teamPreviewPress(team_key: any): any;
+  onPressCreateTeam(): any;
 }
 
 export default function MyTeamsPage(props: PropTypes) {
@@ -64,39 +60,43 @@ export default function MyTeamsPage(props: PropTypes) {
   }
   if (props.status && !props.teams) {
     return (
-      <NoContent
+      <NOTeamsPage
         title={'The first move to get your fortune'}
-        subtitle={'It’s your time where skills & knowledge meets action'}
+        subtitle={'Create Your First Teams and meet action'}
         actionText={'VIEW CONTESTS'}
         noContentAction={noContentAction}
+        onPressCreateTeam={props.onPressCreateTeam}
       />
     );
   }
   return (
-    <ScrollView contentContainerStyle={[tailwind('m-3')]}>
-      {props.live && <TeamsLoading />}
-      {props.teams.map((item: any) => {
-        return (
-          <TeamsCard
-            team_a={item.team_a}
-            team_b={item.team_b}
-            key={item.team_key}
-            team_key={item.team_key}
-            canModify={true}
-            current={false}
-            keepers={item.keepers}
-            batsman={item.batsman}
-            all_rounder={item.all_rounder}
-            bowler={item.bowler}
-            cap={item.cap}
-            vc={item.vc}
-            navigateToPreview={navigateToPreview}
-            mutateTeam={mutateTeam}
-          />
-        );
-      })}
-      <View style={[tailwind('h-20')]}></View>
-    </ScrollView>
+    <View style={[tailwind('h-full')]}>
+      <ScrollView contentContainerStyle={[tailwind('m-3')]}>
+        {props.live && <TeamsLoading />}
+        {props.teams.map((item: any) => {
+          return (
+            <TeamsCard
+              team_a={item.team_a}
+              team_b={item.team_b}
+              key={item.team_key}
+              team_key={item.team_key}
+              canModify={true}
+              current={false}
+              keepers={item.keepers}
+              batsman={item.batsman}
+              all_rounder={item.all_rounder}
+              bowler={item.bowler}
+              cap={item.cap}
+              vc={item.vc}
+              navigateToPreview={navigateToPreview}
+              mutateTeam={mutateTeam}
+            />
+          );
+        })}
+        <View style={[tailwind('h-20')]}></View>
+      </ScrollView>
+      <CreateTeamButtom onPressCreateTeam={props.onPressCreateTeam} />
+    </View>
   );
 }
 

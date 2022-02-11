@@ -2,15 +2,14 @@ import React, {useRef, useState} from 'react';
 import {View, Text} from 'react-native';
 import tailwind from '../../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
-import {useIsScreenReady} from '../../../utils/customHoooks';
 import {useNavigation} from '@react-navigation/native';
-import NoContest from './atoms/no.contest';
-import {TopBar} from '../../../sharedComponents';
+import {ContestTypeSwitch, TopBar} from '../../../sharedComponents';
 import PagerView from 'react-native-pager-view';
 import MyMatchesTabs from './molecules/MyMatchesTabs';
 import UpcommingPage from './molecules/UpcommingPage';
 import LivePage from './molecules/LivePage';
 import CompletedPage from './molecules/CompletedPage';
+import MatchSwitch from './molecules/match.switch';
 
 const log = console.log;
 
@@ -19,7 +18,11 @@ interface PropTypes {
   matches: any;
   matchesAPI: any;
   setStatus: any;
+  isCricket: boolean;
+  isFullMatch: boolean;
   onPressMyMatchCard(matche_key: string): any;
+  setIsCricket(input: boolean): any;
+  onPressMatchType(input: number): any;
 }
 
 export default function MyMatches(props: PropTypes) {
@@ -49,7 +52,18 @@ export default function MyMatches(props: PropTypes) {
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'My Matches'} />
+      <MatchSwitch
+        cricketActive={props.isCricket}
+        setIsCricket={props.setIsCricket}
+      />
+
       <MyMatchesTabs active={selectedTab} onTabPressed={onTabPressed} />
+      <View style={[tailwind('flex-row justify-center pt-3 pb-1')]}>
+        <ContestTypeSwitch
+          onPressMatchType={props.onPressMatchType}
+          isFullMatch={props.isFullMatch}
+        />
+      </View>
       <PagerView
         ref={pageRef}
         onPageSelected={onPageSelectedAction}

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useSelector, useDispatch} from 'react-redux';
-// import {useIsScreenReady} from '../../../utils/customHoooks';
+// import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 // import {useNavigation} from '@react-navigation/native';
 import EnterAmountAddCash from './molecules/enteramount.addcash';
 import SubTitleAddCash from './atoms/subtitle.addcash';

@@ -3,7 +3,11 @@ import {SelectedMatchType} from '../types/match';
 import {rolesConstraints} from '../constants/appContants';
 import {sumOfMustNeedToFillSlots} from './store_utils';
 import {UserMetaType} from 'src/types/user';
+import {AppColorsType} from 'src/types/app';
+import {APP_COLORS} from '../constants/appContants';
 
+const AppColorState = (state: any) => state.app.colors;
+const DarkModeState = (state: any): boolean => state.app.darkModeEnabled;
 const UserState = (state: any) => state.user.user_info;
 const CashFreeState = (state: any) => state.app.cashFreeAppId;
 const isFullMatchState = (state: any) => state.app.isFullMatch;
@@ -15,6 +19,14 @@ const TeamCountState = (state: any) => state.team.team_count;
 
 const SelectedMatchState = (state: any) => state.app.selected_match;
 const JoinContestState = (state: any) => state.app.joinContestRequest;
+
+export const appColorsSelector = createSelector(DarkModeState, darkMode => {
+  if (darkMode) {
+    return APP_COLORS.darkMode;
+  } else {
+    return APP_COLORS.lightMode;
+  }
+});
 
 export const userInfo = createSelector<any, any, UserMetaType>(
   UserState,

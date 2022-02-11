@@ -10,7 +10,6 @@ interface PropTypes {
 export default function ContestTypeSwitch(props: PropTypes) {
   return (
     <View style={[tailwind('flex-row items-center justify-between bg-dark-4')]}>
-      <Text style={[tailwind('')]}></Text>
       <View style={[tailwind('flex-row items-center')]}>
         <TouchableOpacity
           onPress={() => props.onPressMatchType(1)}

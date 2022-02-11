@@ -1,13 +1,18 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {updateFullMatchAction} from '../../../store/actions/appActions';
-import {userInfo, isFulMatchSelector} from '../../../store/selectors';
+import {
+  userInfo,
+  isFulMatchSelector,
+  appColorsSelector,
+} from '../../../store/selectors';
 import LobbyScreenLoading from './components/lobbyscreen.loading';
 import LobbyScreen from './lobby.screen';
 import {useLobbyMeta} from './lobby.workers';
 
 export default function LobbyScreenHOC() {
   const dispatch = useDispatch();
+  const appColors = useSelector(appColorsSelector);
   const userSelector = useSelector(userInfo);
   const isFullMatch = useSelector(isFulMatchSelector);
   const {lobbyMeta, lobbyAPI, lobbyLive}: any = useLobbyMeta(
@@ -33,6 +38,7 @@ export default function LobbyScreenHOC() {
       banners={lobbyMeta.banners}
       upcomming={lobbyMeta.upcomming}
       isFullMatch={isFullMatch}
+      appColors={appColors}
       onPressMatchType={onPressMatchType}
     />
   );

@@ -60,6 +60,7 @@ interface PropTypes {
   onPressSecondInnings(): any;
   sortByOnPress(): any;
   openWallet(): any;
+  onPressCreateTeam(): any;
 }
 
 export default function ContestListScreen(props: PropTypes) {
@@ -126,6 +127,7 @@ export default function ContestListScreen(props: PropTypes) {
             onPressSecondInnings={props.onPressSecondInnings}
             sortStatus={props.sortStatus}
             sortByOnPress={props.sortByOnPress}
+            onPressCreateTeam={props.onPressCreateTeam}
           />
         </View>
         <View style={{width: width}}>
@@ -153,11 +155,12 @@ export default function ContestListScreen(props: PropTypes) {
             teamPreviewPress={props.teamPreviewPress}
             index={2}
             selectedTab={props.selectedTab}
+            onPressCreateTeam={props.onPressCreateTeam}
           />
         </View>
       </PagerView>
 
-      {props.contests && <CreateTeamButton />}
+      
 
       <Modal
         isVisible={props.showJoinModal}

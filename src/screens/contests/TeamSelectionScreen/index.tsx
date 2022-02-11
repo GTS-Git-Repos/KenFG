@@ -7,7 +7,7 @@ import {
   userInfo,
 } from '../../../store/selectors';
 import {useSelector} from 'react-redux';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {
   useGetTeams,
   useJoinedContests,

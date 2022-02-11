@@ -6,8 +6,10 @@ import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
 import {useSelector} from 'react-redux';
+
 interface PropTypes {
   amount: string;
+  appColors:any
 }
 
 export default function LobbyTopBar(props: PropTypes) {

@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useNavigation} from '@react-navigation/native';
 import {Modalize} from 'react-native-modalize';
 

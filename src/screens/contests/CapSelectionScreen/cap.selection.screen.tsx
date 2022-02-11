@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, Image, Pressable, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {StackActions, useNavigation, useRoute} from '@react-navigation/native';
 
 // import assets from 'assets';
 import {
@@ -136,9 +136,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               team_key: response.data.team_key,
             });
           } else {
-            resetContestListNavigation(navigation, {
-              autoJoin: false,
-            });
+            log('111');
+            navigation.dispatch(StackActions.popToTop());
           }
 
           return;

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useNavigation} from '@react-navigation/native';
 import {TopBar} from '../../../sharedComponents';
 import InputTitle from './atoms/InputTitle';
@@ -22,11 +22,17 @@ import {useDispatch, useSelector} from 'react-redux';
 import {decodeJwt} from '../../../utils/formatters';
 import {updateUserInfoAction} from '../../../store/actions/userAction';
 import AllowSMS from './atoms/AllowSMS';
+import ThemeSwitch from './molecules/theme.switch';
 import NumberInput from './molecules/NumberInput';
 
 const log = console.log;
 
-export default function ProfileEditScreen() {
+interface PropTypes {
+  darkModeState: any;
+  onColorThemePress(): void;
+}
+
+export default function ProfileEditScreen(props: PropTypes) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -161,6 +167,8 @@ export default function ProfileEditScreen() {
         {errors.password && (
           <ErrorHint text="Password is required and length should be 4 to 50" />
         )} */}
+
+        <ThemeSwitch darkModeState={props.darkModeState} onColorThemePress={props.onColorThemePress} />
 
         <InputTitle text={'Date of Birth'} />
         <Dob

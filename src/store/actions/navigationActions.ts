@@ -122,6 +122,7 @@ export const toTeamFormationWithAutoJoin = (
  * It used only when a player clicks a create team button
  */
 export const toTeamFormationNoAutoJoin = (navigation: any) => {
+  store.dispatch(joinContestRequestAction(null));
   navigation.dispatch(
     CommonActions.navigate({
       name: 'TeamFormationScreen',

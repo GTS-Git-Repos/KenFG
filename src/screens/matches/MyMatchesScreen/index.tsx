@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {useSelector} from 'react-redux';
-import {userInfo} from '../../../store/selectors';
+import {useDispatch, useSelector} from 'react-redux';
+import {isFulMatchSelector, userInfo} from '../../../store/selectors';
 import {LoadingSpinner} from '../../../sharedComponents';
-import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import MyMatchesScreen from './my.matches.screen';
 import {useMatches} from './mymatches.workers';
 import {useNavigation} from '@react-navigation/core';
@@ -10,13 +10,20 @@ import {
   navigateMatchContestsAction,
   toContestLiveMatch,
 } from '../../../store/actions/navigationActions';
+import {updateFullMatchAction} from '../../../store/actions/appActions';
 const log = console.log;
 
 export default function MyMatchesScreenHOC() {
   const pagerRef = useRef();
   const isScreenReady = useIsScreenReady();
+  const dispatch = useDispatch();
+
   const userMeta = useSelector(userInfo);
+  const isFullMatch: boolean = useSelector(isFulMatchSelector);
+
   const navigation = useNavigation<any>();
+
+  const [isCricket, setIsCricket] = useState(true);
 
   const [status, setStatus] = useState('notstarted');
 
@@ -27,6 +34,10 @@ export default function MyMatchesScreenHOC() {
       // log(JSON.stringify(matches));
     }
   }, [matches]);
+
+  function onPressMatchType(match_type: number): any {
+    dispatch(updateFullMatchAction(match_type === 1 ? true : false));
+  }
 
   if (!isScreenReady) {
     return <LoadingSpinner title={'My Matches'} />;
@@ -58,7 +69,11 @@ export default function MyMatchesScreenHOC() {
       matches={matches}
       matchesAPI={matchesAPI}
       setStatus={setStatus}
+      isCricket={isCricket}
+      setIsCricket={setIsCricket}
       onPressMyMatchCard={onPressMyMatchCard}
+      onPressMatchType={onPressMatchType}
+      isFullMatch={isFullMatch}
     />
   );
 }

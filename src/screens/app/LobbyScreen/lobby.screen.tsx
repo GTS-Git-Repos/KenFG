@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useSelector} from 'react-redux';
 import LobbyTopBar from './components/LobbyTopBar';
 import LobbyNav from './components/LobbyNav';
-
+import {AppColorsType} from '../../../types/app';
 import CricketPage from './components/molecules/CricketPage';
 import MyMatchCard from './components/molecules/mymatch.card.lobby';
 import SubTitle from './components/SubTitle';
+import {APP_COLORS} from '../../../constants/appContants';
 
 import {
   navigateMatchContestsAction,
@@ -22,6 +23,7 @@ interface PropTypes {
   banners: Array<any>;
   upcomming: Array<any>;
   isFullMatch: boolean;
+  appColors: any;
   onPressMatchType(match_type: number): void;
 }
 
@@ -50,10 +52,15 @@ export default function LobbyScreen(props: PropTypes) {
     }
   }
 
+  log(props.appColors);
+
   return (
-    <View style={tailwind('bg-dark h-full')}>
-      <View style={[tailwind('bg-secondary')]}>
-        <LobbyTopBar amount={userInfoState.un_utilized} />
+    <View style={[styles.root, props.appColors.bg]}>
+      <View style={[tailwind('bg-secondary'), {}]}>
+        <LobbyTopBar
+          appColors={props.appColors}
+          amount={userInfoState.un_utilized}
+        />
         <LobbyNav
           cricket={cricket}
           setCricket={setCricket}
@@ -108,3 +115,10 @@ export default function LobbyScreen(props: PropTypes) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  root: {
+    backgroundColor: '#0c1320',
+    height: '100%',
+  },
+});
