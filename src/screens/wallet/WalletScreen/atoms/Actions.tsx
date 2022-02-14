@@ -10,7 +10,7 @@ import {useNavigation} from '@react-navigation/core';
 interface PropTypes {
   text: string;
   subText?: string;
-  goto: string;
+  goto(): void;
 }
 
 export default function Actions(props: PropTypes) {

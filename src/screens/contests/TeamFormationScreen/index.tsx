@@ -25,7 +25,9 @@ import {
   sortStatusSelector,
   filerTeamSelector,
 } from './team.formation.controller';
-import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
+import {useCountDown} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
+
 import CreateTeamLoading from './atoms/CreateTeamLoading';
 import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
 import TeamFormationScreen from './team.formation.screen';
@@ -48,7 +50,7 @@ export default function TeamFormationHOC() {
   const sortStatus: any = sortStatusSelector(formationState);
   const filterTeam: any = filerTeamSelector(formationState);
 
-  console.log('filterTeam >>', filterTeam);
+  // console.log('filterTeam >>', filterTeam);
 
   const [sortByLowCredits, setSortByLowCredits] = useState<boolean>(false);
 

@@ -18,19 +18,24 @@ import {joinContestRemote} from '../../../remote/matchesRemote';
 import {resetContestListNavigation} from '../../../utils/resetNav';
 import SubTitle from './atoms/subtitle.teamselection';
 import Modal from 'react-native-modal';
-import { updateUserInfo } from '../../../store/actions/userAction';
+import {updateUserInfo} from '../../../store/actions/userAction';
+import SelectAllTeams from './molecules/select.all.teams';
 const log = console.log;
 
 interface PropTypes {
+  maxTeams: number;
+  selectText: string;
   teams: any;
   showJoinModal: any;
   setShowJoinModal: any;
   availableTeams: any;
   unavailableTeams: any;
+  selectedTeams: Array<any>;
+  teamCardPress(team_key: string): any;
 }
 
 export default function TeamSelectionScreen(props: PropTypes) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
   const [choosenTeams, setChoosenTeams] = useState<Array<string>>([]);
@@ -93,7 +98,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
         errorBox(response.msg, 1000);
         return;
       }
-      dispatch(updateUserInfo(userSelector.mobile))
+      dispatch(updateUserInfo(userSelector.mobile));
       resetContestListNavigation(navigation, {
         match_key: matchSelector.match_key,
         to: 1,
@@ -107,13 +112,20 @@ export default function TeamSelectionScreen(props: PropTypes) {
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Select Team'} />
-      <Info maxTeam={matchSelector.joinContest.maxTeam} />
+      <Info selectText={props.selectText} />
+      <SelectAllTeams
+        disabled={props.maxTeams <= props.teams.length}
+        maxTeams={props.maxTeams}
+        availableTeams={props.availableTeams.length}
+        selectTeams={props.selectedTeams.length}
+        selectAllPress={() => {}}
+      />
       <ScrollView>
         {props.availableTeams.map((item: any) => {
           return (
             <View
               key={item.team_key}
-              style={[tailwind('flex-row mx-2 items-center')]}>
+              style={[tailwind('flex-row mx-2 mt-2 items-center')]}>
               <View style={[tailwind(''), {flex: 9}]}>
                 <TeamsCard
                   team_a={item.team_a}
@@ -127,7 +139,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
                   bowler={item.bowler}
                   cap={item.cap}
                   vc={item.vc}
-                  navigateToPreview={() => {}}
+                  navigateToPreview={props.teamCardPress}
                   mutateTeam={() => {}}
                 />
               </View>

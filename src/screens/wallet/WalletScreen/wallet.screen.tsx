@@ -3,13 +3,15 @@ import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import {ButtonComponent, TopBar} from '../../../sharedComponents';
-import {Modalize} from 'react-native-modalize';
 import Actions from './atoms/Actions';
 import AmountStatusWallet from './atoms/amount.status.wallet';
-
+import {
+  toRecentTransactions,
+  toManagePayments,
+  toVerifyAccount,
+} from '../../../navigations/wallet.links';
 import {useSelector} from 'react-redux';
 import {userInfo} from '../../../store/selectors';
-// import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
 
@@ -33,7 +35,7 @@ export default function WalletScreen() {
         <View style={[tailwind('')]}>
           <Actions
             text={'My Recent Transactions'}
-            goto={'TransactionListScreen'}
+            goto={toRecentTransactions}
           />
           <Actions
             text={'Manage Payments'}

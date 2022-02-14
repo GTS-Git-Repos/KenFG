@@ -1,4 +1,4 @@
-// this file is not tied with redux, it's a central location for dispatching navigation actions,
+// this file is not tied with redux, it's a shared central location for dispatching navigation actions,
 
 import {CommonActions} from '@react-navigation/native';
 import store from '../';
@@ -27,9 +27,10 @@ interface selectedMatchShape {
 interface JoinContestRequestShape {
   contestKey: string;
   entryAmount: string;
-  maxTeam: string;
+  maxTeam: any;
 }
 
+// save a opened match, that open match contests
 export const navigateMatchContestsAction = (
   navigation: any,
   payload: selectedMatchShape,
@@ -40,7 +41,7 @@ export const navigateMatchContestsAction = (
       name: 'Contest',
     }),
   );
-  return false;
+  return 1;
 };
 
 export const toSecondInningsContestList = (navigation: any, payload: any) => {
@@ -99,7 +100,9 @@ export const toTeamFormationWithAutoJoin = (
   hasUnJoinedTeam: boolean,
   payload: JoinContestRequestShape,
 ) => {
-  store.dispatch(joinContestRequestAction(payload));
+  const selectContest = {...payload};
+  selectContest.maxTeam = parseInt(selectContest.maxTeam);
+  store.dispatch(joinContestRequestAction(selectContest));
   if (hasUnJoinedTeam) {
     navigation.dispatch(
       CommonActions.navigate({

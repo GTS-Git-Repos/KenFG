@@ -79,7 +79,7 @@ export const allPlayersSelector = createSelector(
     }
 
     // if sort points filter applied
-    if (sortByPoints) {
+    if (sortByPoints !== null) {
       const sortedKeepers = sortBy(keeper, 'points');
       const sortedBatsman = sortBy(batsman, 'points');
       const sortedAR = sortBy(all_rounder, 'points');
@@ -98,7 +98,7 @@ export const allPlayersSelector = createSelector(
         ];
         return players;
       } else {
-        // from hight to low
+        // from high to low
         const players = [
           {
             keeper: sortedKeepers.reverse(),
@@ -111,7 +111,7 @@ export const allPlayersSelector = createSelector(
       }
     }
     // sort by credits active
-    else if (sortByCredits) {
+    else if (sortByCredits !== null) {
       const sortedKeepers = sortBy(keeper, 'credits');
       const sortedBatsman = sortBy(batsman, 'credits');
       const sortedAR = sortBy(all_rounder, 'credits');

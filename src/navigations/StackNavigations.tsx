@@ -9,6 +9,7 @@ import ContestInfoScreen from '../screens/contests/ContestInfoScreen';
 import CreateContestScreen from '../screens/contests/CreateContestScreen';
 import WinningsListScreen from '../screens/contests/WinningsListScreen';
 import SwitchTeamScreen from '../screens/contests/SwitchTeamScreen';
+import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
 
 import LiveMatchScreen from '../screens/matches/LiveMatchScreen';
 import TeamPreviewScreen from '../screens/contests/TeamPreviewScreen';
@@ -134,6 +135,10 @@ export function Contest(props: any) {
       <ContestStack.Screen
         name="TeamPreviewScreen"
         component={TeamPreviewScreen}
+      />
+      <ContestStack.Screen
+        name="TeamSelectionScreen"
+        component={TeamSelectionScreen}
       />
     </ContestStack.Navigator>
   );

@@ -1,7 +1,5 @@
 // The controller for contest list screen
-
 import {orderBy, sortBy} from 'lodash';
-import React, {useReducer} from 'react';
 import {createSelector} from 'reselect';
 
 // States

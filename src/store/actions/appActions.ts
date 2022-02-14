@@ -9,7 +9,7 @@ import {
 interface JoinContestRequestShape {
   contestKey: string;
   entryAmount: string;
-  maxTeam: string;
+  maxTeam: number;
 }
 
 export const updateAppError = (payload: string) => ({

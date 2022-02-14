@@ -21,6 +21,7 @@ interface PropTypes {
   proceedToJoin(contest_key: string): any;
   onPressSecondInnings(): any;
   onPressCreateTeam(): any;
+  sortByOnPress(): any;
   sortStatus: any;
 }
 
@@ -62,6 +63,7 @@ export default function ContestPage(props: PropTypes) {
           isFullMatch={props.isFullMatch}
           sortStatus={props.sortStatus}
           sortByOnPress={props.sortByOnPress}
+          onPressSecondInnings={props.onPressSecondInnings}
         />
         <NoContent
           title={`Currently No Contests are in ${props.selectedFilter} Category`}
@@ -74,7 +76,7 @@ export default function ContestPage(props: PropTypes) {
   }
 
   return (
-    <View>
+    <View  style={[tailwind('h-full')]}>
       <ScrollView>
         <FilterTab
           selectedFilter={props.selectedFilter}
@@ -117,7 +119,9 @@ export default function ContestPage(props: PropTypes) {
         </View>
         <View style={[tailwind('h-20')]}></View>
       </ScrollView>
-      {props.data && <CreateTeamButton onPressCreateTeam={props.onPressCreateTeam} />}
+      {props.data && (
+        <CreateTeamButton onPressCreateTeam={props.onPressCreateTeam} />
+      )}
     </View>
   );
 }

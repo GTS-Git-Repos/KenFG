@@ -85,10 +85,10 @@ export default function RootNavigation() {
           <RootNavigator.Screen component={Match} name="Match" />
           <RootNavigator.Screen component={Wallet} name="Wallet" />
 
-          <RootNavigator.Screen
+          {/* <RootNavigator.Screen
             name="TeamSelectionScreen"
             component={TeamSelectionScreen}
-          />
+          /> */}
 
           <RootNavigator.Screen
             component={NotificationScreen}
@@ -161,7 +161,6 @@ export default function RootNavigation() {
             component={PlayerProfileScreen}
             name="PlayerProfileScreen"
           />
-          <RootNavigator.Screen component={InviteScreen} name="InviteScreen" />
         </RootNavigator.Navigator>
       </Host>
     </NavigationContainer>

@@ -36,6 +36,7 @@ export const useContestList = (
   return {contests, contestsAPI, contestsAPILive, refetchContests};
 };
 
+// Get Created Teams for the match
 export const useGetTeams = (
   match_key: string,
   user_id: string,

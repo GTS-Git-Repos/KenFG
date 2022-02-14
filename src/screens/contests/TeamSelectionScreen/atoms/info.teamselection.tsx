@@ -5,14 +5,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 
 interface PropTypes {
-  maxTeam: string;
+  selectText: string;
 }
 
 export default function InfoTeamSelection(props: PropTypes) {
   return (
     <View style={[tailwind('p-3 bg-dark-3')]}>
       <Text style={[tailwind('font-regular text-white font-14')]}>
-        You can select upto {props.maxTeam} Teams for joining this contest
+        {props.selectText}
       </Text>
     </View>
   );
