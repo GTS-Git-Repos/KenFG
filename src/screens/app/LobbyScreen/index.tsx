@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {FlatList} from 'react-native';
 import {updateFullMatchAction} from '../../../store/actions/appActions';
 import {
   userInfo,
@@ -15,7 +16,7 @@ export default function LobbyScreenHOC() {
   const appColors = useSelector(appColorsSelector);
   const userSelector = useSelector(userInfo);
   const isFullMatch = useSelector(isFulMatchSelector);
-  const {lobbyMeta, lobbyAPI, lobbyLive}: any = useLobbyMeta(
+  const {lobbyMeta, lobbyAPI, lobbyLive, refetchlobby}: any = useLobbyMeta(
     userSelector.mobile,
     isFullMatch,
   );
@@ -31,15 +32,25 @@ export default function LobbyScreenHOC() {
     return <LobbyScreenLoading failed={true} />;
   }
   return (
-    <LobbyScreen
-      myMatches={
-        lobbyMeta.myMatches.length > 0 ? lobbyMeta.myMatches[0] : false
-      }
-      banners={lobbyMeta.banners}
-      upcomming={lobbyMeta.upcomming}
-      isFullMatch={isFullMatch}
-      appColors={appColors}
-      onPressMatchType={onPressMatchType}
+    <FlatList
+      refreshing={false}
+      onRefresh={() => refetchlobby()}
+      ListHeaderComponent={() => {
+        return (
+          <LobbyScreen
+            myMatches={
+              lobbyMeta.myMatches.length > 0 ? lobbyMeta.myMatches[0] : false
+            }
+            banners={lobbyMeta.banners}
+            upcomming={lobbyMeta.upcomming}
+            isFullMatch={isFullMatch}
+            appColors={appColors}
+            onPressMatchType={onPressMatchType}
+          />
+        );
+      }}
+      data={[]}
+      renderItem={() => <></>}
     />
   );
 }

@@ -14,8 +14,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 interface PropTypes {
   upcomming: any;
-  data: [];
-  status: string;
+  data: Array<any>;
   navigateToMatchContests(match_key: any): any;
 }
 

@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import assets from '../../../../constants/assets_manifest';
 import {useDispatch} from 'react-redux';
@@ -24,6 +24,7 @@ interface PropTypes {
   tournament_shortName: string;
   price: string;
   start_at: Date;
+  onPressNotification(match_key: string): void;
 }
 
 interface TeamPropShape {
@@ -33,6 +34,7 @@ interface TeamPropShape {
   team_b_flag: string;
   set_team_a_flag: any;
   set_team_b_flag: any;
+ 
 }
 
 export default function UpcommingMatches(props: PropTypes) {
@@ -122,13 +124,15 @@ export default function UpcommingMatches(props: PropTypes) {
             </Text>
           </View>
 
-          <View style={[tailwind('flex-row justify-end pt-0.5'), {flex: 1}]}>
+          <TouchableOpacity
+            onPress={() => props.onPressNotification(props.match_key)}
+            style={[tailwind('flex-row justify-end pt-0.5'), {flex: 1}]}>
             <Image
               resizeMode="contain"
               source={assets.bell}
               style={[tailwind(''), {aspectRatio: 16 / 9}]}
             />
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View

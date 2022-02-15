@@ -1,34 +1,22 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import UpCommingMatchesCard from '../atoms/UpCommingMatchesCard';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 interface PropTypes {
   data: any;
   status: any;
+  notificationSheet: any;
+  onPressNotification(match_key: string): void;
   navigateToMatchContests(match_key: string): any;
 }
 
 export default function UpComingMatchesSlider(props: PropTypes) {
   if (props.status === 'loading') {
-    return (
-      <Text
-        style={[
-          tailwind('font-regular text-dark-1 text-center text-light font-15'),
-        ]}>
-        Loading ...
-      </Text>
-    );
+    return <Text style={styles.infoText}>Loading ...</Text>;
   }
   if (props.status === 'success' && !props.data) {
-    return (
-      <Text
-        style={[
-          tailwind('font-regular text-light text-center text-light font-15'),
-        ]}>
-        No Upcomming Matches
-      </Text>
-    );
+    return <Text style={styles.infoText}>No Upcomming Matches</Text>;
   }
 
   return (
@@ -49,6 +37,7 @@ export default function UpComingMatchesSlider(props: PropTypes) {
               tournament_shortName={item?.teams?.tournament?.short_name}
               price={item?.teams?.price}
               start_at={item.start_at}
+              onPressNotification={props.onPressNotification}
             />
           </TouchableOpacity>
         );
@@ -56,3 +45,12 @@ export default function UpComingMatchesSlider(props: PropTypes) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  infoText: {
+    color: '#f5feff',
+    fontFamily: 'gadugi-normal',
+    fontSize: 15,
+    textAlign: 'center',
+  },
+});

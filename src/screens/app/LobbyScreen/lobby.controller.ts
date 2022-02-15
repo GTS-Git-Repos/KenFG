@@ -6,6 +6,7 @@ export const useLobbyMeta = (user_key: string, isFullMatch: boolean) => {
     data: lobbyMeta,
     isLoading: lobbyLive,
     isSuccess: lobbyAPI,
+    refetch: refetchlobby,
   } = useQuery(
     ['lobby', user_key, isFullMatch],
     upcommingMatchesandBannersRemote,
@@ -14,5 +15,5 @@ export const useLobbyMeta = (user_key: string, isFullMatch: boolean) => {
       staleTime: 0,
     },
   );
-  return {lobbyMeta, lobbyLive, lobbyAPI};
+  return {lobbyMeta, lobbyLive, lobbyAPI, refetchlobby};
 };

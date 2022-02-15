@@ -15,6 +15,8 @@ interface PropTypes {
   isFullMatch: boolean;
   banners: Array<any>;
   upcomming: Array<any>;
+  notificationSheet: any;
+  onPressNotification(match_key: string): void;
   onPressMatchType(match_type: number): void;
 }
 
@@ -49,7 +51,6 @@ export default function CricketPage(props: PropTypes) {
         <ImageSlider
           upcomming={props.upcomming}
           data={props.banners}
-          status={props.banners}
           navigateToMatchContests={navigateToMatchContests}
         />
       </View>
@@ -63,6 +64,8 @@ export default function CricketPage(props: PropTypes) {
         data={props.upcomming}
         status={props.upcomming}
         navigateToMatchContests={navigateToMatchContests}
+        notificationSheet={props.notificationSheet}
+        onPressNotification={props.onPressNotification}
       />
     </View>
   );

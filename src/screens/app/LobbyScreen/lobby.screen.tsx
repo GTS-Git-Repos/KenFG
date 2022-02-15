@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useSelector} from 'react-redux';
@@ -30,8 +30,13 @@ interface PropTypes {
 export default function LobbyScreen(props: PropTypes) {
   const navigation = useNavigation();
   const [cricket, setCricket] = useState(true);
+  const notificationSheet = useRef();
 
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
+
+  function onPressNotification(match_key:string){
+    log(match_key)
+  }
 
   function onPressMyMatchCard(match_key: string) {
     // toContestLiveMatch(navigation, 'wieng_2022_t20_03');
@@ -95,6 +100,8 @@ export default function LobbyScreen(props: PropTypes) {
             upcomming={props.upcomming}
             isFullMatch={props.isFullMatch}
             onPressMatchType={props.onPressMatchType}
+            notificationSheet={notificationSheet}
+            onPressNotification={onPressNotification}
           />
         ) : (
           <View style={[tailwind('py-10')]}>
