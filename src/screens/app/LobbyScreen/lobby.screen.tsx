@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useSelector} from 'react-redux';
-import LobbyTopBar from './components/LobbyTopBar';
-import LobbyNav from './components/LobbyNav';
+import LobbyTopBar from './atoms/lobby.top.bar';
+import LobbyNav from './atoms/lobby.nav';
 import {AppColorsType} from '../../../types/app';
-import CricketPage from './components/molecules/CricketPage';
-import MyMatchCard from './components/molecules/mymatch.card.lobby';
-import SubTitle from './components/SubTitle';
+import CricketPage from './molecules/cricket.page';
+import MyMatchCard from './molecules/mymatch.card.lobby';
+import SubTitle from './atoms/lobby.subtitle';
 import {APP_COLORS} from '../../../constants/appContants';
 
 import {
@@ -34,8 +34,8 @@ export default function LobbyScreen(props: PropTypes) {
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
   function onPressMyMatchCard(match_key: string) {
-    toContestLiveMatch(navigation, 'wieng_2022_t20_03');
-    return;
+    // toContestLiveMatch(navigation, 'wieng_2022_t20_03');
+    // return;
     if (props.myMatches.status === 'completed') {
       toContestLiveMatch(navigation, match_key);
     } else {
@@ -51,8 +51,6 @@ export default function LobbyScreen(props: PropTypes) {
       navigateMatchContestsAction(navigation, obj);
     }
   }
-
-  log(props.appColors);
 
   return (
     <View style={[styles.root, props.appColors.bg]}>

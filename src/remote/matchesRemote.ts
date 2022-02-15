@@ -112,12 +112,9 @@ export const searchContestsRemote = async (payload: any) => {
   }
 };
 
-
-
-
 export const liveMatchMetaRemote = async (params: any) => {
   try {
-    return liveTestMatchFormat(CompletedTestMatchMeta);
+    // return liveTestMatchFormat(CompletedTestMatchMeta);
 
     const response = await requestServer(
       METHODS.POST,
@@ -199,7 +196,7 @@ export const getMatchPlayersRemote = async (params: any) => {
   }
 };
 
-export const getJoinedTeamsRemote = async (params: any) => {
+export const getCreatedTeamsRemote = async (params: any) => {
   try {
     const response = await requestServer(
       METHODS.POST,
@@ -214,7 +211,7 @@ export const getJoinedTeamsRemote = async (params: any) => {
     if (response.status === 200 && response.data.data) {
       return parseJoinedTeamsAPI(response.data.data);
     } else {
-      failedLog('getJoinedTeamsRemote()', response);
+      failedLog('getCreatedTeamsRemote()', response);
     }
   } catch (err) {
     console.log(err);

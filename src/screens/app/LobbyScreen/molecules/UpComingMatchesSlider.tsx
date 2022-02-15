@@ -1,5 +1,5 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import UpCommingMatchesCard from '../atoms/UpCommingMatchesCard';
 import {View, Text, TouchableOpacity} from 'react-native';
 

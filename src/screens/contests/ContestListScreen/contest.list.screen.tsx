@@ -58,7 +58,7 @@ interface PropTypes {
   onPressTeamSwitch(team_key: string, contest_key: string): void;
   onPressJoinedContest(contest_key: string): void;
   onPressSecondInnings(): any;
-  sortByOnPress(): any;
+  sortByOnPress(sortBy: any): any;
   openWallet(): any;
   onPressCreateTeam(): any;
 }
@@ -159,8 +159,6 @@ export default function ContestListScreen(props: PropTypes) {
           />
         </View>
       </PagerView>
-
-      
 
       <Modal
         isVisible={props.showJoinModal}

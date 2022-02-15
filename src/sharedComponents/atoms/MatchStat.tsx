@@ -13,14 +13,14 @@ interface PropTypes {
 }
 
 export default function MatchStat(props: PropTypes) {
-  
-
   return (
     <View style={[tailwind('flex-row items-center justify-between')]}>
       <View style={[tailwind('flex-col'), {flex: 4}]}>
         <Text style={[tailwind('font-regular text-white font-14')]}>
           {props.team_a.name}
         </Text>
+        {/* When there is a test match the innings will be multiple
+        so score_a will an array of objects need to show the  */}
         {props.score_a.length > 1 && (
           <CompletedInnings
             runs={props.score_a[0]?.runs}
@@ -28,6 +28,7 @@ export default function MatchStat(props: PropTypes) {
             overs={props.score_a[0]?.overs}
           />
         )}
+        {/* show the second innings score */}
         {props.score_a.length > 1 ? (
           <View style={[tailwind('flex-row items-center py-0.5')]}>
             <Text style={[tailwind('font-bold text-white font-20')]}>
@@ -37,7 +38,8 @@ export default function MatchStat(props: PropTypes) {
               ({props.score_a[1].overs})
             </Text>
           </View>
-        ) : (
+        ) : // show the first innings score
+        props.score_a[0] ? (
           <View style={[tailwind('flex-row items-center py-0.5')]}>
             <Text style={[tailwind('font-bold text-white font-20')]}>
               {props.score_a[0].runs}/{props.score_a[0].wickets}
@@ -46,6 +48,9 @@ export default function MatchStat(props: PropTypes) {
               ({props.score_a[0].overs})
             </Text>
           </View>
+        ) : (
+          // Yet to bat when score array is empty
+          <NoPoints />
         )}
       </View>
       {props.matchStatus === 'completed' ? <Completed /> : <LiveIndicator />}
@@ -70,7 +75,7 @@ export default function MatchStat(props: PropTypes) {
               ({props.score_b[1].overs})
             </Text>
           </View>
-        ) : (
+        ) : props.score_b[0] ? (
           <View style={[tailwind('flex-row items-center py-0.5')]}>
             <Text style={[tailwind('font-bold text-white font-20')]}>
               {props.score_b[0].runs}/{props.score_b[0].wickets}
@@ -79,6 +84,9 @@ export default function MatchStat(props: PropTypes) {
               ({props.score_b[0].overs})
             </Text>
           </View>
+        ) : (
+          // score b array is empty
+          <NoPoints />
         )}
       </View>
     </View>

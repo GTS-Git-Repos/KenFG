@@ -4,8 +4,8 @@ import {useQuery} from 'react-query';
 import {contestleaderBoardRemote} from '../remote/contestRemote';
 import {
   contestListsRemote,
+  getCreatedTeamsRemote,
   getJoinedContestRemote,
-  getJoinedTeamsRemote,
   liveMatchMetaRemote,
 } from '../remote/matchesRemote';
 
@@ -49,7 +49,7 @@ export const useGetTeams = (
     refetch: refetchTeams,
   } = useQuery(
     ['teams', match_key, user_id, isFullMatch],
-    getJoinedTeamsRemote,
+    getCreatedTeamsRemote,
     {
       notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
       staleTime: 1000 * 60,
@@ -84,7 +84,7 @@ export const useMatchMeta = (match_key: string, user_id: string) => {
     isSuccess: matchAPI,
     isFetching: matchAPILive,
     refetch: refetchMatch,
-  } = useQuery(['match', 'wieng_2022_t20_03', user_id], liveMatchMetaRemote, {
+  } = useQuery(['match', match_key, user_id], liveMatchMetaRemote, {
     notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
   });
   return {matchMeta, matchAPI, matchAPILive, refetchMatch};

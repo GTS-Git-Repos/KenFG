@@ -1,5 +1,5 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View, Text, useWindowDimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View, Text} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 

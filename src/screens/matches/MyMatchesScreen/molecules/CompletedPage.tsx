@@ -1,7 +1,8 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, ScrollView} from 'react-native';
-import MyMatchesCard from '../../../app/LobbyScreen/components/molecules/mymatch.card.lobby';
+import MyMatchesCard from '../../../app/LobbyScreen/molecules/mymatch.card.lobby';
+
 import NoContest from '../atoms/no.contest';
 
 interface PropTypes {

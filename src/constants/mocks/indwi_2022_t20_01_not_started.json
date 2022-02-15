@@ -1,0 +1,1280 @@
+[
+    {
+        "key": "indwi_2022_t20_01",
+        "name": "India vs West Indies",
+        "short_name": "IND vs WI",
+        "sub_title": "1st T20 Match",
+        "teams": {
+            "a": {
+                "key": "ind",
+                "code": "IND",
+                "name": "India"
+            },
+            "b": {
+                "key": "wi",
+                "code": "WI",
+                "name": "West Indies"
+            }
+        },
+        "start_at": 1645020000,
+        "venue": {
+            "key": "c__stadium__eden_gardens__c0a4d",
+            "name": "Eden Gardens Stadium",
+            "city": "Kolkata",
+            "country": {
+                "short_code": "IN",
+                "code": "IND",
+                "name": "India",
+                "official_name": "Republic of India",
+                "is_region": false
+            }
+        },
+        "tournament": {
+            "key": "indwi_2022",
+            "name": "West Indies tour of India, 2022",
+            "short_name": "IND vs WI"
+        },
+        "association": {
+            "key": "c__board__icc__c2ab7ee61",
+            "code": "ICC",
+            "name": "International Cricket Council",
+            "country": null,
+            "parent": null
+        },
+        "metric_group": "MG100",
+        "status": "not_started",
+        "winner": null,
+        "messages": [],
+        "gender": "male",
+        "sport": "cricket",
+        "format": "t20",
+        "title": "India vs West Indies - 1st T20 Match - West Indies tour of India, 2022",
+        "play_status": "scheduled",
+        "start_at_local": 1645039800,
+        "toss": null,
+        "play": null,
+        "players": {
+            "m_siraj": {
+                "player": {
+                    "key": "m_siraj",
+                    "name": "Mohammed Siraj",
+                    "jersey_name": "Mohammed Siraj",
+                    "legal_name": "Mohammed Siraj",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium_fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "ba_king": {
+                "player": {
+                    "key": "ba_king",
+                    "name": "Brandon King",
+                    "jersey_name": "Brandon King",
+                    "legal_name": "Brandon King",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "JM",
+                        "code": "JAM",
+                        "name": "Jamaica",
+                        "official_name": null,
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": null,
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "k_pollard": {
+                "player": {
+                    "key": "k_pollard",
+                    "name": "Kieron Pollard",
+                    "jersey_name": "Kieron Pollard",
+                    "legal_name": "Kieron Pollard",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "TT",
+                        "code": "TTO",
+                        "name": "Trinidad and Tobago",
+                        "official_name": "Republic of Trinidad and Tobago",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "r_shepherd": {
+                "player": {
+                    "key": "r_shepherd",
+                    "name": "Romario Shepherd",
+                    "jersey_name": "Romario Shepherd",
+                    "legal_name": "Romario Shepherd",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "WI",
+                        "code": "WIN",
+                        "name": "West Indies",
+                        "official_name": null,
+                        "is_region": true
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium_fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "k_yadav": {
+                "player": {
+                    "key": "k_yadav",
+                    "name": "Kuldeep Yadav",
+                    "jersey_name": "Kuldeep Yadav",
+                    "legal_name": "Kuldeep Yadav",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "left_arm",
+                        "pace": "slow",
+                        "bowling_type": "orthodox"
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "c__player__venkatesh_iyer__c5a75": {
+                "player": {
+                    "key": "c__player__venkatesh_iyer__c5a75",
+                    "name": "Venkatesh Iyer",
+                    "jersey_name": "Venkatesh Iyer",
+                    "legal_name": "Venkatesh Iyer",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "dr_bravo": {
+                "player": {
+                    "key": "dr_bravo",
+                    "name": "Darren Bravo",
+                    "jersey_name": "Darren Bravo",
+                    "legal_name": "Darren Bravo",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "TT",
+                        "code": "TTO",
+                        "name": "Trinidad and Tobago",
+                        "official_name": "Republic of Trinidad and Tobago",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium_fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "ro_chase": {
+                "player": {
+                    "key": "ro_chase",
+                    "name": "Roston Chase",
+                    "jersey_name": "Roston Chase",
+                    "legal_name": "Roston Chase",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "WI",
+                        "code": "WIN",
+                        "name": "West Indies",
+                        "official_name": null,
+                        "is_region": true
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "v_kohli": {
+                "player": {
+                    "key": "v_kohli",
+                    "name": "V Kohli",
+                    "jersey_name": "V Kohli",
+                    "legal_name": "Virat Kohli",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "rd_gaikwad": {
+                "player": {
+                    "key": "rd_gaikwad",
+                    "name": "Ruturaj Gaikwad",
+                    "jersey_name": "Ruturaj Gaikwad",
+                    "legal_name": "Ruturaj Gaikwad",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "k_mayers": {
+                "player": {
+                    "key": "k_mayers",
+                    "name": "Kyle Mayers",
+                    "jersey_name": "Kyle Mayers",
+                    "legal_name": "Kyle Mayers",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "WI",
+                        "code": "WIN",
+                        "name": "West Indies",
+                        "official_name": null,
+                        "is_region": true
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "a_hosein": {
+                "player": {
+                    "key": "a_hosein",
+                    "name": "Akeal Hosein",
+                    "jersey_name": "Akeal Hosein",
+                    "legal_name": "Akeal Hosein",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "TT",
+                        "code": "TTO",
+                        "name": "Trinidad and Tobago",
+                        "official_name": "Republic of Trinidad and Tobago",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "left_arm",
+                        "pace": "slow",
+                        "bowling_type": "orthodox"
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "dom_drakes": {
+                "player": {
+                    "key": "dom_drakes",
+                    "name": "Dominic Drakes",
+                    "jersey_name": "Dominic Drakes",
+                    "legal_name": "Dominic Drakes",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "BB",
+                        "code": "BRB",
+                        "name": "Barbados",
+                        "official_name": null,
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "d_chahar": {
+                "player": {
+                    "key": "d_chahar",
+                    "name": "Deepak Chahar",
+                    "jersey_name": "Deepak Chahar",
+                    "legal_name": "Deepak Chahar",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "s_thakur": {
+                "player": {
+                    "key": "s_thakur",
+                    "name": "SN Thakur",
+                    "jersey_name": "SN Thakur",
+                    "legal_name": "SN Thakur",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "s_cotterrell": {
+                "player": {
+                    "key": "s_cotterrell",
+                    "name": "Sheldon Cottrell",
+                    "jersey_name": "Sheldon Cottrell",
+                    "legal_name": "Sheldon Cottrell",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "WI",
+                        "code": "WIN",
+                        "name": "West Indies",
+                        "official_name": null,
+                        "is_region": true
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "f_allen": {
+                "player": {
+                    "key": "f_allen",
+                    "name": "F Allen",
+                    "jersey_name": "F Allen",
+                    "legal_name": "Fabian Allen",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "JM",
+                        "code": "JAM",
+                        "name": "Jamaica",
+                        "official_name": null,
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "left_arm",
+                        "pace": "slow",
+                        "bowling_type": "orthodox"
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "of_smith": {
+                "player": {
+                    "key": "of_smith",
+                    "name": "Odean Smith",
+                    "jersey_name": "Odean Smith",
+                    "legal_name": "Odean Smith",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "JM",
+                        "code": "JAM",
+                        "name": "Jamaica",
+                        "official_name": null,
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "shah_khan": {
+                "player": {
+                    "key": "shah_khan",
+                    "name": "Shahrukh Khan",
+                    "jersey_name": "Shahrukh Khan",
+                    "legal_name": "Shahrukh Khan",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "y_chahal": {
+                "player": {
+                    "key": "y_chahal",
+                    "name": "YS Chahal",
+                    "jersey_name": "YS Chahal",
+                    "legal_name": "YS Chahal",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "s_iyer": {
+                "player": {
+                    "key": "s_iyer",
+                    "name": "Shreyas Iyer",
+                    "jersey_name": "Shreyas Iyer",
+                    "legal_name": "Shreyas Iyer",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": "leg_break"
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "s_yadav": {
+                "player": {
+                    "key": "s_yadav",
+                    "name": "SA Yadav",
+                    "jersey_name": "SA Yadav",
+                    "legal_name": "SA Yadav",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "av_khan": {
+                "player": {
+                    "key": "av_khan",
+                    "name": "Avesh khan",
+                    "jersey_name": "Avesh khan",
+                    "legal_name": "Avesh Khan",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium_fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "n_pooran": {
+                "player": {
+                    "key": "n_pooran",
+                    "name": "Nicholas Pooran",
+                    "jersey_name": "Nicholas Pooran",
+                    "legal_name": "Nicholas Pooran",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "TT",
+                        "code": "TTO",
+                        "name": "Trinidad and Tobago",
+                        "official_name": "Republic of Trinidad and Tobago",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "keeper",
+                    "roles": [
+                        "keeper"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "hayd_walsh": {
+                "player": {
+                    "key": "hayd_walsh",
+                    "name": "Hayden Walsh",
+                    "jersey_name": "Hayden Walsh",
+                    "legal_name": "Hayden Walsh",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "WI",
+                        "code": "WIN",
+                        "name": "West Indies",
+                        "official_name": null,
+                        "is_region": true
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "left_arm",
+                        "pace": "slow",
+                        "bowling_type": "leg_break"
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "ro_powell": {
+                "player": {
+                    "key": "ro_powell",
+                    "name": "Rovman Powell",
+                    "jersey_name": "Rovman Powell",
+                    "legal_name": "Rovman Powell",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "JM",
+                        "code": "JAM",
+                        "name": "Jamaica",
+                        "official_name": null,
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium_fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "was_sundar": {
+                "player": {
+                    "key": "was_sundar",
+                    "name": "Washington Sundar",
+                    "jersey_name": "Washington Sundar",
+                    "legal_name": "Washington Sundar",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "b_kumar": {
+                "player": {
+                    "key": "b_kumar",
+                    "name": "Bhuvneshwar Kumar",
+                    "jersey_name": "Bhuvneshwar Kumar",
+                    "legal_name": "Bhuvneshwar Kumar",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "j_holder": {
+                "player": {
+                    "key": "j_holder",
+                    "name": "Jason Holder",
+                    "jersey_name": "Jason Holder",
+                    "legal_name": "Jason Holder",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "BB",
+                        "code": "BRB",
+                        "name": "Barbados",
+                        "official_name": null,
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium_fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "r_pant": {
+                "player": {
+                    "key": "r_pant",
+                    "name": "RR Pant",
+                    "jersey_name": "RR Pant",
+                    "legal_name": "Rishabh Pant",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "keeper",
+                    "roles": [
+                        "keeper"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": null,
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "c__player__ravi_bishnoi__8a9ae": {
+                "player": {
+                    "key": "c__player__ravi_bishnoi__8a9ae",
+                    "name": "Ravi Bishnoi",
+                    "jersey_name": "Ravi Bishnoi",
+                    "legal_name": "Ravi Bishnoi",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": "off_break"
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "i_kishan": {
+                "player": {
+                    "key": "i_kishan",
+                    "name": "Ishan Kishan",
+                    "jersey_name": "Ishan Kishan",
+                    "legal_name": "Ishan Kishan",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "keeper",
+                    "roles": [
+                        "keeper"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": null,
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "rg_sharma": {
+                "player": {
+                    "key": "rg_sharma",
+                    "name": "Rohit Sharma",
+                    "jersey_name": "Rohit Sharma",
+                    "legal_name": "Rohit Sharma",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "batsman",
+                    "roles": [
+                        "batsman"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "rs_kishore": {
+                "player": {
+                    "key": "rs_kishore",
+                    "name": "Ravisrinivasan S Kishore",
+                    "jersey_name": "Ravisrinivasan S Kishore",
+                    "legal_name": "Ravisrinivasan S Kishore",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "left_hand",
+                    "bowling_style": {
+                        "arm": "left_arm",
+                        "pace": "slow",
+                        "bowling_type": "orthodox"
+                    },
+                    "skills": [
+                        "bowl"
+                    ]
+                },
+                "score": {}
+            },
+            "h_patel": {
+                "player": {
+                    "key": "h_patel",
+                    "name": "Harshal Patel",
+                    "jersey_name": "Harshal Patel",
+                    "legal_name": "Harshal Patel",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "bowler",
+                    "roles": [
+                        "bowler"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "medium_fast",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "d_hooda": {
+                "player": {
+                    "key": "d_hooda",
+                    "name": "Deepak Hooda",
+                    "jersey_name": "Deepak Hooda",
+                    "legal_name": "Deepak Hooda",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "IN",
+                        "code": "IND",
+                        "name": "India",
+                        "official_name": "Republic of India",
+                        "is_region": false
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "all_rounder",
+                    "roles": [
+                        "all_rounder"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": {
+                        "arm": "right_arm",
+                        "pace": "slow",
+                        "bowling_type": null
+                    },
+                    "skills": [
+                        "bowl",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            },
+            "s_hope": {
+                "player": {
+                    "key": "s_hope",
+                    "name": "Shai Hope",
+                    "jersey_name": "Shai Hope",
+                    "legal_name": "Shai Hope",
+                    "gender": "male",
+                    "nationality": {
+                        "short_code": "WI",
+                        "code": "WIN",
+                        "name": "West Indies",
+                        "official_name": null,
+                        "is_region": true
+                    },
+                    "date_of_birth": null,
+                    "seasonal_role": "keeper",
+                    "roles": [
+                        "keeper"
+                    ],
+                    "batting_style": "right_hand",
+                    "bowling_style": null,
+                    "skills": [
+                        "keep",
+                        "bat"
+                    ]
+                },
+                "score": {}
+            }
+        },
+        "notes": [],
+        "data_review": {
+            "schedule": true,
+            "venue": true,
+            "result": false,
+            "pom": false,
+            "score": false,
+            "players": true,
+            "playing_xi": false,
+            "score_reviewed_ball_index": null,
+            "team_a": true,
+            "team_b": true,
+            "good_to_close": false,
+            "note": null
+        },
+        "squad": {
+            "a": {
+                "player_keys": [
+                    "m_siraj",
+                    "y_chahal",
+                    "c__player__ravi_bishnoi__8a9ae",
+                    "s_iyer",
+                    "i_kishan",
+                    "s_yadav",
+                    "av_khan",
+                    "v_kohli",
+                    "d_chahar",
+                    "k_yadav",
+                    "was_sundar",
+                    "b_kumar",
+                    "c__player__venkatesh_iyer__c5a75",
+                    "rd_gaikwad",
+                    "shah_khan",
+                    "rs_kishore",
+                    "h_patel",
+                    "r_pant",
+                    "d_hooda",
+                    "rg_sharma",
+                    "s_thakur"
+                ],
+                "captain": null,
+                "keeper": null,
+                "playing_xi": []
+            },
+            "b": {
+                "player_keys": [
+                    "k_pollard",
+                    "dr_bravo",
+                    "ba_king",
+                    "a_hosein",
+                    "n_pooran",
+                    "r_shepherd",
+                    "dom_drakes",
+                    "hayd_walsh",
+                    "ro_powell",
+                    "j_holder",
+                    "s_cotterrell",
+                    "ro_chase",
+                    "s_hope",
+                    "k_mayers",
+                    "f_allen",
+                    "of_smith"
+                ],
+                "captain": null,
+                "keeper": null,
+                "playing_xi": []
+            }
+        },
+        "estimated_end_date": 1645034400,
+        "completed_date_approximate": null,
+        "umpires": {
+            "match_umpires": null,
+            "tv_umpires": null,
+            "reserve_umpires": null,
+            "match_referee": null
+        }
+    }
+]

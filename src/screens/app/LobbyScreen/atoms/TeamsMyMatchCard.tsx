@@ -1,8 +1,8 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View, useWindowDimensions, Text, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../../constants/assets_manifest';
+import assets from '../../../../constants/assets_manifest';
 import FastImage from 'react-native-fast-image';
 
 interface PropTypes {

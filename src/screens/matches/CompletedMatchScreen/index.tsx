@@ -1,3 +1,7 @@
+// Did not used anywhere, need a pass all data props, surely it will crashes, currently opened,
+// it has a winning breakup sheet, other than all are 
+
+
 import React, {useRef, useState} from 'react';
 import {View, StyleSheet, Text, useWindowDimensions} from 'react-native';
 import tailwind from '../../../../tailwind';

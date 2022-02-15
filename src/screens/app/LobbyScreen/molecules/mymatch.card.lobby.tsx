@@ -1,11 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {TouchableOpacity} from 'react-native';
-import MyMatchesTop from '../atoms/MyMatches/myMatches.top';
-import Teams from '../atoms/MyMatches/Teams';
+import MyMatchesTop from '../atoms/my.matches.top';
+import Teams from '../atoms/my.matches.teams';
 import SlideAddMyMatchCard from '../atoms/SlideAddMyMatchCard';
 import {useNavigation} from '@react-navigation/core';
-import {getCountDown} from '../../../../../utils/formatters';
 const log = console.log;
 
 interface PropTypes {
@@ -16,7 +15,7 @@ interface PropTypes {
   start_time: Date;
   teamCount: any;
   contestCount: any;
-  status:string;
+  status: string;
   onPressMyMatchCard(match_key: string): any;
 }
 
@@ -30,9 +29,7 @@ export default function MyMatchesCard(props: PropTypes) {
     let interval: any = null;
     try {
       if (isMounted.current) {
-        // interval = setInterval(() => {
-        //   setCountDown(getCountDown(props.start_time));
-        // }, 1000);
+        // count down logic
       }
     } catch (err) {
       console.log(err);

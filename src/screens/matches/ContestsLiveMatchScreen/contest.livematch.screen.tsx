@@ -71,15 +71,16 @@ export default function ContestLiveMatchScreen(props: PropTypes) {
     return <LoadingSpinner title={'Loading...'} />;
   }
 
-  if (!matchAPI && !matchMeta) {
+  if (matchAPI && !matchMeta) {
     return (
       <Text style={[tailwind('font-regular text-white font-15')]}>
         Failed to Load
       </Text>
     );
   }
+  // log(JSON.stringify(matchMeta.score_b))
 
-
+  // return null
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={matchMeta?.match?.short_name} />

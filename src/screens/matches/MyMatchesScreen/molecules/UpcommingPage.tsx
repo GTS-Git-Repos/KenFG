@@ -3,7 +3,7 @@ import tailwind from '../../../../../tailwind';
 import {View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import MyMatchesCard from '../../../app/LobbyScreen/components/molecules/mymatch.card.lobby';
+import MyMatchesCard from '../../../app/LobbyScreen/molecules/mymatch.card.lobby';
 import NoContest from '../atoms/no.contest';
 import {useNavigation} from '@react-navigation/core';
 

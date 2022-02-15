@@ -1,6 +1,6 @@
 import {useQuery} from 'react-query';
 import {
-  getJoinedTeamsRemote,
+  getCreatedTeamsRemote,
   getPrivateContestsRemote,
 } from '../../../remote/matchesRemote';
 
@@ -20,10 +20,13 @@ export const usePrivateContestList = (match_key: string, user_key: string) => {
   return {contests, contestsAPI, contestAPILive, refetch};
 };
 
+// dont use it
 export const useGetTeams = (match_key: string, user_id: string) => {
+  console.log('DEPRCATED USE SHARED HOOKS FOR GET TEAMS');
+  
   const {data: teams} = useQuery(
     ['teams', match_key, user_id],
-    getJoinedTeamsRemote,
+    getCreatedTeamsRemote,
     {
       notifyOnChangeProps: ['data'],
     },

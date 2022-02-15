@@ -1,5 +1,5 @@
 import React from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View} from 'react-native';
 import UpcommingMatchTitle from './upcomming.match.title';
 import ImageSlider from './ImageSlider';
@@ -8,8 +8,8 @@ import {useNavigation} from '@react-navigation/native';
 import {
   navigateMatchContestsAction,
   toSecondInningsContestList,
-} from '../../../../../store/actions/navigationActions';
-import {errorBox} from '../../../../../utils/snakBars';
+} from '../../../../store/actions/navigationActions';
+import {errorBox} from '../../../../utils/snakBars';
 
 interface PropTypes {
   isFullMatch: boolean;
@@ -18,8 +18,7 @@ interface PropTypes {
   onPressMatchType(match_type: number): void;
 }
 
-export default function 
-CricketPage(props: PropTypes) {
+export default function CricketPage(props: PropTypes) {
   const navigation = useNavigation();
 
   const navigateToMatchContests = (match_key: string) => {

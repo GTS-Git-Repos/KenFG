@@ -144,6 +144,7 @@ export default function ContestListHOC() {
   };
 
   const onPressJoinedContest = (contest_key: string): void => {
+    console.log('DEPRECATED MOVE TO CONTEST NAVIGATION');
     const contest = joined.find(
       (item: any) => item.contestMeta.contest_code === contest_key,
     );
@@ -226,7 +227,7 @@ export default function ContestListHOC() {
       Alert.alert('Failed to Join Contest', 'something went wrong');
     }
   }
-  const openWallet = (e: any) => {
+  const openWallet = () => {
     setShowWalletModal(true);
   };
 

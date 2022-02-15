@@ -1,8 +1,8 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, ActivityIndicator, Text} from 'react-native';
-import LobbyTopBar from './LobbyTopBar';
-import LobbyNav from './LobbyNav';
+import LobbyTopBar from './lobby.top.bar';
+import LobbyNav from './lobby.nav';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
@@ -13,7 +13,7 @@ export default function LobbyScreenLoading(props: PropTypes) {
   return (
     <View style={[tailwind('h-full bg-dark')]}>
       <View style={[tailwind('bg-secondary')]}>
-        <LobbyTopBar amount={'0,000'} />
+        <LobbyTopBar amount={'0,000'} appColors={{}} />
         <LobbyNav cricket={true} setCricket={() => {}} name={''} />
       </View>
 

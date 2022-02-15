@@ -109,6 +109,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
     }
   }
 
+  
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Select Team'} />

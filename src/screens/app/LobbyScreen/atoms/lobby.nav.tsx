@@ -8,10 +8,8 @@ import {
   useWindowDimensions,
   StyleSheet,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
-import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   name: string;

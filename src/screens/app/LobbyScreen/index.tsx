@@ -6,9 +6,9 @@ import {
   isFulMatchSelector,
   appColorsSelector,
 } from '../../../store/selectors';
-import LobbyScreenLoading from './components/lobbyscreen.loading';
+import LobbyScreenLoading from './atoms/lobbyscreen.loading';
 import LobbyScreen from './lobby.screen';
-import {useLobbyMeta} from './lobby.workers';
+import {useLobbyMeta} from './lobby.controller';
 
 export default function LobbyScreenHOC() {
   const dispatch = useDispatch();

@@ -5,10 +5,10 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
-import assets from '../../../../../constants/assets_manifest';
+import assets from '../../../../constants/assets_manifest';
 import {useDispatch} from 'react-redux';
 
 import FastImage from 'react-native-fast-image';

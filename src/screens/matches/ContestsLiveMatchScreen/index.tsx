@@ -6,10 +6,7 @@ import ContestLiveMatchScreen from './contest.livematch.screen';
 export default function ContestLiveMatchHOC() {
   const route = useRoute()
 
-  console.log(route);
-  
-
-  // const {players} = usePlayersState();
+    // const {players} = usePlayersState();
 
   return (
     <ContestLiveMatchScreen

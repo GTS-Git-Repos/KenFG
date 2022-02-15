@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import tailwind from '../../../../../../tailwind';
+import tailwind from '../../../../../tailwind';
 import {
   View,
   TouchableOpacity,
@@ -11,10 +11,6 @@ import Swiper from 'react-native-swiper';
 import {useNavigation} from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  updateSelectedContestAction,
-  updateSelectedMatchAction,
-} from '../../../../../store/actions/appActions';
 
 interface PropTypes {
   upcomming: any;
