@@ -7,7 +7,7 @@ import {
 import {APP_COLORS} from '../../constants/appContants';
 
 const initialState = {
-  darkModeEnabled: true,
+  darkModeEnabled: false,
   error: null,
   ip: null,
   selected_match: null,

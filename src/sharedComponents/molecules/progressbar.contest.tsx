@@ -3,6 +3,7 @@ import tailwind from '../../../tailwind';
 import {View, Text} from 'react-native';
 
 interface PropTypes {
+  isDarkMode: boolean;
   total_spots: any;
   filled_spots: any;
 }
@@ -20,7 +21,7 @@ export default function ProgressBarContestCard(props: PropTypes) {
         <View
           style={[
             {
-              backgroundColor: '#B2933D',
+              backgroundColor: `${props.isDarkMode ? '#B2933D' : '#00513B'}`,
               width: `10%`,
               height: 2.5,
             },

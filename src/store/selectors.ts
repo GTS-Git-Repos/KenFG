@@ -22,9 +22,15 @@ const JoinContestState = (state: any) => state.app.joinContestRequest;
 
 export const appColorsSelector = createSelector(DarkModeState, darkMode => {
   if (darkMode) {
-    return APP_COLORS.darkMode;
+    return {
+      dark: true,
+      ...APP_COLORS.darkMode,
+    };
   } else {
-    return APP_COLORS.lightMode;
+    return {
+      dark: false,
+      ...APP_COLORS.lightMode,
+    };
   }
 });
 

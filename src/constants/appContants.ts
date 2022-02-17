@@ -18,10 +18,26 @@ export const APP_COLORS = {
       color: '#FFFFFF', // pure white text
     },
     txt_2: {
-      color: '#614920', // golder text
+      color: '#614920', // golden text
     },
     txt_3: {
       color: '#8797B1', // semi dark text
+    },
+    txt_4: {
+      color: '#FFFFFF', // pure white text
+    },
+    // for non invertable colors
+    dgdt: {
+      color: '#4F4F4F', // dark mode golden text
+    },
+    dsmt: {
+      color: '#8797B1', // dark semi dark text
+    },
+    ldt: {
+      color: '#0D1320', // light mode dark text
+    },
+    dwt: {
+      color: '#FFFFFF', // dark mode white text
     },
   },
   lightMode: {
@@ -45,6 +61,22 @@ export const APP_COLORS = {
     },
     txt_3: {
       color: '#0D1320', // dark text
+    },
+    txt_4: {
+      color: '#FFFFFF', // white text
+    },
+    // for non invertable colors
+    lgt: {
+      color: '#4F4F4F', // light mode gray text
+    },
+    lrt: {
+      color: '#9C181E', // light mode red text
+    },
+    ldt: {
+      color: '#0D1320', // light mode dark text
+    },
+    lwt: {
+      color: '#FFFFFF', // light mode white text
     },
   },
 };

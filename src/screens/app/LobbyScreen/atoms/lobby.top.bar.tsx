@@ -1,15 +1,14 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
-import {useSelector} from 'react-redux';
+import {WalletIcon} from '../../../../assets/newIcons';
 
 interface PropTypes {
   amount: string;
-  appColors:any
+  appColors: any;
 }
 
 export default function LobbyTopBar(props: PropTypes) {
@@ -47,27 +46,30 @@ export default function LobbyTopBar(props: PropTypes) {
             tailwind('flex-row items-end justify-end px-2'),
             {position: 'relative', right: 16},
           ]}>
-          <View style={[tailwind('px-2')]}>
-            <Text
-              style={[
-                tailwind('font-bold uppercase'),
-                {fontSize: 11, color: '#5F401C'},
-              ]}>
-              Cash Balance
-            </Text>
-            <Text
-              style={[
-                tailwind('font-regular text-primary text-right font-13'),
-              ]}>
-              {'\u20B9 '}
-              {props.amount}
-            </Text>
-          </View>
-          <Image
+          <View style={[tailwind('flex-row items-center')]}>
+            <View style={[tailwind('px-2')]}>
+              <Text
+                style={[
+                  tailwind('font-bold uppercase'),
+                  {fontSize: 11, color: '#5F401C'},
+                ]}>
+                Cash Balance
+              </Text>
+              <Text
+                style={[
+                  tailwind('font-regular text-primary text-right font-13'),
+                ]}>
+                {'\u20B9 '}
+                {props.amount}
+              </Text>
+            </View>
+            {/* <Image
             resizeMode="contain"
             source={assets.wallet}
             style={[tailwind(''), {width: 28, height: 28, bottom: 3}]}
-          />
+          /> */}
+            <WalletIcon darkColor={true} />
+          </View>
         </TouchableOpacity>
       </View>
 

@@ -66,7 +66,7 @@ interface PropTypes {
 
 export default function ContestListScreen(props: PropTypes) {
   const navigation = useNavigation<any>();
-  const colors = useSelector(appColorsSelector);
+  const clr = useSelector(appColorsSelector);
   const {width} = useWindowDimensions();
 
   const [selectedFilter, setSelectedFilter] = useState<any>('All');
@@ -74,7 +74,6 @@ export default function ContestListScreen(props: PropTypes) {
   const matchSelector: any = useSelector(selectedMatch);
 
   const timeStamp = useCountDown(matchSelector.start_at, false);
-
   // Business logic
   const onPageSelectedAction = (e: any) => {
     props.setSelectedTab(e.nativeEvent.position);
@@ -95,14 +94,14 @@ export default function ContestListScreen(props: PropTypes) {
   };
 
   return (
-    <View style={[tailwind('h-full bg-dark-4')]}>
+    <View style={[ss.root, clr.bg]}>
       <TopBarContest
         title={matchSelector?.titleString}
         subtitle={timeStamp}
         enableNotification={enableNotification}
         openWallet={props.openWallet}
       />
-      <View style={[tailwind('')]}>
+      <View>
         <TabsContest
           selectedTab={props.selectedTab}
           contest_count={props?.joined?.length}
@@ -212,10 +211,8 @@ export default function ContestListScreen(props: PropTypes) {
  * match_key is a mandatory params
  */
 
-const styles = (colors: AppColorsType): any =>
-  StyleSheet.create({
-    root: {
-      height: '100%',
-      backgroundColor: colors.bg,
-    },
-  });
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+});

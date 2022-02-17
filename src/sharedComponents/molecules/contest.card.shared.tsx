@@ -3,6 +3,8 @@ import tailwind from '../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import ProgressBarContestCard from './progressbar.contest';
 import {CupIcon, DollarIcon, MIcon, TickIcon} from '..';
+import {appColorsSelector} from '../../store/selectors';
+import {useSelector} from 'react-redux';
 const log = console.log;
 
 // type ContestType = 'public' | 'practice';
@@ -25,19 +27,19 @@ interface PropTypes {
   proceedToJoin(contest_key: string): any;
 }
 
-log(tailwind('font-regular text-dark-1 pl-2    font-13'));
-
 export default function ContestCard(props: PropTypes) {
+  const clr = useSelector(appColorsSelector);
+
   return (
     <TouchableOpacity
-      activeOpacity={0.7}
-      style={[styles.root]}
+      activeOpacity={0.5}
+      style={[styles.root, clr.bg_1]}
       onPress={() => props.navigate(props.contest_key)}>
       <View style={styles.content}>
         <View style={[styles.topSection, tailwind('')]}>
           <View>
-            <Text style={[styles.contestTitle]}>{props.title}</Text>
-            <Text style={styles.contestAmount}>
+            <Text style={[styles.contestTitle, clr.txt_1]}>{props.title}</Text>
+            <Text style={[styles.contestAmount, clr.txt_3]}>
               {'\u20B9 '}
               {props.amount_letters}
             </Text>
@@ -52,6 +54,7 @@ export default function ContestCard(props: PropTypes) {
 
         {/* Progress bar */}
         <ProgressBarContestCard
+          isDarkMode={clr.dark}
           total_spots={props.total_spots}
           filled_spots={props.filled_spots}
         />
@@ -66,6 +69,7 @@ export default function ContestCard(props: PropTypes) {
 }
 
 const ContestEntryType = (props: any) => {
+  const clr = useSelector(appColorsSelector);
   return (
     <TouchableOpacity
       onPress={() => props.proceedToJoin(props.contest_key)}
@@ -79,8 +83,7 @@ const ContestEntryType = (props: any) => {
             },
           ]}>
           {props.contest_type === 'public' ? (
-            <Text
-              style={[tailwind('font-bold text-center text-light font-14')]}>
+            <Text style={[styles.entryAmount, {color: '#ffffff'}]}>
               {'\u20B9 '}
               {props.entry}
             </Text>
@@ -133,6 +136,7 @@ const styles = StyleSheet.create({
   root: {
     backgroundColor: '#172338',
     borderRadius: 8,
+    elevation: 5,
   },
   topSection: {
     alignItems: 'center',
@@ -144,7 +148,6 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   contestTitle: {
-    color: 'rgba(255, 255, 255, 1)',
     fontFamily: 'gadugi-normal',
     fontSize: 14,
     textTransform: 'capitalize',
@@ -159,7 +162,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
     padding: 12,
-    backgroundColor: '#121D2E',
+    // backgroundColor: '#121D2E',
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -170,5 +173,10 @@ const styles = StyleSheet.create({
     fontFamily: 'gadugi-normal',
     fontSize: 13,
     paddingHorizontal: 4,
+  },
+  entryAmount: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 14,
+    textAlign: 'center',
   },
 });

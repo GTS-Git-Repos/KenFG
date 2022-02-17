@@ -12,8 +12,6 @@ interface PropTypes {
 }
 
 function Icon(props: PropTypes) {
-  console.log('<< MOVE TO NEW SVG ICONS LOCATION >>');
-
   return (
     <Svg width={22} height={20} fill="none" {...props}>
       <Path
