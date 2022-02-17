@@ -74,7 +74,7 @@ export default function ContestInfoScreen(props: PropTypes) {
           contest_key={props.contestInfo.key}
           match_key={props.contestInfo.match_key}
           title={props.contestInfo.title}
-          total_joined={30}
+          filled_spots={props?.contestInfo.filled_spots}
           total_spots={props.contestInfo.total_spots}
           amount_letters={props.contestInfo.prize.amount_letters}
           amount={props.contestInfo.prize.amount}

@@ -51,15 +51,3 @@ const App = (state = initialState, action: actionShape): any => {
 };
 
 export default App;
-
-/**
- * selected_match:
- * ---
- * {
- *    mathch_key:1123,
- *    teams:AUS vs ENG
- * }
- * selected_contest:
- * ---
- * 23456a
- */

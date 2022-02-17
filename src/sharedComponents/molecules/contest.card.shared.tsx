@@ -12,7 +12,7 @@ interface PropTypes {
   contest_key: string;
   match_key: string;
   title: string;
-  total_joined: number;
+  filled_spots: Array<any>;
   total_spots: number;
   amount_letters: string;
   amount: string;
@@ -51,7 +51,10 @@ export default function ContestCard(props: PropTypes) {
         </View>
 
         {/* Progress bar */}
-        <ProgressBarContestCard />
+        <ProgressBarContestCard
+          total_spots={props.total_spots}
+          filled_spots={props.filled_spots}
+        />
       </View>
       <Footer
         amount_letters={props.amount_letters}

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {View, useWindowDimensions} from 'react-native';
+import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
@@ -15,11 +15,12 @@ import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
 import {useSelector} from 'react-redux';
-import {selectedMatch} from '../../../store/selectors';
+import {appColorsSelector, selectedMatch} from '../../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import Modal from 'react-native-modal';
 import {TeamFormationMutationType} from '../../../types/match';
 import {infoBox} from '../../../utils/snakBars';
+import {AppColorsType} from '../../../types/app';
 
 const log = console.log;
 
@@ -65,7 +66,7 @@ interface PropTypes {
 
 export default function ContestListScreen(props: PropTypes) {
   const navigation = useNavigation<any>();
-
+  const colors = useSelector(appColorsSelector);
   const {width} = useWindowDimensions();
 
   const [selectedFilter, setSelectedFilter] = useState<any>('All');
@@ -94,7 +95,7 @@ export default function ContestListScreen(props: PropTypes) {
   };
 
   return (
-    <View style={tailwind('bg-dark h-full')}>
+    <View style={[tailwind('h-full bg-dark-4')]}>
       <TopBarContest
         title={matchSelector?.titleString}
         subtitle={timeStamp}
@@ -210,3 +211,11 @@ export default function ContestListScreen(props: PropTypes) {
 /**
  * match_key is a mandatory params
  */
+
+const styles = (colors: AppColorsType): any =>
+  StyleSheet.create({
+    root: {
+      height: '100%',
+      backgroundColor: colors.bg,
+    },
+  });

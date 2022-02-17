@@ -1,8 +1,10 @@
 import {covertInputTimeStringToDate} from './../utils/comman';
 import {splitRoleWisePlayersPayload} from './teams.formatter';
 import {FLAG_IMG_URL} from '../constants/appContants';
+import {UpcommingMatchType} from '../types/app_api';
 
 export const groupAllContestsAPIRmeote = (payload: any) => {
+  //  To do need to group contests, by key "group", ['popular','mega']
   try {
     const paid = payload.filter((item: any) => item.contest_type === 'public');
     const practice = payload.filter(
@@ -66,7 +68,9 @@ export const extractJoinedContestAPIResponse = (payload: any) => {
   }
 };
 
-export const extractDataFromUpcommingMatchesAPI = (payload: any) => {
+export const extractDataFromUpcommingMatchesAPI = (
+  payload: any,
+): UpcommingMatchType => {
   try {
     const u_matches = payload.matches;
     const banners = payload.banners;

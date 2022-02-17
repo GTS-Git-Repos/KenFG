@@ -21,7 +21,7 @@ interface PropTypes {
   proceedToJoin(contest_key: string): any;
   onPressSecondInnings(): any;
   onPressCreateTeam(): any;
-  sortByOnPress(): any;
+  sortByOnPress(sortBy: any): any;
   sortStatus: any;
 }
 
@@ -76,7 +76,7 @@ export default function ContestPage(props: PropTypes) {
   }
 
   return (
-    <View  style={[tailwind('h-full')]}>
+    <View style={[tailwind('h-full')]}>
       <ScrollView>
         <FilterTab
           selectedFilter={props.selectedFilter}
@@ -100,7 +100,7 @@ export default function ContestPage(props: PropTypes) {
                     contest_key={item.key}
                     match_key={item.match_key}
                     title={item.title}
-                    total_joined={30}
+                    filled_spots={item?.filled_spots}
                     total_spots={item.total_spots}
                     entry={item.entry}
                     amount_letters={item.prize.amount_letters}

@@ -3,7 +3,8 @@ import tailwind from '../../../tailwind';
 import {View, Text} from 'react-native';
 
 interface PropTypes {
-  level?: string;
+  total_spots: any;
+  filled_spots: any;
 }
 
 export default function ProgressBarContestCard(props: PropTypes) {
@@ -27,10 +28,10 @@ export default function ProgressBarContestCard(props: PropTypes) {
       </View>
       <View style={[tailwind('flex-row justify-between items-center pt-3')]}>
         <Text style={[tailwind('font-regular text-secondary font-14')]}>
-          200 spots left
+          {props.total_spots - props?.filled_spots[0]?.team_count} spots left
         </Text>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-          300 Spots
+          {props.total_spots} Spots
         </Text>
       </View>
     </View>

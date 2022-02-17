@@ -9,6 +9,8 @@ import DebitCardIcon from './svgIcons/debit.card.icon';
 import BankIcon from './svgIcons/bank.icon';
 import MoreBottomTabOff from './svgIcons/more.bottomtab.off';
 import MoreBottomTabOn from './svgIcons/more.bottomtab.on';
+import SwitchIcon from './svgIcons/switch.icon';
+import WalletIcon from './svgIcons/wallet.icon';
 
 import ContestsBottomTabOn from './svgIcons/contests.bottomtab.on';
 
@@ -25,4 +27,6 @@ export {
   CreditCardIcon,
   DebitCardIcon,
   BankIcon,
+  SwitchIcon,
+  WalletIcon,
 };

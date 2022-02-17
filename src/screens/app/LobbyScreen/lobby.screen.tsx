@@ -25,6 +25,7 @@ interface PropTypes {
   isFullMatch: boolean;
   appColors: any;
   onPressMatchType(match_type: number): void;
+  onPressNotification(match_key: string): void;
 }
 
 export default function LobbyScreen(props: PropTypes) {
@@ -33,10 +34,6 @@ export default function LobbyScreen(props: PropTypes) {
   const notificationSheet = useRef();
 
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
-
-  function onPressNotification(match_key:string){
-    log(match_key)
-  }
 
   function onPressMyMatchCard(match_key: string) {
     // toContestLiveMatch(navigation, 'wieng_2022_t20_03');
@@ -56,6 +53,7 @@ export default function LobbyScreen(props: PropTypes) {
       navigateMatchContestsAction(navigation, obj);
     }
   }
+  log(props.appColors)
 
   return (
     <View style={[styles.root, props.appColors.bg]}>
@@ -101,7 +99,7 @@ export default function LobbyScreen(props: PropTypes) {
             isFullMatch={props.isFullMatch}
             onPressMatchType={props.onPressMatchType}
             notificationSheet={notificationSheet}
-            onPressNotification={onPressNotification}
+            onPressNotification={props.onPressNotification}
           />
         ) : (
           <View style={[tailwind('py-10')]}>

@@ -32,6 +32,7 @@ export const joinContestRequestAction = (payload: JoinContestRequestShape) => ({
   payload,
 });
 
+// toggle between full match and second innings
 export const updateFullMatchAction = (payload: boolean) => ({
   type: UPDATE_FULL_MATCH,
   payload,

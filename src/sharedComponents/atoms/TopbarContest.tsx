@@ -1,10 +1,11 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
+import AppView from '../../coreComponets/app.View';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-import {BackIcon, ContestBellIcon, WalletIcon} from '../../sharedComponents';
-
+import {BackIcon, ContestBellIcon} from '../../sharedComponents';
+import {WalletIcon} from '../../assets/newIcons/';
 interface PropTypes {
   title: string;
   subtitle: string;
@@ -15,9 +16,12 @@ interface PropTypes {
 export default function TopBarContest(props: PropTypes) {
   const navigation = useNavigation();
   return (
-    <LinearGradient
-      colors={['#BCA04D', '#D8C872']}
-      style={[tailwind('py-2 px-4 flex-row items-center justify-between')]}>
+    <View
+      style={[
+        tailwind(
+          'py-2 px-4 flex-row items-center bg-secondary justify-between',
+        ),
+      ]}>
       <View style={[tailwind('flex flex-row items-center')]}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <BackIcon />
@@ -34,18 +38,23 @@ export default function TopBarContest(props: PropTypes) {
       </View>
 
       <View style={[tailwind('flex flex-row items-center')]}>
-        {/* <TouchableOpacity style={[tailwind('px-1')]}>
-          <CapWithVSIcon />
-        </TouchableOpacity> */}
-        <TouchableOpacity
-          onPress={props.enableNotification}
-          style={[tailwind('px-1')]}>
-          <ContestBellIcon />
-        </TouchableOpacity>
         <TouchableOpacity onPress={props.openWallet} style={[tailwind('px-1')]}>
           <WalletIcon darkColor={true} />
         </TouchableOpacity>
       </View>
-    </LinearGradient>
+    </View>
   );
+}
+
+{
+  /* <TouchableOpacity style={[tailwind('px-1')]}>
+          <CapWithVSIcon />
+        </TouchableOpacity> */
+}
+{
+  /* <TouchableOpacity
+          onPress={props.enableNotification}
+          style={[tailwind('px-1')]}>
+          <ContestBellIcon />
+        </TouchableOpacity> */
 }

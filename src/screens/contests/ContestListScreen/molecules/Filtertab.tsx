@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {DownArrowIcon,TopArrowIcon} from "../../../../sharedComponents"
+import {DownArrowIcon, TopArrowIcon} from '../../../../sharedComponents';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Svg, {Defs, LinearGradient, Path, Stop} from 'react-native-svg';
 import {useNavigation} from '@react-navigation/native';
@@ -11,7 +11,7 @@ interface PropTypes {
   setSelectedFilter(filter: string): any;
   isFullMatch: boolean;
   onPressSecondInnings(): any;
-  sortByOnPress():any,
+  sortByOnPress(sortBy: any): any;
   sortStatus: any;
 }
 
@@ -187,7 +187,10 @@ function FilterTabs(props: PropTypes) {
 
         {/* {props.isFullMatch ? <SecondInnings /> : <FullContest />} */}
       </View>
-      <SortBy sortStatus={props.sortStatus} sortByOnPress={props.sortByOnPress} />
+      <SortBy
+        sortStatus={props.sortStatus}
+        sortByOnPress={props.sortByOnPress}
+      />
     </View>
   );
 }
@@ -201,11 +204,16 @@ const SortBy = (props: any) => {
         ),
       ]}>
       <TouchableOpacity
-      onPress={()=>props.sortByOnPress({max_price:!props.sortStatus.max_price,max_entry:null})}
+        onPress={() =>
+          props.sortByOnPress({
+            max_price: !props.sortStatus.max_price,
+            max_entry: null,
+          })
+        }
         activeOpacity={0.5}
         style={[tailwind('flex-row items-center px-6')]}>
-          {props.sortStatus.max_price === false && <TopArrowIcon /> }
-        {props.sortStatus.max_price === true && <DownArrowIcon /> }
+        {props.sortStatus.max_price === false && <TopArrowIcon />}
+        {props.sortStatus.max_price === true && <DownArrowIcon />}
 
         <Text style={[tailwind('font-regular px-3 text-dark-1 font-13')]}>
           Total Price
@@ -213,20 +221,23 @@ const SortBy = (props: any) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-       onPress={()=>props.sortByOnPress({max_price:null,max_entry:!props.sortStatus.max_entry})}
+        onPress={() =>
+          props.sortByOnPress({
+            max_price: null,
+            max_entry: !props.sortStatus.max_entry,
+          })
+        }
         activeOpacity={0.5}
         style={[tailwind('flex-row items-center px-6')]}>
         <Text style={[tailwind('font-regular px-3 text-dark-1 font-13')]}>
           Entry Fee
         </Text>
-        {props.sortStatus.max_entry === false && <TopArrowIcon /> }
-        {props.sortStatus.max_entry === true && <DownArrowIcon /> }
+        {props.sortStatus.max_entry === false && <TopArrowIcon />}
+        {props.sortStatus.max_entry === true && <DownArrowIcon />}
       </TouchableOpacity>
     </View>
   );
 };
-
-
 
 const SecondInnings = (props: any) => {
   return (

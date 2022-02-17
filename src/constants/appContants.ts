@@ -3,23 +3,49 @@ export const FLAG_IMG_URL = 'http://kenfg.com/images/flag/';
 export const APP_COLORS = {
   darkMode: {
     bg: {
-      backgroundColor: '#0c1320',
+      backgroundColor: '#0D1320', // dark black
     },
-    bg_primary: '',
-    bg_secondary: '',
-    text_primary: '',
-    text_secondary: '',
+    bg_1: {
+      backgroundColor: '#172338', // semi dark
+    },
+    bg_2: {
+      backgroundColor: '#d1b45a', // golden yellow
+    },
+    bg_3: {
+      backgroundColor: '#121D2E', // medium dark
+    },
+    txt_1: {
+      color: '#FFFFFF', // pure white text
+    },
+    txt_2: {
+      color: '#614920', // golder text
+    },
+    txt_3: {
+      color: '#8797B1', // semi dark text
+    },
   },
   lightMode: {
     bg: {
-      backgroundColor: '#ffffff',
+      backgroundColor: '#E5E5E5', // shade white
     },
-    bg_primary: '',
-    bg_secondary: {
-      backgroundColor: '#F71D2C',
+    bg_1: {
+      backgroundColor: '#FFFFFF', // pure white
     },
-    text_primary: '',
-    text_secondary: '',
+    bg_2: {
+      backgroundColor: '#9C181E', // red
+    },
+    bg_3: {
+      backgroundColor: '#E0E0E0', // dark shade white
+    },
+    txt_1: {
+      color: '#4F4F4F', // gray text
+    },
+    txt_2: {
+      color: '#9C181E', // red text
+    },
+    txt_3: {
+      color: '#0D1320', // dark text
+    },
   },
 };
 

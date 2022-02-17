@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {
+  appColorsSelector,
   isFulMatchSelector,
   selectedMatch,
   userInfo,
@@ -15,8 +16,8 @@ import ContestListScreen from './contest.list.screen';
 import ContestScreenLoading from './atoms/screen.loading.contest';
 import {TO_TEAMLIST} from '../../../constants/appContants';
 
-import {useContestList} from './contest.workers';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
+import {useContestList} from '../../../shared_hooks/contest.hooks';
 import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 
@@ -53,6 +54,9 @@ export default function ContestListHOC() {
   );
   const allContests = allContestsSelector(contestState);
   const sortStatus = sortStatusSelector(contestState);
+  const colors = useSelector(appColorsSelector)
+
+  
 
   const navigation = useNavigation<any>();
   const pagerRef = useRef<PagerView>(null);
@@ -71,6 +75,7 @@ export default function ContestListHOC() {
 
   const {contests, contestsAPI}: any = useContestList(
     matchSelector.match_key,
+    userSelector.mobile,
     isFullMatch,
   );
 

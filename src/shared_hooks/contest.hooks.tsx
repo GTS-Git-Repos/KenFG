@@ -9,12 +9,6 @@ import {
   liveMatchMetaRemote,
 } from '../remote/matchesRemote';
 
-// const {data} = useQuery(
-//   ['contests', matchSelector.match_key],
-//   contestListsRemote,
-//   {staleTime: 8000},
-// );
-
 export const useContestList = (
   match_key: string,
   user_id: string,

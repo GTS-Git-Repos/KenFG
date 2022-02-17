@@ -23,7 +23,9 @@ const req_team_create = '/create-team.php';
 const req_view_team = '/view-team.php';
 const req_contest_list = '/contests.php';
 const req_join_contest = '/join-contest.php';
-const req_players = '/fantasy-player.php';
+// const req_players = '/fantasy-player.php';
+const req_players = '/player-credits.php';
+
 const req_live_match = '/live-match.php';
 const req_my_contest = '/my-contest.php';
 const req_create_contest = '/create-private-contest.php';
@@ -84,6 +86,7 @@ export const contestListsRemote = async (params: any) => {
         }`,
     );
     if (response.status === 200) {
+
       return groupAllContestsAPIRmeote(response.data.data);
     } else {
       failedLog('contestsListsRemote()', response);
