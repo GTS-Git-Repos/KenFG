@@ -11,6 +11,7 @@ import SelectTeamHeader from './atoms/SelectTeamHeader';
 import CompareTeamLoading from './atoms/CompareTeamLoading';
 import Points from './atoms/Points';
 import Status from './atoms/Status';
+import CommanPlayers from './atoms/comman.players';
 import PlayerStats from './molecules/PlayersStats';
 
 const log = console.log;
@@ -76,10 +77,7 @@ export default function CompareTeamScreen(props: PropTypes) {
         </View>
         <View style={[tailwind('h-2 bg-dark-4')]}></View>
         <Title title={'Comman Players'} srcTeamPoints={1} OppTeamPoints={33} />
-        <PlayerStats
-          srcTeamPlayers={props.playersData.commanPlayers}
-          oppTeamPlayers={props.playersData.commanPlayers}
-        />
+        <CommanPlayers players={props.playersData.commanPlayers} />
         <Title
           title={'Diffrent Players'}
           srcTeamPoints={1}
