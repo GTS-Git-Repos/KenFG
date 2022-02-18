@@ -17,7 +17,6 @@ interface PropTypes {
 export default function CreateTeamFilterSheetTitle(props: PropTypes) {
   // console.log(tailwind('font-bold text-white font-15'));
 
-
   return (
     <View style={[tailwind('bg-dark rounded-t-lg')]}>
       <View style={[styles.head_wrapper]}>
@@ -34,7 +33,7 @@ export default function CreateTeamFilterSheetTitle(props: PropTypes) {
       {/* Team a */}
       <TouchableOpacity
         onPress={() => props.onTeamFilterAction(props.team_a_key)}
-        style={[styles.optionWrapper, styles.team_a_border]}>
+        style={[styles.optionWrapper]}>
         <View>
           <Text style={tailwind('uppercase text-white font-13 font-bold')}>
             {props.team_a_key}
@@ -47,7 +46,7 @@ export default function CreateTeamFilterSheetTitle(props: PropTypes) {
 
       <TouchableOpacity
         onPress={() => props.onTeamFilterAction(props.team_b_key)}
-        style={[styles.optionWrapper, styles.team_b_border]}>
+        style={[styles.optionWrapper]}>
         <View>
           <Text style={tailwind('uppercase text-white font-13 font-bold')}>
             {props.team_b_key}
@@ -97,7 +96,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 16,
     marginHorizontal: 16,
+    borderRadius: 5,
     padding: 8,
+    backgroundColor: '#172338',
   },
   optionText: {
     color: '#8797B1',

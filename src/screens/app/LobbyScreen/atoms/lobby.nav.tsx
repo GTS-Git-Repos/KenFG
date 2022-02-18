@@ -9,6 +9,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import assets from '../../../../constants/assets_manifest';
+import {NotificationIcon} from '../../../../assets/newIcons';
 import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
@@ -42,11 +43,7 @@ const NotificationBell = () => {
       <TouchableOpacity
         onPress={() => navigation.navigate('NotificationScreen')}
         style={[tailwind('')]}>
-        <Image
-          resizeMode="contain"
-          source={assets.notify}
-          style={{width: 25, height: 25}}
-        />
+        <NotificationIcon />
         <View
           style={[
             tailwind('w-3 h-3 absolute right-0 top-0 rounded-full bg-red-500'),

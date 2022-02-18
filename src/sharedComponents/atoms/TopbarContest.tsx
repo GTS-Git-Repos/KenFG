@@ -1,9 +1,15 @@
+/**
+ * used in
+ * 1.  contest list screen
+ * 2. contest info screen
+ */
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {BackIcon, ContestBellIcon} from '../../sharedComponents';
-import {WalletIcon} from '../../assets/newIcons/';
+import {WalletIcon, NotificationIcon, HelpIcon} from '../../assets/newIcons/';
 import {useSelector} from 'react-redux';
 import {appColorsSelector} from '../../store/selectors';
 interface PropTypes {
@@ -21,35 +27,32 @@ export default function TopBarContest(props: PropTypes) {
     <View style={[ss.root, clr.bg_2]}>
       <View style={[tailwind('flex flex-row items-center')]}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <BackIcon dark={false} />
+          <BackIcon dark={clr.dark} />
         </TouchableOpacity>
 
         <View style={[tailwind('px-4')]}>
-          <Text style={[ss.title, clr.txt_4]}>{props.title}</Text>
-          <Text style={[ss.subtitle, clr.txt_4]}>{props.subtitle}</Text>
+          <Text style={[ss.title, clr.dark ? clr.txt_2 : clr.txt_4]}>
+            {props.title}
+          </Text>
+          <Text style={[ss.subtitle, clr.dark ? clr.txt_2 : clr.txt_4]}>
+            {props.subtitle}
+          </Text>
         </View>
       </View>
 
       <View style={[tailwind('flex flex-row items-center')]}>
-        <TouchableOpacity onPress={props.openWallet} style={[tailwind('px-1')]}>
-          <WalletIcon darkColor={clr.dark} />
+        <TouchableOpacity onPress={() => {}} style={[ss.iconLink]}>
+          <NotificationIcon sizeSmall={false} isDark={true} outline={true} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={props.openWallet} style={[ss.iconLink]}>
+          <WalletIcon darkColor={clr.dark} outline={true} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}} style={[ss.iconLink]}>
+          <HelpIcon isDarkMode={true} />
         </TouchableOpacity>
       </View>
     </View>
   );
-}
-
-{
-  /* <TouchableOpacity style={[tailwind('px-1')]}>
-          <CapWithVSIcon />
-        </TouchableOpacity> */
-}
-{
-  /* <TouchableOpacity
-          onPress={props.enableNotification}
-          style={[tailwind('px-1')]}>
-          <ContestBellIcon />
-        </TouchableOpacity> */
 }
 
 const ss = StyleSheet.create({
@@ -71,5 +74,8 @@ const ss = StyleSheet.create({
     fontFamily: 'gadugi-normal',
     fontSize: 10,
     paddingTop: 4,
+  },
+  iconLink: {
+    paddingHorizontal: 4,
   },
 });

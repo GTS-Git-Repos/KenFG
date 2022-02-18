@@ -1,14 +1,13 @@
 import React, {useRef} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
-import {BlockScreenByLoading} from '../../../sharedComponents';
+import {BlockScreenByLoading, TopBar} from '../../../sharedComponents';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {CompareTeamType} from '../../../types/compareTeam';
 import SelectTeamSheet from './molecules/SelectTeamSheet';
 import FantasyPlayer from './atoms/FantasyPlayer';
 import {Modalize} from 'react-native-modalize';
 import SelectTeamHeader from './atoms/SelectTeamHeader';
-import TopBarCompareTeam from './atoms/TopBarCompareTeam';
 import CompareTeamLoading from './atoms/CompareTeamLoading';
 import Points from './atoms/Points';
 import Status from './atoms/Status';
@@ -55,7 +54,7 @@ export default function CompareTeamScreen(props: PropTypes) {
 
   return (
     <View style={tailwind('bg-dark-4 h-full')}>
-      <TopBarCompareTeam text={'Compare Teams'} />
+      <TopBar text={'Compare Teams'} ptsIcon={true} />
       <ScrollView>
         <View style={[tailwind('bg-dark-3')]}>
           <FantasyPlayer

@@ -156,7 +156,11 @@ function FilterTabs(props: PropTypes) {
                 tailwind('flex-row items-center justify-center'),
                 {flex: 8},
               ]}>
-              <Text style={[styles.privateContest, clr.txt_2]}>
+              <Text
+                style={[
+                  styles.privateContest,
+                  clr.dark ? clr.txt_1 : clr.txt_2,
+                ]}>
                 Private Contest
               </Text>
             </View>

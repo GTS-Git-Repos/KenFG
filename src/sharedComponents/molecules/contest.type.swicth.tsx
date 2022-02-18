@@ -9,19 +9,16 @@ interface PropTypes {
 
 export default function ContestTypeSwitch(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row items-center justify-between bg-dark-4')]}>
+    <View
+      style={[
+        tailwind('flex-row items-center justify-between bg-dark-4'),
+        styles.dBorder,
+      ]}>
       <View style={[tailwind('flex-row items-center')]}>
         <TouchableOpacity
           onPress={() => props.onPressMatchType(1)}
           activeOpacity={0.6}
-          style={[
-            tailwind(
-              `rounded-l-xl py-1 ${
-                props.isFullMatch ? 'bg-secondary' : 'bg-dark-3'
-              }`,
-            ),
-            {width: 80},
-          ]}>
+          style={[props.isFullMatch ? styles.dselOption : styles.dOption]}>
           <Text
             style={[
               tailwind('font-regular text-center text-white font-12'),
@@ -32,72 +29,11 @@ export default function ContestTypeSwitch(props: PropTypes) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => props.onPressMatchType(0)}
-          style={[
-            tailwind(
-              `rounded-r-xl py-1 ${
-                !props.isFullMatch ? 'bg-secondary' : 'bg-dark-3'
-              }`,
-            ),
-            {width: 80},
-          ]}>
+          style={[!props.isFullMatch ? styles.dselLeftOption : styles.dOption]}>
           <Text
             style={[
               tailwind('font-regular text-center text-white font-12'),
               !props.isFullMatch && styles.selectedText,
-            ]}>
-            2nd Innings
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-
-  return (
-    <View style={[tailwind('flex-row items-center')]}>
-      <View
-        style={[
-          tailwind('flex-row items-center rounded-xl border border-gray-700'),
-        ]}>
-        <TouchableOpacity
-          onPress={() => props.onPressMatchType(1)}
-          activeOpacity={0.6}
-          style={[
-            tailwind(
-              `rounded-l-full ${props.isFullMatch ? 'bg-secondary' : ''}`,
-            ),
-            styles.buttonRoot,
-          ]}>
-          <Text
-            style={[
-              tailwind(
-                `font-regular text-brown-5 font-12 ${
-                  props.isFullMatch ? 'text-brown-5' : 'text-white'
-                }`,
-              ),
-            ]}>
-            Full Contests
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => props.onPressMatchType(0)}
-          activeOpacity={0.6}
-          style={[
-            tailwind(
-              `${
-                !props.isFullMatch
-                  ? 'bg-secondary rounded-r-full '
-                  : 'rounded-l-full '
-              }`,
-            ),
-            styles.buttonRoot,
-          ]}>
-          <Text
-            style={[
-              tailwind(
-                `font-regular text-brown-5 font-12 ${
-                  !props.isFullMatch ? 'text-brown-5' : 'text-white'
-                }`,
-              ),
             ]}>
             2nd Innings
           </Text>
@@ -114,5 +50,39 @@ const styles = StyleSheet.create({
   },
   selectedText: {
     color: '#172338',
+  },
+  dBorder: {
+    borderColor: '#C5A858',
+    borderWidth: 1,
+    borderRadius: 16,
+  },
+  lBorder: {
+    borderColor: '#9C181E',
+    borderWidth: 1,
+    borderRadius: 16,
+  },
+  dOption: {
+    borderRadius: 16,
+    backgroundColor: '#172338',
+    paddingVertical: 4,
+    width: 80,
+  },
+  dselOption: {
+    borderColor: '#C5A858',
+    backgroundColor: '#C5A858',
+    borderWidth: 1,
+    borderTopStartRadius: 16,
+    borderBottomStartRadius: 16,
+    paddingVertical: 4,
+    width: 80,
+  },
+  dselLeftOption: {
+    borderColor: '#C5A858',
+    backgroundColor: '#C5A858',
+    borderWidth: 1,
+    borderTopEndRadius: 16,
+    borderBottomEndRadius: 16,
+    paddingVertical: 4,
+    width: 80,
   },
 });

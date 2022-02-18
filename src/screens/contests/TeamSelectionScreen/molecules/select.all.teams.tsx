@@ -12,7 +12,6 @@ interface PropTypes {
 }
 
 export default function SelectAllTeams(props: PropTypes) {
-  // console.log(tailwind('font-regular px-2 text-white text-gray-500 font-15'));
   if (props.maxTeams < props.availableTeams) {
     return null;
   }

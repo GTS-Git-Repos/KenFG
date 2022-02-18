@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {RankIcon} from '../../../../sharedComponents';
@@ -21,34 +21,26 @@ interface TeamType {
 }
 
 export default function FantasyPlayer(props: PropTypes) {
+
   return (
     <View style={[tailwind('pt-4 px-4 flex-row items-center')]}>
       <View style={[tailwind('px-1 flex-row items-center'), {flex: 6}]}>
         <View style={[tailwind(''), {flex: 7}]}>
-          <Text numberOfLines={1} style={TEXTSTYLE}>
+          <Text numberOfLines={1} style={[ss.playerName]}>
             {props.player1}
           </Text>
 
           <TouchableOpacity
             onPress={() => props.selectSheet?.current?.open()}
-            style={[
-              tailwind(
-                'border border-gray-500 p-1 flex-row items-center justify-between rounded-2xl',
-              ),
-            ]}>
-            <Text
-              style={[
-                tailwind('font-regular px-1 uppercase text-dark-1 font-14'),
-              ]}>
-              {props.srcTeam.team_key}
-            </Text>
+            style={[ss.teamBorder]}>
+            <Text style={[ss.teamKey]}>{props.srcTeam.team_key}</Text>
             <Icon name="chevron-down-outline" size={16} color="gray" />
           </TouchableOpacity>
           <View style={[tailwind('flex-row items-center justify-end')]}>
             <Text
               style={[
                 tailwind(
-                  'font-regular text-light font-15 py-2 px-1 text-right',
+                  'font-regular text-white font-15 py-2 px-1 text-right',
                 ),
               ]}>
               {props.srcTeam.rank}
@@ -77,29 +69,23 @@ export default function FantasyPlayer(props: PropTypes) {
           />
         </View>
         <View style={[tailwind(''), {flex: 7}]}>
-          <Text numberOfLines={1} style={TEXTSTYLE}>
-            {props.player2}
-          </Text>
+          <View style={[tailwind('items-end')]}>
+            <Text numberOfLines={1} style={[ss.playerName]}>
+              {props.player2}
+            </Text>
+          </View>
+
           <TouchableOpacity
             onPress={() => props.selectOpponentSheet?.current?.open()}
-            style={[
-              tailwind(
-                'border border-gray-500 p-1 flex-row items-center justify-between rounded-2xl',
-              ),
-            ]}>
-            <Text
-              style={[
-                tailwind('font-regular uppercase px-1 text-dark-1 font-14'),
-              ]}>
-              {props.opTeam.team_key}
-            </Text>
+            style={[ss.teamBorder]}>
+            <Text style={[ss.teamKey]}>{props.opTeam.team_key}</Text>
             <Icon name="chevron-down-outline" size={16} color="gray" />
           </TouchableOpacity>
           <View style={[tailwind('flex-row items-center')]}>
             <RankIcon golden={true} />
             <Text
               style={[
-                tailwind('font-regular text-light font-15 py-2 px-1 text-left'),
+                tailwind('font-regular text-white font-15 py-2 px-1 text-left'),
               ]}>
               {props.opTeam.rank}
             </Text>
@@ -110,5 +96,28 @@ export default function FantasyPlayer(props: PropTypes) {
   );
 }
 
-const TEXTSTYLE = [tailwind('font-bold py-2 text-light font-18')];
-
+const ss = StyleSheet.create({
+  playerName: {
+    fontFamily: 'gadugi-bold',
+    paddingVertical: 8,
+    color: '#FFFFFF',
+    fontSize: 18,
+  },
+  opPlayer: {},
+  teamBorder: {
+    alignItems: 'center',
+    borderColor: 'rgba(107, 114, 128, 1)',
+    borderRadius: 16,
+    borderWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 4,
+  },
+  teamKey: {
+    color: '#8797B1',
+    fontFamily: 'gadugi-normal',
+    fontSize: 14,
+    paddingHorizontal: 4,
+    textTransform: 'uppercase',
+  },
+});

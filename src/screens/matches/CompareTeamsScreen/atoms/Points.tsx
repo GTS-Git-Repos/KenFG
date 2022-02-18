@@ -1,10 +1,5 @@
 import React from 'react';
-import tailwind from '../../../../../tailwind';
-import {BottomLine} from '../../../../sharedComponents';
-import {View, Image, Text} from 'react-native';
-import assets from '../../../../constants/assets_manifest';
-import Svg, {Line, Rect} from 'react-native-svg';
-// import Icon from 'react-native-vector-icons/Ionicons';
+import {View, StyleSheet, Text} from 'react-native';
 
 interface PropTypes {
   sel_team_points: number;
@@ -13,52 +8,40 @@ interface PropTypes {
 
 export default function Points(props: PropTypes) {
   return (
-    <View style={[tailwind('')]}>
-      <Text
-        style={[
-          tailwind('font-regular pt-1 pb-2 text-center text-dark-1 font-14'),
-        ]}>
-        Total Points
-      </Text>
-
-      <View
-        style={[
-          tailwind(
-            'bg-white mx-24 border border-black flex-row items-center p-2 justify-between',
-          ),
-          {borderRadius: 2},
-        ]}>
-        <Text
-          style={[
-            tailwind('font-bold text-right text-light'),
-            {fontSize: 26, color: '#172338'},
-          ]}>
-          {props.sel_team_points}
-        </Text>
-
-        <Svg
-          width="3"
-          height="24"
-          viewBox="0 0 2 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <Rect
-            x="1.5"
-            width="20"
-            height="1"
-            transform="rotate(90 1.5 0)"
-            fill="#172338"
-          />
-        </Svg>
-
-        <Text
-          style={[
-            tailwind('font-bold text-right text-light'),
-            {fontSize: 26, color: '#172338'},
-          ]}>
-          {props.op_team_points}
-        </Text>
+    <>
+      <Text style={[ss.pointsText]}>Total Points</Text>
+      <View style={[ss.root]}>
+        <View style={ss.root}>
+          <Text style={[ss.point]}>223.43</Text>
+          <View style={ss.ptsSeparator}></View>
+          <Text style={[ss.point]}>223.43</Text>
+        </View>
       </View>
-    </View>
+    </>
   );
 }
+
+const ss = StyleSheet.create({
+  pointsText: {
+    color: '#8797B1',
+    fontFamily: 'gadugi-normal',
+    fontSize: 14,
+    paddingVertical: 4,
+    textAlign: 'center',
+  },
+  root: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  point: {
+    color: '#d1b45a',
+    fontFamily: 'gadugi-bold',
+    fontSize: 24,
+  },
+  ptsSeparator: {
+    backgroundColor: '#A3A2A2',
+    height: '80%',
+    marginHorizontal: 8,
+    width: 1,
+  },
+});

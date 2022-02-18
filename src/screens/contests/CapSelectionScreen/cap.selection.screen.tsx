@@ -157,7 +157,7 @@ export default function CapSelectionScreen(props: PropTypes) {
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={matchSelector.titleString} />
+      <TopBar text={matchSelector.titleString} helpIcon={true} ptsIcon={true} />
       <ScrollView>
         <View style={[tailwind(' px-4 py-3')]}>
           <Text style={[tailwind('font-bold text-center text-dark-1 font-13')]}>

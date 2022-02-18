@@ -8,25 +8,20 @@ import {
   useWindowDimensions,
   StyleSheet,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {errorBox} from '../../../../utils/snakBars';
 import assets from '../../../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
-import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
   cricketActive: boolean;
   setIsCricket(arg: boolean): void;
 }
 
-export default function LobbyNav(props: PropTypes) {
-  const {width, height} = useWindowDimensions();
-  const navigation = useNavigation<any>();
-
+export default function MatchTypeSwitch(props: PropTypes) {
   return (
     <View style={[tailwind('bg-dark-3 pt-2'), styles.root]}>
       <View style={[tailwind('flex-row mx-6')]}>
-        <View style={{flex: 3}}></View>
+        <View style={{flex: 2.5}}></View>
 
         <Cricket
           cricket={props.cricketActive}
@@ -36,7 +31,7 @@ export default function LobbyNav(props: PropTypes) {
           cricket={props.cricketActive}
           setCricket={props.setIsCricket}
         />
-        <View style={{flex: 3}}></View>
+        <View style={{flex: 2.5}}></View>
       </View>
     </View>
   );
@@ -48,7 +43,7 @@ const FootBall = (props: any) => {
       onPress={() => errorBox('Football Comming Soon !', 0)}
       style={[
         tailwind('mx-2'),
-        {flex: 3},
+        {flex: 3.5},
         props.cricket ? {} : styles.activeBorder,
       ]}>
       <View style={[tailwind('flex-row justify-center')]}>
@@ -71,14 +66,13 @@ const FootBall = (props: any) => {
   );
 };
 
-
 const Cricket = (props: any) => {
   return (
     <TouchableOpacity
       onPress={() => props.setCricket(true)}
       style={[
         tailwind('mx-2'),
-        {flex: 3},
+        {flex: 3.5},
         props.cricket ? styles.activeBorder : {},
       ]}>
       <View style={[tailwind('flex-row justify-center')]}>
@@ -104,7 +98,7 @@ const Cricket = (props: any) => {
 
 const styles = StyleSheet.create({
   root: {
-    borderColor: "rgba(31, 41, 55, 1)",
+    borderColor: 'rgba(31, 41, 55, 1)',
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,
@@ -114,5 +108,8 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,
+  },
+  dBorder:{
+
   },
 });

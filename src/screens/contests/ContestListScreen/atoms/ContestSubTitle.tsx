@@ -3,7 +3,6 @@ import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useSelector} from 'react-redux';
 import {appColorsSelector} from '../../../../store/selectors';
-// import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
   title: string;
@@ -14,8 +13,6 @@ interface PropTypes {
 
 export default function SubTitle(props: PropTypes) {
   const clr = useSelector(appColorsSelector);
-
-  console.log(tailwind('font-bold py-1 text-light font-17'));
 
   return (
     <View style={[tailwind('px-3 py-2')]}>

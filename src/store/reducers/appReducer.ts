@@ -4,10 +4,9 @@ import {
   UPDATE_FULL_MATCH,
   UPDATE_DARK_MODE,
 } from '../actions/actionTypes';
-import {APP_COLORS} from '../../constants/appContants';
 
 const initialState = {
-  darkModeEnabled: false,
+  darkModeEnabled: true,
   error: null,
   ip: null,
   selected_match: null,

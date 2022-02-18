@@ -1,3 +1,8 @@
+/**
+ * Contest card, appears in contest list screen contest page
+ * second innings contests
+ */
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
@@ -162,7 +167,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
     padding: 12,
-    // backgroundColor: '#121D2E',
+    backgroundColor: '#121D2E',
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',

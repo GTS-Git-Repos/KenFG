@@ -12,6 +12,7 @@ import assets from '../../../../constants/assets_manifest';
 import {useDispatch} from 'react-redux';
 
 import FastImage from 'react-native-fast-image';
+import {LineupsCap, NotificationIcon} from '../../../../assets/newIcons';
 const log = console.log;
 
 interface PropTypes {
@@ -34,7 +35,6 @@ interface TeamPropShape {
   team_b_flag: string;
   set_team_a_flag: any;
   set_team_b_flag: any;
- 
 }
 
 export default function UpcommingMatches(props: PropTypes) {
@@ -86,26 +86,6 @@ export default function UpcommingMatches(props: PropTypes) {
     // };
   }, []);
 
-  // const navigateToContestList = () => {
-  //   console.log(props);
-
-  //   console.log({
-  //     match_key: props.match_key,
-  //     name: props.tournament_name,
-  //     team_a: props.team_a_name,
-  //     team_b: props.team_b_name,
-  //     start_at: props.start_at,
-  //   });
-
-  //   return;
-  //   navigateMatchContestsAction(navigation);
-  //   return;
-  //   dispatch(updateSelectedContestAction(null));
-
-  //   dispatch(updateSelectedMatchAction());
-  //   navigation.navigate('Contest');
-  // };
-
   return (
     <View style={[tailwind('p-1'), {flex: 6}]}>
       <View
@@ -127,11 +107,12 @@ export default function UpcommingMatches(props: PropTypes) {
           <TouchableOpacity
             onPress={() => props.onPressNotification(props.match_key)}
             style={[tailwind('flex-row justify-end pt-0.5'), {flex: 1}]}>
-            <Image
+            <NotificationIcon sizeSmall={true} />
+            {/* <Image
               resizeMode="contain"
               source={assets.bell}
               style={[tailwind(''), {aspectRatio: 16 / 9}]}
-            />
+            /> */}
           </TouchableOpacity>
         </View>
 
@@ -157,11 +138,11 @@ export default function UpcommingMatches(props: PropTypes) {
             ),
             {backgroundColor: '#006046'},
           ]}>
-          <Image
+          {/* <Image
             resizeMode="contain"
             source={assets.running_clock}
             style={[tailwind(''), {width: 10, height: 10}]}
-          />
+          /> */}
           <Text
             style={[
               tailwind('font-bold text-center pl-1 font-10'),
@@ -238,14 +219,15 @@ const Teams = (props: TeamPropShape) => {
 const PrizeandStatus = (props: any) => {
   return (
     <View style={[tailwind('flex-row items-center'), {paddingLeft: 10}]}>
-      <View style={[tailwind(''), {flex: 6}]}>
+      <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
         <Text
           numberOfLines={1}
           allowFontScaling={true}
           adjustsFontSizeToFit={true}
-          style={[tailwind('font-regular font-10'), {color: '#9AABC6'}]}>
+          style={[tailwind('font-regular pr-1 font-10'), {color: '#9AABC6'}]}>
           Line ups out
         </Text>
+        <LineupsCap lineups={false} />
       </View>
 
       <Text

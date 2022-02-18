@@ -11,6 +11,11 @@ import MoreBottomTabOff from './svgIcons/more.bottomtab.off';
 import MoreBottomTabOn from './svgIcons/more.bottomtab.on';
 import SwitchIcon from './svgIcons/switch.icon';
 import WalletIcon from './svgIcons/wallet.icon';
+import NotificationIcon from './svgIcons/notification.icon';
+import LineupsCap from './svgIcons/lineupscap.icon';
+import HelpIcon from './svgIcons/help.icon';
+import PointsIcon from './svgIcons/points.icon';
+import InfoIcon from './svgIcons/info.icon';
 
 import ContestsBottomTabOn from './svgIcons/contests.bottomtab.on';
 
@@ -28,5 +33,10 @@ export {
   DebitCardIcon,
   BankIcon,
   SwitchIcon,
+  NotificationIcon,
   WalletIcon,
+  LineupsCap,
+  HelpIcon,
+  PointsIcon,
+  InfoIcon,
 };
