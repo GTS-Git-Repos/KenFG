@@ -55,6 +55,7 @@ export const totalTeamPoints = (
 };
 
 export const filterExistPlayers = (f_1_players: any, f_2_players: any) => {
+  return 0
   const diffPlayers = [];
   const commanPlayers = [];
   for (const player of f_1_players.players) {
@@ -79,6 +80,7 @@ export function diffPlayersByTeam(
   op_team: any,
   srcTeamKeys: Array<string>,
 ) {
+  return 0
   // console.log('srcTeamKeys', srcTeamKeys);
 
   const diffPlayers = differenceBy(src_team, op_team, 'key');
@@ -202,7 +204,7 @@ function structurePlayers(
   });
 }
 
-export function PlayerRole(team_key: string, role: string) {
+export function playerRole(team_key: string, role: string) {
   let playerRole = '';
   if (role === 'keeper') {
     playerRole = 'Keep';

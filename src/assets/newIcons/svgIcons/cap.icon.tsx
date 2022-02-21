@@ -6,7 +6,7 @@ interface PropTypes {
 }
 
 function Icon(props: PropTypes) {
-  console.log('<< DEPRECATED MOVE TO cap.icon SVG ICON LOCATION >>');
+  console.log('<< DEPRECATED MOVE TO SVG ICON LOCATION >>');
 
   return (
     <Svg width="17" height="17" viewBox="0 0 17 17" fill="none">

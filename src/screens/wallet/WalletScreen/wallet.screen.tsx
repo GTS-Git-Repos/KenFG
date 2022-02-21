@@ -23,7 +23,7 @@ export default function WalletScreen() {
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={'My Balance'} />
+      <TopBar text={'My Balance'} helpIcon={true} />
       <ScrollView contentContainerStyle={{paddingBottom: 20}}>
         <AmountStatusWallet
           balance={userInfoSelector.un_utilized}

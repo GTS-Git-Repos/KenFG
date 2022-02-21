@@ -83,7 +83,11 @@ export default function ContestLiveMatchScreen(props: PropTypes) {
   // return null
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={matchMeta?.match?.short_name} />
+      <TopBar
+        text={matchMeta?.match?.short_name}
+        helpIcon={true}
+        ptsIcon={true}
+      />
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}

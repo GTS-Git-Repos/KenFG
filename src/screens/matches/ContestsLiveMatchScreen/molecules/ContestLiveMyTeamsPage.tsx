@@ -13,7 +13,7 @@ export default function ContestLiveMyTeamsPage(props: PropTypes) {
   return (
     <ScrollView style={[tailwind('m-2')]}>
       <MatchTeamCard teamCode={'T1'} />
-      <MatchTeamCard teamCode={'T1'} />
+      <MatchTeamCard teamCode={'T2'} />
 
       <View style={[tailwind('h-10')]}></View>
     </ScrollView>

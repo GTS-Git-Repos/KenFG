@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   dOption: {
     borderRadius: 16,
-    backgroundColor: '#172338',
+    // backgroundColor: '#172338',
     paddingVertical: 4,
     width: 80,
   },

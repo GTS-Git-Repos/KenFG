@@ -6,7 +6,6 @@ interface PropTypes {
 }
 
 function Icon(props: PropTypes) {
-  console.log('<< DEPRECATED MOVE TO vc.icon SVG ICON LOCATION >>');
   
   return (
     <Svg
@@ -14,7 +13,7 @@ function Icon(props: PropTypes) {
       height="17"
       viewBox="0 0 17 17"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      >
       <Path
         d="M9.15281 5.34668L7.02016 11.6484H5.44009L3.33334 5.34668H4.8357L6.12651 9.73242C6.19559 9.96973 6.23732 10.1792 6.25171 10.3608H6.27761C6.29776 10.1646 6.34237 9.94922 6.41144 9.71484L7.69363 5.34668H9.15281Z"
         fill={props.white ? '#FFFFFF' : '#8797B1'}

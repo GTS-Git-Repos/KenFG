@@ -13,6 +13,7 @@ const initialState = {
   joinContestRequest: null,
   isFullMatch: true,
   cashFreeAppId: '122224715b8a570ce3b9253a922221',
+  sessionClosed: false,
 };
 
 interface actionShape {

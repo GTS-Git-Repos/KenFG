@@ -53,7 +53,6 @@ export default function LobbyScreen(props: PropTypes) {
       navigateMatchContestsAction(navigation, obj);
     }
   }
-  log(props.appColors)
 
   return (
     <View style={[styles.root, props.appColors.bg]}>
@@ -91,7 +90,7 @@ export default function LobbyScreen(props: PropTypes) {
         </View>
       ) : null}
 
-      <ScrollView fadingEdgeLength={50}>
+      <ScrollView contentContainerStyle={{flex: 1}} fadingEdgeLength={50}>
         {cricket ? (
           <CricketPage
             banners={props.banners}
@@ -102,7 +101,7 @@ export default function LobbyScreen(props: PropTypes) {
             onPressNotification={props.onPressNotification}
           />
         ) : (
-          <View style={[tailwind('py-10')]}>
+          <View style={[tailwind('py-10 h-full')]}>
             <Text
               style={[
                 tailwind('font-semibold text-center uppercase font-17'),

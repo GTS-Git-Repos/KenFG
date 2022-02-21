@@ -11,7 +11,7 @@ export default function AddCashScreenHOC() {
   
   const appConstant = useSelector(appConstantsSelector);
 
-  console.log(appConstant);
+  // console.log(appConstant);
   
 
   const initiatePayment = useMutation(initiatePaymentRemote, {

@@ -1,9 +1,11 @@
+/**
+ * [1] in match screen in My Teams page
+ */
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Image, Text, ImageBackground} from 'react-native';
+import {View, Image, Text, StyleSheet, ImageBackground} from 'react-native';
 import assets from '../../constants/assets_manifest';
-import CIcon from '../icons/CIcon';
-import VCIcon from '../icons/VCIcon';
+import {CapIcon, VCIcon} from '../../assets/newIcons';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
@@ -12,7 +14,7 @@ interface PropTypes {
 
 export default function MatchTeamCard(props: PropTypes) {
   return (
-    <View style={[tailwind('my-2 mt-1 rounded-lg')]}>
+    <View style={[tailwind('my-2 mx-1 rounded-lg')]}>
       <ImageBackground
         imageStyle={{borderTopLeftRadius: 5, borderTopRightRadius: 5}}
         style={[tailwind('w-full')]}
@@ -20,17 +22,15 @@ export default function MatchTeamCard(props: PropTypes) {
         {/* Start of Top Section */}
         <View
           style={[
-            tailwind(`flex-row items-center px-2 justify-center`),
+            tailwind(`flex-row items-center px-2`),
             {backgroundColor: 'rgba(0,0,0,0.2)'},
           ]}>
-          <View style={[tailwind('flex-row items-center')]}>
-            <Text
-              style={[
-                tailwind('font-bold py-3 px-2 uppercase text-light font-14'),
-              ]}>
-              {props.teamCode}
-            </Text>
-          </View>
+          <Text
+            style={[
+              tailwind('font-bold py-3 px-2 uppercase text-light font-14'),
+            ]}>
+            {props.teamCode}
+          </Text>
         </View>
         {/* Players section */}
         <PlayerSection />
@@ -62,7 +62,7 @@ const PlayerProfile = (props: any) => {
     <View style={[tailwind('flex-col p-2')]}>
       <View style={[tailwind(''), {width: 55, height: 55}]}>
         <View style={[tailwind('absolute inset-0'), {}]}>
-          {props.cap ? <CIcon white={true} /> : <VCIcon white={true} />}
+          {props.cap ? <CapIcon white={true} /> : <VCIcon white={true} />}
         </View>
         <Image
           resizeMode="contain"
@@ -136,3 +136,7 @@ const BottomStats = (props: any) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  root: {},
+});

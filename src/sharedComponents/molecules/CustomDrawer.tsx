@@ -8,15 +8,13 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../constants/assets_manifest';
-import {BottomLine} from '../';
 import {useNavigation} from '@react-navigation/core';
 import {useSelector} from 'react-redux';
 import Modal from 'react-native-modal';
 import {removeToken} from '../../utils/authTokenUtils';
 import RNRestart from 'react-native-restart';
-import LinearGradient from 'react-native-linear-gradient';
+
 const log = console.log;
 export default function CustomDrawer(props: any) {
   const [logoutModal, setLogoutModal] = useState(false);
@@ -73,9 +71,9 @@ export default function CustomDrawer(props: any) {
         />
 
         <Links to="MoreScreen" icon={assets.more_icon} text="More" />
-        <BottomLine />
+        {/* <View> */}
         <AppVersion version="4.24.4" />
-        <BottomLine />
+        {/* <View /> */}
         <Support />
       </ScrollView>
       <TouchableOpacity
@@ -224,34 +222,34 @@ const Links = (props: any) => {
 
 const AppVersion = (props: any) => {
   return (
-    <LinearGradient
-      style={[tailwind('')]}
-      colors={['#0D1320', '#172338', '#172338']}>
-      <View style={[tailwind('flex-row px-4 py-3')]}>
-        <View style={[tailwind(''), {flex: 7}]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
-            Version 0.1
-          </Text>
-          <Text style={[tailwind('font-regular py-1 text-dark-1 font-11')]}>
-            10/2/22-22:10PM
-          </Text>
-        </View>
-        {/* <View style={[tailwind('justify-end items-end'), {flex: 3}]}>
+    // <LinearGradient
+    //   style={[tailwind('')]}
+    //   colors={['#0D1320', '#172338', '#172338']}>
+    <View style={[tailwind('flex-row px-4 py-3')]}>
+      <View style={[tailwind(''), {flex: 7}]}>
+        <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+          Version 0.1
+        </Text>
+        <Text style={[tailwind('font-regular py-1 text-dark-1 font-11')]}>
+          10/2/22-22:10PM
+        </Text>
+      </View>
+      {/* <View style={[tailwind('justify-end items-end'), {flex: 3}]}>
           <Text
             style={[tailwind('font-regular text-dark-1 uppercase font-13')]}>
             UPDATE
           </Text>
         </View> */}
-      </View>
-    </LinearGradient>
+    </View>
+    // </LinearGradient>
   );
 };
 
 const Support = () => {
   return (
-    <LinearGradient
-      style={[tailwind('')]}
-      colors={['#0D1320', '#172338', '#172338']}>
+    // <LinearGradient
+    //   style={[tailwind('')]}
+    //   colors={['#0D1320', '#172338', '#172338']}>
       <View style={[tailwind('flex-row items-center py-4 px-4')]}>
         <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
           <View style={[tailwind(''), {flex: 3}]}>
@@ -285,7 +283,7 @@ const Support = () => {
           </Text>
         </View>
       </View>
-    </LinearGradient>
+    // </LinearGradient>
   );
 };
 

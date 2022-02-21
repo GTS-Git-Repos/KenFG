@@ -1,3 +1,7 @@
+/**
+ * Match related API Calls in here
+ */
+
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import {log} from '../utils/logs';
@@ -33,7 +37,7 @@ const req_get_private_contest = '/private-contest.php';
 const req_matches = '/completed-matches.php';
 const req_edit_team = '/edit-team.php';
 const req_search_contest = '/search-contest.php';
-
+const req_commentry = '/commentry.php';
 const req_match_points = '/match-point.php';
 
 export const upcommingMatchesandBannersRemote = async (params: any) => {
@@ -86,7 +90,6 @@ export const contestListsRemote = async (params: any) => {
         }`,
     );
     if (response.status === 200) {
-
       return groupAllContestsAPIRmeote(response.data.data);
     } else {
       failedLog('contestsListsRemote()', response);
@@ -291,6 +294,23 @@ export const getPrivateContestsRemote = async (params: any) => {
       return response.data.data;
     } else {
       failedLog('createContestRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const getMatchCommentaryRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_commentry,
+    );
+    if (response.status === 200) {
+      return response.data.data;
+    } else {
+      failedLog('getMatchCommentaryRemote()', response);
     }
   } catch (err) {
     console.log(err);

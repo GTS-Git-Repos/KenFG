@@ -50,11 +50,7 @@ export default function LiveMatchScreen(props: PropTypes) {
     return <LoadingSpinner title={'Loading'} />;
   }
   if (props.matchAPI && !props.matchMeta) {
-    return (
-      <Text style={[tailwind('font-regular text-white font-15')]}>
-        Received Scrambled data :(
-      </Text>
-    );
+    return <Text>Received Scrambled data :(</Text>;
   }
 
   return (

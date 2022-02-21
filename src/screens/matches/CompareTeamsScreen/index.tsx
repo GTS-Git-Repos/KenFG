@@ -1,12 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import CompareTeamScreen from './compare.team.screen';
 import mockCompare from '../../../constants/mocks/mockCompareTeam.json';
-import {
-  diffPlayersByTeam,
-  extractPlayers,
-  filterExistPlayers,
-  totalTeamPoints,
-} from './compare.team.workers';
+import {extractPlayers, totalTeamPoints} from './compare.team.controller';
 import {CompareTeamType} from '../../../types/compareTeam';
 import {useCompareTeams} from '../../../shared_hooks/match_hooks';
 

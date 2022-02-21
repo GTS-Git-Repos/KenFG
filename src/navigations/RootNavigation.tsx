@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer, DarkTheme} from '@react-navigation/native';
 import {Host} from 'react-native-portalize';
 
@@ -45,6 +45,7 @@ import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScree
 import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
 import LiveMatchScreen from '../screens/matches/LiveMatchScreen/';
 import CompareTeamsScreen from '../screens/matches/CompareTeamsScreen';
+import {useSelector} from 'react-redux';
 
 const RootNavigator = createStackNavigator();
 // const RootNavigator = createNativeStackNavigator();
@@ -55,6 +56,16 @@ const StackConfig = {
 };
 
 export default function RootNavigation() {
+  const sessionState = useSelector(state => state.app.sessionState);
+
+  // useEffect(() => {
+  //   if (sessionState === true) {
+  //     // block the screen, and show the session was ended,
+
+  //     // force logut
+  //   }
+  // }, [sessionState]);
+
   return (
     <NavigationContainer theme={DarkTheme}>
       <Host>
