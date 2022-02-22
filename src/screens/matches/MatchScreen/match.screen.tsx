@@ -14,9 +14,8 @@ import {
 import Tabs from './atoms/Tabs';
 import PagerView from 'react-native-pager-view';
 import MyContestPage from './molecules/MyContestPage';
-import CommentaryPage from '../LiveMatchScreen/molecules/CommentaryPage';
-import ScrollBoardPage from '../LiveMatchScreen/molecules/ScrollBoardPage';
-import ContestLiveMyTeamsPage from './molecules/ContestLiveMyTeamsPage';
+import {MatchCommentary, MatchScoreBoard} from '../../../sharedComponents';
+import MatchMyTeamsPage from './molecules/match.myteams.page';
 import LinearGradient from 'react-native-linear-gradient';
 import {Modalize} from 'react-native-modalize';
 import BreakupModalSheet from './molecules/BreakupModalSheet';
@@ -24,7 +23,6 @@ import {useSelector} from 'react-redux';
 import {userInfo} from '../../../store/selectors';
 import {useMatchMeta} from '../../../shared_hooks/contest.hooks';
 import {toLiveMatch} from '../../../store/actions/navigationActions';
-import {usePlayersState} from '../../../shared_hooks/match_hooks';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
@@ -38,7 +36,7 @@ interface PropTypes {
   playerStats: Array<any>;
 }
 
-export default function ContestLiveMatchScreen(props: PropTypes) {
+export default function LiveMatchScreen(props: PropTypes) {
   const navigation = useNavigation();
   const route = useRoute<any>();
   const pagerRef = useRef<any>();
@@ -132,13 +130,13 @@ export default function ContestLiveMatchScreen(props: PropTypes) {
           />
         </View>
         <View style={{width: width}}>
-          <ContestLiveMyTeamsPage index={1} activeIndex={selectedTab} />
+          <MatchMyTeamsPage index={1} activeIndex={selectedTab} />
         </View>
         <View style={{width: width}}>
-          <CommentaryPage index={2} activeIndex={selectedTab} />
+          <MatchCommentary index={2} activeIndex={selectedTab} />
         </View>
         <View style={{width: width}}>
-          <ScrollBoardPage
+          <MatchScoreBoard
             index={3}
             activeIndex={selectedTab}
             innings={matchMeta.innings}
@@ -162,7 +160,7 @@ export default function ContestLiveMatchScreen(props: PropTypes) {
   );
 }
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
   line: {
     borderTopColor: 'transparent',
     borderLeftColor: 'transparent',

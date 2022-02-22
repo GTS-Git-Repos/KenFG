@@ -28,12 +28,12 @@ const TEMPDATA = [
 ];
 
 // States
-export const liveMatchState = {
+export const contestMatchState = {
   fantasyPlayers: TEMPDATA,
   isComparitionActive: false,
 };
 
-export const liveMatchReducer = (state: any, action: any) => {
+export const contestMatchReducer = (state: any, action: any) => {
   switch (action.type) {
     case 'FANTASY_PLAYERS':
       return {

@@ -1,19 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
-import tailwind from '../../../../../tailwind';
-import {
-  View,
-  ScrollView,
-  Text,
-  ActivityIndicator,
-  TouchableOpacity,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
-// import TeamStatus from '../atoms/TeamStatus';
-import TeamStatusHeader from '../atoms/TeamStatusHeader';
-import {liveMatchMetaRemote} from '../../../../remote/matchesRemote';
-import {useQuery} from 'react-query';
-import {TeamScrollBoardByInnings} from '../../../../sharedComponents';
+import tailwind from '../../../tailwind';
+import {View, ScrollView, ActivityIndicator} from 'react-native';
+import {TeamScrollBoardByInnings} from '../index';
+
 const log = console.log;
 
 interface PropTypes {
@@ -32,7 +21,7 @@ interface OverallTeamShape {
   isExpanded: boolean;
 }
 
-export default function ScrollBoardPage(props: PropTypes) {
+export default function MatchScoreBoardPage(props: PropTypes) {
   const scrollRef = useRef<ScrollView>();
   const [openedInnings, setOpenedInnings] = useState<any>(0);
 

@@ -1,3 +1,7 @@
+/**
+ * Ken FG Experts link, disabled for now, needed in future update
+ */
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Image, Text} from 'react-native';

@@ -34,6 +34,7 @@ const ImageSlider = (props: PropTypes) => {
     return null;
   }
 
+
   return (
     <Swiper
       loop={true}
@@ -41,10 +42,6 @@ const ImageSlider = (props: PropTypes) => {
       autoplay={true}
       showsPagination={false}
       removeClippedSubviews={false}
-      // loadMinimal={true}
-      // loadMinimalSize={2}
-      // autoplayTimeout={2}
-      // removeClippedSubviews={true}
       activeDotColor={'#d1b45a'}
       activeDot={<ActiveDot />}
       dot={<Dot />}

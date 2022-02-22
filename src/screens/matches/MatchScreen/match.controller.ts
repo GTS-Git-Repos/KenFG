@@ -1,13 +1,17 @@
-// The controller for Contest Live Match
+/**
+ * The controller for Live Match
+ * not utilized still
+ */
+
 import React, {useReducer} from 'react';
 import {createSelector} from 'reselect';
 
 // State
-export const ContestLiveMatchState = {
+export const LiveMatchState = {
   selectedTab: 0,
 };
 
-export const ContestliveMatchReducer = (state: any, action: any) => {
+export const MatchReducer = (state: any, action: any) => {
   switch (action.type) {
     case 'UPDATE_SELECTED_TAB':
       return {

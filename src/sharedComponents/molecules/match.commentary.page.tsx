@@ -1,5 +1,5 @@
 import React from 'react';
-import tailwind from '../../../../../tailwind';
+import tailwind from '../../../tailwind';
 import {
   View,
   Image,
@@ -8,8 +8,7 @@ import {
   Text,
   ActivityIndicator,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
+import assets from '../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {
@@ -17,8 +16,7 @@ interface PropTypes {
   activeIndex: number;
 }
 
-export default function CommentaryPage(props: PropTypes) {
-
+export default function MatchCommentaryPage(props: PropTypes) {
   if (props.index !== props.activeIndex) {
     return (
       <ActivityIndicator
@@ -28,7 +26,7 @@ export default function CommentaryPage(props: PropTypes) {
       />
     );
   }
-  
+
   return (
     <View>
       <ScrollView>

@@ -1,3 +1,8 @@
+/**
+ * used on contest list screen
+ * have a edit and clone toolbar existed
+ */
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {

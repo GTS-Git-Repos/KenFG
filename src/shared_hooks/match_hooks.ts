@@ -16,7 +16,7 @@ export const useCompareTeams = (match_key: string, user_id: string) => {
   return {compareMeta, compareAPI, refetchMatch};
 };
 
-export const usePlayersState = (
+export const useMatchPlayersState = (
   match_key: string,
   user_id: string,
   enabled: boolean,
@@ -25,7 +25,7 @@ export const usePlayersState = (
     data: playersStatMeta,
     isSuccess: playersStatAPI,
     refetch: refetchMatch,
-  } = useQuery(['match', 'bblt20_2021_g47', user_id], getMatchPointsRemote, {
+  } = useQuery(['match', match_key, user_id], getMatchPointsRemote, {
     notifyOnChangeProps: ['data', 'isSuccess'],
     enabled: enabled,
     // staleTime: 1000 * 1000,

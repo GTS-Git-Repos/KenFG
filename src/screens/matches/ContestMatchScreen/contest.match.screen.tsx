@@ -12,14 +12,12 @@ import {
 } from '../../../sharedComponents';
 
 import PagerView from 'react-native-pager-view';
-
+import {MatchCommentary, MatchScoreBoard} from '../../../sharedComponents';
 import LiveMatchSeparator from './atoms/LiveMatchSeparator';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import LiveMatchTabs from './atoms/LiveMatchTabs';
 
-import ScrollBoardPage from './molecules/ScrollBoardPage';
 import LeaderBoardPage from './molecules/LeaderBoardPage';
-import CommentaryPage from './molecules/CommentaryPage';
 import WinningsPage from './molecules/WinningsPage';
 import LinearGradient from 'react-native-linear-gradient';
 import LiveMatchTopBar from './atoms/LiveMatchTopBar';
@@ -33,7 +31,7 @@ interface PropTypes {
   onPressCompareTeam(src_team_key: string, opp_team_key: string): void;
 }
 
-export default function LiveMatchScreen(props: PropTypes) {
+export default function ContestMatchScreen(props: PropTypes) {
   const pageRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -102,14 +100,14 @@ export default function LiveMatchScreen(props: PropTypes) {
           <WinningsPage index={1} activeIndex={activeIndex} />
         </View>
         <View>
-          <ScrollBoardPage
+          <MatchScoreBoard
             index={2}
             activeIndex={activeIndex}
             innings={props.matchMeta.innings}
           />
         </View>
         <View>
-          <CommentaryPage index={3} activeIndex={activeIndex} />
+          <MatchCommentary index={3} activeIndex={activeIndex} />
         </View>
         <View>
           <MatchPlayersStats index={4} activeIndex={activeIndex} />

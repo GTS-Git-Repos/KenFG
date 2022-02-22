@@ -434,13 +434,6 @@ const WicketText = (props: any) => {
   );
 };
 
-// {
-//   console.log(
-//     tailwind(
-//       'flex-row items-center pt-2 px-2 bg-dark-3 border-b border-gray-800',
-//     ),
-//   );
-// }
 const ss = StyleSheet.create({
   inningsheader: {
     alignItems: 'center',

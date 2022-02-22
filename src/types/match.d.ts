@@ -50,3 +50,18 @@ export interface SelectedMatchType {
   team_b_name: string;
   titleString: string;
 }
+
+
+export interface MatchCommentaryType {
+  joinContest: null | any;
+  match_key: string;
+  name: string;
+  start_at: string;
+  team_a: string;
+  team_a_name: string;
+  team_b: string;
+  team_b_name: string;
+  titleString: string;
+}
+
+

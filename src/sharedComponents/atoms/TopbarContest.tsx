@@ -8,8 +8,12 @@ import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {BackIcon, ContestBellIcon} from '../../sharedComponents';
-import {WalletIcon, NotificationIcon, HelpIcon} from '../../assets/newIcons/';
+import {
+  WalletIcon,
+  BackIcon,
+  NotificationIcon,
+  HelpIcon,
+} from '../../assets/newIcons/';
 import {useSelector} from 'react-redux';
 import {appColorsSelector} from '../../store/selectors';
 interface PropTypes {

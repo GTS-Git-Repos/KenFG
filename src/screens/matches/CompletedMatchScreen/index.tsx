@@ -1,4 +1,4 @@
-// Did not used anywhere, need a pass all data props, surely it will crashes, currently opened,
+// Did not used anywhere, need a pass all data props, surely it will crashes,
 // it has a winning breakup sheet, other than all are 
 
 

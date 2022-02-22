@@ -11,7 +11,6 @@ import WinningsListScreen from '../screens/contests/WinningsListScreen';
 import SwitchTeamScreen from '../screens/contests/SwitchTeamScreen';
 import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
 
-import LiveMatchScreen from '../screens/matches/LiveMatchScreen';
 import TeamPreviewScreen from '../screens/contests/TeamPreviewScreen';
 import AccountProfileScreen from '../screens/user/AccountProfileScreen';
 import CapSelectionScreen from '../screens/contests/CapSelectionScreen';
@@ -26,8 +25,9 @@ import VerifyAccountScreen from '../screens/wallet/VerifyAccountScreen';
 import PaymentOptionScreen from '../screens/wallet/PaymentOptionScreen';
 import WithdrawelScreen from '../screens/wallet/WithdrawelScreen';
 
-// Match points Screen Imports
-import ContestsLiveMatchScreen from '../screens/matches/ContestsLiveMatchScreen';
+// match screen imports
+import MatchScreen from '../screens/matches/MatchScreen';
+import ContestMatchScreen from '../screens/matches/ContestMatchScreen';
 
 import SignupScreen from '../screens/user/SignupScreen';
 
@@ -45,7 +45,7 @@ import TermsScreen from '../screens/app/TermsScreen';
 import FairPlayScreen from '../screens/app/FairPlayScreen';
 import PrivacyPolicyScreen from '../screens/app/PrivacyPolicyScreen';
 
-import MyMatchesScreen from '../screens/matches/MyMatchesScreen';
+// import MyMatchesScreen from '../screens/matches/MyMatchesScreen';
 
 import {CardStyleInterpolators} from '@react-navigation/stack';
 
@@ -57,7 +57,7 @@ const StackConfig = {
 const HomeStack = createStackNavigator();
 const ContestStack = createStackNavigator();
 const WalletStack = createStackNavigator();
-const MyMatch = createStackNavigator();
+// const MyMatch = createStackNavigator();
 const MatchStack = createStackNavigator();
 const AuthStack = createStackNavigator();
 const MoreStack = createStackNavigator();
@@ -87,13 +87,13 @@ export function Home(props: any) {
   );
 }
 
-export function MyMatches(props: any) {
-  return (
-    <MyMatch.Navigator screenOptions={StackConfig}>
-      <MyMatch.Screen name="MyMatchesScreen" component={MyMatchesScreen} />
-    </MyMatch.Navigator>
-  );
-}
+// export function MyMatches(props: any) {
+//   return (
+//     <MyMatch.Navigator screenOptions={StackConfig}>
+//       <MyMatch.Screen name="MyMatchesScreen" component={MyMatchesScreen} />
+//     </MyMatch.Navigator>
+//   );
+// }
 
 export function Contest(props: any) {
   return (
@@ -220,13 +220,19 @@ export function Wallet(props: any) {
 
 export function Match(props: any) {
   return (
-    <MatchStack.Navigator screenOptions={StackConfig}>
+    <MatchStack.Navigator
+      initialRouteName={'MatchScreen'}
+      screenOptions={StackConfig}>
       <MatchStack.Screen
-        name="ContestsLiveMatchScreen"
-        component={ContestsLiveMatchScreen}
+        name="MatchScreen"
+        component={MatchScreen}
         initialParams={props.route.params}
       />
-      <MatchStack.Screen name="LiveMatchScreen" component={LiveMatchScreen} />
+
+      <MatchStack.Screen
+        name="ContestMatchScreen"
+        component={ContestMatchScreen}
+      />
       <MatchStack.Screen
         name="CompareTeamsScreen"
         component={CompareTeamsScreen}

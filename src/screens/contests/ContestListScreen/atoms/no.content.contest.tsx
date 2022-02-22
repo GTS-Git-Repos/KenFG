@@ -23,9 +23,8 @@ export default function NoContent(props: PropTypes) {
           {/* The first move to get your fortune */}
           {props.title}
         </Text>
-        <CountdownContest value={''} />
+        <CountdownContest timeStamp={''} />
         <Text style={[tailwind('font-regular text-center text-white font-14')]}>
-          {/* It’s your time where skills & knowledge meets action */}
           {props.subtitle}
         </Text>
         <TouchableOpacity

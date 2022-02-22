@@ -7,10 +7,10 @@ import LastUpdatedAt from '../atoms/LastUpdatedAt';
 import {HorizontalProfile, RankIcon} from '../../../../sharedComponents';
 import LeaderBoardProfile from './LeaderBoardProfile';
 import {
-  liveMatchState,
-  liveMatchReducer,
+  contestMatchState,
+  contestMatchReducer,
   fpSelector,
-} from '../live.match.controller';
+} from '../contest.match.controller';
 
 interface PropTypes {
   index: number;
@@ -19,9 +19,12 @@ interface PropTypes {
 }
 
 export default function LeaderBoardPage(props: PropTypes) {
-  const [matchState, dispatch] = useReducer(liveMatchReducer, liveMatchState);
+  const [matchState, dispatch] = useReducer(
+    contestMatchReducer,
+    contestMatchState,
+  );
 
-  const isComparisonActive = matchState.isComparitionActive;
+  const isComparisonActive = contestMatchState.isComparitionActive;
 
   const fantasyPlayers = fpSelector(matchState);
 

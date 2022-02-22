@@ -30,6 +30,8 @@ import PriceDistributionSwitch from './molecules/price.distribution.switch';
 import MatchTeamCard from './molecules/match.team.card';
 import MatchPlayersStats from './molecules/match.players.stats.page';
 import WalletHalfModal from './molecules/wallet.half.modal';
+import MatchCommentary from './molecules/match.commentary.page';
+import MatchScoreBoard from './molecules/match.scoreboard.page';
 
 import NoContentShared from './atoms/no.content.shared';
 
@@ -77,6 +79,8 @@ export {
   BlockScreenByLoading,
   ButtonComponent,
   SecondaryButton,
+  MatchCommentary,
+  MatchScoreBoard,
   PrivateContestTeams,
   WinningsListRank,
   WalletHalfModal,

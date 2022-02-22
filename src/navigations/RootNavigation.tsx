@@ -27,7 +27,7 @@ import AccountProfileScreen from '../screens/user/AccountProfileScreen';
 import HowToPlayScreen from '../screens/app/HowToPlayScreen';
 import DailyLeaderBoardScreen from '../screens/leaderboard/DailyLeaderBoardScreen';
 
-import CompletedMatchScreen from '../screens/matches/CompletedMatchScreen';
+// import CompletedMatchScreen from '../screens/matches/CompletedMatchScreen';
 import MonthlyLeaderBoardScreen from '../screens/leaderboard/MonthlyLeaderBoardScreen';
 
 import TeamsListScreen from '../screens/contests/SwitchTeamScreen';
@@ -42,9 +42,7 @@ import LeaderProfileScreen from '../screens/leaderboard/LeaderProfileScreen';
 import AffliatedScreen from '../screens/user/AffliatedScreen';
 import AchievementsScreen from '../screens/user/AchievementsScreen';
 import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScreen';
-import TeamSelectionScreen from '../screens/contests/TeamSelectionScreen';
-import LiveMatchScreen from '../screens/matches/LiveMatchScreen/';
-import CompareTeamsScreen from '../screens/matches/CompareTeamsScreen';
+
 import {useSelector} from 'react-redux';
 
 const RootNavigator = createStackNavigator();
@@ -72,15 +70,6 @@ export default function RootNavigation() {
         <RootNavigator.Navigator
           screenOptions={StackConfig}
           initialRouteName="InitialScreen">
-          <RootNavigator.Screen
-            component={LiveMatchScreen}
-            name="LiveMatchScreen"
-          />
-          <RootNavigator.Screen
-            component={CompareTeamsScreen}
-            name="CompareTeamsScreen"
-          />
-
           <RootNavigator.Screen
             component={InitialScreen}
             name="InitialScreen"
@@ -115,10 +104,10 @@ export default function RootNavigation() {
             name="MonthlyLeaderBoardScreen"
           />
 
-          <RootNavigator.Screen
+          {/* <RootNavigator.Screen
             component={CompletedMatchScreen}
             name="CompletedMatchScreen"
-          />
+          /> */}
           <RootNavigator.Screen
             component={ProfileEditScreen}
             name="ProfileEditScreen"
