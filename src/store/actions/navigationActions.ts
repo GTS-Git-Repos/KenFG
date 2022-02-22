@@ -1,4 +1,5 @@
-// this file is not tied with redux, it's a shared central location for dispatching navigation actions,
+//this file is not tied with redux, it's a shared central location for dispatching navigation actions,
+// [NOTE] Need to organized into navigation folder, file name will [featurname].link.ts
 
 import {CommonActions} from '@react-navigation/native';
 import store from '../';

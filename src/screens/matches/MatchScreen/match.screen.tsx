@@ -34,6 +34,7 @@ interface PropTypes {
   commentry: Array<any>;
   scoreBoard: Array<any>;
   playerStats: Array<any>;
+  onContestMatchPress(contest_key: string): void;
 }
 
 export default function LiveMatchScreen(props: PropTypes) {
@@ -61,9 +62,6 @@ export default function LiveMatchScreen(props: PropTypes) {
     setSelectedTab(e.nativeEvent.position);
   };
 
-  const onPressContest = (e: any): any => {
-    toLiveMatch(navigation, route.params.match_key);
-  };
 
   if (!matchAPI) {
     return <LoadingSpinner title={'Loading...'} />;
@@ -126,7 +124,7 @@ export default function LiveMatchScreen(props: PropTypes) {
           <MyContestPage
             index={0}
             activeIndex={selectedTab}
-            onPressContest={onPressContest}
+            onContestMatchPress={props.onContestMatchPress}
           />
         </View>
         <View style={{width: width}}>

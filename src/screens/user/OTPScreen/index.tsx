@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity, Image, Button} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
 import {
   TopBar,
   BlockScreenByLoading,
@@ -12,12 +11,10 @@ import {errorBox} from '../../../utils/snakBars';
 import OTPInput from './molecules/OTPInput';
 import {otpVerifyRemote} from '../../../remote/authRemote';
 import {saveToken} from '../../../utils/authTokenUtils';
-import LinearGradient from 'react-native-linear-gradient';
 import {getUserRemote} from '../../../remote/userRemote';
 import {resetDrawerNavigation} from '../../../utils/resetNav';
 import {updateUserInfoAction} from '../../../store/actions/userAction';
 import {useDispatch} from 'react-redux';
-import assets from '../../../constants/assets_manifest';
 const log = console.log;
 
 export default function OTPScreen() {

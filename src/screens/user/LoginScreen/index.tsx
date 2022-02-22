@@ -42,28 +42,23 @@ export default function LoginScreen() {
 
   const onPressAction = async () => {
     try {
-      setLoading(true);
-      if (mobile.length === 10) {
-        const response = await loginRemote({mobile});
-        if (response) {
-          // log(response);
-          navigation.navigate('OTPScreen', {
-            mobile,
-            otp: response.otp,
-          });
-        } else {
-          throw 'Failed! Please check your Internet';
-        }
-      } else {
-        setTimeout(() => {
-          errorBox('Invalid Mobile Number');
-        }, 600);
+      const mobileNumber = mobile.replace(/ /g, '');
+      if (mobileNumber.length !== 10) {
+        throw new Error('Invalid Mobile Number');
       }
-    } catch (err) {
-      log(err);
-      setTimeout(() => {
-        errorBox('Failed! Please check your Internet');
-      }, 600);
+      setLoading(true);
+      const response = await loginRemote({mobile});
+      if (response) {
+        // log(response);
+        navigation.navigate('OTPScreen', {
+          mobile,
+          otp: response.otp,
+        });
+      } else {
+        throw new Error('Internet failed');
+      }
+    } catch (err: any) {
+      errorBox(`${err.message}`, 500);
     } finally {
       setLoading(false);
     }
@@ -72,53 +67,52 @@ export default function LoginScreen() {
   return (
     <View style={tailwind('bg-dark h-full')}>
       <ScrollView
+        keyboardShouldPersistTaps="handled"
         contentContainerStyle={[
           tailwind('py-9 bg-dark-3'),
           {paddingHorizontal: 26},
         ]}>
-        <ScrollView>
-          <View style={[tailwind('flex-row items-center justify-center')]}>
-            <Image
-              resizeMode="contain"
-              source={assets.logo_new}
-              style={[tailwind(''), {width: 92, height: 28}]}
-            />
-          </View>
+        <View style={[tailwind('flex-row items-center justify-center')]}>
+          <Image
+            resizeMode="contain"
+            source={assets.logo_new}
+            style={[tailwind(''), {width: 92, height: 28}]}
+          />
+        </View>
 
-          <Text
+        <Text
+          style={[
+            tailwind('font-bold text-light pt-9 text-center'),
+            {fontSize: 24},
+          ]}>
+          Welcome Back
+        </Text>
+        <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center')]}>
+          Log in to Continue
+        </Text>
+
+        <View style={[tailwind('pt-8 pb-4')]}>
+          <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
+            Enter Mobile Number
+          </Text>
+          <TextInput
+            maxLength={10}
+            value={mobile}
+            onChangeText={e => setMobile(e)}
+            keyboardAppearance="dark"
+            keyboardType="decimal-pad"
             style={[
-              tailwind('font-bold text-light pt-9 text-center'),
-              {fontSize: 24},
-            ]}>
-            Welcome Back
-          </Text>
-          <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center')]}>
-            Log in to Continue
-          </Text>
+              tailwind('border-b font-bold text-white font-20'),
+              {borderColor: '#8797B14D', height: 40},
+            ]}
+          />
+        </View>
 
-          <View style={[tailwind('pt-8 pb-4')]}>
-            <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
-              Enter Mobile Number
-            </Text>
-            <TextInput
-              maxLength={10}
-              value={mobile}
-              onChangeText={e => setMobile(e)}
-              keyboardAppearance="dark"
-              keyboardType="decimal-pad"
-              style={[
-                tailwind('border-b font-bold text-white font-20'),
-                {borderColor: '#8797B14D', height: 40},
-              ]}
-            />
-          </View>
-
-          <TouchableOpacity onPress={onPressAction}>
-            <ButtonComponent text={'NEXT'} />
-          </TouchableOpacity>
-          <OR />
-          <SocialLogin />
-        </ScrollView>
+        <TouchableOpacity onPress={onPressAction}>
+          <ButtonComponent text={'NEXT'} />
+        </TouchableOpacity>
+        <OR />
+        <SocialLogin />
       </ScrollView>
       {showHint && <FooterHint />}
 

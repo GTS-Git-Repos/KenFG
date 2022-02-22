@@ -17,16 +17,13 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 import {signupRemote} from '../../../remote/authRemote';
 // import Icon from 'react-native-vector-icons/Ionicons';
-import {useQuery} from 'react-query';
 import assets from '../../../constants/assets_manifest';
 
 import {
-  TopBar,
   BlockScreenByLoading,
   ButtonComponent,
   SocialLogin,
 } from '../../../sharedComponents';
-import LinearGradient from 'react-native-linear-gradient';
 const log = console.log;
 
 export default function SignupScreen() {
@@ -68,26 +65,25 @@ export default function SignupScreen() {
 
   const navigate = async () => {
     try {
+      const mobileNumber = mobile.replace(/ /g, '');
+      log(mobileNumber.length);
+      if (mobileNumber.length !== 10) {
+        throw new Error('Invalid Mobile Number');
+      }
       setLoading(true);
       const response = await signupRemote({
         mobile,
         ref,
       });
-      if (response) {
-        navigation.navigate('OTPScreen', {
-          mobile,
-          otp: response.otp,
-        });
-      } else {
-        setTimeout(() => {
-          errorBox('Failed to create a User, Please check your Internet');
-        }, 600);
+      if (!response) {
+        throw new Error('Please check your internet');
       }
-    } catch (err) {
-      setTimeout(() => {
-        errorBox('Failed to create a User');
-      }, 600);
-      log(err);
+      navigation.navigate('OTPScreen', {
+        mobile,
+        otp: response.otp,
+      });
+    } catch (err: any) {
+      errorBox(`${err.message}`, 500);
     } finally {
       setLoading(false);
     }
@@ -96,77 +92,77 @@ export default function SignupScreen() {
   return (
     <View style={tailwind('bg-dark h-full')}>
       <ScrollView
+        keyboardShouldPersistTaps="handled"
         contentContainerStyle={[
           tailwind('py-9 bg-dark-3'),
           {paddingHorizontal: 26},
         ]}>
-        <ScrollView>
-          <View style={[tailwind('flex-row items-center justify-center')]}>
-            <Image
-              resizeMode="contain"
-              source={assets.logo_new}
-              style={[tailwind(''), {width: 92, height: 28}]}
-            />
-          </View>
+        <View style={[tailwind('flex-row items-center justify-center')]}>
+          <Image
+            resizeMode="contain"
+            source={assets.logo_new}
+            style={[tailwind(''), {width: 92, height: 28}]}
+          />
+        </View>
 
-          <Text
-            style={[
-              tailwind('font-bold text-light pt-9 text-center'),
-              {fontSize: 24},
-            ]}>
-            Welcome to KenFG!
-          </Text>
-          <Text
-            style={[
-              tailwind('font-regular text-dark-1 pt-1 text-center font-12'),
-            ]}>
-            Register to Continue
-          </Text>
+        <Text
+          style={[
+            tailwind('font-bold text-light pt-9 text-center'),
+            {fontSize: 24},
+          ]}>
+          Welcome to KenFG!
+        </Text>
+        <Text
+          style={[
+            tailwind('font-regular text-dark-1 pt-1 text-center font-12'),
+          ]}>
+          Register to Continue
+        </Text>
 
-          <View style={[tailwind(' pt-8 pb-4 ')]}>
+        <View style={[tailwind(' pt-8 pb-4 ')]}>
+          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+            Mobile No
+          </Text>
+          <TextInput
+            maxLength={10}
+            value={mobile}
+            keyboardAppearance="dark"
+            keyboardType="decimal-pad"
+            onChangeText={e => setMobile(e)}
+            style={[
+              tailwind('border-b font-bold text-white font-20'),
+              {borderColor: '#8797B14D', height: 40},
+            ]}
+          />
+          <Text style={[tailwind('font-regular font-12 text-dark-1 pt-2')]}>
+            You will receive OTP for Verification
+          </Text>
+        </View>
+        {showInvite && (
+          <View style={[tailwind('pt-1 pb-4')]}>
             <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-              Mobile No
+              Enter Invite Code
             </Text>
             <TextInput
-              maxLength={10}
-              value={mobile}
-              keyboardAppearance="dark"
-              keyboardType="decimal-pad"
-              onChangeText={e => setMobile(e)}
+              maxLength={7}
+              value={inviteCode}
+              onChangeText={e => setInviteCode(e)}
               style={[
-                tailwind('border-b font-bold text-white font-20'),
+                tailwind('border-b font-bold text-light font-20'),
                 {borderColor: '#8797B14D', height: 40},
               ]}
             />
-            <Text style={[tailwind('font-regular font-12 text-dark-1 pt-2')]}>
-              You will receive OTP for Verification
-            </Text>
           </View>
-          {showInvite && (
-            <View style={[tailwind('pt-1 pb-4')]}>
-              <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-                Enter Invite Code
-              </Text>
-              <TextInput
-                maxLength={7}
-                value={inviteCode}
-                onChangeText={e => setInviteCode(e)}
-                style={[
-                  tailwind('border-b font-bold text-light font-20'),
-                  {borderColor: '#8797B14D', height: 40},
-                ]}
-              />
-            </View>
-          )}
+        )}
 
-          <TouchableOpacity onPress={navigate}>
-            <ButtonComponent text={'REGISTER'} />
-          </TouchableOpacity>
-          <OR />
-          <SocialLogin />
-          <TC />
-        </ScrollView>
+        <TouchableOpacity onPress={navigate}>
+          <ButtonComponent text={'REGISTER'} />
+        </TouchableOpacity>
+        <OR />
+        <SocialLogin />
+        <TC />
       </ScrollView>
+
       {showHint && <FooterHint openInviteInput={openInviteInput} />}
 
       {loading && <BlockScreenByLoading />}

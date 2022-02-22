@@ -12,7 +12,7 @@ import {
 } from '../../../../sharedComponents';
 
 interface PropTypes {
-  onPressContest(): any;
+  onContestMatchPress(contest_key:string): any;
   breakUpSheet?: any;
 }
 
@@ -20,7 +20,7 @@ export default function MyContestStatus(props: PropTypes) {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
-      onPress={props.onPressContest}
+      onPress={() => props.onContestMatchPress("key")}
       style={[tailwind('bg-dark-3 rounded my-2 mx-3')]}>
       <TopSection />
       <ContestAttributes amount="10,000" />
