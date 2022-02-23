@@ -13,7 +13,7 @@ import {selectedMatch, userInfo} from '../../../store/selectors';
 import {useDispatch, useSelector} from 'react-redux';
 import Info from './atoms/info.teamselection';
 import CheckBoxSelectedTeam from './molecules/checbox.selectteam';
-import {errorBox} from '../../../utils/snakBars';
+import {errorBox, infoBox} from '../../../utils/snakBars';
 import {joinContestRemote} from '../../../remote/matchesRemote';
 import {resetContestListNavigation} from '../../../utils/resetNav';
 import SubTitle from './atoms/subtitle.teamselection';
@@ -32,6 +32,7 @@ interface PropTypes {
   unavailableTeams: any;
   selectedTeams: Array<any>;
   teamCardPress(team_key: string): any;
+  // selectAllPress(): any;
 }
 
 export default function TeamSelectionScreen(props: PropTypes) {
@@ -66,6 +67,18 @@ export default function TeamSelectionScreen(props: PropTypes) {
     }
   }
 
+  function selectAllPress() {
+    const maxTeam = parseInt(matchSelector.joinContest.maxTeam);
+
+    const aTeamsKey = props.availableTeams.map((item: any) => item.team_key);
+    if (aTeamsKey > maxTeam) {
+      errorBox(`You can only select ${maxTeam} Teams`, 0);
+    } else {
+      setChoosenTeams(aTeamsKey);
+    }
+    // console.log('aTeamsKey', aTeamsKey);
+  }
+
   function proceedToJoinPress() {
     try {
       if (choosenTeams.length === 0) {
@@ -90,26 +103,29 @@ export default function TeamSelectionScreen(props: PropTypes) {
       setLoading(true);
 
       const response = await joinContestRemote(obj);
-      console.log('response', response);
-
       setLoading(false);
-      if (!response.status) {
-        setLoading(false);
-        errorBox(response.msg, 1000);
+      console.log('response', response);
+      if (response.txn) {
+        infoBox(response.msg, 500);
+        // refresh the user wallet amount
+        dispatch(updateUserInfo(userSelector.mobile));
+        // go back to contest screen
+        resetContestListNavigation(navigation, {
+          match_key: matchSelector.match_key,
+          to: 1,
+        });
         return;
       }
-      dispatch(updateUserInfo(userSelector.mobile));
-      resetContestListNavigation(navigation, {
-        match_key: matchSelector.match_key,
-        to: 1,
-      });
+      if (!response.txn) {
+        errorBox(response.msg, 500);
+        return;
+      }
     } catch (err) {
       setLoading(false);
-      Alert.alert('Failed to Join Contest', 'something went wrong');
+      errorBox('faild to Join contest', 500);
     }
   }
 
-  
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Select Team'} />
@@ -118,8 +134,8 @@ export default function TeamSelectionScreen(props: PropTypes) {
         disabled={props.maxTeams <= props.teams.length}
         maxTeams={props.maxTeams}
         availableTeams={props.availableTeams.length}
-        selectTeams={props.selectedTeams.length}
-        selectAllPress={() => {}}
+        selectTeams={choosenTeams.length}
+        selectAllPress={selectAllPress}
       />
       <ScrollView>
         {props.availableTeams.map((item: any) => {

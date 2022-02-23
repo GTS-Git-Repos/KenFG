@@ -1,5 +1,6 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import tailwind from 'tailwind-rn';
 import {FlatList, View} from 'react-native';
 import {updateFullMatchAction} from '../../../store/actions/appActions';
 import {
@@ -51,7 +52,7 @@ export default function LobbyScreenHOC() {
     return <LobbyScreenLoading failed={true} />;
   }
   return (
-    <View>
+    <View style={[tailwind('h-full')]}>
       <FlatList
         refreshing={false}
         onRefresh={() => refetchlobby()}
@@ -83,7 +84,9 @@ export default function LobbyScreenHOC() {
         useNativeDriver={true}
         modalTopOffset={100}
         adjustToContentHeight={true}
-        HeaderComponent={<MatchNotificationHead />}>
+        HeaderComponent={
+          <MatchNotificationHead notificationSheet={notificationSheet} />
+        }>
         <MatchNotificationSheet matchInfo={matchInfo} />
       </Modalize>
     </View>

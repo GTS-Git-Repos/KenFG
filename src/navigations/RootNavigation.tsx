@@ -30,8 +30,6 @@ import DailyLeaderBoardScreen from '../screens/leaderboard/DailyLeaderBoardScree
 // import CompletedMatchScreen from '../screens/matches/CompletedMatchScreen';
 import MonthlyLeaderBoardScreen from '../screens/leaderboard/MonthlyLeaderBoardScreen';
 
-import TeamsListScreen from '../screens/contests/SwitchTeamScreen';
-
 import MyContestPlayersScreen from '../screens/contests/MyContestPlayersScreen';
 import PlayerProfileScreen from '../screens/contests/PlayerProfileScreen';
 
@@ -85,10 +83,7 @@ export default function RootNavigation() {
           <RootNavigator.Screen component={Match} name="Match" />
           <RootNavigator.Screen component={Wallet} name="Wallet" />
 
-          {/* <RootNavigator.Screen
-            name="TeamSelectionScreen"
-            component={TeamSelectionScreen}
-          /> */}
+          <RootNavigator.Screen name="InviteScreen" component={InviteScreen} />
 
           <RootNavigator.Screen
             component={NotificationScreen}
@@ -141,11 +136,6 @@ export default function RootNavigation() {
           <RootNavigator.Screen
             component={DailyLeaderBoardScreen}
             name="DailyLeaderBoardScreen"
-          />
-
-          <RootNavigator.Screen
-            component={TeamsListScreen}
-            name="TeamsListScreen"
           />
 
           <RootNavigator.Screen

@@ -60,9 +60,9 @@ export default function UpcommingMatches(props: PropTypes) {
       console.log(err);
     }
     return () => {
-      log('Unmounted');
+      // log('Unmounted');
       isMounted.current = false;
-      clearInterval(interval);
+      // clearInterval(interval);
     };
   }, []);
 

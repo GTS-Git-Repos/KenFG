@@ -37,6 +37,7 @@ export interface SwitchTeamType {
   contest_key: string;
   old_team_key: string;
   player_key: string;
+  existedTeams: Array<any>;
 }
 
 export interface SelectedMatchType {
@@ -51,7 +52,6 @@ export interface SelectedMatchType {
   titleString: string;
 }
 
-
 export interface MatchCommentaryType {
   joinContest: null | any;
   match_key: string;
@@ -63,5 +63,3 @@ export interface MatchCommentaryType {
   team_b_name: string;
   titleString: string;
 }
-
-

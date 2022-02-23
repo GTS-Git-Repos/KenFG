@@ -50,9 +50,10 @@ export default function TeamFormationHOC() {
   const sortStatus: any = sortStatusSelector(formationState);
   const filterTeam: any = filerTeamSelector(formationState);
 
-  // console.log('filterTeam >>', filterTeam);
+  // console.log('match_players >>', match_players);
 
   const [sortByLowCredits, setSortByLowCredits] = useState<boolean>(false);
+  const [noPlayers, setNoPlayers] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
@@ -91,6 +92,7 @@ export default function TeamFormationHOC() {
       } else {
         teamFormationDispatch({type: 'UPDATE_PLAYERS', payload: null});
         dispatch(saveAllPlayersAction(null));
+        setNoPlayers(true);
       }
     }
   }, [playersAPI]);
@@ -177,7 +179,9 @@ export default function TeamFormationHOC() {
     }
   };
 
-  if (match_players === null) return <LoadFailedTeamFormation />;
+  if (noPlayers === true) {
+    return <LoadFailedTeamFormation />;
+  }
 
   if (!isScreenReady || match_players.length === 0) {
     return <CreateTeamLoading />;

@@ -18,7 +18,7 @@ export default function AccountProfileTopBar(props: PropTypes) {
         tailwind('flex-row items-center bg-secondary justify-between p-3'),
       ]}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <BackIcon />
+        <BackIcon dark={true} />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => props.moreOptionSheet?.current?.open()}>
         <Image

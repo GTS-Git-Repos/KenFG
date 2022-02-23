@@ -14,24 +14,35 @@ import {switchTeamInContestRemote} from '../../../remote/contestRemote';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {FullScreenLoading} from '../../../sharedComponents';
+import {filter} from 'lodash';
+
+type RouteParams = {
+  params: {
+    contest_key: string;
+    old_team_key: string;
+    existedTeams: Array<any>;
+  };
+};
 
 export default function SwitchTeamHOC() {
+  const route = useRoute<RouteProp<RouteParams, 'params'>>();
+
   const navigation = useNavigation();
   const isScreenReady = useIsScreenReady();
 
-  type RouteParams = {
-    params: {
-      contest_key: string;
-      old_team_key: string;
-      alreadyJoinedTeams: Array<any>;
-    };
-  };
   const [selectedTeam, setSelectedTeam] = useState('');
+  const [availableTeams, setAvailableTeams] = useState<any>([]);
+  const [unavailableTeams, setUnavailableTeams] = useState<any>([]);
 
   const matchMeta: SelectedMatchType = useSelector(selectedMatch);
   const userMeta = useSelector(userInfo);
   const isFullMatch: boolean = useSelector(isFulMatchSelector);
-  const route = useRoute<RouteProp<RouteParams, 'params'>>();
+
+  const {teams}: any = useGetTeams(
+    matchMeta.match_key,
+    userMeta.mobile,
+    isFullMatch,
+  );
 
   const switchTeam = useMutation(switchTeamInContestRemote, {
     onSuccess: (response, vars, _) => {
@@ -44,14 +55,25 @@ export default function SwitchTeamHOC() {
   });
 
   useEffect(() => {
-    setSelectedTeam(route.params.old_team_key);
-  }, []);
+    if (teams) {
+      setSelectedTeam(route.params.old_team_key);
 
-  const {teams}: any = useGetTeams(
-    matchMeta.match_key,
-    userMeta.mobile,
-    isFullMatch,
-  );
+      const existedTeams = route.params.existedTeams;
+      const availableTeams = [];
+      const unavailableTeams = [];
+      for (const team of teams) {
+        const isExisted = existedTeams.includes(team.team_key);
+        if (isExisted) {
+          unavailableTeams.push(team);
+        } else {
+          availableTeams.push(team);
+        }
+      }
+      setAvailableTeams(availableTeams);
+      setUnavailableTeams(unavailableTeams);
+      // const unavailableTeams = filter(teams,)
+    }
+  }, [teams]);
 
   function onPressSwitchTeam() {
     switchTeam.mutate({
@@ -69,6 +91,8 @@ export default function SwitchTeamHOC() {
 
   return (
     <SwitchTeamScreen
+      availableTeams={availableTeams}
+      unavailableTeams={unavailableTeams}
       teams={teams}
       selectedTeam={selectedTeam}
       old_team_key={route.params.old_team_key}

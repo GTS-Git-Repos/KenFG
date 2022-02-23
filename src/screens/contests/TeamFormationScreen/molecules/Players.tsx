@@ -2,7 +2,6 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import assets from '../../../../constants/assets_manifest';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {useRenderCount} from '../../../../utils/customHoooks';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -79,16 +78,11 @@ function Player(props: PropTypes) {
                   tailwind('w-1 h-1 mr-2 rounded-full'),
                   {backgroundColor: '#B2933D'},
                 ]}></View>
-              <Text
-                numberOfLines={1}
-                style={[
-                  tailwind('font-regular font-9'),
-                  {
-                    color: '#B2933D',
-                  },
-                ]}>
-                Played Last Match
-              </Text>
+              {props.anounced ? (
+                <Text style={[styles.playerAnounced]}>Anounced</Text>
+              ) : (
+                <Text style={styles.playerlastPlayed}>Played Last Match</Text>
+              )}
             </View>
           </View>
 
@@ -178,6 +172,16 @@ const styles = StyleSheet.create({
   disabledUser: {
     backgroundColor: '#172338',
     opacity: 0.5,
+  },
+  playerlastPlayed: {
+    fontSize: 9,
+    fontFamily: 'gadugi-normal',
+    color: '#d1b45a',
+  },
+  playerAnounced: {
+    fontSize: 9,
+    fontFamily: 'gadugi-normal',
+    color: '#00513B',
   },
 });
 

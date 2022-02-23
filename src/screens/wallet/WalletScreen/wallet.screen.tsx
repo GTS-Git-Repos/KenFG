@@ -35,7 +35,7 @@ export default function WalletScreen() {
         <View style={[tailwind('')]}>
           <Actions
             text={'My Recent Transactions'}
-            goto={toRecentTransactions}
+            goto={"TransactionListScreen"}
           />
           <Actions
             text={'Manage Payments'}

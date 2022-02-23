@@ -77,8 +77,6 @@ export function Home(props: any) {
         name="NotificationScreen"
         component={NotificationScreen}
       />
-      <HomeStack.Screen name="LiveMatchScreen" component={LiveMatchScreen} />
-      <HomeStack.Screen name="WalletScreen" component={WalletScreen} />
       <HomeStack.Screen
         name="TransactionListScreen"
         component={TransactionListScreen}
@@ -87,13 +85,6 @@ export function Home(props: any) {
   );
 }
 
-// export function MyMatches(props: any) {
-//   return (
-//     <MyMatch.Navigator screenOptions={StackConfig}>
-//       <MyMatch.Screen name="MyMatchesScreen" component={MyMatchesScreen} />
-//     </MyMatch.Navigator>
-//   );
-// }
 
 export function Contest(props: any) {
   return (

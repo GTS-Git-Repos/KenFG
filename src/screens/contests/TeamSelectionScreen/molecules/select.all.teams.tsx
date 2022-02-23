@@ -22,7 +22,7 @@ export default function SelectAllTeams(props: PropTypes) {
         onPress={props.selectAllPress}
         style={[styles.linkBtn]}>
         <Text style={[styles.text, props.disabled && styles.disabledText]}>
-          Select All ({props.maxTeams})
+          Select All
         </Text>
         <RadioButton selected={props.availableTeams === props.selectTeams} />
       </TouchableOpacity>

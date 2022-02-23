@@ -185,8 +185,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               teamname={item.team_key}
               is_team_a={item.team_key === matchSelector.team_a}
               seasonRole={item.seasonal_role}
-              c={'43.3%'}
-              vc={'8.3%'}
+              c={`${item.stat.cap}%`}
+              vc={`${item.stat.vc}%`}
               is_captain={isPlayerCaptain(item.key)}
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
@@ -208,8 +208,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               teamname={item.team_key}
               seasonRole={item.seasonal_role}
               is_team_a={item.team_key === matchSelector.team_a}
-              c={'43.3%'}
-              vc={'8.3%'}
+              c={`${item.stat.cap}%`}
+              vc={`${item.stat.vc}%`}
               is_captain={isPlayerCaptain(item.key)}
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
@@ -231,8 +231,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               teamname={item.team_key}
               seasonRole={item.seasonal_role}
               is_team_a={item.team_key === matchSelector.team_a}
-              c={'43.3%'}
-              vc={'8.3%'}
+              c={`${item.stat.cap}%`}
+              vc={`${item.stat.vc}%`}
               is_captain={isPlayerCaptain(item.key)}
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
@@ -253,8 +253,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               teamname={item.team_key}
               seasonRole={item.seasonal_role}
               is_team_a={item.team_key === matchSelector.team_a}
-              c={'43.3%'}
-              vc={'8.3%'}
+              c={`${item.stat.cap}%`}
+              vc={`${item.stat.vc}%`}
               is_captain={isPlayerCaptain(item.key)}
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}

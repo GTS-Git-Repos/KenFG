@@ -23,7 +23,7 @@ import {errorBox, infoBox} from '../../../utils/snakBars';
 
 import PagerView from 'react-native-pager-view';
 import {joinContestRemote} from '../../../remote/matchesRemote';
-import {Alert} from 'react-native';
+import {View} from 'react-native';
 import {
   toSecondInningsContestList,
   toSwitchTeam,
@@ -45,6 +45,7 @@ import {allContestsSelector} from './contest.list.controller';
 import {TeamFormationMutationType} from '../../../types/match';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 import {updateUserInfo} from '../../../store/actions/userAction';
+import {FlatList} from 'react-native-gesture-handler';
 
 export default function ContestListHOC() {
   const dispatch = useDispatch();
@@ -54,9 +55,7 @@ export default function ContestListHOC() {
   );
   const allContests = allContestsSelector(contestState);
   const sortStatus = sortStatusSelector(contestState);
-  const colors = useSelector(appColorsSelector)
-
-  
+  const colors = useSelector(appColorsSelector);
 
   const navigation = useNavigation<any>();
   const pagerRef = useRef<PagerView>(null);
@@ -73,7 +72,7 @@ export default function ContestListHOC() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const {contests, contestsAPI}: any = useContestList(
+  const {contests, contestsAPI, refetchContests}: any = useContestList(
     matchSelector.match_key,
     userSelector.mobile,
     isFullMatch,
@@ -121,6 +120,12 @@ export default function ContestListHOC() {
     }, []),
   );
 
+  function refetchPage() {
+    refetchContests();
+    refetchTeams();
+    refetchJoinedContest();
+  }
+
   function sortByOnPress(sortBy: any) {
     contestDispatch({type: 'UPDATE_SORT', payload: sortBy});
   }
@@ -162,11 +167,16 @@ export default function ContestListHOC() {
   };
 
   const onPressTeamSwitch = (team_key: string, contest_key: string): void => {
+    const jContest = joined.find((item: any) => item.contestMeta.contest_id);
+    if (!jContest) {
+      errorBox('Can\'t able to switch team', 100);
+    }
     toSwitchTeam(navigation, {
       match_key: matchSelector.match_key,
       contest_key: contest_key,
       old_team_key: team_key,
       player_key: userSelector.mobile,
+      existedTeams: jContest.contestMeta.contest_team,
     });
   };
 
@@ -215,21 +225,17 @@ export default function ContestListHOC() {
       setLoading(true);
       const response = await joinContestRemote(obj);
       setLoading(false);
-      if (!response.status) {
-        setLoading(false);
+      // handle failure
+      if (!response.txn) {
         errorBox(response.msg, 500);
-        return;
       }
       setShowJoinModal(false);
       refetchJoinedContest();
       dispatch(updateUserInfo(userSelector.mobile));
       infoBox('Contest Succefully Joined', 500);
-      // setTimeout(() => {
-      //   pagerRef?.current?.setPage(1);
-      // }, 500);
     } catch (err) {
       setLoading(false);
-      Alert.alert('Failed to Join Contest', 'something went wrong');
+      infoBox('Contest Failed to Join !', 500);
     }
   }
   const openWallet = () => {
@@ -245,39 +251,51 @@ export default function ContestListHOC() {
   }
 
   return (
-    <ContestListScreen
-      userSelector={userSelector}
-      contests={allContests}
-      contestsAPI={contestsAPI}
-      joined={joined}
-      joinedAPI={joinedAPI}
-      joinedAPILive={joinedAPILive}
-      teams={teams}
-      teamsAPI={teamsAPI}
-      teamsAPILive={teamsAPILive}
-      isFullMatch={isFullMatch}
-      teamPreviewPress={teamPreviewPress}
-      teamMutateAction={teamMutateAction}
-      showWalletModal={showWalletModal}
-      setShowWalletModal={setShowWalletModal}
-      sortByOnPress={sortByOnPress}
-      pagerRef={pagerRef}
-      selectedTab={selectedTab}
-      setSelectedTab={setSelectedTab}
-      to={route?.params?.params?.to}
-      showJoinModal={showJoinModal}
-      setShowJoinModal={setShowJoinModal}
-      entryAmount={matchSelector?.joinContest?.entryAmount}
-      joinContestWithTeam={joinContestWithTeam}
-      loading={loading}
-      setLoading={setLoading}
-      proceedToJoin={proceedToJoin}
-      onPressTeamSwitch={onPressTeamSwitch}
-      onPressJoinedContest={onPressJoinedContest}
-      onPressSecondInnings={onPressSecondInnings}
-      openWallet={openWallet}
-      sortStatus={sortStatus}
-      onPressCreateTeam={onPressCreateTeam}
-    />
+    <View style={[{flex: 1}]}>
+      <FlatList
+        refreshing={false}
+        onRefresh={() => refetchPage()}
+        contentContainerStyle={{flex: 1}}
+        data={[1]}
+        renderItem={() => {
+          return (
+            <ContestListScreen
+              userSelector={userSelector}
+              contests={allContests}
+              contestsAPI={contestsAPI}
+              joined={joined}
+              joinedAPI={joinedAPI}
+              joinedAPILive={joinedAPILive}
+              teams={teams}
+              teamsAPI={teamsAPI}
+              teamsAPILive={teamsAPILive}
+              isFullMatch={isFullMatch}
+              teamPreviewPress={teamPreviewPress}
+              teamMutateAction={teamMutateAction}
+              showWalletModal={showWalletModal}
+              setShowWalletModal={setShowWalletModal}
+              sortByOnPress={sortByOnPress}
+              pagerRef={pagerRef}
+              selectedTab={selectedTab}
+              setSelectedTab={setSelectedTab}
+              to={route?.params?.params?.to}
+              showJoinModal={showJoinModal}
+              setShowJoinModal={setShowJoinModal}
+              entryAmount={matchSelector?.joinContest?.entryAmount}
+              joinContestWithTeam={joinContestWithTeam}
+              loading={loading}
+              setLoading={setLoading}
+              proceedToJoin={proceedToJoin}
+              onPressTeamSwitch={onPressTeamSwitch}
+              onPressJoinedContest={onPressJoinedContest}
+              onPressSecondInnings={onPressSecondInnings}
+              openWallet={openWallet}
+              sortStatus={sortStatus}
+              onPressCreateTeam={onPressCreateTeam}
+            />
+          );
+        }}
+      />
+    </View>
   );
 }

@@ -83,7 +83,9 @@ export default function PlayerProfile(props: PropTypes) {
                 {props.is_captain ? '2x' : 'C'}
               </Text>
             </TouchableOpacity>
-            <Text style={[tailwind('font-regular  text-dark-1 py-1 font-15')]}>
+            <Text
+              numberOfLines={1}
+              style={[tailwind('font-regular  text-dark-1 py-1 font-15')]}>
               {props.c}
             </Text>
           </View>
@@ -120,7 +122,9 @@ export default function PlayerProfile(props: PropTypes) {
               </Text>
             </TouchableOpacity>
 
-            <Text style={[tailwind('font-regular text-dark-1 py-1 font-15')]}>
+            <Text
+              numberOfLines={1}
+              style={[tailwind('font-regular text-dark-1 py-1 font-15')]}>
               {props.vc}
             </Text>
           </View>

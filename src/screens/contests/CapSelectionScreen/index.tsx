@@ -33,7 +33,9 @@ export default function CapSelectionHOC() {
 
   const allPlayers = allPlayersSelector(capsState);
   const sortStatus = sortStatusSelector(capsState);
-  console.log('sortStatus >>>', sortStatus);
+  // console.log('sortStatus >>>', sortStatus);
+
+  // log(JSON.stringify(playersByRoleSelector));
 
   useEffect(() => {
     capsDispatch({type: 'UPDATE_PLAYERS', payload: playersByRoleSelector});
@@ -48,24 +50,21 @@ export default function CapSelectionHOC() {
       const team_key = route.params.mutation.team_key;
       const obj = {...payload};
       obj.team_key = team_key;
+      // log(JSON.stringify(obj));
+      // return;
       setLoading(true);
       const response = await editTeamRemote(obj);
       setLoading(false);
-      if (!response) {
-        throw 'Failed to Edit a Team !!';
+
+      if (!response.txn) {
+        errorBox(response.msg, 500);
+        return;
       }
       dispatch(clearTeamAction());
       navigation.dispatch(StackActions.popToTop());
-      // return;
-      // resetContestListNavigation(navigation, {
-      //   match_key: matchSelector.match_key,
-      //   to: 3,
-      // });
+      return;
     } catch (err) {
-      console.log('editTeamAPI Error ->', err);
-      setTimeout(() => {
-        errorBox('Failed to Edit', 500);
-      }, 500);
+      errorBox('Failed to Edit', 500);
     }
   };
 

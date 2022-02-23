@@ -42,7 +42,7 @@ export const APP_COLORS = {
   },
   lightMode: {
     bg: {
-      backgroundColor: '#E5E5E5', // shade white
+      backgroundColor: '#E0E0E0', // shade white
     },
     bg_1: {
       backgroundColor: '#FFFFFF', // pure white

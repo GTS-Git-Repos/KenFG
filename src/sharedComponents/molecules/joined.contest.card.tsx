@@ -1,15 +1,14 @@
+/**
+ * used in contest lists screen *My Contests Tab*
+ */
+
 import React, {useState} from 'react';
 import tailwind from '../../../tailwind';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ToastAndroid,
-} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {CapIcon, VCIcon} from '../../assets/newIcons';
+
 import {
-  CIcon,
   CupIcon,
   EditIcon,
   MIcon,
@@ -18,7 +17,6 @@ import {
   SwitchIcon,
   TeamCode,
   TickIcon,
-  VCIcon,
 } from '../';
 import {TeamFormationMutationType} from '../../types/match';
 
@@ -129,7 +127,7 @@ const TopSection = (props: any) => {
           </Text>
         </View>
       </View>
-      <ProgressbarShared spots={'10,000'} left={'5,000'} />
+      <ProgressbarShared spots={'20'} left={'19'} />
     </View>
   );
 };
@@ -193,7 +191,7 @@ const TeamInfo = (props: TeamInfoTypes) => {
         </View>
         <View style={[tailwind('px-2')]}>
           <View style={[tailwind('flex-row items-center')]}>
-            <CIcon white={false} />
+            <CapIcon white={false} />
             <Text style={[tailwind('font-regular px-1 text-white font-14')]}>
               {props.cap.name}
             </Text>

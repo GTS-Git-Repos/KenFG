@@ -6,6 +6,7 @@ import assets from '../../../../constants/assets_manifest';
 import {BottomLine} from '../../../../sharedComponents';
 import {} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
+import {errorBox} from '../../../../utils/snakBars';
 
 interface PropTypes {
   text?: string;
@@ -15,7 +16,9 @@ export default function PlayerContests(props: PropTypes) {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('CompletedMatchScreen')}
+      onPress={() => {
+        errorBox('Scrore Not Available',0);
+      }}
       style={[tailwind('rounded bg-dark-3 mr-2')]}>
       <NewTop />
       <NewPoints />

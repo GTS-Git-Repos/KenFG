@@ -138,6 +138,8 @@ export default function TeamSelectionHOC() {
     }
   }, [teams]);
 
+
+
   function teamCardPress(team_key: string) {
     const team = teams.find((item: any) => item.team_key === team_key);
     if (team) {
@@ -160,6 +162,7 @@ export default function TeamSelectionHOC() {
       availableTeams={availableTeams}
       selectedTeams={selectedTeams}
       teamCardPress={teamCardPress}
+      // selectAllPress={selectAllPress}
     />
   );
 }

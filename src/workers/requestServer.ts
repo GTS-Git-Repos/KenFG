@@ -25,6 +25,7 @@ const requestServer = function (
         clearTimeout(timeoutId);
         if (serverResponse.ok) {
           logRequest(url, payload);
+          // handle when contest length is 0
           if (serverResponse.headers.get('content-length') === '0') {
             resolve({status: serverResponse.status});
           } else {
@@ -40,7 +41,7 @@ const requestServer = function (
               });
           }
         } else {
-          console.log('>> Status: ', serverResponse.status);
+          console.log('> Status Code: ', serverResponse.status);
           ErrorRequest(url, payload);
           serverResponse
             .json()
@@ -48,16 +49,17 @@ const requestServer = function (
               resolve({status: serverResponse.status, data});
             })
             .catch(err => {
+              console.log(err);
+
               reject('Parse Failed On Failed');
             });
         }
       })
       .catch(err => {
         clearTimeout(timeoutId);
-
         console.log(err);
         ErrorRequest(url, payload);
-        reject('Failed Request');
+        reject('Request Failed');
       });
   });
 };

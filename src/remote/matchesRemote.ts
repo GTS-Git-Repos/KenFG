@@ -158,30 +158,32 @@ export const createTeamRemote = async (payload: any) => {
     }
     if (response.status === 400) {
       return {status: false, msg: response.data?.message};
-    } else {
-      failedLog('createTeamRemote()', response);
     }
+    throw new Error('Unhandled Error');
   } catch (err) {
     console.log(err);
-    return false;
+    return {status: false, msg: 'Unable to Create a Team'};
   }
 };
 
-export const editTeamRemote = async (payload: any) => {
+export const editTeamRemote = async (payload: any): Promise<any> => {
   try {
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_edit_team,
       payload,
     );
+    console.log('response.status', response.status);
     if (response.status === 200) {
-      return true;
-    } else {
-      failedLog('editTeamRemote()', response);
+      return {txn: true};
     }
+    if (response.status === 400) {
+      return {txn: false, msg: 'Team already Exists !'};
+    }
+    return {txn: false, msg: 'Failed to Edit Team'};
   } catch (err) {
     console.log(err);
-    return false;
+    return {txn: false, msg: 'Failed to Edit Team'};
   }
 };
 
@@ -254,14 +256,15 @@ export const joinContestRemote = async (payload: any) => {
       BASE_URL + req_join_contest,
       payload,
     );
-    if (response.status) {
-      return {status: true};
-    } else {
-      return {status: false, msg: response.data?.message};
+    if (response.status === 200) {
+      return {txn: true, msg: 'contest joined successfully'};
     }
+    if (response.status === 400) {
+      return {txn: false, msg: response.data?.message};
+    }
+    return {txn: false, msg: 'failed to join contest'};
   } catch (err) {
-    console.log('joinContestRemote Err', err);
-    return {status: false, msg: 'unhandled error'};
+    return {txn: false, msg: 'failed to join contest'};
   }
 };
 

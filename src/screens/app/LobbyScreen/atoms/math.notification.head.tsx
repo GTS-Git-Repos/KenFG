@@ -1,12 +1,20 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {} from 'react-native-gesture-handler';
 
-export default function MatchNotificationHead() {
+interface PropTypes {
+  notificationSheet: any;
+}
+
+export default function MatchNotificationHead(props: PropTypes) {
   return (
     <View style={styles.root}>
-      <Icon name="close" size={25} color="white" />
+      <TouchableOpacity
+        onPress={() => props.notificationSheet?.current?.close()}>
+        <Icon name="close" size={25} color="white" />
+      </TouchableOpacity>
       <Text style={[tailwind('font-bold text-white font-14')]}>
         Set Remainders
       </Text>

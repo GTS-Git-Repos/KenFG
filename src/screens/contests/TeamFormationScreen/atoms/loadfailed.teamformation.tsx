@@ -6,7 +6,6 @@ import {
   Image,
   ImageBackground,
   TouchableOpacity,
-  ActivityIndicator,
 } from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import {SecondaryButton, TopBar} from '../../../../sharedComponents';

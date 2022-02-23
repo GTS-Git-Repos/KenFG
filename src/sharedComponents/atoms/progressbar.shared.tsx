@@ -15,7 +15,7 @@ export default function ProgressBarShared(props: PropTypes) {
           <View
             style={[
               tailwind(''),
-              {backgroundColor: '#B2933D', height: 2.5, width: '60%'},
+              {backgroundColor: '#B2933D', height: 2.5, width: '20%'},
             ]}></View>
         </View>
       </View>

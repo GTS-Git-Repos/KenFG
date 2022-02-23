@@ -3,7 +3,7 @@ import tailwind from '../../../../../tailwind';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
-import {CIcon, VCIcon} from '../../../../sharedComponents';
+import {CapIcon, VCIcon} from '../../../../assets/newIcons';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
@@ -83,7 +83,7 @@ const PlayerProfile = (props: PlayerPropTypes) => {
       </Text>
       {props.isCaptain && (
         <View style={[tailwind('absolute left-2')]}>
-          <CIcon white={true} />
+          <CapIcon white={true} />
         </View>
       )}
 
@@ -106,7 +106,12 @@ const Name = (props: any) => {
         styles.tag,
       ]}
       colors={props.isteam_a ? ['#172338', '#254987'] : ['#73221D', '#172338']}>
-      <Text style={[tailwind('font-bold text-light text-center font-10')]}>
+      <Text
+        numberOfLines={1}
+        style={[
+          tailwind('font-bold text-light text-center font-10'),
+          {width: 60},
+        ]}>
         {props.name}
       </Text>
     </LinearGradient>

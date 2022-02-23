@@ -67,7 +67,7 @@ export default function Page(props: PropTypes) {
         <SortTabs
           sortStatus={props.sortStatus}
           onSortAction={props.onSortAction}
-        /> 
+        />
       </View>
       <FlatList
         data={props.data}
@@ -80,8 +80,8 @@ export default function Page(props: PropTypes) {
               role={item.seasonal_role}
               image={''}
               name={item.name}
-              info={`Sel by ${item.selected_by}`}
-              anounced={true}
+              info={`Sel by ${item.stat.sel} %`}
+              anounced={item.in_xi === 1}
               points={item.points}
               credits={item.credits}
               status={currentPlayerStatus(item.key, props.blockListPlayers)}

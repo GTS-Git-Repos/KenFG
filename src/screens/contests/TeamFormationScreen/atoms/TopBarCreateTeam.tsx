@@ -2,13 +2,15 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
-import LinearGradient from 'react-native-linear-gradient';
-import {BackIcon} from '../../../../sharedComponents';
 import {useDispatch} from 'react-redux';
 import {clearTeamAction} from '../../../../store/actions/teamActions';
-import {HelpIcon, InfoIcon, PointsIcon} from '../../../../assets/newIcons';
+import {
+  HelpIcon,
+  BackIcon,
+  InfoIcon,
+  PointsIcon,
+} from '../../../../assets/newIcons';
 
 interface PropTypes {
   countDown: string;
@@ -46,7 +48,7 @@ export default function TopBarCreateTeam(props: PropTypes) {
           <TouchableOpacity style={[ss.link]}>
             <InfoIcon isDarkMode={true} />
           </TouchableOpacity>
-         
+
           <TouchableOpacity style={[ss.link]}>
             <PointsIcon isDarkMode={true} />
           </TouchableOpacity>

@@ -101,8 +101,11 @@ const SheetHeader = () => {
 };
 
 const MyInfoLink = (props: any) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={[tailwind('p-3 flex-row items-center ')]}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('ProfileEditScreen')}
+      style={[tailwind('p-3 flex-row items-center ')]}>
       <Icon name="settings-outline" size={20} color="white" />
       <Text style={[tailwind('font-regular px-3 text-white font-15')]}>
         My Info & Settings

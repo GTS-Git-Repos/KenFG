@@ -16,7 +16,7 @@ function TabsContest(props: PropTypes) {
   const clr = useSelector(appColorsSelector);
 
   return (
-    <View style={[ss.root, clr.bg]}>
+    <View style={[ss.root, clr.bg_1]}>
       <TouchableOpacity
         onPress={() => props.onTabPressed(0)}
         style={[

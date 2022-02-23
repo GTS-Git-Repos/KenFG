@@ -38,8 +38,7 @@ export const switchTeamInContestRemote = async (payload: any) => {
       failedLog('switchTeamInContestRemote', response);
     }
   } catch (err) {
-    //   console.log(err);
-    return false;
+    throw err;
   }
 };
 
