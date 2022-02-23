@@ -55,6 +55,8 @@ export default function ContestInfoScreen(props: PropTypes) {
     pageRef.current?.setPage(index);
   };
 
+  // console.log(JSON.stringify(props.leaderBoard));
+
   if (!props.contestInfo || isScreenReady === false) {
     return <ContestInfoPageLoading title={matchSelector.titleString} />;
   }

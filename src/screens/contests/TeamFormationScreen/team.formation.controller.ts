@@ -9,6 +9,7 @@ export const teamFormationState = {
   filterTeam: null,
   sortByPoints: null,
   sortByCredits: null,
+  sortByPercentage: null,
 };
 
 export const teamFormationReducer = (state: any, action: any) => {
@@ -39,6 +40,7 @@ const AllPlayersState = (state: any) => state.players;
 const SortByPointsState = (state: any) => state.sortByPoints;
 const SortByCreditsState = (state: any) => state.sortByCredits;
 const FilterTeamState = (state: any) => state.filterTeam;
+const SortSelState = (state: any) => state.sortByPercentage;
 
 export const allPlayersSelector = createSelector(
   [AllPlayersState, SortByPointsState, SortByCreditsState, FilterTeamState],

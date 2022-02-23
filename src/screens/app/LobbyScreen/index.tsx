@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import tailwind from 'tailwind-rn';
+import tailwind from '../../../../tailwind';
 import {FlatList, View} from 'react-native';
 import {updateFullMatchAction} from '../../../store/actions/appActions';
 import {
@@ -52,7 +52,7 @@ export default function LobbyScreenHOC() {
     return <LobbyScreenLoading failed={true} />;
   }
   return (
-    <View style={[tailwind('h-full')]}>
+    <View style={[tailwind('h-full bg-dark')]}>
       <FlatList
         refreshing={false}
         onRefresh={() => refetchlobby()}

@@ -17,7 +17,7 @@ export default function LearderBoard(props: PropTypes) {
   const {width} = useWindowDimensions();
   const navigation = useNavigation();
 
-  console.log(JSON.stringify(props.leaderBoardMeta));
+  // console.log(JSON.stringify(props.leaderBoardMeta));
 
   const navigate = (matchStarted: boolean) => {
     if (matchStarted) {

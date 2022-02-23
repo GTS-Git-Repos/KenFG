@@ -24,6 +24,7 @@ export default function ContestInfoHOC() {
   const [contestInfo, setContestInfo] = useState<any>(null);
   const [current, setCurrent] = useState(false);
   const [showWalletModal, setShowWalletModal] = useState(false);
+  const [leaderBoard, setLeaderBoard] = useState([]);
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
@@ -64,6 +65,29 @@ export default function ContestInfoHOC() {
       }
     }
   }, [contests]);
+
+  // useEffect(() => {
+  //   if (leaderBoardMeta) {
+  //     const players: any = [];
+  //     const currentPlayer = leaderBoardMeta.filter(
+  //       (item: any) => item[0].player_key === userSelector.mobile,
+  //     );
+  //     const otherPlayers = leaderBoardMeta.filter(
+  //       (item: any) => item[0].player_key !== userSelector.mobile,
+  //     );
+  //     players.push(otherPlayers);
+  //     if (currentPlayer) {
+  //       const modifiedTeam = currentPlayer.map((item: any) => {
+  //         return {
+  //           ...item,
+  //           current: true,
+  //         };
+  //       });
+  //       players.push(modifiedTeam);
+  //     }
+  //     setLeaderBoard(players);
+  //   }
+  // }, [leaderBoardMeta]);
 
   function openWallet(input: boolean) {
     if (input) {
@@ -126,6 +150,7 @@ export default function ContestInfoHOC() {
       proceedToJoin={proceedToJoin}
       leaderBoardAPI={leaderBoardAPI}
       leaderBoardMeta={leaderBoardMeta}
+      leaderBoard={leaderBoard}
     />
   );
 }
