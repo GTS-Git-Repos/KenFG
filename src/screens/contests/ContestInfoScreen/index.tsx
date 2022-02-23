@@ -35,11 +35,12 @@ export default function ContestInfoHOC() {
     isFullMatch,
   );
 
-  const {leaderBoardMeta, leaderBoardAPI}: any = useContestLeaderboard(
-    matchSelector.match_key,
-    route.params.contest_key,
-    userSelector.mobile,
-  );
+  const {leaderBoardMeta, leaderBoardAPI, refetchLeaderBoard}: any =
+    useContestLeaderboard(
+      matchSelector.match_key,
+      route.params.contest_key,
+      userSelector.mobile,
+    );
 
   const {joined, joinedAPI}: any = useJoinedContests(
     matchSelector.match_key,
@@ -70,6 +71,10 @@ export default function ContestInfoHOC() {
     } else {
       setShowWalletModal(false);
     }
+  }
+
+  function refetch() {
+    refetchLeaderBoard();
   }
 
   function changePriceDistribution() {
@@ -119,6 +124,8 @@ export default function ContestInfoHOC() {
       setShowWalletModal={setShowWalletModal}
       // setOpenWallet={setOpenWallet}
       proceedToJoin={proceedToJoin}
+      leaderBoardAPI={leaderBoardAPI}
+      leaderBoardMeta={leaderBoardMeta}
     />
   );
 }

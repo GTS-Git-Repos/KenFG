@@ -184,6 +184,8 @@ export default function SIContestListHOC() {
     }
   }
 
+ 
+
   if (!isScreenReady || !contestsAPI) {
     return <ContestScreenLoading title={''} />;
   }

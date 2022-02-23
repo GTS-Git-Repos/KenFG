@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {View, useWindowDimensions} from 'react-native';
+import {View, useWindowDimensions, Text} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
@@ -8,6 +8,7 @@ import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
 import {
   BlockScreenByLoading,
   JoinContestModal,
+  TopBar,
 } from '../../../sharedComponents';
 import TabsContest from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
@@ -73,6 +74,15 @@ export default function ContestListScreen(props: PropTypes) {
       contest_key: contest_key,
     });
   };
+
+  return (
+    <View style={[tailwind('h-full bg-dark')]}>
+      <TopBar text={'Second Innings'} />
+      <Text style={[tailwind('font-bold text-center p-10 text-white font-15')]}>
+        Second Innings Disabled for now
+      </Text>
+    </View>
+  );
 
   return (
     <View style={tailwind('bg-dark h-full')}>

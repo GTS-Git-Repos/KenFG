@@ -139,6 +139,8 @@ export default function ContestListHOC() {
   };
 
   function onPressSecondInnings() {
+    errorBox('Second innings disbaled for now', 0);
+    return;
     toSecondInningsContestList(navigation, matchSelector);
   }
 
@@ -167,9 +169,13 @@ export default function ContestListHOC() {
   };
 
   const onPressTeamSwitch = (team_key: string, contest_key: string): void => {
-    const jContest = joined.find((item: any) => item.contestMeta.contest_id);
+    const jContest = joined.find(
+      (item: any) => item.contestMeta.contest_code === contest_key,
+    );
+
     if (!jContest) {
-      errorBox('Can\'t able to switch team', 100);
+      errorBox("Can't able to switch team", 100);
+      return;
     }
     toSwitchTeam(navigation, {
       match_key: matchSelector.match_key,

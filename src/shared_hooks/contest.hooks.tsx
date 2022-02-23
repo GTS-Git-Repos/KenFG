@@ -93,7 +93,7 @@ export const useContestLeaderboard = (
     data: leaderBoardMeta,
     isSuccess: leaderBoardAPI,
     isFetching: leaderBoardLive,
-    refetch: refetchMatch,
+    refetch: refetchLeaderBoard,
   } = useQuery(
     ['leaderboard', match_key, contest_key, user_id],
     contestleaderBoardRemote,
@@ -101,5 +101,5 @@ export const useContestLeaderboard = (
       notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
     },
   );
-  return {leaderBoardMeta, leaderBoardAPI, leaderBoardLive, refetchMatch};
+  return {leaderBoardMeta, leaderBoardAPI, leaderBoardLive, refetchLeaderBoard};
 };

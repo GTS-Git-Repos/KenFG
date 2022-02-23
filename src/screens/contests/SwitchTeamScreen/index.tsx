@@ -59,6 +59,7 @@ export default function SwitchTeamHOC() {
       setSelectedTeam(route.params.old_team_key);
 
       const existedTeams = route.params.existedTeams;
+    
       const availableTeams = [];
       const unavailableTeams = [];
       for (const team of teams) {

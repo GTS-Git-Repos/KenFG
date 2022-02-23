@@ -16,7 +16,7 @@ export const contestleaderBoardRemote = async (params: any) => {
       },
     );
     if (response.status === 200) {
-      return true;
+      return response.data.data;
     } else {
       failedLog('contestleaderBoardRemote', response);
     }

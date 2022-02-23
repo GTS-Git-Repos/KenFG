@@ -1,7 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {View} from 'react-native';
 import tailwind from '../../../../tailwind';
-import {useNavigation, useRoute} from '@react-navigation/native';
 import {
   TopbarContest,
   ContestCard,
@@ -9,9 +8,9 @@ import {
 } from '../../../sharedComponents';
 import Modal from 'react-native-modal';
 import TabsContestInfo from './atoms/TabsContestInfo';
-const log = console.log;
 import LearderBoard from './molecules/LeaderBoardList';
-import {useCountDown, useIsScreenReady} from '../../../utils/customHoooks';
+import {useIsScreenReady} from '../../../utils/customHoooks';
+import {useCountDown} from '../../../utils/customHoooks';
 import {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 import CreateTeamButton from './atoms/CreateTeamButton';
@@ -20,6 +19,8 @@ import ContestInfoPageLoading from './atoms/ContestInfoPageLoading';
 import PagerView from 'react-native-pager-view';
 import {selectedMatch} from '../../../store/selectors';
 import {infoBox} from '../../../utils/snakBars';
+
+const log = console.log;
 
 interface PropTypes {
   contestInfo: any;
@@ -108,7 +109,11 @@ export default function ContestInfoScreen(props: PropTypes) {
           />
         </View>
         <View>
-          <LearderBoard index={1} activeIndex={activeIndex} />
+          <LearderBoard
+            index={1}
+            activeIndex={activeIndex}
+            leaderBoardMeta={props.leaderBoardMeta}
+          />
         </View>
       </PagerView>
 

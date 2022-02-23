@@ -1,3 +1,5 @@
+// used in contest info leaderboard tab
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {
@@ -66,7 +68,10 @@ export default function HorizontalProfile(props: PropTypes) {
                   tailwind('py-0.5 mr-1 mb-1 bg-dark-4'),
                   {borderRadius: 2, paddingHorizontal: 6},
                 ]}>
-                <Text style={[tailwind('font-regular text-white font-12')]}>
+                <Text
+                  style={[
+                    tailwind('font-regular uppercase text-white font-12'),
+                  ]}>
                   {props.teamCode}
                 </Text>
               </View>

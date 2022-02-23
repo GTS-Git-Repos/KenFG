@@ -11,9 +11,19 @@ interface PropTypes {
 export default function ContestScreenLoading(props: PropTypes) {
   return (
     <View style={[tailwind('bg-dark h-full')]}>
-      <TopbarContest title={props.title} subtitle={'0h:00m:00s'} />
+      <TopbarContest
+        title={props.title}
+        subtitle={'0h:00m:00s'}
+        enableNotification={() => {}}
+        openWallet={() => {}}
+      />
       <View style={[tailwind('')]}>
-        <Tabs selectedTab={0} teamsCount={false} onTabPressed={() => {}} />
+        <Tabs
+          selectedTab={0}
+          teamsCount={false}
+          onTabPressed={() => {}}
+          contest_count={0}
+        />
       </View>
 
       <View style={[tailwind('py-3')]}>
