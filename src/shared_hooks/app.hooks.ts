@@ -26,23 +26,28 @@ export function useCountDown(inputDate: Date) {
       countDown.minutes > 10 ? countDown.minutes : `0${countDown.minutes}`;
     const seconds =
       countDown.seconds > 10 ? countDown.seconds : `0${countDown.seconds}`;
+    if (hour < 1) {
+      return `${hour}h:${minutes}m`;
+    } else {
+      return `${minutes}m:${seconds}s`;
+    }
 
-    useEffect(() => {
-      let timer;
-      if (hour < 1) {
-        if (isMounted) {
-          //   timer = setInterval(() => {
-          //     console.log('hello');
-          //   }, 1000);
-        }
-      }
-      return () => {
-        isMounted = false;
-      };
-    }, []);
+    // useEffect(() => {
+    //   let timer;
+    //   if (hour < 1) {
+    //     if (isMounted) {
+    //       //   timer = setInterval(() => {
+    //       //     console.log('hello');
+    //       //   }, 1000);
+    //     }
+    //   }
+    //   return () => {
+    //     isMounted = false;
+    //   };
+    // }, []);
   } catch (err) {
     // console.log('useCountDown', err);
-    return '';
+    return `00h:00m`;
   }
 }
 

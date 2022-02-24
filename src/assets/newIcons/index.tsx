@@ -19,6 +19,11 @@ import InfoIcon from './svgIcons/info.icon';
 import CapIcon from './svgIcons/cap.icon';
 import VCIcon from './svgIcons/vc.icon';
 import BackIcon from './svgIcons/back.icon';
+import MobileIcon from './svgIcons/mobile.icon';
+import EmailIcon from './svgIcons/email.icon';
+import PanCardIcon from './svgIcons/pan.card.icon';
+import BankRoundIcon from './svgIcons/bank.round.icon';
+import VerifyTick from './svgIcons/verify.tick.icon';
 
 import ContestsBottomTabOn from './svgIcons/contests.bottomtab.on';
 
@@ -34,6 +39,7 @@ export {
   MoreBottomTabOff,
   CreditCardIcon,
   DebitCardIcon,
+  VerifyTick,
   BankIcon,
   SwitchIcon,
   NotificationIcon,
@@ -45,4 +51,8 @@ export {
   CapIcon,
   VCIcon,
   BackIcon,
+  MobileIcon,
+  EmailIcon,
+  BankRoundIcon,
+  PanCardIcon,
 };

@@ -1,53 +1,57 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import tailwind from '../../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
-import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
-import {useNavigation} from '@react-navigation/native';
 import {TopBar} from '../../../sharedComponents';
-import InfoContent from './atoms/InfoContent';
+import VerifyInfoContent from './atoms/verify.info.content';
 import Item from './molecules/Item';
-import assets from '../../../constants/assets_manifest';
-
-// import Icon from 'react-native-vector-icons/Ionicons';
-
 const log = console.log;
 
-export default function VerifyAccountScreen() {
-  const navigation = useNavigation();
+interface PropTypes {
+  userMeta: any;
+  emailVerified: boolean;
+  panCardVerified: boolean;
+  bankAccountVerified: boolean;
+  initiateEmailVerify(): any;
+  initiatePanCardVerify(): any;
+  initiateBankVerify(): any;
+}
 
+export default function VerifyAccountScreen(props: PropTypes) {
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Verify Account'} />
-      <InfoContent />
-      <View style={[tailwind('my-1')]}></View>
+      <VerifyInfoContent />
       <Item
-        icon={assets.verify_mobile}
         title={'Mobile Number'}
-        value={'+91 987654321'}
+        value={props.userMeta.mobile}
         preverifiedvalue={'For joining contests'}
         verified={true}
+        type={'mobile'}
+        action={() => {}}
       />
       <Item
-        icon={assets.verify_email}
         title={'Email Address'}
-        value={'+91 987654321'}
+        value={''}
         preverifiedvalue={'For more relevant fantasy sports'}
-        verified={false}
+        verified={props.emailVerified}
+        action={props.initiateEmailVerify}
+        type={'email'}
       />
       <Item
-        icon={assets.verify_pancard}
         title={'PAN Card'}
-        value={'+91 987654321'}
+        value={''}
         preverifiedvalue={'For Safety & Security'}
-        verified={false}
+        verified={props.panCardVerified}
+        type={'pancard'}
+        action={props.initiatePanCardVerify}
       />
       <Item
-        icon={assets.verify_bank}
         title={'Bank Account'}
-        value={'+91 987654321'}
+        value={''}
         preverifiedvalue={'For Quick Withdrawals'}
-        verified={false}
+        verified={props.bankAccountVerified}
+        type={'bank'}
+        action={props.initiateBankVerify}
       />
     </View>
   );

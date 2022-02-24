@@ -6,7 +6,11 @@
  */
 
 module.exports = {
+  /* General options */
+  resetCache:false,
+  maxWorkers:10,
   transformer: {
+    hermesParser:true,
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,

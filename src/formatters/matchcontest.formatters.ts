@@ -14,6 +14,7 @@ export const groupAllContestsAPIRmeote = (payload: any) => {
       throw 'no contest found';
     }
     return [...paid, ...practice];
+
   } catch (err) {
     console.log('groupAllContestsAPIRmeote', err);
     return false;

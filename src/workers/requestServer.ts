@@ -23,7 +23,7 @@ const requestServer = function (
     fetch(url, options)
       .then(serverResponse => {
         clearTimeout(timeoutId);
-        if (serverResponse.ok) {
+        if (serverResponse.ok) {  
           logRequest(url, payload);
           // handle when contest length is 0
           if (serverResponse.headers.get('content-length') === '0') {

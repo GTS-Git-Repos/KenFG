@@ -114,7 +114,7 @@ export default function ContestInfoScreen(props: PropTypes) {
           <LearderBoard
             index={1}
             activeIndex={activeIndex}
-            leaderBoardMeta={props.leaderBoardMeta}
+            leaderBoardMeta={[]}
           />
         </View>
       </PagerView>

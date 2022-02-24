@@ -9,7 +9,7 @@ interface PropTypes {
 
 export default function NoLeaderBoardContent(props: PropTypes) {
   return (
-    <View style={[tailwind('p-4 items-center justify-center')]}>
+    <View style={[tailwind('py-10 items-center justify-center')]}>
       <Text style={[tailwind('font-regular text-center text-white font-15')]}>
         No Team Joined this contest Yet
       </Text>

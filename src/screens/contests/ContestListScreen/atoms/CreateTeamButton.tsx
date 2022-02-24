@@ -2,8 +2,6 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
-import {useNavigation} from '@react-navigation/core';
-import {useDispatch} from 'react-redux';
 
 interface PropTypes {
   onPressCreateTeam(): any;

@@ -24,6 +24,7 @@ import AddCashScreen from '../screens/wallet/AddCashScreen';
 import VerifyAccountScreen from '../screens/wallet/VerifyAccountScreen';
 import PaymentOptionScreen from '../screens/wallet/PaymentOptionScreen';
 import WithdrawelScreen from '../screens/wallet/WithdrawelScreen';
+import PanCardVerifyScreen from '../screens/wallet/PanCardVerifyScreen';
 
 // match screen imports
 import MatchScreen from '../screens/matches/MatchScreen';
@@ -84,7 +85,6 @@ export function Home(props: any) {
     </HomeStack.Navigator>
   );
 }
-
 
 export function Contest(props: any) {
   return (
@@ -204,6 +204,10 @@ export function Wallet(props: any) {
       <WalletStack.Screen
         name="VerifyAccountScreen"
         component={VerifyAccountScreen}
+      />
+      <WalletStack.Screen
+        name="PanCardVerifyScreen"
+        component={PanCardVerifyScreen}
       />
     </WalletStack.Navigator>
   );
