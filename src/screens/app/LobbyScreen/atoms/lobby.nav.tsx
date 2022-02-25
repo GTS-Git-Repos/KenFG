@@ -24,13 +24,21 @@ export default function LobbyNav(props: PropTypes) {
   const navigation = useNavigation<any>();
 
   return (
-    <View style={[tailwind('bg-dark-3 pt-2 rounded-t-2xl '), styles.root]}>
-      <View style={[tailwind('flex-row mx-6')]}>
-        <LobbyUserInfo name={props.name} />
+    <View style={[tailwind('bg-red-500 pt-1'), styles.rootRadius]}>
+      <View
+        style={[
+          tailwind('bg-blue-600 bg-dark-3 rounded-t-xl pt-1'),
+          styles.secondaryRadius,
+        ]}>
+        <View style={[tailwind('pt-2'), styles.root]}>
+          <View style={[tailwind('flex-row mx-6')]}>
+            <LobbyUserInfo name={props.name} />
 
-        <Cricket cricket={props.cricket} setCricket={props.setCricket} />
-        <FootBall cricket={props.cricket} setCricket={props.setCricket} />
-        <NotificationBell />
+            <Cricket cricket={props.cricket} setCricket={props.setCricket} />
+            <FootBall cricket={props.cricket} setCricket={props.setCricket} />
+            <NotificationBell />
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -43,7 +51,7 @@ const NotificationBell = () => {
       <TouchableOpacity
         onPress={() => navigation.navigate('NotificationScreen')}
         style={[tailwind('')]}>
-        <NotificationIcon />
+        <NotificationIcon outline={false} isDark={false} sizeSmall={false} />
         <View
           style={[
             tailwind('w-3 h-3 absolute right-0 top-0 rounded-full bg-red-500'),
@@ -148,6 +156,15 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,
+  },
+  rootRadius: {
+    paddingTop: 4,
+    borderRadius: 6,
+    // backgroundColor: '#d1b45a',
+  },
+  secondaryRadius: {
+    paddingTop: 4,
+    borderRadius: 8,
   },
   activeBorder: {
     borderColor: '#BCA04D',

@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
@@ -13,23 +13,22 @@ interface PropTypes {
 
 export default function LobbyTopBar(props: PropTypes) {
   const navigation = useNavigation<any>();
+
+  // return <View></View>;
+
   return (
     <View>
-      <View style={[tailwind('flex-row justify-between')]}>
-        <View
-          style={[
-            tailwind('relative'),
-            {bottom: 1, right: 1.0, transform: [{scaleY: 1.3}]},
-          ]}>
+      <View style={[ss.root]}>
+        <View style={[ss.logoRoot]}>
           <View
             style={[
-              tailwind('w-8 h-10 absolute'),
+              tailwind('w-8 h-10  absolute'),
               {backgroundColor: '#172338'},
             ]}></View>
           <Image
             resizeMode="stretch"
             source={assets.logoWrapper}
-            style={[{width: 160, height: 63, transform: [{rotateZ: '0deg'}]}]}
+            style={[{width: 160, height: 63}]}
           />
         </View>
         <View style={[tailwind('absolute'), {width: 100, left: 20, top: 13}]}>
@@ -42,33 +41,16 @@ export default function LobbyTopBar(props: PropTypes) {
 
         <TouchableOpacity
           onPress={() => navigation.navigate('Wallet')}
-          style={[
-            tailwind('flex-row items-end justify-end px-2'),
-            {position: 'relative', right: 16},
-          ]}>
-          <View style={[tailwind('flex-row items-center')]}>
+          style={[ss.walletWrapper]}>
+          <View style={[ss.fac]}>
             <View style={[tailwind('px-2')]}>
-              <Text
-                style={[
-                  tailwind('font-bold uppercase'),
-                  {fontSize: 11, color: '#5F401C'},
-                ]}>
-                Cash Balance
-              </Text>
-              <Text
-                style={[
-                  tailwind('font-regular text-primary text-right font-13'),
-                ]}>
+              <Text style={[ss.txtbal]}>Cash Balance</Text>
+              <Text style={[ss.txtAmount]}>
                 {'\u20B9 '}
                 {props.amount}
               </Text>
             </View>
-            {/* <Image
-            resizeMode="contain"
-            source={assets.wallet}
-            style={[tailwind(''), {width: 28, height: 28, bottom: 3}]}
-          /> */}
-            <WalletIcon darkColor={true} />
+            <WalletIcon darkColor={true} outline={false} />
           </View>
         </TouchableOpacity>
       </View>
@@ -83,3 +65,40 @@ export default function LobbyTopBar(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  logoRoot: {
+    position: 'relative',
+    bottom: 1,
+    right: 1.0,
+    transform: [{scaleY: 1.3}],
+  },
+  walletWrapper: {
+    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingHorizontal: 8,
+    position: 'relative',
+    right: 16,
+  },
+  fac: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  txtbal: {
+    fontFamily: 'gadugi-bold',
+    textTransform: 'uppercase',
+    fontSize: 11,
+    color: '#5F401C',
+  },
+  txtAmount: {
+    color: '#0c1320',
+    fontFamily: 'gadugi-normal',
+    fontSize: 13,
+    textAlign: 'right',
+  },
+});

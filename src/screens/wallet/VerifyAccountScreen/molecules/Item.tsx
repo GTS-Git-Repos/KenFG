@@ -22,7 +22,6 @@ interface PropTypes {
 }
 
 export default function VerifyContent(props: PropTypes) {
-
   return (
     <View style={[ss.root]}>
       {props.type === 'mobile' && <MobileIcon />}
@@ -61,7 +60,11 @@ const ss = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
   },
-  title: {color: '#f5feff', fontFamily: 'gadugi-normal', fontSize: 12},
+  title: {
+    color: '#f5feff',
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+  },
   value: {
     paddingTop: 4,
     color: '#f5feff',

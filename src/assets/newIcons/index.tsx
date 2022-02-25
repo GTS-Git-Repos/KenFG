@@ -24,6 +24,7 @@ import EmailIcon from './svgIcons/email.icon';
 import PanCardIcon from './svgIcons/pan.card.icon';
 import BankRoundIcon from './svgIcons/bank.round.icon';
 import VerifyTick from './svgIcons/verify.tick.icon';
+import FootBallIcon from './svgIcons/football.icon';
 
 import ContestsBottomTabOn from './svgIcons/contests.bottomtab.on';
 
@@ -55,4 +56,5 @@ export {
   EmailIcon,
   BankRoundIcon,
   PanCardIcon,
+  FootBallIcon,
 };
