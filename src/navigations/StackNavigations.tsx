@@ -25,6 +25,7 @@ import VerifyAccountScreen from '../screens/wallet/VerifyAccountScreen';
 import PaymentOptionScreen from '../screens/wallet/PaymentOptionScreen';
 import WithdrawelScreen from '../screens/wallet/WithdrawelScreen';
 import PanCardVerifyScreen from '../screens/wallet/PanCardVerifyScreen';
+import BankVerifyScreen from '../screens/wallet/BankVerifyScreen';
 
 // match screen imports
 import MatchScreen from '../screens/matches/MatchScreen';
@@ -208,6 +209,10 @@ export function Wallet(props: any) {
       <WalletStack.Screen
         name="PanCardVerifyScreen"
         component={PanCardVerifyScreen}
+      />
+      <WalletStack.Screen
+        name="BankVerifyScreen"
+        component={BankVerifyScreen}
       />
     </WalletStack.Navigator>
   );

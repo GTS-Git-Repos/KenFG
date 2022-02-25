@@ -52,14 +52,24 @@ export function useCountDown(inputDate: Date) {
 }
 
 export function useImageUpload() {
+  const [image, setImage] = useState<any>(null);
   async function openLibrary() {
     ImagePicker.openPicker({
       width: 300,
       height: 400,
       cropping: true,
-    }).then(image => {
-      console.log(image);
-    });
+    })
+      .then(image => {
+        setImage(image);
+        // console.log(image);
+      })
+      .catch(err => {
+        console.log(err);
+        setImage(null);
+      });
   }
-  return {openLibrary};
+  function removeImage() {
+    setImage(null);
+  }
+  return {image, openLibrary, removeImage};
 }

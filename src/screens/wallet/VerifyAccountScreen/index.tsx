@@ -19,7 +19,7 @@ export default function VerifyAccountHOC() {
     navigation.navigate('PanCardVerifyScreen');
   }
   function initiateBankVerify() {
-    infoBox('Verification link has been sented to registered email', 0);
+    navigation.navigate('BankVerifyScreen');
   }
 
   return (

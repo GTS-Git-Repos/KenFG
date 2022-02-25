@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import tailwind from '../../../../tailwind';
-import DateTimePicker from '@react-native-community/datetimepicker';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -19,24 +18,25 @@ import {
   TopBar,
   BlockScreenByLoading,
 } from '../../../sharedComponents';
-import {userInfo} from '../../../store/selectors';
-import {format, isEqual} from 'date-fns';
 
 const log = console.log;
 
 interface PropTypes {
+  acno: any;
+  setAcno(e: any): any;
+  reacno: any;
+  setReacno(e: any): any;
+  ifsc: any;
+  setIfsc(e: any): any;
   name: any;
   setName(e: any): any;
-  pan: any;
-  setPan(e: any): any;
-  dob: any;
-  setDob(e: any): any;
+  branch: any;
+  setBranch(e: any): any;
+  state: any;
+  setState(e: any): any;
   image: any;
-  validateInputs(): any;
   error: any;
-  openDate: any;
-  setOpenDate(e: boolean): any;
-  onDateChangedAction(e: any): any;
+  validateInputs(): any;
   removeImage(): any;
   openLibrary(): any;
 }
@@ -46,15 +46,57 @@ const TEXTCOLOR = '#8797B1';
 export default function PanVerifyScreen(props: PropTypes) {
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={'Verify PAN Card'} />
+      <TopBar text={'Verify Bank Account'} />
       <ScrollView keyboardShouldPersistTaps="handled">
         <View style={[tailwind('p-3')]}>
-          {/* name input */}
           <View style={[ss.inputContainer]}>
-            <InputTitle text="Name" />
+            {/* Account Number */}
+            <InputTitle text="Account Number" />
+            <TextInput
+              style={[ss.textInput]}
+              value={props.acno}
+              maxLength={18}
+              keyboardType="decimal-pad"
+              onChangeText={(e: any) => props.setAcno(e)}
+            />
+            {props.error.target === 'acno' && (
+              <ErrorInput msg={props.error.msg} />
+            )}
+          </View>
+          {/* Retype account number */}
+          <View style={[ss.inputContainer]}>
+            <InputTitle text="Retype Account Number" />
+            <TextInput
+              style={[ss.textInput]}
+              value={props.reacno}
+              maxLength={18}
+              keyboardType="decimal-pad"
+              onChangeText={(e: any) => props.setReacno(e)}
+            />
+            {props.error.target === 'reacno' && (
+              <ErrorInput msg={props.error.msg} />
+            )}
+          </View>
+          {/* IFSC */}
+          <View style={[ss.inputContainer]}>
+            <InputTitle text="IFSC Code" />
+            <TextInput
+              style={[ss.textInput]}
+              value={props.ifsc}
+              maxLength={11}
+              onChangeText={(e: any) => props.setIfsc(e)}
+            />
+            {props.error.target === 'ifsc' && (
+              <ErrorInput msg={props.error.msg} />
+            )}
+          </View>
+
+          <View style={[ss.inputContainer]}>
+            <InputTitle text="Bank Name" />
             <TextInput
               style={[ss.textInput]}
               value={props.name}
+              maxLength={25}
               onChangeText={(e: any) => props.setName(e)}
             />
             {props.error.target === 'name' && (
@@ -63,27 +105,27 @@ export default function PanVerifyScreen(props: PropTypes) {
           </View>
 
           <View style={[ss.inputContainer]}>
-            <InputTitle text="Pan card number" />
+            <InputTitle text="Branch Name" />
             <TextInput
               style={[ss.textInput]}
-              value={props.pan}
-              onChangeText={(e: any) => props.setPan(e)}
+              value={props.branch}
+              maxLength={25}
+              onChangeText={(e: any) => props.setBranch(e)}
             />
-            {props.error.target === 'pan' && (
+            {props.error.target === 'branch' && (
               <ErrorInput msg={props.error.msg} />
             )}
           </View>
 
           <View style={[ss.inputContainer]}>
-            <InputTitle text="Date of Birth" />
-            <TouchableOpacity
-              onPress={() => props.setOpenDate(true)}
-              style={[ss.textInput]}>
-              <Text style={[ss.dobText]}>
-                {props.dob && format(props.dob, 'dd-MM-yyyy')}
-              </Text>
-            </TouchableOpacity>
-            {props.error.target === 'dob' && (
+            <InputTitle text="State" />
+            <TextInput
+              style={[ss.textInput]}
+              value={props.state}
+              maxLength={25}
+              onChangeText={(e: any) => props.setState(e)}
+            />
+            {props.error.target === 'state' && (
               <ErrorInput msg={props.error.msg} />
             )}
           </View>
@@ -101,24 +143,6 @@ export default function PanVerifyScreen(props: PropTypes) {
             <ErrorInput msg={props.error.msg} />
           )}
 
-          {/* <View style={[ss.inputContainer]}>
-            <InputTitle text="Image" />
-            <TouchableOpacity
-              onPress={props.openLibrary}
-              style={[ss.textInput]}>
-              <Text style={[ss.dobText]}>
-                {props.image && (
-                  <Text style={[tailwind('font-regular text-white font-15')]}>
-                    Image added
-                  </Text>
-                )}
-              </Text>
-            </TouchableOpacity>
-            {props.error.target === 'image' && (
-              <ErrorInput msg={props.error.msg} />
-            )}
-          </View> */}
-
           <Instruction />
         </View>
       </ScrollView>
@@ -127,17 +151,7 @@ export default function PanVerifyScreen(props: PropTypes) {
         style={[tailwind('m-3')]}>
         <ButtonComponent text={'Submit Details'} />
       </TouchableOpacity>
-      {/* {props.initiatePayment.isLoading && <BlockScreenByLoading />}
-      {props.updateWallet.isLoading && <BlockScreenByLoading />} */}
-      {props.openDate && (
-        <DateTimePicker
-          value={props.dob ? props.dob : new Date()}
-          mode={'date'}
-          maximumDate={new Date()}
-          display="default"
-          onChange={props.onDateChangedAction}
-        />
-      )}
+      {/* {props..isLoading && <BlockScreenByLoading />} */}
     </View>
   );
 }
@@ -175,7 +189,7 @@ function Instruction(props: any) {
             tailwind('font-regular mx-1 text-red-500 px-0.5 font-12'),
             {color: TEXTCOLOR},
           ]}>
-          Full name on PAN Card and bank account must match
+          Review your details before submitting your documents permanently
         </Text>
       </View>
 
@@ -186,7 +200,7 @@ function Instruction(props: any) {
             tailwind('font-regular mx-1 text-red-500 px-0.5 font-12'),
             {color: TEXTCOLOR},
           ]}>
-          It takes max 1 working day to get PAN verified
+          Password protected files will be rejected
         </Text>
       </View>
     </View>
@@ -197,7 +211,7 @@ function ImageUpload(props: any) {
     <TouchableOpacity onPress={props.openLibrary} style={[ss.imageIContainer]}>
       <Icon name="image" size={20} color="lightgray" />
       <Text style={[tailwind('font-regular mx-2 text-white font-13')]}>
-        Upload PAN Card Image
+        UPLOAD BANK PROOF
       </Text>
     </TouchableOpacity>
   );
@@ -210,7 +224,7 @@ function ImageUploaded(props: any) {
         style={[tailwind('flex-row items-center')]}>
         <Icon name="link" size={20} color="lightgray" />
         <Text style={[tailwind('font-regular mx-2 text-white font-13')]}>
-          Image selected
+          IMAGE SELECTED
         </Text>
       </TouchableOpacity>
       <TouchableOpacity

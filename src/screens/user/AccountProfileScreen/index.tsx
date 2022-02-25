@@ -7,7 +7,7 @@ import {useImageUpload} from '../../../shared_hooks/app.hooks';
 
 export default function AccountProfileHOC() {
   const moreOptionSheet = useRef(null);
-  const {openLibrary} = useImageUpload();
+  const {image,openLibrary} = useImageUpload();
 
   const userMeta: UserMetaType = useSelector(userInfo);
 
