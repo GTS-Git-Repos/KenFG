@@ -56,27 +56,20 @@ export default function LobbyScreenHOC() {
       <FlatList
         refreshing={false}
         onRefresh={() => refetchlobby()}
-        ListHeaderComponent={() => {
-          return (
-            <>
-              <LobbyScreen
-                myMatches={
-                  lobbyMeta.myMatches.length > 0
-                    ? lobbyMeta.myMatches[0]
-                    : false
-                }
-                banners={lobbyMeta.banners}
-                upcomming={lobbyMeta.upcomming}
-                isFullMatch={isFullMatch}
-                appColors={appColors}
-                onPressMatchType={onPressMatchType}
-                onPressNotification={onPressNotification}
-              />
-            </>
-          );
-        }}
-        data={[]}
-        renderItem={() => <></>}
+        data={[1]}
+        renderItem={() => (
+          <LobbyScreen
+            myMatches={
+              lobbyMeta.myMatches.length > 0 ? lobbyMeta.myMatches[0] : false
+            }
+            banners={lobbyMeta.banners}
+            upcomming={lobbyMeta.upcomming}
+            isFullMatch={isFullMatch}
+            appColors={appColors}
+            onPressMatchType={onPressMatchType}
+            onPressNotification={onPressNotification}
+          />
+        )}
       />
       {/* Match notification Modal */}
       <Modalize

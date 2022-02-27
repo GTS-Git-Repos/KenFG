@@ -4,7 +4,7 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
-import {WalletIcon} from '../../../../assets/newIcons';
+import {WalletIcon, LogoWrapper} from '../../../../assets/newIcons';
 
 interface PropTypes {
   amount: string;
@@ -14,31 +14,20 @@ interface PropTypes {
 export default function LobbyTopBar(props: PropTypes) {
   const navigation = useNavigation<any>();
 
-  // return <View></View>;
-
   return (
-    <View>
-      <View style={[ss.root]}>
-        <View style={[ss.logoRoot]}>
-          <View
-            style={[
-              tailwind('w-8 h-10  absolute'),
-              {backgroundColor: '#172338'},
-            ]}></View>
-          <Image
-            resizeMode="stretch"
-            source={assets.logoWrapper}
-            style={[{width: 160, height: 63}]}
-          />
-        </View>
-        <View style={[tailwind('absolute'), {width: 100, left: 20, top: 13}]}>
+    <View style={[ss.root]}>
+      {/* Logo part */}
+      <View style={[ss.logoRoot]}>
+        <LogoWrapper dark={true} />
+        <View style={[tailwind('absolute'), {left: 24}]}>
           <Image
             resizeMode="contain"
             source={assets.logo_new}
-            style={[{height: 50, width: '80%'}]}
+            style={[{height: 60, width: 90}]}
           />
         </View>
-
+      </View>
+      <View style={[tailwind('justify-end pb-2')]}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Wallet')}
           style={[ss.walletWrapper]}>
@@ -54,14 +43,6 @@ export default function LobbyTopBar(props: PropTypes) {
           </View>
         </TouchableOpacity>
       </View>
-
-      <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        style={[tailwind('mx-4')]}
-        colors={['#C4A858', '#D8BE71', '#BFA14E']}>
-        <View style={[tailwind(''), {height: 3}]}></View>
-      </LinearGradient>
     </View>
   );
 }
@@ -73,9 +54,6 @@ const ss = StyleSheet.create({
   },
   logoRoot: {
     position: 'relative',
-    bottom: 1,
-    right: 1.0,
-    transform: [{scaleY: 1.3}],
   },
   walletWrapper: {
     alignItems: 'flex-end',

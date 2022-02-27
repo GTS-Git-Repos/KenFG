@@ -234,14 +234,15 @@ export default function ContestListHOC() {
       // handle failure
       if (!response.txn) {
         errorBox(response.msg, 500);
+        return
       }
       setShowJoinModal(false);
       refetchJoinedContest();
       dispatch(updateUserInfo(userSelector.mobile));
-      infoBox('Contest Succefully Joined', 500);
+      // infoBox('Contest Succefully Joined', 500);
     } catch (err) {
       setLoading(false);
-      infoBox('Contest Failed to Join !', 500);
+      infoBox('Contest Failed to Join !', 1000);
     }
   }
   const openWallet = () => {

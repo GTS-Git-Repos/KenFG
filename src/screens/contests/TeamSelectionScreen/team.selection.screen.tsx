@@ -105,24 +105,22 @@ export default function TeamSelectionScreen(props: PropTypes) {
       const response = await joinContestRemote(obj);
       setLoading(false);
       console.log('response', response);
-      if (response.txn) {
-        infoBox(response.msg, 500);
-        // refresh the user wallet amount
-        dispatch(updateUserInfo(userSelector.mobile));
-        // go back to contest screen
-        resetContestListNavigation(navigation, {
-          match_key: matchSelector.match_key,
-          to: 1,
-        });
-        return;
-      }
+      // handle error
       if (!response.txn) {
         errorBox(response.msg, 500);
         return;
       }
+      // refresh the wallet
+      dispatch(updateUserInfo(userSelector.mobile));
+      // go back to contest screen
+      resetContestListNavigation(navigation, {
+        match_key: matchSelector.match_key,
+        to: 1,
+      });
+      return;
     } catch (err) {
       setLoading(false);
-      errorBox('faild to Join contest', 500);
+      errorBox('faild to Join contest', 1000);
     }
   }
 
