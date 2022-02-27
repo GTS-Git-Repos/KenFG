@@ -1,16 +1,17 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import tailwind from '../../../../../tailwind';
 import {
   View,
   TouchableOpacity,
+  Image,
   useWindowDimensions,
   ToastAndroid,
-  Alert,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import {useNavigation} from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import assets from '../../../../constants/assets_manifest';
 
 interface PropTypes {
   upcomming: any;
@@ -23,7 +24,7 @@ const ImageSlider = (props: PropTypes) => {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
 
-  const [height, setHeight] = useState(95);
+  const [height, setHeight] = useState(104);
 
   const calcHeight = (e: any) => {
     const {height} = e.nativeEvent.layout;
@@ -33,7 +34,6 @@ const ImageSlider = (props: PropTypes) => {
   if (!props.data) {
     return null;
   }
-
 
   return (
     <Swiper
@@ -47,7 +47,39 @@ const ImageSlider = (props: PropTypes) => {
       dot={<Dot />}
       width={width}
       style={[tailwind(''), {height: height, overflow: 'visible'}]}>
-      {props.data.map((item: any) => {
+      <TouchableOpacity
+        onLayout={calcHeight}
+        activeOpacity={0.7}
+        onPress={() => props.navigateToMatchContests(1)}
+        style={[tailwind('flex-row mx-5 justify-center items-center')]}>
+        <Image
+          resizeMode="stretch"
+          source={assets.banner1}
+          style={{
+            width: '100%',
+            borderRadius: 10,
+            height: height,
+          }}
+        />
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onLayout={calcHeight}
+        activeOpacity={0.7}
+        onPress={() => props.navigateToMatchContests(1)}
+        style={[tailwind('flex-row mx-5 justify-center items-center')]}>
+        <Image
+          resizeMode="stretch"
+          source={assets.banner2}
+          style={{
+            width: '100%',
+            borderRadius: 10,
+            height: height,
+          }}
+        />
+      </TouchableOpacity>
+
+      {/* {props.data.map((item: any) => {
         return (
           <TouchableOpacity
             onLayout={calcHeight}
@@ -71,7 +103,7 @@ const ImageSlider = (props: PropTypes) => {
             />
           </TouchableOpacity>
         );
-      })}
+      })} */}
     </Swiper>
   );
 };

@@ -2,9 +2,11 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text, StyleSheet} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
+import clr from '../../../../constants/colors';
 import FastImage from 'react-native-fast-image';
 
 interface PropTypes {
+  dT: boolean;
   team_a: any;
   team_b: any;
   status: string;
@@ -34,12 +36,7 @@ export default function Teams(props: PropTypes) {
               resizeMode={FastImage.resizeMode.contain}
             />
           </View>
-          <Text
-            style={[
-              tailwind(
-                'font-bold text-center uppercase py-0.5 text-light font-12',
-              ),
-            ]}>
+          <Text style={[styles.teamCode, props.dT ? clr.tw : clr.td1]}>
             {props.team_a.code}
           </Text>
         </View>
@@ -51,7 +48,9 @@ export default function Teams(props: PropTypes) {
         {props.status === 'completed' ? (
           <IsCompleted />
         ) : (
-          <CountDown countDown={props.countDown} />
+          <Text style={[styles.countDownText, props.dT ? clr.tw : clr.td1]}>
+            {props.countDown}
+          </Text>
         )}
 
         {/* <IsLive /> */}
@@ -72,12 +71,7 @@ export default function Teams(props: PropTypes) {
               resizeMode={FastImage.resizeMode.contain}
             />
           </View>
-          <Text
-            style={[
-              tailwind(
-                'font-bold text-center uppercase py-0.5 text-light font-12',
-              ),
-            ]}>
+          <Text style={[styles.teamCode, props.dT ? clr.tw : clr.td1]}>
             {props.team_b.code}
           </Text>
         </View>
@@ -129,26 +123,25 @@ const IsCompleted = () => {
   );
 };
 
-const CountDown = (props: any) => {
-  return (
-    <View style={[tailwind('flex-row pt-2')]}>
-      <Image
-        resizeMode="contain"
-        source={assets.running_clock}
-        style={[tailwind(''), {width: 16, height: 16}]}
-      />
-      <Text style={[tailwind('font-bold text-white font-13 px-1')]}>
-        {props.countDown}
-      </Text>
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
   flagWrapper: {
     width: 45,
     height: 25,
     backgroundColor: '#0c1320',
     borderRadius: 2,
+  },
+  teamCode: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 12,
+    paddingBottom: 2,
+    paddingTop: 2,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+  countDownText: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 13,
+    paddingTop: 8,
+    paddingHorizontal: 4,
   },
 });

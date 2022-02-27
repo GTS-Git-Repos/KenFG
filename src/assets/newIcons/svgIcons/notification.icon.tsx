@@ -46,10 +46,10 @@ function Icon(props: PropTypes) {
           x2="9.50936"
           y2="24.0006"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor={props.isDark ? '#0D1320' : '#BCA04D'} />
+          <Stop stopColor={props.isDark ? '#BCA04D' : '#9C181E'} />
           <Stop
             offset="0.526862"
-            stopColor={props.isDark ? '#0D1320' : '#BCA04D'}
+            stopColor={props.isDark ? '#BCA04D' : '#9C181E'}
           />
         </LinearGradient>
       </Defs>

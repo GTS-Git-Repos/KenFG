@@ -86,6 +86,7 @@ export default {
   ENG: require('../assets/images/flags/ENG.png'),
 
   banner1: require('../assets/temp/banner1.png'),
+  banner2: require('../assets/temp/banner2.png'),
   playerImage: require('../assets/temp/playerimage.png'),
   indianflag: require('../assets/temp/indianflag.png'),
   aus_flag: require('../assets/temp/aus_flag.jpeg'),

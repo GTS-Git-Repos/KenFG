@@ -9,11 +9,13 @@ import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import assets from '../../../../constants/assets_manifest';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import FastImage from 'react-native-fast-image';
 import {LineupsCap, NotificationIcon} from '../../../../assets/newIcons';
 import {useCountDown} from '../../../../shared_hooks/app.hooks';
+import {getAppThemeSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
 const log = console.log;
 
 interface PropTypes {
@@ -30,6 +32,7 @@ interface PropTypes {
 }
 
 interface TeamPropShape {
+  dT: boolean;
   team_a_name: string;
   team_b_name: string;
   team_a_flag: string;
@@ -39,6 +42,8 @@ interface TeamPropShape {
 }
 
 export default function UpcommingMatches(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   const isMounted = useRef(true);
@@ -92,11 +97,13 @@ export default function UpcommingMatches(props: PropTypes) {
 
   return (
     <View style={[styles.root]}>
-      <View style={[styles.container]}>
+      <View style={[styles.container, dT ? clr.bgd2 : clr.bgw]}>
         {/* Tournament name and bell */}
         <View style={[tailwind('flex-row items-center')]}>
           <View style={[tailwind('mr-1'), {flex: 9}]}>
-            <Text numberOfLines={1} style={[styles.t_name]}>
+            <Text
+              numberOfLines={1}
+              style={[styles.t_name, dT ? clr.tw : clr.td1]}>
               {props.tournament_name}
             </Text>
           </View>
@@ -104,16 +111,18 @@ export default function UpcommingMatches(props: PropTypes) {
           <TouchableOpacity
             onPress={() => props.onPressNotification(props.match_key)}
             style={[tailwind('flex-row justify-end pt-0.5'), {flex: 1}]}>
-            <NotificationIcon sizeSmall={true} outline={false} isDark={false} />
+            <NotificationIcon sizeSmall={true} outline={false} isDark={dT} />
           </TouchableOpacity>
         </View>
-      
-        <View
+
+        {/* <View
           style={[tailwind('mx-2 border-t border-gray-800'), {marginTop: 2}]}>
-          <View style={[tailwind(''), {height: 2}]}></View>
-        </View>
+        
+        </View> */}
+        <View style={[tailwind(''), {height: 2}]}></View>
 
         <Teams
+          dT={dT}
           team_a_name={props.team_a_name}
           team_b_name={props.team_b_name}
           team_a_flag={team_a_flag}
@@ -121,17 +130,17 @@ export default function UpcommingMatches(props: PropTypes) {
           set_team_a_flag={set_team_a_flag}
           set_team_b_flag={set_team_b_flag}
         />
-        <PrizeandStatus price={props.price} />
+        <PrizeandStatus dT={dT} price={props.price} />
 
         {/* Count Down */}
-        <View style={[styles.countDownWrapper]}>
-          <Text style={[styles.countDown]}>{countDown}</Text>
+        <View
+          style={[styles.countDownWrapper, dT ? clr.bgGreen : clr.bgLgreen]}>
+          <Text style={[styles.countDown, clr.tw]}>{countDown}</Text>
         </View>
       </View>
     </View>
   );
 }
-
 
 const Teams = (props: TeamPropShape) => {
   return (
@@ -141,7 +150,7 @@ const Teams = (props: TeamPropShape) => {
         {paddingHorizontal: 16, paddingTop: 6},
       ]}>
       <View style={[tailwind('')]}>
-        <View style={styles.flagWrapper}>
+        <View style={[styles.flagWrapper, props.dT ? clr.bgd1 : clr.bgGray]}>
           <FastImage
             style={{width: 45, height: 25}}
             source={{
@@ -157,18 +166,19 @@ const Teams = (props: TeamPropShape) => {
         <Text
           style={[
             tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
-            {color: '#D3D3D5'},
+            props.dT ? clr.tw : clr.td1,
           ]}>
           {props.team_a_name}
         </Text>
       </View>
 
-      <Text style={[tailwind('font-bold font-10'), {color: '#D3D3D5'}]}>
+      <Text
+        style={[tailwind('font-bold font-10'), props.dT ? clr.tw : clr.td1]}>
         VS
       </Text>
 
       <View style={[tailwind('')]}>
-        <View style={styles.flagWrapper}>
+        <View style={[styles.flagWrapper, props.dT ? clr.bgd1 : clr.bgGray]}>
           <FastImage
             style={{width: 45, height: 25}}
             source={{
@@ -184,7 +194,7 @@ const Teams = (props: TeamPropShape) => {
         <Text
           style={[
             tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
-            {color: '#D3D3D5'},
+            props.dT ? clr.tw : clr.td1,
           ]}>
           {props.team_b_name}
         </Text>
@@ -201,7 +211,10 @@ const PrizeandStatus = (props: any) => {
           numberOfLines={1}
           allowFontScaling={true}
           adjustsFontSizeToFit={true}
-          style={[tailwind('font-regular pr-1 font-10'), {color: '#9AABC6'}]}>
+          style={[
+            tailwind('font-regular pr-1 font-10'),
+            props.dT ? clr.td2 : clr.td1,
+          ]}>
           Line ups out
         </Text>
         <LineupsCap lineups={false} />
@@ -210,12 +223,17 @@ const PrizeandStatus = (props: any) => {
       <Text
         style={[
           tailwind('font-regular px-1 font-10'),
-          {color: '#9AABC6', flex: 1},
+          {flex: 1},
+          props.dT ? clr.td2 : clr.td1,
         ]}>
         |
       </Text>
       <View style={[tailwind(''), {flex: 3}]}>
-        <Text style={[tailwind('font-regular font-10'), {color: '#DBC872'}]}>
+        <Text
+          style={[
+            tailwind('font-regular font-10'),
+            props.dT ? clr.tgl : clr.tr,
+          ]}>
           {'\u20B9'} {props.price}
         </Text>
       </View>
@@ -229,15 +247,14 @@ const styles = StyleSheet.create({
     padding: 4,
   },
   container: {
-    backgroundColor: '#172339',
-    borderColor: 'rgba(31, 41, 55, 1)',
-    borderWidth: 1,
+    // borderColor: 'rgba(31, 41, 55, 1)',
+    // borderWidth: 1,
     borderRadius: 4,
     paddingHorizontal: 8,
     paddingTop: 4,
+    elevation: 1,
   },
   t_name: {
-    color: '#FFFFFF',
     fontFamily: 'gadugi-normal',
     fontSize: 9,
     textAlign: 'center',
@@ -245,7 +262,6 @@ const styles = StyleSheet.create({
   flagWrapper: {
     width: 45,
     height: 25,
-    backgroundColor: '#0c1320',
     borderRadius: 2,
   },
   countDownWrapper: {
@@ -254,13 +270,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 4,
     padding: 2,
-    backgroundColor: '#006046',
   },
   countDown: {
     fontFamily: 'gadugi-bold',
     fontSize: 10,
     paddingLeft: 4,
     textAlign: 'center',
-    color: '#FFFFFF',
   },
 });

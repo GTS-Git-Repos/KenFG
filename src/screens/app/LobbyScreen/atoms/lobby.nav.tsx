@@ -1,16 +1,12 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  useWindowDimensions,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import {NotificationIcon} from '../../../../assets/newIcons';
 import {useNavigation} from '@react-navigation/core';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   name: string;
@@ -20,23 +16,26 @@ interface PropTypes {
 }
 
 export default function LobbyNav(props: PropTypes) {
-  const {width, height} = useWindowDimensions();
-  const navigation = useNavigation<any>();
+  const dT = useSelector(getAppThemeSelector);
 
   return (
-    <View style={[tailwind('bg-red-500 pt-1'), styles.rootRadius]}>
-      <View
-        style={[
-          tailwind('bg-blue-600 bg-dark-3 rounded-t-xl pt-1'),
-          styles.secondaryRadius,
-        ]}>
-        <View style={[tailwind('pt-2'), styles.root]}>
+    <View style={[ss.rootRadius, dT ? clr.bgg : clr.bgRed]}>
+      <View style={[ss.sR, dT ? clr.bgd2 : clr.bgw]}>
+        <View style={[tailwind('pt-2'), ss.root]}>
           <View style={[tailwind('flex-row mx-6')]}>
-            <LobbyUserInfo name={props.name} />
+            <LobbyUserInfo dT={dT} name={props.name} />
 
-            <Cricket cricket={props.cricket} setCricket={props.setCricket} />
-            <FootBall cricket={props.cricket} setCricket={props.setCricket} />
-            <NotificationBell />
+            <Cricket
+              dT={dT}
+              cricket={props.cricket}
+              setCricket={props.setCricket}
+            />
+            <FootBall
+              dT={dT}
+              cricket={props.cricket}
+              setCricket={props.setCricket}
+            />
+            <NotificationBell dT={dT} dot={true} />
           </View>
         </View>
       </View>
@@ -44,49 +43,18 @@ export default function LobbyNav(props: PropTypes) {
   );
 }
 
-const NotificationBell = () => {
+const NotificationBell = (props: any) => {
   const navigation = useNavigation<any>();
+
   return (
     <View style={[tailwind('flex-row justify-end items-center'), {flex: 1.5}]}>
       <TouchableOpacity
         onPress={() => navigation.navigate('NotificationScreen')}
         style={[tailwind('')]}>
-        <NotificationIcon outline={false} isDark={false} sizeSmall={false} />
-        <View
-          style={[
-            tailwind('w-3 h-3 absolute right-0 top-0 rounded-full bg-red-500'),
-          ]}></View>
+        <NotificationIcon outline={false} isDark={props.dT} sizeSmall={false} />
+        {props.dot && <View style={[ss.nDot, !props.dT && clr.bgg]}></View>}
       </TouchableOpacity>
     </View>
-  );
-};
-
-const FootBall = (props: any) => {
-  return (
-    <TouchableOpacity
-      onPress={() => props.setCricket(false)}
-      style={[
-        tailwind('mx-2'),
-        {flex: 3.25},
-        props.cricket ? {} : styles.activeBorder,
-      ]}>
-      <View style={[tailwind('flex-row justify-center')]}>
-        <Image
-          resizeMode="contain"
-          source={props.cricket ? assets.football_off : assets.football_on}
-          style={[{width: 20, height: 20}]}
-        />
-      </View>
-      <Text
-        style={[
-          tailwind(
-            `font-bold text-center px-2 uppercase  py-0.5  text-xs font-11 tracking-widest`,
-          ),
-          {color: props.cricket ? '#BAC2C3' : '#BCA04D'},
-        ]}>
-        FootBall
-      </Text>
-    </TouchableOpacity>
   );
 };
 
@@ -97,7 +65,7 @@ const Cricket = (props: any) => {
       style={[
         tailwind('mx-2'),
         {flex: 3.25},
-        props.cricket ? styles.activeBorder : {},
+        props.cricket ? ss.activeBorder : {},
       ]}>
       <View style={[tailwind('flex-row justify-center')]}>
         <Image
@@ -106,16 +74,44 @@ const Cricket = (props: any) => {
           style={[{width: 20, height: 20}]}
         />
       </View>
-      <Text
-        style={[
-          tailwind(
-            `font-bold text-center px-2 uppercase  py-0.5  text-xs font-11 tracking-widest`,
-          ),
-          {letterSpacing: 1.3},
-          {color: props.cricket ? '#BCA04D' : '#BAC2C3'},
-        ]}>
-        Cricket
-      </Text>
+      {props.dT ? (
+        <Text style={[ss.sportName, props.cricket ? clr.tgl : clr.tdgray]}>
+          Cricket
+        </Text>
+      ) : (
+        <Text style={[ss.sportName, props.cricket ? clr.tr : clr.tdgray]}>
+          Cricket
+        </Text>
+      )}
+    </TouchableOpacity>
+  );
+};
+
+const FootBall = (props: any) => {
+  return (
+    <TouchableOpacity
+      onPress={() => props.setCricket(false)}
+      style={[
+        tailwind('mx-2'),
+        {flex: 3.25},
+        props.cricket ? {} : ss.activeBorder,
+      ]}>
+      <View style={[tailwind('flex-row justify-center')]}>
+        <Image
+          resizeMode="contain"
+          source={props.cricket ? assets.football_off : assets.football_on}
+          style={[{width: 20, height: 20}]}
+        />
+      </View>
+      {props.dT ? (
+        <Text style={[ss.sportName, !props.cricket ? clr.tgl : clr.tdgray]}>
+          FootBall
+        </Text>
+      ) : (
+        <Text style={[ss.sportName, !props.cricket ? clr.tr : clr.tdgray]}>
+          FootBall
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };
@@ -142,34 +138,58 @@ const LobbyUserInfo = (props: any) => {
         <Text
           numberOfLines={1}
           ellipsizeMode="tail"
-          style={[tailwind('font-regular text-center text-light font-8')]}>
-          Hi, {props.name} wsef
+          style={[
+            tailwind('font-regular text-center font-8'),
+            props.dT ? clr.tw : clr.td1,
+          ]}>
+          Hi, {props.name}
         </Text>
       </View>
     </TouchableOpacity>
   );
 };
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
+  rootRadius: {
+    paddingTop: 4,
+    borderTopStartRadius: 8,
+    borderTopEndRadius: 8,
+    bottom: 6,
+  },
   root: {
     borderColor: '#202C43',
     borderStyle: 'solid',
     borderRadius: 1,
-    borderBottomWidth: 2,
   },
-  rootRadius: {
+
+  sR: {
     paddingTop: 4,
-    borderRadius: 6,
-    // backgroundColor: '#d1b45a',
-  },
-  secondaryRadius: {
-    paddingTop: 4,
-    borderRadius: 8,
+    borderTopStartRadius: 12,
+    borderTopEndRadius: 12,
   },
   activeBorder: {
     borderColor: '#BCA04D',
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,
+  },
+  nDot: {
+    backgroundColor: 'rgba(239, 68, 68, 1)',
+    borderRadius: 100,
+    height: 12,
+    width: 12,
+    position: 'absolute',
+    right: 0,
+    top: 0,
+  },
+  sportName: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 11,
+    letterSpacing: 1.3,
+    lineHeight: 16,
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    textAlign: 'center',
+    textTransform: 'uppercase',
   },
 });

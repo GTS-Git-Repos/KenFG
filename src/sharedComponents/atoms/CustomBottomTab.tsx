@@ -1,8 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image, TouchableOpacity, Keyboard} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Keyboard,
+} from 'react-native';
 import tailwind from '../../../tailwind';
-import assets from '../../constants/assets_manifest';
-import LinearGradient from 'react-native-linear-gradient';
+
 import {
   ContestsBottomTabOff,
   ContestsBottomTabOn,
@@ -15,10 +21,14 @@ import {
 } from '../../assets/newIcons';
 import {useDispatch, useSelector} from 'react-redux';
 import {updateEnableDarkMode} from '../../store/actions/appActions';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 export default function CustomBottomTab({state, descriptors, navigation}: any) {
   const isDarkModeEnable = useSelector<any>(state => state.app.darkModeEnabled);
   const dispatch = useDispatch();
+  const dT = useSelector(getAppThemeSelector);
+
   const [showTab, setShowTab] = useState(true);
 
   // useEffect(() => {
@@ -50,16 +60,12 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
 
   return (
     <View>
-      {/* <DebugThemeSwitcher
+      <DebugThemeSwitcher
         isDarkModeEnable={isDarkModeEnable}
         changeDarkMode={changeDarkMode}
-      /> */}
+      />
 
-      <View
-        style={[
-          tailwind('flex flex-row py-1 bg-secondary items-center'),
-          {backgroundColor: '#BCA04D'},
-        ]}>
+      <View style={[ss.root, dT ? clr.bgg : clr.bgw]}>
         {state.routes.map((route: any, index: number) => {
           const {options} = descriptors[route.key];
           const label =
@@ -104,54 +110,45 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
                 style={tailwind('flex flex-col justify-center items-center')}>
                 {index === 0 ? (
                   isFocused ? (
-                    <HomeBottomTabOn />
+                    <HomeBottomTabOn dT={dT} />
                   ) : (
                     <HomeBottomTabOff />
                   )
                 ) : index === 1 ? (
                   isFocused ? (
-                    <ContestsBottomTabOn />
+                    <ContestsBottomTabOn dT={dT} />
                   ) : (
                     <ContestsBottomTabOff />
                   )
                 ) : index === 2 ? (
                   isFocused ? (
-                    <LeaderBottomTabOn />
+                    <LeaderBottomTabOn dT={dT} />
                   ) : (
                     <LeaderBottomTabOff />
                   )
                 ) : isFocused ? (
-                  <MoreBottomTabOn />
+                  <MoreBottomTabOn dT={dT} />
                 ) : (
                   <MoreBottomTabOff />
                 )}
 
-                <Text
-                  style={[
-                    tailwind(
-                      `text-white text-center uppercase pt-1  font-bold  ${
-                        isFocused
-                          ? 'text-red-600 font-10'
-                          : 'text-secondary font-10'
-                      }`,
-                    ),
-                    {color: `${isFocused ? '#172339' : '#7e6b2d'}`},
-                  ]}>
-                  {label}
-                </Text>
-                {/* {isFocused && (
-                <View
-                  style={[
-                    tailwind(
-                      'rounded-full absolute w-24 h-24 flex-col items-center justify-center',
-                    ),
-                    {
-                      backgroundColor: 'transparent',
-                      borderTopColor: '#C4A958',
-                      borderTopWidth: 25,
-                    },
-                  ]}></View>
-              )} */}
+                {dT ? (
+                  <Text
+                    style={[
+                      ss.txt,
+                      {color: `${isFocused ? '#172339' : '#7e6b2d'}`},
+                    ]}>
+                    {label}
+                  </Text>
+                ) : (
+                  <Text
+                    style={[
+                      ss.txt,
+                      {color: `${isFocused ? '#9C181E' : '#828282'}`},
+                    ]}>
+                    {label}
+                  </Text>
+                )}
               </View>
             </TouchableOpacity>
           );
@@ -178,3 +175,20 @@ function DebugThemeSwitcher(props: any) {
     </TouchableOpacity>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    paddingVertical: 4,
+    elevation: 4,
+  },
+  txt: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 10,
+    paddingTop: 4,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+});

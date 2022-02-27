@@ -6,7 +6,7 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-  darkModeEnabled: true,
+  darkModeEnabled: false,
   error: null,
   ip: null,
   selected_match: null,

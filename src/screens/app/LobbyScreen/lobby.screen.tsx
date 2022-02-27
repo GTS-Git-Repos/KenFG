@@ -4,11 +4,11 @@ import tailwind from '../../../../tailwind';
 import {useSelector} from 'react-redux';
 import LobbyTopBar from './atoms/lobby.top.bar';
 import LobbyNav from './atoms/lobby.nav';
-import {AppColorsType} from '../../../types/app';
 import CricketPage from './molecules/cricket.page';
 import MyMatchCard from './molecules/mymatch.card.lobby';
 import SubTitle from './atoms/lobby.subtitle';
-import {APP_COLORS} from '../../../constants/appContants';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 import {
   navigateMatchContestsAction,
@@ -29,6 +29,7 @@ interface PropTypes {
 }
 
 export default function LobbyScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
   const navigation = useNavigation();
   const [cricket, setCricket] = useState(true);
   const notificationSheet = useRef();
@@ -55,8 +56,8 @@ export default function LobbyScreen(props: PropTypes) {
   }
 
   return (
-    <View style={[styles.root, props.appColors.bg]}>
-      <View style={[tailwind('bg-secondary'), {}]}>
+    <View style={[styles.root, dT ? clr.bgd1 : clr.bgGray, {flex: 1}]}>
+      <View>
         <LobbyTopBar
           appColors={props.appColors}
           amount={userInfoState.un_utilized}
@@ -69,11 +70,10 @@ export default function LobbyScreen(props: PropTypes) {
       </View>
 
       {cricket ? (
-        <View style={[tailwind('px-5 py-4 pb-0.5')]}>
+        <View style={[styles.myMatchContainer]}>
           {props.myMatches && (
             <>
-              <SubTitle text={'My Matches'} actiontext="View all" />
-              <View style={[tailwind('h-1')]} />
+              <SubTitle dT={dT} text={'My Matches'} actiontext="View all" />
               <MyMatchCard
                 match_key={props.myMatches.key}
                 team_a={props.myMatches.teams.a}
@@ -90,7 +90,7 @@ export default function LobbyScreen(props: PropTypes) {
         </View>
       ) : null}
 
-      <ScrollView contentContainerStyle={{flex: 1}} fadingEdgeLength={50}>
+      <ScrollView contentContainerStyle={{flex: 1}}>
         {cricket ? (
           <CricketPage
             banners={props.banners}
@@ -101,7 +101,7 @@ export default function LobbyScreen(props: PropTypes) {
             onPressNotification={props.onPressNotification}
           />
         ) : (
-          <View style={[tailwind('py-10 h-full')]}>
+          <View style={[tailwind('py-10 h-full'), {flex: 1}]}>
             <Text
               style={[
                 tailwind('font-semibold text-center uppercase font-17'),
@@ -120,7 +120,10 @@ export default function LobbyScreen(props: PropTypes) {
 
 const styles = StyleSheet.create({
   root: {
-    backgroundColor: '#0c1320',
     height: '100%',
+  },
+  myMatchContainer: {
+    paddingHorizontal: 20,
+    paddingVertical: 4,
   },
 });

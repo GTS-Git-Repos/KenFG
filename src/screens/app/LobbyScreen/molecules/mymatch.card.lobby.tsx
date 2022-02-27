@@ -1,11 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
 import tailwind from '../../../../../tailwind';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, StyleSheet} from 'react-native';
 import MyMatchesTop from '../atoms/my.matches.top';
 import Teams from '../atoms/my.matches.teams';
 import SlideAddMyMatchCard from '../atoms/SlideAddMyMatchCard';
 import {useNavigation} from '@react-navigation/core';
 const log = console.log;
+import {getAppThemeSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
+import {useSelector} from 'react-redux';
 
 interface PropTypes {
   match_key: string;
@@ -20,6 +23,8 @@ interface PropTypes {
 }
 
 export default function MyMatchesCard(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const navigation = useNavigation<any>();
   const isMounted = useRef(true);
 
@@ -47,19 +52,28 @@ export default function MyMatchesCard(props: PropTypes) {
       onPress={() => {
         props.onPressMyMatchCard(props.match_key);
       }}
-      style={[tailwind('rounded bg-dark-3')]}>
+      style={[ss.root, dT ? clr.bgd2 : clr.bgw]}>
       <MyMatchesTop
+        dT={dT}
         tournament_name={props.tournament_name}
         teamCount={props.teamCount}
         contestCount={props.contestCount}
       />
       <Teams
+        dT={dT}
         countDown={countDown}
         team_a={props.team_a}
         team_b={props.team_b}
         status={props.status}
       />
-      <SlideAddMyMatchCard />
+      <SlideAddMyMatchCard dT={dT} />
     </TouchableOpacity>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    borderRadius: 4,
+    elevation: 2,
+  },
+});

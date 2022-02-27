@@ -1,34 +1,47 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
+import clr from '../../../../constants/colors';
+
 const log = console.log;
 
 interface PropTypes {
   tournament_name: string;
   teamCount: any;
   contestCount: any;
+  dT: boolean;
 }
 
 function MyMatchesTopSection(props: PropTypes) {
   return (
-    <View style={styles.root}>
-      <View style={styles.wrapper}>
-        <Text style={styles.matchName}>{props.tournament_name}</Text>
-        <View style={styles.metawrapper}>
-          <Text style={[styles.metaValue]}>{props.teamCount}</Text>
-          <Text style={styles.metaText}>Team</Text>
-          <Text style={[styles.metaSeperator]}>|</Text>
-          <Text style={[styles.metaValue]}>{props.contestCount}</Text>
-          <Text style={styles.metaText}>Contest</Text>
+    <View style={ss.root}>
+      <View style={ss.wrapper}>
+        <Text style={[ss.matchName, props.dT ? clr.td2 : clr.td1]}>
+          {props.tournament_name}
+        </Text>
+        <View style={ss.metawrapper}>
+          <Text style={[ss.metaValue, props.dT ? clr.tw : clr.td1]}>
+            {props.teamCount}
+          </Text>
+          <Text style={[ss.metaText, props.dT ? clr.td2 : clr.td1]}>Team</Text>
+          <Text style={[ss.metaSeperator, props.dT ? clr.td2 : clr.td1]}>
+            |
+          </Text>
+          <Text style={[ss.metaValue, props.dT ? clr.tw : clr.td1]}>
+            {props.contestCount}
+          </Text>
+          <Text style={[ss.metaText, props.dT ? clr.td2 : clr.td1]}>
+            Contest
+          </Text>
         </View>
       </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
   root: {
-    borderBottomWidth: 1,
-    borderColor: 'rgba(31, 41, 55, 1)',
+    // borderBottomWidth: 1,
+    // borderColor: 'rgba(31, 41, 55, 1)',
     marginHorizontal: 12,
   },
   wrapper: {
@@ -38,7 +51,6 @@ const styles = StyleSheet.create({
     paddingTop: 8,
   },
   matchName: {
-    color: '#8797B1',
     fontFamily: 'gadugi-normal',
     fontSize: 11,
     textAlign: 'left',
@@ -49,15 +61,13 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   metaValue: {
-    color: '#f5feff',
     fontFamily: 'gadugi-normal',
     fontSize: 13,
     paddingLeft: 2,
     paddingRight: 2,
   },
-  metaText: {color: '#8797B1', fontFamily: 'gadugi-normal', fontSize: 11},
+  metaText: {fontFamily: 'gadugi-normal', fontSize: 11},
   metaSeperator: {
-    color: '#8797B1',
     fontFamily: 'gadugi-normal',
     fontSize: 11,
     paddingLeft: 2,

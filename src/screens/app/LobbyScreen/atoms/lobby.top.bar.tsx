@@ -2,10 +2,11 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
-import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
 import {WalletIcon, LogoWrapper} from '../../../../assets/newIcons';
-
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
 interface PropTypes {
   amount: string;
   appColors: any;
@@ -13,12 +14,13 @@ interface PropTypes {
 
 export default function LobbyTopBar(props: PropTypes) {
   const navigation = useNavigation<any>();
+  const dT = useSelector(getAppThemeSelector);
 
   return (
-    <View style={[ss.root]}>
+    <View style={[ss.root, dT ? clr.bgg : clr.bgRed]}>
       {/* Logo part */}
       <View style={[ss.logoRoot]}>
-        <LogoWrapper dark={true} />
+        <LogoWrapper dark={dT} />
         <View style={[tailwind('absolute'), {left: 24}]}>
           <Image
             resizeMode="contain"
@@ -33,13 +35,15 @@ export default function LobbyTopBar(props: PropTypes) {
           style={[ss.walletWrapper]}>
           <View style={[ss.fac]}>
             <View style={[tailwind('px-2')]}>
-              <Text style={[ss.txtbal]}>Cash Balance</Text>
-              <Text style={[ss.txtAmount]}>
+              <Text style={[ss.txtbal, dT ? clr.tg : clr.tw]}>
+                Cash Balance
+              </Text>
+              <Text style={[ss.txtAmount, dT ? clr.td1 : clr.tw]}>
                 {'\u20B9 '}
                 {props.amount}
               </Text>
             </View>
-            <WalletIcon darkColor={true} outline={false} />
+            <WalletIcon darkColor={dT} outline={false} />
           </View>
         </TouchableOpacity>
       </View>
@@ -51,6 +55,7 @@ const ss = StyleSheet.create({
   root: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    backgroundColor: '#d1b45a',
   },
   logoRoot: {
     position: 'relative',
@@ -71,10 +76,8 @@ const ss = StyleSheet.create({
     fontFamily: 'gadugi-bold',
     textTransform: 'uppercase',
     fontSize: 11,
-    color: '#5F401C',
   },
   txtAmount: {
-    color: '#0c1320',
     fontFamily: 'gadugi-normal',
     fontSize: 13,
     textAlign: 'right',

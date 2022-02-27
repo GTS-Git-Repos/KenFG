@@ -1,0 +1,66 @@
+export default {
+  // dark background
+  bgd1: {
+    backgroundColor: '#0D1320',
+  },
+  // semi dark background
+
+  bgd2: {
+    backgroundColor: '#172338',
+  },
+  // backGround for light mode
+  bgw: {
+    backgroundColor: '#FFFFFF',
+  },
+  // backGround gold color
+  bgg: {
+    backgroundColor: '#C5A858',
+  },
+  // background dark green color
+  bgGreen: {
+    backgroundColor: '#00513B',
+  },
+  // background gray color
+  bgGray: {
+    backgroundColor: '#E0E0E0',
+  },
+  // background red color
+  bgRed: {
+    backgroundColor: '#9C181E',
+  },
+  // background light mode green color
+  bgLgreen: {
+    backgroundColor: '#107706',
+  },
+  // text dark color
+  td1: {
+    color: '#0D1320',
+  },
+  // text semi dark color
+  td2: {
+    color: '#8797B1',
+  },
+  // text dark golden color
+  tg: {
+    color: '#5F401C',
+  },
+  // text semi golden color
+  tgl: {
+    color: '#D8C872',
+  },
+  // text white color
+  tw: {
+    color: '#FFFFFF',
+  },
+  tgray:{
+    color:"E0E0E0"
+  },
+  // text red color
+  tr: {
+    color: '#9C181E',
+  },
+  // text gray color
+  tdgray:{
+    color:"#828282"
+  }
+};

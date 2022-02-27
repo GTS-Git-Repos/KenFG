@@ -14,8 +14,12 @@ import {useLobbyMeta} from './lobby.controller';
 import {Modalize} from 'react-native-modalize';
 import MatchNotificationHead from './atoms/math.notification.head';
 import MatchNotificationSheet from './molecules/matchNotificationSheet';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 export default function LobbyScreenHOC() {
+  const dT = useSelector(getAppThemeSelector);
+
   const dispatch = useDispatch();
   const notificationSheet = useRef<Modalize>(null);
   const appColors = useSelector(appColorsSelector);
@@ -52,7 +56,7 @@ export default function LobbyScreenHOC() {
     return <LobbyScreenLoading failed={true} />;
   }
   return (
-    <View style={[tailwind('h-full bg-dark')]}>
+    <View style={[tailwind('h-full'), dT ? clr.bgd2 : clr.bgGray]}>
       <FlatList
         refreshing={false}
         onRefresh={() => refetchlobby()}

@@ -20,6 +20,10 @@ const TeamCountState = (state: any) => state.team.team_count;
 const SelectedMatchState = (state: any) => state.app.selected_match;
 const JoinContestState = (state: any) => state.app.joinContestRequest;
 
+export const getAppThemeSelector = createSelector(DarkModeState, darkMode => {
+  return darkMode;
+});
+
 export const appColorsSelector = createSelector(DarkModeState, darkMode => {
   if (darkMode) {
     return {
