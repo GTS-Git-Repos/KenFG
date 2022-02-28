@@ -27,7 +27,8 @@ function TabsContest(props: PropTypes) {
             ss.tabContainer,
             props.selectedTab === 0 ? ss.dactiveTab : {},
           ]}>
-          <Text style={[props.selectedTab === 0 ? ss.activeText : ss.text]}>
+          <Text
+            style={[props.selectedTab === 0 ? ss.activeText : ss.text, clr.tw]}>
             Contests
           </Text>
         </TouchableOpacity>

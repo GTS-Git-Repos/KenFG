@@ -105,7 +105,7 @@ export default function ContestListScreen(props: PropTypes) {
       />
       <View>
         <TabsContest
-         dT={dT}
+          dT={dT}
           selectedTab={props.selectedTab}
           contest_count={props?.joined?.length}
           teamsCount={props?.teams?.length}
