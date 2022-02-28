@@ -16,7 +16,10 @@ import {
 } from '../../assets/newIcons/';
 import {useSelector} from 'react-redux';
 import {appColorsSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
+
 interface PropTypes {
+  dT: boolean;
   title: string;
   subtitle: string;
   enableNotification(e: any): void;
@@ -25,20 +28,19 @@ interface PropTypes {
 
 export default function TopBarContest(props: PropTypes) {
   const navigation = useNavigation();
-  const clr = useSelector(appColorsSelector);
 
   return (
-    <View style={[ss.root, clr.bg_2]}>
+    <View style={[ss.root, props.dT ? clr.bgg : clr.bgRed]}>
       <View style={[tailwind('flex flex-row items-center')]}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <BackIcon dark={clr.dark} />
+          <BackIcon dark={props.dT} />
         </TouchableOpacity>
 
         <View style={[tailwind('px-4')]}>
-          <Text style={[ss.title, clr.dark ? clr.txt_2 : clr.txt_4]}>
+          <Text style={[ss.title, props.dT ? clr.tg : clr.tw]}>
             {props.title}
           </Text>
-          <Text style={[ss.subtitle, clr.dark ? clr.txt_2 : clr.txt_4]}>
+          <Text style={[ss.subtitle, props.dT ? clr.tg : clr.tw]}>
             {props.subtitle}
           </Text>
         </View>
@@ -46,13 +48,17 @@ export default function TopBarContest(props: PropTypes) {
 
       <View style={[tailwind('flex flex-row items-center')]}>
         <TouchableOpacity onPress={() => {}} style={[ss.iconLink]}>
-          <NotificationIcon sizeSmall={false} isDark={true} outline={true} />
+          <NotificationIcon
+            sizeSmall={false}
+            isDark={props.dT}
+            outline={true}
+          />
         </TouchableOpacity>
         <TouchableOpacity onPress={props.openWallet} style={[ss.iconLink]}>
-          <WalletIcon darkColor={clr.dark} outline={true} />
+          <WalletIcon darkColor={props.dT} outline={true} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {}} style={[ss.iconLink]}>
-          <HelpIcon isDarkMode={true} />
+          <HelpIcon isDarkMode={props.dT} />
         </TouchableOpacity>
       </View>
     </View>
@@ -62,7 +68,6 @@ export default function TopBarContest(props: PropTypes) {
 const ss = StyleSheet.create({
   root: {
     alignItems: 'center',
-    backgroundColor: '#d1b45a',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingBottom: 12,

@@ -3,9 +3,12 @@ import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useSelector} from 'react-redux';
 import {appColorsSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
+
 const log = console.log;
 
 interface PropTypes {
+  dT: boolean;
   selectedTab: number;
   onTabPressed(index: number): void;
   contest_count: any;
@@ -13,59 +16,107 @@ interface PropTypes {
 }
 
 function TabsContest(props: PropTypes) {
-  const clr = useSelector(appColorsSelector);
-
   return (
-    <View style={[ss.root, clr.bg_1]}>
-      <TouchableOpacity
-        onPress={() => props.onTabPressed(0)}
-        style={[
-          tailwind('w-4/12'),
-          ss.tabContainer,
-          props.selectedTab === 0 ? ss.activeTab : {},
-        ]}>
-        <Text
+    <View style={[ss.root, props.dT ? clr.bgd2 : clr.bgGray]}>
+      {/* Contests option */}
+      {props.dT ? (
+        <TouchableOpacity
+          onPress={() => props.onTabPressed(0)}
           style={[
-            // clr.dark && props.selectedTab !== 0 ? clr.txt_1 : clr.txt_1,
-            props.selectedTab === 0 ? ss.activeText : ss.text,
-            clr.txt_1,
+            tailwind('w-4/12'),
+            ss.tabContainer,
+            props.selectedTab === 0 ? ss.dactiveTab : {},
           ]}>
-          Contests
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => props.onTabPressed(1)}
-        style={[
-          tailwind('w-4/12'),
-          ss.tabContainer,
-          props.selectedTab === 1 ? ss.activeTab : {},
-        ]}>
-        <Text
+          <Text style={[props.selectedTab === 0 ? ss.activeText : ss.text]}>
+            Contests
+          </Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          onPress={() => props.onTabPressed(0)}
           style={[
-            props.selectedTab === 1 ? ss.activeText : ss.text,
-            clr.txt_1,
+            tailwind('w-4/12'),
+            ss.lTabContainer,
+            props.selectedTab === 0 ? ss.lactiveTab : {},
           ]}>
-          {props.contest_count
-            ? `My Contests (${props.contest_count})`
-            : 'My Contests'}
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => props.onTabPressed(2)}
-        style={[
-          tailwind('w-4/12'),
-          ss.tabContainer,
-          props.selectedTab === 2 ? ss.activeTab : {},
-        ]}>
-        <Text
+          <Text
+            style={[
+              props.selectedTab === 0 ? ss.activeText : ss.text,
+              props.selectedTab === 0 ? clr.tr : clr.tdgray,
+            ]}>
+            Contests
+          </Text>
+        </TouchableOpacity>
+      )}
+      {/* My Contest option */}
+      {props.dT ? (
+        <TouchableOpacity
+          onPress={() => props.onTabPressed(1)}
           style={[
-            clr.dark ? clr.txt_1 : clr.txt_2,
-            props.selectedTab === 2 ? ss.activeText : ss.text,
-            clr.txt_1,
+            tailwind('w-4/12'),
+            ss.tabContainer,
+            props.selectedTab === 1 ? ss.dactiveTab : {},
           ]}>
-          {props.teamsCount ? `My Teams (${props.teamsCount})` : 'My Teams'}
-        </Text>
-      </TouchableOpacity>
+          <Text
+            style={[props.selectedTab === 1 ? ss.activeText : ss.text, clr.tw]}>
+            {props.contest_count
+              ? `My Contests (${props.contest_count})`
+              : 'My Contests'}
+          </Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          onPress={() => props.onTabPressed(1)}
+          style={[
+            tailwind('w-4/12'),
+            ss.lTabContainer,
+            props.selectedTab === 1 ? ss.lactiveTab : {},
+          ]}>
+          <Text
+            style={[
+              props.selectedTab === 1 ? ss.activeText : ss.text,
+              props.selectedTab === 1 ? clr.tr : clr.tdgray,
+            ]}>
+            {props.contest_count
+              ? `My Contests (${props.contest_count})`
+              : 'My Contests'}
+          </Text>
+        </TouchableOpacity>
+      )}
+      {/* My Teams tab */}
+      {props.dT ? (
+        <TouchableOpacity
+          onPress={() => props.onTabPressed(2)}
+          style={[
+            tailwind('w-4/12'),
+            ss.tabContainer,
+            props.selectedTab === 2 ? ss.dactiveTab : {},
+          ]}>
+          <Text
+            style={[
+              props.selectedTab === 2 ? ss.activeText : ss.text,
+              props.selectedTab === 2 ? clr.tw : clr.tw,
+            ]}>
+            {props.teamsCount ? `My Teams (${props.teamsCount})` : 'My Teams'}
+          </Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          onPress={() => props.onTabPressed(2)}
+          style={[
+            tailwind('w-4/12'),
+            ss.lTabContainer,
+            props.selectedTab === 2 && ss.lactiveTab,
+          ]}>
+          <Text
+            style={[
+              props.selectedTab === 2 ? ss.activeText : ss.text,
+              props.selectedTab === 2 ? clr.tr : clr.tdgray,
+            ]}>
+            {props.teamsCount ? `My Teams (${props.teamsCount})` : 'My Teams'}
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -83,8 +134,22 @@ const ss = StyleSheet.create({
     borderRadius: 1,
     borderBottomWidth: 2,
   },
-  activeTab: {
+  lTabContainer: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderColor: '#E0E0E0',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+  dactiveTab: {
     borderColor: '#BCA04D',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+  lactiveTab: {
+    borderColor: '#9C181E',
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,

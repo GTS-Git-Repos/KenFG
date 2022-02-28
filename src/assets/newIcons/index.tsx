@@ -26,6 +26,15 @@ import BankRoundIcon from './svgIcons/bank.round.icon';
 import VerifyTick from './svgIcons/verify.tick.icon';
 import FootBallIcon from './svgIcons/football.icon';
 import LogoWrapper from './svgIcons/logoWrapper';
+import EditIcon from './svgIcons/edit.icon';
+import WalletSideIcon from './svgIcons/waller.side.icon';
+import MoneySideIcon from './svgIcons/money.side.icon';
+import JoySideIcon from './svgIcons/joy.side.icon';
+import SettingSideIcon from './svgIcons/settings.side.icon';
+import MoreSideIcon from './svgIcons/more.side.icon';
+import LeaderSideIcon from './svgIcons/leader.side.icon';
+import ChatSideIcon from './svgIcons/chat.side.icon';
+import HelpSideIcon from './svgIcons/help.side.icon';
 
 import ContestsBottomTabOn from './svgIcons/contests.bottomtab.on';
 
@@ -40,17 +49,26 @@ export {
   MoreBottomTabOn,
   MoreBottomTabOff,
   CreditCardIcon,
+  MoneySideIcon,
+  JoySideIcon,
+  MoreSideIcon,
   DebitCardIcon,
+  LeaderSideIcon,
+  HelpSideIcon,
   VerifyTick,
+  SettingSideIcon,
   BankIcon,
   SwitchIcon,
   NotificationIcon,
+  WalletSideIcon,
   WalletIcon,
   LineupsCap,
+  ChatSideIcon,
   HelpIcon,
   PointsIcon,
   InfoIcon,
   CapIcon,
+  EditIcon,
   VCIcon,
   BackIcon,
   MobileIcon,

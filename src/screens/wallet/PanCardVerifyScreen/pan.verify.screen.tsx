@@ -11,6 +11,8 @@ import tailwind from '../../../../tailwind';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 import Icon from 'react-native-vector-icons/Ionicons';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 import {useSelector} from 'react-redux';
 
@@ -44,16 +46,22 @@ interface PropTypes {
 const TEXTCOLOR = '#8797B1';
 
 export default function PanVerifyScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
-    <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={'Verify PAN Card'} />
+    <View style={[tailwind('h-full'), dT ? clr.bgd2 : clr.bgGray]}>
+      <TopBar text={'Verify PAN card'} />
       <ScrollView keyboardShouldPersistTaps="handled">
         <View style={[tailwind('p-3')]}>
           {/* name input */}
           <View style={[ss.inputContainer]}>
-            <InputTitle text="Name" />
+            <InputTitle text="Name" dT={dT} />
             <TextInput
-              style={[ss.textInput]}
+              style={[
+                ss.textInput,
+                dT ? ss.dborder : ss.lborder,
+                dT ? clr.tw : clr.td1,
+              ]}
               value={props.name}
               onChangeText={(e: any) => props.setName(e)}
             />
@@ -63,9 +71,13 @@ export default function PanVerifyScreen(props: PropTypes) {
           </View>
 
           <View style={[ss.inputContainer]}>
-            <InputTitle text="Pan card number" />
+            <InputTitle text="Pan card number" dT={dT} />
             <TextInput
-              style={[ss.textInput]}
+              style={[
+                ss.textInput,
+                dT ? ss.dborder : ss.lborder,
+                dT ? clr.tw : clr.td1,
+              ]}
               value={props.pan}
               onChangeText={(e: any) => props.setPan(e)}
             />
@@ -75,11 +87,11 @@ export default function PanVerifyScreen(props: PropTypes) {
           </View>
 
           <View style={[ss.inputContainer]}>
-            <InputTitle text="Date of Birth" />
+            <InputTitle text="Date of Birth" dT={dT} />
             <TouchableOpacity
               onPress={() => props.setOpenDate(true)}
-              style={[ss.textInput]}>
-              <Text style={[ss.dobText]}>
+              style={[ss.textInput, dT ? ss.dborder : ss.lborder]}>
+              <Text style={[ss.dobText, dT ? clr.tw : clr.td1]}>
                 {props.dob && format(props.dob, 'dd-MM-yyyy')}
               </Text>
             </TouchableOpacity>
@@ -93,36 +105,20 @@ export default function PanVerifyScreen(props: PropTypes) {
             <ImageUploaded
               openLibrary={props.openLibrary}
               removeImage={props.removeImage}
+              dT={dT}
             />
           ) : (
-            <ImageUpload openLibrary={props.openLibrary} />
+            <ImageUpload openLibrary={props.openLibrary} dT={dT} />
           )}
           {props.error.target === 'image' && (
             <ErrorInput msg={props.error.msg} />
           )}
-
-          {/* <View style={[ss.inputContainer]}>
-            <InputTitle text="Image" />
-            <TouchableOpacity
-              onPress={props.openLibrary}
-              style={[ss.textInput]}>
-              <Text style={[ss.dobText]}>
-                {props.image && (
-                  <Text style={[tailwind('font-regular text-white font-15')]}>
-                    Image added
-                  </Text>
-                )}
-              </Text>
-            </TouchableOpacity>
-            {props.error.target === 'image' && (
-              <ErrorInput msg={props.error.msg} />
-            )}
-          </View> */}
-
           <Instruction />
         </View>
       </ScrollView>
+
       <TouchableOpacity
+        activeOpacity={0.7}
         onPress={props.validateInputs}
         style={[tailwind('m-3')]}>
         <ButtonComponent text={'Submit Details'} />
@@ -146,8 +142,8 @@ function InputTitle(props: any) {
   return (
     <Text
       style={[
-        tailwind('font-regular text-red-500 px-0.5 font-15'),
-        {color: TEXTCOLOR},
+        tailwind('font-regular px-0.5 font-15'),
+        props.dT ? clr.td2 : clr.td1,
       ]}>
       {props.text}
     </Text>
@@ -157,7 +153,7 @@ function InputTitle(props: any) {
 function ErrorInput(props: any) {
   return (
     <Text style={[tailwind('font-regular text-red-600 p-0.5 font-15')]}>
-      {props.msg}
+      * {props.msg}
     </Text>
   );
 }
@@ -195,8 +191,12 @@ function Instruction(props: any) {
 function ImageUpload(props: any) {
   return (
     <TouchableOpacity onPress={props.openLibrary} style={[ss.imageIContainer]}>
-      <Icon name="image" size={20} color="lightgray" />
-      <Text style={[tailwind('font-regular mx-2 text-white font-13')]}>
+      <Icon name="image" size={20} color={props.dT ? 'lightgray' : '#9C181E'} />
+      <Text
+        style={[
+          tailwind('font-regular mx-2 font-13'),
+          props.dT ? clr.tw : clr.td1,
+        ]}>
         Upload PAN Card Image
       </Text>
     </TouchableOpacity>
@@ -208,15 +208,27 @@ function ImageUploaded(props: any) {
       <TouchableOpacity
         onPress={props.openLibrary}
         style={[tailwind('flex-row items-center')]}>
-        <Icon name="link" size={20} color="lightgray" />
-        <Text style={[tailwind('font-regular mx-2 text-white font-13')]}>
+        <Icon
+          name="link"
+          size={20}
+          color={props.dT ? 'lightgray' : '#9C181E'}
+        />
+        <Text
+          style={[
+            tailwind('font-regular mx-2 font-13'),
+            props.dT ? clr.tw : clr.td1,
+          ]}>
           Image selected
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={props.removeImage}
         style={[tailwind('flex-row items-center')]}>
-        <Text style={[tailwind('font-regular text-white font-11 uppercase')]}>
+        <Text
+          style={[
+            tailwind('font-regular font-11 uppercase'),
+            props.dT ? clr.tw : clr.td1,
+          ]}>
           Clear
         </Text>
         <Icon name="close" size={15} color="gray" />
@@ -241,18 +253,21 @@ const ss = StyleSheet.create({
     marginBottom: 8,
   },
   textInput: {
-    borderColor: 'rgba(31, 41, 55,1)',
-    borderRadius: 2,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 6,
     marginTop: 8,
-    color: '#FFFFFF',
+  },
+  dborder: {
+    borderColor: 'rgba(31, 41, 55,1)',
+  },
+  lborder: {
+    borderColor: '#9C181E',
   },
   imageIContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: 'rgba(31, 41, 55,1)',
-    borderRadius: 2,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 8,
     margin: 4,

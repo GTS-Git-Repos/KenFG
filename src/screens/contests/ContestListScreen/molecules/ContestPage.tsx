@@ -6,7 +6,10 @@ import FilterTab from './Filtertab';
 import ContestSubTitle from '../atoms/ContestSubTitle';
 import NoContent from '../atoms/no.content.contest';
 import {useNavigation} from '@react-navigation/core';
+import {getAppThemeSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
 import CreateTeamButton from '../atoms/CreateTeamButton';
+import {useSelector} from 'react-redux';
 const log = console.log;
 
 interface PropTypes {
@@ -26,6 +29,8 @@ interface PropTypes {
 }
 
 export default function ContestPage(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const isActiveTab = props.index === props.selectedTab;
 
   const navigation = useNavigation();
@@ -38,7 +43,7 @@ export default function ContestPage(props: PropTypes) {
     return (
       <ActivityIndicator
         style={[tailwind('mt-10')]}
-        color="#d1b45a"
+        color={dT ? '#d1b45a' : '#9C181E'}
         size="large"
       />
     );

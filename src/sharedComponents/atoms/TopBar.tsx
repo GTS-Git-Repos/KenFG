@@ -7,7 +7,9 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import {appColorsSelector} from '../../store/selectors';
-import {HelpIcon,BackIcon, PointsIcon} from '../../assets/newIcons';
+import {HelpIcon, BackIcon, PointsIcon} from '../../assets/newIcons';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface Props {
   text: string;
@@ -17,8 +19,7 @@ interface Props {
 }
 
 export default function TopBar(props: Props) {
- 
-  const clr = useSelector(appColorsSelector);
+  const dT = useSelector(getAppThemeSelector);
 
   const navigation = useNavigation();
 
@@ -27,13 +28,13 @@ export default function TopBar(props: Props) {
   }
 
   return (
-    <View style={[ss.root]}>
+    <View style={[ss.root, dT ? clr.bgg : clr.bgRed]}>
       <View style={[tailwind('flex-row items-center')]}>
         <TouchableOpacity onPress={goBack}>
-          <BackIcon dark={clr.dark} />
+          <BackIcon dark={dT} />
         </TouchableOpacity>
         <View style={[tailwind('px-2')]}>
-          <Text style={[tailwind('font-bold text-brown-4 font-16')]}>
+          <Text style={[tailwind('font-bold font-16'), dT ? clr.tg : clr.tw]}>
             {props.text}
           </Text>
           {/* teams appeared on team formation, cap selection screen */}
@@ -65,7 +66,6 @@ export default function TopBar(props: Props) {
 const ss = StyleSheet.create({
   root: {
     alignItems: 'center',
-    backgroundColor: '#d1b45a',
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 16,

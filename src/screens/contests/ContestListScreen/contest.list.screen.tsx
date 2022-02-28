@@ -20,7 +20,8 @@ import CreateTeamButton from './atoms/CreateTeamButton';
 import Modal from 'react-native-modal';
 import {TeamFormationMutationType} from '../../../types/match';
 import {infoBox} from '../../../utils/snakBars';
-import {AppColorsType} from '../../../types/app';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 const log = console.log;
 
@@ -66,7 +67,7 @@ interface PropTypes {
 
 export default function ContestListScreen(props: PropTypes) {
   const navigation = useNavigation<any>();
-  const clr = useSelector(appColorsSelector);
+  const dT = useSelector(getAppThemeSelector);
   const {width} = useWindowDimensions();
 
   const [selectedFilter, setSelectedFilter] = useState<any>('All');
@@ -94,8 +95,9 @@ export default function ContestListScreen(props: PropTypes) {
   };
 
   return (
-    <View style={[ss.root, clr.bg]}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <TopBarContest
+        dT={dT}
         title={matchSelector?.titleString}
         subtitle={timeStamp}
         enableNotification={enableNotification}
@@ -103,6 +105,7 @@ export default function ContestListScreen(props: PropTypes) {
       />
       <View>
         <TabsContest
+         dT={dT}
           selectedTab={props.selectedTab}
           contest_count={props?.joined?.length}
           teamsCount={props?.teams?.length}

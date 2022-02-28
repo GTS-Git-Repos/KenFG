@@ -111,7 +111,7 @@ export default function UpcommingMatches(props: PropTypes) {
           <TouchableOpacity
             onPress={() => props.onPressNotification(props.match_key)}
             style={[tailwind('flex-row justify-end pt-0.5'), {flex: 1}]}>
-            <NotificationIcon sizeSmall={true} outline={false} isDark={dT} />
+            <NotificationIcon sizeSmall={true} outline={true} isDark={dT} />
           </TouchableOpacity>
         </View>
 
@@ -146,8 +146,8 @@ const Teams = (props: TeamPropShape) => {
   return (
     <View
       style={[
-        tailwind('flex flex-row justify-between py-0.5 items-center'),
-        {paddingHorizontal: 16, paddingTop: 6},
+        tailwind('flex flex-row justify-between items-center'),
+        {paddingHorizontal: 16, paddingVertical: 6},
       ]}>
       <View style={[tailwind('')]}>
         <View style={[styles.flagWrapper, props.dT ? clr.bgd1 : clr.bgGray]}>
@@ -207,7 +207,8 @@ const PrizeandStatus = (props: any) => {
   return (
     <View style={[tailwind('flex-row items-center'), {paddingLeft: 10}]}>
       <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
-        <Text
+        <LineupsCap lineups={false} />
+        {/* <Text
           numberOfLines={1}
           allowFontScaling={true}
           adjustsFontSizeToFit={true}
@@ -216,8 +217,7 @@ const PrizeandStatus = (props: any) => {
             props.dT ? clr.td2 : clr.td1,
           ]}>
           Line ups out
-        </Text>
-        <LineupsCap lineups={false} />
+        </Text> */}
       </View>
 
       <Text

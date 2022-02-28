@@ -8,7 +8,7 @@ export default {
   bgd2: {
     backgroundColor: '#172338',
   },
-  // backGround for light mode
+  // backGround white
   bgw: {
     backgroundColor: '#FFFFFF',
   },
@@ -20,7 +20,7 @@ export default {
   bgGreen: {
     backgroundColor: '#00513B',
   },
-  // background gray color
+  // background light gray color
   bgGray: {
     backgroundColor: '#E0E0E0',
   },
@@ -52,15 +52,15 @@ export default {
   tw: {
     color: '#FFFFFF',
   },
-  tgray:{
-    color:"E0E0E0"
+  tgray: {
+    color: 'E0E0E0',
   },
   // text red color
   tr: {
     color: '#9C181E',
   },
-  // text gray color
-  tdgray:{
-    color:"#828282"
-  }
+  // text dark gray color
+  tdgray: {
+    color: '#4F4F4F',
+  },
 };
