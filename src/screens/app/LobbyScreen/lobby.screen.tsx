@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux';
 import LobbyTopBar from './atoms/lobby.top.bar';
 import LobbyNav from './atoms/lobby.nav';
 import CricketPage from './molecules/cricket.page';
+import FootBallPage from './molecules/football.page';
 import MyMatchCard from './molecules/mymatch.card.lobby';
 import SubTitle from './atoms/lobby.subtitle';
 import {getAppThemeSelector} from '../../../store/selectors';
@@ -57,40 +58,34 @@ export default function LobbyScreen(props: PropTypes) {
 
   return (
     <View style={[styles.root, dT ? clr.bgd1 : clr.bgGray, {flex: 1}]}>
-      <View>
-        <LobbyTopBar
-          appColors={props.appColors}
-          amount={userInfoState.un_utilized}
-        />
-        <LobbyNav
-          cricket={cricket}
-          setCricket={setCricket}
-          name={userInfoState?.name}
-        />
-      </View>
+      <LobbyTopBar
+        appColors={props.appColors}
+        amount={userInfoState.un_utilized}
+      />
+      <LobbyNav
+        cricket={cricket}
+        setCricket={setCricket}
+        name={userInfoState?.name}
+      />
 
-      {cricket ? (
+      {cricket && props.myMatches ? (
         <View style={[styles.myMatchContainer]}>
-          {props.myMatches && (
-            <>
-              <SubTitle dT={dT} text={'My Matches'} actiontext="View all" />
-              <MyMatchCard
-                match_key={props.myMatches.key}
-                team_a={props.myMatches.teams.a}
-                status={props.myMatches.status}
-                team_b={props.myMatches.teams.b}
-                tournament_name={props.myMatches.teams.tournament.short_name}
-                start_time={props.myMatches.start_at}
-                teamCount={props.myMatches.team_count}
-                contestCount={props.myMatches.contest_count}
-                onPressMyMatchCard={onPressMyMatchCard}
-              />
-            </>
-          )}
+          <SubTitle dT={dT} text={'My Matches'} actiontext="View all" />
+          <MyMatchCard
+            match_key={props.myMatches.key}
+            team_a={props.myMatches.teams.a}
+            status={props.myMatches.status}
+            team_b={props.myMatches.teams.b}
+            tournament_name={props.myMatches.teams.tournament.short_name}
+            start_time={props.myMatches.start_at}
+            teamCount={props.myMatches.team_count}
+            contestCount={props.myMatches.contest_count}
+            onPressMyMatchCard={onPressMyMatchCard}
+          />
         </View>
       ) : null}
 
-      <ScrollView contentContainerStyle={{flex: 1}}>
+      <ScrollView>
         {cricket ? (
           <CricketPage
             banners={props.banners}
@@ -101,17 +96,8 @@ export default function LobbyScreen(props: PropTypes) {
             onPressNotification={props.onPressNotification}
           />
         ) : (
-          <View style={[tailwind('py-10 h-full'), {flex: 1}]}>
-            <Text
-              style={[
-                tailwind('font-semibold text-center uppercase font-17'),
-                {color: '#8797B1'},
-              ]}>
-              Coming Soon ...
-            </Text>
-          </View>
+          <FootBallPage />
         )}
-
         <View style={[tailwind('h-10')]}></View>
       </ScrollView>
     </View>

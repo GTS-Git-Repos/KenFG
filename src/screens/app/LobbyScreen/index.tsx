@@ -56,7 +56,7 @@ export default function LobbyScreenHOC() {
     return <LobbyScreenLoading failed={true} />;
   }
   return (
-    <View style={[tailwind('h-full'), dT ? clr.bgd2 : clr.bgGray]}>
+    <View style={[tailwind('h-full'), dT ? clr.bgd1 : clr.bgGray]}>
       <FlatList
         refreshing={false}
         onRefresh={() => refetchlobby()}

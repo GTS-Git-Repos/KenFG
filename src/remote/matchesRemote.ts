@@ -85,8 +85,8 @@ export const contestListsRemote = async (params: any) => {
     const response = await requestServer(
       METHODS.GET,
       BASE_URL +
-        `${req_contest_list}?m=${params.queryKey[1]}&?full=${
-          params.queryKey[2] ? '1' : '0'
+        `${req_contest_list}?m=${params.queryKey[1]}&in=${
+          params.queryKey[2] ? 1 : 2
         }`,
     );
     if (response.status === 200) {
@@ -200,7 +200,7 @@ export const getMatchPlayersRemote = async (params: any) => {
     }
   } catch (err) {
     console.log('getMatchPlayersRemote', err);
-    return false;
+    throw err;
   }
 };
 

@@ -5,16 +5,24 @@ import {createTeamRemote, editTeamRemote} from '../../../remote/matchesRemote';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 import {clearTeamAction} from '../../../store/actions/teamActions';
 import {useDispatch, useSelector} from 'react-redux';
-import {playersByRole, selectedMatch} from '../../../store/selectors';
+import {
+  isFulMatchSelector,
+  playersByRole,
+  selectedMatch,
+  userInfo,
+} from '../../../store/selectors';
 import {StackActions} from '@react-navigation/native';
 import {
   allPlayersSelector,
   capSelectionReducer,
   capSelectionState,
+  isTeamsIsDiffrent,
   sortStatusSelector,
 } from './capselection.controller';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {FullScreenLoading} from '../../../sharedComponents';
+import {useGetTeams} from '../../../shared_hooks/contest.hooks';
+import {yearsToMonths} from 'date-fns';
 const log = console.log;
 
 export default function CapSelectionHOC() {
@@ -30,9 +38,17 @@ export default function CapSelectionHOC() {
 
   const matchSelector: any = useSelector(selectedMatch);
   const playersByRoleSelector = useSelector(playersByRole);
+  const userMeta = useSelector(userInfo);
+  const isFullMatch: boolean = useSelector(isFulMatchSelector);
 
   const allPlayers = allPlayersSelector(capsState);
   const sortStatus = sortStatusSelector(capsState);
+
+  const {teams, teamsAPI}: any = useGetTeams(
+    matchSelector.match_key,
+    userMeta.mobile,
+    isFullMatch,
+  );
   // console.log('sortStatus >>>', sortStatus);
 
   // log(JSON.stringify(playersByRoleSelector));
@@ -48,12 +64,27 @@ export default function CapSelectionHOC() {
   const editTeamAPI = async (payload: any) => {
     try {
       const team_key = route.params.mutation.team_key;
-      const obj = {...payload};
-      obj.team_key = team_key;
-      // log(JSON.stringify(obj));
-      // return;
+      const new_team = {...payload};
+      new_team.team_key = team_key;
+
+      // get the previous team
+      const existed_team = teams.find(
+        (item: any) => item.team_key === team_key,
+      );
+      if (!existed_team) {
+        throw 'no teams found';
+      }
+      const isTeamDiffrent = isTeamsIsDiffrent(new_team, existed_team);
+      if (isTeamDiffrent === false) {
+        infoBox('No Changes has been made', 0);
+        // setTimeout(() => {
+        //   dispatch(clearTeamAction());
+        //   navigation.dispatch(StackActions.popToTop());
+        // }, 2000);
+        return;
+      }
       setLoading(true);
-      const response = await editTeamRemote(obj);
+      const response = await editTeamRemote(new_team);
       setLoading(false);
 
       if (!response.txn) {
@@ -64,6 +95,7 @@ export default function CapSelectionHOC() {
       navigation.dispatch(StackActions.popToTop());
       return;
     } catch (err) {
+      console.log(err);
       errorBox('Failed to Edit', 500);
     }
   };

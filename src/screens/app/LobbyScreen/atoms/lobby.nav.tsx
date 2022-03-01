@@ -75,7 +75,7 @@ const Cricket = (props: any) => {
         />
       </View>
       {props.dT ? (
-        <Text style={[ss.sportName, props.cricket ? clr.tgl : clr.tdgray]}>
+        <Text style={[ss.sportName, props.cricket ? clr.tgl : clr.td2]}>
           Cricket
         </Text>
       ) : (
@@ -104,7 +104,7 @@ const FootBall = (props: any) => {
         />
       </View>
       {props.dT ? (
-        <Text style={[ss.sportName, !props.cricket ? clr.tgl : clr.tdgray]}>
+        <Text style={[ss.sportName, !props.cricket ? clr.tgl : clr.td2]}>
           FootBall
         </Text>
       ) : (

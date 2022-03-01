@@ -49,7 +49,12 @@ export const allPlayersSelector = createSelector(
         bowler: [],
       };
     } else {
-      return {keeper: sortPlayers.reverse(), batsman: [], all_rounder: [], bowler: []};
+      return {
+        keeper: sortPlayers.reverse(),
+        batsman: [],
+        all_rounder: [],
+        bowler: [],
+      };
     }
   },
 );
@@ -78,3 +83,32 @@ function combinePlayers(playersByRole: any) {
 //     ...playersByRole.bowler,
 //   ];
 // }
+
+// is team is diffrent, team_b from api
+
+// it has a huge risk when an API keepers key changes
+export function isTeamsIsDiffrent(new_team: any, existed_team: any) {
+  if (new_team.team.cap_key !== existed_team.cap.key) {
+    return true;
+  }
+  if (new_team.team.vc_key !== existed_team.vc.key) {
+    return true;
+  }
+
+  const e_keep = existed_team.keepers;
+  const e_bat = existed_team.batsman;
+  const e_bwl = existed_team.bowler;
+  const e_ar = existed_team.all_rounder;
+
+  const e_players = [...e_keep, ...e_bat, ...e_bwl, ...e_ar];
+  for (let e_player of e_players) {
+    // is existing player in new team
+    const isExist = new_team.team.players.find(
+      (item: any) => item.key === e_player.key,
+    );
+    if (!isExist) {
+      return true;
+    }
+  }
+  return false;
+}

@@ -12,7 +12,7 @@ import {SecondaryButton, TopBar} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
-  text?: string;
+  refetch(): any;
 }
 
 export default function NoContent(props: PropTypes) {

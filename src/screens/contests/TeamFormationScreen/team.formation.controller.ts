@@ -1,5 +1,5 @@
 // The controller for contest list screen
-import {sortBy} from 'lodash';
+import {orderBy, sortBy} from 'lodash';
 import React, {useReducer} from 'react';
 import {createSelector} from 'reselect';
 
@@ -53,7 +53,6 @@ export const allPlayersSelector = createSelector(
       return [];
     }
     // extract players
-
     let keeper = allPlayers[0].keeper;
     let batsman = allPlayers[0].batsman;
     let all_rounder = allPlayers[0].all_rounder;
@@ -61,96 +60,50 @@ export const allPlayersSelector = createSelector(
 
     // filter by team enabled, it has a team key
     if (filterTeam) {
-      const filterKeep = keeper.filter(
-        (item: any) => item.team_key === filterTeam,
+      const {fkeeper, fbatsman, fall_rounder, fbowler} = filterByTeam(
+        keeper,
+        batsman,
+        all_rounder,
+        bowler,
+        filterTeam,
       );
-
-      const filterBat = batsman.filter(
-        (item: any) => item.team_key === filterTeam,
-      );
-      const filterAr = all_rounder.filter(
-        (item: any) => item.team_key === filterTeam,
-      );
-      const filterBow = bowler.filter(
-        (item: any) => item.team_key === filterTeam,
-      );
-      keeper = filterKeep;
-      batsman = filterBat;
-      all_rounder = filterAr;
-      bowler = filterBow;
+      keeper = fkeeper;
+      batsman = fbatsman;
+      all_rounder = fall_rounder;
+      bowler = fbowler;
     }
 
     // if sort points filter applied
     if (sortByPoints !== null) {
-      const sortedKeepers = sortBy(keeper, 'points');
-      const sortedBatsman = sortBy(batsman, 'points');
-      const sortedAR = sortBy(all_rounder, 'points');
-      const sortedBowler = sortBy(bowler, 'points');
-      // console.log(sortedKeepers);
-
-      // from low to high
-      if (sortByPoints === true) {
-        const players = [
-          {
-            keeper: sortedKeepers,
-            batsman: sortedBatsman,
-            all_rounder: sortedAR,
-            bowler: sortedBowler,
-          },
-        ];
-        return players;
-      } else {
-        // from high to low
-        const players = [
-          {
-            keeper: sortedKeepers.reverse(),
-            batsman: sortedBatsman.reverse(),
-            all_rounder: sortedAR.reverse(),
-            bowler: sortedBowler.reverse(),
-          },
-        ];
-        return players;
-      }
+      return sortPlayers(
+        keeper,
+        batsman,
+        all_rounder,
+        bowler,
+        'points',
+        sortByPoints,
+      );
     }
-    // sort by credits active
-    else if (sortByCredits !== null) {
-      const sortedKeepers = sortBy(keeper, 'credits');
-      const sortedBatsman = sortBy(batsman, 'credits');
-      const sortedAR = sortBy(all_rounder, 'credits');
-      const sortedBowler = sortBy(bowler, 'credits');
-      // low to high
-      if (sortByCredits === true) {
-        const players = [
-          {
-            keeper: sortedKeepers,
-            batsman: sortedBatsman,
-            all_rounder: sortedAR,
-            bowler: sortedBowler,
-          },
-        ];
-        return players;
-      } else {
-        // high to low
-        const players = [
-          {
-            keeper: sortedKeepers.reverse(),
-            batsman: sortedBatsman.reverse(),
-            all_rounder: sortedAR.reverse(),
-            bowler: sortedBowler.reverse(),
-          },
-        ];
-        return players;
-      }
-    } else {
-      return [
-        {
-          keeper,
-          batsman,
-          all_rounder,
-          bowler,
-        },
-      ];
+    // sort by credits applied
+    if (sortByCredits !== null) {
+      return sortPlayers(
+        keeper,
+        batsman,
+        all_rounder,
+        bowler,
+        'credits',
+        sortByCredits,
+      );
     }
+    // no filters applied
+    return [
+      {
+        keeper,
+        batsman,
+        all_rounder,
+        bowler,
+      },
+    ];
   },
 );
 
@@ -167,3 +120,84 @@ export const filerTeamSelector = createSelector(
     return filterTeam;
   },
 );
+
+// filter players by team
+function filterByTeam(
+  keeper: any,
+  batsman: any,
+  all_rounder: any,
+  bowler: any,
+  filterTeam: string,
+) {
+  const filterKeep = keeper.filter((item: any) => item.team_key === filterTeam);
+  const filterBat = batsman.filter((item: any) => item.team_key === filterTeam);
+  const filterAr = all_rounder.filter(
+    (item: any) => item.team_key === filterTeam,
+  );
+  const filterBow = bowler.filter((item: any) => item.team_key === filterTeam);
+  return {
+    fkeeper: filterKeep,
+    fbatsman: filterBat,
+    fall_rounder: filterAr,
+    fbowler: filterBow,
+  };
+}
+
+function sortPlayers(
+  keeper: any,
+  batsman: any,
+  all_rounder: any,
+  bowler: any,
+  field: string,
+  order: boolean,
+) {
+  const sKeepers = orderBy(keeper, [field], order ? ['asc'] : ['desc']);
+  const sBatsman = orderBy(batsman, [field], order ? ['asc'] : ['desc']);
+  const sAll_rounder = orderBy(
+    all_rounder,
+    [field],
+    order ? ['asc'] : ['desc'],
+  );
+  const sBowler = orderBy(bowler, [field], order ? ['asc'] : ['desc']);
+  return [
+    {
+      keeper: sKeepers,
+      batsman: sBatsman,
+      all_rounder: sAll_rounder,
+      bowler: sBowler,
+    },
+  ];
+}
+
+// function sortPlayersByCredits(
+//   keeper: any,
+//   batsman: any,
+//   all_rounder: any,
+//   bowler: any,
+//   Order: boolean,
+// ) {
+//   const sKeepers = orderBy(
+//     keeper,
+//     ['credits'],
+//     Order ? ['asc'] : ['desc'],
+//   );
+//   const sBatsman = orderBy(
+//     batsman,
+//     ['credits'],
+//     Order ? ['asc'] : ['desc'],
+//   );
+//   const sAll_rounder = orderBy(
+//     all_rounder,
+//     ['credits'],
+//     Order ? ['asc'] : ['desc'],
+//   );
+//   const sBowler = orderBy(bowler, ['credits'], Order ? ['asc'] : ['desc']);
+//   return [
+//     {
+//       keeper: sKeepers,
+//       batsman: sBatsman,
+//       all_rounder: sAll_rounder,
+//       bowler: sBowler,
+//     },
+//   ];
+// }

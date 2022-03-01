@@ -50,8 +50,8 @@ export default function TopBarContest(props: PropTypes) {
         <TouchableOpacity onPress={() => {}} style={[ss.iconLink]}>
           <NotificationIcon
             sizeSmall={false}
-            isDark={props.dT}
             outline={true}
+            isDark={props.dT}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={props.openWallet} style={[ss.iconLink]}>

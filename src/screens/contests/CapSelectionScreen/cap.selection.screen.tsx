@@ -18,12 +18,7 @@ import RowHeader from './atoms/RowHeader';
 import PlayerProfile from './molecules/PlayerProfile';
 import CapSelectionAction from './atoms/CapSelectionAction';
 import {useDispatch, useSelector} from 'react-redux';
-import {
-  creditLeft,
-  playersByRole,
-  rolesCount,
-  selectedMatch,
-} from '../../../store/selectors';
+import {creditLeft, rolesCount, selectedMatch} from '../../../store/selectors';
 import {
   captainSelection,
   vicecaptainSelectionAction,

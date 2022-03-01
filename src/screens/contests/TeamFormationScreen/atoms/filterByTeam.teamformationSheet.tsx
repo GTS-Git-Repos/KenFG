@@ -55,10 +55,16 @@ export default function CreateTeamFilterSheetTitle(props: PropTypes) {
         </View>
         <RadioButton selected={props.filterTeam === props.team_b_key} />
       </TouchableOpacity>
+      {/* Both */}
       <TouchableOpacity
         onPress={() => props.onTeamFilterAction(null)}
-        style={[styles.optionWrapper, styles.team_both_border]}>
-        <Text style={tailwind('text-white font-13 py-1 font-bold')}>Both</Text>
+        style={[styles.optionWrapper]}>
+        <View>
+          <Text style={tailwind('text-white font-13 font-bold')}>Both</Text>
+          <Text style={styles.optionText}>
+            {props.team_a_name} & {props.team_b_name}
+          </Text>
+        </View>
         <RadioButton selected={props.filterTeam === null} />
       </TouchableOpacity>
     </View>
@@ -75,10 +81,12 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     paddingTop: 16,
   },
+  border: {
+    borderRadius: 5,
+  },
   team_a_border: {
     borderColor: '#244785',
     borderWidth: 1,
-    borderRadius: 5,
   },
   team_b_border: {
     borderColor: '#70211E',
@@ -86,8 +94,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   team_both_border: {
-    borderColor: '#BCA04D',
-    borderWidth: 1,
     borderRadius: 5,
   },
   optionWrapper: {

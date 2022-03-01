@@ -69,11 +69,12 @@ export const updateTeamAction = (payload: any) => ({
 });
 
 export const updatePlayerAction = (payload: any) => {
-  return async (dispatch: any, getState: any) => {
+  return (dispatch: any, getState: any) => {
     try {
+      const team = store.getState().team;
       dispatch(updateErrorMsgAction(null));
 
-      const {all_players, players, credits_left, team_count} = getState().team;
+      const {all_players, players, credits_left, team_count} = team;
 
       const isExists = players.findIndex(
         (item: any) => item.key === payload.key,

@@ -68,7 +68,7 @@ export default function TeamFormationHOC() {
 
   const isScreenReady = useIsScreenReady();
 
-  const {players, playersAPI}: any = useMatchPlayers(
+  const {players, playersAPI, refetchPlayers}: any = useMatchPlayers(
     matchSelector.match_key,
     userSelector.mobile,
   );
@@ -101,6 +101,11 @@ export default function TeamFormationHOC() {
     dispatch(updateTeamCountAction(rolesCountSelector));
     dispatch(updateCreditsAction(availableCredits));
   }, [selectedPlayers]);
+
+  // refetch players
+  function refetch() {
+    refetchPlayers();
+  }
 
   const onPressPlayerProfile = (player_key: string, player_role: string) => {
     const player = players[0][player_role].find(
@@ -180,7 +185,7 @@ export default function TeamFormationHOC() {
   };
 
   if (noPlayers === true) {
-    return <LoadFailedTeamFormation />;
+    return <LoadFailedTeamFormation refetch={refetch} />;
   }
 
   if (!isScreenReady || match_players.length === 0) {

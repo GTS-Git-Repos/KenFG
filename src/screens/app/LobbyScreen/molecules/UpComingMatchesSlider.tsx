@@ -2,6 +2,9 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import UpCommingMatchesCard from '../atoms/UpCommingMatchesCard';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {getAppThemeSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
+import {useSelector} from 'react-redux';
 
 interface PropTypes {
   data: any;
@@ -12,11 +15,17 @@ interface PropTypes {
 }
 
 export default function UpComingMatchesSlider(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   if (props.status === 'loading') {
     return <Text style={styles.infoText}>Loading ...</Text>;
   }
-  if (props.status === 'success' && !props.data) {
-    return <Text style={styles.infoText}>No Upcomming Matches</Text>;
+  if (props.data.length === 0) {
+    return (
+      <Text style={[styles.infoText, dT ? clr.tw : clr.td1]}>
+        No Matches Found
+      </Text>
+    );
   }
 
   return (
@@ -49,9 +58,9 @@ export default function UpComingMatchesSlider(props: PropTypes) {
 
 const styles = StyleSheet.create({
   infoText: {
-    color: '#f5feff',
     fontFamily: 'gadugi-normal',
-    fontSize: 15,
+    fontSize: 14,
     textAlign: 'center',
+    paddingVertical: 20,
   },
 });
