@@ -3,7 +3,8 @@ import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
-import {useCountDown} from '../../../utils/customHoooks';
+// import {useCountDown} from '../../../utils/customHoooks';
+import {useCountDown} from '../../../shared_hooks/app.hooks';
 import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
 import {
   BlockScreenByLoading,

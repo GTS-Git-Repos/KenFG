@@ -19,7 +19,7 @@ interface PropTypes {
   viceCaptainSelect(player_key: string): any;
 }
 
-export default function PlayerProfile(props: PropTypes) {
+export default function PlayerCapSelection(props: PropTypes) {
   return (
     <View style={[tailwind('bg-dark-3 border-t px-4 border-gray-800')]}>
       <View style={[tailwind('pt-2 flex-row items-center')]}>

@@ -6,21 +6,64 @@
 
 export const normalizeGetPlayersAPI = (payload: any) => {
   try {
-    const keeper = payload.filter(
-      (item: any) => item.seasonal_role === 'keeper',
-    );
+    let keep = [];
+    let bat = [];
+    let ar = [];
+    let bowl = [];
 
-    const batsman = payload.filter(
-      (item: any) => item.seasonal_role === 'batsman',
-    );
-    const all_rounder = payload.filter(
-      (item: any) => item.seasonal_role === 'all_rounder',
-    );
-    const bowler = payload.filter(
-      (item: any) => item.seasonal_role === 'bowler',
-    );
+    for (const player of payload) {
+      const playerObj = {...player};
 
-    return [{keeper, batsman, all_rounder, bowler}];
+      // normalize selected percent data
+      // playerObj.sel = playerObj.stat.sel;
+      // playerObj.selCap = playerObj.stat.cap;
+      // playerObj.selVc = playerObj.stat.vc;
+
+      // mock data
+      playerObj.sel = Math.floor(Math.random() * 100);
+      playerObj.selCap = Math.floor(Math.random() * 100);
+      playerObj.selVc = Math.floor(Math.random() * 100);
+
+      // del the unneeded data
+      delete playerObj.stat;
+
+      if (playerObj.seasonal_role === 'keeper') {
+        keep.push({
+          ...playerObj,
+        });
+      }
+      if (playerObj.seasonal_role === 'batsman') {
+        bat.push({
+          ...playerObj,
+        });
+      }
+      if (playerObj.seasonal_role === 'all_rounder') {
+        ar.push({
+          ...playerObj,
+        });
+      }
+      if (playerObj.seasonal_role === 'bowler') {
+        bowl.push({
+          ...playerObj,
+        });
+      }
+    }
+    // console.log('>>', JSON.stringify(keep));
+    // const keeper = payload.filter(
+    //   (item: any) => item.seasonal_role === 'keeper',
+    // );
+
+    // const batsman = payload.filter(
+    //   (item: any) => item.seasonal_role === 'batsman',
+    // );
+    // const all_rounder = payload.filter(
+    //   (item: any) => item.seasonal_role === 'all_rounder',
+    // );
+    // const bowler = payload.filter(
+    //   (item: any) => item.seasonal_role === 'bowler',
+    // );
+
+    return [{keeper: keep, batsman: bat, all_rounder: ar, bowler: bowl}];
   } catch (err) {
     console.log('normalizeGetPlayersAPI -->', err);
     return false;

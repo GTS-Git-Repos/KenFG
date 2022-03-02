@@ -80,7 +80,7 @@ export default function Page(props: PropTypes) {
               role={item.seasonal_role}
               image={''}
               name={item.name}
-              info={`sel by ${item.stat.sel} %`}
+              info={`sel by ${item.sel} %`}
               anounced={item.in_xi === 1}
               points={item.points}
               credits={item.credits}

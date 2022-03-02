@@ -3,13 +3,14 @@ import {
   UPDATE_SELECTED_MATCH,
   UPDATE_JOINCONTEST_REQUEST,
   UPDATE_FULL_MATCH,
-  UPDATE_DARK_MODE
+  UPDATE_DARK_MODE,
 } from './actionTypes';
 
 interface JoinContestRequestShape {
   contestKey: string;
   entryAmount: string;
   maxTeam: number;
+  isFullMatch: boolean;
 }
 
 export const updateAppError = (payload: string) => ({

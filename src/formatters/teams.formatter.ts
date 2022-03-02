@@ -18,6 +18,8 @@ export const parseJoinedTeamsAPI = (payload: any) => {
       const vc = allPlayers.find(
         (item: any) => item.key === team.players.vc_key,
       );
+        // [major issue, keepers need to change into keeper for maintaining the consistency, need to check is that faulty data used where]
+
       const {keepers, batsman, all_rounder, bowler} =
         splitRoleWisePlayersPayload(allPlayers);
 
@@ -59,6 +61,7 @@ export const parseJoinedTeamsAPI = (payload: any) => {
 
 export const splitRoleWisePlayersPayload = (players: Array<any>): any => {
   try {
+    // keepers change to keeper in future, carefull while changing  
     const keepers = players.filter(
       (item: any) => item.seasonal_role === 'keeper',
     );

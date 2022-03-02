@@ -10,7 +10,7 @@ export const matchContestsState = {
   sortByHighEntryFee: null,
 };
 
-export const contestReducer = (state: any, action: any) => {
+export const secondIncontestReducer = (state: any, action: any) => {
   switch (action.type) {
     case 'UPDATE_CONTESTS':
       return {

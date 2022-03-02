@@ -12,7 +12,7 @@ import {
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
-import ContestListScreen from './contest.list.screen';
+import SecondInContestListScreen from './second.in.contest.list.screen';
 import ContestScreenLoading from './atoms/screen.loading.contest';
 import {TO_TEAMLIST} from '../../../constants/appContants';
 
@@ -37,11 +37,11 @@ import {
   useJoinedContests,
 } from '../../../shared_hooks/contest.hooks';
 import {
-  contestReducer,
+  secondIncontestReducer,
   matchContestsState,
   sortStatusSelector,
-} from './contest.list.controller';
-import {allContestsSelector} from './contest.list.controller';
+  allContestsSelector,
+} from './second.in.contest.list.controller';
 import {TeamFormationMutationType} from '../../../types/match';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 import {updateUserInfo} from '../../../store/actions/userAction';
@@ -50,7 +50,7 @@ import {FlatList} from 'react-native-gesture-handler';
 export default function ContestListHOC() {
   const dispatch = useDispatch();
   const [contestState, contestDispatch] = useReducer(
-    contestReducer,
+    secondIncontestReducer,
     matchContestsState,
   );
   const allContests = allContestsSelector(contestState);
@@ -70,6 +70,7 @@ export default function ContestListHOC() {
   // set to false, because you already on second innings contests page
   const isFullMatch = false;
 
+  // subscribe redux state
   const userSelector: any = useSelector(userInfo);
   const isScreenReady = useIsScreenReady();
 
@@ -198,7 +199,6 @@ export default function ContestListHOC() {
           joined,
           teams,
         );
-
         if (checkContestJoin.status) {
           toTeamFormationWithAutoJoin(
             navigation,
@@ -207,6 +207,7 @@ export default function ContestListHOC() {
               contestKey: contest.key,
               entryAmount: contest.entry,
               maxTeam: contest.max_entry,
+              isFullMatch: false,
             },
           );
         } else {
@@ -267,7 +268,7 @@ export default function ContestListHOC() {
         data={[1]}
         renderItem={() => {
           return (
-            <ContestListScreen
+            <SecondInContestListScreen
               userSelector={userSelector}
               contests={allContests}
               contestsAPI={contestsAPI}

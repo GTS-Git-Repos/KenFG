@@ -20,7 +20,7 @@ import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useContestList} from '../../../shared_hooks/contest.hooks';
 import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
 import {errorBox, infoBox} from '../../../utils/snakBars';
-
+import {InternetError} from '../../../sharedComponents/';
 import PagerView from 'react-native-pager-view';
 import {joinContestRemote} from '../../../remote/matchesRemote';
 import {View} from 'react-native';
@@ -72,11 +72,8 @@ export default function ContestListHOC() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const {contests, contestsAPI, refetchContests}: any = useContestList(
-    matchSelector.match_key,
-    userSelector.mobile,
-    isFullMatch,
-  );
+  const {contests, contestsAPI, refetchContests, ctstError}: any =
+    useContestList(matchSelector.match_key, userSelector.mobile, isFullMatch);
 
   const {joined, joinedAPI, joinedAPILive, refetchJoinedContest}: any =
     useJoinedContests(
@@ -204,6 +201,7 @@ export default function ContestListHOC() {
               contestKey: contest.key,
               entryAmount: contest.entry,
               maxTeam: contest.max_entry,
+              isFullMatch: true,
             },
           );
         } else {
@@ -249,6 +247,10 @@ export default function ContestListHOC() {
 
   function onPressCreateTeam() {
     toTeamFormationNoAutoJoin(navigation);
+  }
+  // if contests api network failed 
+  if (ctstError) {
+    return <InternetError referch={refetchPage} />;
   }
 
   if (!isScreenReady || contestsAPI === []) {

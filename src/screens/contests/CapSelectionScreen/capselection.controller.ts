@@ -1,12 +1,15 @@
 // The controller for cap selection screen
 
-import {sortBy} from 'lodash';
+import {orderBy, sortBy} from 'lodash';
 import {createSelector} from 'reselect';
 
 // States
 export const capSelectionState = {
   allPlayers: [],
+  sortByCategory: null,
   sortByPoints: null,
+  sortByC: null,
+  sortByVC: null,
 };
 
 export const capSelectionReducer = (state: any, action: any) => {
@@ -19,7 +22,10 @@ export const capSelectionReducer = (state: any, action: any) => {
     case 'UPDATE_SORT': {
       return {
         ...state,
-        sortByPoints: action.payload,
+        sortByCategory: action.payload.sortByCategory,
+        sortByPoints: action.payload.sortByPoints,
+        sortByC: action.payload.sortByC,
+        sortByVC: action.payload.sortByVC,
       };
     }
     default:
@@ -29,40 +35,34 @@ export const capSelectionReducer = (state: any, action: any) => {
 
 // Selectors
 const AllPlayersState = (state: any) => state.allPlayers;
+const SortByCategoryState = (state: any) => state.sortByCategory;
 const SortByPointsState = (state: any) => state.sortByPoints;
+const SortByCState = (state: any) => state.sortByC;
+const SortByVCState = (state: any) => state.sortByVC;
 
 export const allPlayersSelector = createSelector(
-  [AllPlayersState, SortByPointsState],
-  (allPlayers, sortFromMaxPoints) => {
-    if (!allPlayers) return [];
-
-    if (sortFromMaxPoints === null) {
-      return allPlayers;
+  [AllPlayersState, SortByPointsState, SortByCState, SortByVCState],
+  (allPlayers, sortbyPoints, sortByC, sortByVC) => {
+    if (sortbyPoints !== null) {
+      const flatenPlayers = combinePlayers(allPlayers);
+      return sortPlayers(flatenPlayers, 'points', sortbyPoints);
     }
-    const flatenPlayers = combinePlayers(allPlayers);
-    const sortPlayers = sortBy(flatenPlayers, 'points');
-    if (sortFromMaxPoints) {
-      return {
-        keeper: sortPlayers,
-        batsman: [],
-        all_rounder: [],
-        bowler: [],
-      };
-    } else {
-      return {
-        keeper: sortPlayers.reverse(),
-        batsman: [],
-        all_rounder: [],
-        bowler: [],
-      };
+    if (sortByC !== null) {
+      const flatenPlayers = combinePlayers(allPlayers);
+      return sortPlayers(flatenPlayers, 'selCap', sortByC);
     }
+    if (sortByVC !== null) {
+      const flatenPlayers = combinePlayers(allPlayers);
+      return sortPlayers(flatenPlayers, 'selVc', sortByVC);
+    }
+    return allPlayers;
   },
 );
 
 export const sortStatusSelector = createSelector(
-  [SortByPointsState],
-  sortByPoints => {
-    return {sortByPoints};
+  [SortByPointsState, SortByCState, SortByVCState],
+  (sortByPoints, sortByC, sortByVc) => {
+    return {sortByPoints, sortByC, sortByVc};
   },
 );
 
@@ -75,18 +75,9 @@ function combinePlayers(playersByRole: any) {
   ];
 }
 
-// function splitPlayers(flatenPlayers: any) {
-//   return [
-//     ...playersByRole.keeper,
-//     ...playersByRole.all_rounder,
-//     ...playersByRole.batsman,
-//     ...playersByRole.bowler,
-//   ];
-// }
-
 // is team is diffrent, team_b from api
 
-// it has a huge risk when an API keepers key changes
+// it has a huge risk when an API teams formatted data "keepers" key changes to
 export function isTeamsIsDiffrent(new_team: any, existed_team: any) {
   if (new_team.team.cap_key !== existed_team.cap.key) {
     return true;
@@ -111,4 +102,14 @@ export function isTeamsIsDiffrent(new_team: any, existed_team: any) {
     }
   }
   return false;
+}
+
+function sortPlayers(players: any, field: string, order: boolean) {
+  const sortedPlayers = orderBy(players, [field], order ? ['asc'] : ['desc']);
+  return {
+    keeper: sortedPlayers,
+    batsman: [],
+    all_rounder: [],
+    bowler: [],
+  };
 }

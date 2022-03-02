@@ -14,8 +14,8 @@ import {
 import {useQuery} from 'react-query';
 const log = console.log;
 
-import RowHeader from './atoms/RowHeader';
-import PlayerProfile from './molecules/PlayerProfile';
+import SortHeaderCap from './atoms/sort.header.capsel';
+import PlayerCapSelection from './molecules/player.cap.selection';
 import CapSelectionAction from './atoms/CapSelectionAction';
 import {useDispatch, useSelector} from 'react-redux';
 import {creditLeft, rolesCount, selectedMatch} from '../../../store/selectors';
@@ -28,7 +28,10 @@ import {isPlayerCaptain, isPlayerViceCaptain} from '../../../store/store_utils';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 import {createTeamRemote} from '../../../remote/matchesRemote';
 import {createTeamObjCreator} from '../../../workers/objCreators';
-import {resetContestListNavigation} from '../../../utils/resetNav';
+import {
+  reset2ndInningsNavigation,
+  resetContestListNavigation,
+} from '../../../utils/resetNav';
 
 interface PropTypes {
   allPlayers: any;
@@ -72,7 +75,6 @@ export default function CapSelectionScreen(props: PropTypes) {
 
   const navigateToTeamPreviewScreeen = () => {
     // Need to move to formatters
-
     navigation.navigate('TeamPreviewScreen', {
       from: 1,
       keepers: playersState.filter(
@@ -108,16 +110,18 @@ export default function CapSelectionScreen(props: PropTypes) {
         // console.log(route.params.mutation);
         // return;
         if (route.params.mutation) {
-          // is edit ?
+          // is edit
           if (route.params.mutation.edit) {
             props.editTeamAPI(createTeamObj);
             return;
           }
+          // is clone
           if (route.params.mutation.clone) {
             props.cloneAPI(createTeamObj);
             return;
           }
         }
+        // not in a edit and clone
         props.setLoading(true);
         const response: any = await createTeamRemote(createTeamObj);
         props.setLoading(false);
@@ -125,18 +129,28 @@ export default function CapSelectionScreen(props: PropTypes) {
           dispatch(clearTeamAction());
           // if join contest requested
           if (matchSelector.joinContest) {
-            // log(route.params);
-            // return;
-            resetContestListNavigation(navigation, {
-              autoJoin: true,
-              match_key: matchSelector.match_key,
-              contest_key: matchSelector.joinContest.contestKey,
-              team_key: response.data.team_key,
-            });
+            const isFullMatch = matchSelector.joinContest.isFullMatch;
+            log('isFullMatch >>>', isFullMatch);
+
+            if (isFullMatch) {
+              resetContestListNavigation(navigation, {
+                autoJoin: true,
+                match_key: matchSelector.match_key,
+                contest_key: matchSelector.joinContest.contestKey,
+                team_key: response.data.team_key,
+              });
+            } else {
+              reset2ndInningsNavigation(navigation, {
+                autoJoin: true,
+                match_key: matchSelector.match_key,
+                contest_key: matchSelector.joinContest.contestKey,
+                team_key: response.data.team_key,
+              });
+            }
+            return;
           } else {
             navigation.dispatch(StackActions.popToTop());
           }
-
           return;
         } else {
           setTimeout(() => {
@@ -156,7 +170,7 @@ export default function CapSelectionScreen(props: PropTypes) {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={matchSelector.titleString} helpIcon={true} ptsIcon={true} />
       <ScrollView>
-        <View style={[tailwind(' px-4 py-3')]}>
+        <View style={[tailwind('px-4 py-3 border-b border-gray-800')]}>
           <Text style={[tailwind('font-bold text-center text-dark-1 font-13')]}>
             Choose your Captain and Vice Captain
           </Text>
@@ -167,14 +181,15 @@ export default function CapSelectionScreen(props: PropTypes) {
             C Gets 2x Points, VC gets 1.5x Points
           </Text>
         </View>
-        <BottomLine />
-        <RowHeader
-          sortStatus={props.sortStatus}
+        {/* sort header */}
+        <SortHeaderCap
+          sort={props.sortStatus}
           sortByAction={props.sortByAction}
         />
+        {/* {console.log(JSON.stringify(props.allPlayers))} */}
         {props.allPlayers.keeper.map((item: any) => {
           return (
-            <PlayerProfile
+            <PlayerCapSelection
               key={item.key}
               player_key={item.key}
               name={item.name}
@@ -182,8 +197,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               teamname={item.team_key}
               is_team_a={item.team_key === matchSelector.team_a}
               seasonRole={item.seasonal_role}
-              c={`${item.stat.cap}%`}
-              vc={`${item.stat.vc}%`}
+              c={`${item.selCap}%`}
+              vc={`${item.selVc}%`}
               is_captain={isPlayerCaptain(item.key)}
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
@@ -197,7 +212,7 @@ export default function CapSelectionScreen(props: PropTypes) {
 
         {props.allPlayers.batsman.map((item: any) => {
           return (
-            <PlayerProfile
+            <PlayerCapSelection
               key={item.key}
               player_key={item.key}
               name={item.name}
@@ -205,8 +220,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               teamname={item.team_key}
               seasonRole={item.seasonal_role}
               is_team_a={item.team_key === matchSelector.team_a}
-              c={`${item.stat.cap}%`}
-              vc={`${item.stat.vc}%`}
+              c={`${item.selCap}%`}
+              vc={`${item.selVc}%`}
               is_captain={isPlayerCaptain(item.key)}
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
@@ -220,7 +235,7 @@ export default function CapSelectionScreen(props: PropTypes) {
 
         {props.allPlayers.all_rounder.map((item: any) => {
           return (
-            <PlayerProfile
+            <PlayerCapSelection
               key={item.key}
               player_key={item.key}
               name={item.name}
@@ -228,8 +243,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               teamname={item.team_key}
               seasonRole={item.seasonal_role}
               is_team_a={item.team_key === matchSelector.team_a}
-              c={`${item.stat.cap}%`}
-              vc={`${item.stat.vc}%`}
+              c={`${item.selCap}%`}
+              vc={`${item.selVc}%`}
               is_captain={isPlayerCaptain(item.key)}
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
@@ -242,7 +257,7 @@ export default function CapSelectionScreen(props: PropTypes) {
 
         {props.allPlayers.bowler.map((item: any) => {
           return (
-            <PlayerProfile
+            <PlayerCapSelection
               key={item.key}
               player_key={item.key}
               name={item.name}
@@ -250,8 +265,8 @@ export default function CapSelectionScreen(props: PropTypes) {
               teamname={item.team_key}
               seasonRole={item.seasonal_role}
               is_team_a={item.team_key === matchSelector.team_a}
-              c={`${item.stat.cap}%`}
-              vc={`${item.stat.vc}%`}
+              c={`${item.selCap}%`}
+              vc={`${item.selVc}%`}
               is_captain={isPlayerCaptain(item.key)}
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}

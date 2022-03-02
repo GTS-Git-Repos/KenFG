@@ -3,7 +3,7 @@ import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
-import {useCountDown} from '../../../utils/customHoooks';
+import {useCountDown} from '../../../shared_hooks/app.hooks';
 import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
 import {
   BlockScreenByLoading,
@@ -65,7 +65,7 @@ interface PropTypes {
   onPressCreateTeam(): any;
 }
 
-export default function ContestListScreen(props: PropTypes) {
+export default function SecondInContestListScreen(props: PropTypes) {
   const navigation = useNavigation<any>();
   const dT = useSelector(getAppThemeSelector);
   const {width} = useWindowDimensions();
@@ -74,7 +74,7 @@ export default function ContestListScreen(props: PropTypes) {
 
   const matchSelector: any = useSelector(selectedMatch);
 
-  const timeStamp = useCountDown(matchSelector.start_at, false);
+  const timeStamp = useCountDown(matchSelector.start_at,);
   // Business logic
   const onPageSelectedAction = (e: any) => {
     props.setSelectedTab(e.nativeEvent.position);
@@ -176,6 +176,8 @@ export default function ContestListScreen(props: PropTypes) {
           setShowJoinModal={props.setShowJoinModal}
           joinContestWithTeam={props.joinContestWithTeam}
           entryAmount={props.entryAmount}
+          availableCash={props.userSelector.un_utilized}
+          usableBonus={0}
         />
       </Modal>
 

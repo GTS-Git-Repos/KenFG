@@ -29,7 +29,7 @@ interface JoinContestRequestShape {
   contestKey: string;
   entryAmount: string;
   maxTeam: any;
-  isFullMatch:boolean
+  isFullMatch: boolean;
 }
 
 // save a opened match, that open match contests

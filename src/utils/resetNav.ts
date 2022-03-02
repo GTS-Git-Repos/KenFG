@@ -26,6 +26,26 @@ export const resetAuthNavigation = async (navigation: any) => {
   );
 };
 
+export const resetSecondInningsContestListNavigation = async (
+  navigation: any,
+  route_params: any,
+) => {
+  navigation.dispatch(
+    CommonActions.reset({
+      index: 0,
+      routes: [
+        {
+          name: 'DrawerNav',
+        },
+        {
+          name: 'SecondInningsContest',
+          params: route_params,
+        },
+      ],
+    }),
+  );
+};
+
 export const resetContestListNavigation = async (
   navigation: any,
   route_params: any,

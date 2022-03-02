@@ -10,7 +10,7 @@ import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import {selectedMatch} from '../../../store/selectors';
-import {useCountDown} from '../../../utils/customHoooks';
+import {useCountDown} from '../../../shared_hooks/app.hooks';
 
 const log = console.log;
 
@@ -20,7 +20,6 @@ export default function WinningsListScreen() {
   const countDown = useCountDown(match.start_at, false);
 
   // console.log(match);
-
   const DATA = [
     {
       key: '1',

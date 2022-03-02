@@ -29,7 +29,6 @@ const req_contest_list = '/contests.php';
 const req_join_contest = '/join-contest.php';
 const req_join_contest2 = '/join-contest2.php';
 
-// const req_players = '/fantasy-player.php';
 const req_players = '/player-credits.php';
 
 const req_live_match = '/live-match.php';
@@ -61,6 +60,11 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
   }
 };
 
+// get the joined matches
+/**
+ * used in my matches screen
+ */
+
 export const joinedMatchesRemote = async (params: any) => {
   try {
     const response = await requestServer(METHODS.POST, BASE_URL + req_matches, {
@@ -90,8 +94,7 @@ export const contestListsRemote = async (params: any) => {
         `${req_contest_list}?m=${params.queryKey[1]}&in=${
           params.queryKey[2] ? 1 : 2
         }`,
-    );
-    ``;
+    )
     if (response.status === 200) {
       return groupAllContestsAPIRmeote(response.data.data);
     } else {
@@ -99,7 +102,7 @@ export const contestListsRemote = async (params: any) => {
     }
   } catch (err) {
     console.log(err);
-    return false;
+    throw err;
   }
 };
 
@@ -124,7 +127,6 @@ export const searchContestsRemote = async (payload: any) => {
 export const liveMatchMetaRemote = async (params: any) => {
   try {
     // return liveTestMatchFormat(CompletedTestMatchMeta);
-
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_live_match,
@@ -190,6 +192,7 @@ export const editTeamRemote = async (payload: any): Promise<any> => {
   }
 };
 
+// used in team formation screen, to get players for that match
 export const getMatchPlayersRemote = async (params: any) => {
   try {
     const response = await requestServer(METHODS.POST, BASE_URL + req_players, {
@@ -254,10 +257,11 @@ export const getJoinedContestRemote = async (params: any) => {
 };
 
 export const joinContestRemote = async (payload: any) => {
+  console.log('still using join contest 2');
   try {
     const response = await requestServer(
       METHODS.POST,
-      BASE_URL + req_join_contest,
+      BASE_URL + req_join_contest2,
       payload,
     );
     if (response.status === 200) {

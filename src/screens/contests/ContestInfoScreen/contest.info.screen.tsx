@@ -9,8 +9,7 @@ import {
 import Modal from 'react-native-modal';
 import TabsContestInfo from './atoms/TabsContestInfo';
 import LearderBoard from './molecules/LeaderBoardList';
-import {useIsScreenReady} from '../../../utils/customHoooks';
-import {useCountDown} from '../../../utils/customHoooks';
+import {useIsScreenReady, useCountDown} from '../../../shared_hooks/app.hooks';
 import {useSharedValue} from 'react-native-reanimated';
 import WinningsList from './molecules/WiningsList';
 import CreateTeamButton from './atoms/CreateTeamButton';
@@ -47,7 +46,7 @@ export default function ContestInfoScreen(props: PropTypes) {
 
   const matchSelector: any = useSelector(selectedMatch);
 
-  const countDown = useCountDown(matchSelector.start_at, false);
+  const countDown = useCountDown(matchSelector.start_at);
 
   // Bussiness logic
 

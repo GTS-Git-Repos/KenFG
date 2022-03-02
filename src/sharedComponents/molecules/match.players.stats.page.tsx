@@ -11,6 +11,8 @@ interface PropTypes {
   activeIndex: number;
 }
 
+// disabled for now
+
 export default function MatchPlayersStatsPage(props: PropTypes) {
   const navigation = useNavigation<any>();
   return null;

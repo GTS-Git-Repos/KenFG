@@ -49,16 +49,31 @@ export default function CapSelectionHOC() {
     userMeta.mobile,
     isFullMatch,
   );
-  // console.log('sortStatus >>>', sortStatus);
+  console.log('sortStatus >>>', sortStatus);
 
-  // log(JSON.stringify(playersByRoleSelector));
+  // log(JSON.stringify(allPlayers));
 
   useEffect(() => {
     capsDispatch({type: 'UPDATE_PLAYERS', payload: playersByRoleSelector});
   }, []);
 
-  function sortByAction(input: any) {
-    capsDispatch({type: 'UPDATE_SORT', payload: input.sortByPoints});
+  function sortByAction(sort: any) {
+    // log(sortStatus)
+    const sPayload: any = {
+      sortByPoints: null,
+      sortByC: null,
+      sortByVC: null,
+    };
+    if (sort.points) {
+      sPayload.sortByPoints = !sortStatus.sortByPoints;
+    }
+    if (sort.selc) {
+      sPayload.sortByC = !sortStatus.sortByC;
+    }
+    if (sort.selvc) {
+      sPayload.sortByVC = !sortStatus.sortByVc;
+    }
+    capsDispatch({type: 'UPDATE_SORT', payload: sPayload});
   }
 
   const editTeamAPI = async (payload: any) => {
@@ -119,7 +134,8 @@ export default function CapSelectionHOC() {
     }
   };
 
-  if (!allPlayers?.keeper?.length) {
+  // check is keepers key exists: else show the loading screen
+  if (!allPlayers?.keeper) {
     return <FullScreenLoading title={''} />;
   }
 

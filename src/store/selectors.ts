@@ -18,6 +18,8 @@ const TeamsState = (state: any) => state.team.teams;
 const TeamCountState = (state: any) => state.team.team_count;
 
 const SelectedMatchState = (state: any) => state.app.selected_match;
+
+// it tracks is user went to team formation by choosing auto join or not
 const JoinContestState = (state: any) => state.app.joinContestRequest;
 
 export const getAppThemeSelector = createSelector(DarkModeState, darkMode => {
@@ -82,8 +84,7 @@ export const creditLeft = createSelector(playersState, players => {
 export const selectedMatch = createSelector(
   SelectedMatchState,
   JoinContestState,
-  isFullMatchState,
-  (match, contest, fullMatch): SelectedMatchType => {
+  (match, contest): SelectedMatchType => {
     return {
       match_key: match.match_key,
       name: match.name,
@@ -94,7 +95,6 @@ export const selectedMatch = createSelector(
       titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),
       start_at: match.start_at,
       joinContest: contest,
-      // fullMatch: fullMatch
     };
   },
 );

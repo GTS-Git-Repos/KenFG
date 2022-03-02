@@ -32,6 +32,7 @@ import MatchPlayersStats from './molecules/match.players.stats.page';
 import WalletHalfModal from './molecules/wallet.half.modal';
 import MatchCommentary from './molecules/match.commentary.page';
 import MatchScoreBoard from './molecules/match.scoreboard.page';
+import InternetError from './molecules/internet.error';
 
 import NoContentShared from './atoms/no.content.shared';
 
@@ -81,6 +82,7 @@ export {
   SecondaryButton,
   MatchCommentary,
   MatchScoreBoard,
+  InternetError,
   PrivateContestTeams,
   WinningsListRank,
   WalletHalfModal,

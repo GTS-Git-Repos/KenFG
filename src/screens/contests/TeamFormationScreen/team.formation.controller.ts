@@ -44,8 +44,14 @@ const FilterTeamState = (state: any) => state.filterTeam;
 const SortBySelState = (state: any) => state.sortBySel;
 
 export const allPlayersSelector = createSelector(
-  [AllPlayersState, SortByPointsState, SortByCreditsState, FilterTeamState],
-  (allPlayers, sortByPoints, sortByCredits, filterTeam) => {
+  [
+    AllPlayersState,
+    SortBySelState,
+    SortByPointsState,
+    SortByCreditsState,
+    FilterTeamState,
+  ],
+  (allPlayers, sortBySel, sortByPoints, sortByCredits, filterTeam) => {
     // in case of null players
     if (!allPlayers) {
       return [];
@@ -73,9 +79,19 @@ export const allPlayersSelector = createSelector(
       all_rounder = fall_rounder;
       bowler = fbowler;
     }
-
-    // if sort points filter applied
+    // if sort by sel is active
+    if (sortBySel !== null) {
+      return sortPlayers(
+        keeper,
+        batsman,
+        all_rounder,
+        bowler,
+        'sel',
+        sortBySel,
+      );
+    }
     if (sortByPoints !== null) {
+      // if sort points filter applied
       return sortPlayers(
         keeper,
         batsman,

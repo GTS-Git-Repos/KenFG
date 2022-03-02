@@ -25,7 +25,7 @@ import {
   sortStatusSelector,
   filerTeamSelector,
 } from './team.formation.controller';
-import {useCountDown} from '../../../utils/customHoooks';
+import {useCountDown} from '../../../shared_hooks/app.hooks';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {isFullMatchSelector} from '../../../store/selectors';
 import CreateTeamLoading from './atoms/CreateTeamLoading';
@@ -132,7 +132,7 @@ export default function TeamFormationHOC() {
     if (sortBy === 'selby') {
       payload.sortBySel = !sortStatus.sortBySel;
     }
-    log('payload', payload);
+    // log('payload', payload);
     teamFormationDispatch({type: 'UPDATE_SORT', payload: payload});
   }
 

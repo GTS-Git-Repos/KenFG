@@ -2,7 +2,6 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text} from 'react-native';
 import clr from '../../../../constants/colors';
-
 import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {

@@ -14,7 +14,7 @@ import {selectedMatch} from '../../../store/selectors';
 import {Modalize} from 'react-native-modalize';
 import AcceptTermsSheet from './atoms/AcceptTermsSheet';
 import JoinPrivateContest from './molecules/join.private.contets';
-import {useCountDown} from '../../../utils/customHoooks';
+import {useCountDown} from '../../../shared_hooks/app.hooks';
 const log = console.log;
 
 interface PropTypes {
