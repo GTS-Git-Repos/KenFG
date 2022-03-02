@@ -56,7 +56,7 @@ const TopSection = () => {
           </View>
         </View>
         <Text style={[tailwind('font-regular py-2 text-dark-1 font-14')]}>
-          Aus Beat Eng by 98 Runs
+          Aus Beat Eng by 98 Runs WD
         </Text>
         <View style={[tailwind('mr-8')]}>
           <BottomLine />

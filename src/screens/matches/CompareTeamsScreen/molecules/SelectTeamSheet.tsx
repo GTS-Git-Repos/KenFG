@@ -11,7 +11,7 @@ interface PropTypes {
 
 export default function SelectTeamSheet(props: PropTypes) {
   return (
-    <View style={[tailwind('')]}>
+    <View style={[tailwind('border-b border-gray-800')]}>
       <View
         style={[
           tailwind('bg-dark-3 flex-row items-center justify-between px-4 py-3'),
@@ -28,9 +28,6 @@ export default function SelectTeamSheet(props: PropTypes) {
             325222
           </Text>
         </View>
-      </View>
-      <View>
-        <BottomLine />
       </View>
     </View>
   );

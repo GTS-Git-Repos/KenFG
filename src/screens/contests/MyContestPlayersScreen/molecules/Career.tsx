@@ -14,9 +14,6 @@ export default function Career(props: PropTypes) {
     <View>
       <View style={[tailwind('bg-dark-3 rounded py-3 px-4')]}>
         <WinRate />
-        <View>
-          <BottomLine />
-        </View>
         <View style={[tailwind('flex-row items-center'), {marginTop: 10}]}>
           <MatchStat index={0} text="Mathches" value="3,324" />
           <MatchStat index={1} text="Series" value="3,324" />

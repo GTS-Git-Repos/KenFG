@@ -130,9 +130,6 @@ export default function PlayerCapSelection(props: PropTypes) {
           </View>
         </View>
       </View>
-      {/* <View>
-        <BottomLine />
-      </View> */}
     </View>
   );
 }

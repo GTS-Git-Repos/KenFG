@@ -138,6 +138,70 @@ export default function PanVerifyScreen(props: PropTypes) {
   );
 }
 
+function ImageUpload(props: any) {
+  return (
+    <TouchableOpacity
+      onPress={props.openLibrary}
+      style={[ss.imageIContainer, props.dT ? ss.dborder : ss.lborder]}>
+      <Icon name="image" size={20} color={props.dT ? 'lightgray' : '#9C181E'} />
+      <Text
+        style={[
+          tailwind('font-regular mx-2 font-13'),
+          props.dT ? clr.tw : clr.td1,
+        ]}>
+        Upload PAN Card Image
+      </Text>
+    </TouchableOpacity>
+  );
+}
+function ImageUploaded(props: any) {
+  return (
+    <View
+      style={[
+        tailwind('justify-between'),
+        ss.imageIContainer,
+        props.dT ? ss.dborder : ss.lborder,
+      ]}>
+      <TouchableOpacity
+        onPress={props.openLibrary}
+        style={[tailwind('flex-row items-center')]}>
+        <Icon
+          name="link"
+          size={20}
+          color={props.dT ? 'lightgray' : '#9C181E'}
+        />
+        <Text
+          style={[
+            tailwind('font-regular mx-2 font-13'),
+            props.dT ? clr.tw : clr.td1,
+          ]}>
+          Image selected
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={props.removeImage}
+        style={[tailwind('flex-row items-center')]}>
+        <Text
+          style={[
+            tailwind('font-regular font-11 uppercase'),
+            props.dT ? clr.tw : clr.td1,
+          ]}>
+          Clear
+        </Text>
+        <Icon name="close" size={15} color="gray" />
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function ErrorInput(props: any) {
+  return (
+    <Text style={[tailwind('font-regular text-red-600 p-0.5 font-15')]}>
+      * {props.msg}
+    </Text>
+  );
+}
+
 function InputTitle(props: any) {
   return (
     <Text
@@ -146,14 +210,6 @@ function InputTitle(props: any) {
         props.dT ? clr.td2 : clr.td1,
       ]}>
       {props.text}
-    </Text>
-  );
-}
-
-function ErrorInput(props: any) {
-  return (
-    <Text style={[tailwind('font-regular text-red-600 p-0.5 font-15')]}>
-      * {props.msg}
     </Text>
   );
 }
@@ -188,62 +244,6 @@ function Instruction(props: any) {
     </View>
   );
 }
-function ImageUpload(props: any) {
-  return (
-    <TouchableOpacity onPress={props.openLibrary} style={[ss.imageIContainer]}>
-      <Icon name="image" size={20} color={props.dT ? 'lightgray' : '#9C181E'} />
-      <Text
-        style={[
-          tailwind('font-regular mx-2 font-13'),
-          props.dT ? clr.tw : clr.td1,
-        ]}>
-        Upload PAN Card Image
-      </Text>
-    </TouchableOpacity>
-  );
-}
-function ImageUploaded(props: any) {
-  return (
-    <View style={[tailwind('justify-between'), ss.imageIContainer]}>
-      <TouchableOpacity
-        onPress={props.openLibrary}
-        style={[tailwind('flex-row items-center')]}>
-        <Icon
-          name="link"
-          size={20}
-          color={props.dT ? 'lightgray' : '#9C181E'}
-        />
-        <Text
-          style={[
-            tailwind('font-regular mx-2 font-13'),
-            props.dT ? clr.tw : clr.td1,
-          ]}>
-          Image selected
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={props.removeImage}
-        style={[tailwind('flex-row items-center')]}>
-        <Text
-          style={[
-            tailwind('font-regular font-11 uppercase'),
-            props.dT ? clr.tw : clr.td1,
-          ]}>
-          Clear
-        </Text>
-        <Icon name="close" size={15} color="gray" />
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-{
-  /* <EnterAmountAddCash />
-<SubTitleAddCash text={'Coupon Codes'} />
-<EnterCouponAddCash code={code} setCode={setCode} />
-<CouponCardAddCash />
-<CouponCardAddCash /> */
-}
 
 const ss = StyleSheet.create({
   root: {},
@@ -259,7 +259,7 @@ const ss = StyleSheet.create({
     marginTop: 8,
   },
   dborder: {
-    borderColor: 'rgba(31, 41, 55,1)',
+    borderColor: 'rgba(255, 255, 255,0.2)',
   },
   lborder: {
     borderColor: '#9C181E',

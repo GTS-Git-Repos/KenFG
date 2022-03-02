@@ -30,9 +30,6 @@ export default function LevelCard(props: PropTypes) {
           Cash Bonus
         </Text>
       </View>
-      <View style={[tailwind('py-2')]}>
-        <BottomLine />
-      </View>
       <View style={[tailwind('flex-row justify-between items-center')]}>
         <Text style={[tailwind('font-regular text-light font-12')]}>
           View Upcomming Rewards and Levels

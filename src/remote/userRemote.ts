@@ -1,5 +1,8 @@
+// user related API Calls
+
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
+import fileUploadServer from '../workers/fileUploadServer';
 
 // API Routes
 const req_update_user = '/update-profile.php';
@@ -7,6 +10,7 @@ const req_login = '/login.php';
 const req_verify = '/verify.php';
 const req_getProfile = '/view-profile.php';
 const req_addDeposit = '/update-deposit.php';
+const req_kyc_pan = '/kyc.php';
 
 export const getUserRemote = async (payload: any) => {
   try {
@@ -59,6 +63,20 @@ export const updateWalletRemote = async (payload: any) => {
   } catch (err) {
     console.log(err);
     throw err;
+  }
+};
+
+export const uploadPanKYCRemote = async (formData: any) => {
+  try {
+    const response = await fileUploadServer(BASE_URL + req_kyc_pan, formData);
+    if (response) {
+      return true;
+    } else {
+      failedLog('updateWalletRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
   }
 };
 
