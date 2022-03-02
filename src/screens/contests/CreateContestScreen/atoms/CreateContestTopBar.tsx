@@ -4,7 +4,7 @@ import {View, Image, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
-import {BackIcon, WalletIcon} from '../../../../sharedComponents';
+import {BackIcon, WalletIcon} from '../../../../assets/newIcons';
 import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {
@@ -13,6 +13,7 @@ interface PropTypes {
 
 export default function CreateContestTopBar(props: PropTypes) {
   const navigation = useNavigation();
+  
   function goBack() {
     navigation.goBack();
   }
@@ -26,7 +27,7 @@ export default function CreateContestTopBar(props: PropTypes) {
         ]}>
         <View style={[tailwind('flex-row items-center')]}>
           <TouchableOpacity onPress={goBack}>
-            <BackIcon />
+            <BackIcon dark={true} />
           </TouchableOpacity>
           <View style={[tailwind('px-2')]}>
             <Text style={[tailwind('font-bold text-brown-4 font-16')]}>
@@ -40,7 +41,7 @@ export default function CreateContestTopBar(props: PropTypes) {
               {'\u20B9'} {props.wallet}
             </Text>
             <View style={[tailwind('py-1 px-2'), {backgroundColor: '#B2933D'}]}>
-              <WalletIcon darkColor={true} />
+              <WalletIcon darkColor={true} outline={false} />
             </View>
           </View>
         </View>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {
-  isFulMatchSelector,
+  isFullMatchSelector,
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
@@ -36,7 +36,7 @@ export default function SwitchTeamHOC() {
 
   const matchMeta: SelectedMatchType = useSelector(selectedMatch);
   const userMeta = useSelector(userInfo);
-  const isFullMatch: boolean = useSelector(isFulMatchSelector);
+  const isFullMatch: boolean = useSelector(isFullMatchSelector);
 
   const {teams}: any = useGetTeams(
     matchMeta.match_key,

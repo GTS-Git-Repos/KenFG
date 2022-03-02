@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {
-  isFulMatchSelector,
+  isFullMatchSelector,
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
@@ -28,7 +28,7 @@ export default function ContestInfoHOC() {
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
-  const isFullMatch: boolean = useSelector(isFulMatchSelector);
+  const isFullMatch: boolean = useSelector(isFullMatchSelector);
 
   const {contests}: any = useContestList(
     matchSelector.match_key,

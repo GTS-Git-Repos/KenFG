@@ -76,7 +76,7 @@ export default function CreateTeamPage(props: PropTypes) {
       return;
     }
 
-    infoBox('Contest Created',500);
+    infoBox('Contest Created', 500);
     props.pagerRef?.current?.setPage(1);
   };
 
@@ -103,7 +103,7 @@ export default function CreateTeamPage(props: PropTypes) {
         {loading && <BlockScreenByLoading />}
       </ScrollView>
       <TouchableOpacity onPress={createContest} style={[tailwind('m-4')]}>
-        <ButtonComponent text={'CREATE & EARN Rs.2,00,000'} />
+        <ButtonComponent text={'CREATE & EARN'} />
       </TouchableOpacity>
     </View>
   );

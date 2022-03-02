@@ -45,9 +45,10 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
     pagerRef.current?.setPage(index);
   };
 
-  if (!canCreateContest) {
-    return <ContestBannerSection />;
-  }
+  // will be enabled later
+  // if (!canCreateContest) {
+  //   return <ContestBannerSection />;
+  // }
 
   return (
     <View style={tailwind('h-full bg-dark')}>
@@ -95,41 +96,41 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
   );
 }
 
-const ContestBannerSection = (props: any) => {
-  const termsSheet = useRef(null);
+// const ContestBannerSection = (props: any) => {
+//   const termsSheet = useRef(null);
 
-  const matchSelector: any = useSelector(selectedMatch);
+//   const matchSelector: any = useSelector(selectedMatch);
 
-  const proceedToCreateContest = () => {
-    termsSheet?.current?.open();
-  };
-  const enableCreateContest = () => {
-    termsSheet?.current?.close();
-    props.setCanCreateContest(true);
-  };
+//   const proceedToCreateContest = () => {
+//     termsSheet?.current?.open();
+//   };
+//   const enableCreateContest = () => {
+//     termsSheet?.current?.close();
+//     props.setCanCreateContest(true);
+//   };
 
-  return (
-    <View style={tailwind('h-full bg-dark')}>
-      <CreateContestTopBar wallet={'1000'} />
+//   return (
+//     <View style={tailwind('h-full bg-dark')}>
+//       <CreateContestTopBar wallet={props.wallet} />
 
-      <TeamsSection
-        team_a={matchSelector.team_a}
-        team_b={matchSelector.team_b}
-        start_at={''}
-        match_name={matchSelector.name}
-      />
-      <PrivateContestBanner proceedToCreateContest={proceedToCreateContest} />
+//       <TeamsSection
+//         team_a={matchSelector.team_a}
+//         team_b={matchSelector.team_b}
+//         start_at={''}
+//         match_name={matchSelector.name}
+//       />
+//       <PrivateContestBanner proceedToCreateContest={proceedToCreateContest} />
 
-      <Modalize
-        ref={termsSheet}
-        useNativeDriver={true}
-        modalTopOffset={100}
-        adjustToContentHeight={true}>
-        <AcceptTermsSheet
-          enableCreateContest={enableCreateContest}
-          termsSheet={termsSheet}
-        />
-      </Modalize>
-    </View>
-  );
-};
+//       <Modalize
+//         ref={termsSheet}
+//         useNativeDriver={true}
+//         modalTopOffset={100}
+//         adjustToContentHeight={true}>
+//         <AcceptTermsSheet
+//           enableCreateContest={enableCreateContest}
+//           termsSheet={termsSheet}
+//         />
+//       </Modalize>
+//     </View>
+//   );
+// };

@@ -27,7 +27,7 @@ import {
 } from './team.formation.controller';
 import {useCountDown} from '../../../utils/customHoooks';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
-
+import {isFullMatchSelector} from '../../../store/selectors';
 import CreateTeamLoading from './atoms/CreateTeamLoading';
 import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
 import TeamFormationScreen from './team.formation.screen';
@@ -50,14 +50,15 @@ export default function TeamFormationHOC() {
   const sortStatus: any = sortStatusSelector(formationState);
   const filterTeam: any = filerTeamSelector(formationState);
 
-  // console.log('match_players >>', match_players);
+  // console.log('sortStatus >>', sortStatus);
 
   const [sortByLowCredits, setSortByLowCredits] = useState<boolean>(false);
-  const [noPlayers, setNoPlayers] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
   const blockListPlayers: any = useSelector(blockList);
+  const isFullMatch: boolean = useSelector(isFullMatchSelector);
+
   const countDown = useCountDown(matchSelector.start_at, false);
 
   // log('countDown >>', countDown);
@@ -68,31 +69,30 @@ export default function TeamFormationHOC() {
 
   const isScreenReady = useIsScreenReady();
 
-  const {players, playersAPI, refetchPlayers}: any = useMatchPlayers(
+  const {players, playersAPI, mpError, refetchPlayers}: any = useMatchPlayers(
     matchSelector.match_key,
     userSelector.mobile,
+    isFullMatch,
   );
 
   useEffect(() => {
     dispatch(updateErrorMsgAction(null));
     dispatch(updateTeamAction([matchSelector.team_a, matchSelector.team_b]));
-
-    if (route.params.mutation) {
-      // log('TeamFormationParams -->', route.params.mutation);
-    } else {
+    // if it's not from mutation clear the team formation state on mount
+    if (!route.params.mutation) {
       dispatch(clearTeamAction());
     }
   }, []);
 
   useEffect(() => {
     if (playersAPI) {
+      // local state dispatch and global state dispatch
       if (players) {
         teamFormationDispatch({type: 'UPDATE_PLAYERS', payload: players});
         dispatch(saveAllPlayersAction(players));
       } else {
         teamFormationDispatch({type: 'UPDATE_PLAYERS', payload: null});
         dispatch(saveAllPlayersAction(null));
-        setNoPlayers(true);
       }
     }
   }, [playersAPI]);
@@ -116,21 +116,24 @@ export default function TeamFormationHOC() {
     }
   };
 
+  // sort filters planning
   function onSortAction(sortBy: string) {
+    let payload: any = {
+      sortByPoints: null,
+      sortByCredits: null,
+      sortBySel: null,
+    };
     if (sortBy === 'credits') {
-      const payload = {
-        sortByPoints: null,
-        sortByCredits: !sortStatus.sortByCredits,
-      };
-
-      teamFormationDispatch({type: 'UPDATE_SORT', payload: payload});
-    } else {
-      const payload = {
-        sortByPoints: !sortStatus.sortByPoints,
-        sortByCredits: null,
-      };
-      teamFormationDispatch({type: 'UPDATE_SORT', payload: payload});
+      payload.sortByCredits = !sortStatus.sortByCredits;
     }
+    if (sortBy === 'points') {
+      payload.sortByPoints = !sortStatus.sortByPoints;
+    }
+    if (sortBy === 'selby') {
+      payload.sortBySel = !sortStatus.sortBySel;
+    }
+    log('payload', payload);
+    teamFormationDispatch({type: 'UPDATE_SORT', payload: payload});
   }
 
   function onTeamFilterAction(input: any) {
@@ -184,14 +187,13 @@ export default function TeamFormationHOC() {
     }
   };
 
-  if (noPlayers === true) {
+  if (mpError) {
     return <LoadFailedTeamFormation refetch={refetch} />;
   }
 
   if (!isScreenReady || match_players.length === 0) {
     return <CreateTeamLoading />;
   }
-
   return (
     <TeamFormationScreen
       countDown={countDown}

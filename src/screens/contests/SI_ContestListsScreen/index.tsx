@@ -1,24 +1,33 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {useSelector} from 'react-redux';
+import React, {
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {
-  isFulMatchSelector,
+  appColorsSelector,
+  isFullMatchSelector,
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
-import SecondContestListScreen from './si.contest.list.screen';
+import ContestListScreen from './contest.list.screen';
 import ContestScreenLoading from './atoms/screen.loading.contest';
 import {TO_TEAMLIST} from '../../../constants/appContants';
 
-import {useContestList} from './contest.workers';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
+import {useContestList} from '../../../shared_hooks/contest.hooks';
 import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 
 import PagerView from 'react-native-pager-view';
 import {joinContestRemote} from '../../../remote/matchesRemote';
-import {Alert} from 'react-native';
+import {View} from 'react-native';
 import {
+  toSecondInningsContestList,
   toSwitchTeam,
+  toTeamFormationNoAutoJoin,
   toTeamFormationWithAutoJoin,
   toTeamFormationWithMutation,
   toTeamPreview,
@@ -27,19 +36,38 @@ import {
   useGetTeams,
   useJoinedContests,
 } from '../../../shared_hooks/contest.hooks';
+import {
+  contestReducer,
+  matchContestsState,
+  sortStatusSelector,
+} from './contest.list.controller';
+import {allContestsSelector} from './contest.list.controller';
 import {TeamFormationMutationType} from '../../../types/match';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
+import {updateUserInfo} from '../../../store/actions/userAction';
+import {FlatList} from 'react-native-gesture-handler';
 
-export default function SIContestListHOC() {
+export default function ContestListHOC() {
+  const dispatch = useDispatch();
+  const [contestState, contestDispatch] = useReducer(
+    contestReducer,
+    matchContestsState,
+  );
+  const allContests = allContestsSelector(contestState);
+  const sortStatus = sortStatusSelector(contestState);
+  const colors = useSelector(appColorsSelector);
+
   const navigation = useNavigation<any>();
   const pagerRef = useRef<PagerView>(null);
   const route = useRoute<any>();
 
   const [showJoinModal, setShowJoinModal] = useState(false);
+  const [showWalletModal, setShowWalletModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
 
+  // set to false, because you already on second innings contests page
   const isFullMatch = false;
 
   const userSelector: any = useSelector(userInfo);
@@ -47,8 +75,9 @@ export default function SIContestListHOC() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const {contests, contestsAPI}: any = useContestList(
+  const {contests, contestsAPI, refetchContests}: any = useContestList(
     matchSelector.match_key,
+    userSelector.mobile,
     isFullMatch,
   );
 
@@ -66,7 +95,17 @@ export default function SIContestListHOC() {
   );
 
   useEffect(() => {
-    console.log('Second InningsContest List Params -->', route.params);
+    if (contestsAPI) {
+      if (contests) {
+        contestDispatch({type: 'UPDATE_CONTESTS', payload: contests});
+      } else {
+        contestDispatch({type: 'UPDATE_CONTESTS', payload: null});
+      }
+    }
+  }, [contestsAPI]);
+
+  useEffect(() => {
+    console.log('Contest List Params -->', route.params);
     if (route.params) {
       const autoJoinParams = route?.params?.params;
       console.log(autoJoinParams);
@@ -84,6 +123,16 @@ export default function SIContestListHOC() {
     }, []),
   );
 
+  function refetchPage() {
+    refetchContests();
+    refetchTeams();
+    refetchJoinedContest();
+  }
+
+  function sortByOnPress(sortBy: any) {
+    contestDispatch({type: 'UPDATE_SORT', payload: sortBy});
+  }
+
   const teamPreviewPress = (team_key: any): any => {
     const team = teams.find((item: any) => item.team_key === team_key);
     if (team) {
@@ -91,6 +140,10 @@ export default function SIContestListHOC() {
       return;
     }
   };
+
+  function onPressSecondInnings() {
+    toSecondInningsContestList(navigation, matchSelector);
+  }
 
   const teamMutateAction = (
     team_key: any,
@@ -104,10 +157,12 @@ export default function SIContestListHOC() {
   };
 
   const onPressJoinedContest = (contest_key: string): void => {
+    console.log('DEPRECATED MOVE TO CONTEST NAVIGATION');
     const contest = joined.find(
       (item: any) => item.contestMeta.contest_code === contest_key,
     );
     if (contest) {
+      // console.log(joined[0].contestMeta.contest_code);
       navigation.navigate('ContestInfoScreen', {
         contest_key: joined[0].contestMeta.contest_code,
       });
@@ -115,11 +170,20 @@ export default function SIContestListHOC() {
   };
 
   const onPressTeamSwitch = (team_key: string, contest_key: string): void => {
+    const jContest = joined.find(
+      (item: any) => item.contestMeta.contest_code === contest_key,
+    );
+
+    if (!jContest) {
+      errorBox("Can't able to switch team", 100);
+      return;
+    }
     toSwitchTeam(navigation, {
       match_key: matchSelector.match_key,
       contest_key: contest_key,
       old_team_key: team_key,
       player_key: userSelector.mobile,
+      existedTeams: jContest.contestMeta.contest_team,
     });
   };
 
@@ -134,6 +198,7 @@ export default function SIContestListHOC() {
           joined,
           teams,
         );
+
         if (checkContestJoin.status) {
           toTeamFormationWithAutoJoin(
             navigation,
@@ -167,55 +232,78 @@ export default function SIContestListHOC() {
       setLoading(true);
       const response = await joinContestRemote(obj);
       setLoading(false);
-      if (!response.status) {
-        setLoading(false);
+      // handle failure
+      if (!response.txn) {
         errorBox(response.msg, 500);
         return;
       }
       setShowJoinModal(false);
       refetchJoinedContest();
-      infoBox('Contest Succefully Joined', 500);
-      // setTimeout(() => {
-      //   pagerRef?.current?.setPage(1);
-      // }, 500);
+      dispatch(updateUserInfo(userSelector.mobile));
+      // infoBox('Contest Succefully Joined', 500);
     } catch (err) {
       setLoading(false);
-      Alert.alert('Failed to Join Contest', 'something went wrong');
+      infoBox('Contest Failed to Join !', 1000);
     }
   }
+  const openWallet = () => {
+    setShowWalletModal(true);
+  };
 
- 
+  function onPressCreateTeam() {
+    toTeamFormationNoAutoJoin(navigation);
+  }
 
   if (!isScreenReady || !contestsAPI) {
     return <ContestScreenLoading title={''} />;
   }
 
   return (
-    <SecondContestListScreen
-      contests={contests}
-      contestsAPI={contestsAPI}
-      joined={joined}
-      joinedAPI={joinedAPI}
-      joinedAPILive={joinedAPILive}
-      teams={teams}
-      teamsAPI={teamsAPI}
-      teamsAPILive={teamsAPILive}
-      isFullMatch={isFullMatch}
-      teamPreviewPress={teamPreviewPress}
-      teamMutateAction={teamMutateAction}
-      pagerRef={pagerRef}
-      selectedTab={selectedTab}
-      setSelectedTab={setSelectedTab}
-      to={route?.params?.params?.to}
-      showJoinModal={showJoinModal}
-      setShowJoinModal={setShowJoinModal}
-      entryAmount={matchSelector?.joinContest?.entryAmount}
-      joinContestWithTeam={joinContestWithTeam}
-      loading={loading}
-      setLoading={setLoading}
-      proceedToJoin={proceedToJoin}
-      onPressTeamSwitch={onPressTeamSwitch}
-      onPressJoinedContest={onPressJoinedContest}
-    />
+    <View style={[{flex: 1}]}>
+      <FlatList
+        refreshing={false}
+        onRefresh={() => refetchPage()}
+        contentContainerStyle={{flex: 1}}
+        data={[1]}
+        renderItem={() => {
+          return (
+            <ContestListScreen
+              userSelector={userSelector}
+              contests={allContests}
+              contestsAPI={contestsAPI}
+              joined={joined}
+              joinedAPI={joinedAPI}
+              joinedAPILive={joinedAPILive}
+              teams={teams}
+              teamsAPI={teamsAPI}
+              teamsAPILive={teamsAPILive}
+              isFullMatch={isFullMatch}
+              teamPreviewPress={teamPreviewPress}
+              teamMutateAction={teamMutateAction}
+              showWalletModal={showWalletModal}
+              setShowWalletModal={setShowWalletModal}
+              sortByOnPress={sortByOnPress}
+              pagerRef={pagerRef}
+              selectedTab={selectedTab}
+              setSelectedTab={setSelectedTab}
+              to={route?.params?.params?.to}
+              showJoinModal={showJoinModal}
+              setShowJoinModal={setShowJoinModal}
+              entryAmount={matchSelector?.joinContest?.entryAmount}
+              joinContestWithTeam={joinContestWithTeam}
+              loading={loading}
+              setLoading={setLoading}
+              proceedToJoin={proceedToJoin}
+              onPressTeamSwitch={onPressTeamSwitch}
+              onPressJoinedContest={onPressJoinedContest}
+              onPressSecondInnings={onPressSecondInnings}
+              openWallet={openWallet}
+              sortStatus={sortStatus}
+              onPressCreateTeam={onPressCreateTeam}
+            />
+          );
+        }}
+      />
+    </View>
   );
 }

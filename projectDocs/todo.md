@@ -1,6 +1,2 @@
-## contest join precheck conditions
-1. is match time exhausted
-2. is match has a fantasy team
-3. is contest has been already joined
-4. is any one of the team is available to join
-
+[] move my contests and my teams tab into shared components because it used in contest list screen and second innings contests list screen
+[] rewrite team formation logic with reselect instead of blocklist generation

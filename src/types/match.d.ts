@@ -50,6 +50,7 @@ export interface SelectedMatchType {
   team_b: string;
   team_b_name: string;
   titleString: string;
+  // fullMatch: boolean;
 }
 
 export interface MatchCommentaryType {

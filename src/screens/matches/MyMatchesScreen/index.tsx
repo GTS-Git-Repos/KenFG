@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {isFulMatchSelector, userInfo} from '../../../store/selectors';
+import {isFullMatchSelector, userInfo} from '../../../store/selectors';
 import {LoadingSpinner} from '../../../sharedComponents';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import MyMatchesScreen from './my.matches.screen';
@@ -19,7 +19,7 @@ export default function MyMatchesScreenHOC() {
   const dispatch = useDispatch();
 
   const userMeta = useSelector(userInfo);
-  const isFullMatch: boolean = useSelector(isFulMatchSelector);
+  const isFullMatch: boolean = useSelector(isFullMatchSelector);
 
   const navigation = useNavigation<any>();
 

@@ -5,7 +5,7 @@ import {FlatList, View} from 'react-native';
 import {updateFullMatchAction} from '../../../store/actions/appActions';
 import {
   userInfo,
-  isFulMatchSelector,
+  isFullMatchSelector,
   appColorsSelector,
 } from '../../../store/selectors';
 import LobbyScreenLoading from './atoms/lobbyscreen.loading';
@@ -24,7 +24,7 @@ export default function LobbyScreenHOC() {
   const notificationSheet = useRef<Modalize>(null);
   const appColors = useSelector(appColorsSelector);
   const userSelector = useSelector(userInfo);
-  const isFullMatch = useSelector(isFulMatchSelector);
+  const isFullMatch = useSelector(isFullMatchSelector);
 
   // match info will be stored when notification initiated
   const matchInfo = useRef<any>(null);

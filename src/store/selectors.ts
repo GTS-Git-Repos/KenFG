@@ -53,8 +53,7 @@ export const userWalletAmount = createSelector(UserState, userInfo => {
   }
 });
 
-// fix that spelling
-export const isFulMatchSelector = createSelector(
+export const isFullMatchSelector = createSelector(
   isFullMatchState,
   isFullMatch => {
     return isFullMatch;
@@ -83,7 +82,8 @@ export const creditLeft = createSelector(playersState, players => {
 export const selectedMatch = createSelector(
   SelectedMatchState,
   JoinContestState,
-  (match, contest): SelectedMatchType => {
+  isFullMatchState,
+  (match, contest, fullMatch): SelectedMatchType => {
     return {
       match_key: match.match_key,
       name: match.name,
@@ -94,6 +94,7 @@ export const selectedMatch = createSelector(
       titleString: `${match.team_a} VS ${match.team_b}`.toUpperCase(),
       start_at: match.start_at,
       joinContest: contest,
+      // fullMatch: fullMatch
     };
   },
 );
@@ -106,7 +107,6 @@ export const blockList = createSelector(
   (all_players, players, teams, teams_count) => {
     try {
       let blockListPlayers: any = [];
-      const blockListSet = new Set([]);
       const keeper = players.filter(
         (item: any) => item.seasonal_role === 'keeper',
       );

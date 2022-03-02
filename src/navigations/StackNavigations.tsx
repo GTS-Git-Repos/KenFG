@@ -58,6 +58,7 @@ const StackConfig = {
 
 const HomeStack = createStackNavigator();
 const ContestStack = createStackNavigator();
+const SiContestStack = createStackNavigator();
 const WalletStack = createStackNavigator();
 // const MyMatch = createStackNavigator();
 const MatchStack = createStackNavigator();
@@ -138,29 +139,29 @@ export function Contest(props: any) {
 
 export function SecondInningsContest(props: any) {
   return (
-    <ContestStack.Navigator
+    <SiContestStack.Navigator
       detachInactiveScreens={true}
       screenOptions={StackConfig}>
-      <ContestStack.Screen
+      <SiContestStack.Screen
         name="SI_ContestListsScreen"
         component={SI_ContestListsScreen}
         initialParams={props.route}
       />
 
-      <ContestStack.Screen
+      <SiContestStack.Screen
         component={ContestInfoScreen}
         name="ContestInfoScreen"
       />
-      <ContestStack.Screen
+      <SiContestStack.Screen
         component={CreateContestScreen}
         name="CreateContestScreen"
       />
-      <ContestStack.Screen
+      <SiContestStack.Screen
         component={WinningsListScreen}
         name="WinningsListScreen"
       />
 
-      <ContestStack.Screen
+      <SiContestStack.Screen
         name="SwitchTeamScreen"
         component={SwitchTeamScreen}
       />
@@ -168,16 +169,20 @@ export function SecondInningsContest(props: any) {
         name="TeamFormationScreen"
         component={TeamFormationScreen}
       />
-      <ContestStack.Screen
+      <SiContestStack.Screen
         name="CapSelectionScreen"
         component={CapSelectionScreen}
       />
 
-      <ContestStack.Screen
+      <SiContestStack.Screen
         name="TeamPreviewScreen"
         component={TeamPreviewScreen}
       />
-    </ContestStack.Navigator>
+      <SiContestStack.Screen
+        name="TeamSelectionScreen"
+        component={TeamSelectionScreen}
+      />
+    </SiContestStack.Navigator>
   );
 }
 

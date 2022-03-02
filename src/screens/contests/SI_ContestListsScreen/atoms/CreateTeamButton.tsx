@@ -2,18 +2,18 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
-import {useNavigation} from '@react-navigation/core';
-import {useDispatch} from 'react-redux';
 
-export default function CreateTeamButtom(props: any) {
-  const navigation = useNavigation<any>();
-  const dispatch = useDispatch<any>();
+interface PropTypes {
+  onPressCreateTeam(): any;
+}
 
-  const navigateByButton = () => {
-    navigation.navigate('TeamFormationScreen', {
-      mutation: false,
-    });
-  };
+export default function CreateTeamButtom(props: PropTypes) {
+
+  // const navigateByButton = () => {
+  //   navigation.navigate('TeamFormationScreen', {
+  //     mutation: false,
+  //   });
+  // };
 
   return (
     <View
@@ -28,7 +28,7 @@ export default function CreateTeamButtom(props: any) {
           {backgroundColor: '#00513B'},
         ]}>
         <TouchableOpacity
-          onPress={navigateByButton}
+          onPress={props.onPressCreateTeam}
           style={[
             tailwind('py-3 flex-grow flex-row items-center justify-center'),
           ]}>

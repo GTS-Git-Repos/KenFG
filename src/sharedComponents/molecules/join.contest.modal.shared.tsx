@@ -5,7 +5,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {BottomLine, ButtonComponent} from '../';
 
 interface PropTypes {
-  entryAmount: any;
+  availableCash: number;
+  entryAmount: number;
+  usableBonus: number;
   setShowJoinModal(any: any): any;
   joinContestWithTeam(any: any): any;
 }
@@ -23,6 +25,13 @@ export default function JoinContestModal(props: PropTypes) {
           }}>
           <Icon name="close" size={25} color="white" />
         </TouchableOpacity>
+      </View>
+      {/* Available cash */}
+      <View style={[tailwind('flex-row')]}>
+        <Text style={[tailwind('font-regular text-gray-300 font-10')]}>
+          Amount Added (Unutilised) + winnings = {'\u20B9 '}
+          {props.availableCash}
+        </Text>
       </View>
 
       <View style={[tailwind('flex-row items-center pt-4 justify-between')]}>

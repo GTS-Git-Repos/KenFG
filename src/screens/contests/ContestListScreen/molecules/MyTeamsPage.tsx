@@ -2,8 +2,6 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, ScrollView, Text, ActivityIndicator} from 'react-native';
 import {TeamsCard} from '../../../../sharedComponents';
-import {useNavigation} from '@react-navigation/native';
-import {errorBox} from '../../../../utils/snakBars';
 import NOTeamsPage from '../atoms/no.teams.page';
 import {TeamFormationMutationType} from '../../../../types/match';
 import CreateTeamButtom from '../atoms/CreateTeamButton';
@@ -104,7 +102,7 @@ const TeamsLoading = () => {
   return (
     <View style={[tailwind('flex-row items-center pb-2')]}>
       <Text style={[tailwind('font-regular text-white font-15 pr-3')]}>
-        Loading...
+        Refreshing...
       </Text>
       <ActivityIndicator color="white" size="small" />
     </View>

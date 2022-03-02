@@ -19,6 +19,8 @@ import ContestInfoPageLoading from './atoms/ContestInfoPageLoading';
 import PagerView from 'react-native-pager-view';
 import {selectedMatch} from '../../../store/selectors';
 import {infoBox} from '../../../utils/snakBars';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 const log = console.log;
 
@@ -34,6 +36,8 @@ interface PropTypes {
 }
 
 export default function ContestInfoScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const tabOffset = useSharedValue<any>(0);
   const isScreenReady = useIsScreenReady();
 
@@ -70,6 +74,7 @@ export default function ContestInfoScreen(props: PropTypes) {
           infoBox('Notification Preferrence Updated', 0);
         }}
         openWallet={props.openWallet}
+        dT={dT}
       />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard

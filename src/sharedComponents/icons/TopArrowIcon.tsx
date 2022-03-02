@@ -3,7 +3,7 @@ import Svg, {SvgProps, Path} from 'react-native-svg';
 
 function Icon(props: SvgProps) {
   return (
-    <Svg width="9" height="18" viewBox="0 0 9 18" fill="none">
+    <Svg width="9" height="16" viewBox="0 0 9 18" fill="none">
       <Path
         d="M4 2.38248L4 16.5"
         stroke="#27AE60"

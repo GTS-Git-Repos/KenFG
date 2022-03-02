@@ -20,16 +20,16 @@ export default function CountdownContest(props: PropTypes) {
         <Text style={[tailwind('font-bold text-white font-14')]}>0</Text>
       </View>
       <View style={[styles.countDownRoot]}>
-        <Text style={[tailwind('font-bold text-white font-14')]}>8</Text>
+        <Text style={[tailwind('font-bold text-white font-14')]}>0</Text>
       </View>
       <Text style={[tailwind('font-bold text-white pl-2 pr-3 font-15')]}>
         :
       </Text>
       <View style={[styles.countDownRoot]}>
-        <Text style={[tailwind('font-bold text-white font-14')]}>5</Text>
+        <Text style={[tailwind('font-bold text-white font-14')]}>0</Text>
       </View>
       <View style={[styles.countDownRoot]}>
-        <Text style={[tailwind('font-bold text-white font-14')]}>5</Text>
+        <Text style={[tailwind('font-bold text-white font-14')]}>0</Text>
       </View>
     </View>
   );

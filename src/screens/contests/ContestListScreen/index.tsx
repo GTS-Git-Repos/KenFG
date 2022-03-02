@@ -8,7 +8,7 @@ import React, {
 import {useDispatch, useSelector} from 'react-redux';
 import {
   appColorsSelector,
-  isFulMatchSelector,
+  isFullMatchSelector,
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
@@ -66,7 +66,7 @@ export default function ContestListHOC() {
   const [loading, setLoading] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
-  const isFullMatch: boolean = useSelector(isFulMatchSelector);
+  const isFullMatch: boolean = useSelector(isFullMatchSelector);
   const userSelector: any = useSelector(userInfo);
   const isScreenReady = useIsScreenReady();
 
@@ -139,8 +139,6 @@ export default function ContestListHOC() {
   };
 
   function onPressSecondInnings() {
-    errorBox('Second innings disbaled for now', 0);
-    return;
     toSecondInningsContestList(navigation, matchSelector);
   }
 
@@ -234,7 +232,7 @@ export default function ContestListHOC() {
       // handle failure
       if (!response.txn) {
         errorBox(response.msg, 500);
-        return
+        return;
       }
       setShowJoinModal(false);
       refetchJoinedContest();
@@ -253,7 +251,7 @@ export default function ContestListHOC() {
     toTeamFormationNoAutoJoin(navigation);
   }
 
-  if (!isScreenReady || !contestsAPI) {
+  if (!isScreenReady || contestsAPI === []) {
     return <ContestScreenLoading title={''} />;
   }
 

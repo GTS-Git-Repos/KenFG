@@ -9,12 +9,19 @@ interface PropTypes {
 }
 
 export default function SortTabs(props: PropTypes) {
+  // console.log(props.sortStatus);
+
   return (
     <View style={[tailwind('flex-row items-center py-2')]}>
-      <View style={[{flex: 2}]}></View>
-      <View style={[{flex: 4}]}>
+      <View style={[{flex: 2.5}]}></View>
+
+      <TouchableOpacity
+        onPress={() => props.onSortAction('selby')}
+        style={[tailwind('flex-row items-center'), {flex: 4}]}>
         <Text style={styles.filterText}>SELECTED BY</Text>
-      </View>
+        {props.sortStatus.sortBySel === false && <DownArrowIcon />}
+        {props.sortStatus.sortBySel === true && <TopArrowIcon />}
+      </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => props.onSortAction('points')}

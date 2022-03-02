@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {View, useWindowDimensions, Text} from 'react-native';
+import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
@@ -8,19 +8,27 @@ import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
 import {
   BlockScreenByLoading,
   JoinContestModal,
-  TopBar,
+  WalletHalfModal,
 } from '../../../sharedComponents';
 import TabsContest from './molecules/TabsContest';
 import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
 import {useSelector} from 'react-redux';
-import {selectedMatch} from '../../../store/selectors';
+import {appColorsSelector, selectedMatch} from '../../../store/selectors';
 import CreateTeamButton from './atoms/CreateTeamButton';
 import Modal from 'react-native-modal';
 import {TeamFormationMutationType} from '../../../types/match';
+import {infoBox} from '../../../utils/snakBars';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 const log = console.log;
+
+interface SortTypes {
+  max_entry: boolean;
+  max_price: boolean;
+}
 
 interface PropTypes {
   contests: any;
@@ -38,6 +46,10 @@ interface PropTypes {
   showJoinModal: any;
   entryAmount: any;
   loading: boolean;
+  sortStatus: SortTypes;
+  showWalletModal: boolean;
+  userSelector: any;
+  setShowWalletModal(val: boolean): any;
   setLoading(value: boolean): any;
   proceedToJoin(contest_key: string): any;
   joinContestWithTeam(): any;
@@ -47,11 +59,15 @@ interface PropTypes {
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
   onPressTeamSwitch(team_key: string, contest_key: string): void;
   onPressJoinedContest(contest_key: string): void;
+  onPressSecondInnings(): any;
+  sortByOnPress(sortBy: any): any;
+  openWallet(): any;
+  onPressCreateTeam(): any;
 }
 
 export default function ContestListScreen(props: PropTypes) {
   const navigation = useNavigation<any>();
-
+  const dT = useSelector(getAppThemeSelector);
   const {width} = useWindowDimensions();
 
   const [selectedFilter, setSelectedFilter] = useState<any>('All');
@@ -59,10 +75,13 @@ export default function ContestListScreen(props: PropTypes) {
   const matchSelector: any = useSelector(selectedMatch);
 
   const timeStamp = useCountDown(matchSelector.start_at, false);
-
   // Business logic
   const onPageSelectedAction = (e: any) => {
     props.setSelectedTab(e.nativeEvent.position);
+  };
+
+  const enableNotification = (e: any) => {
+    infoBox('Notification Preferrence Updated', 0);
   };
 
   const onTabPressed = (index: number) => {
@@ -76,19 +95,17 @@ export default function ContestListScreen(props: PropTypes) {
   };
 
   return (
-    <View style={[tailwind('h-full bg-dark')]}>
-      <TopBar text={'Second Innings'} />
-      <Text style={[tailwind('font-bold text-center p-10 text-white font-15')]}>
-        Second Innings Disabled for now
-      </Text>
-    </View>
-  );
-
-  return (
-    <View style={tailwind('bg-dark h-full')}>
-      <TopBarContest title={matchSelector?.titleString} subtitle={timeStamp} />
-      <View style={[tailwind('')]}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
+      <TopBarContest
+        dT={dT}
+        title={matchSelector?.titleString}
+        subtitle={timeStamp}
+        enableNotification={enableNotification}
+        openWallet={props.openWallet}
+      />
+      <View>
         <TabsContest
+          dT={dT}
           selectedTab={props.selectedTab}
           contest_count={props?.joined?.length}
           teamsCount={props?.teams?.length}
@@ -110,6 +127,10 @@ export default function ContestListScreen(props: PropTypes) {
             index={0}
             selectedTab={props.selectedTab}
             isFullMatch={props.isFullMatch}
+            onPressSecondInnings={props.onPressSecondInnings}
+            sortStatus={props.sortStatus}
+            sortByOnPress={props.sortByOnPress}
+            onPressCreateTeam={props.onPressCreateTeam}
           />
         </View>
         <View style={{width: width}}>
@@ -137,11 +158,10 @@ export default function ContestListScreen(props: PropTypes) {
             teamPreviewPress={props.teamPreviewPress}
             index={2}
             selectedTab={props.selectedTab}
+            onPressCreateTeam={props.onPressCreateTeam}
           />
         </View>
       </PagerView>
-
-      {props.contests && <CreateTeamButton />}
 
       <Modal
         isVisible={props.showJoinModal}
@@ -158,6 +178,33 @@ export default function ContestListScreen(props: PropTypes) {
           entryAmount={props.entryAmount}
         />
       </Modal>
+
+      <Modal
+        style={{
+          justifyContent: 'flex-start',
+          marginHorizontal: 0,
+          marginTop: 50,
+        }}
+        animationIn="zoomInDown"
+        animationOut="zoomOutUp"
+        backdropOpacity={0.7}
+        isVisible={props.showWalletModal}
+        animationInTiming={500}
+        animationOutTiming={500}
+        onBackdropPress={() => props.setShowWalletModal(false)}
+        useNativeDriver={true}
+        useNativeDriverForBackdrop={true}
+        hideModalContentWhileAnimating={true}
+        backdropTransitionOutTiming={0}>
+        <WalletHalfModal
+          wallet={props.userSelector.un_utilized}
+          unutilised={props.userSelector.un_utilized}
+          winnings={props.userSelector.winnings}
+          bonus={props.userSelector.bonus}
+          setShowWalletModal={props.setShowWalletModal}
+        />
+      </Modal>
+
       {props.loading && <BlockScreenByLoading />}
     </View>
   );
@@ -166,3 +213,9 @@ export default function ContestListScreen(props: PropTypes) {
 /**
  * match_key is a mandatory params
  */
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+});

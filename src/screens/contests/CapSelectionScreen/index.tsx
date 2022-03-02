@@ -6,7 +6,7 @@ import {errorBox, infoBox} from '../../../utils/snakBars';
 import {clearTeamAction} from '../../../store/actions/teamActions';
 import {useDispatch, useSelector} from 'react-redux';
 import {
-  isFulMatchSelector,
+  isFullMatchSelector,
   playersByRole,
   selectedMatch,
   userInfo,
@@ -39,7 +39,7 @@ export default function CapSelectionHOC() {
   const matchSelector: any = useSelector(selectedMatch);
   const playersByRoleSelector = useSelector(playersByRole);
   const userMeta = useSelector(userInfo);
-  const isFullMatch: boolean = useSelector(isFulMatchSelector);
+  const isFullMatch: boolean = useSelector(isFullMatchSelector);
 
   const allPlayers = allPlayersSelector(capsState);
   const sortStatus = sortStatusSelector(capsState);
@@ -66,7 +66,6 @@ export default function CapSelectionHOC() {
       const team_key = route.params.mutation.team_key;
       const new_team = {...payload};
       new_team.team_key = team_key;
-
       // get the previous team
       const existed_team = teams.find(
         (item: any) => item.team_key === team_key,
@@ -114,10 +113,6 @@ export default function CapSelectionHOC() {
       dispatch(clearTeamAction());
       navigation.dispatch(StackActions.popToTop());
       return;
-      // resetContestListNavigation(navigation, {
-      //   match_key: matchSelector.match_key,
-      //   to: 3,
-      // });
     } catch (err) {
       console.log('cloneAPI Error -->', err);
       errorBox('Failed to Clone', 300);

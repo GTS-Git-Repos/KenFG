@@ -9,7 +9,7 @@ import Svg, {
 
 function Icon(props: SvgProps) {
   return (
-    <Svg width="9" height="18" viewBox="0 0 9 18" fill="none">
+    <Svg width="9" height="16" viewBox="0 0 9 18" fill="none">
       <Path
         d="M4 15.6175L4 1.5"
         stroke="#EB5757"

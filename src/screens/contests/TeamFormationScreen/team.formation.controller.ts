@@ -9,7 +9,7 @@ export const teamFormationState = {
   filterTeam: null,
   sortByPoints: null,
   sortByCredits: null,
-  sortByPercentage: null,
+  sortBySel: null,
 };
 
 export const teamFormationReducer = (state: any, action: any) => {
@@ -24,6 +24,7 @@ export const teamFormationReducer = (state: any, action: any) => {
         ...state,
         sortByPoints: action.payload.sortByPoints,
         sortByCredits: action.payload.sortByCredits,
+        sortBySel: action.payload.sortBySel,
       };
     case 'UPDATE_TEAM_FILTER':
       return {
@@ -40,7 +41,7 @@ const AllPlayersState = (state: any) => state.players;
 const SortByPointsState = (state: any) => state.sortByPoints;
 const SortByCreditsState = (state: any) => state.sortByCredits;
 const FilterTeamState = (state: any) => state.filterTeam;
-const SortSelState = (state: any) => state.sortByPercentage;
+const SortBySelState = (state: any) => state.sortBySel;
 
 export const allPlayersSelector = createSelector(
   [AllPlayersState, SortByPointsState, SortByCreditsState, FilterTeamState],
@@ -108,9 +109,9 @@ export const allPlayersSelector = createSelector(
 );
 
 export const sortStatusSelector = createSelector(
-  [SortByPointsState, SortByCreditsState],
-  (sortByPoints, sortByCredits) => {
-    return {sortByPoints, sortByCredits};
+  [SortByPointsState, SortByCreditsState, SortBySelState],
+  (sortByPoints, sortByCredits, sortBySel) => {
+    return {sortByPoints, sortByCredits, sortBySel};
   },
 );
 

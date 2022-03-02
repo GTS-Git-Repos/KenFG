@@ -1,14 +1,20 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
+import {DownArrowIcon, TopArrowIcon} from '../../../../sharedComponents';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Svg, {Defs, LinearGradient, Path, Stop} from 'react-native-svg';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useSelector} from 'react-redux';
+import {appColorsSelector} from '../../../../store/selectors';
 
 interface PropTypes {
   selectedFilter: null | string;
   setSelectedFilter(filter: string): any;
   isFullMatch: boolean;
+  onPressSecondInnings(): any;
+  sortByOnPress(sortBy: any): any;
+  sortStatus: any;
 }
 
 const TABS = [
@@ -71,6 +77,8 @@ const MoreFilters = [
 ];
 
 function FilterTabs(props: PropTypes) {
+  const clr = useSelector(appColorsSelector);
+
   const navigation = useNavigation();
   return (
     <View>
@@ -84,8 +92,7 @@ function FilterTabs(props: PropTypes) {
                   onPress={() => props.setSelectedFilter(item.name)}
                   key={item.id}
                   style={[
-                    tailwind('border border-gray-800 rounded-2xl py-0.5 m-0.5'),
-                    {paddingHorizontal: 10},
+                    styles.tabItem,
                     props.selectedFilter === item.name
                       ? styles.selectedFilter
                       : {},
@@ -137,55 +144,51 @@ function FilterTabs(props: PropTypes) {
                 })
               : null}
           </View>
-
+          {/* create contest button */}
           <TouchableOpacity
             onPress={() => navigation.navigate('CreateContestScreen')}
             style={[
-              tailwind('flex-row bg-dark-3 items-center'),
+              tailwind('flex-row items-center'),
               {flex: 2},
-              styles.privateContestRoot,
+              clr.dark ? styles.privateContestRoot : styles.lightModeBorder,
             ]}>
             <View
               style={[
                 tailwind('flex-row items-center justify-center'),
                 {flex: 8},
               ]}>
-              <Text style={[tailwind('font-regular text-secondary font-12')]}>
+              <Text
+                style={[
+                  styles.privateContest,
+                  clr.dark ? clr.txt_1 : clr.txt_2,
+                ]}>
                 Private Contest
               </Text>
             </View>
             <View style={[tailwind(''), {flex: 2}]}>
-              <Svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-                <Path
-                  d="M1 13.0246L7.05 7.00059L1 0.975586"
-                  stroke="#BCA04D"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <Defs>
-                  <LinearGradient
-                    id="paint0_linear_404_1442"
-                    x1="1"
-                    y1="7.00009"
-                    x2="7.05"
-                    y2="7.00009"
-                    gradientUnits="userSpaceOnUse">
-                    <Stop stop-color="#BCA04D" />
-                    <Stop offset="0.526862" stop-color="#D8C872" />
-                  </LinearGradient>
-                </Defs>
-              </Svg>
+              <Icon
+                name="chevron-forward-outline"
+                size={18}
+                color="lightgray"
+              />
             </View>
           </TouchableOpacity>
         </View>
+        {props.isFullMatch ? (
+          <SecondInnings onPressSecondInnings={props.onPressSecondInnings} />
+        ) : (
+          <Text></Text>
+        )}
       </View>
-      {props.selectedFilter !== null ? <SortBy /> : null}
+      <SortBy
+        sortStatus={props.sortStatus}
+        sortByOnPress={props.sortByOnPress}
+      />
     </View>
   );
 }
 
-const SortBy = () => {
+const SortBy = (props: any) => {
   return (
     <View
       style={[
@@ -194,76 +197,54 @@ const SortBy = () => {
         ),
       ]}>
       <TouchableOpacity
+        onPress={() =>
+          props.sortByOnPress({
+            max_price: !props.sortStatus.max_price,
+            max_entry: null,
+          })
+        }
         activeOpacity={0.5}
         style={[tailwind('flex-row items-center px-6')]}>
-        <ArrrowUp />
+        {props.sortStatus.max_price === false && <TopArrowIcon />}
+        {props.sortStatus.max_price === true && <DownArrowIcon />}
+
         <Text style={[tailwind('font-regular px-3 text-dark-1 font-13')]}>
           Total Price
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
+        onPress={() =>
+          props.sortByOnPress({
+            max_price: null,
+            max_entry: !props.sortStatus.max_entry,
+          })
+        }
         activeOpacity={0.5}
         style={[tailwind('flex-row items-center px-6')]}>
         <Text style={[tailwind('font-regular px-3 text-dark-1 font-13')]}>
           Entry Fee
         </Text>
-        <ArrrowDown />
+        {props.sortStatus.max_entry === false && <TopArrowIcon />}
+        {props.sortStatus.max_entry === true && <DownArrowIcon />}
       </TouchableOpacity>
     </View>
   );
 };
 
-const ArrrowUp = () => {
-  return (
-    <Svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-      <Path
-        d="M3.91599 0.979507L3.91599 13.0205"
-        stroke="#C61D24"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <Path
-        d="M6.832 3.90723L3.916 0.979227L1 3.90723"
-        stroke="#C61D24"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </Svg>
-  );
-};
-
-const ArrrowDown = () => {
-  return (
-    <Svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-      <Path
-        d="M4.08398 13.0202L4.08398 0.979248"
-        stroke="#C61D24"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <Path
-        d="M7 10.0925L4.084 13.0205L1.168 10.0925"
-        stroke="#C61D24"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </Svg>
-  );
-};
-
 const SecondInnings = (props: any) => {
+  const clr = useSelector(appColorsSelector);
   return (
     <TouchableOpacity
-      style={[
-        styles.siroot,
-        tailwind('flex-row items-center px-4 justify-between'),
-      ]}>
+      onPress={() => props.onPressSecondInnings()}
+      style={[styles.siroot, clr.dark ? styles.dBorder : styles.lBorder]}>
       <Text></Text>
-      <Text style={[tailwind(`font-regular text-center text-white font-12`)]}>
-        Second Innings Contests
-      </Text>
-      <Icon name="arrow-forward-outline" size={20} color="white" />
+      <Text style={[styles.siText, clr.txt_1]}>Second Innings Contests</Text>
+      <Icon
+        name="arrow-forward-outline"
+        size={20}
+        color={clr.dark ? 'white' : 'gray'}
+      />
     </TouchableOpacity>
   );
 };
@@ -292,22 +273,57 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 11,
   },
+  lightModeBorder: {
+    borderColor: '#9C181E',
+    borderStyle: 'solid',
+    borderRadius: 7,
+    borderWidth: 1,
+    paddingHorizontal: 8,
+    paddingVertical: 11,
+  },
   siroot: {
-    borderColor: '#BCA04D',
     borderStyle: 'solid',
     borderRadius: 54,
     borderWidth: 1,
     paddingVertical: 4,
     marginVertical: 13,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+  },
+  dBorder: {
+    borderColor: '#BCA04D',
+  },
+  lBorder: {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#9C181E',
   },
   selectedFilter: {
     borderColor: 'transparent',
     borderStyle: 'solid',
-    borderRadius: 0,
+    borderRadius: 16,
     borderWidth: 0,
     backgroundColor: '#D8C872',
   },
   SortBy: {},
+  tabItem: {
+    borderColor: 'rgba(31, 41, 55, 1)',
+    borderRadius: 16,
+    borderWidth: 1,
+    margin: 2,
+    paddingVertical: 2,
+    paddingHorizontal: 10,
+  },
+  privateContest: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+  },
+  siText: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    textAlign: 'center',
+  },
 });
 
 export default React.memo(FilterTabs);

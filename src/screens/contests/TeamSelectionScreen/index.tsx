@@ -2,7 +2,7 @@ import React, {useEffect, useReducer, useState} from 'react';
 import TeamSelectionScreen from './team.selection.screen';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {
-  isFulMatchSelector,
+  isFullMatchSelector,
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
@@ -31,10 +31,11 @@ export default function TeamSelectionHOC() {
 
   const userMeta: any = useSelector(userInfo);
   const matchSelector: any = useSelector(selectedMatch);
-  const isFullMatch: any = useSelector(isFulMatchSelector);
+  const isFullMatch: any = useSelector(isFullMatchSelector);
 
   const selectText = teamSelectTextSelector(TeamsState);
-  const selectedTeams = selectedTeamsSelector(TeamsState);
+
+  // const selectedTeams = selectedTeamsSelector(TeamsState);
 
   const isScreenReady = useIsScreenReady();
   const [showJoinModal, setShowJoinModal] = useState(false);
@@ -138,8 +139,6 @@ export default function TeamSelectionHOC() {
     }
   }, [teams]);
 
-
-
   function teamCardPress(team_key: string) {
     const team = teams.find((item: any) => item.team_key === team_key);
     if (team) {
@@ -160,8 +159,9 @@ export default function TeamSelectionHOC() {
       setShowJoinModal={setShowJoinModal}
       unavailableTeams={unavailableTeams}
       availableTeams={availableTeams}
-      selectedTeams={selectedTeams}
+      // selectedTeams={selectedTeams}
       teamCardPress={teamCardPress}
+      userMeta={userMeta}
       // selectAllPress={selectAllPress}
     />
   );

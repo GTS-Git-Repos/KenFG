@@ -164,9 +164,11 @@ const Teams = (props: TeamPropShape) => {
           />
         </View>
         <Text
+          numberOfLines={1}
           style={[
             tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
             props.dT ? clr.tw : clr.td1,
+            {maxWidth: 60},
           ]}>
           {props.team_a_name}
         </Text>
@@ -192,9 +194,11 @@ const Teams = (props: TeamPropShape) => {
           />
         </View>
         <Text
+          numberOfLines={1}
           style={[
             tailwind('font-bold uppercase font-10 pt-0.5 text-center'),
             props.dT ? clr.tw : clr.td1,
+            {maxWidth: 40},
           ]}>
           {props.team_b_name}
         </Text>

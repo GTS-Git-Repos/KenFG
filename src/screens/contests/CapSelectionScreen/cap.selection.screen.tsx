@@ -123,7 +123,10 @@ export default function CapSelectionScreen(props: PropTypes) {
         props.setLoading(false);
         if (response.status) {
           dispatch(clearTeamAction());
+          // if join contest requested
           if (matchSelector.joinContest) {
+            // log(route.params);
+            // return;
             resetContestListNavigation(navigation, {
               autoJoin: true,
               match_key: matchSelector.match_key,
@@ -131,7 +134,6 @@ export default function CapSelectionScreen(props: PropTypes) {
               team_key: response.data.team_key,
             });
           } else {
-            log('111');
             navigation.dispatch(StackActions.popToTop());
           }
 

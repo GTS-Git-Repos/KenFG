@@ -29,6 +29,7 @@ interface JoinContestRequestShape {
   contestKey: string;
   entryAmount: string;
   maxTeam: any;
+  isFullMatch:boolean
 }
 
 // save a opened match, that open match contests
@@ -63,34 +64,6 @@ export const toSecondInningsContestList = (navigation: any, payload: any) => {
 //   );
 //   return true;
 // };
-
-export const navigateWith_AutoJoin = (
-  navigation: any,
-  numberOfTeams: number,
-  payload: JoinContestRequestShape,
-) => {
-  console.log('DEPRECATED change to -> toTeamFormationWithAutoJoin');
-
-  // need to do,any one of the team can be free to join
-  store.dispatch(joinContestRequestAction(payload));
-  // console.log('numberOfTeams', numberOfTeams);
-  if (numberOfTeams > 1) {
-    navigation.dispatch(
-      CommonActions.navigate({
-        name: 'TeamSelectionScreen',
-      }),
-    );
-  } else {
-    navigation.dispatch(
-      CommonActions.navigate({
-        name: 'TeamFormationScreen',
-        params: {
-          mutation: false,
-        },
-      }),
-    );
-  }
-};
 
 /**
  * It used on user clicks the entry button

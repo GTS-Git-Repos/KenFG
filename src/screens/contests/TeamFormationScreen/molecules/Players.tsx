@@ -60,16 +60,10 @@ function Player(props: PropTypes) {
           }
           style={[tailwind('flex-row'), {flex: 8}]}>
           <View style={[tailwind('pl-4'), {flex: 4}]}>
-            <Text
-              numberOfLines={1}
-              style={[tailwind('font-bold text-light font-14 pb-0.5')]}>
+            <Text numberOfLines={1} style={[styles.pname]}>
               {props.name}
             </Text>
-            <Text
-              numberOfLines={1}
-              style={[
-                tailwind('font-regular text-light font-11 text-dark-1 py-1'),
-              ]}>
+            <Text numberOfLines={1} style={[styles.pinfo]}>
               {props.info}
             </Text>
             <View style={[tailwind('flex-row items-center')]}>
@@ -134,10 +128,10 @@ const TeamBadge = (props: any) => {
 };
 
 const AddButton = (props: any) => {
+  // disable add button when an player is no longer can be selected
   if (props.status === -1) {
     return null;
   }
-
   return (
     <LinearGradient
       colors={['#006A4D', '#00513B']}
@@ -172,6 +166,18 @@ const styles = StyleSheet.create({
   disabledUser: {
     backgroundColor: '#172338',
     opacity: 0.5,
+  },
+  pname: {
+    fontSize: 13,
+    fontFamily: 'gadugi-bold',
+    color: '#FFFFFF',
+    paddingBottom: 2,
+  },
+  pinfo: {
+    fontSize: 11,
+    fontFamily: 'gadugi-regular',
+    color: '#E0E0E0',
+    paddingVertical: 4,
   },
   playerlastPlayed: {
     fontSize: 9,

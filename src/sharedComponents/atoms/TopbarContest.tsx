@@ -37,10 +37,14 @@ export default function TopBarContest(props: PropTypes) {
         </TouchableOpacity>
 
         <View style={[tailwind('px-4')]}>
-          <Text style={[ss.title, props.dT ? clr.tg : clr.tw]}>
+          <Text
+            numberOfLines={1}
+            style={[ss.title, props.dT ? clr.tg : clr.tw]}>
             {props.title}
           </Text>
-          <Text style={[ss.subtitle, props.dT ? clr.tg : clr.tw]}>
+          <Text
+            numberOfLines={1}
+            style={[ss.subtitle, props.dT ? clr.tg : clr.tw]}>
             {props.subtitle}
           </Text>
         </View>
@@ -78,11 +82,13 @@ const ss = StyleSheet.create({
     fontFamily: 'gadugi-bold',
     fontSize: 14,
     textTransform: 'uppercase',
+    width: 100,
   },
   subtitle: {
     fontFamily: 'gadugi-normal',
     fontSize: 10,
     paddingTop: 4,
+    width: 100,
   },
   iconLink: {
     paddingHorizontal: 4,

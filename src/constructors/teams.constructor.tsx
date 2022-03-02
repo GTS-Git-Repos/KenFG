@@ -1,6 +1,8 @@
 /**
- * A file that constructs objects, decisions, regarding the teams feature
+ * teams utils
  */
+
+// perform a transformations for get match players api, for ease of use
 
 export const normalizeGetPlayersAPI = (payload: any) => {
   try {

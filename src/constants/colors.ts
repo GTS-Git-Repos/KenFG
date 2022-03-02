@@ -52,8 +52,9 @@ export default {
   tw: {
     color: '#FFFFFF',
   },
+  // text light gray color
   tgray: {
-    color: 'E0E0E0',
+    color: '#E0E0E0',
   },
   // text red color
   tr: {

@@ -9,12 +9,19 @@ import {
   TopBar,
   JoinContestModal,
 } from '../../../sharedComponents';
-import {selectedMatch, userInfo} from '../../../store/selectors';
+import {
+  isFullMatchSelector,
+  selectedMatch,
+  userInfo,
+} from '../../../store/selectors';
 import {useDispatch, useSelector} from 'react-redux';
 import Info from './atoms/info.teamselection';
 import CheckBoxSelectedTeam from './molecules/checbox.selectteam';
 import {errorBox, infoBox} from '../../../utils/snakBars';
-import {joinContestRemote} from '../../../remote/matchesRemote';
+import {
+  joinContestRemote,
+  join2ndContestRemote,
+} from '../../../remote/matchesRemote';
 import {resetContestListNavigation} from '../../../utils/resetNav';
 import SubTitle from './atoms/subtitle.teamselection';
 import Modal from 'react-native-modal';
@@ -30,7 +37,8 @@ interface PropTypes {
   setShowJoinModal: any;
   availableTeams: any;
   unavailableTeams: any;
-  selectedTeams: Array<any>;
+  // selectedTeams: Array<any>;
+  userMeta: any;
   teamCardPress(team_key: string): any;
   // selectAllPress(): any;
 }
@@ -43,6 +51,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
 
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
+  const isFullMatch = useSelector(isFullMatchSelector);
 
   function selectTeamAction(team_key: string) {
     try {
@@ -69,8 +78,12 @@ export default function TeamSelectionScreen(props: PropTypes) {
 
   function selectAllPress() {
     const maxTeam = parseInt(matchSelector.joinContest.maxTeam);
-
     const aTeamsKey = props.availableTeams.map((item: any) => item.team_key);
+    // deselect all teams
+    if (aTeamsKey.length === choosenTeams.length) {
+      setChoosenTeams([]);
+      return;
+    }
     if (aTeamsKey > maxTeam) {
       errorBox(`You can only select ${maxTeam} Teams`, 0);
     } else {
@@ -101,8 +114,14 @@ export default function TeamSelectionScreen(props: PropTypes) {
         player_key: userSelector.mobile,
       };
       setLoading(true);
-
-      const response = await joinContestRemote(obj);
+      let response;
+      if (isFullMatch) {
+        const fullContestJoin = await joinContestRemote(obj);
+        response = fullContestJoin;
+      } else {
+        const sIContestJoin = await join2ndContestRemote(obj);
+        response = sIContestJoin;
+      }
       setLoading(false);
       console.log('response', response);
       // handle error
@@ -212,9 +231,14 @@ export default function TeamSelectionScreen(props: PropTypes) {
         scrollHorizontal={true}>
         <JoinContestModal
           setShowJoinModal={props.setShowJoinModal}
+          usableBonus={0}
+          availableCash={
+            parseInt(props.userMeta.un_utilized) +
+            parseInt(props.userMeta.winnings)
+          }
           joinContestWithTeam={joinContestWithTeam}
           entryAmount={
-            matchSelector?.joinContest?.entryAmount * choosenTeams.length
+            matchSelector.joinContest.entryAmount * choosenTeams.length
           }
         />
       </Modal>

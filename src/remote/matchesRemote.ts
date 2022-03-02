@@ -27,6 +27,8 @@ const req_team_create = '/create-team.php';
 const req_view_team = '/view-team.php';
 const req_contest_list = '/contests.php';
 const req_join_contest = '/join-contest.php';
+const req_join_contest2 = '/join-contest2.php';
+
 // const req_players = '/fantasy-player.php';
 const req_players = '/player-credits.php';
 
@@ -89,6 +91,7 @@ export const contestListsRemote = async (params: any) => {
           params.queryKey[2] ? 1 : 2
         }`,
     );
+    ``;
     if (response.status === 200) {
       return groupAllContestsAPIRmeote(response.data.data);
     } else {
@@ -192,6 +195,7 @@ export const getMatchPlayersRemote = async (params: any) => {
     const response = await requestServer(METHODS.POST, BASE_URL + req_players, {
       match_key: params.queryKey[1],
       mobile: params.queryKey[2],
+      isFullMatch: params.queryKey[3] ? 1 : 0,
     });
     if (response.status === 200) {
       return normalizeGetPlayersAPI(response.data.data);
@@ -200,7 +204,7 @@ export const getMatchPlayersRemote = async (params: any) => {
     }
   } catch (err) {
     console.log('getMatchPlayersRemote', err);
-    throw err;
+    throw false;
   }
 };
 
@@ -254,6 +258,25 @@ export const joinContestRemote = async (payload: any) => {
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_join_contest,
+      payload,
+    );
+    if (response.status === 200) {
+      return {txn: true, msg: 'contest joined successfully'};
+    }
+    if (response.status === 400) {
+      return {txn: false, msg: response.data?.message};
+    }
+    return {txn: false, msg: 'failed to join contest'};
+  } catch (err) {
+    return {txn: false, msg: 'failed to join contest'};
+  }
+};
+
+export const join2ndContestRemote = async (payload: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_join_contest2,
       payload,
     );
     if (response.status === 200) {

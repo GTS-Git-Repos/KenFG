@@ -10,6 +10,9 @@ import UpcommingPage from './molecules/UpcommingPage';
 import LivePage from './molecules/LivePage';
 import CompletedPage from './molecules/CompletedPage';
 import MatchSwitch from './molecules/match.switch';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
+import {useSelector} from 'react-redux';
 
 const log = console.log;
 
@@ -26,6 +29,8 @@ interface PropTypes {
 }
 
 export default function MyMatches(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const navigation = useNavigation();
   const pageRef = useRef<any>(null);
 
@@ -62,6 +67,7 @@ export default function MyMatches(props: PropTypes) {
         <ContestTypeSwitch
           onPressMatchType={props.onPressMatchType}
           isFullMatch={props.isFullMatch}
+          dT={dT}
         />
       </View>
       <PagerView
