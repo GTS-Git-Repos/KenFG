@@ -1,15 +1,9 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import {
-  DownArrowIcon,
-  IdleLevel,
-  RankIcon,
-  TeamCode,
-  TopArrowIcon,
-} from '../../../../sharedComponents';
+import {DownArrowIcon, TopArrowIcon} from '../../../../assets/newIcons';
+import {IdleLevel, RankIcon, TeamCode} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
@@ -22,7 +16,6 @@ interface PropTypes {
   showPoints: boolean;
   showteams: boolean;
 }
-
 export default function LeaderProfile(props: PropTypes) {
   const navigation = useNavigation<any>();
 

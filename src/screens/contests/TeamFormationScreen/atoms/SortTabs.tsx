@@ -1,7 +1,7 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {DownArrowIcon, TopArrowIcon} from '../../../../sharedComponents';
+import {DownArrowIcon, TopArrowIcon} from '../../../../assets/newIcons';
 
 interface PropTypes {
   sortStatus: any;

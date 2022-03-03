@@ -17,7 +17,7 @@ interface PropTypes {
 
 function TabsContest(props: PropTypes) {
   return (
-    <View style={[ss.root, props.dT ? clr.bgd2 : clr.bgGray]}>
+    <View style={[ss.root, props.dT ? clr.bgd2 : clr.bgw]}>
       {/* Contests option */}
       {props.dT ? (
         <TouchableOpacity

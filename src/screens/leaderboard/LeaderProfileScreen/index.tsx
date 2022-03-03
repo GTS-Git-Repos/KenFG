@@ -9,15 +9,12 @@ import {ScrollView} from 'react-native-gesture-handler';
 import LeaderProfileCard from './atoms/LeaderProfileCard';
 import Header from './atoms/Header';
 import StateData from './molecules/StatData';
-// import assets from 'assets';
-// import {TopBar} from 'components';
-// import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
 
 export default function LeaderProfileScreen() {
   const navigation = useNavigation();
-  const route = useRoute();
+  const route = useRoute<any>();
 
   return (
     <View style={tailwind('h-full bg-dark')}>

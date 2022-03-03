@@ -61,19 +61,20 @@ export default function AddCashScreenHOC() {
   }
 
   async function uploadPANCard() {
-    console.log(image);
+    var photo: any = {
+      uri: image.path,
+      type: image.mime,
+      name: 'photo.jpg',
+    };
 
     const formData = new FormData();
-    formData.append('player_key', userMeta.mobile);
-    formData.append('pan_name', name);
-    formData.append('pan_card_num', pan);
-    formData.append('pan_dob', dob);
-    formData.append('pan_state', 'null');
-    formData.append('image', {
-      name: 'image111',
-      type: image.mime,
-      uri: image.path,
-    });
+    // formData.append('player_key', userMeta.mobile);
+    // formData.append('pan_name', name);
+    // formData.append('pan_card_num', pan);
+    // formData.append('pan_dob', dob);
+    // formData.append('pan_state', 'null');
+    formData.append('image', photo);
+    formData.append('name', 'random');
     const response = await uploadPanKYCRemote(formData);
 
     console.log('response >>>', response);

@@ -14,8 +14,6 @@ import {
   NotificationIcon,
   HelpIcon,
 } from '../../assets/newIcons/';
-import {useSelector} from 'react-redux';
-import {appColorsSelector} from '../../store/selectors';
 import clr from '../../constants/colors';
 
 interface PropTypes {
@@ -31,7 +29,7 @@ export default function TopBarContest(props: PropTypes) {
 
   return (
     <View style={[ss.root, props.dT ? clr.bgg : clr.bgRed]}>
-      <View style={[tailwind('flex flex-row items-center')]}>
+      <View style={[tailwind('flex-row items-center')]}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <BackIcon dark={props.dT} />
         </TouchableOpacity>
@@ -50,7 +48,7 @@ export default function TopBarContest(props: PropTypes) {
         </View>
       </View>
 
-      <View style={[tailwind('flex flex-row items-center')]}>
+      <View style={[tailwind('flex-row items-center')]}>
         <TouchableOpacity onPress={() => {}} style={[ss.iconLink]}>
           <NotificationIcon
             sizeSmall={false}

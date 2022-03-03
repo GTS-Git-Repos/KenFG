@@ -1,7 +1,7 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
-import assets from '../../../../constants/assets_manifest';
+import {ChartIcon} from '../../../../assets/newIcons';
 
 interface PropTypes {
   filterSheet: any;
@@ -26,11 +26,7 @@ export default function TopConditions(props: PropTypes) {
             props.filterSheet?.current?.open();
           }}
           style={[tailwind('flex-row items-center')]}>
-          <Image
-            resizeMode="contain"
-            source={assets.filter}
-            style={[tailwind(''), {width: 20, height: 20}]}
-          />
+          <ChartIcon dT={true} />
         </TouchableOpacity>
         {props.filterTeam !== null && (
           <View

@@ -27,6 +27,12 @@ import WithdrawelScreen from '../screens/wallet/WithdrawelScreen';
 import PanCardVerifyScreen from '../screens/wallet/PanCardVerifyScreen';
 import BankVerifyScreen from '../screens/wallet/BankVerifyScreen';
 
+// leaderboard stack screen
+
+import LeaderBoardListsScreen from '../screens/leaderboard/LeaderBoardListsScreen';
+import DailyLeaderBoardScreen from '../screens/leaderboard/DailyLeaderBoardScreen';
+import MonthlyLeaderBoardScreen from '../screens/leaderboard/MonthlyLeaderBoardScreen';
+
 // match screen imports
 import MatchScreen from '../screens/matches/MatchScreen';
 import ContestMatchScreen from '../screens/matches/ContestMatchScreen';
@@ -60,7 +66,7 @@ const HomeStack = createStackNavigator();
 const ContestStack = createStackNavigator();
 const SiContestStack = createStackNavigator();
 const WalletStack = createStackNavigator();
-// const MyMatch = createStackNavigator();
+const LeaderBoardStack = createStackNavigator();
 const MatchStack = createStackNavigator();
 const AuthStack = createStackNavigator();
 const MoreStack = createStackNavigator();
@@ -243,6 +249,25 @@ export function Match(props: any) {
         component={CompareTeamsScreen}
       />
     </MatchStack.Navigator>
+  );
+}
+
+export function Leaderboard(props: any) {
+  return (
+    <LeaderBoardStack.Navigator screenOptions={StackConfig}>
+      <LeaderBoardStack.Screen
+        name="LeaderBoardListsScreen"
+        component={LeaderBoardListsScreen}
+      />
+      <LeaderBoardStack.Screen
+        name="DailyLeaderBoardScreen"
+        component={DailyLeaderBoardScreen}
+      />
+      <LeaderBoardStack.Screen
+        name="MonthlyLeaderBoardScreen"
+        component={MonthlyLeaderBoardScreen}
+      />
+    </LeaderBoardStack.Navigator>
   );
 }
 

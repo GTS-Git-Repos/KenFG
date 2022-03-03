@@ -1,9 +1,7 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, Text, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
-import {Modalize} from 'react-native-modalize';
+import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {MoreIcon, ChartIcon} from '../../../../assets/newIcons';
 
 interface PropTypes {
   filterSheet: any;
@@ -11,42 +9,32 @@ interface PropTypes {
 
 export default function NotificationsToolbar(props: PropTypes) {
   return (
-    <View
-      style={[
-        tailwind(
-          'bg-dark-4 border-b border-gray-800 p-3 flex-row items-center justify-between',
-        ),
-      ]}>
+    <View style={[ss.root]}>
       <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
         You have no notifications
       </Text>
-      <View style={[tailwind('flex-row items-center')]}>
+      <View style={[ss.fr]}>
         <TouchableOpacity onPress={() => props.filterSheet?.current?.open()}>
-          <Image
-            resizeMode="contain"
-            source={assets.chart}
-            style={[
-              tailwind(''),
-              {
-                width: 25,
-                height: 25,
-              },
-            ]}
-          />
+          <ChartIcon dT={false} />
         </TouchableOpacity>
-
-        <Image
-          resizeMode="contain"
-          source={assets.notify_more}
-          style={[
-            tailwind(''),
-            {
-              width: 27,
-              height: 27,
-            },
-          ]}
-        />
+        {/* <MoreIcon dT={false} /> */}
       </View>
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    alignItems: 'center',
+    backgroundColor: '#0D1320',
+    borderBottomWidth: 1,
+    borderColor: 'rgba(31, 41, 55, 1)',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 12,
+  },
+  fr: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+});

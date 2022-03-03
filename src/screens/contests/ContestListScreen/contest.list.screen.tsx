@@ -74,7 +74,7 @@ export default function ContestListScreen(props: PropTypes) {
 
   const matchSelector: any = useSelector(selectedMatch);
 
-  const timeStamp = useCountDown(matchSelector.start_at, false);
+  const timeStamp = useCountDown(matchSelector.start_at);
   // Business logic
   const onPageSelectedAction = (e: any) => {
     props.setSelectedTab(e.nativeEvent.position);

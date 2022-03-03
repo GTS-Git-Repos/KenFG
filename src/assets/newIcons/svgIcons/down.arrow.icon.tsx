@@ -1,11 +1,5 @@
 import * as React from 'react';
-import Svg, {
-  SvgProps,
-  Path,
-  Defs,
-  LinearGradient,
-  Stop,
-} from 'react-native-svg';
+import Svg, {SvgProps, Path} from 'react-native-svg';
 
 function Icon(props: SvgProps) {
   return (

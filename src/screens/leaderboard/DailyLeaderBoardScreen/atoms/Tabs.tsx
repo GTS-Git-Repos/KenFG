@@ -48,27 +48,6 @@ export default function Tabs(props: PropTypes) {
       </TouchableOpacity>
     </View>
   );
-
-  return (
-    <View style={[tailwind('flex-row bg-dark-3 items-center')]}>
-      <View style={[tailwind(''), {flex: 6}]}>
-        <TouchableOpacity style={[tailwind('pt-4 pb-3')]}>
-          <Text style={[tailwind('font-bold text-center text-white font-14')]}>
-            Series
-          </Text>
-        </TouchableOpacity>
-        {props.selectedTab === 0 && <BottomLine />}
-      </View>
-      <View style={[tailwind(''), {flex: 6}]}>
-        <TouchableOpacity style={[tailwind('pt-4 pb-3')]}>
-          <Text
-            style={[tailwind('font-regular text-center text-dark-1 font-14')]}>
-            Weekly
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
 }
 
 const Tab = (props: any) => {

@@ -6,6 +6,7 @@ import assets from '../../../../constants/assets_manifest';
 
 interface PropTypes {
   points: string;
+  type: any;
 }
 
 export default function StateData(props: PropTypes) {

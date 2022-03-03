@@ -13,6 +13,8 @@ interface PropTypes {
   referch(): any;
 }
 
+// full screen no internet error
+
 export default function InternetError(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   return (

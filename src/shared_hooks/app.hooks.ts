@@ -58,6 +58,7 @@ export function useImageUpload() {
       width: 300,
       height: 400,
       cropping: true,
+      includeBase64: false,
     })
       .then(image => {
         setImage(image);

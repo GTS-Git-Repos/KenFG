@@ -44,7 +44,6 @@ import EditIcon from './icons/EditIcon';
 import UserIcon from './icons/UserIcon';
 import GearIcon from './icons/GearIcon';
 import BackIcon from './icons/BackIcon';
-import DownArrowIcon from './icons/DownArrowIcon';
 import RankIcon from './icons/RankIcon';
 import CupIcon from './icons/CupIcon';
 import MIcon from './icons/MIcon';
@@ -60,7 +59,6 @@ import TickIcon from './icons/TickIcon';
 import DownloadIcon from './icons/DownloadIcon';
 import StarIcon from './icons/StarIcon';
 import IdleLevel from './icons/IdleLevel';
-import TopArrowIcon from './icons/TopArrowIcon';
 import GoogleIcon from './icons/GoogleIcon';
 import CIcon from './icons/CIcon';
 import VCIcon from './icons/VCIcon';
@@ -113,13 +111,11 @@ export {
   SwitchIcon,
   EditIcon,
   UserIcon,
-  TopArrowIcon,
   BackIcon,
   GoldenCup,
   CloneIcon,
   GearIcon,
   ReferPeopleIcon,
-  DownArrowIcon,
   QuestionIcon,
   RankIcon,
   StarIcon,

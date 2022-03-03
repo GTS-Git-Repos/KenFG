@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import tailwind from '../../../tailwind';
 import {
   View,
@@ -14,7 +14,9 @@ import {useSelector} from 'react-redux';
 import Modal from 'react-native-modal';
 import {removeToken} from '../../utils/authTokenUtils';
 import {getAppThemeSelector} from '../../store/selectors';
+import {userInfo} from '../../store/selectors';
 import clr from '../../constants/colors';
+//@ts-ignore
 import RNRestart from 'react-native-restart';
 import {
   EditIcon,
@@ -28,25 +30,49 @@ import {
   HelpSideIcon,
 } from '../../assets/newIcons';
 
-const log = console.log;
-
 interface LinkTypes {
   dT: boolean;
   to: string;
   icon: string;
   text: string;
+  navigate(to: string): any;
 }
 
 export default function CustomDrawer(props: any) {
+  const navigation = useNavigation<any>();
   const dT = useSelector(getAppThemeSelector);
 
   const [logoutModal, setLogoutModal] = useState(false);
+  const userMeta = useSelector(userInfo);
 
-  const userInfoState: any = useSelector<any>(state => state.user.user_info);
-
-  useEffect(() => {
-    // log(userInfoState);
-  }, []);
+  function navigate(to: string) {
+    switch (to) {
+      case 'wallet':
+        navigation.navigate('Wallet');
+        return;
+      case 'refer':
+        navigation.navigate('ReferredFriendsListScreen');
+        return;
+      case 'leaderboard':
+        navigation.navigate('LeaderBoardScreen');
+        return;
+      case 'achievement':
+        navigation.navigate('AchievementsScreen');
+        return;
+      case 'affilate':
+        navigation.navigate('AchievementsScreen');
+        return;
+      case 'howtoplay':
+        navigation.navigate('HowToPlayScreen');
+        return;
+      case 'settings':
+        navigation.navigate('AchievementsScreen');
+        return;
+      case 'more':
+        navigation.navigate('MoreScreen');
+        return;
+    }
+  }
 
   const logout = async () => {
     setLogoutModal(false);
@@ -57,37 +83,53 @@ export default function CustomDrawer(props: any) {
   return (
     <View style={[tailwind('h-full'), dT ? clr.bgd2 : clr.bgw]}>
       <ScrollView>
-        <UserInfo name={userInfoState?.name} dT={dT} />
-        <WalletLink dT={dT} money={'10,0000'} />
-        <ReferaAndEarn dT={dT} />
+        <UserInfo name={userMeta?.name} dT={dT} />
+        <WalletLink to="wallet" navigate={navigate} dT={dT} money={'10,0000'} />
+        <ReferaAndEarn dT={dT} navigate={navigate} to="refer" />
         <Links
-          to="LeaderBoardListsScreen"
+          to="leaderboard"
           icon={'leader'}
           text="Leaderboard"
           dT={dT}
+          navigate={navigate}
         />
         <Links
-          to="AchievementsScreen"
+          to="achievement"
           icon={'achivement'}
           text="Achievements"
           dT={dT}
+          navigate={navigate}
         />
         <Links
           to="AffliatedScreen"
           icon={'affliate'}
           text="Affilated"
           dT={dT}
+          navigate={navigate}
         />
 
         <Links
           to="ProfileEditScreen"
           icon={'settings'}
           text="My Info Settings"
+          navigate={navigate}
           dT={dT}
         />
-        <Links to="HowToPlayScreen" icon={'how'} text="How to Play" dT={dT} />
+        <Links
+          to="HowToPlayScreen"
+          icon={'how'}
+          text="How to Play"
+          dT={dT}
+          navigate={navigate}
+        />
 
-        <Links to="MoreScreen" icon={'more'} text="More" dT={dT} />
+        <Links
+          to="MoreScreen"
+          icon={'more'}
+          text="More"
+          dT={dT}
+          navigate={navigate}
+        />
         {/* <View> */}
         <AppVersion version="4.24.4" dT={dT} />
         {/* <View /> */}
@@ -221,7 +263,9 @@ const UserInfo = (props: any) => {
 // log(tailwind('font-regular text-brown-1 font-13'))
 function WalletLink(props: any) {
   return (
-    <TouchableOpacity onPress={() => {}} style={[styles.linkRoot]}>
+    <TouchableOpacity
+      onPress={() => props.navigate(props.to)}
+      style={[styles.linkRoot]}>
       <View style={[{flex: 2}]}>
         <WalletSideIcon dT={props.dT} />
       </View>
@@ -247,7 +291,7 @@ const Links = (props: LinkTypes) => {
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate(props.to)}
+      onPress={() => props.navigate(props.to)}
       style={[tailwind(newLocal)]}>
       <View style={[tailwind(''), {flex: 2}]}>
         {props.icon === 'leader' && <LeaderSideIcon dT={props.dT} />}

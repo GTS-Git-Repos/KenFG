@@ -1,7 +1,7 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {DownArrowIcon, TopArrowIcon} from '../../../../sharedComponents';
+import {DownArrowIcon, TopArrowIcon} from '../../../../assets/newIcons';
 
 interface PropTypes {
   sort: any;
@@ -9,8 +9,6 @@ interface PropTypes {
 }
 
 export default function SortHeader(props: PropTypes) {
-  console.log(props.sort);
-
   return (
     <View style={[tailwind('flex-row items-center')]}>
       <TouchableOpacity

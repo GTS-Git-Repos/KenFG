@@ -23,7 +23,7 @@ const requestServer = function (
     fetch(url, options)
       .then(serverResponse => {
         clearTimeout(timeoutId);
-        if (serverResponse.ok) {  
+        if (serverResponse.ok) {
           logRequest(url, payload);
           // handle when contest length is 0
           if (serverResponse.headers.get('content-length') === '0') {
@@ -35,14 +35,13 @@ const requestServer = function (
                 resolve({status: serverResponse.status, data});
               })
               .catch(err => {
-                console.log(err);
-                ErrorRequest(url, payload);
-                reject('Parse Failed On Success');
+                logErrorRequest(url, payload, err);
+                reject('Parse Failed on Success response');
               });
           }
         } else {
           console.log('> Status Code: ', serverResponse.status);
-          ErrorRequest(url, payload);
+          logErrorRequest(url, payload, 'not ok response');
           serverResponse
             .json()
             .then(data => {
@@ -51,14 +50,13 @@ const requestServer = function (
             .catch(err => {
               console.log(err);
 
-              reject('Parse Failed On Failed');
+              reject('Parse Failed On failed request');
             });
         }
       })
       .catch(err => {
         clearTimeout(timeoutId);
-        console.log(err);
-        ErrorRequest(url, payload);
+        logErrorRequest(url, payload, err);
         reject('Request Failed');
       });
   });
@@ -70,7 +68,8 @@ const logRequest = (url: string, payload: any) => {
   // return;
   console.log(`\x1b[32m  Request ${url} : ${JSON.stringify(payload)} \x1b[0m`);
 };
-const ErrorRequest = (url: string, payload: any) => {
+const logErrorRequest = (url: string, payload: any, err: any) => {
+  console.log(err);
   console.log(
     `\x1b[33m [*ERROR*] Request ${url} : ${JSON.stringify(payload)} \x1b[0m`,
   );

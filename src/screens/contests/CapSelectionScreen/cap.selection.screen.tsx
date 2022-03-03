@@ -1,17 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Image, Pressable, ScrollView} from 'react-native';
+import React from 'react';
+import {View, Text, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {StackActions, useNavigation, useRoute} from '@react-navigation/native';
 
 // import assets from 'assets';
-import {
-  TopBar,
-  BlockScreenByLoading,
-  BottomLine,
-} from '../../../sharedComponents';
+import {TopBar, BlockScreenByLoading} from '../../../sharedComponents';
 // import Icon from 'react-native-vector-icons/Ionicons';
-import {useQuery} from 'react-query';
 const log = console.log;
 
 import SortHeaderCap from './atoms/sort.header.capsel';

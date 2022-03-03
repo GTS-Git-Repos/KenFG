@@ -2,7 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CustomBottomTab from '../sharedComponents/atoms/CustomBottomTab';
 
-import {More} from './StackNavigations';
+import {More,Leaderboard} from './StackNavigations';
 
 import LobbyScreen from '../screens/app/LobbyScreen';
 import MyMatchesScreen from '../screens/matches/MyMatchesScreen';
@@ -32,9 +32,9 @@ export default function BottomTabNavigation() {
         component={MyMatchesScreen}
       />
       <BottomTab.Screen
-        name="LeaderBoardListsScreen"
+        name="Leaderboard"
         options={{tabBarLabel: 'LeaderBoard'}}
-        component={LeaderBoardListsScreen}
+        component={Leaderboard}
       />
       <BottomTab.Screen
         name="More"

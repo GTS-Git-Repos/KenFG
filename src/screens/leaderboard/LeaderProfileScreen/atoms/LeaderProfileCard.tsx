@@ -3,7 +3,8 @@ import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import {DownArrowIcon, RankIcon} from '../../../../sharedComponents';
+import {DownArrowIcon} from '../../../../assets/newIcons';
+import {RankIcon} from '../../../../sharedComponents';
 
 interface PropTypes {
   type: number;
@@ -33,9 +34,6 @@ const TopSection = (props: any) => {
           style={{
             width: 48,
             height: 48,
-            // borderColor: 'yellow',
-            // borderWidth: 2,
-            // borderRadius: 100,
           }}
         />
         <View style={[tailwind('px-3')]}>

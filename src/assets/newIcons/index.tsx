@@ -35,8 +35,11 @@ import MoreSideIcon from './svgIcons/more.side.icon';
 import LeaderSideIcon from './svgIcons/leader.side.icon';
 import ChatSideIcon from './svgIcons/chat.side.icon';
 import HelpSideIcon from './svgIcons/help.side.icon';
-
+import TopArrowIcon from './svgIcons/top.arrow.icon';
+import DownArrowIcon from './svgIcons/down.arrow.icon';
 import ContestsBottomTabOn from './svgIcons/contests.bottomtab.on';
+import ChartIcon from './svgIcons/chart.icon';
+import MoreIcon from './svgIcons/more.icon';
 
 export {
   ContestsBottomTabOff,
@@ -62,7 +65,11 @@ export {
   NotificationIcon,
   WalletSideIcon,
   WalletIcon,
+  ChartIcon,
+  MoreIcon,
+  TopArrowIcon,
   LineupsCap,
+  DownArrowIcon,
   ChatSideIcon,
   HelpIcon,
   PointsIcon,
