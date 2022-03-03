@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {View, Text, Image, ActivityIndicator} from 'react-native';
 import tailwind from '../../../../tailwind';
-import {queryClient} from '../../../../App';
 import {useNavigation} from '@react-navigation/native';
 import {
   resetDrawerNavigation,
@@ -9,7 +8,7 @@ import {
 } from '../../../utils/resetNav';
 import assets from '../../../constants/assets_manifest';
 import {getToken} from '../../../utils/authTokenUtils';
-import {decodeJwt} from '../../../utils/formatters';
+import {decodeJwt} from '../../../utils/comman';
 import {getUserRemote} from '../../../remote/userRemote';
 import {useDispatch} from 'react-redux';
 import {updateUserInfoAction} from '../../../store/actions/userAction';
@@ -27,7 +26,7 @@ export default function InitialScreen() {
         if (!token) {
           throw 'user is not logged';
         }
-        const {data} = decodeJwt(token);
+        const {data}: any = decodeJwt(token);
         const userResponse = await getUserRemote({mobile: data.mobile});
         if (!userResponse) {
           throw 'failed to get user info';

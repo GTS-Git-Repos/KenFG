@@ -4,6 +4,7 @@ import tailwind from '../../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useNavigation} from '@react-navigation/native';
+import {MoneySideIcon} from '../../../assets/newIcons';
 import {TopBar, MoneyIcon} from '../../../sharedComponents';
 import Links from './atoms/Links';
 
@@ -20,12 +21,36 @@ export default function MoreScreen() {
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'More'} />
       <ScrollView>
-        <Links icon={<MoneyIcon />} text={'Fair Play Guidelines'} goto={''} />
-        <Links icon={<MoneyIcon />} text={'Privacy Contest Code'} goto={''} />
-        <Links icon={<MoneyIcon />} text={'About Us'} goto={'AboutUsScreen'} />
-        <Links icon={<MoneyIcon />} text={'Legality'} goto={''} />
-        <Links icon={<MoneyIcon />} text={'T&C'} goto={'TermsScreen'} />
-        <Links icon={<MoneyIcon />} text={'Join with us'} goto={''} />
+        <Links
+          icon={<MoneySideIcon dT={true} />}
+          text={'Fair Play Guidelines'}
+          goto={''}
+        />
+        <Links
+          icon={<MoneySideIcon dT={false} />}
+          text={'Privacy Contest Code'}
+          goto={''}
+        />
+        <Links
+          icon={<MoneySideIcon dT={false} />}
+          text={'About Us'}
+          goto={'AboutUsScreen'}
+        />
+        <Links
+          icon={<MoneySideIcon dT={false} />}
+          text={'Legality'}
+          goto={''}
+        />
+        <Links
+          icon={<MoneySideIcon dT={false} />}
+          text={'T&C'}
+          goto={'TermsScreen'}
+        />
+        <Links
+          icon={<MoneySideIcon dT={false} />}
+          text={'Join with us'}
+          goto={''}
+        />
       </ScrollView>
     </View>
   );

@@ -14,6 +14,8 @@ target 'KenFG' do
 
   pod 'RNSentry', :path => '../node_modules/@sentry/react-native'
 
+  pod 'ReactNativeExceptionHandler', :path => '../node_modules/react-native-exception-handler'
+
   target 'KenFGTests' do
     inherit! :complete
     # Pods for testing

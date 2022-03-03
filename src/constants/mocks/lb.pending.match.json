@@ -1,0 +1,43 @@
+{
+    "message": "Leader board",
+    "jwt": "<redacted>",
+    "data": [
+        {
+            "f_player_data": [
+                {
+                    "player_key": "8778615921",
+                    "player_name": "Naveen",
+                    "team_key": "t1",
+                    "points": 0,
+                    "player_keys": []
+                },
+                {
+                    "player_key": "8778615921",
+                    "player_name": "Naveen",
+                    "team_key": "t2",
+                    "points": 0,
+                    "player_keys": []
+                },
+                {
+                    "player_key": "8778615921",
+                    "player_name": "Naveen",
+                    "team_key": "t3",
+                    "points": 0,
+                    "player_keys": []
+                }
+            ],
+            "count": 1,
+            "cur_page": 0
+        },
+        [
+            {
+                "player_key": "9876543210",
+                "player_name": "Fagdh",
+                "team_key": "t1",
+                "points": 0,
+                "player_keys": []
+            }
+        ]
+    ],
+    "expireAt": 1646305004
+}

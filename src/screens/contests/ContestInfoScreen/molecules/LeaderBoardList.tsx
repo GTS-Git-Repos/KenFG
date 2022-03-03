@@ -10,7 +10,11 @@ import NoLeaderBoardContent from '../atoms/no.leaderboard.content';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
-  leaderBoardMeta: any;
+  index: number;
+  activeIndex: number;
+  ldbLive: boolean;
+  ldbMeta: any;
+  ldbErr: boolean;
 }
 
 export default function LearderBoard(props: PropTypes) {
@@ -26,22 +30,25 @@ export default function LearderBoard(props: PropTypes) {
       errorBox('Please wait till the match starts to view other teams', 100);
     }
   };
-  if (!props.leaderBoardMeta || props.leaderBoardMeta.length === 0) {
-    return <NoLeaderBoardContent />;
+  if (props.ldbErr) {
+    return <NoLeaderBoardContent loading={false} error={true} />;
+  }
+  if (!props.ldbMeta) {
+    return <NoLeaderBoardContent loading={true} error={false} />;
   }
 
   return (
     <ScrollView contentContainerStyle={{width: width}}>
       <ShareContest />
       <HeaderLeaderBoard />
-      {props.leaderBoardMeta.map((item: any, index: number) => {
+      {props.ldbMeta.map((item: any, index: number) => {
         return (
           <HorizontalProfile
             key={index.toString()}
             image={'https://t.ly/ZGWf'}
-            name={item[0].player_name}
-            teamCode={item[0].team_key}
-            currentUser={false}
+            name={item.player_name}
+            teamCode={item.team_key}
+            currentUser={item.is_current}
             hasStatus={false}
             matchStarted={false}
             navigate={navigate}

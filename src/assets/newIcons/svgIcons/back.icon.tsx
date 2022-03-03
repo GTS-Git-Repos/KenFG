@@ -1,11 +1,5 @@
 import * as React from 'react';
-import Svg, {
-  SvgProps,
-  Path,
-  Defs,
-  LinearGradient,
-  Stop,
-} from 'react-native-svg';
+import Svg, {Path} from 'react-native-svg';
 
 interface PropTypes {
   dark: boolean;

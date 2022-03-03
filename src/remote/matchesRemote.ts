@@ -4,14 +4,9 @@
 
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
-import {log} from '../utils/logs';
-import {normalizeUpcommingMatchesAPI} from '../utils/normalized_api';
-// import LiveTestMatchMeta from '../constants/mocks/liveTestMatchMeta.json';
-import CompletedTestMatchMeta from '../constants/mocks/completedTestMatch3i.json';
 import compareTeamMeta from '../constants/mocks/mockCompareTeam.json';
-
-import {liveTestMatchFormat} from '../formatters/livetest.match.formatter';
-import {parseJoinedTeamsAPI} from '../formatters/teams.formatter';
+import {liveTestMatchFormat} from '../constructors/livetest.match.constructors';
+import {parseJoinedTeamsAPI} from '../constructors/teams.constructor';
 import {normalizeGetPlayersAPI} from '../constructors/teams.constructor';
 import {
   extractDataFromUpcommingMatchesAPI,
@@ -19,7 +14,7 @@ import {
   groupAllContestsAPIRmeote,
   normalizeCompareTeamsRemote,
   parseJoinedMatchesAPI,
-} from '../formatters/matchcontest.formatters';
+} from '../constructors/matchcontest.constructors';
 
 // API Routes
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
@@ -94,7 +89,7 @@ export const contestListsRemote = async (params: any) => {
         `${req_contest_list}?m=${params.queryKey[1]}&in=${
           params.queryKey[2] ? 1 : 2
         }`,
-    )
+    );
     if (response.status === 200) {
       return groupAllContestsAPIRmeote(response.data.data);
     } else {

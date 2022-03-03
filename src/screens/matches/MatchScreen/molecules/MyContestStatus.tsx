@@ -1,18 +1,16 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
+import {View, TouchableOpacity, Text} from 'react-native';
+import {DownArrowIcon} from '../../../../assets/newIcons';
 import {
   CupIcon,
   DollarIcon,
-  DownArrowIcon,
   RankIcon,
   TickIcon,
 } from '../../../../sharedComponents';
 
 interface PropTypes {
-  onContestMatchPress(contest_key:string): any;
+  onContestMatchPress(contest_key: string): any;
   breakUpSheet?: any;
 }
 
@@ -20,12 +18,11 @@ export default function MyContestStatus(props: PropTypes) {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
-      onPress={() => props.onContestMatchPress("key")}
+      onPress={() => props.onContestMatchPress('key')}
       style={[tailwind('bg-dark-3 rounded my-2 mx-3')]}>
       <TopSection />
       <ContestAttributes amount="10,000" />
       <JoinedTeamStatus selected={true} />
-
       <JoinedTeamStatus selected={false} />
       <JoinedTeamStatus selected={false} />
     </TouchableOpacity>

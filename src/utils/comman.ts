@@ -1,9 +1,11 @@
 // The file where comman utilities functins are placed
 import {differenceInSeconds, intervalToDuration} from 'date-fns';
+import jwt_decode from 'jwt-decode';
 
+// used in transforma upcomming matches api's matches timing 
 export function covertInputTimeStringToDate(inputTime: string) {
   try {
-    const splited = inputTime.split(/[- :]/);
+    const splited: any = inputTime.split(/[- :]/);
     return new Date(
       Date.UTC(
         splited[0],
@@ -32,6 +34,16 @@ export const getCountDown = (inputDate: Date) => {
     return '00:00:00';
   }
 };
+
+export const decodeJwt = (jwt: string) => {
+  try {
+    const token = jwt_decode(jwt);
+    return token;
+  } catch (err) {
+    return false;
+  }
+};
+
 
 export const isMatchTimeExhausted = (time: any): boolean => {
   try {

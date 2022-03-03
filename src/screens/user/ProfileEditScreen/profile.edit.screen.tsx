@@ -19,7 +19,7 @@ import {ButtonComponent, BlockScreenByLoading} from '../../../sharedComponents';
 import {getUserRemote, updateUserRemote} from '../../../remote/userRemote';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 import {useDispatch, useSelector} from 'react-redux';
-import {decodeJwt} from '../../../utils/formatters';
+import {decodeJwt} from '../../../utils/comman';
 import {updateUserInfoAction} from '../../../store/actions/userAction';
 import AllowSMS from './atoms/AllowSMS';
 import ThemeSwitch from './molecules/theme.switch';

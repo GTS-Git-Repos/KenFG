@@ -4,6 +4,8 @@ import {View, StyleSheet, Image, Text} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 
 interface PropTypes {
+  loading: boolean;
+  error: boolean;
   text?: string;
 }
 

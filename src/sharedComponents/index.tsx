@@ -36,19 +36,16 @@ import InternetError from './molecules/internet.error';
 
 import NoContentShared from './atoms/no.content.shared';
 
-import WalletIcon from './icons/WalletIcon';
 import MoneyIcon from './icons/MoneyIcon';
 import Facebook from './icons/Facebook';
 import SwitchIcon from './icons/SwitchIcon';
 import EditIcon from './icons/EditIcon';
 import UserIcon from './icons/UserIcon';
 import GearIcon from './icons/GearIcon';
-import BackIcon from './icons/BackIcon';
 import RankIcon from './icons/RankIcon';
 import CupIcon from './icons/CupIcon';
 import MIcon from './icons/MIcon';
 import ShareIcon from './icons/ShareIcon';
-import CapWithVSIcon from './icons/CapWithVSIcon';
 import ContestBellIcon from './icons/ContestBellIcon';
 import CopyIcon from './icons/CopyIcon';
 import MaleIcon from './icons/MaleIcon';
@@ -105,13 +102,11 @@ export {
   SocialLogin,
   TabsBottomLine,
   ExpertsStats,
-  WalletIcon,
   MoneyIcon,
   Facebook,
   SwitchIcon,
   EditIcon,
   UserIcon,
-  BackIcon,
   GoldenCup,
   CloneIcon,
   GearIcon,
@@ -132,7 +127,6 @@ export {
   ContestBellIcon,
   GoogleIcon,
   TickIcon,
-  CapWithVSIcon,
   CopyIcon,
   IdleLevel,
   MaleIcon,

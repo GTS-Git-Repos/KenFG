@@ -1,17 +1,8 @@
-import jwt_decode from 'jwt-decode';
+// safe to delete that file
+
 import {intervalToDuration} from 'date-fns';
 
-export const decodeJwt = (jwt: string) => {
-  try {
-    const token = jwt_decode(jwt);
-    return token;
-  } catch (err) {
-    return false;
-  }
-};
-
-export const getCountDown = (inputDate: Date): string => {
-  // console.log('NEED TO MOVE COMMAN UTILS');
+export const __DEPRECATED_getCountDown = (inputDate: Date): string => {
   try {
     const id = new Date(inputDate);
     const countDown = intervalToDuration({

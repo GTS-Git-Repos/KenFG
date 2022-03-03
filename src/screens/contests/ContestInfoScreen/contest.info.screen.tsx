@@ -28,6 +28,9 @@ interface PropTypes {
   priceDist: boolean;
   userSelector: any;
   showWalletModal: boolean;
+  ldbLive: boolean;
+  ldbMeta: Array<any>;
+  ldbErr: boolean;
   openWallet(): any;
   changePriceDistribution(): any;
   setShowWalletModal(input: boolean): any;
@@ -66,6 +69,7 @@ export default function ContestInfoScreen(props: PropTypes) {
 
   return (
     <View style={tailwind('bg-dark h-full')}>
+      {/* block */}
       <TopbarContest
         title={matchSelector.titleString}
         subtitle={countDown}
@@ -100,7 +104,7 @@ export default function ContestInfoScreen(props: PropTypes) {
         tabOffset={tabOffset}
         tabs={['Winnings', 'LeaderBoard']}
       />
-
+      {/* end of block */}
       <PagerView
         ref={pageRef}
         onPageSelected={onPageSelectedAction}
@@ -118,7 +122,9 @@ export default function ContestInfoScreen(props: PropTypes) {
           <LearderBoard
             index={1}
             activeIndex={activeIndex}
-            leaderBoardMeta={[]}
+            ldbLive={props.ldbLive}
+            ldbMeta={props.ldbMeta}
+            ldbErr={props.ldbErr}
           />
         </View>
       </PagerView>

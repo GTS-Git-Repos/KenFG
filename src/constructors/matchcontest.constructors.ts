@@ -1,5 +1,5 @@
 import {covertInputTimeStringToDate} from './../utils/comman';
-import {splitRoleWisePlayersPayload} from './teams.formatter';
+import {splitRoleWisePlayersPayload} from './teams.constructor';
 import {FLAG_IMG_URL} from '../constants/appContants';
 import {UpcommingMatchType} from '../types/app_api';
 
@@ -14,7 +14,6 @@ export const groupAllContestsAPIRmeote = (payload: any) => {
       throw 'no contest found';
     }
     return [...paid, ...practice];
-
   } catch (err) {
     console.log('groupAllContestsAPIRmeote', err);
     return false;
@@ -69,6 +68,7 @@ export const extractJoinedContestAPIResponse = (payload: any) => {
   }
 };
 
+// used to normalize api response that used in lobby screen
 export const extractDataFromUpcommingMatchesAPI = (
   payload: any,
 ): UpcommingMatchType => {
@@ -121,11 +121,38 @@ export const parseJoinedMatchesAPI = (payload: any) => {
     return matches;
   } catch (err) {
     console.log('parseJoinedMatchesAPI', err);
-
     return false;
   }
 };
 
+export function parseContestLeaderBoardAPI(payload: Array<any>) {
+  try {
+    const teams = [];
+    // set is_current to true to the current players
+    const currentTeam = payload[0]?.f_player_data;
+    if (currentTeam) {
+      for (let cteam = 0; cteam < currentTeam.length; cteam++) {
+        const team = {...currentTeam[cteam]};
+        team.is_current = true;
+        teams.push(team);
+      }
+    } else {
+      // it need to handle, when an pagination occured
+    }
+    const othersTeams = payload[1];
+    for (let oteam = 0; oteam < othersTeams.length; oteam++) {
+      const team = {...othersTeams[oteam]};
+      team.is_current = false;
+      teams.push(team);
+    }
+    return teams;
+  } catch (err) {
+    console.log('parseContestLeaderBoardAPI Error');
+    return false;
+  }
+}
+
+// used to normalize compare teams api
 export const normalizeCompareTeamsRemote = (payload: any) => {
   // if normalize need to do
   return payload;

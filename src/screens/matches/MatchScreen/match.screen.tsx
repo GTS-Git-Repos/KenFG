@@ -13,7 +13,7 @@ import {
 } from '../../../sharedComponents';
 import Tabs from './atoms/Tabs';
 import PagerView from 'react-native-pager-view';
-import MyContestPage from './molecules/MyContestPage';
+import ContestListMatchPage from './molecules/contest.list.match';
 import {MatchCommentary, MatchScoreBoard} from '../../../sharedComponents';
 import MatchMyTeamsPage from './molecules/match.myteams.page';
 import LinearGradient from 'react-native-linear-gradient';
@@ -61,7 +61,6 @@ export default function LiveMatchScreen(props: PropTypes) {
   const onPageSelectedAction = (e: any) => {
     setSelectedTab(e.nativeEvent.position);
   };
-
 
   if (!matchAPI) {
     return <LoadingSpinner title={'Loading...'} />;
@@ -121,7 +120,7 @@ export default function LiveMatchScreen(props: PropTypes) {
         style={[{flex: 1}]}
         initialPage={selectedTab}>
         <View style={{width: width}}>
-          <MyContestPage
+          <ContestListMatchPage
             index={0}
             activeIndex={selectedTab}
             onContestMatchPress={props.onContestMatchPress}

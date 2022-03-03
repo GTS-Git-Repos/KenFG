@@ -1,3 +1,6 @@
+// API calls related to contests
+
+import {parseContestLeaderBoardAPI} from '../constructors/matchcontest.constructors';
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 
@@ -16,12 +19,12 @@ export const contestleaderBoardRemote = async (params: any) => {
       },
     );
     if (response.status === 200) {
-      return response.data.data;
+      return parseContestLeaderBoardAPI(response.data.data);
     } else {
       failedLog('contestleaderBoardRemote', response);
     }
   } catch (err) {
-    return false;
+    throw err;
   }
 };
 

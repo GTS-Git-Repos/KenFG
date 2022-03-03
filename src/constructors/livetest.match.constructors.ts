@@ -10,7 +10,7 @@ import {
   getScroeByInnings,
   getTeamMetaData,
   parseCurrentInnings,
-} from './utils.formatters';
+} from './utils.constructor';
 const log = console.log;
 
 export const liveTestMatchFormat = (payload: any) => {

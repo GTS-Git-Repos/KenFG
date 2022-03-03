@@ -19,7 +19,6 @@ import clr from '../../../constants/colors';
 
 export default function LobbyScreenHOC() {
   const dT = useSelector(getAppThemeSelector);
-
   const dispatch = useDispatch();
   const notificationSheet = useRef<Modalize>(null);
   const appColors = useSelector(appColorsSelector);
