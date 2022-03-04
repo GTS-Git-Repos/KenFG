@@ -131,7 +131,7 @@ export default function CustomDrawer(props: any) {
           navigate={navigate}
         />
         {/* <View> */}
-        <AppVersion version="4.24.4" dT={dT} />
+        <AppVersion version="0.1" dT={dT} />
         {/* <View /> */}
         <Support dT={dT} />
       </ScrollView>
@@ -319,7 +319,7 @@ const AppVersion = (props: any) => {
           Version 0.1
         </Text>
         <Text style={[tailwind('font-regular py-1 text-dark-1 font-11')]}>
-          2 March:11:00 AM
+          3 March : 5:20 PM
         </Text>
       </View>
       {/* <View style={[tailwind('justify-end items-end'), {flex: 3}]}>

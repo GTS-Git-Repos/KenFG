@@ -5,9 +5,11 @@ import PanVerifyScreen from './pan.verify.screen';
 import {useDispatch, useSelector} from 'react-redux';
 import {userInfo} from '../../../store/selectors';
 import {updateUserInfo} from '../../../store/actions/userAction';
+
 import {useNavigation} from '@react-navigation/core';
 import {useImageUpload} from '../../../shared_hooks/app.hooks';
 import {uploadPanKYCRemote} from '../../../remote/userRemote';
+import {format} from 'date-fns';
 
 export default function AddCashScreenHOC() {
   const dispatch = useDispatch();
@@ -16,7 +18,7 @@ export default function AddCashScreenHOC() {
   const {image, openLibrary, removeImage} = useImageUpload();
 
   const [openDate, setOpenDate] = useState<any>(false);
-
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState('Nmae');
   const [pan, setPan] = useState('PANCA3333F');
   const [dob, setDob] = useState<any>(null);
@@ -41,7 +43,7 @@ export default function AddCashScreenHOC() {
     const iPan = pan.replace(/ /g, '');
     setError({target: null, msg: ''});
     if (iName.length < 3) {
-      setError({target: 'name', msg: 'invalid name'});
+      setError({target: 'name', msg: 'Invalid name'});
       return;
     }
     if (!iPan.match('[A-Z]{5}[0-9]{4}[A-Z]{1}')) {
@@ -61,23 +63,28 @@ export default function AddCashScreenHOC() {
   }
 
   async function uploadPANCard() {
-    var photo: any = {
+    let photo: any = {
       uri: image.path,
       type: image.mime,
-      name: 'photo.jpg',
+      name: `${userMeta.mobile}-pan.jpg`,
     };
 
     const formData = new FormData();
-    // formData.append('player_key', userMeta.mobile);
-    // formData.append('pan_name', name);
-    // formData.append('pan_card_num', pan);
-    // formData.append('pan_dob', dob);
-    // formData.append('pan_state', 'null');
-    formData.append('image', photo);
-    formData.append('name', 'random');
+    formData.append('player_key', userMeta.mobile);
+    formData.append('pan_name', name);
+    formData.append('pan_card_num', pan);
+    formData.append('pan_dob', format(dob, 'dd-MM-yyyy'));
+    formData.append('pan_state', 'null');
+    formData.append('file', photo);
+    setLoading(true);
     const response = await uploadPanKYCRemote(formData);
-
-    console.log('response >>>', response);
+    setLoading(false);
+    if (response) {
+      infoBox('Pan card information submitted', 500);
+      navigation.goBack()
+    } else {
+      infoBox('Failed to submit', 500);
+    }
   }
 
   return (
@@ -96,6 +103,7 @@ export default function AddCashScreenHOC() {
       onDateChangedAction={onDateChangedAction}
       openLibrary={openLibrary}
       removeImage={removeImage}
+      loading={loading}
     />
   );
 }

@@ -72,7 +72,7 @@ export const uploadPanKYCRemote = async (formData: any) => {
     if (response) {
       return true;
     } else {
-      failedLog('updateWalletRemote()', response);
+      failedLog('uploadPanKYCRemote()', response);
     }
   } catch (err) {
     console.log(err);

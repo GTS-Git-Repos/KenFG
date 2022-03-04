@@ -78,6 +78,7 @@ export default function MyContestPage(props: PropTypes) {
           />
         );
       })}
+      
 
       <View style={[tailwind('h-20')]}></View>
     </ScrollView>

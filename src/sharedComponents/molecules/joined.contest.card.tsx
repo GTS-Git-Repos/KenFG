@@ -138,21 +138,21 @@ const Footer = () => {
       ]}>
       <View style={[tailwind('flex-row items-center')]}>
         <View style={[tailwind('flex-row items-center')]}>
-          <CupIcon />
+          <CupIcon dT={false} />
           <Text style={[tailwind('font-regular px-1 text-dark-1 font-12')]}>
             Winnings
           </Text>
         </View>
 
         <View style={[tailwind('flex-row items-center px-2')]}>
-          <MIcon />
+          <MIcon dT={false} />
           <Text style={[tailwind('font-regular px-1 text-dark-1 font-12')]}>
             upto 20
           </Text>
         </View>
       </View>
       <View style={[tailwind('flex-row items-center')]}>
-        <TickIcon />
+        <TickIcon dT={false} />
         <Text style={[tailwind('font-regular pl-1 text-dark-1 font-12')]}>
           Guaranteed
         </Text>
@@ -210,7 +210,7 @@ const TeamInfo = (props: TeamInfoTypes) => {
           }>
           <EditIcon background={true} />
         </TouchableOpacity>
-        
+
         <TouchableOpacity
           style={[tailwind('mx-1')]}
           onPress={() =>

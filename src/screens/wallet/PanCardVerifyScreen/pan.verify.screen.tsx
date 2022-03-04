@@ -37,6 +37,7 @@ interface PropTypes {
   validateInputs(): any;
   error: any;
   openDate: any;
+  loading: boolean;
   setOpenDate(e: boolean): any;
   onDateChangedAction(e: any): any;
   removeImage(): any;
@@ -134,6 +135,9 @@ export default function PanVerifyScreen(props: PropTypes) {
           onChange={props.onDateChangedAction}
         />
       )}
+
+      {/* loading while form submitting  */}
+      {props.loading && <BlockScreenByLoading />}
     </View>
   );
 }

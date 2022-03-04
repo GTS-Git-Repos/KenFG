@@ -28,9 +28,9 @@ export function useCountDown(inputDate: Date) {
     const seconds =
       countDown.seconds >= 10 ? countDown.seconds : `0${countDown.seconds}`;
     if (hour < 1) {
-      return `${hour}h:${minutes}m`;
+      return `${hour}h ${minutes}m`;
     } else {
-      return `${minutes}m:${seconds}s`;
+      return `${minutes}m ${seconds}s`;
     }
 
     // useEffect(() => {
