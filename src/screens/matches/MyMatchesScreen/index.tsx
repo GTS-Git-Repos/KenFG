@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {isFullMatchSelector, userInfo} from '../../../store/selectors';
-import {LoadingSpinner} from '../../../sharedComponents';
+import {PageLoadingSpinner} from '../../../sharedComponents';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import MyMatchesScreen from './my.matches.screen';
 import {useMatches} from './mymatches.workers';
@@ -39,10 +39,6 @@ export default function MyMatchesScreenHOC() {
     dispatch(updateFullMatchAction(match_type === 1 ? true : false));
   }
 
-  if (!isScreenReady) {
-    return <LoadingSpinner title={'My Matches'} />;
-  }
-
   const onPressMyMatchCard = (match_key: string) => {
     const matchMeta: any = matches.find((item: any) => item.key === match_key);
     if (matchMeta.status === 'notstarted') {
@@ -62,6 +58,10 @@ export default function MyMatchesScreenHOC() {
       return;
     }
   };
+
+  if (!isScreenReady) {
+    return <PageLoadingSpinner title={'My Matches'} />;
+  }
 
   return (
     <MyMatchesScreen

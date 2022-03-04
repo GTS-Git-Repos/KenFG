@@ -204,7 +204,7 @@ export default function ContestListHOC() {
               contestKey: contest.key,
               entryAmount: contest.entry,
               maxTeam: contest.max_entry,
-              isFullMatch: true,
+              isFullMatch: contest.innings === '1',
             },
           );
         } else {

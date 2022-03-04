@@ -65,8 +65,8 @@ export function checksBeforeJoinContest(
 ): CheckBeforeJoinContestReturn {
   // console.log(contest);
   try {
-    const isTimeOk = isMatchHaveEnoughTime(start_time);
-    if (!isTimeOk) throw 'Time is Up!';
+    // const isTimeOk = isMatchHaveEnoughTime(start_time);
+    // if (!isTimeOk) throw 'Time is Up!';
     const isAnyTeamAvailableToJoin = didIWantToGoTeamsPage(
       contest,
       joinedContests,

@@ -27,21 +27,12 @@ interface PropTypes {
 
 export default function LearderBoard(props: PropTypes) {
   // console.log('leaderboard --->', props.ldbMeta);
-
   const {width} = useWindowDimensions();
-  const navigation = useNavigation();
-
-  const navigate = (matchStarted: boolean) => {
-    if (matchStarted) {
-      // navigation.navigate('CompareTeamsScreen');
-    } else {
-      errorBox('Please wait till the match starts to view other teams', 100);
-    }
-  };
 
   // when an api error is active
   if (props.ldbErr) {
-    return <NoLeaderBoardContent loading={false} error={true} />;
+    // need to confirm later, what it means to get 400 response code
+    return <NoLeaderBoardContent loading={false} error={false} />;
   }
   // when an ldbMeta is undefined or api on isFetching state
   if (!props.ldbMeta || props.ldbLive) {

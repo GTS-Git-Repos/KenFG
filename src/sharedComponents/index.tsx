@@ -10,7 +10,7 @@ import ExpertsStats from './atoms/ExpertsStats';
 import ContestScreenLoading from './atoms/ContestScreenLoading';
 import TeamCode from './atoms/TeamCode';
 import TabsBottomLine from './atoms/TabsBottomLine';
-import LoadingSpinner from './atoms/Loading.Spinnner';
+import PageLoadingSpinner from './atoms/page.loading.spinnner';
 import SecondaryButton from './atoms/secondaryButton';
 import ProgressbarShared from './atoms/progressbar.shared';
 import WinningsListRank from './atoms/winnings.list.rank';
@@ -83,7 +83,7 @@ export {
   MatchTeamCard,
   NoContentShared,
   FullScreenLoading,
-  LoadingSpinner,
+  PageLoadingSpinner,
   ContestCard,
   TeamCode,
   Projection,

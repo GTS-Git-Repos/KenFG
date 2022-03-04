@@ -8,7 +8,7 @@ import {
   Projection,
   CurrentLiveStatus,
   ExpertsStats,
-  LoadingSpinner,
+  PageLoadingSpinner,
   MatchPlayersStats,
 } from '../../../sharedComponents';
 import Tabs from './atoms/Tabs';
@@ -63,7 +63,7 @@ export default function LiveMatchScreen(props: PropTypes) {
   };
 
   if (!matchAPI) {
-    return <LoadingSpinner title={'Loading...'} />;
+    return <PageLoadingSpinner title={'Loading...'} />;
   }
 
   if (matchAPI && !matchMeta) {

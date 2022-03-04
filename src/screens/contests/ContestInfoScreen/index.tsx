@@ -159,6 +159,7 @@ export default function ContestInfoHOC() {
               contestKey: contestInfo.key,
               entryAmount: contestInfo.entry,
               maxTeam: contestInfo.max_entry,
+              isFullMatch: contestInfo.innings === '1',
             },
           );
         } else {

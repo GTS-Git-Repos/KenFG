@@ -1,13 +1,20 @@
+/**
+ * full page loading spinner
+ * used in 
+ * [1]: MyMatches tab
+ * 
+ */
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, ActivityIndicator} from 'react-native';
-import {TopBar} from '..';
+import {TopBar} from '../index';
 
 interface PropTypes {
   title: string;
 }
 
-export default function LoadingSpinner(props: PropTypes) {
+export default function PageLoadingSpinner(props: PropTypes) {
   return (
     <View style={[tailwind('bg-dark h-full')]}>
       <TopBar text={props.title} />

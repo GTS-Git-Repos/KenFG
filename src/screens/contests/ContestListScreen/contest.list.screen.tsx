@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {View, useWindowDimensions, StyleSheet} from 'react-native';
-import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
 import {useCountDown} from '../../../shared_hooks/app.hooks';
@@ -15,8 +14,7 @@ import ContestPage from './molecules/ContestPage';
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
 import {useSelector} from 'react-redux';
-import {appColorsSelector, selectedMatch} from '../../../store/selectors';
-import CreateTeamButton from './atoms/CreateTeamButton';
+import {selectedMatch} from '../../../store/selectors';
 import Modal from 'react-native-modal';
 import {TeamFormationMutationType} from '../../../types/match';
 import {infoBox} from '../../../utils/snakBars';
