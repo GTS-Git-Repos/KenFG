@@ -54,14 +54,17 @@ export default function CustomDrawer(props: any) {
         navigation.navigate('ReferredFriendsListScreen');
         return;
       case 'leaderboard':
-        navigation.navigate('LeaderBoardScreen');
+        navigation.navigate('Leaderboard');
         return;
       case 'achievement':
         navigation.navigate('AchievementsScreen');
         return;
-      case 'affilate':
-        navigation.navigate('AchievementsScreen');
+      case 'affliate':
+        navigation.navigate('AffliatedScreen');
         return;
+      case "settings":
+        navigation.navigate('ProfileEditScreen');
+        return
       case 'howtoplay':
         navigation.navigate('HowToPlayScreen');
         return;
@@ -69,8 +72,10 @@ export default function CustomDrawer(props: any) {
         navigation.navigate('AchievementsScreen');
         return;
       case 'more':
-        navigation.navigate('MoreScreen');
+        navigation.navigate('More');
         return;
+      default:
+        return  
     }
   }
 
@@ -101,7 +106,7 @@ export default function CustomDrawer(props: any) {
           navigate={navigate}
         />
         <Links
-          to="AffliatedScreen"
+          to="affliate"
           icon={'affliate'}
           text="Affilated"
           dT={dT}
@@ -109,14 +114,14 @@ export default function CustomDrawer(props: any) {
         />
 
         <Links
-          to="ProfileEditScreen"
+          to="settings"
           icon={'settings'}
           text="My Info Settings"
           navigate={navigate}
           dT={dT}
         />
         <Links
-          to="HowToPlayScreen"
+          to="howtoplay"
           icon={'how'}
           text="How to Play"
           dT={dT}
@@ -124,7 +129,7 @@ export default function CustomDrawer(props: any) {
         />
 
         <Links
-          to="MoreScreen"
+          to="more"
           icon={'more'}
           text="More"
           dT={dT}

@@ -7,14 +7,16 @@ import {
   WalletHalfModal,
 } from '../../../sharedComponents';
 import Modal from 'react-native-modal';
-import TabsContestInfo from './atoms/TabsContestInfo';
-import LearderBoard from './molecules/LeaderBoardList';
 import {useIsScreenReady, useCountDown} from '../../../shared_hooks/app.hooks';
 import {useSharedValue} from 'react-native-reanimated';
-import WinningsList from './molecules/WiningsList';
-import CreateTeamButton from './atoms/CreateTeamButton';
 import {useSelector} from 'react-redux';
+
+import TabsContestInfo from './atoms/TabsContestInfo';
+import CreateTeamButton from './atoms/CreateTeamButton';
+import WinningsList from './molecules/WiningsList';
 import ContestInfoPageLoading from './atoms/ContestInfoPageLoading';
+import ContestLearderBoard from './molecules/contest.leader.boardList';
+
 import PagerView from 'react-native-pager-view';
 import {selectedMatch} from '../../../store/selectors';
 import {infoBox} from '../../../utils/snakBars';
@@ -35,8 +37,8 @@ interface PropTypes {
   changePriceDistribution(): any;
   setShowWalletModal(input: boolean): any;
   proceedToJoin(contest_key: string): any;
-  lbProfileOnPress(player_key: string,teamCode:string): any;
-  teamSwapOnPress(teamCode:string):any
+  lbProfileOnPress(player_key: string, teamCode: string): any;
+  teamSwapOnPress(teamCode: string): any;
 }
 
 export default function ContestInfoScreen(props: PropTypes) {
@@ -121,7 +123,7 @@ export default function ContestInfoScreen(props: PropTypes) {
           />
         </View>
         <View>
-          <LearderBoard
+          <ContestLearderBoard
             index={1}
             activeIndex={activeIndex}
             ldbLive={props.ldbLive}

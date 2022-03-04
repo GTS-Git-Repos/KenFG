@@ -27,27 +27,27 @@ export default function MoreScreen() {
           goto={''}
         />
         <Links
-          icon={<MoneySideIcon dT={false} />}
+          icon={<MoneySideIcon dT={true} />}
           text={'Privacy Contest Code'}
           goto={''}
         />
         <Links
-          icon={<MoneySideIcon dT={false} />}
+          icon={<MoneySideIcon dT={true} />}
           text={'About Us'}
           goto={'AboutUsScreen'}
         />
         <Links
-          icon={<MoneySideIcon dT={false} />}
+          icon={<MoneySideIcon dT={true} />}
           text={'Legality'}
           goto={''}
         />
         <Links
-          icon={<MoneySideIcon dT={false} />}
+          icon={<MoneySideIcon dT={true} />}
           text={'T&C'}
           goto={'TermsScreen'}
         />
         <Links
-          icon={<MoneySideIcon dT={false} />}
+          icon={<MoneySideIcon dT={true} />}
           text={'Join with us'}
           goto={''}
         />

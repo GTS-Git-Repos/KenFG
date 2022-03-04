@@ -14,6 +14,7 @@ import {
   Auth,
   More,
   Contest,
+  Leaderboard,
   Wallet,
   Match,
   SecondInningsContest,
@@ -82,6 +83,7 @@ export default function RootNavigation() {
           />
           <RootNavigator.Screen component={Match} name="Match" />
           <RootNavigator.Screen component={Wallet} name="Wallet" />
+          <RootNavigator.Screen component={Leaderboard} name="Leaderboard" />
 
           <RootNavigator.Screen name="InviteScreen" component={InviteScreen} />
 

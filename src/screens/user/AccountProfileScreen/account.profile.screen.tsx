@@ -20,6 +20,7 @@ import {useSelector} from 'react-redux';
 import {Modalize} from 'react-native-modalize';
 import MoreSheet from './atoms/MoreSheet';
 import {UserMetaType} from '../../../types/user';
+import {TopBar} from '../../../sharedComponents';
 const log = console.log;
 
 interface PropTypes {
@@ -31,13 +32,14 @@ interface PropTypes {
 export default function AccountProfileScreen(props: PropTypes) {
   return (
     <View style={[tailwind('h-full bg-dark')]}>
-      <AccountProfileTopBar moreOptionSheet={props.moreOptionSheet} />
-      <View style={[tailwind('bg-secondary'), {height: 15}]}></View>
+      <TopBar text={'User Account'} />
+      {/* <AccountProfileTopBar moreOptionSheet={props.moreOptionSheet} /> */}
+      {/* <View style={[tailwind('bg-secondary'), {height: 15}]}></View> */}
 
       <View
         style={[
           tailwind('bg-dark-4 rounded-2xl'),
-          {position: 'relative', bottom: 15},
+          // {position: 'relative', bottom: 15},
         ]}>
         <ScrollView contentContainerStyle={tailwind('px-2')}>
           <UserProfileCard

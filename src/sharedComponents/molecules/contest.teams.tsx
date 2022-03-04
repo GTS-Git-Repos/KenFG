@@ -44,7 +44,11 @@ export default function ContestTeams(props: PropTypes) {
   return (
     <TouchableOpacity
       onPress={() => props.lbProfileOnPress(props.player_key, props.teamCode)}
-      style={[ss.root, dT ? clr.bgd2 : clr.bgGray]}>
+      style={[
+        ss.root,
+        dT ? clr.bgd2 : clr.bgGray,
+        props.currentUser && ss.currentUser,
+      ]}>
       <View style={[ss.profile]}>
         <Image
           resizeMode="cover"
@@ -175,6 +179,9 @@ const ss = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 10,
+  },
+  currentUser: {
+    // backgroundColor: 'green',
   },
   profile: {
     flexDirection: 'row',

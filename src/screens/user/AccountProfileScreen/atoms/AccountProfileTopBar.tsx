@@ -1,10 +1,13 @@
+/**
+ * not used
+ */
+
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
-import {BackIcon} from '../../../../sharedComponents';
+import {BackIcon} from '../../../../assets/newIcons';
 
 interface PropTypes {
   moreOptionSheet: any;
@@ -20,13 +23,13 @@ export default function AccountProfileTopBar(props: PropTypes) {
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <BackIcon dark={true} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => props.moreOptionSheet?.current?.open()}>
+      {/* <TouchableOpacity onPress={() => props.moreOptionSheet?.current?.open()}>
         <Image
           resizeMode="contain"
           source={assets.vdot}
           style={[tailwind(''), {width: 16, height: 16}]}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
