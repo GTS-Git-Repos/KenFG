@@ -1,15 +1,13 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
+import {View, TouchableOpacity, Text} from 'react-native';
 import {
   CupIcon,
   DollarIcon,
   DownArrowIcon,
-  RankIcon,
   TickIcon,
-} from '../../../../sharedComponents';
+} from '../../../../assets/newIcons';
+import {RankIcon} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/native';
 
 interface PropTypes {

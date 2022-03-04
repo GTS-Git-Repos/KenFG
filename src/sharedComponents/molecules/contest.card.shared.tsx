@@ -1,16 +1,14 @@
 /**
- * Contest card, appears in contest list screen contest page
+ * Contest card, appears in contest list screen contest info page
  * second innings contests
  */
-
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import ProgressBarContestCard from './progressbar.contest';
-import {CupIcon, DollarIcon, MIcon, TickIcon} from '..';
+import {TickIcon, CupIcon, DollarIcon, MIcon} from '../../assets/newIcons';
 import {appColorsSelector} from '../../store/selectors';
 import {useSelector} from 'react-redux';
-const log = console.log;
 
 // type ContestType = 'public' | 'practice';
 

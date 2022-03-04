@@ -40,6 +40,11 @@ import DownArrowIcon from './svgIcons/down.arrow.icon';
 import ContestsBottomTabOn from './svgIcons/contests.bottomtab.on';
 import ChartIcon from './svgIcons/chart.icon';
 import MoreIcon from './svgIcons/more.icon';
+import CupIcon from './svgIcons/cup.icon';
+import DollarIcon from './svgIcons/dollar.icon';
+import MIcon from './svgIcons/m.icon';
+import TickIcon from './svgIcons/tick.icon';
+import SwapIcon from './svgIcons/swap.icon';
 
 export {
   ContestsBottomTabOff,
@@ -60,12 +65,17 @@ export {
   HelpSideIcon,
   VerifyTick,
   SettingSideIcon,
+  CupIcon,
+  DollarIcon,
   BankIcon,
   SwitchIcon,
   NotificationIcon,
+  SwapIcon,
+  MIcon,
   WalletSideIcon,
   WalletIcon,
   ChartIcon,
+  TickIcon,
   MoreIcon,
   TopArrowIcon,
   LineupsCap,

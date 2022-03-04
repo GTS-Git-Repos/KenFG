@@ -1,14 +1,12 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
 import {
   CupIcon,
   DollarIcon,
   MIcon,
   TickIcon,
-} from '../../../../sharedComponents';
+} from '../../../../assets/newIcons';
 import {ProgressbarShared} from '../../../../sharedComponents';
 
 interface PropTypes {
@@ -24,7 +22,6 @@ interface PropTypes {
 }
 
 export default function PrivateContestCard(props: PropTypes) {
-  
   return (
     <TouchableOpacity
       activeOpacity={0.5}
@@ -104,7 +101,7 @@ const Footer = (props: any) => {
       <View style={[tailwind('flex-row justify-between items-center')]}>
         <View style={[tailwind('flex-row items-center')]}>
           <View style={[tailwind('flex-row items-center')]}>
-            <DollarIcon />
+            <DollarIcon dT={false} />
             <Text style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
               {'\u20B9 '}
               {props.amount_in_letters}
@@ -112,14 +109,14 @@ const Footer = (props: any) => {
           </View>
 
           <View style={[tailwind('flex-row px-1 items-center')]}>
-            <CupIcon />
+            <CupIcon dT={false} />
             <Text style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
               53%
             </Text>
           </View>
 
           <View style={[tailwind('flex-row items-center')]}>
-            <MIcon />
+            <MIcon dT={false} />
             <Text style={[tailwind('font-regular text-dark-1 px-1 font-13')]}>
               upto {props.max_entry}
             </Text>
@@ -127,7 +124,7 @@ const Footer = (props: any) => {
         </View>
 
         <View style={[tailwind('flex-row items-center')]}>
-          <TickIcon />
+          <TickIcon dT={false} />
           <Text style={[tailwind('font-regular text-dark-1 pl-2    font-13')]}>
             Gauranteed
           </Text>

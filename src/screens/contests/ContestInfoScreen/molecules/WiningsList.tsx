@@ -14,6 +14,8 @@ interface itemTypes {
 }
 
 interface PropTypes {
+  index: number;
+  activeIndex:number,
   data: Array<itemTypes>;
   priceDist: boolean;
   changePriceDistribution(): any;

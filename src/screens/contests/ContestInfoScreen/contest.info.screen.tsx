@@ -31,10 +31,12 @@ interface PropTypes {
   ldbLive: boolean;
   ldbMeta: Array<any>;
   ldbErr: boolean;
-  openWallet(): any;
+  openWallet(input: boolean): any;
   changePriceDistribution(): any;
   setShowWalletModal(input: boolean): any;
   proceedToJoin(contest_key: string): any;
+  lbProfileOnPress(player_key: string,teamCode:string): any;
+  teamSwapOnPress(teamCode:string):any
 }
 
 export default function ContestInfoScreen(props: PropTypes) {
@@ -125,6 +127,8 @@ export default function ContestInfoScreen(props: PropTypes) {
             ldbLive={props.ldbLive}
             ldbMeta={props.ldbMeta}
             ldbErr={props.ldbErr}
+            lbProfileOnPress={props.lbProfileOnPress}
+            teamSwapOnPress={props.teamSwapOnPress}
           />
         </View>
       </PagerView>

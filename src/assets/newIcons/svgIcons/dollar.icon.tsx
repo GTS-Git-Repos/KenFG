@@ -1,20 +1,13 @@
 import * as React from 'react';
-import Svg, {
-  SvgProps,
-  Path,
-  Defs,
-  LinearGradient,
-  Stop,
-} from 'react-native-svg';
+import Svg, {SvgProps, Path} from 'react-native-svg';
 
-function Icon(props: SvgProps) {
+interface PropTypes {
+  dT: boolean;
+}
+
+function Icon(props: PropTypes) {
   return (
-    <Svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+    <Svg width="18" height="18" viewBox="0 0 18 18" fill="none">
       <Path
         d="M11.2188 6.74981C11.1301 6.22552 10.8586 5.74957 10.4525 5.40638C10.0463 5.06319 9.53174 4.87493 9 4.875C7.75744 4.875 6.75 5.69456 6.75 6.93741C6.75 8.18025 7.875 8.74303 9 9.00009C10.125 9.25322 11.25 9.8205 11.25 11.0628C11.25 12.3051 10.2426 13.1252 9 13.1252C8.40326 13.1252 7.83097 12.8881 7.40901 12.4662C6.98705 12.0442 6.75 11.4719 6.75 10.8752"
         stroke="#8797B1"

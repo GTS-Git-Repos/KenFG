@@ -1,17 +1,8 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
-import {
-  CupIcon,
-  DollarIcon,
-  GoldenCup,
-  RankIcon,
-  TeamCode,
-  TickIcon,
-} from '../../../../sharedComponents';
-import {} from 'react-native-gesture-handler';
+import {View, TouchableOpacity, Text} from 'react-native';
+import {CupIcon, DollarIcon, TickIcon} from '../../../../assets/newIcons';
+import {GoldenCup, RankIcon, TeamCode} from '../../../../sharedComponents';
 
 interface PropTypes {
   openPrizeBreakSheet: any;

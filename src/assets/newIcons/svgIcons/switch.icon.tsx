@@ -1,3 +1,7 @@
+/**
+ * used in match notification sheet in lobby screen, teams switch screen, contest team
+ */
+
 import React from 'react';
 import Svg, {Circle, Rect} from 'react-native-svg';
 

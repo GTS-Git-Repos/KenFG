@@ -1,4 +1,4 @@
-// used in contest info leaderboard tab
+// used in contest info screens leaderboard tab
 
 import React from 'react';
 import tailwind from '../../../tailwind';
@@ -12,11 +12,16 @@ import {
   ToastAndroid,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {BottomLine, SwitchIcon} from '..';
+import {SwapIcon, CapIcon} from '../../assets/newIcons';
 import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
+import {TeamCode} from '../';
+import clr from '../../constants/colors';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
 
 interface PropTypes {
+  player_key: string;
   image: string;
   name: string;
   teamCode: string;
@@ -26,13 +31,37 @@ interface PropTypes {
   currentUser: boolean;
   hasStatus: boolean;
   matchStarted: boolean;
-  navigate(matchStarted: boolean): any;
+  lbProfileOnPress(player_key: string, teamCode: string): any;
+  teamSwapOnPress(teamCode: string): any;
 }
 const PROFILEWIDTH = Dimensions.get('window').width / 2;
 const SUBTABWIDTH = PROFILEWIDTH / 2;
 
-export default function HorizontalProfile(props: PropTypes) {
+export default function ContestTeams(props: PropTypes) {
   const navigation = useNavigation<any>();
+  const dT = useSelector(getAppThemeSelector);
+
+  return (
+    <TouchableOpacity
+      onPress={() => props.lbProfileOnPress(props.player_key, props.teamCode)}
+      style={[ss.root, dT ? clr.bgd2 : clr.bgGray]}>
+      <View style={[ss.profile]}>
+        <Image
+          resizeMode="cover"
+          source={{uri: props.image}}
+          style={[ss.image]}
+        />
+        <Text style={[ss.name]}>{props.name}</Text>
+        <TeamCode code={props.teamCode} />
+      </View>
+      {props.currentUser && (
+        <TouchableOpacity onPress={() => props.teamSwapOnPress(props.teamCode)}>
+          <SwapIcon dT={dT} />
+        </TouchableOpacity>
+      )}
+    </TouchableOpacity>
+  );
+
   return (
     <TouchableOpacity
       style={[tailwind('px-4 py-3 bg-dark-3 border-b border-gray-800')]}
@@ -133,7 +162,7 @@ export default function HorizontalProfile(props: PropTypes) {
   );
 }
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
   root: {
     borderTopColor: '#8797B140',
     borderLeftColor: 'transparent',
@@ -141,5 +170,27 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
     borderWidth: 1,
     borderStyle: 'solid',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+  },
+  profile: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  image: {
+    width: 32,
+    height: 32,
+    borderRadius: 999,
+  },
+  name: {
+    paddingHorizontal: 12,
+    color: '#FFFFFF',
+    flexGrow: 1,
+    fontFamily: 'gadugi-normal',
+    fontSize: 14,
+    maxWidth: 100,
   },
 });

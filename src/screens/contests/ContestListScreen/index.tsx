@@ -98,6 +98,7 @@ export default function ContestListHOC() {
     }
   }, [contestsAPI]);
 
+  // is auto join is in params, <need to refactor it seems like bad practice>
   useEffect(() => {
     console.log('Contest List Params -->', route.params);
     if (route.params) {
@@ -109,9 +110,11 @@ export default function ContestListHOC() {
     }
   }, []);
 
+  // refetch on focus
   useFocusEffect(
     useCallback(() => {
       // console.log('Focused');
+      refetchContests();
       refetchTeams();
       refetchJoinedContest();
     }, []),
@@ -248,7 +251,7 @@ export default function ContestListHOC() {
   function onPressCreateTeam() {
     toTeamFormationNoAutoJoin(navigation);
   }
-  // if contests api network failed 
+  // if contests api network failed
   if (ctstError) {
     return <InternetError referch={refetchPage} />;
   }

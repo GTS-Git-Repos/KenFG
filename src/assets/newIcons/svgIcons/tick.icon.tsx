@@ -1,14 +1,18 @@
 import * as React from 'react';
 import Svg, {SvgProps, Path} from 'react-native-svg';
 
-function Icon(props: SvgProps) {
+interface PropTypes{
+  dT:boolean
+}
+
+function Icon(props: PropTypes) {
   return (
     <Svg
       width="13"
       height="13"
       viewBox="0 0 13 13"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      >
       <Path
         d="M3.95129 5.625L6.20129 8.25L12.5763 0.375"
         stroke="#8797B1"

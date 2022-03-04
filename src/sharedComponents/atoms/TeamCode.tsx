@@ -1,7 +1,13 @@
+/**
+ * used in contest info screen
+ * jointed contests component
+ * match contest status
+ * leaderboard profile
+ *  */
+
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Image, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {View, Image, StyleSheet, Text} from 'react-native';
 
 interface PropTypes {
   code: string;
@@ -9,14 +15,24 @@ interface PropTypes {
 
 export default function TeamCode(props: PropTypes) {
   return (
-    <View
-      style={[
-        tailwind('py-0.5 mx-0.5 bg-dark-4'),
-        {borderRadius: 2, paddingHorizontal: 6},
-      ]}>
-      <Text style={[tailwind('font-regular uppercase text-dark-1 font-12  ')]}>
-        {props.code}
-      </Text>
+    <View style={[ss.root]}>
+      <Text style={[ss.code]}>{props.code}</Text>
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    backgroundColor: '#0D1320',
+    marginHorizontal: 2,
+    paddingVertical: 2,
+    borderRadius: 2,
+    paddingHorizontal: 6,
+  },
+  code: {
+    color: '#8797B1',
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    textTransform: 'uppercase',
+  },
+});

@@ -17,7 +17,7 @@ import WinningsListRank from './atoms/winnings.list.rank';
 
 import ContestCard from './molecules/contest.card.shared';
 import TeamsCard from './molecules/TeamsCard';
-import HorizontalProfile from './molecules/HorizontalProfile';
+import ContestTeams from './molecules/contest.teams';
 import JoinedContestCard from './molecules/joined.contest.card';
 import SocialLogin from './molecules/SocialLogin';
 import CurrentLiveStatus from './molecules/CurrentLiveStatus';
@@ -43,16 +43,12 @@ import EditIcon from './icons/EditIcon';
 import UserIcon from './icons/UserIcon';
 import GearIcon from './icons/GearIcon';
 import RankIcon from './icons/RankIcon';
-import CupIcon from './icons/CupIcon';
-import MIcon from './icons/MIcon';
 import ShareIcon from './icons/ShareIcon';
 import ContestBellIcon from './icons/ContestBellIcon';
 import CopyIcon from './icons/CopyIcon';
 import MaleIcon from './icons/MaleIcon';
 import FemaleIcon from './icons/FemaleIcon';
 import PointsIcon from './icons/PointsIcon';
-import DollarIcon from './icons/DollarIcon';
-import TickIcon from './icons/TickIcon';
 import DownloadIcon from './icons/DownloadIcon';
 import StarIcon from './icons/StarIcon';
 import IdleLevel from './icons/IdleLevel';
@@ -95,7 +91,7 @@ export {
   PriceDistributionSwitch,
   CurrentLiveStatus,
   TeamsCard,
-  HorizontalProfile,
+  ContestTeams,
   MatchStat,
   TeamScrollBoardByInnings,
   JoinedContestCard,
@@ -115,8 +111,6 @@ export {
   RankIcon,
   StarIcon,
   CompletedIcon,
-  CupIcon,
-  MIcon,
   SocialMediaShare,
   CIcon,
   VCIcon,
@@ -126,11 +120,9 @@ export {
   CheckBoxIcon,
   ContestBellIcon,
   GoogleIcon,
-  TickIcon,
   CopyIcon,
   IdleLevel,
   MaleIcon,
-  DollarIcon,
   FemaleIcon,
   PointsIcon,
 };

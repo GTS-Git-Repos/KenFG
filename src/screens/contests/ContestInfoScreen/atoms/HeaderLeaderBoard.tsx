@@ -7,7 +7,7 @@ const ALLTEAMSWIDTH = Dimensions.get('window').width / 2;
 const SUBITEMSWIDTH = ALLTEAMSWIDTH / 2;
 
 interface PropTypes {
-  text?: string;
+  length: number;
 }
 
 export default function HeaderLeaderBoard(props: PropTypes) {
@@ -20,7 +20,7 @@ export default function HeaderLeaderBoard(props: PropTypes) {
       ]}>
       <View style={[tailwind(''), {width: ALLTEAMSWIDTH}]}>
         <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-          All Teams (100)
+          All Teams ({props.length})
         </Text>
       </View>
     </View>

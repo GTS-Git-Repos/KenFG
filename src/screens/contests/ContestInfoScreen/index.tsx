@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {
   isFullMatchSelector,
@@ -13,9 +13,14 @@ import {
 } from '../../../shared_hooks/contest.hooks';
 import ContestInfoScreen from './contest.info.screen';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
-import {toTeamFormationWithAutoJoin} from '../../../store/actions/navigationActions';
-import {useNavigation, useRoute} from '@react-navigation/core';
+import {
+  toTeamFormationWithAutoJoin,
+  toTeamPreview,
+} from '../../../store/actions/navigationActions';
+import {toSwitchTeam} from '../../../store/actions/navigationActions';
+import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
 import {TO_TEAMLIST} from '../../../constants/appContants';
+import {errorBox} from '../../../utils/snakBars';
 
 export default function ContestInfoHOC() {
   const navigation = useNavigation();
@@ -54,6 +59,7 @@ export default function ContestInfoHOC() {
     isFullMatch,
   );
 
+  // load and set the contest info in local state
   useEffect(() => {
     if (contests) {
       const contestInfo = contests.find(
@@ -61,9 +67,19 @@ export default function ContestInfoHOC() {
       );
       if (contestInfo) {
         setContestInfo(contestInfo);
+      } else {
+        errorBox('Fatal Error', 0);
+        navigation.goBack();
       }
     }
   }, [contests]);
+
+  // refetch on focus
+  useFocusEffect(
+    useCallback(() => {
+      refetch();
+    }, []),
+  );
 
   function openWallet(input: boolean) {
     if (input) {
@@ -79,6 +95,50 @@ export default function ContestInfoHOC() {
 
   function changePriceDistribution() {
     setCurrent(!current);
+  }
+
+  function lbProfileOnPress(player_key: string, teamCode: string) {
+    try {
+      // is selected player is current player
+      const player = ldbMeta.find(
+        (item: any) => item.player_key === player_key,
+      );
+      if (player.is_current === false) {
+        errorBox('Please wait till the match starts to view other teams', 0);
+        return;
+      }
+      // if the current player team previe their teams
+      const sTeam = teams.find((item: any) => item.team_key === teamCode);
+      if (sTeam) {
+        toTeamPreview(navigation, sTeam);
+      }
+    } catch (err) {
+      errorBox('lbProfileOnPress failed', 0);
+      console.log(err);
+    }
+  }
+
+  function teamSwapOnPress(teamCode: string) {
+    try {
+      const {contest_key} = route.params;
+      // console.log(route.params.contest_key);
+      const jContest = joined.find(
+        (item: any) => item.contestMeta.contest_code === contest_key,
+      );
+      // console.log(jContest.contestMeta.contest_team);
+
+      toSwitchTeam(navigation, {
+        match_key: matchSelector.match_key,
+        contest_key: contest_key,
+        old_team_key: teamCode,
+        player_key: userSelector.mobile,
+        existedTeams: jContest.contestMeta.contest_team,
+      });
+      // console.log(teamCode);
+    } catch (err) {
+      console.log(err);
+      errorBox('teamSwapPressed failed', 0);
+    }
   }
 
   async function proceedToJoin(contest_key: string) {
@@ -122,11 +182,12 @@ export default function ContestInfoHOC() {
       openWallet={openWallet}
       showWalletModal={showWalletModal}
       setShowWalletModal={setShowWalletModal}
-      // setOpenWallet={setOpenWallet}
       proceedToJoin={proceedToJoin}
       ldbLive={ldbLive}
       ldbMeta={ldbMeta}
       ldbErr={ldbErr}
+      lbProfileOnPress={lbProfileOnPress}
+      teamSwapOnPress={teamSwapOnPress}
     />
   );
 }

@@ -2,12 +2,8 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, TouchableOpacity, Text} from 'react-native';
 import {DownArrowIcon} from '../../../../assets/newIcons';
-import {
-  CupIcon,
-  DollarIcon,
-  RankIcon,
-  TickIcon,
-} from '../../../../sharedComponents';
+import {CupIcon, DollarIcon, TickIcon} from '../../../../assets/newIcons';
+import {RankIcon} from '../../../../sharedComponents';
 
 interface PropTypes {
   onContestMatchPress(contest_key: string): any;
