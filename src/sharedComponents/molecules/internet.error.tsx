@@ -1,13 +1,12 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, Image,TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 // import assets from '../../../../../constants/assets_manifest';
 import {useSelector} from 'react-redux';
 import {getAppThemeSelector} from '../../store/selectors';
 import clr from '../../constants/colors';
-import {ButtonComponent, TopBar} from '..';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {ButtonComponent, TopBar} from '../index';
 
 interface PropTypes {
   referch(): any;
@@ -40,6 +39,6 @@ export default function InternetError(props: PropTypes) {
   );
 }
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
   root: {},
 });

@@ -17,8 +17,9 @@ interface PropTypes {
   contest_key: string;
   match_key: string;
   title: string;
-  filled_spots: Array<any>;
+  filled_spots: number;
   total_spots: number;
+  occupaid_cent:number,
   amount_letters: string;
   amount: string;
   guaranteed: boolean;
@@ -31,6 +32,7 @@ interface PropTypes {
 }
 
 export default function ContestCard(props: PropTypes) {
+  
   const clr = useSelector(appColorsSelector);
 
   return (
@@ -59,6 +61,7 @@ export default function ContestCard(props: PropTypes) {
         <ProgressBarContestCard
           isDarkMode={clr.dark}
           total_spots={props.total_spots}
+          occupaid_cent={props.occupaid_cent}
           filled_spots={props.filled_spots}
         />
       </View>

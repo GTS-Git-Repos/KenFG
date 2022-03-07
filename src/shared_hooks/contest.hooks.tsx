@@ -16,15 +16,14 @@ export const useContestList = (
 ) => {
   const {
     data: contests,
-    isSuccess: contestsAPI,
-    isFetching: contestsAPILive,
+    isLoading: ctsLoading,
     refetch: refetchContests,
     isError: ctstError,
   } = useQuery(['contests', match_key, isFullMatch], contestListsRemote, {
-    notifyOnChangeProps: ['data', 'isSuccess', 'isFetching', 'isError'],
+    notifyOnChangeProps: ['data', 'isLoading', 'isError'],
     // staleTime: 1000 * 60,
   });
-  return {contests, contestsAPI, contestsAPILive, refetchContests, ctstError};
+  return {contests, ctsLoading, refetchContests, ctstError};
 };
 
 // Get Created Teams for the match

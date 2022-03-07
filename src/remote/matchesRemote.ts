@@ -83,18 +83,16 @@ export const joinedMatchesRemote = async (params: any) => {
 
 export const contestListsRemote = async (params: any) => {
   try {
-    const response = await requestServer(
-      METHODS.GET,
-      BASE_URL +
-        `${req_contest_list}?m=${params.queryKey[1]}&in=${
-          params.queryKey[2] ? 1 : 2
-        }`,
-    );
+    const {queryKey} = params;
+    const URLPATH = `${req_contest_list}?m=${queryKey[1]}&in=${
+      queryKey[2] ? 1 : 2
+    }`;
+    const response = await requestServer(METHODS.GET, BASE_URL + URLPATH);
     if (response.status === 200) {
       return groupAllContestsAPIRmeote(response.data.data);
-    } else {
-      failedLog('contestsListsRemote()', response);
     }
+    // error message othan 200 status
+    throw 'failed response';
   } catch (err) {
     console.log(err);
     throw err;

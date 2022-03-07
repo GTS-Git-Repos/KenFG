@@ -24,6 +24,7 @@ export const contestleaderBoardRemote = async (params: any) => {
       failedLog('contestleaderBoardRemote', response);
     }
   } catch (err) {
+    console.log(err);
     throw err;
   }
 };

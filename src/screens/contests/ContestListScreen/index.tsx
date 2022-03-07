@@ -72,7 +72,7 @@ export default function ContestListHOC() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const {contests, contestsAPI, refetchContests, ctstError}: any =
+  const {contests, ctsLoading, refetchContests, ctstError}: any =
     useContestList(matchSelector.match_key, userSelector.mobile, isFullMatch);
 
   const {joined, joinedAPI, joinedAPILive, refetchJoinedContest}: any =
@@ -89,14 +89,15 @@ export default function ContestListHOC() {
   );
 
   useEffect(() => {
-    if (contestsAPI) {
+    if (ctsLoading === false) {
+      // API not in loading state
       if (contests) {
         contestDispatch({type: 'UPDATE_CONTESTS', payload: contests});
       } else {
         contestDispatch({type: 'UPDATE_CONTESTS', payload: null});
       }
     }
-  }, [contestsAPI]);
+  }, [ctsLoading]);
 
   // is auto join is in params, <need to refactor it seems like bad practice>
   useEffect(() => {
@@ -256,7 +257,8 @@ export default function ContestListHOC() {
     return <InternetError referch={refetchPage} />;
   }
 
-  if (!isScreenReady || contestsAPI === []) {
+  // if screen is ready or contests API on loading state show loader
+  if (!isScreenReady || ctsLoading) {
     return <ContestScreenLoading title={''} />;
   }
 
@@ -272,7 +274,7 @@ export default function ContestListHOC() {
             <ContestListScreen
               userSelector={userSelector}
               contests={allContests}
-              contestsAPI={contestsAPI}
+              ctsLoading={ctsLoading}
               joined={joined}
               joinedAPI={joinedAPI}
               joinedAPILive={joinedAPILive}

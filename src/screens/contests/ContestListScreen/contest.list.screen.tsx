@@ -30,7 +30,7 @@ interface SortTypes {
 
 interface PropTypes {
   contests: any;
-  contestsAPI: any;
+  ctsLoading: any;
   joined: any;
   joinedAPI: any;
   joinedAPILive: any;
@@ -114,10 +114,11 @@ export default function ContestListScreen(props: PropTypes) {
         ref={props.pagerRef}
         onPageSelected={onPageSelectedAction}
         style={[{flex: 1}]}>
+        {/* list all contests of the match */}
         <View style={{width: width}}>
           <ContestPage
             navigate={navigate}
-            status={props.contestsAPI}
+            status={props.ctsLoading}
             data={props.contests}
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
@@ -131,6 +132,7 @@ export default function ContestListScreen(props: PropTypes) {
             onPressCreateTeam={props.onPressCreateTeam}
           />
         </View>
+        {/* list all the contests that user joined */}
         <View style={{width: width}}>
           <MyContestPage
             joined={props.joined}
@@ -145,6 +147,7 @@ export default function ContestListScreen(props: PropTypes) {
             selectedTab={props.selectedTab}
           />
         </View>
+        {/* list all the teams that user created for that match */}
         <View style={{width: width}}>
           <MyTeamsPage
             teams={props.teams}

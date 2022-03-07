@@ -1,4 +1,5 @@
 import {covertInputTimeStringToDate} from './../utils/comman';
+import {normalizeContests} from './utils.constructor';
 import {splitRoleWisePlayersPayload} from './teams.constructor';
 import {FLAG_IMG_URL} from '../constants/appContants';
 import {UpcommingMatchType} from '../types/app_api';
@@ -6,17 +7,18 @@ import {UpcommingMatchType} from '../types/app_api';
 export const groupAllContestsAPIRmeote = (payload: any) => {
   //  To do need to group contests, by key "group", ['popular','mega']
   try {
-    const paid = payload.filter((item: any) => item.contest_type === 'public');
-    const practice = payload.filter(
-      (item: any) => item.contest_type === 'practice',
-    );
-    if (paid.length === 0 && practice.length === 0) {
-      throw 'no contest found';
+    // if no contest found return empty array
+    if (payload.length === 0) {
+      return [];
     }
-    return [...paid, ...practice];
+    const allContests = normalizeContests(payload);
+    // console.log(JSON.stringify(allContests));
+
+    // build a section list for all contests [MARKED AS LATER]
+    return allContests;
   } catch (err) {
-    console.log('groupAllContestsAPIRmeote', err);
-    return false;
+    console.log(err);
+    throw err;
   }
 };
 

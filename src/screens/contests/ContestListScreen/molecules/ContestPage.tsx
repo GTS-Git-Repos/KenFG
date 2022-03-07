@@ -39,7 +39,7 @@ export default function ContestPage(props: PropTypes) {
     navigation.goBack();
   }
 
-  if (!props.status || !isActiveTab) {
+  if (!isActiveTab) {
     return (
       <ActivityIndicator
         style={[tailwind('mt-10')]}
@@ -105,8 +105,9 @@ export default function ContestPage(props: PropTypes) {
                     contest_key={item.key}
                     match_key={item.match_key}
                     title={item.title}
-                    filled_spots={item?.filled_spots}
+                    filled_spots={item.filled_spots}
                     total_spots={item.total_spots}
+                    occupaid_cent={item.occupaid_cent}
                     entry={item.entry}
                     amount_letters={item.prize.amount_letters}
                     amount={item.prize.amount}

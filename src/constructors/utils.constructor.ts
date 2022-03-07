@@ -285,6 +285,38 @@ export const parseCurrentInnings = (live: any) => {
   };
 };
 
+// tranform and normalize contests API contests for easier use
+export function normalizeContests(payload: Array<any>) {
+  try {
+    const contests = [];
+    for (const contest of payload) {
+      const obj = {...contest};
+      // calc percentage of fillted spots
+      const total_spots = parseInt(obj.total_spots);
+      let filledSpots = parseInt(obj?.filled_spots?.team_count);
+      // if fillted sport not a valid number set to 0 as a filled sport
+      if (Number.isInteger(filledSpots) === false) {
+        filledSpots = 0;
+      }
+      const percent = (filledSpots / total_spots) * 100;
+      // add a new key occupaid cent as a percentage
+      obj.occupaid_cent = percent;
+      // reasign some keys
+      obj.filled_spots = filledSpots;
+      obj.total_spots = total_spots;
+      // max entry as number for easier use
+      obj.max_entry = parseInt(obj.max_entry);
+
+      // push to the stack
+      contests.push(obj);
+    }
+
+    return contests;
+  } catch (err) {
+    throw new Error('failed in normalizeContests()');
+  }
+}
+
 const logError = (name: string, err: any) => {
   console.log(`\x1b[33m [*ERROR*] Request ${name} : err`);
 };
