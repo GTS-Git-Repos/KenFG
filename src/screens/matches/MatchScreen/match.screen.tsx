@@ -62,6 +62,7 @@ export default function LiveMatchScreen(props: PropTypes) {
     setSelectedTab(e.nativeEvent.position);
   };
 
+  // need to change that
   if (!matchAPI) {
     return <PageLoadingSpinner title={'Loading...'} />;
   }

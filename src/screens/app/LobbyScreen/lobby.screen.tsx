@@ -13,7 +13,7 @@ import clr from '../../../constants/colors';
 
 import {
   navigateMatchContestsAction,
-  toContestLiveMatch,
+  toMatch,
 } from '../../../store/actions/navigationActions';
 import {useNavigation} from '@react-navigation/core';
 
@@ -38,10 +38,11 @@ export default function LobbyScreen(props: PropTypes) {
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
   function onPressMyMatchCard(match_key: string) {
-    // toContestLiveMatch(navigation, 'wieng_2022_t20_03');
-    // return;
+    toMatch(navigation, 'iccwwc_2022_g2');
+    return;
+
     if (props.myMatches.status === 'completed') {
-      toContestLiveMatch(navigation, match_key);
+      toMatch(navigation, match_key);
     } else {
       const obj = {
         match_key: match_key,

@@ -262,9 +262,12 @@ const getPlayerData = (players: any, player_key: string) => {
   return players[player_key];
 };
 
+// not used anywhere, need to remove
 export const getTeamKeyByInningsKey = (innings_key: string) => {
   return innings_key.split('_')[0];
 };
+
+// get team code and day number from am in innings key
 export const getTeamAndDayFromInningsKey = (
   innings_key: string,
   teams: any,

@@ -1,5 +1,5 @@
 /**
- *   live match screen, list all the contests and teams of the match
+ *   live match screen, list all the contests and teams created by user of the match
  *  it's possible the user can open that screen without joining any contest, or teams
  *  */
 
@@ -13,7 +13,7 @@ import {toContestMatch} from '../../../navigations/match.links';
 export default function MatchScreenHOC() {
   const navigation = useNavigation();
   const route = useRoute();
-  const {match_key}: string = route.params;
+  const {match_key}:any = route.params;
 
   function onContestMatchPress(contest_key: string) {
     toContestMatch(navigation, match_key, contest_key);

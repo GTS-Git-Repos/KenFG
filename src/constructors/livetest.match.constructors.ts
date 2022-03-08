@@ -54,7 +54,6 @@ export const liveTestMatchFormat = (payload: any) => {
         currentInnings.day,
       );
       // get next innings bowler data
-
       bowler = getCurrentBowlerData(
         allPlayers,
         play.related_balls,
@@ -88,6 +87,6 @@ export const liveTestMatchFormat = (payload: any) => {
   } catch (err) {
     console.log(err);
     log('Failed in <liveMatchStatsFormat>');
-    return null;
+    throw err
   }
 };

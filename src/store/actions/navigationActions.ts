@@ -110,7 +110,7 @@ export const toTeamFormationNoAutoJoin = (navigation: any) => {
   );
 };
 
-export const toContestLiveMatch = (navigation: any, match_key: string) => {
+export const toMatch = (navigation: any, match_key: string) => {
   navigation.dispatch(
     CommonActions.navigate({
       name: 'Match',

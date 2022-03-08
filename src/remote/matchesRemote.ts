@@ -91,7 +91,7 @@ export const contestListsRemote = async (params: any) => {
     if (response.status === 200) {
       return groupAllContestsAPIRmeote(response.data.data);
     }
-    // error message othan 200 status
+    // throw error message othan 200 status code
     throw 'failed response';
   } catch (err) {
     console.log(err);
@@ -136,7 +136,7 @@ export const liveMatchMetaRemote = async (params: any) => {
     }
   } catch (err) {
     console.log(err);
-    return false;
+    throw err
   }
 };
 
