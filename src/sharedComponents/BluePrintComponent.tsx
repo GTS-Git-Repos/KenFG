@@ -20,6 +20,6 @@ export default function BluePrintComponent(props: PropTypes) {
   );
 }
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
   root: {},
 });

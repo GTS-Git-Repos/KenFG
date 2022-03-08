@@ -91,10 +91,12 @@ export default function ContestInfoScreen(props: PropTypes) {
           title={props.contestInfo.title}
           filled_spots={props?.contestInfo.filled_spots}
           total_spots={props.contestInfo.total_spots}
+          occupaid_cent={props.contestInfo.occupaid_cent}
           amount_letters={props.contestInfo.prize.amount_letters}
           amount={props.contestInfo.prize.amount}
           guaranteed={props.contestInfo.guaranteed}
           entry={props.contestInfo.entry}
+          
           max_entry={props.contestInfo.max_entry}
           bonus={props.contestInfo.bonus}
           is_practice={props.contestInfo.is_practice}

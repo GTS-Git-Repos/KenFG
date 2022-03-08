@@ -1,21 +1,23 @@
-import React from 'react';
+// contests filters
+// used in contest list screen and second innings contests list screen
+
+import React, {useState} from 'react';
 import tailwind from '../../../tailwind';
 import {DownArrowIcon, TopArrowIcon} from '../../assets/newIcons';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useSelector} from 'react-redux';
 
 interface PropTypes {
   selectedFilter: null | string;
-  setSelectedFilter(filter: string): any;
-  isFullMatch: boolean;
-  onPressSecondInnings(): any;
-  sortByOnPress(sortBy: any): any;
-  sortStatus: any;
+  // setSelectedFilter(filter: string): any;
+  // isFullMatch: boolean;
+  // onPressSecondInnings(): any;
+  // sortByOnPress(sortBy: any): any;
+  // sortStatus: any;
 }
 
-const TABS = [
+const FILTERS = [
   {
     id: '1',
     name: 'All',
@@ -50,6 +52,7 @@ const TABS = [
     name: '+5',
   },
 ];
+
 const MoreFilters = [
   {
     id: '10',
@@ -73,10 +76,24 @@ const MoreFilters = [
   },
 ];
 
-function FilterTabs(props: PropTypes) {
-  const clr = useSelector(appColorsSelector);
+function FiltersContests(props: PropTypes) {
+  // console.log(tailwind('box flex-row items-center flex-wrap'));
 
+  const [showMore, setShowMore] = useState(false);
+  const clr = {};
   const navigation = useNavigation();
+
+  return (
+    <View style={[ss.root, {flex: 8}]}>
+      {FILTERS.map((item: any) => {
+        return (
+          <TouchableOpacity key={item.id} style={[ss.item]}>
+            <Text style={[ss.text]}>{item.name}</Text>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
   return (
     <View>
       <View style={[tailwind('pt-3 px-4')]}>
@@ -225,7 +242,7 @@ const SortBy = (props: any) => {
 };
 
 const SecondInnings = (props: any) => {
-  const clr = useSelector(appColorsSelector);
+  const clr = {};
   return (
     <TouchableOpacity
       onPress={() => props.onPressSecondInnings()}
@@ -241,20 +258,29 @@ const SecondInnings = (props: any) => {
   );
 };
 
-const FullContest = (props: any) => {
-  return (
-    <TouchableOpacity
-      style={[
-        styles.siroot,
-        tailwind('flex-row items-center px-4 justify-between'),
-      ]}>
-      <Text style={[tailwind(`font-regular text-center text-white font-12`)]}>
-        Full Match Contests
-      </Text>
-      <Icon name="arrow-forward-outline" size={20} color="white" />
-    </TouchableOpacity>
-  );
-};
+const ss = StyleSheet.create({
+  root: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderStyle: 'solid',
+    flexWrap: 'wrap',
+    marginVertical: 8,
+    // backgroundColor: 'red',
+  },
+  item: {
+    borderRadius: 100,
+    paddingHorizontal: 10,
+    paddingVertical: 2,
+    borderColor: 'rgba(31, 41, 55, 1)',
+    borderWidth: 1,
+    margin: 2,
+  },
+  text: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    color: '#FFFFFF',
+  },
+});
 
 const styles = StyleSheet.create({
   privateContestRoot: {
@@ -318,4 +344,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default React.memo(FilterTabs);
+export default FiltersContests;
+// export default React.memo(FiltersContests);

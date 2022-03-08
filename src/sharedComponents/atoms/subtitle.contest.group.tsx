@@ -1,0 +1,37 @@
+// used in contest page
+import React from 'react';
+import tailwind from '../../../tailwind';
+import {View, Image, StyleSheet, Text} from 'react-native';
+
+interface PropTypes {
+  title: string;
+  subtitle: string;
+}
+
+export default function SubtitleContestGroup(props: PropTypes) {
+  return (
+    <View style={[ss.root]}>
+      <Text style={[ss.title]}>{props.title}</Text>
+      <Text style={[ss.subTitle]}>{props.subtitle}</Text>
+    </View>
+  );
+}
+
+const ss = StyleSheet.create({
+  root: {
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  title: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 17,
+    paddingBottom: 4,
+    paddingTop: 4,
+    color: '#FFFFFF',
+  },
+  subTitle: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    color: '#8797B1',
+  },
+});

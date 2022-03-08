@@ -19,10 +19,10 @@ export const queryClient = new QueryClient();
 
 // enableFreeze(true);
 
-Sentry.init({
-  dsn: 'https://7e7f29d7464d49ecabe0a505398c8c00@o1129974.ingest.sentry.io/6173909',
-  tracesSampleRate: 1.0,
-});
+// Sentry.init({
+//   dsn: 'https://7e7f29d7464d49ecabe0a505398c8c00@o1129974.ingest.sentry.io/6173909',
+//   tracesSampleRate: 1.0,
+// });
 
 LogBox.ignoreLogs([
   'Setting a timer',
@@ -36,59 +36,6 @@ if (__DEV__ === false) {
 const App: React.FC = (): JSX.Element | null => {
   useEffect(() => {
     SplashScreen.hide();
-    // Test Db Actions
-    // (async () => {
-    //   SQLite.openDatabase({
-    //     name: 'test_id',
-    //     location: 'default',
-    //   })
-    //     .then(d => {
-    //       // Create Table
-    //       d.executeSql(
-    //         'CREATE TABLE IF NOT EXISTS hello( ' +
-    //           'count INTEGER PRIMARY KEY NOT NULL);',
-    //       )
-    //         .then(s => {
-    //           console.log(s);
-    //         })
-    //         .catch(e => {
-    //           console.log('failesd');
-    //         });
-
-    //       // insert some data
-
-    //       d.executeSql('INSERT INTO hello (count) values (5)')
-    //         .then(d => {
-    //           console.log('insertId ->', d[0].insertId);
-    //         })
-    //         .catch(e => {
-    //           console.log('failed to query');
-    //         });
-
-    //       // Read all data
-
-    //       d.executeSql('SELECT count FROM hello')
-    //         .then(d => {
-    //           console.log('data ==>', d[0].rows.raw());
-    //         })
-    //         .catch(e => {
-    //           console.log('failed to get data');
-    //         });
-
-    //       // Select Individual value
-
-    //       d.executeSql('SELECT * from hello WHERE count == 1')
-    //         .then(d => {
-    //           console.log(d[0].rows.raw()[0].count);
-    //         })
-    //         .catch(err => {
-    //           console.log('Failed to get data', err);
-    //         });
-    //     })
-    //     .catch(e => {
-    //       console.log('error');
-    //     });
-    // })();
   }, []);
 
   return (
@@ -98,7 +45,6 @@ const App: React.FC = (): JSX.Element | null => {
         <QueryClientProvider client={queryClient}>
           <GestureHandlerRootView style={{flex: 1}}>
             <RootNavigation />
-            
           </GestureHandlerRootView>
         </QueryClientProvider>
       </Provider>

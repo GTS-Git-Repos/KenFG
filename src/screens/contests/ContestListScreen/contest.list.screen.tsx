@@ -10,7 +10,9 @@ import {
   WalletHalfModal,
 } from '../../../sharedComponents';
 import TabsContest from './molecules/TabsContest';
-import ContestPage from './molecules/ContestPage';
+// import ContestPage from './molecules/ContestPage';
+import {ContestPage} from '../../../sharedComponents/';
+
 import MyContestPage from './molecules/MyContestPage';
 import MyTeamsPage from './molecules/MyTeamsPage';
 import {useSelector} from 'react-redux';
@@ -119,7 +121,7 @@ export default function ContestListScreen(props: PropTypes) {
           <ContestPage
             navigate={navigate}
             status={props.ctsLoading}
-            data={props.contests}
+            contests={props.contests}
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
             proceedToJoin={props.proceedToJoin}

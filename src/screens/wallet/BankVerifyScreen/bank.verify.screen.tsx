@@ -11,8 +11,6 @@ import tailwind from '../../../../tailwind';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import {useSelector} from 'react-redux';
-
 import {
   ButtonComponent,
   TopBar,

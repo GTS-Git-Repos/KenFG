@@ -1,3 +1,5 @@
+// will be removed
+
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, ActivityIndicator, ScrollView} from 'react-native';
@@ -40,13 +42,7 @@ export default function ContestPage(props: PropTypes) {
   }
 
   if (!isActiveTab) {
-    return (
-      <ActivityIndicator
-        style={[tailwind('mt-10')]}
-        color={dT ? '#d1b45a' : '#9C181E'}
-        size="large"
-      />
-    );
+    return null;
   }
   if (props.data === null) {
     return (

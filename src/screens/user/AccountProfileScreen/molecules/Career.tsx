@@ -19,14 +19,13 @@ export default function Career(props: PropTypes) {
         </View> */}
         <View style={[tailwind('flex-row items-center'), {marginTop: 10}]}>
           <MatchStat index={0} text="Mathches" value="3,324" />
-          <MatchStat index={1} text="Series" value="3,324" />
+          {/* <MatchStat index={1} text="Series" value="3,324" /> */}
           <MatchStat index={2} text="Contests" value="3,324" />
         </View>
       </View>
       <View
         style={[
           tailwind('bg-dark-3 rounded-b'),
-          
           {padding: 4},
           {backgroundColor: '#121D2E'},
         ]}>

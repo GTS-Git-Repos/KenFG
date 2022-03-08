@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useMutation} from 'react-query';
-import {initiatePaymentRemote} from '../../../remote/walletRemote';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 import BankVerifyScreen from './bank.verify.screen';
 import {useDispatch, useSelector} from 'react-redux';
@@ -8,6 +7,8 @@ import {userInfo} from '../../../store/selectors';
 import {updateUserInfo} from '../../../store/actions/userAction';
 import {useNavigation} from '@react-navigation/core';
 import {useImageUpload} from '../../../shared_hooks/app.hooks';
+import {format} from 'date-fns';
+import {uploadBankInfoRemote} from '../../../remote/userRemote';
 
 export default function BankVerifyHOC() {
   const dispatch = useDispatch();
@@ -15,10 +16,10 @@ export default function BankVerifyHOC() {
   const userMeta = useSelector(userInfo);
   const {image, openLibrary, removeImage} = useImageUpload();
 
-  const [openDate, setOpenDate] = useState<any>(false);
+  const [loading, setLoading] = useState(false);
 
-  const [acno, setAcno] = useState('');
-  const [reacno, setReacno] = useState('');
+  const [acno, setAcno] = useState('1234567890');
+  const [reacno, setReacno] = useState('1234567890');
   const [ifsc, setIfsc] = useState('IOBA0000072');
   const [name, setName] = useState('hello');
   const [branch, setBranch] = useState('hello');
@@ -69,8 +70,30 @@ export default function BankVerifyHOC() {
     }
   }
 
-  function uploadBank() {
-    console.log('ok');
+  async function uploadBank() {
+    const photo: any = {
+      uri: image.path,
+      type: image.mime,
+      name: `${userMeta.mobile}-pan.jpg`,
+    };
+
+    const formData = new FormData();
+    formData.append('player_key', userMeta.mobile);
+    formData.append('bank_ac', acno);
+    formData.append('bank_name', name);
+    formData.append('bank_ifsc', ifsc);
+    formData.append('bank_branch', branch);
+    formData.append('bank_state', state);
+    formData.append('file', photo);
+    setLoading(true);
+    const response = await uploadBankInfoRemote(formData);
+    setLoading(false);
+    if (response) {
+      infoBox('Bank information updated', 500);
+      navigation.goBack();
+    } else {
+      infoBox('Failed to submit', 500);
+    }
   }
 
   return (

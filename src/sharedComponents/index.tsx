@@ -33,6 +33,8 @@ import WalletHalfModal from './molecules/wallet.half.modal';
 import MatchCommentary from './molecules/match.commentary.page';
 import MatchScoreBoard from './molecules/match.scoreboard.page';
 import InternetError from './molecules/internet.error';
+import ContestPage from './molecules/contest.page';
+import FiltersContests from './molecules/filters.contests';
 
 import NoContentShared from './atoms/no.content.shared';
 
@@ -70,11 +72,13 @@ export {
   ProgressbarShared,
   BlockScreenByLoading,
   ButtonComponent,
+  ContestPage,
   SecondaryButton,
   MatchCommentary,
   MatchScoreBoard,
   InternetError,
   PrivateContestTeams,
+  FiltersContests,
   WinningsListRank,
   WalletHalfModal,
   MatchPlayersStats,

@@ -16,7 +16,7 @@ import LevelCard from './molecules/Levels';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import AccountSubTitle from './atoms/AccountSubTitle';
-import Career from './molecules/Career';
+import Career from './molecules/Career';  
 import PlayerContests from './molecules/PlayerContests';
 import {useSelector} from 'react-redux';
 import {Modalize} from 'react-native-modalize';

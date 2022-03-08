@@ -11,6 +11,7 @@ const req_verify = '/verify.php';
 const req_getProfile = '/view-profile.php';
 const req_addDeposit = '/update-deposit.php';
 const req_kyc_pan = '/kyc.php';
+const req_bank_verify = "/bank-account.php"
 const req_profileUpload = '/profile-upload.php';
 
 export const getUserRemote = async (payload: any) => {
@@ -87,6 +88,20 @@ export const uploadPanKYCRemote = async (formData: any) => {
       return true;
     } else {
       failedLog('uploadPanKYCRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const uploadBankInfoRemote = async (formData: any) => {
+  try {
+    const response = await fileUploadServer(BASE_URL + req_bank_verify, formData);
+    if (response) {
+      return true;
+    } else {
+      failedLog('uploadBankInfoRemote()', response);
     }
   } catch (err) {
     console.log(err);

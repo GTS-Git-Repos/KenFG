@@ -22,10 +22,12 @@ const SelectedMatchState = (state: any) => state.app.selected_match;
 // it tracks is user went to team formation by choosing auto join or not
 const JoinContestState = (state: any) => state.app.joinContestRequest;
 
+// return true or false based on dark theme set
 export const getAppThemeSelector = createSelector(DarkModeState, darkMode => {
   return darkMode;
 });
 
+// NOT USED IN ANYWHERE NEED TO REMOVE
 export const appColorsSelector = createSelector(DarkModeState, darkMode => {
   if (darkMode) {
     return {
