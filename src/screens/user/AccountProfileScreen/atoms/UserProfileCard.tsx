@@ -4,12 +4,13 @@ import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const IMAGESIZE = 90;
+const IMAGESIZE = 60;
 
 interface PropTypes {
   image: string;
   name: string;
   username: string;
+  gender: any;
   level: string;
   moreOptionSheet: any;
 }
@@ -20,12 +21,17 @@ export default function UserProfileCard(props: PropTypes) {
       <View style={[tailwind(''), {flex: 2}]}>
         <TouchableOpacity
           onPress={() => props.moreOptionSheet?.current?.open()}
-          style={[tailwind('rounded-full'), {width: 60, height: 60}]}>
-          <Image
-            resizeMode="contain"
-            source={assets.user_temp_profile}
-            style={[tailwind('w-full h-full')]}
-          />
+          style={[ss.imageContainer]}>
+          {/* if image exists */}
+          {props.image ? (
+            <Image
+              resizeMode="cover"
+              source={{uri: `http://kenfg.com/uploads/${props.image}`}}
+              style={[ss.img]}
+            />
+          ) : (
+            <TempUserImage female={props.gender} />
+          )}
         </TouchableOpacity>
       </View>
       <View style={[tailwind(''), {flex: 7}]}>
@@ -60,8 +66,29 @@ export default function UserProfileCard(props: PropTypes) {
   );
 }
 
-const styles = StyleSheet.create({
-  image: {
+function TempUserImage(props: any) {
+  return props.female ? (
+    <Image
+      resizeMode="cover"
+      source={assets.user_temp_profile}
+      style={[{width: 60, height: 60}]}
+    />
+  ) : (
+    <Image
+      resizeMode="cover"
+      source={assets.user_temp_profile}
+      style={[{width: 60, height: 60}]}
+    />
+  );
+}
+
+const ss = StyleSheet.create({
+  imageContainer: {
+    width: IMAGESIZE,
+    height: IMAGESIZE,
+    borderRadius: IMAGESIZE / 2,
+  },
+  img: {
     width: IMAGESIZE,
     height: IMAGESIZE,
     borderRadius: IMAGESIZE / 2,

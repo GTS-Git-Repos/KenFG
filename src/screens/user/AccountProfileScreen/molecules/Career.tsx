@@ -3,7 +3,7 @@ import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import {BottomLine} from '../../../../sharedComponents';
+// import {BottomLine} from '../../../../sharedComponents';
 
 interface PropTypes {
   text?: string;
@@ -14,9 +14,9 @@ export default function Career(props: PropTypes) {
     <View>
       <View style={[tailwind('bg-dark-3 rounded-t py-3 px-4')]}>
         <WinRate />
-        <View>
+        {/* <View>
           <BottomLine />
-        </View>
+        </View> */}
         <View style={[tailwind('flex-row items-center'), {marginTop: 10}]}>
           <MatchStat index={0} text="Mathches" value="3,324" />
           <MatchStat index={1} text="Series" value="3,324" />

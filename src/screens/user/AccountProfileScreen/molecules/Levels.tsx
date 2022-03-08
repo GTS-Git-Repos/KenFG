@@ -2,7 +2,7 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {BottomLine} from '../../../../sharedComponents';
+// import {BottomLine} from '../../../../sharedComponents';
 import assets from '../../../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
 
@@ -14,7 +14,10 @@ export default function LevelCard(props: PropTypes) {
   const navigation = useNavigation<any>();
   return (
     <View style={[tailwind('rounded bg-dark-3 my-2 py-3 px-4 ')]}>
-      <View style={[tailwind('flex-row items-center')]}>
+      <View
+        style={[
+          tailwind('flex-row items-center pb-3 border-t border-gray-800'),
+        ]}>
         <View style={[tailwind('rounded-full'), {width: 15, height: 15}]}>
           <Image
             resizeMode="contain"
@@ -32,9 +35,9 @@ export default function LevelCard(props: PropTypes) {
           Cash Bonus
         </Text>
       </View>
-      <View style={[tailwind('py-2')]}>
+      {/* <View style={[tailwind('py-2')]}>
         <BottomLine />
-      </View>
+      </View> */}
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => navigation.navigate('UserGoalsScreen')}
@@ -48,7 +51,7 @@ export default function LevelCard(props: PropTypes) {
   );
 }
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
   shadow: {
     shadowColor: '#fff',
     shadowOffset: {

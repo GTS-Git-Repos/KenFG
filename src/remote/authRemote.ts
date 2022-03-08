@@ -10,7 +10,7 @@ export const signupRemote = async (payload: any) => {
   try {
     const response = await requestServer(METHODS.POST, BASE_URL + req_signup, {
       mobile: payload.mobile,
-      invitecode: payload.invitecode,
+      invitecode: (payload.invitecode ??= ''),
     });
     if (response.status === 200) {
       return response.data;
@@ -27,6 +27,7 @@ export const loginRemote = async (payload: any) => {
   try {
     const response = await requestServer(METHODS.POST, BASE_URL + req_login, {
       mobile: payload.mobile,
+      invitecode: (payload.invitecode ??= ''),
     });
     if (response.status === 200) {
       return response.data;

@@ -63,7 +63,7 @@ export default function AddCashScreenHOC() {
   }
 
   async function uploadPANCard() {
-    let photo: any = {
+    const photo: any = {
       uri: image.path,
       type: image.mime,
       name: `${userMeta.mobile}-pan.jpg`,

@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import {
   View,
-  Dimensions,
+  StyleSheet,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -9,6 +9,8 @@ import {
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import AccountProfileTopBar from './atoms/AccountProfileTopBar';
+import {BlockScreenByLoading} from '../../../sharedComponents';
+
 import UserProfileCard from './atoms/UserProfileCard';
 import LevelCard from './molecules/Levels';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -24,12 +26,19 @@ import {TopBar} from '../../../sharedComponents';
 const log = console.log;
 
 interface PropTypes {
+  loading: boolean;
   userMeta: UserMetaType;
   moreOptionSheet: any;
   imageUpload(): any;
 }
 
 export default function AccountProfileScreen(props: PropTypes) {
+  // console.log(
+  //   tailwind(
+  //     'bg-dark-4 p-3 rounded-t-lg flex-row items-center border-b border-gray-800',
+  //   ),
+  // );
+
   return (
     <View style={[tailwind('h-full bg-dark')]}>
       <TopBar text={'User Account'} />
@@ -43,9 +52,10 @@ export default function AccountProfileScreen(props: PropTypes) {
         ]}>
         <ScrollView contentContainerStyle={tailwind('px-2')}>
           <UserProfileCard
-            image={''}
+            image={props.userMeta.profile_img}
             name={props.userMeta.name}
             username={props.userMeta.name}
+            gender={props.userMeta.gender}
             level={'0'}
             moreOptionSheet={props.moreOptionSheet}
           />
@@ -82,18 +92,16 @@ export default function AccountProfileScreen(props: PropTypes) {
           <RemoveProfileLink />
         </View>
       </Modalize>
+
+      {/* loading while image upload process */}
+      {props.loading && <BlockScreenByLoading />}
     </View>
   );
 }
 
 const SheetHeader = () => {
   return (
-    <View
-      style={[
-        tailwind(
-          'bg-dark-4 p-3 rounded-t-lg flex-row items-center border-b border-gray-800',
-        ),
-      ]}>
+    <View style={[ss.sheetHeader]}>
       <Icon name="menu-outline" size={25} color="white" />
       <Text style={[tailwind('font-regular px-4 text-white font-15')]}>
         More Settings
@@ -139,3 +147,16 @@ const RemoveProfileLink = (props: any) => {
     </TouchableOpacity>
   );
 };
+
+const ss = StyleSheet.create({
+  sheetHeader: {
+    alignItems: 'center',
+    backgroundColor: '#0D1320',
+    borderColor: 'rgba(31, 41, 55, 1)',
+    borderWidth: 1,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    flexDirection: 'row',
+    padding: 12,
+  },
+});

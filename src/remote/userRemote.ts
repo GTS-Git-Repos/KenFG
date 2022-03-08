@@ -11,6 +11,7 @@ const req_verify = '/verify.php';
 const req_getProfile = '/view-profile.php';
 const req_addDeposit = '/update-deposit.php';
 const req_kyc_pan = '/kyc.php';
+const req_profileUpload = '/profile-upload.php';
 
 export const getUserRemote = async (payload: any) => {
   try {
@@ -24,6 +25,19 @@ export const getUserRemote = async (payload: any) => {
     } else {
       failedLog('getUserRemote()', response);
     }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export const uploadUserProfileImageRemote = async (payload: any) => {
+  try {
+    const response = await fileUploadServer(BASE_URL + req_profileUpload, payload);
+    if (response) {
+      return true;
+    }
+    throw 'uploadUserProfileImageRemote failed';
   } catch (err) {
     console.log(err);
     return false;
