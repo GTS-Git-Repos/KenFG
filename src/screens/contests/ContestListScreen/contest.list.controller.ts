@@ -5,7 +5,7 @@ import {createSelector} from 'reselect';
 // States
 export const matchContestsState = {
   allContests: [],
-  activeFilter: null,
+  contestFilter: null,
   sortByHighPrice: null,
   sortByHighEntryFee: null,
 };
@@ -20,7 +20,7 @@ export const contestReducer = (state: any, action: any) => {
     case 'UPDATE_FILTER':
       return {
         ...state,
-        activeFilter: action.payload,
+        contestFilter: action.payload,
       };
     case 'UPDATE_SORT':
       return {
@@ -35,12 +35,22 @@ export const contestReducer = (state: any, action: any) => {
 
 // Selectors
 const AllContestsState = (state: any) => state.allContests;
+const ContestFilterState = (state: any) => state.contestFilter;
 const SortByMaxPriceState = (state: any) => state.sortByHighPrice;
 const SortByMaxEntryState = (state: any) => state.sortByHighEntryFee;
 
 export const allContestsSelector = createSelector(
-  [AllContestsState, SortByMaxPriceState, SortByMaxEntryState],
-  (all_contests, sortMaxPrice, sortMaxEntry) => {
+  [
+    AllContestsState,
+    SortByMaxPriceState,
+    SortByMaxEntryState,
+    ContestFilterState,
+  ],
+  (all_contests, sortMaxPrice, sortMaxEntry, contestFilter) => {
+    // filter not implemented yet
+    if (contestFilter !== null) {
+      return [];
+    }
     if (sortMaxEntry) {
       const contests = sortBy(all_contests, 'entry');
       return contests.reverse();
@@ -65,3 +75,25 @@ export const sortStatusSelector = createSelector(
     return {max_price, max_entry};
   },
 );
+
+// actions
+
+export function updateContests(payload: any) {
+  // if (payload.length === 0) {
+  //   return {
+  //     type: 'UPDATE_CONTESTS',
+  //     payload: null,
+  //   };
+  // }
+  return {
+    type: 'UPDATE_CONTESTS',
+    payload,
+  };
+}
+
+export function updateContestFilter(payload: any) {
+  return {
+    type: 'UPDATE_FILTER',
+    payload,
+  };
+}

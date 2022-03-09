@@ -2,6 +2,7 @@
  * used in
  * 1.  contest list screen
  * 2. contest info screen
+ * 3. second innings contests list screen
  */
 
 import React from 'react';
@@ -13,7 +14,7 @@ import {
   BackIcon,
   NotificationIcon,
   HelpIcon,
-} from '../../assets/newIcons/';
+} from '../../assets/newIcons';
 import clr from '../../constants/colors';
 
 interface PropTypes {
@@ -80,7 +81,7 @@ const ss = StyleSheet.create({
     fontFamily: 'gadugi-bold',
     fontSize: 14,
     textTransform: 'uppercase',
-    width: 100,
+    width: 140,
   },
   subtitle: {
     fontFamily: 'gadugi-normal',

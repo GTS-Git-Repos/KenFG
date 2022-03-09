@@ -1,5 +1,4 @@
 import TopBar from './atoms/TopBar';
-import TopbarContest from './atoms/TopbarContest';
 import BottomLine from './atoms/BottomLine';
 import FullScreenLoading from './atoms/FullScreenLoading';
 import ButtonComponent from './atoms/ButtonComponent';
@@ -7,13 +6,16 @@ import BlockScreenByLoading from './atoms/BlockScreenByLoading';
 import MatchStat from './atoms/MatchStat';
 import Projection from './atoms/Projection';
 import ExpertsStats from './atoms/ExpertsStats';
-import ContestScreenLoading from './atoms/ContestScreenLoading';
 import TeamCode from './atoms/TeamCode';
 import TabsBottomLine from './atoms/TabsBottomLine';
 import PageLoadingSpinner from './atoms/page.loading.spinnner';
 import SecondaryButton from './atoms/secondaryButton';
 import ProgressbarShared from './atoms/progressbar.shared';
 import WinningsListRank from './atoms/winnings.list.rank';
+import NoContentShared from './atoms/no.content.shared';
+import NoDataContests from './atoms/no.data.contest';
+import ContestScreenLoading from './atoms/contest.screen.loading';
+import NoContests from './atoms/no.contests';
 
 import ContestCard from './molecules/contest.card.shared';
 import TeamsCard from './molecules/TeamsCard';
@@ -35,8 +37,10 @@ import MatchScoreBoard from './molecules/match.scoreboard.page';
 import InternetError from './molecules/internet.error';
 import ContestPage from './molecules/contest.page';
 import FiltersContests from './molecules/filters.contests';
-
-import NoContentShared from './atoms/no.content.shared';
+import MyContestPage from './molecules/mycontest.contests';
+import MyTeamsContestPage from './molecules/my.teams.contest.page';
+import CreateTeamButton from './molecules/create.team.button';
+import MatchContestTabs from './molecules/match.contest.tabs';
 
 import MoneyIcon from './icons/MoneyIcon';
 import Facebook from './icons/Facebook';
@@ -67,7 +71,6 @@ import ReferPeopleIcon from './icons/ReferPeopleIcon';
 
 export {
   TopBar,
-  TopbarContest,
   ContestTypeSwitch,
   ProgressbarShared,
   BlockScreenByLoading,
@@ -76,15 +79,20 @@ export {
   SecondaryButton,
   MatchCommentary,
   MatchScoreBoard,
+  CreateTeamButton,
+  NoDataContests,
   InternetError,
   PrivateContestTeams,
+  MyTeamsContestPage,
   FiltersContests,
   WinningsListRank,
   WalletHalfModal,
   MatchPlayersStats,
+  NoContests,
   JoinContestModal,
   BottomLine,
   MatchTeamCard,
+  MyContestPage,
   NoContentShared,
   FullScreenLoading,
   PageLoadingSpinner,
@@ -92,6 +100,7 @@ export {
   TeamCode,
   Projection,
   ContestScreenLoading,
+  MatchContestTabs,
   PriceDistributionSwitch,
   CurrentLiveStatus,
   TeamsCard,

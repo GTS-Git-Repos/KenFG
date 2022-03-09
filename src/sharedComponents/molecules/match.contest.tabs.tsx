@@ -1,11 +1,9 @@
-import React from 'react';
-import tailwind from '../../../../../tailwind';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {useSelector} from 'react-redux';
-import {appColorsSelector} from '../../../../store/selectors';
-import clr from '../../../../constants/colors';
+// tab
 
-const log = console.log;
+import React from 'react';
+import tailwind from '../../../tailwind';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   dT: boolean;
@@ -15,7 +13,7 @@ interface PropTypes {
   teamsCount: any;
 }
 
-function TabsContest(props: PropTypes) {
+export default function MatchContestTabs(props: PropTypes) {
   return (
     <View style={[ss.root, props.dT ? clr.bgd2 : clr.bgw]}>
       {/* Contests option */}
@@ -23,7 +21,6 @@ function TabsContest(props: PropTypes) {
         <TouchableOpacity
           onPress={() => props.onTabPressed(0)}
           style={[
-            tailwind('w-4/12'),
             ss.tabContainer,
             props.selectedTab === 0 ? ss.dactiveTab : {},
           ]}>
@@ -36,7 +33,6 @@ function TabsContest(props: PropTypes) {
         <TouchableOpacity
           onPress={() => props.onTabPressed(0)}
           style={[
-            tailwind('w-4/12'),
             ss.lTabContainer,
             props.selectedTab === 0 ? ss.lactiveTab : {},
           ]}>
@@ -54,7 +50,6 @@ function TabsContest(props: PropTypes) {
         <TouchableOpacity
           onPress={() => props.onTabPressed(1)}
           style={[
-            tailwind('w-4/12'),
             ss.tabContainer,
             props.selectedTab === 1 ? ss.dactiveTab : {},
           ]}>
@@ -69,7 +64,6 @@ function TabsContest(props: PropTypes) {
         <TouchableOpacity
           onPress={() => props.onTabPressed(1)}
           style={[
-            tailwind('w-4/12'),
             ss.lTabContainer,
             props.selectedTab === 1 ? ss.lactiveTab : {},
           ]}>
@@ -89,7 +83,6 @@ function TabsContest(props: PropTypes) {
         <TouchableOpacity
           onPress={() => props.onTabPressed(2)}
           style={[
-            tailwind('w-4/12'),
             ss.tabContainer,
             props.selectedTab === 2 ? ss.dactiveTab : {},
           ]}>
@@ -104,11 +97,7 @@ function TabsContest(props: PropTypes) {
       ) : (
         <TouchableOpacity
           onPress={() => props.onTabPressed(2)}
-          style={[
-            tailwind('w-4/12'),
-            ss.lTabContainer,
-            props.selectedTab === 2 && ss.lactiveTab,
-          ]}>
+          style={[ss.lTabContainer, props.selectedTab === 2 && ss.lactiveTab]}>
           <Text
             style={[
               props.selectedTab === 2 ? ss.activeText : ss.text,
@@ -134,6 +123,7 @@ const ss = StyleSheet.create({
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,
+    width: '33.333333%',
   },
   lTabContainer: {
     paddingTop: 10,
@@ -166,5 +156,3 @@ const ss = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
-export default TabsContest;

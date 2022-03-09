@@ -10,7 +10,7 @@ import NoContent from '../atoms/no.content.contest';
 import {useNavigation} from '@react-navigation/core';
 import {getAppThemeSelector} from '../../../../store/selectors';
 import clr from '../../../../constants/colors';
-import CreateTeamButton from '../atoms/CreateTeamButton';
+import CreateTeamButton from '../atoms/__CreateTeamButton';
 import {useSelector} from 'react-redux';
 const log = console.log;
 

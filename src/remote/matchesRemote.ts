@@ -8,6 +8,7 @@ import compareTeamMeta from '../constants/mocks/mockCompareTeam.json';
 import {liveTestMatchFormat} from '../constructors/livetest.match.constructors';
 import {parseJoinedTeamsAPI} from '../constructors/teams.constructor';
 import {normalizeGetPlayersAPI} from '../constructors/teams.constructor';
+import MockMatchScore from '../constants/mocks/aussl_2022_t20_03_live.json';
 import {
   extractDataFromUpcommingMatchesAPI,
   extractJoinedContestAPIResponse,
@@ -81,23 +82,7 @@ export const joinedMatchesRemote = async (params: any) => {
   }
 };
 
-export const contestListsRemote = async (params: any) => {
-  try {
-    const {queryKey} = params;
-    const URLPATH = `${req_contest_list}?m=${queryKey[1]}&in=${
-      queryKey[2] ? 1 : 2
-    }`;
-    const response = await requestServer(METHODS.GET, BASE_URL + URLPATH);
-    if (response.status === 200) {
-      return groupAllContestsAPIRmeote(response.data.data);
-    }
-    // throw error message othan 200 status code
-    throw 'failed response';
-  } catch (err) {
-    console.log(err);
-    throw err;
-  }
-};
+
 
 export const searchContestsRemote = async (payload: any) => {
   try {
@@ -119,7 +104,7 @@ export const searchContestsRemote = async (payload: any) => {
 
 export const liveMatchMetaRemote = async (params: any) => {
   try {
-    // return liveTestMatchFormat(CompletedTestMatchMeta);
+    return liveTestMatchFormat(CompletedTestMatchMeta);
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_live_match,
@@ -136,7 +121,7 @@ export const liveMatchMetaRemote = async (params: any) => {
     }
   } catch (err) {
     console.log(err);
-    throw err
+    throw err;
   }
 };
 

@@ -6,10 +6,7 @@ import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import MyMatchesScreen from './my.matches.screen';
 import {useMatches} from './mymatches.workers';
 import {useNavigation} from '@react-navigation/core';
-import {
-  navigateMatchContestsAction,
-  toContestLiveMatch,
-} from '../../../store/actions/navigationActions';
+import {navigateMatchContestsAction} from '../../../store/actions/navigationActions';
 import {updateFullMatchAction} from '../../../store/actions/appActions';
 const log = console.log;
 
@@ -54,7 +51,6 @@ export default function MyMatchesScreenHOC() {
       navigateMatchContestsAction(navigation, obj);
     }
     if (matchMeta.status === 'completed') {
-      toContestLiveMatch(navigation, matchMeta.key);
       return;
     }
   };

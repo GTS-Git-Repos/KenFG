@@ -3,9 +3,30 @@
 import {parseContestLeaderBoardAPI} from '../constructors/matchcontest.constructors';
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
+import {groupAllContestsAPIRmeote} from '../constructors/matchcontest.constructors';
 
 const req_edit_contest = '/edit-contest.php';
 const req_contest_leaderboard = '/leaderboard.php';
+const req_contest_list = '/contests.php';
+
+
+export const contestListsRemote = async (params: any) => {
+  try {
+    const {queryKey} = params;
+    const URLPATH = `${req_contest_list}?m=${queryKey[1]}&in=${
+      queryKey[2] ? 1 : 2
+    }`;
+    const response = await requestServer(METHODS.GET, BASE_URL + URLPATH);
+    if (response.status === 200) {
+      return groupAllContestsAPIRmeote(response.data.data);
+    }
+    // throw error message othan 200 status code
+    throw 'failed response';
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
 
 export const contestleaderBoardRemote = async (params: any) => {
   try {
@@ -42,6 +63,7 @@ export const switchTeamInContestRemote = async (payload: any) => {
       failedLog('switchTeamInContestRemote', response);
     }
   } catch (err) {
+    console.log(err);
     throw err;
   }
 };

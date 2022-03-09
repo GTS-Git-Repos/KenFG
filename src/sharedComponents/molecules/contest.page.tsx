@@ -4,18 +4,24 @@
 
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Image, StyleSheet, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../constants/assets_manifest';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Text,
+  ActivityIndicator,
+} from 'react-native';
 import {useSelector} from 'react-redux';
-import {FiltersContests} from '../../sharedComponents';
+import {FiltersContests, NoContests} from '../../sharedComponents';
 import {getAppThemeSelector} from '../../store/selectors';
 import clr from '../../constants/colors';
 import LinkPrC from '../atoms/link.private.contest';
+import CreateTeamButton from './create.team.button';
 import SiLink from '../atoms/si.link';
 import SortContests from '../atoms/sort.contests';
 import ContestTitle from '../atoms/subtitle.contest.group';
 import ContestCard from './contest.card.shared';
+import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   contests: Array<any>;
@@ -23,8 +29,19 @@ interface PropTypes {
 
 export default function ContestsPage(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
+  const navigation = useNavigation();
+
+  function noContentAction() {
+    navigation.goBack();
+  }
+
+  // handle when no contests found
+  if (props.contests?.length === 0) {
+    return <NoContests loadig={false} />;
+  }
+
   return (
-    <View style={[tailwind('')]}>
+    <View style={[ss.root]}>
       {/* Top section */}
       <View style={[ss.troot]}>
         <FiltersContests selectedFilter={null} />
@@ -63,11 +80,15 @@ export default function ContestsPage(props: PropTypes) {
           );
         })}
       </View>
+      <CreateTeamButton onPressCreateTeam={() => {}} />
     </View>
   );
 }
 
 const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
   troot: {
     flexDirection: 'row',
     alignItems: 'center',

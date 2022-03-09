@@ -1,9 +1,12 @@
 // A place where a contest related hooks all are placed
 
 import {useQuery} from 'react-query';
-import {contestleaderBoardRemote} from '../remote/contestRemote';
+
 import {
+  contestleaderBoardRemote,
   contestListsRemote,
+} from '../remote/contestRemote';
+import {
   getCreatedTeamsRemote,
   getJoinedContestRemote,
   liveMatchMetaRemote,

@@ -39,7 +39,7 @@ const ImageSlider = (props: PropTypes) => {
     <Swiper
       loop={true}
       showsButtons={false}
-      autoplay={true}
+      autoplay={false}
       showsPagination={false}
       removeClippedSubviews={false}
       activeDotColor={'#d1b45a'}

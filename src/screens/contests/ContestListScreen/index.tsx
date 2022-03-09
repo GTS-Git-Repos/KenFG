@@ -13,14 +13,14 @@ import {
   userInfo,
 } from '../../../store/selectors';
 import ContestListScreen from './contest.list.screen';
-import ContestScreenLoading from './atoms/screen.loading.contest';
+// import ContestScreenLoading from './atoms/screen.loading.contest';
 import {TO_TEAMLIST} from '../../../constants/appContants';
 
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useContestList} from '../../../shared_hooks/contest.hooks';
 import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
 import {errorBox, infoBox} from '../../../utils/snakBars';
-import {InternetError} from '../../../sharedComponents/';
+import {InternetError, ContestScreenLoading} from '../../../sharedComponents/';
 import PagerView from 'react-native-pager-view';
 import {joinContestRemote} from '../../../remote/matchesRemote';
 import {View} from 'react-native';
@@ -40,6 +40,7 @@ import {
   contestReducer,
   matchContestsState,
   sortStatusSelector,
+  updateContests,
 } from './contest.list.controller';
 import {allContestsSelector} from './contest.list.controller';
 import {TeamFormationMutationType} from '../../../types/match';
@@ -72,6 +73,8 @@ export default function ContestListHOC() {
 
   const [selectedTab, setSelectedTab] = useState(0);
 
+  // api calls data
+
   const {contests, ctsLoading, refetchContests, ctstError}: any =
     useContestList(matchSelector.match_key, userSelector.mobile, isFullMatch);
 
@@ -91,11 +94,7 @@ export default function ContestListHOC() {
   useEffect(() => {
     if (ctsLoading === false) {
       // API not in loading state
-      if (contests) {
-        contestDispatch({type: 'UPDATE_CONTESTS', payload: contests});
-      } else {
-        contestDispatch({type: 'UPDATE_CONTESTS', payload: null});
-      }
+      contestDispatch(updateContests(contests));
     }
   }, [ctsLoading]);
 
@@ -252,62 +251,50 @@ export default function ContestListHOC() {
   function onPressCreateTeam() {
     toTeamFormationNoAutoJoin(navigation);
   }
-  // if contests api network failed
+  // if contests api network error happended
   if (ctstError) {
     return <InternetError referch={refetchPage} />;
   }
 
   // if screen is ready or contests API on loading state show loader
   if (!isScreenReady || ctsLoading) {
-    return <ContestScreenLoading title={''} />;
+    return <ContestScreenLoading />;
   }
 
   return (
-    <View style={[{flex: 1}]}>
-      <FlatList
-        refreshing={false}
-        onRefresh={() => refetchPage()}
-        contentContainerStyle={{flex: 1}}
-        data={[1]}
-        renderItem={() => {
-          return (
-            <ContestListScreen
-              userSelector={userSelector}
-              contests={allContests}
-              ctsLoading={ctsLoading}
-              joined={joined}
-              joinedAPI={joinedAPI}
-              joinedAPILive={joinedAPILive}
-              teams={teams}
-              teamsAPI={teamsAPI}
-              teamsAPILive={teamsAPILive}
-              isFullMatch={isFullMatch}
-              teamPreviewPress={teamPreviewPress}
-              teamMutateAction={teamMutateAction}
-              showWalletModal={showWalletModal}
-              setShowWalletModal={setShowWalletModal}
-              sortByOnPress={sortByOnPress}
-              pagerRef={pagerRef}
-              selectedTab={selectedTab}
-              setSelectedTab={setSelectedTab}
-              to={route?.params?.params?.to}
-              showJoinModal={showJoinModal}
-              setShowJoinModal={setShowJoinModal}
-              entryAmount={matchSelector?.joinContest?.entryAmount}
-              joinContestWithTeam={joinContestWithTeam}
-              loading={loading}
-              setLoading={setLoading}
-              proceedToJoin={proceedToJoin}
-              onPressTeamSwitch={onPressTeamSwitch}
-              onPressJoinedContest={onPressJoinedContest}
-              onPressSecondInnings={onPressSecondInnings}
-              openWallet={openWallet}
-              sortStatus={sortStatus}
-              onPressCreateTeam={onPressCreateTeam}
-            />
-          );
-        }}
-      />
-    </View>
+    <ContestListScreen
+      userSelector={userSelector}
+      contests={allContests}
+      ctsLoading={ctsLoading}
+      joined={joined}
+      joinedAPI={joinedAPI}
+      joinedAPILive={joinedAPILive}
+      teams={teams}
+      teamsAPI={teamsAPI}
+      teamsAPILive={teamsAPILive}
+      isFullMatch={isFullMatch}
+      teamPreviewPress={teamPreviewPress}
+      teamMutateAction={teamMutateAction}
+      showWalletModal={showWalletModal}
+      setShowWalletModal={setShowWalletModal}
+      sortByOnPress={sortByOnPress}
+      pagerRef={pagerRef}
+      selectedTab={selectedTab}
+      setSelectedTab={setSelectedTab}
+      to={route?.params?.params?.to}
+      showJoinModal={showJoinModal}
+      setShowJoinModal={setShowJoinModal}
+      entryAmount={matchSelector?.joinContest?.entryAmount}
+      joinContestWithTeam={joinContestWithTeam}
+      loading={loading}
+      setLoading={setLoading}
+      proceedToJoin={proceedToJoin}
+      onPressTeamSwitch={onPressTeamSwitch}
+      onPressJoinedContest={onPressJoinedContest}
+      onPressSecondInnings={onPressSecondInnings}
+      openWallet={openWallet}
+      sortStatus={sortStatus}
+      onPressCreateTeam={onPressCreateTeam}
+    />
   );
 }

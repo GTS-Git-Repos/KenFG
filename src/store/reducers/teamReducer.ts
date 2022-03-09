@@ -1,3 +1,5 @@
+// team formation reducer
+
 import {
   SAVE_ALL_PLAYERS,
   UPDATE_PLAYERS,

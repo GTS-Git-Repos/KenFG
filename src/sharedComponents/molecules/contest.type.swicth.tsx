@@ -1,3 +1,5 @@
+// used in lobby screen and my matches screen
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
@@ -74,13 +76,13 @@ const ss = StyleSheet.create({
     borderTopStartRadius: 16,
     borderBottomStartRadius: 16,
     paddingVertical: 4,
-    width: 80,
+    width: 85,
   },
   option2: {
     borderTopEndRadius: 16,
     borderBottomEndRadius: 16,
     paddingVertical: 4,
-    width: 80,
+    width: 85,
   },
   dSelOption: {
     backgroundColor: '#C5A858',
@@ -91,7 +93,7 @@ const ss = StyleSheet.create({
   txt: {
     textAlign: 'center',
     fontFamily: 'gadugi-normal',
-    fontSize: 13,
+    fontSize: 12,
   },
 });
 

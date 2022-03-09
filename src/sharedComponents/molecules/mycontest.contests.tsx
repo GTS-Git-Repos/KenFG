@@ -1,9 +1,13 @@
+/**
+ * used in full match contests and second innings contests screen
+ */
+
 import React from 'react';
-import tailwind from '../../../../../tailwind';
+import tailwind from '../../../tailwind';
 import {View, ActivityIndicator, ScrollView} from 'react-native';
-import {JoinedContestCard} from '../../../../sharedComponents';
-import NoContent from '../atoms/no.content.contest';
-import {TeamFormationMutationType} from '../../../../types/match';
+import NoDataContests from '../atoms/no.data.contest';
+import JoinedContestCard from './joined.contest.card';
+import {TeamFormationMutationType} from '../../types/match';
 const log = console.log;
 
 interface PropTypes {
@@ -26,7 +30,6 @@ export default function MyContestPage(props: PropTypes) {
     props.pagerRef.current?.setPage(0);
   }
 
-
   if (!props.status || !isActiveTab) {
     return (
       <ActivityIndicator
@@ -37,13 +40,12 @@ export default function MyContestPage(props: PropTypes) {
     );
   }
 
- 
   if (!props.status) {
     return <ActivityIndicator size={'large'} color="#d1b45a" />;
   }
   if (props.status && !props.joined) {
     return (
-      <NoContent
+      <NoDataContests
         title={'The first move to get your fortune '}
         subtitle={'It’s your time where skills & knowledge meets action'}
         actionText={'VIEW CONTESTS'}
@@ -78,7 +80,6 @@ export default function MyContestPage(props: PropTypes) {
           />
         );
       })}
-      
 
       <View style={[tailwind('h-20')]}></View>
     </ScrollView>

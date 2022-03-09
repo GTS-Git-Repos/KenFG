@@ -3,7 +3,7 @@ import tailwind from '../../../../../tailwind';
 import {View, ScrollView} from 'react-native';
 import MyMatchesCard from '../../../app/LobbyScreen/molecules/mymatch.card.lobby';
 
-import NoContest from '../atoms/no.contest';
+import NoMatch from '../atoms/no.matches';
 
 interface PropTypes {
   selectedTab: any;
@@ -14,12 +14,12 @@ interface PropTypes {
 
 export default function CompletedPage(props: PropTypes) {
   if (!props.matchesAPI || props.selectedTab !== 2) {
-    return <NoContest text={''} actionText={''} loading={true} />;
+    return <NoMatch text={''} actionText={''} loading={true} />;
   }
 
   if (props.matchesAPI && (!props.matches || props.matches?.length === 0)) {
     return (
-      <NoContest
+      <NoMatch
         text={'You dont have any completed Contest'}
         actionText={'View Upcomming Matches'}
         loading={false}
@@ -42,7 +42,6 @@ export default function CompletedPage(props: PropTypes) {
               contestCount={item.contest_count}
               onPressMyMatchCard={props.onPressMyMatchCard}
               status={item.status}
-
             />
           </View>
         );

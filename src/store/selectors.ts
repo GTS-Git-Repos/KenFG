@@ -83,6 +83,10 @@ export const creditLeft = createSelector(playersState, players => {
   }
 });
 
+// have a information of choosen match, used in contests and team formation
+// the join contest state is used when an user clicks the entry join button
+// it used to track on team formation final nav decistion, and select teams screen
+// caution while working on here [***]
 export const selectedMatch = createSelector(
   SelectedMatchState,
   JoinContestState,

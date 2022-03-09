@@ -10,7 +10,7 @@ module.exports = {
   resetCache:false,
   maxWorkers:10,
   transformer: {
-    hermesParser:true,
+    // hermesParser:true,
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,

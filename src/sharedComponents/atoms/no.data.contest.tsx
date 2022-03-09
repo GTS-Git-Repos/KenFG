@@ -1,8 +1,7 @@
-// no content on contest list screen,
-// tabs of Contests, My Contests, My Teams
+// no content on contest list screen, tabs of Contests, (Contests, My Contests, My Teams)
 
 import React from 'react';
-import tailwind from '../../../../../tailwind';
+import tailwind from '../../../tailwind';
 import {
   View,
   Text,
@@ -11,10 +10,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import CountdownContest from './countdown.contest';
-import assets from '../../../../constants/assets_manifest';
-import {SecondaryButton} from '../../../../sharedComponents';
-import {getAppThemeSelector} from '../../../../store/selectors';
-import clr from '../../../../constants/colors';
+import assets from '../../constants/assets_manifest';
+import SecondaryButton from '../atoms/secondaryButton';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 import {useSelector} from 'react-redux';
 
 interface PropTypes {
@@ -24,7 +23,7 @@ interface PropTypes {
   noContentAction: any;
 }
 
-export default function NoContent(props: PropTypes) {
+export default function NoDataContest(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
 
   // console.log(tailwind('font-regular text-center text-white font-14'));
@@ -36,7 +35,6 @@ export default function NoContent(props: PropTypes) {
       resizeMode="cover">
       <View style={[tailwind(''), {paddingVertical: 59}]}>
         <Text style={[ss.title, dT ? clr.tw : clr.td1]}>
-          {/* The first move to get your fortune */}
           {props.title}
         </Text>
         <CountdownContest timeStamp={''} />

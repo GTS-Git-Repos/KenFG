@@ -3,18 +3,18 @@ import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
 import {useCountDown} from '../../../shared_hooks/app.hooks';
-import TopBarContest from '../../../sharedComponents/atoms/TopbarContest';
+import TopBarContest from '../../../sharedComponents/atoms/topbar.contest';
 import {
   BlockScreenByLoading,
   JoinContestModal,
   WalletHalfModal,
+  MatchContestTabs,
 } from '../../../sharedComponents';
-import TabsContest from './molecules/TabsContest';
-// import ContestPage from './molecules/ContestPage';
-import {ContestPage} from '../../../sharedComponents/';
-
-import MyContestPage from './molecules/MyContestPage';
-import MyTeamsPage from './molecules/MyTeamsPage';
+import {
+  ContestPage,
+  MyContestPage,
+  MyTeamsContestPage,
+} from '../../../sharedComponents/';
 import {useSelector} from 'react-redux';
 import {selectedMatch} from '../../../store/selectors';
 import Modal from 'react-native-modal';
@@ -104,7 +104,7 @@ export default function ContestListScreen(props: PropTypes) {
         openWallet={props.openWallet}
       />
       <View>
-        <TabsContest
+        <MatchContestTabs
           dT={dT}
           selectedTab={props.selectedTab}
           contest_count={props?.joined?.length}
@@ -119,9 +119,9 @@ export default function ContestListScreen(props: PropTypes) {
         {/* list all contests of the match */}
         <View style={{width: width}}>
           <ContestPage
+            contests={props.contests}
             navigate={navigate}
             status={props.ctsLoading}
-            contests={props.contests}
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
             proceedToJoin={props.proceedToJoin}
@@ -151,7 +151,7 @@ export default function ContestListScreen(props: PropTypes) {
         </View>
         {/* list all the teams that user created for that match */}
         <View style={{width: width}}>
-          <MyTeamsPage
+          <MyTeamsContestPage
             teams={props.teams}
             status={props.teamsAPI}
             live={props.teamsAPILive}

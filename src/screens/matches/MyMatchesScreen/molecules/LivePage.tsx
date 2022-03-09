@@ -3,25 +3,25 @@ import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import NoContest from '../atoms/no.contest';
+import NoMatches from '../atoms/no.matches';
 
 interface PropTypes {
   selectedTab: any;
   matches: any;
-  matchesAPI:any,
+  matchesAPI: any;
   onPressMyMatchCard(match_key: string): any;
-
 }
 
 export default function LivePage(props: PropTypes) {
-
   if (props.selectedTab !== 1) {
-    return <NoContest text={''} actionText={''} loading={true} />;
+    return <NoMatches text={''} actionText={''} loading={true} />;
   }
 
   return (
-    <NoContest
+    <NoMatches
       text={"You haven't joined any contests that are live"}
-      actionText={'View Upcomming Matches'} loading={false}    />
+      actionText={'View Upcomming Matches'}
+      loading={false}
+    />
   );
 }

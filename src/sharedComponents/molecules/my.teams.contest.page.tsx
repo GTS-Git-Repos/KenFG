@@ -1,10 +1,10 @@
 import React from 'react';
-import tailwind from '../../../../../tailwind';
+import tailwind from '../../../tailwind';
 import {View, ScrollView, Text, ActivityIndicator} from 'react-native';
-import {TeamsCard} from '../../../../sharedComponents';
-import NOTeamsPage from '../atoms/no.teams.page';
-import {TeamFormationMutationType} from '../../../../types/match';
-import CreateTeamButtom from '../atoms/CreateTeamButton';
+import TeamsCard from './TeamsCard';
+// import NOTeamsPage from '../atoms/no.teams.page';
+import {TeamFormationMutationType} from '../../types/match';
+import CreateTeamButtom from './create.team.button';
 
 interface PropTypes {
   selectedTab: number;
@@ -58,13 +58,14 @@ export default function MyTeamsPage(props: PropTypes) {
   }
   if (props.status && !props.teams) {
     return (
-      <NOTeamsPage
-        title={'The first move to get your fortune'}
-        subtitle={'Create Your First Teams and meet action'}
-        actionText={'VIEW CONTESTS'}
-        noContentAction={noContentAction}
-        onPressCreateTeam={props.onPressCreateTeam}
-      />
+      <Text style={[tailwind('font-regular text-white font-15')]}>Null</Text>
+      // <NOTeamsPage
+      //   title={'The first move to get your fortune'}
+      //   subtitle={'Create Your First Teams and meet action'}
+      //   actionText={'VIEW CONTESTS'}
+      //   noContentAction={noContentAction}
+      //   onPressCreateTeam={props.onPressCreateTeam}
+      // />
     );
   }
   return (

@@ -34,7 +34,7 @@ const ss = StyleSheet.create({
     fontFamily: 'gadugi-normal',
     color: '#C5A858',
     fontSize: 12,
-    paddingRight: 2,
+    paddingRight: 8,
     textAlign: 'center',
   },
 });

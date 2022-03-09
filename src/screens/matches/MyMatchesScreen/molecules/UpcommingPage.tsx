@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import MyMatchesCard from '../../../app/LobbyScreen/molecules/mymatch.card.lobby';
-import NoContest from '../atoms/no.contest';
+import NoMatches from '../atoms/no.matches';
 import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
@@ -22,12 +22,12 @@ export default function UpcommingPage(props: PropTypes) {
   };
 
   if (!props.matchesAPI || props.selectedTab !== 0) {
-    return <NoContest text={''} actionText={''} loading={true} />;
+    return <NoMatches text={''} actionText={''} loading={true} />;
   }
 
   if (props.matchesAPI && (!props.matches || props.matches?.length === 0)) {
     return (
-      <NoContest
+      <NoMatches
         text={"You haven't joined any contests"}
         actionText={'View Upcomming Matches'}
         loading={false}
