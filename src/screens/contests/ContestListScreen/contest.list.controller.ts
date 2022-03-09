@@ -4,14 +4,20 @@ import {createSelector} from 'reselect';
 
 // States
 export const matchContestsState = {
+  contestLoading: true,
   allContests: [],
-  contestFilter: null,
+  contestFilter: 'all',
   sortByHighPrice: null,
   sortByHighEntryFee: null,
 };
 
 export const contestReducer = (state: any, action: any) => {
   switch (action.type) {
+    case 'UPDATE_CONTEST_LOADING':
+      return {
+        ...state,
+        contestLoading: false,
+      };
     case 'UPDATE_CONTESTS':
       return {
         ...state,
@@ -38,6 +44,14 @@ const AllContestsState = (state: any) => state.allContests;
 const ContestFilterState = (state: any) => state.contestFilter;
 const SortByMaxPriceState = (state: any) => state.sortByHighPrice;
 const SortByMaxEntryState = (state: any) => state.sortByHighEntryFee;
+const ContestLoadingState = (state: any) => state.contestLoading;
+
+export const contestLoadingSelector = createSelector(
+  ContestLoadingState,
+  cLoding => {
+    return cLoding;
+  },
+);
 
 export const allContestsSelector = createSelector(
   [
@@ -48,7 +62,7 @@ export const allContestsSelector = createSelector(
   ],
   (all_contests, sortMaxPrice, sortMaxEntry, contestFilter) => {
     // filter not implemented yet
-    if (contestFilter !== null) {
+    if (contestFilter !== 'all') {
       return [];
     }
     if (sortMaxEntry) {
@@ -77,6 +91,12 @@ export const sortStatusSelector = createSelector(
 );
 
 // actions
+
+export function updateLoading() {
+  return {
+    type: 'UPDATE_CONTEST_LOADING',
+  };
+}
 
 export function updateContests(payload: any) {
   // if (payload.length === 0) {

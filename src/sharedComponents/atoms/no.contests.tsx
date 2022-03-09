@@ -20,7 +20,7 @@ export default function NoContests(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   return (
     <View style={[tailwind('h-full')]}>
-      <View style={[ss.root]}>
+      <View style={[ss.troot]}>
         <FiltersContests selectedFilter={null} />
         <LinkPrC />
       </View>
@@ -43,9 +43,10 @@ export default function NoContests(props: PropTypes) {
 }
 
 const ss = StyleSheet.create({
-  root: {
+  troot: {
     flexDirection: 'row',
     alignItems: 'center',
-    // height: '100%',
+    paddingHorizontal: 12,
+    marginTop: 4,
   },
 });

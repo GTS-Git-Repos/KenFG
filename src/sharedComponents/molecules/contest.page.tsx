@@ -25,6 +25,7 @@ import {useNavigation} from '@react-navigation/core';
 
 interface PropTypes {
   contests: Array<any>;
+  onContestCardPress(contest_key: string): any;
 }
 
 export default function ContestsPage(props: PropTypes) {
@@ -59,7 +60,7 @@ export default function ContestsPage(props: PropTypes) {
           return (
             <View key={item.key} style={[ss.mv8]}>
               <ContestCard
-                navigate={props.navigate}
+                onContestCardPress={props.onContestCardPress}
                 contest_key={item.key}
                 match_key={item.match_key}
                 title={item.title}

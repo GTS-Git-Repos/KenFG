@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import assets from '../../constants/assets_manifest';
-import {SecondaryButton} from '../';
+import SecondaryButton from "./secondaryButton"
 
 interface PropTypes {
   loading: boolean;

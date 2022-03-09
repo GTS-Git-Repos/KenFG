@@ -56,14 +56,7 @@ export const toSecondInningsContestList = (navigation: any, payload: any) => {
   return true;
 };
 
-// export const toContestWinningsList = (navigation: any,contest_key:string) => {
-//   navigation.dispatch(
-//     CommonActions.navigate({
-//       name: 'ContestInfoScreen',
-//     }),
-//   );
-//   return true;
-// };
+
 
 /**
  * It used on user clicks the entry button

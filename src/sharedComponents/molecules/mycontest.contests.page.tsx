@@ -13,7 +13,6 @@ const log = console.log;
 interface PropTypes {
   joined: any;
   status: any;
-  timeStamp: any;
   pagerRef: any;
   selectedTab: number;
   index: number;

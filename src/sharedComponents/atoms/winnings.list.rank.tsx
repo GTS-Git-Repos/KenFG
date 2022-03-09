@@ -1,7 +1,8 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text} from 'react-native';
-import {RankIcon} from '../';
+import RankIcon from '../icons/RankIcon';
+// import {RankIcon} from '.';
 
 interface PropTypes {
   rank: string;

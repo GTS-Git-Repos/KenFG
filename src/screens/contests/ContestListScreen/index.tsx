@@ -15,7 +15,7 @@ import {
 import ContestListScreen from './contest.list.screen';
 // import ContestScreenLoading from './atoms/screen.loading.contest';
 import {TO_TEAMLIST} from '../../../constants/appContants';
-
+import {FlatList} from 'react-native';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useContestList} from '../../../shared_hooks/contest.hooks';
 import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
@@ -23,7 +23,6 @@ import {errorBox, infoBox} from '../../../utils/snakBars';
 import {InternetError, ContestScreenLoading} from '../../../sharedComponents/';
 import PagerView from 'react-native-pager-view';
 import {joinContestRemote} from '../../../remote/matchesRemote';
-import {View} from 'react-native';
 import {
   toSecondInningsContestList,
   toSwitchTeam,
@@ -37,16 +36,19 @@ import {
   useJoinedContests,
 } from '../../../shared_hooks/contest.hooks';
 import {
+  contestLoadingSelector,
   contestReducer,
   matchContestsState,
   sortStatusSelector,
   updateContests,
+  updateLoading,
 } from './contest.list.controller';
 import {allContestsSelector} from './contest.list.controller';
 import {TeamFormationMutationType} from '../../../types/match';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 import {updateUserInfo} from '../../../store/actions/userAction';
-import {FlatList} from 'react-native-gesture-handler';
+import {} from 'react-native-gesture-handler';
+import {toContestInfo} from '../../../navigations/contest.links';
 
 export default function ContestListHOC() {
   const dispatch = useDispatch();
@@ -54,6 +56,7 @@ export default function ContestListHOC() {
     contestReducer,
     matchContestsState,
   );
+  const CLoading = contestLoadingSelector(contestState);
   const allContests = allContestsSelector(contestState);
   const sortStatus = sortStatusSelector(contestState);
   const colors = useSelector(appColorsSelector);
@@ -75,15 +78,17 @@ export default function ContestListHOC() {
 
   // api calls data
 
-  const {contests, ctsLoading, refetchContests, ctstError}: any =
-    useContestList(matchSelector.match_key, userSelector.mobile, isFullMatch);
+  const {contests, rfContests, ctstError}: any = useContestList(
+    matchSelector.match_key,
+    userSelector.mobile,
+    isFullMatch,
+  );
 
-  const {joined, joinedAPI, joinedAPILive, refetchJoinedContest}: any =
-    useJoinedContests(
-      matchSelector.match_key,
-      userSelector.mobile,
-      isFullMatch,
-    );
+  const {joined, joinedAPI, joinedAPILive, rfJC}: any = useJoinedContests(
+    matchSelector.match_key,
+    userSelector.mobile,
+    isFullMatch,
+  );
 
   const {teams, teamsAPI, teamsAPILive, refetchTeams}: any = useGetTeams(
     matchSelector.match_key,
@@ -92,11 +97,11 @@ export default function ContestListHOC() {
   );
 
   useEffect(() => {
-    if (ctsLoading === false) {
-      // API not in loading state
+    if (contests) {
       contestDispatch(updateContests(contests));
+      contestDispatch(updateLoading());
     }
-  }, [ctsLoading]);
+  }, [contests]);
 
   // is auto join is in params, <need to refactor it seems like bad practice>
   useEffect(() => {
@@ -113,21 +118,23 @@ export default function ContestListHOC() {
   // refetch on focus
   useFocusEffect(
     useCallback(() => {
-      // console.log('Focused');
-      refetchContests();
-      refetchTeams();
-      refetchJoinedContest();
+      refetchPage();
     }, []),
   );
 
+  // refetch the api
   function refetchPage() {
-    refetchContests();
+    rfContests();
     refetchTeams();
-    refetchJoinedContest();
+    rfJC();
   }
 
   function sortByOnPress(sortBy: any) {
     contestDispatch({type: 'UPDATE_SORT', payload: sortBy});
+  }
+
+  function onContestCardPress(contest_key: string) {
+    toContestInfo(navigation, contest_key);
   }
 
   const teamPreviewPress = (team_key: any): any => {
@@ -236,7 +243,7 @@ export default function ContestListHOC() {
         return;
       }
       setShowJoinModal(false);
-      refetchJoinedContest();
+      rfJC();
       dispatch(updateUserInfo(userSelector.mobile));
       // infoBox('Contest Succefully Joined', 500);
     } catch (err) {
@@ -257,7 +264,7 @@ export default function ContestListHOC() {
   }
 
   // if screen is ready or contests API on loading state show loader
-  if (!isScreenReady || ctsLoading) {
+  if (!isScreenReady || CLoading) {
     return <ContestScreenLoading />;
   }
 
@@ -265,7 +272,8 @@ export default function ContestListHOC() {
     <ContestListScreen
       userSelector={userSelector}
       contests={allContests}
-      ctsLoading={ctsLoading}
+      ctsLoading={CLoading}
+      onContestCardPress={onContestCardPress}
       joined={joined}
       joinedAPI={joinedAPI}
       joinedAPILive={joinedAPILive}

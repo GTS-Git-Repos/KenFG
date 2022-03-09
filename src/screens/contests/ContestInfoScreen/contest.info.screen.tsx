@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import {View} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {
-  TopbarContest,
+  TopBarContest,
   ContestCard,
   WalletHalfModal,
 } from '../../../sharedComponents';
@@ -74,7 +74,7 @@ export default function ContestInfoScreen(props: PropTypes) {
   return (
     <View style={tailwind('bg-dark h-full')}>
       {/* block */}
-      <TopbarContest
+      <TopBarContest
         title={matchSelector.titleString}
         subtitle={countDown}
         enableNotification={() => {
@@ -96,7 +96,6 @@ export default function ContestInfoScreen(props: PropTypes) {
           amount={props.contestInfo.prize.amount}
           guaranteed={props.contestInfo.guaranteed}
           entry={props.contestInfo.entry}
-          
           max_entry={props.contestInfo.max_entry}
           bonus={props.contestInfo.bonus}
           is_practice={props.contestInfo.is_practice}

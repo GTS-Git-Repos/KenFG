@@ -20,13 +20,13 @@ export const useContestList = (
   const {
     data: contests,
     isLoading: ctsLoading,
-    refetch: refetchContests,
+    refetch: rfContests,
     isError: ctstError,
   } = useQuery(['contests', match_key, isFullMatch], contestListsRemote, {
     notifyOnChangeProps: ['data', 'isLoading', 'isError'],
-    // staleTime: 1000 * 60,
+    cacheTime: 0,
   });
-  return {contests, ctsLoading, refetchContests, ctstError};
+  return {contests, ctsLoading, rfContests, ctstError};
 };
 
 // Get Created Teams for the match
@@ -60,7 +60,7 @@ export const useJoinedContests = (
     data: joined,
     isSuccess: joinedAPI,
     isFetching: joinedAPILive,
-    refetch: refetchJoinedContest,
+    refetch: rfJC,
   } = useQuery(
     ['joined_contest', match_key, user_id, isFullMatch],
     getJoinedContestRemote,
@@ -68,7 +68,7 @@ export const useJoinedContests = (
       notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
     },
   );
-  return {joined, joinedAPI, joinedAPILive, refetchJoinedContest};
+  return {joined, joinedAPI, joinedAPILive, rfJC};
 };
 
 export const useMatchMeta = (match_key: string, user_id: string) => {

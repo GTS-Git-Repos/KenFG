@@ -6,20 +6,20 @@ import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import ProgressBarContestCard from './progressbar.contest';
-import {TickIcon, CupIcon, DollarIcon, MIcon} from '../../assets/newIcons';
+import ContestFooter from '../atoms/footer.contest';
 import {appColorsSelector} from '../../store/selectors';
 import {useSelector} from 'react-redux';
 
 // type ContestType = 'public' | 'practice';
 
 interface PropTypes {
-  navigate(contest_key: string): any;
+  onContestCardPress(contest_key: string): any;
   contest_key: string;
   match_key: string;
   title: string;
   filled_spots: number;
   total_spots: number;
-  occupaid_cent:number,
+  occupaid_cent: number;
   amount_letters: string;
   amount: string;
   guaranteed: boolean;
@@ -32,14 +32,13 @@ interface PropTypes {
 }
 
 export default function ContestCard(props: PropTypes) {
-  
   const clr = useSelector(appColorsSelector);
 
   return (
     <TouchableOpacity
       activeOpacity={0.5}
       style={[styles.root, clr.bg_1]}
-      onPress={() => props.navigate(props.contest_key)}>
+      onPress={() => props.onContestCardPress(props.contest_key)}>
       <View style={styles.content}>
         <View style={[styles.topSection, tailwind('')]}>
           <View>
@@ -65,76 +64,32 @@ export default function ContestCard(props: PropTypes) {
           filled_spots={props.filled_spots}
         />
       </View>
-      <Footer
+      <ContestFooter
         amount_letters={props.amount_letters}
         bonus={props.bonus}
         guaranteed={props.guaranteed}
+        max_entry={props.max_entry}
       />
     </TouchableOpacity>
   );
 }
 
 const ContestEntryType = (props: any) => {
-  const clr = useSelector(appColorsSelector);
   return (
-    <TouchableOpacity
-      onPress={() => props.proceedToJoin(props.contest_key)}
-      style={[tailwind('')]}>
-      <View style={[tailwind('flex-row justify-end py-2 items-center')]}>
-        <View
-          style={[
-            tailwind('rounded px-4 py-0.5'),
-            {
-              backgroundColor: '#006A4D',
-            },
-          ]}>
-          {props.contest_type === 'public' ? (
-            <Text style={[styles.entryAmount, {color: '#ffffff'}]}>
+    <TouchableOpacity onPress={() => props.proceedToJoin(props.contest_key)}>
+      <View style={[styles.entryContainer]}>
+        <View style={[styles.entryBtn]}>
+          {props.entry === 0 ? (
+            <Text style={[styles.entryAmount]}>Join</Text>
+          ) : (
+            <Text style={[styles.entryAmount]}>
               {'\u20B9 '}
               {props.entry}
-            </Text>
-          ) : (
-            <Text
-              style={[tailwind('font-bold text-center text-light font-14')]}>
-              Join
             </Text>
           )}
         </View>
       </View>
     </TouchableOpacity>
-  );
-};
-
-const Footer = (props: any) => {
-  return (
-    <View style={[styles.footerRoot]}>
-      <View style={styles.footerItemSpace}>
-        <View style={styles.footerItemSpace}>
-          <DollarIcon />
-          <Text style={styles.footerItem}>
-            {'\u20B9 '}
-            {props.amount_letters}
-          </Text>
-        </View>
-
-        <View style={styles.footerItemSpace}>
-          <CupIcon />
-          <Text style={styles.footerItem}>{props.bonus}</Text>
-        </View>
-
-        <View style={styles.footerItemSpace}>
-          <MIcon />
-          <Text style={styles.footerItem}>upto {props.max_entry}</Text>
-        </View>
-      </View>
-
-      {props.guaranteed && (
-        <View style={styles.footerItemSpace}>
-          <TickIcon />
-          <Text style={styles.footerItem}>Gauranteed</Text>
-        </View>
-      )}
-    </View>
   );
 };
 
@@ -164,25 +119,22 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     fontSize: 14,
   },
-  footerRoot: {
-    borderBottomLeftRadius: 4,
-    borderBottomRightRadius: 4,
-    padding: 12,
-    backgroundColor: '#121D2E',
+  entryContainer: {
     alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
+    paddingVertical: 8,
   },
-  footerItemSpace: {alignItems: 'center', flexDirection: 'row'},
-  footerItem: {
-    color: '#8797B1',
-    fontFamily: 'gadugi-normal',
-    fontSize: 13,
-    paddingHorizontal: 4,
+  entryBtn: {
+    borderRadius: 4,
+    paddingVertical: 2,
+    paddingHorizontal: 16,
+    backgroundColor: '#006A4D',
   },
   entryAmount: {
     fontFamily: 'gadugi-bold',
     fontSize: 14,
     textAlign: 'center',
+    color: '#FFFFFF',
   },
 });

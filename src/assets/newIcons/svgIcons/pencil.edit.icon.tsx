@@ -1,3 +1,5 @@
+// pencil edit icon used in Teams card top section. joined contest card
+
 import * as React from 'react';
 import Svg, {Path, Rect} from 'react-native-svg';
 

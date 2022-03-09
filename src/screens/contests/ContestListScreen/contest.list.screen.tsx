@@ -3,13 +3,14 @@ import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import PagerView from 'react-native-pager-view';
 import {useCountDown} from '../../../shared_hooks/app.hooks';
-import TopBarContest from '../../../sharedComponents/atoms/topbar.contest';
 import {
+  TopBarContest,
   BlockScreenByLoading,
   JoinContestModal,
   WalletHalfModal,
   MatchContestTabs,
 } from '../../../sharedComponents';
+import {toContestInfo} from '../../../navigations/contest.links';
 import {
   ContestPage,
   MyContestPage,
@@ -42,6 +43,7 @@ interface PropTypes {
   isFullMatch: boolean;
   pagerRef: any;
   selectedTab: any;
+  // the prop "to" need to investigate later, need to remove the need
   to: any;
   showJoinModal: any;
   entryAmount: any;
@@ -49,6 +51,7 @@ interface PropTypes {
   sortStatus: SortTypes;
   showWalletModal: boolean;
   userSelector: any;
+  onContestCardPress(contest_key: string): any;
   setShowWalletModal(val: boolean): any;
   setLoading(value: boolean): any;
   proceedToJoin(contest_key: string): any;
@@ -88,12 +91,6 @@ export default function ContestListScreen(props: PropTypes) {
     props.pagerRef.current?.setPage(index);
   };
 
-  const navigate = (contest_key: string) => {
-    navigation.navigate('ContestInfoScreen', {
-      contest_key: contest_key,
-    });
-  };
-
   return (
     <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <TopBarContest
@@ -120,7 +117,7 @@ export default function ContestListScreen(props: PropTypes) {
         <View style={{width: width}}>
           <ContestPage
             contests={props.contests}
-            navigate={navigate}
+            onContestCardPress={props.onContestCardPress}
             status={props.ctsLoading}
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
@@ -137,21 +134,21 @@ export default function ContestListScreen(props: PropTypes) {
         {/* list all the contests that user joined */}
         <View style={{width: width}}>
           <MyContestPage
+            index={1}
             joined={props.joined}
             status={props.joinedAPI}
             teamPreviewPress={props.teamPreviewPress}
             teamMutateAction={props.teamMutateAction}
-            timeStamp={timeStamp}
             pagerRef={props.pagerRef}
             onPressTeamSwitch={props.onPressTeamSwitch}
             onPressJoinedContest={props.onPressJoinedContest}
-            index={1}
             selectedTab={props.selectedTab}
           />
         </View>
         {/* list all the teams that user created for that match */}
         <View style={{width: width}}>
           <MyTeamsContestPage
+            index={2}
             teams={props.teams}
             status={props.teamsAPI}
             live={props.teamsAPILive}
@@ -159,13 +156,12 @@ export default function ContestListScreen(props: PropTypes) {
             pagerRef={props.pagerRef}
             teamMutateAction={props.teamMutateAction}
             teamPreviewPress={props.teamPreviewPress}
-            index={2}
             selectedTab={props.selectedTab}
             onPressCreateTeam={props.onPressCreateTeam}
           />
         </View>
       </PagerView>
-
+      {/* join contest modal */}
       <Modal
         isVisible={props.showJoinModal}
         animationInTiming={150}
@@ -184,6 +180,7 @@ export default function ContestListScreen(props: PropTypes) {
         />
       </Modal>
 
+      {/* wallet half modal */}
       <Modal
         style={{
           justifyContent: 'flex-start',
@@ -209,7 +206,7 @@ export default function ContestListScreen(props: PropTypes) {
           setShowWalletModal={props.setShowWalletModal}
         />
       </Modal>
-
+      {/* shown while contests is joining */}
       {props.loading && <BlockScreenByLoading />}
     </View>
   );

@@ -1,14 +1,16 @@
 /**
  * full page loading spinner
- * used in 
+ * used in
  * [1]: MyMatches tab
- * 
+ * [2]: match screen
+ * [3]: match contest screen
+ *
  */
 
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, ActivityIndicator} from 'react-native';
-import {TopBar} from '../index';
+import TopBar from './TopBar';
 
 interface PropTypes {
   title: string;

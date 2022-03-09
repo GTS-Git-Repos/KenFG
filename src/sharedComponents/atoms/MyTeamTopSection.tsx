@@ -1,7 +1,7 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, TouchableOpacity, Text} from 'react-native';
-import EditIcon from '../icons/EditIcon';
+import {PencilEditIcon} from '../../assets/newIcons/';
 import {CloneIcon} from '../../sharedComponents/';
 
 interface PropTypes {
@@ -45,7 +45,7 @@ export default function MyTeamsTopSection(props: PropTypes) {
           <TouchableOpacity
             style={[tailwind('px-1')]}
             onPress={() => props.mutateTeam(props.team_key, true, false)}>
-            <EditIcon background={false} />
+            <PencilEditIcon background={false} />
           </TouchableOpacity>
         </View>
       )}

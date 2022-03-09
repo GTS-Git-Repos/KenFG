@@ -16,6 +16,8 @@ import NoContentShared from './atoms/no.content.shared';
 import NoDataContests from './atoms/no.data.contest';
 import ContestScreenLoading from './atoms/contest.screen.loading';
 import NoContests from './atoms/no.contests';
+import TopBarContest from './atoms/topbar.contest';
+import FooterContest from './atoms/footer.contest';
 
 import ContestCard from './molecules/contest.card.shared';
 import TeamsCard from './molecules/TeamsCard';
@@ -37,7 +39,7 @@ import MatchScoreBoard from './molecules/match.scoreboard.page';
 import InternetError from './molecules/internet.error';
 import ContestPage from './molecules/contest.page';
 import FiltersContests from './molecules/filters.contests';
-import MyContestPage from './molecules/mycontest.contests';
+import MyContestPage from './molecules/mycontest.contests.page';
 import MyTeamsContestPage from './molecules/my.teams.contest.page';
 import CreateTeamButton from './molecules/create.team.button';
 import MatchContestTabs from './molecules/match.contest.tabs';
@@ -45,7 +47,6 @@ import MatchContestTabs from './molecules/match.contest.tabs';
 import MoneyIcon from './icons/MoneyIcon';
 import Facebook from './icons/Facebook';
 import SwitchIcon from './icons/SwitchIcon';
-import EditIcon from './icons/EditIcon';
 import UserIcon from './icons/UserIcon';
 import GearIcon from './icons/GearIcon';
 import RankIcon from './icons/RankIcon';
@@ -87,10 +88,12 @@ export {
   FiltersContests,
   WinningsListRank,
   WalletHalfModal,
+  FooterContest,
   MatchPlayersStats,
   NoContests,
   JoinContestModal,
   BottomLine,
+  TopBarContest,
   MatchTeamCard,
   MyContestPage,
   NoContentShared,
@@ -114,7 +117,6 @@ export {
   MoneyIcon,
   Facebook,
   SwitchIcon,
-  EditIcon,
   UserIcon,
   GoldenCup,
   CloneIcon,
