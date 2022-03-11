@@ -1,10 +1,9 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../constants/assets_manifest';
-import {} from 'react-native-gesture-handler';
-import {Facebook, GoogleIcon} from '../../sharedComponents/';
+import Facebook from '../icons/Facebook';
+import GoogleIcon from '../icons/GoogleIcon';
+// import {Facebook, GoogleIcon} from '../../sharedComponents/';
 
 interface PropTypes {
   text?: string;

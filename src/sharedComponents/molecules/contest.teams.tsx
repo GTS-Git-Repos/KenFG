@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {SwapIcon, CapIcon} from '../../assets/newIcons';
 import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
-import {TeamCode} from '../';
+import TeamCode from "../atoms/TeamCode"
 import clr from '../../constants/colors';
 import {useSelector} from 'react-redux';
 import {getAppThemeSelector} from '../../store/selectors';

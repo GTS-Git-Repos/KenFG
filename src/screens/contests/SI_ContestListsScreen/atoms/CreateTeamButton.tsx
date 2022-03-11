@@ -32,11 +32,11 @@ export default function CreateTeamButtom(props: PropTypes) {
           style={[
             tailwind('py-3 flex-grow flex-row items-center justify-center'),
           ]}>
-          <Image
+          {/* <Image
             resizeMode="contain"
             source={assets.plus}
             style={[tailwind(''), {width: 20, height: 20}]}
-          />
+          /> */}
           <Text
             style={[
               tailwind(

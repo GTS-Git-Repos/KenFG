@@ -3,17 +3,12 @@
  */
 
 import React from 'react';
-import tailwind from '../../../tailwind';
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  Text,
-  ActivityIndicator,
-} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import {useSelector} from 'react-redux';
-import {FiltersContests, NoContests} from '../../sharedComponents';
+import FiltersContests from './filters.contests';
+import NoContests from '../atoms/no.contests';
 import {getAppThemeSelector} from '../../store/selectors';
+import {ContestPageType} from '../../types/contest';
 import clr from '../../constants/colors';
 import LinkPrC from '../atoms/link.private.contest';
 import CreateTeamButton from './create.team.button';
@@ -23,12 +18,7 @@ import ContestTitle from '../atoms/subtitle.contest.group';
 import ContestCard from './contest.card.shared';
 import {useNavigation} from '@react-navigation/core';
 
-interface PropTypes {
-  contests: Array<any>;
-  onContestCardPress(contest_key: string): any;
-}
-
-export default function ContestsPage(props: PropTypes) {
+export default function ContestsPage(props: ContestPageType) {
   const dT = useSelector(getAppThemeSelector);
   const navigation = useNavigation();
 
@@ -38,50 +28,64 @@ export default function ContestsPage(props: PropTypes) {
 
   // handle when no contests found
   if (props.contests?.length === 0) {
-    return <NoContests loadig={false} />;
+    return (
+      <NoContests
+        loading={props.contestLoading}
+        contestFilters={props.contestFilters}
+        filterOnPress={props.filterOnPress}
+      />
+    );
   }
 
   return (
     <View style={[ss.root]}>
-      {/* Top section */}
-      <View style={[ss.troot]}>
-        <FiltersContests selectedFilter={null} />
-        <LinkPrC />
-      </View>
-      <SiLink />
-      <SortContests />
-      {/* Contests list */}
-      <ContestTitle
-        title={'Mega contests'}
-        subtitle={'Ready for One more match'}
-      />
-      <View style={[ss.pad12]}>
-        {props.contests.map((item: any) => {
-          return (
-            <View key={item.key} style={[ss.mv8]}>
-              <ContestCard
-                onContestCardPress={props.onContestCardPress}
-                contest_key={item.key}
-                match_key={item.match_key}
-                title={item.title}
-                filled_spots={item.filled_spots}
-                total_spots={item.total_spots}
-                occupaid_cent={item.occupaid_cent}
-                entry={item.entry}
-                amount_letters={item.prize.amount_letters}
-                amount={item.prize.amount}
-                guaranteed={item.guaranteed === 'yes'}
-                max_entry={item.max_entry}
-                bonus={item.bonus}
-                is_practice={item.is_practice}
-                contest_type={item.contest_type}
-                proceedToJoin={props.proceedToJoin}
-              />
-            </View>
-          );
-        })}
-      </View>
-      <CreateTeamButton onPressCreateTeam={() => {}} />
+      <ScrollView>
+        <View style={[ss.troot]}>
+          <FiltersContests
+            contestFilters={props.contestFilters}
+            filterOnPress={props.filterOnPress}
+          />
+          <LinkPrC />
+        </View>
+        <SiLink />
+        <SortContests
+          sortByOnPress={props.sortByOnPress}
+          sortStatus={props.sortStatus}
+        />
+        {/* Contests list */}
+        <ContestTitle
+          title={'Mega contests'}
+          subtitle={'Ready for One more match'}
+        />
+        <View style={[ss.pad12]}>
+          {props.contests.map((item: any) => {
+            return (
+              <View key={item.key} style={[ss.mv8]}>
+                <ContestCard
+                  onContestCardPress={props.onContestCardPress}
+                  contest_key={item.key}
+                  match_key={item.match_key}
+                  title={item.title}
+                  filled_spots={item.filled_spots}
+                  total_spots={item.total_spots}
+                  occupaid_cent={item.occupaid_cent}
+                  entry={item.entry}
+                  amount_letters={item.prize.amount_letters}
+                  amount={item.prize.amount}
+                  guaranteed={item.guaranteed === 'yes'}
+                  max_entry={item.max_entry}
+                  bonus={item.bonus}
+                  is_practice={item.is_practice}
+                  contest_type={item.contest_type}
+                  proceedToJoin={props.proceedToJoin}
+                />
+              </View>
+            );
+          })}
+        </View>
+        <View style={[ss.space]}></View>
+      </ScrollView>
+      <CreateTeamButton onPressCreateTeam={props.onPressCreateTeam} />
     </View>
   );
 }
@@ -101,5 +105,8 @@ const ss = StyleSheet.create({
   },
   mv8: {
     marginVertical: 8,
+  },
+  space: {
+    height: 60,
   },
 });

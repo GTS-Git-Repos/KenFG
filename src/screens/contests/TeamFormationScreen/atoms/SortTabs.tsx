@@ -19,7 +19,7 @@ export default function SortTabs(props: PropTypes) {
         onPress={() => props.onSortAction('selby')}
         style={[tailwind('flex-row items-center'), {flex: 4}]}>
         <Text style={styles.filterText}>SELECTED BY</Text>
-        {props.sortStatus.sortBySel === false && <DownArrowIcon />}
+        {props.sortStatus.sortBySel === false && <DownArrowIcon invert={false} />}
         {props.sortStatus.sortBySel === true && <TopArrowIcon />}
       </TouchableOpacity>
 
@@ -27,7 +27,7 @@ export default function SortTabs(props: PropTypes) {
         onPress={() => props.onSortAction('points')}
         style={[tailwind('flex-row items-center'), {flex: 2}]}>
         <Text style={styles.filterText}>POINTS</Text>
-        {props.sortStatus.sortByPoints === false && <DownArrowIcon />}
+        {props.sortStatus.sortByPoints === false && <DownArrowIcon invert={false} />}
         {props.sortStatus.sortByPoints === true && <TopArrowIcon />}
       </TouchableOpacity>
 
@@ -35,7 +35,7 @@ export default function SortTabs(props: PropTypes) {
         onPress={() => props.onSortAction('credits')}
         style={[tailwind('flex-row items-center pr-2'), {flex: 2}]}>
         <Text style={styles.filterText}>CREDITS</Text>
-        {props.sortStatus.sortByCredits === false && <DownArrowIcon />}
+        {props.sortStatus.sortByCredits === false && <DownArrowIcon invert={false} />}
         {props.sortStatus.sortByCredits === true && <TopArrowIcon />}
       </TouchableOpacity>
     </View>

@@ -1,23 +1,41 @@
 import React from 'react';
-import tailwind from '../../../tailwind';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import {DownArrowIcon} from '../../assets/newIcons/';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {ContestPageType} from '../../types/contest';
 
-interface PropTypes {
-  sortStatus?: string;
-}
+export default function SortContests(
+  props: Pick<ContestPageType, 'sortStatus' | 'sortByOnPress'>,
+) {
+  // console.log(props.sortStatus);
 
-export default function SortContests(props: PropTypes) {
   return (
     <View style={[ss.root]}>
-      <TouchableOpacity style={[ss.btn]}>
-        <DownArrowIcon invert={false} />
+      <TouchableOpacity
+        onPress={() =>
+          props.sortByOnPress({
+            price: !props.sortStatus.price,
+            entry: null,
+          })
+        }
+        style={[ss.btn]}>
+        {props.sortStatus.price !== null && (
+          <DownArrowIcon invert={props.sortStatus.price} />
+        )}
         <Text style={[ss.btntxt]}>Total Price</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[ss.btn]}>
+      <TouchableOpacity
+        onPress={() =>
+          props.sortByOnPress({
+            price: null,
+            entry: !props.sortStatus.entry,
+          })
+        }
+        style={[ss.btn]}>
         <Text style={[ss.btntxt]}>Entry Fee</Text>
-        <DownArrowIcon invert={false} />
+        {props.sortStatus.entry !== null && (
+          <DownArrowIcon invert={props.sortStatus.entry} />
+        )}
       </TouchableOpacity>
     </View>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {BottomLine, ButtonComponent} from '../';
+import ButtonComponent from '../atoms/ButtonComponent';
 
 interface PropTypes {
   availableCash: number;
@@ -42,7 +42,11 @@ export default function JoinContestModal(props: PropTypes) {
       </View>
 
       <View
-        style={[tailwind('flex-row items-center pt-4 pb-3 justify-between')]}>
+        style={[
+          tailwind(
+            'flex-row items-center pt-4 pb-3 justify-between border-b border-gray-800',
+          ),
+        ]}>
         <Text style={[tailwind('font-bold text-light font-15')]}>
           Usable Cash Bonus
         </Text>
@@ -50,7 +54,6 @@ export default function JoinContestModal(props: PropTypes) {
           - {'\u20B9'} 0
         </Text>
       </View>
-      <BottomLine />
 
       <View
         style={[tailwind('flex-row items-center pt-4 pb-3 justify-between')]}>

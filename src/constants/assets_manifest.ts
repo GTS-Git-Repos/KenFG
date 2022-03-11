@@ -10,7 +10,6 @@ export default {
   question_icon: require('../assets/icons/question_icon.png'),
   chat_icon: require('../assets/icons/chat_icon.png'),
   winning_cup: require('../assets/icons/winning_cup.png'),
-  plus: require('../assets/icons/plus.png'),
   cricket_off: require('../assets/icons/cricket_off.png'),
   cricket_on: require('../assets/icons/cricket_on.png'),
   football_on: require('../assets/icons/football_on.png'),
@@ -23,7 +22,6 @@ export default {
   more_share: require('../assets/icons/more_share.png'),
   friends: require('../assets/icons/friends.png'),
   help: require('../assets/icons/help.png'),
-
 
   profile_round: require('../assets/images/profile_round.png'),
   cricket_icon: require('../assets/images/cricket_icon.png'),
@@ -47,14 +45,14 @@ export default {
   shareToFriends: require('../assets/images/shareToFriends.png'),
   stadium: require('../assets/images/stadium.png'),
   stadium_2: require('../assets/images/stadium_2.png'),
-  
+
   // images that can't convert into svg's
   gpay: require('../assets/images/gpay.png'),
   paytm: require('../assets/images/paytm.png'),
   phonepe: require('../assets/images/phonepe.png'),
   upi: require('../assets/images/upi.png'),
   // crickert and bolwer image
-  coin: require('../assets/images/coin.png'),
+  cricketGame: require('../assets/images/cricketGame.png'),
 
   // flags
   AUS: require('../assets/images/flags/AUS.png'),

@@ -37,7 +37,7 @@ export default function NoContent(props: PropTypes) {
           <View style={[tailwind('flex-row pt-2 justify-center')]}>
             <Image
               resizeMode="contain"
-              source={assets.coin}
+              source={assets.cricketGame}
               style={{width: '80%', height: 142}}
             />
           </View>

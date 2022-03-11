@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import tailwind from '../../../tailwind';
 import {View, ScrollView, ActivityIndicator} from 'react-native';
-import {TeamScrollBoardByInnings} from '../index';
+import TeamScrollBoardByInnings from "./team.scoreboard.innings"
 
 const log = console.log;
 

@@ -3,17 +3,22 @@
 
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, ActivityIndicator, StyleSheet, Text} from 'react-native';
+import {View, Image, ActivityIndicator, StyleSheet, Text} from 'react-native';
 import {useSelector} from 'react-redux';
+import assets from '../../constants/assets_manifest';
 import {getAppThemeSelector} from '../../store/selectors';
 import clr from '../../constants/colors';
+import SecondaryButton from './secondaryButton';
 import FiltersContests from '../molecules/filters.contests';
 import LinkPrC from '../atoms/link.private.contest';
 import CreateTeamButton from '../molecules/create.team.button';
 import SiLink from '../atoms/si.link';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 interface PropTypes {
-  loadig: boolean;
+  contestFilters: Array<any>;
+  filterOnPress(id:string):any;
+  loading: boolean;
 }
 
 export default function NoContests(props: PropTypes) {
@@ -21,22 +26,34 @@ export default function NoContests(props: PropTypes) {
   return (
     <View style={[tailwind('h-full')]}>
       <View style={[ss.troot]}>
-        <FiltersContests selectedFilter={null} />
+        <FiltersContests
+          filterOnPress={props.filterOnPress}
+          contestFilters={props.contestFilters}
+        />
         <LinkPrC />
       </View>
       <SiLink />
-      {/* {props.loadig ? (
+      {props.loading ? (
         <ActivityIndicator size="large" color="#C5A858" />
       ) : (
-        <View>
-          <Text
-            style={[
-              tailwind('font-regular text-white text-center font-13 py-10'),
-            ]}>
-            No Contest found
+        <View style={[ss.noContest]}>
+          <Text style={[ss.txt]}>No Contests found</Text>
+          <Text style={[ss.subText]}>
+            There is no contest found try other filters
           </Text>
+          <View style={[ss.image]}>
+            <Image
+              source={assets.cricketGame}
+              style={[{height: 100}]}
+              resizeMode="contain"
+            />
+          </View>
+
+          <TouchableOpacity style={[ss.btn]}>
+            <SecondaryButton text={'  VIEW MATCHES  '} />
+          </TouchableOpacity>
         </View>
-      )} */}
+      )}
       <CreateTeamButton onPressCreateTeam={() => {}} />
     </View>
   );
@@ -48,5 +65,28 @@ const ss = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 12,
     marginTop: 4,
+  },
+  noContest: {
+    paddingVertical: 50,
+    marginHorizontal: 36,
+  },
+  txt: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 16,
+    color: '#FFFFFF',
+    textAlign: 'center',
+  },
+  subText: {
+    fontFamily: 'gadugi-regular',
+    fontSize: 12,
+    color: '#FFFFFF',
+    paddingVertical: 18,
+    textAlign: 'center',
+  },
+  image: {
+    alignItems: 'center',
+  },
+  btn: {
+    marginVertical: 20,
   },
 });

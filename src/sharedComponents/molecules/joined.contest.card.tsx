@@ -10,7 +10,8 @@ import {CapIcon, PencilEditIcon, VCIcon} from '../../assets/newIcons';
 import ProgressBarShared from '../atoms/progressbar.shared';
 import FooterContest from '../atoms/footer.contest';
 import TeamCode from '../atoms/TeamCode';
-import {ShareIcon, SwitchIcon} from '../';
+import ShareIcon from "../icons/ShareIcon"
+import SwitchIcon from "../icons/SwitchIcon"
 import {TeamFormationMutationType} from '../../types/match';
 
 interface PropTypes {

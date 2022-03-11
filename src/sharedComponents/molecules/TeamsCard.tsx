@@ -17,7 +17,6 @@ import {
 import assets from '../../constants/assets_manifest';
 import {CapIcon, VCIcon} from '../../assets/newIcons';
 import MyTeamsTopSection from '../atoms/MyTeamTopSection';
-import Svg, {Path, Rect} from 'react-native-svg';
 import LinearGradient from 'react-native-linear-gradient';
 
 interface PropTypes {

@@ -2,8 +2,8 @@
 import {differenceInSeconds, intervalToDuration} from 'date-fns';
 import jwt_decode from 'jwt-decode';
 
-// used in transforma upcomming matches api's matches timing 
-export function covertInputTimeStringToDate(inputTime: string) {
+// used in transforma upcomming matches api's matches timing
+export function covertInputTimeStringToDate(inputTime: string): Date {
   try {
     const splited: any = inputTime.split(/[- :]/);
     return new Date(
@@ -43,7 +43,6 @@ export const decodeJwt = (jwt: string) => {
     return false;
   }
 };
-
 
 export const isMatchTimeExhausted = (time: any): boolean => {
   try {

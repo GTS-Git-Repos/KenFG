@@ -36,12 +36,15 @@ import {
   useJoinedContests,
 } from '../../../shared_hooks/contest.hooks';
 import {
+  contestFilterSelector,
   contestLoadingSelector,
   contestReducer,
   matchContestsState,
   sortStatusSelector,
   updateContests,
+  updateFilter,
   updateLoading,
+  updateSort,
 } from './contest.list.controller';
 import {allContestsSelector} from './contest.list.controller';
 import {TeamFormationMutationType} from '../../../types/match';
@@ -49,6 +52,7 @@ import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 import {updateUserInfo} from '../../../store/actions/userAction';
 import {} from 'react-native-gesture-handler';
 import {toContestInfo} from '../../../navigations/contest.links';
+import {SortStatusType} from 'src/types/contest';
 
 export default function ContestListHOC() {
   const dispatch = useDispatch();
@@ -59,6 +63,8 @@ export default function ContestListHOC() {
   const CLoading = contestLoadingSelector(contestState);
   const allContests = allContestsSelector(contestState);
   const sortStatus = sortStatusSelector(contestState);
+  const contestFilters = contestFilterSelector(contestState);
+
   const colors = useSelector(appColorsSelector);
 
   const navigation = useNavigation<any>();
@@ -99,7 +105,7 @@ export default function ContestListHOC() {
   useEffect(() => {
     if (contests) {
       contestDispatch(updateContests(contests));
-      contestDispatch(updateLoading());
+      contestDispatch(updateLoading(false));
     }
   }, [contests]);
 
@@ -129,8 +135,12 @@ export default function ContestListHOC() {
     rfJC();
   }
 
-  function sortByOnPress(sortBy: any) {
-    contestDispatch({type: 'UPDATE_SORT', payload: sortBy});
+  function sortByOnPress(payload: SortStatusType) {
+    contestDispatch(updateSort(payload));
+  }
+
+  function filterOnPress(id: string) {
+    contestDispatch(updateFilter(id));
   }
 
   function onContestCardPress(contest_key: string) {
@@ -272,6 +282,8 @@ export default function ContestListHOC() {
     <ContestListScreen
       userSelector={userSelector}
       contests={allContests}
+      contestFilters={contestFilters}
+      filterOnPress={filterOnPress}
       ctsLoading={CLoading}
       onContestCardPress={onContestCardPress}
       joined={joined}

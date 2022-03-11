@@ -39,7 +39,7 @@ export default function NoLeaderBoardContent(props: PropTypes) {
       <Text style={[ss.txtTitle]}>No Team Joined this contest Yet</Text>
       <Image
         resizeMode="contain"
-        source={assets.coin}
+        source={assets.cricketGame}
         style={{width: '80%', height: 142}}
       />
       <Text style={[ss.txtSubTitle]}>

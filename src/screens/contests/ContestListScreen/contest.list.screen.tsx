@@ -10,7 +10,6 @@ import {
   WalletHalfModal,
   MatchContestTabs,
 } from '../../../sharedComponents';
-import {toContestInfo} from '../../../navigations/contest.links';
 import {
   ContestPage,
   MyContestPage,
@@ -20,20 +19,17 @@ import {useSelector} from 'react-redux';
 import {selectedMatch} from '../../../store/selectors';
 import Modal from 'react-native-modal';
 import {TeamFormationMutationType} from '../../../types/match';
+import {SortStatusType} from "../../../types/contest"
 import {infoBox} from '../../../utils/snakBars';
 import {getAppThemeSelector} from '../../../store/selectors';
 import clr from '../../../constants/colors';
 
 const log = console.log;
 
-interface SortTypes {
-  max_entry: boolean;
-  max_price: boolean;
-}
-
 interface PropTypes {
   contests: any;
   ctsLoading: any;
+  contestFilters:Array<any>
   joined: any;
   joinedAPI: any;
   joinedAPILive: any;
@@ -48,9 +44,10 @@ interface PropTypes {
   showJoinModal: any;
   entryAmount: any;
   loading: boolean;
-  sortStatus: SortTypes;
+  sortStatus: SortStatusType;
   showWalletModal: boolean;
   userSelector: any;
+  filterOnPress(id:string):any
   onContestCardPress(contest_key: string): any;
   setShowWalletModal(val: boolean): any;
   setLoading(value: boolean): any;
@@ -63,7 +60,7 @@ interface PropTypes {
   onPressTeamSwitch(team_key: string, contest_key: string): void;
   onPressJoinedContest(contest_key: string): void;
   onPressSecondInnings(): any;
-  sortByOnPress(sortBy: any): any;
+  sortByOnPress(payload:SortStatusType): any;
   openWallet(): any;
   onPressCreateTeam(): any;
 }
@@ -117,16 +114,16 @@ export default function ContestListScreen(props: PropTypes) {
         <View style={{width: width}}>
           <ContestPage
             contests={props.contests}
+            contestFilters={props.contestFilters}
             onContestCardPress={props.onContestCardPress}
-            status={props.ctsLoading}
-            selectedFilter={selectedFilter}
-            setSelectedFilter={setSelectedFilter}
+            contestLoading={props.ctsLoading}
             proceedToJoin={props.proceedToJoin}
             index={0}
             selectedTab={props.selectedTab}
             isFullMatch={props.isFullMatch}
             onPressSecondInnings={props.onPressSecondInnings}
             sortStatus={props.sortStatus}
+            filterOnPress={props.filterOnPress}
             sortByOnPress={props.sortByOnPress}
             onPressCreateTeam={props.onPressCreateTeam}
           />

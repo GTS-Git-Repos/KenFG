@@ -51,6 +51,12 @@ export const useGetTeams = (
   return {teams, teamsAPI, teamsAPILive, refetchTeams};
 };
 
+/**
+ * used to get joined contests in the match, 
+ * format {contestMeta:{}, joinedTeams:[]}
+ * before team selection screen (join contest button pressed)
+ * before team switching feature (my Contest, leaderboard)
+ */
 export const useJoinedContests = (
   match_key: string,
   user_id: string,
@@ -59,16 +65,17 @@ export const useJoinedContests = (
   const {
     data: joined,
     isSuccess: joinedAPI,
+    isError: errJC,
     isFetching: joinedAPILive,
     refetch: rfJC,
   } = useQuery(
     ['joined_contest', match_key, user_id, isFullMatch],
     getJoinedContestRemote,
     {
-      notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
+      notifyOnChangeProps: ['data', 'isSuccess', 'isError', 'isFetching'],
     },
   );
-  return {joined, joinedAPI, joinedAPILive, rfJC};
+  return {joined, joinedAPI, joinedAPILive, errJC,rfJC};
 };
 
 export const useMatchMeta = (match_key: string, user_id: string) => {

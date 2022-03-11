@@ -1,3 +1,4 @@
+// move to match types definations
 
 export interface CompareTeamType {
     commanPlayers: CommanPlayer[];

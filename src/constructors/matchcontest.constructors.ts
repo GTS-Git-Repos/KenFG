@@ -24,7 +24,9 @@ export const groupAllContestsAPIRmeote = (payload: any) => {
 
 export const extractJoinedContestAPIResponse = (payload: any) => {
   try {
+    // extract the contests data, by removing the last index
     const contestsdata = payload.slice(0, payload.length - 1);
+    // extract the teams, it alwasy a last index in a array
     const teams = payload[payload.length - 1];
 
     if (contestsdata.length === 0) {
@@ -34,6 +36,7 @@ export const extractJoinedContestAPIResponse = (payload: any) => {
     for (const item of contestsdata) {
       const contestMeta = {...item, contest_team: item.contest_team.split(',')};
 
+      // find the contest joind team and creates a JSON
       const joinedTeam = [];
       for (const team of contestMeta.contest_team) {
         const teamMeta = teams.find((item: any) => item.team_key == team);
@@ -75,14 +78,16 @@ export const extractDataFromUpcommingMatchesAPI = (
   payload: any,
 ): UpcommingMatchType => {
   try {
+    // upcomming matches info
     const u_matches = payload.matches;
     const banners = payload.banners;
+    // used joined matches info
     const my_matches = payload.my_matches;
 
     const upcomming = [];
     const myMatches = [];
     for (const u_match of u_matches) {
-      let obj = {...u_match};
+      const obj = {...u_match};
       obj.start_at = covertInputTimeStringToDate(u_match.teams.start_at);
       obj.teams.a.a_flag = `${FLAG_IMG_URL}${convertTeamCodeToUppercase(
         u_match.teams.a.key,
@@ -90,7 +95,9 @@ export const extractDataFromUpcommingMatchesAPI = (
       obj.teams.b.b_flag = `${FLAG_IMG_URL}${convertTeamCodeToUppercase(
         u_match.teams.b.key,
       )}.png`;
+
       // delete obj.teams.start_at;
+      
       upcomming.push(obj);
     }
     for (const myMatch of my_matches) {

@@ -2,7 +2,7 @@ import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, TouchableOpacity, Text} from 'react-native';
 import {PencilEditIcon} from '../../assets/newIcons/';
-import {CloneIcon} from '../../sharedComponents/';
+import CloneIcon from "../icons/CloneIcon"
 
 interface PropTypes {
   team_key: string;

@@ -46,6 +46,7 @@ import MIcon from './svgIcons/m.icon';
 import TickIcon from './svgIcons/tick.icon';
 import SwapIcon from './svgIcons/swap.icon';
 import PencilEditIcon from './svgIcons/pencil.edit.icon';
+import PlusIcon from './svgIcons/plus.icon';
 
 export {
   ContestsBottomTabOff,
@@ -74,6 +75,7 @@ export {
   SwapIcon,
   MIcon,
   WalletSideIcon,
+  PlusIcon,
   WalletIcon,
   ChartIcon,
   TickIcon,
@@ -95,5 +97,5 @@ export {
   PanCardIcon,
   LogoWrapper,
   FootBallIcon,
-  PencilEditIcon
+  PencilEditIcon,
 };
