@@ -29,26 +29,14 @@ export default function MyContestPage(props: PropTypes) {
     props.pagerRef.current?.setPage(0);
   }
 
-  if (!props.status || !isActiveTab) {
-    return (
-      <ActivityIndicator
-        style={[tailwind('mt-10')]}
-        color="#d1b45a"
-        size="large"
-      />
-    );
-  }
-
-  if (!props.status) {
-    return <ActivityIndicator size={'large'} color="#d1b45a" />;
-  }
-  if (props.status && !props.joined) {
+  if (!props.joined) {
     return (
       <NoDataContests
         title={'The first move to get your fortune '}
         subtitle={'It’s your time where skills & knowledge meets action'}
         actionText={'VIEW CONTESTS'}
         noContentAction={noContentAction}
+        loading={!isActiveTab}
       />
     );
   }

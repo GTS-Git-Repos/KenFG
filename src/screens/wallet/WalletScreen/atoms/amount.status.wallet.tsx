@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import {InfoSquareGrayIcon} from '../../../../assets/newIcons';
 import {useNavigation} from '@react-navigation/core';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   balance: number;
@@ -12,70 +13,73 @@ interface PropTypes {
   bonus: number;
   earned: number;
   isVerified: boolean;
+  dT: boolean;
 }
 
 export default function AmountStatusWallet(props: PropTypes) {
+
   return (
-    <View style={[tailwind('mx-4 my-3 px-3 bg-dark-3 rounded')]}>
-      <Balance amount={props.balance} />
+    <View style={[ss.root, props.dT ? clr.bgd2 : clr.bgw]}>
+      <View style={[ss.balRoot]}>
+        <Text style={[ss.subtxt, props.dT ? clr.tgray : clr.tdgray]}>
+          Current Balance
+        </Text>
+        <Text style={[ss.txt, props.dT ? clr.tw : clr.td1]}>
+          {'\u20B9 '}
+          {props.balance}
+        </Text>
+      </View>
       <Section
         text="Amount Added (unutilised)"
-        verified={true}
+        verified={null}
         amount={props.balance}
+        dT={props.dT}
       />
-      <Section text="Winnings" verified={false} amount={props.winnigs} />
-      <Section text="Cash Bonus" verified={true} amount={props.bonus} />
-      <Section text="Earned" verified={false} amount={props.earned} />
+      <Section
+        text="Winnings"
+        verified={false}
+        amount={props.winnigs}
+        dT={props.dT}
+      />
+      <Section
+        text="Cash Bonus"
+        verified={null}
+        amount={props.bonus}
+        dT={props.dT}
+      />
+      <Section
+        text="Earned"
+        verified={true}
+        amount={props.earned}
+        dT={props.dT}
+      />
     </View>
   );
 }
 
-const Balance = (props: any) => {
-  return (
-    <View style={[tailwind('py-3 border-b border-gray-800')]}>
-      <Text style={[tailwind('font-regular text-dark-1 text-center font-12')]}>
-        Current Balance
-      </Text>
-      <Text
-        style={[tailwind('font-bold text-white text-center'), {fontSize: 24}]}>
-        {'\u20B9 '}
-        {props.amount}
-      </Text>
-    </View>
-  );
-};
-
 const Section = (props: any) => {
   return (
-    <View
-      style={[
-        tailwind(
-          'py-4 flex-row items-center justify-between border-b border-gray-800',
-        ),
-      ]}>
+    <View style={[ss.sectionRoot]}>
       <View>
-        <Text style={[tailwind('font-regular text-dark-1 font-12 pb-1')]}>
+        <Text style={[ss.subtxt, props.dT ? clr.tgray : clr.tdgray]}>
           {props.text}
         </Text>
-        <Text style={[tailwind('font-regular text-white font-18')]}>
+        <Text style={[ss.baltxt, props.dT ? clr.tw : clr.td1]}>
           {'\u20B9'} {props.amount}
         </Text>
       </View>
       <View style={[tailwind('flex-row items-center')]}>
-        {!props.verified && <Withdrawal />}
+        {props.verified === true && <Withdrawal />}
+        {props.verified === false && <VerifyNow />}
         <InfoSquareGrayIcon />
       </View>
     </View>
   );
 };
-
 const VerifyNow = () => {
   return (
-    <TouchableOpacity
-      style={[tailwind('rounded py-1 px-2 mr-3'), styles.border]}>
-      <Text style={[tailwind('font-regular text-white font-14')]}>
-        Verify Now
-      </Text>
+    <TouchableOpacity style={[ss.btn]}>
+      <Text style={[ss.subtxt]}>Verify Now</Text>
     </TouchableOpacity>
   );
 };
@@ -85,20 +89,53 @@ const Withdrawal = () => {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('WithdrawelScreen')}
-      style={[tailwind('rounded py-1 px-2 mr-3'), styles.border]}>
-      <Text style={[tailwind('font-regular text-white font-14')]}>
-        Instant Withdrawal
-      </Text>
+      style={[ss.btn]}>
+      <Text style={[ss.subtxt]}>Instant Withdrawal</Text>
     </TouchableOpacity>
   );
 };
 
-const styles = StyleSheet.create({
-  border: {
-    borderTopColor: '#00513B',
-    borderLeftColor: '#00513B',
-    borderRightColor: '#00513B',
-    borderBottomColor: '#00513B',
+const ss = StyleSheet.create({
+  root: {
+    paddingHorizontal: 12,
+    marginVertical: 12,
+    marginHorizontal: 16,
+    borderRadius: 10,
+  },
+  balRoot: {
+    borderColor: 'rgba(31, 41, 55, 0.1)',
+    borderBottomWidth: 1,
+    paddingVertical: 12,
+  },
+  subtxt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    textAlign: 'center',
+    paddingBottom: 6,
+  },
+  txt: {
+    fontFamily: 'gadugi-bold',
+    textAlign: 'center',
+    fontSize: 24,
+  },
+  sectionRoot: {
+    alignItems: 'center',
+    borderColor: 'rgba(31, 41, 55, 0.1)',
+    borderBottomWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 16,
+  },
+  baltxt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 18,
+  },
+  btn: {
+    borderRadius: 4,
+    marginRight: 12,
+    paddingHorizontal: 8,
+    paddingTop: 6,
+    borderColor: '#00513B',
     borderWidth: 1,
     borderStyle: 'solid',
   },

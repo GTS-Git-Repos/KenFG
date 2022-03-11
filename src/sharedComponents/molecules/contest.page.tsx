@@ -33,6 +33,8 @@ export default function ContestsPage(props: ContestPageType) {
         loading={props.contestLoading}
         contestFilters={props.contestFilters}
         filterOnPress={props.filterOnPress}
+        onPressCreateTeam={props.onPressCreateTeam}
+        noContentAction={noContentAction}
       />
     );
   }

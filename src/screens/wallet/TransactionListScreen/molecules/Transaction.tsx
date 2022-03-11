@@ -1,37 +1,37 @@
 import React, {useState} from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
-import {BottomLine} from '../../../../sharedComponents';
-import LinearGradient from 'react-native-linear-gradient';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   amount: string;
   plus: boolean;
   title: string;
   open: boolean;
+  dT: boolean;
 }
 
 export default function Transaction(props: PropTypes) {
+  console.log(
+    tailwind(
+      'bg-dark-3 flex-row items-center justify-between border-b border-gray-800',
+    ),
+  );
+
   const [open, setOpen] = useState(false);
 
   return (
     <View>
       <TouchableOpacity
         onPress={() => setOpen(!open)}
-        style={[
-          tailwind(
-            'bg-dark-3 flex-row items-center justify-between border-b border-gray-800',
-          ),
-          {marginHorizontal: 5, paddingHorizontal: 16, paddingVertical: 12},
-        ]}>
-        <Text style={[tailwind('font-bold text-light font-14')]}>
+        style={[ss.root, props.dT ? clr.bgd2 : clr.bgw]}>
+        <Text style={[ss.amount]}>
           {props.plus ? '+ ' : '- '}
           {'\u20B9'}
           {props.amount}
         </Text>
-        <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+        <Text style={[ss.subText, props.dT ? clr.td2 : clr.tdgray]}>
           {props.title}
         </Text>
         <Icon
@@ -40,56 +40,51 @@ export default function Transaction(props: PropTypes) {
           color="#FFFFFF4D"
         />
       </TouchableOpacity>
-      {/* <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        style={[tailwind('')]}
-        colors={
-          open
-            ? ['#000000', '#000000', '#000000']
-            : ['#172338', '#204B91', '#172338']
-        }>
-        <View style={[tailwind(''), {height: 0.4}]}></View>
-      </LinearGradient> */}
-      {open && <TransactionInfo />}
+      {open && (
+        <View style={[ss.details, props.dT ? clr.bgd1 : clr.bgw]}>
+          <Text style={[ss.subText]}>Transaction ID:</Text>
+          <Text style={[ss.txt]}>549372982368264868</Text>
+
+          <Text style={[ss.subText]}>Transaction Date:</Text>
+          <Text style={[ss.txt]}>21 October</Text>
+
+          <Text style={[ss.subText]}>Team Name</Text>
+          <Text style={[ss.txt]}>Team 1</Text>
+        </View>
+      )}
     </View>
   );
 }
 
-const TransactionInfo = () => {
-  return (
-    <View
-      style={[
-        tailwind('bg-dark-3 border-b border-gray-800'),
-        {marginHorizontal: 5, paddingHorizontal: 16, paddingTop: 12},
-      ]}>
-      <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-        Transaction ID:
-      </Text>
-      <Text style={[tailwind('font-regular text-light py-1 font-14')]}>
-        549372982368264868
-      </Text>
+const ss = StyleSheet.create({
+  root: {
+    alignItems: 'center',
+    borderColor: 'rgba(31, 41, 55, 0.2)',
+    borderBottomWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 5,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  amount: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 15,
+  },
+  subText: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 13,
+  },
+  details: {
+    marginHorizontal: 5,
+    paddingHorizontal: 16,
+    paddingTop: 12,
+  },
 
-      <Text style={[tailwind('font-regular text-dark-1 font-14 pt-2')]}>
-        Transaction Date:
-      </Text>
-      <Text style={[tailwind('font-regular text-light py-1 font-14')]}>
-        21 October
-      </Text>
-
-      <Text style={[tailwind('font-regular text-dark-1 font-14 pt-2')]}>
-        Team Name
-      </Text>
-      <Text style={[tailwind('font-regular text-light py-1 pb-3 font-14')]}>
-        Team 1
-      </Text>
-      {/* <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        style={[tailwind('')]}
-        colors={['#172338', '#204B91', '#172338']}>
-        <View style={[{height: 1}]}></View>
-      </LinearGradient> */}
-    </View>
-  );
-};
+  txt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 13,
+    paddingTop: 4,
+    paddingBottom: 12,
+  },
+});

@@ -16,9 +16,11 @@ import SiLink from '../atoms/si.link';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 interface PropTypes {
-  contestFilters: Array<any>;
-  filterOnPress(id:string):any;
   loading: boolean;
+  contestFilters: Array<any>;
+  filterOnPress(id: string): any;
+  onPressCreateTeam(): void;
+  noContentAction(): void;
 }
 
 export default function NoContests(props: PropTypes) {
@@ -49,12 +51,12 @@ export default function NoContests(props: PropTypes) {
             />
           </View>
 
-          <TouchableOpacity style={[ss.btn]}>
-            <SecondaryButton text={'  VIEW MATCHES  '} />
+          <TouchableOpacity onPress={props.noContentAction} style={[ss.btn]}>
+            <SecondaryButton text={'VIEW MATCHES'} />
           </TouchableOpacity>
         </View>
       )}
-      <CreateTeamButton onPressCreateTeam={() => {}} />
+      <CreateTeamButton onPressCreateTeam={props.onPressCreateTeam} />
     </View>
   );
 }

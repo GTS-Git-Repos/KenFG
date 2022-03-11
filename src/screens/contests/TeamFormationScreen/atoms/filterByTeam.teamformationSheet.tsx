@@ -15,8 +15,7 @@ interface PropTypes {
 }
 
 export default function CreateTeamFilterSheetTitle(props: PropTypes) {
-  // console.log(tailwind('font-bold text-white font-15'));
-
+ 
   return (
     <View style={[tailwind('bg-dark rounded-t-lg')]}>
       <View style={[styles.head_wrapper]}>

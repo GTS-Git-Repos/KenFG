@@ -1,59 +1,54 @@
 import React from 'react';
-import {View, ScrollView, Text} from 'react-native';
+import {View, ScrollView, StyleSheet, Text} from 'react-native';
 import tailwind from '../../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
-import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useNavigation} from '@react-navigation/native';
 import {TopBar} from '../../../sharedComponents';
-import Date from './atoms/Date';
+import DateTransaction from './atoms/date.transaction';
 import Transaction from './molecules/Transaction';
-import {} from 'react-native-gesture-handler';
-// import assets from 'assets';
-// import {TopBar} from 'components';
-// import Icon from 'react-native-vector-icons/Ionicons';
 
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
+import {useSelector} from 'react-redux';
 const log = console.log;
 
 export default function TransactionList() {
+  const dT = useSelector(getAppThemeSelector);
   const navigation = useNavigation();
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <TopBar text={'Recent Transactions'} />
       <ScrollView>
         <View style={[tailwind('')]}>
-          <Date date={'21 October, 2021'} />
+          <DateTransaction date={'21 October, 2021'} dT={dT} />
 
           <Transaction
             amount={'32'}
             plus={true}
             title={'Deposited a Cash'}
             open={true}
+            dT={dT}
           />
           <Transaction
             amount={'32'}
             plus={true}
             title={'Won a Contest'}
             open={false}
+            dT={dT}
           />
         </View>
 
         <View style={[tailwind(''), {paddingTop: 18}]}></View>
 
         <View style={[tailwind('')]}>
-          <Date date={'19 October, 2021'} />
+          <DateTransaction dT={dT} date={'19 October, 2021'} />
 
           <Transaction
             amount={'42'}
             plus={false}
             title={'Deposited a Cash'}
             open={false}
-          />
-          <Transaction
-            amount={'32'}
-            plus={true}
-            title={'Won a Contest'}
-            open={false}
+            dT={dT}
           />
         </View>
         <View style={[tailwind('h-20')]}></View>
@@ -61,3 +56,9 @@ export default function TransactionList() {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+});

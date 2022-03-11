@@ -1,3 +1,5 @@
+// My Teams Tab, used in Full match and second innings contest page
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, ScrollView, Text, ActivityIndicator} from 'react-native';
@@ -5,6 +7,7 @@ import TeamsCard from './TeamsCard';
 // import NOTeamsPage from '../atoms/no.teams.page';
 import {TeamFormationMutationType} from '../../types/match';
 import CreateTeamButtom from './create.team.button';
+import NoDataContests from '../atoms/no.data.contest';
 
 interface PropTypes {
   selectedTab: number;
@@ -43,29 +46,15 @@ export default function MyTeamsPage(props: PropTypes) {
     props.pagerRef?.current?.setPage(0);
   }
 
-  if (!isActiveTab) {
+  if (!props.teams) {
     return (
-      <ActivityIndicator
-        style={[tailwind('mt-10')]}
-        color="#d1b45a"
-        size="large"
+      <NoDataContests
+        title={'The first move to get your fortune '}
+        subtitle={'It’s your time where skills & knowledge meets action'}
+        actionText={'VIEW CONTESTS'}
+        noContentAction={noContentAction}
+        loading={!isActiveTab}
       />
-    );
-  }
-
-  if (!props.status) {
-    return <TeamsLoading />;
-  }
-  if (props.status && !props.teams) {
-    return (
-      <Text style={[tailwind('font-regular text-white font-15')]}>Null</Text>
-      // <NOTeamsPage
-      //   title={'The first move to get your fortune'}
-      //   subtitle={'Create Your First Teams and meet action'}
-      //   actionText={'VIEW CONTESTS'}
-      //   noContentAction={noContentAction}
-      //   onPressCreateTeam={props.onPressCreateTeam}
-      // />
     );
   }
   return (

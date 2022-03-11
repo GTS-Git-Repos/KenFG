@@ -8,6 +8,7 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import CountdownContest from './countdown.contest';
 import assets from '../../constants/assets_manifest';
@@ -17,6 +18,7 @@ import clr from '../../constants/colors';
 import {useSelector} from 'react-redux';
 
 interface PropTypes {
+  loading: boolean;
   title: string;
   subtitle: string;
   actionText: string;
@@ -26,24 +28,31 @@ interface PropTypes {
 export default function NoDataContest(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
 
-  // console.log(tailwind('font-regular text-center text-white font-14'));
-
   return (
     <ImageBackground
       source={assets.stadium}
       style={[tailwind('w-full'), {flexGrow: 1}]}
       resizeMode="cover">
       <View style={[tailwind(''), {paddingVertical: 59}]}>
-        <Text style={[ss.title, dT ? clr.tw : clr.td1]}>
-          {props.title}
-        </Text>
-        <CountdownContest timeStamp={''} />
-        <Text style={[ss.title, dT ? clr.tw : clr.td1]}>{props.subtitle}</Text>
-        <TouchableOpacity
-          onPress={props.noContentAction}
-          style={[tailwind('mx-16 my-7')]}>
-          <SecondaryButton text={props.actionText} />
-        </TouchableOpacity>
+        {props.loading ? (
+          <ActivityIndicator
+            color="#d1b45a"
+            size="large"
+          />
+        ) : (
+          <>
+            <Text style={[ss.title, dT ? clr.tw : clr.td1]}>{props.title}</Text>
+            <CountdownContest timeStamp={''} />
+            <Text style={[ss.title, dT ? clr.tw : clr.td1]}>
+              {props.subtitle}
+            </Text>
+            <TouchableOpacity
+              onPress={props.noContentAction}
+              style={[tailwind('mx-16 my-7')]}>
+              <SecondaryButton text={props.actionText} />
+            </TouchableOpacity>
+          </>
+        )}
       </View>
     </ImageBackground>
   );

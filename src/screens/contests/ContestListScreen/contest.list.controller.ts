@@ -94,7 +94,8 @@ export const allContestsSelector = createSelector(
       );
       contests = filterContests;
     }
-    // [] to sortPrice   after backend confirms the type
+    // [] to do sortPrice   after backend confirms the type
+
     if (sortEntry !== null) {
       return sortContests(contests, 'entry', sortEntry);
     }

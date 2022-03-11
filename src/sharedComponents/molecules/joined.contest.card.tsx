@@ -47,7 +47,6 @@ interface TeamInfoTypes {
 }
 
 export default function JoinedContestCard(props: PropTypes) {
-  // console.log(tailwind('rounded px-2 bg-dark-4'));
 
   const [open, setOpen] = useState(false);
   return (

@@ -26,9 +26,6 @@ interface PropTypes {
 
 export default function NoContent(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
-
-  // console.log(tailwind('font-regular text-center text-white font-14'));
-
   return (
     <ImageBackground
       source={assets.stadium}
