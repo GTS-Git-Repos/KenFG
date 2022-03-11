@@ -38,3 +38,14 @@ export interface UserMetaType {
   refered_by: string;
   referral_code: string;
 }
+
+export interface NotificationScreenType {
+  activeFilter: any;
+  updateFilter(filter: string): void;
+  ntfi: Array<any>;
+  ntfi_l: boolean;
+  ntfi_e: boolean;
+  openNotification(key: string);
+  refetch(): void;
+  filterSheet: any;
+}

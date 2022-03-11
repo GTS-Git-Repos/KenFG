@@ -44,11 +44,9 @@ import MyTeamsContestPage from './molecules/my.teams.contest.page';
 import CreateTeamButton from './molecules/create.team.button';
 import MatchContestTabs from './molecules/match.contest.tabs';
 
-import MoneyIcon from './icons/MoneyIcon';
 import Facebook from './icons/Facebook';
 import SwitchIcon from './icons/SwitchIcon';
 import UserIcon from './icons/UserIcon';
-import GearIcon from './icons/GearIcon';
 import RankIcon from './icons/RankIcon';
 import ShareIcon from './icons/ShareIcon';
 import ContestBellIcon from './icons/ContestBellIcon';
@@ -114,13 +112,11 @@ export {
   SocialLogin,
   TabsBottomLine,
   ExpertsStats,
-  MoneyIcon,
   Facebook,
   SwitchIcon,
   UserIcon,
   GoldenCup,
   CloneIcon,
-  GearIcon,
   ReferPeopleIcon,
   QuestionIcon,
   RankIcon,

@@ -3,6 +3,7 @@
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import fileUploadServer from '../workers/fileUploadServer';
+import {normalizeNotificationAPI} from '../constructors/user.contrustor';
 
 // API Routes
 const req_update_user = '/update-profile.php';
@@ -11,8 +12,9 @@ const req_verify = '/verify.php';
 const req_getProfile = '/view-profile.php';
 const req_addDeposit = '/update-deposit.php';
 const req_kyc_pan = '/kyc.php';
-const req_bank_verify = "/bank-account.php"
+const req_bank_verify = '/bank-account.php';
 const req_profileUpload = '/profile-upload.php';
+const req_notification = '/notifications.php';
 
 export const getUserRemote = async (payload: any) => {
   try {
@@ -34,7 +36,10 @@ export const getUserRemote = async (payload: any) => {
 
 export const uploadUserProfileImageRemote = async (payload: any) => {
   try {
-    const response = await fileUploadServer(BASE_URL + req_profileUpload, payload);
+    const response = await fileUploadServer(
+      BASE_URL + req_profileUpload,
+      payload,
+    );
     if (response) {
       return true;
     }
@@ -42,6 +47,23 @@ export const uploadUserProfileImageRemote = async (payload: any) => {
   } catch (err) {
     console.log(err);
     return false;
+  }
+};
+
+export const getNotificationRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_notification,
+      {player_key: params.queryKey[1]},
+    );
+    if (response.status === 200) {
+      return normalizeNotificationAPI(response.data.data);
+    }
+    throw 'get notification invalid response';
+  } catch (err) {
+    console.log(err);
+    throw err;
   }
 };
 
@@ -97,7 +119,10 @@ export const uploadPanKYCRemote = async (formData: any) => {
 
 export const uploadBankInfoRemote = async (formData: any) => {
   try {
-    const response = await fileUploadServer(BASE_URL + req_bank_verify, formData);
+    const response = await fileUploadServer(
+      BASE_URL + req_bank_verify,
+      formData,
+    );
     if (response) {
       return true;
     } else {

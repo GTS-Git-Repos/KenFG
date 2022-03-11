@@ -1,16 +1,12 @@
 import React from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useNavigation} from '@react-navigation/native';
 import {MoneySideIcon} from '../../../assets/newIcons';
-import {TopBar, MoneyIcon} from '../../../sharedComponents';
+import {TopBar} from '../../../sharedComponents';
 import Links from './atoms/Links';
-
-// import assets from 'assets';
-// import {TopBar} from 'components';
-// import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
 
@@ -36,11 +32,7 @@ export default function MoreScreen() {
           text={'About Us'}
           goto={'AboutUsScreen'}
         />
-        <Links
-          icon={<MoneySideIcon dT={true} />}
-          text={'Legality'}
-          goto={''}
-        />
+        <Links icon={<MoneySideIcon dT={true} />} text={'Legality'} goto={''} />
         <Links
           icon={<MoneySideIcon dT={true} />}
           text={'T&C'}

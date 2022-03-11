@@ -1,3 +1,5 @@
+// used create contest screen
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {
@@ -9,7 +11,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import assets from '../../constants/assets_manifest';
-import SecondaryButton from "./secondaryButton"
+import SecondaryButton from './secondaryButton';
 
 interface PropTypes {
   loading: boolean;
@@ -19,7 +21,7 @@ interface PropTypes {
   actionPress(): any;
 }
 
-export default function NoContent(props: PropTypes) {
+export default function NoContentShared(props: PropTypes) {
   return (
     <ImageBackground
       source={assets.stadium_2}
@@ -38,7 +40,7 @@ export default function NoContent(props: PropTypes) {
             <Image
               resizeMode="contain"
               source={assets.cricketGame}
-              style={{width: '80%', height: 142}}
+              style={{wiwdth: '80%', height: 142}}
             />
           </View>
           <Text

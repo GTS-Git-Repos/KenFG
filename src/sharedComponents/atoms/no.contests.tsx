@@ -2,7 +2,6 @@
 // active when no contests from api and no contests matched while filters applied
 
 import React from 'react';
-import tailwind from '../../../tailwind';
 import {View, Image, ActivityIndicator, StyleSheet, Text} from 'react-native';
 import {useSelector} from 'react-redux';
 import assets from '../../constants/assets_manifest';
@@ -26,7 +25,7 @@ interface PropTypes {
 export default function NoContests(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   return (
-    <View style={[tailwind('h-full')]}>
+    <View style={[{height: '100%'}]}>
       <View style={[ss.troot]}>
         <FiltersContests
           filterOnPress={props.filterOnPress}

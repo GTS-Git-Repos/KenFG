@@ -48,7 +48,7 @@ export default function WalletScreen() {
           />
           <Actions
             text={'Manage Payments'}
-            subText="Add / Remove Care, Wallets, etc"
+            subText="Add / Remove Cardsw, Wallets, etc"
             goto="ManagePaymentsScreen"
             dT={dT}
           />

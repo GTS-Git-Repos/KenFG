@@ -17,11 +17,15 @@ interface PropTypes {
 }
 
 export default function AmountStatusWallet(props: PropTypes) {
-
   return (
     <View style={[ss.root, props.dT ? clr.bgd2 : clr.bgw]}>
       <View style={[ss.balRoot]}>
-        <Text style={[ss.subtxt, props.dT ? clr.tgray : clr.tdgray]}>
+        <Text
+          style={[
+            ss.subtxt,
+            props.dT ? clr.tgray : clr.tdgray,
+            {textAlign: 'center'},
+          ]}>
           Current Balance
         </Text>
         <Text style={[ss.txt, props.dT ? clr.tw : clr.td1]}>
@@ -69,28 +73,32 @@ const Section = (props: any) => {
         </Text>
       </View>
       <View style={[tailwind('flex-row items-center')]}>
-        {props.verified === true && <Withdrawal />}
-        {props.verified === false && <VerifyNow />}
+        {props.verified === true && <Withdrawal dT={props.dT} />}
+        {props.verified === false && <VerifyNow dT={props.dT} />}
         <InfoSquareGrayIcon />
       </View>
     </View>
   );
 };
-const VerifyNow = () => {
+const VerifyNow = (props: any) => {
   return (
     <TouchableOpacity style={[ss.btn]}>
-      <Text style={[ss.subtxt]}>Verify Now</Text>
+      <Text style={[ss.subtxt, props.dT ? clr.tw : clr.tdgray]}>
+        Verify Now
+      </Text>
     </TouchableOpacity>
   );
 };
 
-const Withdrawal = () => {
+const Withdrawal = (props: any) => {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('WithdrawelScreen')}
       style={[ss.btn]}>
-      <Text style={[ss.subtxt]}>Instant Withdrawal</Text>
+      <Text style={[ss.subtxt, props.dT ? clr.tw : clr.tdgray]}>
+        Instant Withdrawal
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -110,7 +118,6 @@ const ss = StyleSheet.create({
   subtxt: {
     fontFamily: 'gadugi-normal',
     fontSize: 12,
-    textAlign: 'center',
     paddingBottom: 6,
   },
   txt: {

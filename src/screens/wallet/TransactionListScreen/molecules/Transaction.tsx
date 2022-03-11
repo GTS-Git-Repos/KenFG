@@ -13,12 +13,6 @@ interface PropTypes {
 }
 
 export default function Transaction(props: PropTypes) {
-  console.log(
-    tailwind(
-      'bg-dark-3 flex-row items-center justify-between border-b border-gray-800',
-    ),
-  );
-
   const [open, setOpen] = useState(false);
 
   return (
@@ -26,7 +20,7 @@ export default function Transaction(props: PropTypes) {
       <TouchableOpacity
         onPress={() => setOpen(!open)}
         style={[ss.root, props.dT ? clr.bgd2 : clr.bgw]}>
-        <Text style={[ss.amount]}>
+        <Text style={[ss.amount, props.dT ? clr.tw : clr.tdgray]}>
           {props.plus ? '+ ' : '- '}
           {'\u20B9'}
           {props.amount}
@@ -42,14 +36,24 @@ export default function Transaction(props: PropTypes) {
       </TouchableOpacity>
       {open && (
         <View style={[ss.details, props.dT ? clr.bgd1 : clr.bgw]}>
-          <Text style={[ss.subText]}>Transaction ID:</Text>
-          <Text style={[ss.txt]}>549372982368264868</Text>
+          <Text style={[ss.subText, props.dT ? clr.td2 : clr.tdgray]}>
+            Transaction ID:
+          </Text>
+          <Text style={[ss.txt, props.dT ? clr.tw : clr.tdgray]}>
+            549372982368264868
+          </Text>
 
-          <Text style={[ss.subText]}>Transaction Date:</Text>
-          <Text style={[ss.txt]}>21 October</Text>
+          <Text style={[ss.subText, props.dT ? clr.td2 : clr.tdgray]}>
+            Transaction Date:
+          </Text>
+          <Text style={[ss.txt, props.dT ? clr.tw : clr.tdgray]}>
+            21 October
+          </Text>
 
-          <Text style={[ss.subText]}>Team Name</Text>
-          <Text style={[ss.txt]}>Team 1</Text>
+          <Text style={[ss.subText, props.dT ? clr.td2 : clr.tdgray]}>
+            Team Name
+          </Text>
+          <Text style={[ss.txt, props.dT ? clr.tw : clr.tdgray]}>Team 1</Text>
         </View>
       )}
     </View>
@@ -63,7 +67,6 @@ const ss = StyleSheet.create({
     borderBottomWidth: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 5,
     paddingHorizontal: 16,
     paddingVertical: 12,
   },
