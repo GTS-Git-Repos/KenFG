@@ -1,3 +1,4 @@
+// my match card top Section on lobby screen
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import clr from '../../../../constants/colors';

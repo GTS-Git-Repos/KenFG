@@ -1,8 +1,7 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, ScrollView} from 'react-native';
-import MyMatchesCard from '../../../app/LobbyScreen/molecules/mymatch.card.lobby';
-
+import MatchStatusCard from './match.status.myMatches';
 import NoMatch from '../atoms/no.matches';
 
 interface PropTypes {
@@ -32,7 +31,7 @@ export default function CompletedPage(props: PropTypes) {
       {props.matches.map((item: any) => {
         return (
           <View style={[tailwind('my-2')]} key={item.key}>
-            <MyMatchesCard
+            <MatchStatusCard
               match_key={item.key}
               team_a={item.teams.a}
               team_b={item.teams.b}
@@ -42,6 +41,8 @@ export default function CompletedPage(props: PropTypes) {
               contestCount={item.contest_count}
               onPressMyMatchCard={props.onPressMyMatchCard}
               status={item.status}
+              lineups={false}
+              won={null}
             />
           </View>
         );

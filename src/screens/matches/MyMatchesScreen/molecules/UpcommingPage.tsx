@@ -4,6 +4,7 @@ import {View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import MyMatchesCard from '../../../app/LobbyScreen/molecules/mymatch.card.lobby';
+import MatchStatusCard from './match.status.myMatches';
 import NoMatches from '../atoms/no.matches';
 import {useNavigation} from '@react-navigation/core';
 
@@ -40,7 +41,7 @@ export default function UpcommingPage(props: PropTypes) {
       {props.matches.map((item: any) => {
         return (
           <View style={[tailwind('my-2')]} key={item.key}>
-            <MyMatchesCard
+            <MatchStatusCard
               match_key={item.key}
               team_a={item.teams.a}
               team_b={item.teams.b}
@@ -50,6 +51,8 @@ export default function UpcommingPage(props: PropTypes) {
               contestCount={item.contest_count}
               onPressMyMatchCard={props.onPressMyMatchCard}
               status={item.status}
+              lineups={true}
+              won={null}
             />
           </View>
         );

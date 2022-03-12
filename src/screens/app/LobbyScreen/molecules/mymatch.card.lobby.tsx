@@ -1,11 +1,11 @@
+// my match card used in lobby screen
+
 import React, {useEffect, useRef, useState} from 'react';
-import tailwind from '../../../../../tailwind';
 import {TouchableOpacity, StyleSheet} from 'react-native';
 import MyMatchesTop from '../atoms/my.matches.top';
 import Teams from '../atoms/my.matches.teams';
 import SlideAddMyMatchCard from '../atoms/SlideAddMyMatchCard';
 import {useNavigation} from '@react-navigation/core';
-const log = console.log;
 import {getAppThemeSelector} from '../../../../store/selectors';
 import clr from '../../../../constants/colors';
 import {useSelector} from 'react-redux';
@@ -34,7 +34,7 @@ export default function MyMatchesCard(props: PropTypes) {
     let interval: any = null;
     try {
       if (isMounted.current) {
-        // count down logic
+        // count down logic yet to be implemented
       }
     } catch (err) {
       console.log(err);

@@ -32,7 +32,7 @@ interface JoinContestRequestShape {
   isFullMatch: boolean;
 }
 
-// save a opened match, that open match contests
+// save a opened match, that open match contests list
 export const navigateMatchContestsAction = (
   navigation: any,
   payload: selectedMatchShape,
