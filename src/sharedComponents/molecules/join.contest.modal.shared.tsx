@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ButtonComponent from '../atoms/ButtonComponent';
 
@@ -14,11 +14,9 @@ interface PropTypes {
 
 export default function JoinContestModal(props: PropTypes) {
   return (
-    <View style={[tailwind('bg-dark-3 p-4 rounded')]}>
-      <View style={[tailwind('flex-row items-center justify-between')]}>
-        <Text style={[tailwind('font-regular uppercase text-light font-15')]}>
-          Confirmation
-        </Text>
+    <View style={[ss.root]}>
+      <View style={[ss.frcb]}>
+        <Text style={[ss.confirmtxt]}>Confirmation</Text>
         <TouchableOpacity
           onPress={() => {
             props.setShowJoinModal(false);
@@ -27,41 +25,29 @@ export default function JoinContestModal(props: PropTypes) {
         </TouchableOpacity>
       </View>
       {/* Available cash */}
-      <View style={[tailwind('flex-row')]}>
-        <Text style={[tailwind('font-regular text-gray-300 font-10')]}>
+      <View style={[ss.fr]}>
+        <Text style={[ss.txt]}>
           Amount Added (Unutilised) + winnings = {'\u20B9 '}
           {props.availableCash}
         </Text>
       </View>
 
-      <View style={[tailwind('flex-row items-center pt-4 justify-between')]}>
-        <Text style={[tailwind('font-bold text-light font-15')]}>Entry</Text>
-        <Text style={[tailwind('font-bold text-light font-15')]}>
-          {'\u20B9'} {props.entryAmount}
+      <View style={[ss.container, {paddingBottom: 0}]}>
+        <Text style={[ss.boldtxt]}>Entry</Text>
+        <Text style={[ss.boldtxt]}>
+          {'\u20B9'} {props.entryAmount || 0}
         </Text>
       </View>
 
-      <View
-        style={[
-          tailwind(
-            'flex-row items-center pt-4 pb-3 justify-between border-b border-gray-800',
-          ),
-        ]}>
-        <Text style={[tailwind('font-bold text-light font-15')]}>
-          Usable Cash Bonus
-        </Text>
-        <Text style={[tailwind('font-bold text-light font-15')]}>
-          - {'\u20B9'} 0
-        </Text>
+      <View style={[ss.container]}>
+        <Text style={[ss.boldtxt]}>Usable Cash Bonus</Text>
+        <Text style={[ss.boldtxt]}>- {'\u20B9'} 0</Text>
       </View>
 
-      <View
-        style={[tailwind('flex-row items-center pt-4 pb-3 justify-between')]}>
-        <Text style={[tailwind('font-bold text-secondary font-15')]}>
-          To Pay
-        </Text>
-        <Text style={[tailwind('font-bold text-secondary font-15')]}>
-          {'\u20B9'} {props.entryAmount}
+      <View style={[ss.container]}>
+        <Text style={[ss.boldtxt, tailwind('text-secondary')]}>To Pay</Text>
+        <Text style={[ss.boldtxt, tailwind('text-secondary')]}>
+          {'\u20B9'} {props.entryAmount | 0}
         </Text>
       </View>
       <TouchableOpacity
@@ -72,3 +58,44 @@ export default function JoinContestModal(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    backgroundColor: '#172338',
+    borderRadius: 4,
+    padding: 16,
+  },
+  frcb: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  fr: {
+    flexDirection: 'row',
+  },
+  confirmtxt: {
+    color: '#f5feff',
+    fontFamily: 'gadugi-normal',
+    fontSize: 15,
+    textTransform: 'uppercase',
+  },
+  txt: {
+    color: 'rgba(209, 213, 219, 1)',
+    fontFamily: 'gadugi-normal',
+    fontSize: 10,
+  },
+  boldtxt: {
+    color: '#f5feff',
+    fontFamily: 'gadugi-bold',
+    fontSize: 15,
+  },
+  container: {
+    alignItems: 'center',
+    // borderBottomColor: 'rgba(31, 41, 55, 1)',
+    // borderBottomWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingBottom: 12,
+    paddingTop: 16,
+  },
+});

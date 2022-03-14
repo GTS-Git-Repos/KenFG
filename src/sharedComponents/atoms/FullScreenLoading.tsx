@@ -1,3 +1,5 @@
+// used in Account profile screen and ....
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Dimensions, ActivityIndicator} from 'react-native';

@@ -5,14 +5,13 @@
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import compareTeamMeta from '../constants/mocks/mockCompareTeam.json';
-import {liveTestMatchFormat} from '../constructors/livetest.match.constructors';
+import {MatchScoreFormat} from '../constructors/match.constructors';
 import {parseJoinedTeamsAPI} from '../constructors/teams.constructor';
 import {normalizeGetPlayersAPI} from '../constructors/teams.constructor';
-import MockMatchScore from '../constants/mocks/aussl_2022_t20_03_live.json';
+// import MockMatchScore from '../constants/mocks/aussl_2022_t20_03_live.json';
 import {
   extractDataFromUpcommingMatchesAPI,
   extractJoinedContestAPIResponse,
-  groupAllContestsAPIRmeote,
   normalizeCompareTeamsRemote,
   parseJoinedMatchesAPI,
 } from '../constructors/matchcontest.constructors';
@@ -21,7 +20,6 @@ import {
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
 const req_team_create = '/create-team.php';
 const req_view_team = '/view-team.php';
-const req_contest_list = '/contests.php';
 const req_join_contest = '/join-contest.php';
 const req_join_contest2 = '/join-contest2.php';
 
@@ -82,8 +80,6 @@ export const joinedMatchesRemote = async (params: any) => {
   }
 };
 
-
-
 export const searchContestsRemote = async (payload: any) => {
   try {
     const response = await requestServer(
@@ -104,7 +100,6 @@ export const searchContestsRemote = async (payload: any) => {
 
 export const liveMatchMetaRemote = async (params: any) => {
   try {
-    return liveTestMatchFormat(CompletedTestMatchMeta);
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_live_match,
@@ -115,7 +110,7 @@ export const liveMatchMetaRemote = async (params: any) => {
       },
     );
     if (response.status === 200) {
-      return liveTestMatchFormat(response.data.data.data);
+      return MatchScoreFormat(response.data.data.data);
     } else {
       failedLog('liveMatchMetaRemote()', response);
     }

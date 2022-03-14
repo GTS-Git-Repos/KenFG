@@ -1,10 +1,10 @@
+// team formation team information, the reverseUI swap the flexRow style
+
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet} from 'react-native';
-import assets from '../../../../constants/assets_manifest';
+import {TeamFlag} from '../../../../sharedComponents';
 import LinearGradient from 'react-native-linear-gradient';
-import FastImage from 'react-native-fast-image';
-// import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
   teamname: string;
@@ -14,47 +14,21 @@ interface PropTypes {
 
 export default function Team1(props: PropTypes) {
   return (
-    <View
-      style={[
-        tailwind(
-          `px-1 items-center ${
-            props.reverseUI ? 'flex-row-reverse' : 'flex-row'
-          }`,
-        ),
-        {flex: 6},
-      ]}>
-      <View
-        style={[tailwind('flex-row justify-center items-center'), {flex: 8}]}>
+    <View style={[ss.root, props.reverseUI && ss.invert]}>
+      <View style={ss.teamc}>
         <View style={[tailwind('flex-col items-center')]}>
-          <View style={styles.flagWrapper}>
-            <FastImage
-              style={{width: 45, height: 25}}
-              source={{
-                uri: `http://kenfg.com/images/flag/${props.teamname.toUpperCase()}`,
-                priority: FastImage.priority.normal,
-              }}
-              // onError={e =>
-              //   props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
-              // }
-              resizeMode={FastImage.resizeMode.contain}
-            />
-          </View>
-          <Text
-            allowFontScaling={true}
-            adjustsFontSizeToFit={true}
-            style={[tailwind('font-bold text-white py-1 uppercase font-12')]}>
+          <TeamFlag teamCode={props.teamname || ''} />
+          <Text numberOfLines={1} style={[ss.teamName]}>
             {props.teamname}
           </Text>
         </View>
       </View>
       <View
         style={[
-          tailwind(
-            `flex-row items-center justify-center ${
-              props.reverseUI ? 'justify-end' : 'justify-center'
-            }`,
-          ),
-          {flex: 4},
+          ss.countC,
+          props.reverseUI
+            ? {justifyContent: 'flex-end'}
+            : {justifyContent: 'center'},
         ]}>
         <LinearGradient
           start={{x: 0, y: 0}}
@@ -65,11 +39,8 @@ export default function Team1(props: PropTypes) {
           style={[tailwind('rounded-full p-0.5 px-2')]}>
           <Text
             style={[
-              tailwind(
-                `font-bold text-white  font-20 ${
-                  props.reverseUI ? 'text-left' : 'text-right'
-                }`,
-              ),
+              ss.count,
+              props.reverseUI ? {textAlign: 'left'} : {textAlign: 'right'},
             ]}>
             {props.teamcount}
           </Text>
@@ -79,11 +50,37 @@ export default function Team1(props: PropTypes) {
   );
 }
 
-const styles = StyleSheet.create({
-  flagWrapper: {
-    width: 45,
-    height: 25,
-    backgroundColor: '#0c1320',
-    borderRadius: 2,
+const ss = StyleSheet.create({
+  root: {
+    paddingHorizontal: 4,
+    alignItems: 'center',
+    flexDirection: 'row',
+    flex: 6,
+  },
+  invert: {
+    flexDirection: 'row-reverse',
+  },
+  teamc: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 8,
+  },
+  teamName: {
+    color: 'rgba(255, 255, 255, 1)',
+    fontFamily: 'gadugi-bold',
+    fontSize: 12,
+    paddingVertical: 6,
+    textTransform: 'uppercase',
+  },
+  countC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 4,
+  },
+  count: {
+    color: 'rgba(255, 255, 255, 1)',
+    fontFamily: 'gadugi-bold',
+    fontSize: 20,
   },
 });

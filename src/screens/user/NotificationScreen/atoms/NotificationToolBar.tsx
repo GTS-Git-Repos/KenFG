@@ -5,13 +5,14 @@ import {MoreIcon, ChartIcon} from '../../../../assets/newIcons';
 
 interface PropTypes {
   filterSheet: any;
+  length: number;
 }
 
 export default function NotificationsToolbar(props: PropTypes) {
   return (
     <View style={[ss.root]}>
       <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-        You have no notifications
+        You have {props.length || 0} notifications
       </Text>
       <View style={[ss.fr]}>
         <TouchableOpacity onPress={() => props.filterSheet?.current?.open()}>

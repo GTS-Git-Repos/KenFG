@@ -4,6 +4,7 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
+import {TeamFlag} from '../../../../sharedComponents';
 import {useSelector} from 'react-redux';
 import {getAppThemeSelector} from '../../../../store/selectors';
 import clr from '../../../../constants/colors';
@@ -20,13 +21,11 @@ interface PropTypes {
   contestCount: any;
   status: string;
   lineups: boolean;
-  won:any,
+  won: any;
   onPressMyMatchCard(match_key: string): any;
 }
 
 export default function MatchStatusMyMatch(props: PropTypes) {
-  console.log(props.team_a);
-
   const dT = useSelector(getAppThemeSelector);
   return (
     <TouchableOpacity
@@ -39,7 +38,7 @@ export default function MatchStatusMyMatch(props: PropTypes) {
           <Text numberOfLines={1} style={[ss.tourName]}>
             {props.tournament_name}
           </Text>
-          <Lineups />
+          <Lineups lineups={props.lineups} />
         </View>
 
         <View style={[ss.teamContainer]}>
@@ -55,16 +54,7 @@ export default function MatchStatusMyMatch(props: PropTypes) {
           <View style={[ss.tsc]}>
             {/* team a */}
             <View style={[ss.team]}>
-              <View style={[ss.flagWrapper]}>
-                <FastImage
-                  style={ss.flag}
-                  source={{
-                    uri: `http://kenfg.com/images/flag/IND.png}`,
-                    priority: FastImage.priority.normal,
-                  }}
-                  resizeMode={FastImage.resizeMode.contain}
-                />
-              </View>
+              <TeamFlag teamCode={props.team_a.code || ''} />
               <Text
                 numberOfLines={1}
                 style={[ss.teamCode, dT ? clr.tw : clr.tdgray]}>
@@ -72,9 +62,10 @@ export default function MatchStatusMyMatch(props: PropTypes) {
               </Text>
             </View>
             {/* Match status */}
-            {/* <CompletedMatch /> */}
-            <CountDown />
-            {/* <OnLive /> */}
+            {props.status === 'notstarted' && <CountDown />}
+            {props.status === 'started' && <OnLive />}
+            {props.status === 'completed' && <CompletedMatch />}
+
             {/* team b */}
             <View style={[ss.team]}>
               <Text
@@ -82,16 +73,7 @@ export default function MatchStatusMyMatch(props: PropTypes) {
                 style={[ss.teamCode, dT ? clr.tw : clr.tdgray]}>
                 {props.team_b.code}
               </Text>
-              <View style={[ss.flagWrapper]}>
-                <FastImage
-                  style={ss.flag}
-                  source={{
-                    uri: `http://kenfg.com/images/flag/IND.png}`,
-                    priority: FastImage.priority.normal,
-                  }}
-                  resizeMode={FastImage.resizeMode.contain}
-                />
-              </View>
+              <TeamFlag teamCode={props.team_b.code || ''} />
             </View>
           </View>
         </View>
@@ -122,15 +104,18 @@ export default function MatchStatusMyMatch(props: PropTypes) {
 function Lineups(props: any) {
   return (
     <View style={[ss.team]}>
-      <Text
-        style={[
-          ss.tName,
-          ss.greentxt,
-          {fontFamily: 'gadugi-bold', paddingRight: 6},
-        ]}>
-        Lineups Out
-      </Text>
-      <LineupsCap lineups={true} />
+      {props.lineups && (
+        <Text
+          style={[
+            ss.tName,
+            ss.greentxt,
+            {fontFamily: 'gadugi-bold', paddingRight: 6},
+          ]}>
+          Lineups Out
+        </Text>
+      )}
+
+      <LineupsCap lineups={props.lineups} />
     </View>
   );
 }

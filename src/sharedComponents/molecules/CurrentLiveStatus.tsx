@@ -1,10 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text, ScrollView} from 'react-native';
-// import CurrentPlayerStats from '../atoms/CurrentPlayerStats';
-// import CurrentOverStats from './CurrentOverStats';
-// import OverStats from '../atoms/OverStats';
-// import Icon from 'react-native-vector-icons/Ionicons';
 
 interface CurrentPlayerStatusShape {
   striker: BatterShape;
@@ -28,8 +24,11 @@ interface BowlerShape {
 }
 
 export default function CurrentLiveStats(props: CurrentPlayerStatusShape) {
+  if (!props.striker && !props.nonStriker && !props.lastOverData) {
+    return null;
+  }
   return (
-    <View style={[tailwind('flex-row')]}>
+    <View style={[tailwind('flex-row my-2')]}>
       <View style={[tailwind(''), {flex: 4.75}]}>
         {props.striker && (
           <View

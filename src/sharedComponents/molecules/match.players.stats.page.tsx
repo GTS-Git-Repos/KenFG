@@ -3,7 +3,6 @@ import tailwind from '../../../tailwind';
 import {View, Image, Text, TouchableOpacity, ScrollView} from 'react-native';
 import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/native';
-// @ts-ignore
 import contestPlayerStats from '../../constants/mocks/contestPlayerStats.json';
 
 interface PropTypes {
@@ -15,7 +14,6 @@ interface PropTypes {
 
 export default function MatchPlayersStatsPage(props: PropTypes) {
   const navigation = useNavigation<any>();
-  return null;
 
   return (
     <ScrollView>
@@ -33,7 +31,8 @@ export default function MatchPlayersStatsPage(props: PropTypes) {
             return (
               <TouchableOpacity
                 key={item.name}
-                onPress={() => navigation.navigate('MyContestPlayersScreen')}
+                // nav screen breaks
+                // onPress={() => navigation.navigate('MyContestPlayersScreen')}
                 style={[tailwind('flex-row items-center mt-2'), {width: 150}]}>
                 <Image
                   resizeMode="contain"

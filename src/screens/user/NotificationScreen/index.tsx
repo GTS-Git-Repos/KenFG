@@ -28,7 +28,7 @@ export default function NotificationHOC() {
       ntfi_l={ntfi_l}
       ntfi_e={ntfi_e}
       openNotification={openNotification}
-      refetch={rfNtfi}
+      rfNtfi={rfNtfi}
       filterSheet={filterSheet}
     />
   );

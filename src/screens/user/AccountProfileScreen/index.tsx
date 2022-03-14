@@ -5,6 +5,7 @@ import {updateUserInfo} from '../../../store/actions/userAction';
 import {userInfo} from '../../../store/selectors';
 import AccountProfileScreen from './account.profile.screen';
 import {useImageUpload} from '../../../shared_hooks/app.hooks';
+import {useGetUserStatsRemote} from '../../../shared_hooks/user.hooks';
 import {uploadUserProfileImageRemote} from '../../../remote/userRemote';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 
@@ -17,6 +18,9 @@ export default function AccountProfileHOC() {
 
   // local states
   const [loading, setLoading] = useState(false);
+
+  // API data
+  const {userStat, us_e} = useGetUserStatsRemote(userMeta.mobile);
 
   const imageUpload = () => {
     openLibrary();
@@ -33,10 +37,14 @@ export default function AccountProfileHOC() {
   }, [image]);
 
   async function uploadImage() {
+    const imgName = `${userMeta.mobile}-${Math.floor(
+      Math.random() * 1000,
+    )}-profile.jpg`;
+
     const photo: any = {
       uri: image.path,
       type: image.mime,
-      name: `${userMeta.mobile}-profile.jpg`,
+      name: imgName,
     };
     const formData = new FormData();
     formData.append('player_key', userMeta.mobile);
@@ -57,6 +65,7 @@ export default function AccountProfileHOC() {
       userMeta={userMeta}
       imageUpload={imageUpload}
       loading={loading}
+      userStat={userStat}
     />
   );
 }

@@ -159,11 +159,12 @@ const Player = () => {
 const Points = () => {
   return (
     <View style={[tailwind('flex-row flex-wrap items-center')]}>
-      {[2, 3, 5].map((item: any) => {
+      {[2, 3, 5].map((item: any, index: number) => {
         return (
-          <View style={[tailwind('border-2 mr-3 rounded border-gray-900')]}>
+          <View
+            key={index}
+            style={[tailwind('border-2 mr-3 rounded border-gray-900')]}>
             <LinearGradient
-              key={item}
               start={{x: 1.1, y: 2.0}}
               end={{x: 0.0, y: 0.5}}
               locations={[0.6, 0.5]}

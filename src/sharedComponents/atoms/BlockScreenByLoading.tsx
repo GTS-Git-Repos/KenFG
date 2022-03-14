@@ -1,5 +1,5 @@
 /**
- * loading modal with full screen blocking
+ * loading modal with full screen blocking, used lot of places
  */
 
 import React from 'react';

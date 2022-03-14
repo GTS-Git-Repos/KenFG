@@ -22,7 +22,6 @@ import BreakupModalSheet from './molecules/BreakupModalSheet';
 import {useSelector} from 'react-redux';
 import {userInfo} from '../../../store/selectors';
 import {useMatchMeta} from '../../../shared_hooks/contest.hooks';
-import {toLiveMatch} from '../../../store/actions/navigationActions';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
@@ -37,7 +36,7 @@ interface PropTypes {
   onContestMatchPress(contest_key: string): void;
 }
 
-export default function LiveMatchScreen(props: PropTypes) {
+export default function MatchScreen(props: PropTypes) {
   const navigation = useNavigation();
   const route = useRoute<any>();
   const pagerRef = useRef<any>();
@@ -84,11 +83,7 @@ export default function LiveMatchScreen(props: PropTypes) {
         helpIcon={true}
         ptsIcon={true}
       />
-      <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        colors={['#172338', '#0D1320']}
-        style={[tailwind('p-3 bg-dark-3')]}>
+      <View style={[tailwind('p-3 bg-dark-3')]}>
         <MatchStat
           matchStatus={matchMeta.matchStatus}
           team_a={matchMeta.team_a}
@@ -100,16 +95,13 @@ export default function LiveMatchScreen(props: PropTypes) {
           <Projection completed={false} msg={matchMeta.notification} />
         )}
 
-        <View style={[tailwind('my-2 border-b border-gray-800')]}></View>
-
         <CurrentLiveStatus
           striker={matchMeta.striker}
           nonStriker={matchMeta.nonStriker}
           bowler={matchMeta.bowler}
           lastOverData={matchMeta.lastOverData}
         />
-        {/* <ExpertsStats /> */}
-      </LinearGradient>
+      </View>
 
       <View>
         <Tabs activeIndex={selectedTab} onTabPressed={onTabPressed} />

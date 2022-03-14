@@ -1,91 +1,98 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import {View, Image, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {PlayedMatchType} from '../../../../types/user';
 import assets from '../../../../constants/assets_manifest';
-// import {BottomLine} from '../../../../sharedComponents';
+import {TeamFlag} from '../../../../sharedComponents';
 import {} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import {errorBox} from '../../../../utils/snakBars';
 
 interface PropTypes {
-  text?: string;
+  match_key: string;
+  teams: TeamsType;
+  match_result: string;
+  h_points: number;
+  teams_created: number;
+  kenTeam: number;
+}
+
+interface TeamsType {
+  a: {
+    key: string;
+    code: string;
+    name: string;
+  };
+  b: {
+    key: string;
+    code: string;
+    name: string;
+  };
 }
 
 export default function PlayerContests(props: PropTypes) {
+  console.log(props);
+
   const navigation = useNavigation<any>();
   return (
-    <TouchableOpacity
-      onPress={() => {
-        errorBox('Scrore Not Available',0);
-      }}
-      style={[tailwind('rounded bg-dark-3 mr-2')]}>
-      <NewTop />
-      <NewPoints />
-      <Footer />
-    </TouchableOpacity>
+    <View style={[tailwind('rounded bg-dark-3 mr-4')]}>
+      <TeamSection
+        team_a={props.teams.a}
+        team_b={props.teams.b}
+        match_result={props.match_result}
+      />
+      {/* points and team count */}
+      <View
+        style={[tailwind('flex-row items-center justify-between px-2 pb-2')]}>
+        <View>
+          <Text style={[ss.subTitle]}>Highest Point</Text>
+          <Text style={[tailwind('font-regular text-secondary pt-2 font-13')]}>
+            N/A (T1)
+          </Text>
+        </View>
+        <View style={[tailwind('')]}>
+          <Text style={[ss.subTitle]}>Teams Created</Text>
+          <Text
+            style={[
+              tailwind('font-regular text-white pt-2 text-right font-13'),
+            ]}>
+            {props.teams_created}
+          </Text>
+        </View>
+      </View>
+      {/* footer */}
+      <View
+        style={[
+          tailwind('flex-row bg-dark-3 py-2  px-2 items-center'),
+          {backgroundColor: '#121D2E'},
+        ]}>
+        <Text style={[tailwind('font-regular text-light font-12')]}>
+          Ken Team: {props.kenTeam || 'N/A'} pts
+        </Text>
+      </View>
+    </View>
   );
 }
 
-const NewTop = () => {
+const TeamSection = (props: any) => {
   return (
     <View style={[tailwind('flex-row justify-between pt-3 pb-1 px-2')]}>
       <View>
-        <View style={[tailwind('flex-row  items-center')]}>
+        <View style={[ss.frc]}>
           <View style={[tailwind('flex-col justify-center items-center')]}>
-            {/* <Image
-              resizeMode="contain"
-              source={assets.s_flag1}
-              style={[tailwind(''), {width: 40, height: 20}]}
-            /> */}
-            <View
-              style={[
-                tailwind(''),
-                {width: 45, height: 25, aspectRatio: 16 / 9},
-              ]}>
-              <Image
-                resizeMode="contain"
-                source={assets.AUS}
-                style={[{aspectRatio: 16 / 9}]}
-              />
-            </View>
-            <Text style={[tailwind('font-bold px-2 text-light py-1 font-13')]}>
-              AUS
-            </Text>
+            <TeamFlag teamCode={props.team_a.code} />
+            <Text style={[ss.teamCode]}>{props.team_a.code}</Text>
           </View>
 
-          <Text
-            style={[
-              tailwind(
-                'font-bold px-3 text-light font-13 py-2 relative bottom-2',
-              ),
-            ]}>
-            VS
-          </Text>
+          <Text style={[ss.vs]}>VS</Text>
 
           <View style={[tailwind('flex-col items-center')]}>
-            <View
-              style={[
-                tailwind(''),
-                {width: 45, height: 25, aspectRatio: 16 / 9},
-              ]}>
-              <Image
-                resizeMode="contain"
-                source={assets.ENG}
-                style={[{aspectRatio: 16 / 9}]}
-              />
-            </View>
-            <Text style={[tailwind('font-bold px-2 text-light py-1 font-13')]}>
-              ENG
-            </Text>
+            <TeamFlag teamCode={props.team_b.code} />
+            <Text style={[ss.teamCode]}>{props.team_b.code}</Text>
           </View>
         </View>
-        <View style={[tailwind('')]}>
-          <Text style={[tailwind('font-regular py-1 text-dark-1 font-10')]}>
-            Aus Beat Eng by 98 Runs
-          </Text>
-          {/* <BottomLine /> */}
-        </View>
+        <Text style={[ss.matchResult]}>{props.match_result || 'N/A'}</Text>
       </View>
       <View style={[tailwind('')]}>
         <View style={[tailwind('flex-row pl-12 items-center')]}>
@@ -103,47 +110,44 @@ const NewTop = () => {
         </View>
         <Text
           style={[tailwind('font-regular text-right py-1 text-white font-15')]}>
-          {'\u20B9'} 16,353
+          {'\u20B9'} 0
         </Text>
       </View>
     </View>
   );
 };
 
-const NewPoints = () => {
-  return (
-    <View style={[tailwind('flex-row items-center justify-between px-2 pb-2')]}>
-      <View>
-        <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-          Highest Point
-        </Text>
-        <Text style={[tailwind('font-regular text-secondary pt-2 font-13')]}>
-          807.4 (T1)
-        </Text>
-      </View>
-      <View style={[tailwind('')]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-          Teams Created
-        </Text>
-        <Text
-          style={[tailwind('font-regular text-white pt-2 text-right font-13')]}>
-          20
-        </Text>
-      </View>
-    </View>
-  );
-};
-
-const Footer = () => {
-  return (
-    <View
-      style={[
-        tailwind('flex-row bg-dark-3 py-2  px-2 items-center'),
-        {backgroundColor: '#121D2E'},
-      ]}>
-      <Text style={[tailwind('font-regular text-light font-12')]}>
-        Ken Team: 929pts
-      </Text>
-    </View>
-  );
-};
+const ss = StyleSheet.create({
+  frc: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  teamCode: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 14,
+    color: '#FFFFFF',
+    paddingVertical: 6,
+    textTransform: 'uppercase',
+  },
+  matchResult: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    paddingVertical: 2,
+    color: '#FFFFFF',
+  },
+  subTitle: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 13,
+    paddingVertical: 2,
+    color: '#8797B1',
+  },
+  vs: {
+    bottom: 8,
+    color: '#f5feff',
+    fontFamily: 'gadugi-bold',
+    fontSize: 13,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    position: 'relative',
+  },
+});

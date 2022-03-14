@@ -18,6 +18,7 @@ import ContestScreenLoading from './atoms/contest.screen.loading';
 import NoContests from './atoms/no.contests';
 import TopBarContest from './atoms/topbar.contest';
 import FooterContest from './atoms/footer.contest';
+import TeamFlag from './atoms/team.flag';
 
 import ContestCard from './molecules/contest.card.shared';
 import TeamsCard from './molecules/TeamsCard';
@@ -43,6 +44,7 @@ import MyContestPage from './molecules/mycontest.contests.page';
 import MyTeamsContestPage from './molecules/my.teams.contest.page';
 import CreateTeamButton from './molecules/create.team.button';
 import MatchContestTabs from './molecules/match.contest.tabs';
+import NewJoinContestModal from './molecules/new.join.contest.modal';
 
 import Facebook from './icons/Facebook';
 import SwitchIcon from './icons/SwitchIcon';
@@ -76,6 +78,7 @@ export {
   ButtonComponent,
   ContestPage,
   SecondaryButton,
+  TeamFlag,
   MatchCommentary,
   MatchScoreBoard,
   CreateTeamButton,
@@ -90,6 +93,7 @@ export {
   MatchPlayersStats,
   NoContests,
   JoinContestModal,
+  NewJoinContestModal,
   BottomLine,
   TopBarContest,
   MatchTeamCard,

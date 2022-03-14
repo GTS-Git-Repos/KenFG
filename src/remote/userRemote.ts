@@ -3,7 +3,7 @@
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import fileUploadServer from '../workers/fileUploadServer';
-import {normalizeNotificationAPI} from '../constructors/user.contrustor';
+import {normalizeNotificationAPI, normalizeUserStatsAPI} from '../constructors/user.contrustor';
 
 // API Routes
 const req_update_user = '/update-profile.php';
@@ -14,6 +14,7 @@ const req_addDeposit = '/update-deposit.php';
 const req_kyc_pan = '/kyc.php';
 const req_bank_verify = '/bank-account.php';
 const req_profileUpload = '/profile-upload.php';
+const req_user_stats = '/user-stats.php';
 const req_notification = '/notifications.php';
 
 export const getUserRemote = async (payload: any) => {
@@ -96,6 +97,24 @@ export const updateWalletRemote = async (payload: any) => {
       return response.data;
     } else {
       failedLog('updateWalletRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
+export const getUserStatsRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_user_stats,
+      {player_key: params.queryKey[1]},
+    );
+    if (response.status === 200) {
+      return normalizeUserStatsAPI(response.data.data);
+    } else {
+      failedLog('getUserStatsRemote()', response);
     }
   } catch (err) {
     console.log(err);

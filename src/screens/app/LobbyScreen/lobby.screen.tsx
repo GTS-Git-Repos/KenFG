@@ -11,10 +11,8 @@ import SubTitle from './atoms/lobby.subtitle';
 import {getAppThemeSelector} from '../../../store/selectors';
 import clr from '../../../constants/colors';
 
-import {
-  navigateMatchContestsAction,
-  toMatch,
-} from '../../../store/actions/navigationActions';
+import {navigateMatchContestsAction} from '../../../store/actions/navigationActions';
+import {toMatch} from '../../../navigations/match.links';
 import {useNavigation} from '@react-navigation/core';
 
 const log = console.log;
@@ -38,9 +36,6 @@ export default function LobbyScreen(props: PropTypes) {
   const userInfoState: any = useSelector<any>(state => state.user.user_info);
 
   function onPressMyMatchCard(match_key: string) {
-    toMatch(navigation, 'iccwwc_2022_g2');
-    return;
-
     if (props.myMatches.status === 'completed') {
       toMatch(navigation, match_key);
     } else {

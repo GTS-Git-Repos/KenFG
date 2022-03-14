@@ -1,5 +1,5 @@
 /**
- * not used
+ * not used anywhere
  */
 
 import React from 'react';
@@ -23,13 +23,6 @@ export default function AccountProfileTopBar(props: PropTypes) {
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <BackIcon dark={true} />
       </TouchableOpacity>
-      {/* <TouchableOpacity onPress={() => props.moreOptionSheet?.current?.open()}>
-        <Image
-          resizeMode="contain"
-          source={assets.vdot}
-          style={[tailwind(''), {width: 16, height: 16}]}
-        />
-      </TouchableOpacity> */}
     </View>
   );
 }

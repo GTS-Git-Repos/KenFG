@@ -1,4 +1,4 @@
-// my match card top Section on lobby screen
+// my match card top Section on lobby screen, renders tournament name, team count and contest count
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import clr from '../../../../constants/colors';

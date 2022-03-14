@@ -3,14 +3,19 @@ import {
   UPDATE_JOINCONTEST_REQUEST,
   UPDATE_FULL_MATCH,
   UPDATE_DARK_MODE,
+  UPDATE_JOIN_MODAL,
 } from '../actions/actionTypes';
 
 const initialState = {
   darkModeEnabled: true,
   error: null,
   ip: null,
+  // the match meta will be set when user opened a match,
   selected_match: null,
+  // when user choose join (entry) button
   joinContestRequest: null,
+  // is joincontest modal open or not
+  openjoinModal: false,
   isFullMatch: true,
   cashFreeAppId: '122224715b8a570ce3b9253a922221',
   sessionClosed: false,
@@ -38,6 +43,12 @@ const App = (state = initialState, action: actionShape): any => {
       return {
         ...state,
         joinContestRequest: action.payload,
+      };
+    }
+    case UPDATE_JOIN_MODAL: {
+      return {
+        ...state,
+        openjoinModal: action.payload,
       };
     }
     case UPDATE_SELECTED_MATCH:

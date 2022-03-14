@@ -23,6 +23,7 @@ import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {FullScreenLoading} from '../../../sharedComponents';
 import {useGetTeams} from '../../../shared_hooks/contest.hooks';
 import {yearsToMonths} from 'date-fns';
+// import {updateJoinModalAction} from '../../../store/actions/appActions';
 const log = console.log;
 
 export default function CapSelectionHOC() {

@@ -11,6 +11,7 @@ const DarkModeState = (state: any): boolean => state.app.darkModeEnabled;
 const UserState = (state: any) => state.user.user_info;
 const CashFreeState = (state: any) => state.app.cashFreeAppId;
 const isFullMatchState = (state: any) => state.app.isFullMatch;
+const modalState = (state: any) => state.app.openjoinModal;
 
 const allPlayersState = (state: any) => state.team.all_players;
 const playersState = (state: any) => state.team.players;
@@ -44,8 +45,8 @@ export const appColorsSelector = createSelector(DarkModeState, darkMode => {
 
 export const userInfo = createSelector<any, any, UserMetaType>(
   UserState,
-  userInfo => {
-    return userInfo;
+  (user: any) => {
+    return user;
   },
 );
 
@@ -55,6 +56,10 @@ export const userWalletAmount = createSelector(UserState, userInfo => {
   } catch (err) {
     return 0;
   }
+});
+
+export const joinModalSelector = createSelector(modalState, modal => {
+  return modal;
 });
 
 export const isFullMatchSelector = createSelector(

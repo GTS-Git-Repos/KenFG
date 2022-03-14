@@ -42,10 +42,43 @@ export interface UserMetaType {
 export interface NotificationScreenType {
   activeFilter: any;
   updateFilter(filter: string): void;
-  ntfi: Array<any>;
+  ntfi: Array<any> | undefined;
   ntfi_l: boolean;
   ntfi_e: boolean;
   openNotification(key: string);
-  refetch(): void;
+  rfNtfi(): void;
   filterSheet: any;
+}
+
+export interface UserStatsType {
+  career: {
+    winRate: number;
+    total_won: number;
+    total_matches: number;
+    total_series: number;
+    total_contests: number;
+    since: string;
+  };
+
+  matches: Array<PlayedMatchType>;
+}
+
+export interface PlayedMatchType {
+  match_key: string;
+  teams: {
+    a: {
+      key: string;
+      code: string;
+      name: string;
+    };
+    b: {
+      key: string;
+      code: string;
+      name: string;
+    };
+    match_result: string;
+    total_team: number;
+    ken_team_points: number;
+    won: boolean | number;
+  };
 }

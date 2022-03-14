@@ -32,7 +32,7 @@ interface JoinContestRequestShape {
   isFullMatch: boolean;
 }
 
-// save a opened match, that open match contests list
+// update selected match, and nav to contests list to join
 export const navigateMatchContestsAction = (
   navigation: any,
   payload: selectedMatchShape,
@@ -59,7 +59,7 @@ export const toSecondInningsContestList = (navigation: any, payload: any) => {
 
 
 /**
- * It used on user clicks the entry button
+ * It used on user clicks the entry button or (join button)
  */
 
 export const toTeamFormationWithAutoJoin = (
@@ -103,27 +103,7 @@ export const toTeamFormationNoAutoJoin = (navigation: any) => {
   );
 };
 
-export const toMatch = (navigation: any, match_key: string) => {
-  navigation.dispatch(
-    CommonActions.navigate({
-      name: 'Match',
-      params: {
-        match_key,
-      },
-    }),
-  );
-};
 
-export const toLiveMatch = (navigation: any, match_key: string) => {
-  navigation.dispatch(
-    CommonActions.navigate({
-      name: 'LiveMatchScreen',
-      params: {
-        match_key,
-      },
-    }),
-  );
-};
 
 export const toCompareTeamScreen = (navigation: any) => {
   navigation.dispatch(

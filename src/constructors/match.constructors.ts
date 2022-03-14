@@ -13,7 +13,7 @@ import {
 } from './utils.constructor';
 const log = console.log;
 
-export const liveTestMatchFormat = (payload: any) => {
+export const MatchScoreFormat = (payload: any) => {
   try {
     const teams = payload.teams;
     const matchStatus = payload.status;

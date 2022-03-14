@@ -1,12 +1,10 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {View, Image, StyleSheet, Text} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
-// import {BottomLine} from '../../../../sharedComponents';
 
 interface PropTypes {
-  text?: string;
+  career: any;
 }
 
 export default function Career(props: PropTypes) {
@@ -14,33 +12,41 @@ export default function Career(props: PropTypes) {
     <View>
       <View style={[tailwind('bg-dark-3 rounded-t py-3 px-4')]}>
         <WinRate />
-        {/* <View>
-          <BottomLine />
-        </View> */}
-        <View style={[tailwind('flex-row items-center'), {marginTop: 10}]}>
-          <MatchStat index={0} text="Mathches" value="3,324" />
-          {/* <MatchStat index={1} text="Series" value="3,324" /> */}
-          <MatchStat index={2} text="Contests" value="3,324" />
+        <View style={[ss.frc, {marginTop: 10}]}>
+          <MatchStat
+            index={0}
+            text="Mathches"
+            value={props.career?.total_matches}
+          />
+          <MatchStat
+            index={1}
+            text="Series"
+            value={props.career?.total_series}
+          />
+          <MatchStat
+            index={2}
+            text="Contests"
+            value={props.career?.total_contests}
+          />
         </View>
       </View>
       <View
         style={[
           tailwind('bg-dark-3 rounded-b'),
-          {padding: 4},
+          {padding: 6},
           {backgroundColor: '#121D2E'},
         ]}>
-        <Text
-          style={[tailwind('font-regular text-dark-1 text-center font-13')]}>
-          You have been testing your skill in Kenfg since Mar 2011
+        <Text style={[ss.txt, {textAlign: 'center'}]}>
+          You have been testing your skill in Kenfg since {props.career?.since}
         </Text>
       </View>
     </View>
   );
 }
 
-const WinRate = () => {
+const WinRate = (props: any) => {
   return (
-    <View style={[tailwind('flex-row items-center')]}>
+    <View style={[ss.frc]}>
       <View style={[tailwind(''), {flex: 2}]}>
         <Text style={[tailwind('font-regular text-dark-1  font-13')]}>
           Win Rate
@@ -49,14 +55,14 @@ const WinRate = () => {
           style={[
             tailwind('font-regular text-light py-2 text-center font-13'),
           ]}>
-          75 %
+          {props.winrate || 0} %
         </Text>
       </View>
       <View style={[tailwind('bg-dark rounded-full'), {flex: 5, height: 5}]}>
         <View
           style={[
             tailwind('bg-secondary rounded-full'),
-            {width: '75%', height: 5},
+            {width: '5%', height: 5},
           ]}></View>
       </View>
 
@@ -69,7 +75,7 @@ const WinRate = () => {
         </Text>
         <Text
           style={[tailwind('font-regular text-light py-2 text-right font-13')]}>
-          {'\u20B9'} 19002
+          {'\u20B9'} {props.total_won || 0}
         </Text>
       </View>
     </View>
@@ -113,3 +119,15 @@ const MatchStat = (props: any) => {
     </View>
   );
 };
+
+const ss = StyleSheet.create({
+  frc: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  txt: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    fontSize: 13,
+  },
+});

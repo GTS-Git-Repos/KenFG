@@ -12,6 +12,7 @@ const log = console.log;
 import SortHeaderCap from './atoms/sort.header.capsel';
 import PlayerCapSelection from './molecules/player.cap.selection';
 import CapSelectionAction from './atoms/CapSelectionAction';
+import {updateJoinModalAction} from '../../../store/actions/appActions';
 import {useDispatch, useSelector} from 'react-redux';
 import {creditLeft, rolesCount, selectedMatch} from '../../../store/selectors';
 import {
@@ -124,25 +125,27 @@ export default function CapSelectionScreen(props: PropTypes) {
           dispatch(clearTeamAction());
           // if join contest requested
           if (matchSelector.joinContest) {
-            const isFullMatch = matchSelector.joinContest.isFullMatch;
-            log('isFullMatch >>>', isFullMatch);
-
-            if (isFullMatch) {
-              resetContestListNavigation(navigation, {
-                autoJoin: true,
-                match_key: matchSelector.match_key,
-                contest_key: matchSelector.joinContest.contestKey,
-                team_key: response.data.team_key,
-              });
-            } else {
-              reset2ndInningsNavigation(navigation, {
-                autoJoin: true,
-                match_key: matchSelector.match_key,
-                contest_key: matchSelector.joinContest.contestKey,
-                team_key: response.data.team_key,
-              });
-            }
+            // const isFullMatch = matchSelector.joinContest.isFullMatch;
+            dispatch(updateJoinModalAction(true));
+            navigation.dispatch(StackActions.popToTop());
             return;
+            // if (isFullMatch) {
+            //   resetContestListNavigation(navigation, {
+            //     autoJoin: true,
+            //     match_key: matchSelector.match_key,
+            //     contest_key: matchSelector.joinContest.contestKey,
+            //     team_key: response.data.team_key,
+            //   });
+            // } else {
+            //   reset2ndInningsNavigation(navigation, {
+            //     autoJoin: true,
+            //     match_key: matchSelector.match_key,
+            //     contest_key: matchSelector.joinContest.contestKey,
+            //     team_key: response.data.team_key,
+            //   });
+            // }
+   
+            
           } else {
             navigation.dispatch(StackActions.popToTop());
           }

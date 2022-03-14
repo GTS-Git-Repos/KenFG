@@ -9,6 +9,7 @@ import {
   JoinContestModal,
   WalletHalfModal,
   MatchContestTabs,
+  NewJoinContestModal,
 } from '../../../sharedComponents';
 import {
   ContestPage,
@@ -19,7 +20,7 @@ import {useSelector} from 'react-redux';
 import {selectedMatch} from '../../../store/selectors';
 import Modal from 'react-native-modal';
 import {TeamFormationMutationType} from '../../../types/match';
-import {SortStatusType} from "../../../types/contest"
+import {SortStatusType} from '../../../types/contest';
 import {infoBox} from '../../../utils/snakBars';
 import {getAppThemeSelector} from '../../../store/selectors';
 import clr from '../../../constants/colors';
@@ -29,7 +30,7 @@ const log = console.log;
 interface PropTypes {
   contests: any;
   ctsLoading: any;
-  contestFilters:Array<any>
+  contestFilters: Array<any>;
   joined: any;
   joinedAPI: any;
   joinedAPILive: any;
@@ -40,27 +41,30 @@ interface PropTypes {
   pagerRef: any;
   selectedTab: any;
   // the prop "to" need to investigate later, need to remove the need
-  to: any;
-  showJoinModal: any;
+  // to: any;
+  // showJoinModal: any;
+  // prop that control join contest modal, visible state
+  joinModal: boolean;
   entryAmount: any;
   loading: boolean;
   sortStatus: SortStatusType;
   showWalletModal: boolean;
   userSelector: any;
-  filterOnPress(id:string):any
+  closeJoinModal(): void;
+  filterOnPress(id: string): any;
   onContestCardPress(contest_key: string): any;
   setShowWalletModal(val: boolean): any;
   setLoading(value: boolean): any;
   proceedToJoin(contest_key: string): any;
   joinContestWithTeam(): any;
-  setShowJoinModal(any: boolean): any;
+  // setShowJoinModal(any: boolean): any;
   setSelectedTab(index: number): any;
   teamPreviewPress(team_key: string): any;
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
   onPressTeamSwitch(team_key: string, contest_key: string): void;
   onPressJoinedContest(contest_key: string): void;
   onPressSecondInnings(): any;
-  sortByOnPress(payload:SortStatusType): any;
+  sortByOnPress(payload: SortStatusType): any;
   openWallet(): any;
   onPressCreateTeam(): any;
 }
@@ -158,9 +162,10 @@ export default function ContestListScreen(props: PropTypes) {
           />
         </View>
       </PagerView>
-      {/* join contest modal */}
-      <Modal
-        isVisible={props.showJoinModal}
+      {/* old join contest modal */}
+      {/* <Modal
+        // isVisible={props.showJoinModal}
+        isVisible={props.joinModal}
         animationInTiming={150}
         animationOutTiming={150}
         useNativeDriver={true}
@@ -175,7 +180,16 @@ export default function ContestListScreen(props: PropTypes) {
           availableCash={props.userSelector.un_utilized}
           usableBonus={0}
         />
-      </Modal>
+      </Modal> */}
+
+      <NewJoinContestModal
+        showModal={props.joinModal}
+        availableCash={props.userSelector.un_utilized}
+        entryAmount={props.entryAmount}
+        usableBonus={0}
+        closeModal={props.closeJoinModal}
+        joinContestWithTeam={props.joinContestWithTeam}
+      />
 
       {/* wallet half modal */}
       <Modal

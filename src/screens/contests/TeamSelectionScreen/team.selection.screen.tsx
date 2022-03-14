@@ -1,16 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, ScrollView, TouchableOpacity, Alert} from 'react-native';
 import tailwind from '../../../../tailwind';
-import {useNavigation} from '@react-navigation/native';
+import {StackActions, useNavigation} from '@react-navigation/native';
 import {
   ButtonComponent,
   BlockScreenByLoading,
   TeamsCard,
   TopBar,
   JoinContestModal,
+  NewJoinContestModal,
 } from '../../../sharedComponents';
+import {updateJoinModalAction} from '../../../store/actions/appActions';
+
 import {
   isFullMatchSelector,
+  joinModalSelector,
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
@@ -52,6 +56,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
   const matchSelector: any = useSelector(selectedMatch);
   const userSelector: any = useSelector(userInfo);
   const isFullMatch = useSelector(isFullMatchSelector);
+  const joinModal: boolean = useSelector(joinModalSelector);
 
   function selectTeamAction(team_key: string) {
     try {
@@ -99,14 +104,21 @@ export default function TeamSelectionScreen(props: PropTypes) {
         return;
       }
       // console.log(obj);
-      props.setShowJoinModal(true);
+      // show join modal state
+      dispatch(updateJoinModalAction(true));
+      // props.setShowJoinModal(true);
     } catch (err) {
-      console.log('proceedToJoinPress err -->', proceedToJoinPress);
+      console.log('Error 43428456');
     }
+  }
+
+  function closeJoinModal() {
+    dispatch(updateJoinModalAction(false));
   }
 
   async function joinContestWithTeam() {
     try {
+      closeJoinModal();
       const obj = {
         match_key: matchSelector.match_key,
         contest_key: matchSelector.joinContest.contestKey,
@@ -114,15 +126,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
         player_key: userSelector.mobile,
       };
       setLoading(true);
-      let response;
-      if (isFullMatch) {
-        const fullContestJoin = await joinContestRemote(obj);
-        response = fullContestJoin;
-      } else {
-        const sIContestJoin = await join2ndContestRemote(obj);
-        response = sIContestJoin;
-      }
-      setLoading(false);
+      const response = await joinContestRemote(obj);
       console.log('response', response);
       // handle error
       if (!response.txn) {
@@ -132,10 +136,12 @@ export default function TeamSelectionScreen(props: PropTypes) {
       // refresh the wallet
       dispatch(updateUserInfo(userSelector.mobile));
       // go back to contest screen
-      resetContestListNavigation(navigation, {
-        match_key: matchSelector.match_key,
-        to: 1,
-      });
+      navigation.dispatch(StackActions.popToTop());
+
+      // resetContestListNavigation(navigation, {
+      //   match_key: matchSelector.match_key,
+      //   to: 1,
+      // });
       return;
     } catch (err) {
       setLoading(false);
@@ -220,7 +226,19 @@ export default function TeamSelectionScreen(props: PropTypes) {
       <TouchableOpacity onPress={proceedToJoinPress} style={[tailwind('m-3')]}>
         <ButtonComponent text={'Join Contest'} />
       </TouchableOpacity>
-      <Modal
+      {/* new join contest modal */}
+      <NewJoinContestModal
+        showModal={joinModal}
+        availableCash={props.userMeta.un_utilized}
+        entryAmount={
+          matchSelector.joinContest.entryAmount * choosenTeams.length
+        }
+        usableBonus={0}
+        closeModal={closeJoinModal}
+        joinContestWithTeam={joinContestWithTeam}
+      />
+
+      {/* <Modal
         isVisible={props.showJoinModal}
         animationInTiming={150}
         animationOutTiming={150}
@@ -241,7 +259,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
             matchSelector.joinContest.entryAmount * choosenTeams.length
           }
         />
-      </Modal>
+      </Modal> */}
 
       {loading && <BlockScreenByLoading />}
     </View>

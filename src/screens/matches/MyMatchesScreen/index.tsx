@@ -8,6 +8,8 @@ import {useMatches} from './mymatches.workers';
 import {useNavigation} from '@react-navigation/core';
 import {navigateMatchContestsAction} from '../../../store/actions/navigationActions';
 import {updateFullMatchAction} from '../../../store/actions/appActions';
+import {toMatch} from '../../../navigations/match.links';
+
 const log = console.log;
 
 export default function MyMatchesScreenHOC() {
@@ -38,6 +40,9 @@ export default function MyMatchesScreenHOC() {
 
   const onPressMyMatchCard = (match_key: string) => {
     const matchMeta: any = matches.find((item: any) => item.key === match_key);
+    if (!matchMeta) {
+      return;
+    }
     if (matchMeta.status === 'notstarted') {
       const obj = {
         match_key: matchMeta.key,
@@ -51,6 +56,7 @@ export default function MyMatchesScreenHOC() {
       navigateMatchContestsAction(navigation, obj);
     }
     if (matchMeta.status === 'completed') {
+      toMatch(navigation, match_key);
       return;
     }
   };

@@ -54,11 +54,7 @@ export default function ContestMatchScreen(props: PropTypes) {
   return (
     <View style={tailwind('bg-dark h-full')}>
       <LiveMatchTopBar text={props.matchMeta?.match?.short_name} />
-      <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}
-        colors={['#172338', '#0D1320']}
-        style={[tailwind('p-3 bg-dark-3')]}>
+      <View style={[tailwind('p-3 bg-dark-3')]}>
         <MatchStat
           team_a={props.matchMeta.team_a}
           team_b={props.matchMeta.team_b}
@@ -67,11 +63,9 @@ export default function ContestMatchScreen(props: PropTypes) {
           matchStatus={props.matchMeta.matchStatus}
         />
 
-        <Projection completed={false} msg={props.matchMeta.notification} />
+        <Projection msg={props.matchMeta.notification} />
 
-        <View style={[tailwind('my-2')]}>
-          <LiveMatchSeparator />
-        </View>
+        
         <CurrentLiveStatus
           striker={props.matchMeta.striker}
           nonStriker={props.matchMeta.nonStriker}
@@ -79,7 +73,7 @@ export default function ContestMatchScreen(props: PropTypes) {
           lastOverData={props.matchMeta.lastOverData}
         />
         {/* <ExpertsStats /> */}
-      </LinearGradient>
+      </View>
 
       <View>
         <LiveMatchTabs activeIndex={activeIndex} onTabPressed={onTabPressed} />

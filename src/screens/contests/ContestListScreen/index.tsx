@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
   appColorsSelector,
   isFullMatchSelector,
+  joinModalSelector,
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
@@ -53,6 +54,7 @@ import {updateUserInfo} from '../../../store/actions/userAction';
 import {} from 'react-native-gesture-handler';
 import {toContestInfo} from '../../../navigations/contest.links';
 import {SortStatusType} from 'src/types/contest';
+import {updateJoinModalAction} from '../../../store/actions/appActions';
 
 export default function ContestListHOC() {
   const dispatch = useDispatch();
@@ -65,19 +67,18 @@ export default function ContestListHOC() {
   const sortStatus = sortStatusSelector(contestState);
   const contestFilters = contestFilterSelector(contestState);
 
-  const colors = useSelector(appColorsSelector);
-
   const navigation = useNavigation<any>();
   const pagerRef = useRef<PagerView>(null);
   const route = useRoute<any>();
 
-  const [showJoinModal, setShowJoinModal] = useState(false);
+  // const [showJoinModal, setShowJoinModal] = useState(false);
   const [showWalletModal, setShowWalletModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
   const isFullMatch: boolean = useSelector(isFullMatchSelector);
   const userSelector: any = useSelector(userInfo);
+  const joinModal: boolean = useSelector(joinModalSelector);
   const isScreenReady = useIsScreenReady();
 
   const [selectedTab, setSelectedTab] = useState(0);
@@ -112,19 +113,22 @@ export default function ContestListHOC() {
   // is auto join is in params, <need to refactor it seems like bad practice>
   useEffect(() => {
     console.log('Contest List Params -->', route.params);
-    if (route.params) {
-      const autoJoinParams = route?.params?.params;
-      console.log(autoJoinParams);
-      if (autoJoinParams?.autoJoin) {
-        setShowJoinModal(true);
-      }
-    }
+    // it need to be removed
+    // if (route.params) {
+    //   const autoJoinParams = route?.params?.params;
+    //   console.log(autoJoinParams);
+    //   if (autoJoinParams?.autoJoin) {
+    //     setShowJoinModal(true);
+    //   }
+    // }
   }, []);
 
   // refetch on focus
   useFocusEffect(
     useCallback(() => {
       refetchPage();
+      // check is open join modal state is true
+      // console.log('joinModal', joinModal);
     }, []),
   );
 
@@ -238,6 +242,8 @@ export default function ContestListHOC() {
 
   async function joinContestWithTeam() {
     try {
+      // close the join modal popup
+      closeJoinModal();
       const obj = {
         match_key: matchSelector.match_key,
         contest_key: matchSelector.joinContest.contestKey,
@@ -252,8 +258,9 @@ export default function ContestListHOC() {
         errorBox(response.msg, 500);
         return;
       }
-      setShowJoinModal(false);
+      // refetch my contests(joined) API
       rfJC();
+      // update user
       dispatch(updateUserInfo(userSelector.mobile));
       // infoBox('Contest Succefully Joined', 500);
     } catch (err) {
@@ -264,6 +271,11 @@ export default function ContestListHOC() {
   const openWallet = () => {
     setShowWalletModal(true);
   };
+
+  function closeJoinModal() {
+    dispatch(updateJoinModalAction(false));
+    console.log('closejoinmodal');
+  }
 
   function onPressCreateTeam() {
     toTeamFormationNoAutoJoin(navigation);
@@ -293,6 +305,8 @@ export default function ContestListHOC() {
       teamsAPI={teamsAPI}
       teamsAPILive={teamsAPILive}
       isFullMatch={isFullMatch}
+      joinModal={joinModal}
+      closeJoinModal={closeJoinModal}
       teamPreviewPress={teamPreviewPress}
       teamMutateAction={teamMutateAction}
       showWalletModal={showWalletModal}
@@ -301,9 +315,9 @@ export default function ContestListHOC() {
       pagerRef={pagerRef}
       selectedTab={selectedTab}
       setSelectedTab={setSelectedTab}
-      to={route?.params?.params?.to}
-      showJoinModal={showJoinModal}
-      setShowJoinModal={setShowJoinModal}
+      // to={route?.params?.params?.to}
+      // showJoinModal={showJoinModal}
+      // setShowJoinModal={setShowJoinModal}
       entryAmount={matchSelector?.joinContest?.entryAmount}
       joinContestWithTeam={joinContestWithTeam}
       loading={loading}
