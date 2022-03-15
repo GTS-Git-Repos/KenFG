@@ -1,11 +1,11 @@
-
 // used in privat contest share sheet
+// team card clone
 
 import * as React from 'react';
 import Svg, {SvgProps, Path, Rect} from 'react-native-svg';
 
 interface PropTypes {
-  white?: boolean;
+  dT: boolean;
 }
 
 function Icon(props: PropTypes) {

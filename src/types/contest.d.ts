@@ -27,13 +27,24 @@ export interface ContestPageType {
 export interface CreateContestType {
   isFetching: boolean;
   userContests: Array<any>;
+  allContests: Array<any>;
   err: boolean;
   selContest: any;
-  shareSheet:any,
+  shareSheet: any;
+  loading: boolean;
+  joinModal:boolean,
+  userMeta:any,
+  entryAmount:number,
   refetch(): void;
+  closeJoinModal():void
+  joinContestWithTeam():void
   onPressContestCard(contest_key: string): void;
   onPressShareContest(contest_key: string): void;
+  onPressCopy(type: string): void;
   proceedToJoin(contest_key: string): void;
+  onPressSMSShare(): void;
+  onPressMoreShare(): void;
+  onEnterShareCode(): void;
   wallet_amount: string;
 }
 

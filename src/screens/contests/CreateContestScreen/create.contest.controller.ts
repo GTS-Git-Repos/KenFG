@@ -34,7 +34,7 @@ export const usersContestsSelector = createSelector(
   AllContestsState,
   UserIdState,
   (allContests, userId) => {
-    return allContests;
+    return allContests.filter((item: any) => item.host === userId);
   },
 );
 

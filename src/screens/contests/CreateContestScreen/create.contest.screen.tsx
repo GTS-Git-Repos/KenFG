@@ -5,7 +5,11 @@ import {useNavigation} from '@react-navigation/native';
 import CreateContestTopBar from './atoms/CreateContestTopBar';
 import CreateContestTabs from './molecules/CreateContestTabs';
 import PagerView from 'react-native-pager-view';
-import {PrivateContestTeams} from '../../../sharedComponents/';
+import {
+  BlockScreenByLoading,
+  NewJoinContestModal,
+  PrivateContestTeams,
+} from '../../../sharedComponents/';
 import CreateContestPage from './molecules/CreateContestPage';
 import ShareContestPage from './molecules/ShareContestPage';
 import PrivateContestBanner from './atoms/private.contest.banner';
@@ -21,7 +25,7 @@ const log = console.log;
 
 export default function PrivateContestCreateScreen(props: CreateContestType) {
   const {width} = useWindowDimensions();
-  const pagerRef = useRef(null);
+  const pagerRef: any = useRef(null);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [canCreateContest, setCanCreateContest] = useState(true);
@@ -82,14 +86,12 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
           />
         </View>
         <View style={[{width: width}]}>
-          {/* <JoinPrivateContest
+          <JoinPrivateContest
             activeIndex={activeIndex}
-            contests={props.contests}
-            contestsAPI={props.contestsAPI}
-            contestAPILive={props.contestAPILive}
-            joinContest={props.joinContest}
+            allContests={props.allContests}
             onPressContestCard={props.onPressContestCard}
-          /> */}
+            proceedToJoin={props.proceedToJoin}
+          />
         </View>
       </PagerView>
 
@@ -100,11 +102,24 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
         modalTopOffset={100}
         adjustToContentHeight={true}>
         <ShareContestSheet
-          contest_code={''}
-          shareViaSMS={() => {}}
-          shareSocialMedia={() => {}}
+          contest_code={props.selContest?.key}
+          onPressCopy={props.onPressCopy}
+          onPressSMSShare={props.onPressSMSShare}
+          onPressMoreShare={props.onPressMoreShare}
         />
       </Modalize>
+
+      {/* <NewJoinContestModal
+        showModal={props.joinModal}
+        availableCash={props.userMeta.un_utilized}
+        entryAmount={props.entryAmount}
+        usableBonus={0}
+        closeModal={props.closeJoinModal}
+        joinContestWithTeam={props.joinContestWithTeam}
+      /> */}
+
+      {/* shown while contests is joining */}
+      {/* {props.loading && <BlockScreenByLoading />} */}
     </View>
   );
 }

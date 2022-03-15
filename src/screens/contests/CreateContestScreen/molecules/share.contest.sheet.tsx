@@ -4,20 +4,23 @@ import {View, Image, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {LinkIcon} from '../../../../assets/newIcons';
 import assets from '../../../../constants/assets_manifest';
-import { CloneIcon,CopyIcon } from '../../../../sharedComponents';
+import {
+  CloneIcon,
+  ReferPeopleIcon,
+  ShareIcon,
+} from '../../../../sharedComponents';
 import {useSelector} from 'react-redux';
 import {getAppThemeSelector} from '../../../../store/selectors';
 import clr from '../../../../constants/colors';
 
 interface PropTypes {
   contest_code: string;
-  shareViaSMS(): void;
-  shareSocialMedia(): void;
+  onPressCopy(type: string): any;
+  onPressSMSShare(): void;
+  onPressMoreShare(): void;
 }
 
 export default function ShareContestSheet(props: PropTypes) {
-  console.log(tailwind('font-regular text-dark-1 font-14 pb-1'));
-
   const dT = useSelector(getAppThemeSelector);
   return (
     <View style={[ss.root]}>
@@ -30,25 +33,34 @@ export default function ShareContestSheet(props: PropTypes) {
         />
       </View>
       <Text style={[ss.subTitle]}>Copy Code</Text>
-      <View style={[ss.codeContainer]}>
-        <Text style={[ss.title]}>345356734</Text>
-        <TouchableOpacity>
-          <LinkIcon dT={true} />
-        </TouchableOpacity>
-      </View>
+
+      <TouchableOpacity
+        onPress={() => props.onPressCopy('code')}
+        style={[ss.codeContainer]}>
+        <Text style={[ss.title]}>{props.contest_code}</Text>
+        <LinkIcon dT={true} />
+      </TouchableOpacity>
+
       <Text style={[ss.or]}>OR</Text>
       <Text style={[ss.subTitle]}>Share web link</Text>
 
-      <View style={[ss.linkContainer]}>
-        <Text style={[ss.linktxt]}>kenfg.in/invite/345356734</Text>
-        <TouchableOpacity>
-          <CloneIcon dT={true} />
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        onPress={() => props.onPressCopy('code')}
+        style={[ss.linkContainer]}>
+        <Text style={[ss.linktxt]}>kenfg.com/invite/{props.contest_code}</Text>
+        <CloneIcon dT={true} />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={props.onPressSMSShare} style={[ss.smsbtn]}>
+        <ReferPeopleIcon />
+        <Text style={[ss.btntxt]}>Invite Via SMS</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={props.onPressMoreShare} style={[ss.moreBtn]}>
+        <ShareIcon />
+        <Text style={[ss.btntxt]}>Share on Social Media</Text>
+      </TouchableOpacity>
     </View>
   );
 }
-
 
 const ss = StyleSheet.create({
   root: {
@@ -99,15 +111,41 @@ const ss = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 12,
+    padding: 16,
     marginVertical: 12,
     borderColor: '#8797B15D',
     borderRadius: 5,
-    borderWidth: 1.3,
+    borderWidth: 1,
   },
   linktxt: {
     color: '#FFFFFF',
     fontFamily: 'gadugi-normal',
     fontSize: 12,
+  },
+  smsbtn: {
+    alignItems: 'center',
+    backgroundColor: '#00513B',
+    borderRadius: 4,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    marginBottom: 16,
+  },
+  moreBtn: {
+    alignItems: 'center',
+    borderRadius: 4,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    marginBottom: 16,
+    borderColor: '#8797B14D',
+    borderWidth: 1,
+  },
+  btntxt: {
+    color: 'rgba(255, 255, 255, 1)',
+    fontFamily: 'gadugi-normal',
+    fontSize: 14,
+    paddingHorizontal: 12,
+    textTransform: 'uppercase',
   },
 });

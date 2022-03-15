@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 interface PropTypes {
   input: string;
   setInput(e: any): any;
+  searchContest(): any;
 }
 
 export default function SearchInputPrivateContest(props: PropTypes) {
@@ -29,7 +30,7 @@ export default function SearchInputPrivateContest(props: PropTypes) {
         <Icon name="close-outline" size={20} color="white" />
       </TouchableOpacity>
 
-      <TouchableOpacity style={[ss.space1]}>
+      <TouchableOpacity onPress={props.searchContest} style={[ss.space1]}>
         <Icon name="search-outline" size={20} color="white" />
       </TouchableOpacity>
     </View>
@@ -51,7 +52,7 @@ const ss = StyleSheet.create({
     fontFamily: 'gadugi-bold',
     fontSize: 16,
     margin: 0,
-    paddingHorizontal: 0,
+    paddingHorizontal: 12,
     paddingVertical: 6,
   },
   space1: {
