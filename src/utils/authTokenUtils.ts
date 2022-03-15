@@ -27,7 +27,7 @@ export const getToken = async () => {
 
 export const removeToken = async () => {
   try {
-    const token = await SInfo.deleteItem('jwt_token', {
+    await SInfo.deleteItem('jwt_token', {
       sharedPreferencesName: 'KenFg',
       keychainService: 'KenFg',
     });

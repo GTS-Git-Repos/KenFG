@@ -34,22 +34,29 @@ export default function ContestsPage(props: ContestPageType) {
         contestFilters={props.contestFilters}
         filterOnPress={props.filterOnPress}
         onPressCreateTeam={props.onPressCreateTeam}
+        onPressCreateContest={props.onPressCreateContest}
+        onPressSecondInnings={props.onPressSecondInnings}
         noContentAction={noContentAction}
+        isFullMatch={props.isFullMatch}
       />
     );
   }
 
   return (
-    <View style={[ss.root]}>
+    <View style={[ss.root]}>      
       <ScrollView>
         <View style={[ss.troot]}>
           <FiltersContests
             contestFilters={props.contestFilters}
             filterOnPress={props.filterOnPress}
           />
-          <LinkPrC />
+
+          <LinkPrC onPressCreateContest={props.onPressCreateContest} />
         </View>
-        <SiLink />
+        {props.isFullMatch && (
+          <SiLink onPressSecondInnings={props.onPressSecondInnings} />
+        )}
+
         <SortContests
           sortByOnPress={props.sortByOnPress}
           sortStatus={props.sortStatus}

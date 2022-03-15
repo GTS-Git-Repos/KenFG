@@ -1,4 +1,8 @@
-// no content on contest list screen, tabs of Contests, (Contests, My Contests, My Teams)
+/**
+ * no content used in
+ * contest list screen, tabs of Contests, (Contests, My Contests, My Teams)
+ * private contest create share contest page
+ *  */
 
 import React from 'react';
 import tailwind from '../../../tailwind';
@@ -19,6 +23,8 @@ import {useSelector} from 'react-redux';
 
 interface PropTypes {
   loading: boolean;
+  error: boolean;
+  refetch(): void;
   title: string;
   subtitle: string;
   actionText: string;
@@ -28,17 +34,24 @@ interface PropTypes {
 export default function NoDataContest(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
 
+  if (props.error) {
+    return (
+      <View style={[{padding: 20}]}>
+        <Text style={[ss.title, {color: '#FFFFFF'}]}>
+          Plese check your internet
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <ImageBackground
       source={assets.stadium}
       style={[tailwind('w-full'), {flexGrow: 1}]}
       resizeMode="cover">
-      <View style={[tailwind(''), {paddingVertical: 59}]}>
+      <View style={[{paddingVertical: 59}]}>
         {props.loading ? (
-          <ActivityIndicator
-            color="#d1b45a"
-            size="large"
-          />
+          <ActivityIndicator color="#d1b45a" size="large" />
         ) : (
           <>
             <Text style={[ss.title, dT ? clr.tw : clr.td1]}>{props.title}</Text>

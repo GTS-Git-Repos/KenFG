@@ -15,7 +15,6 @@ import assets from '../../../constants/assets_manifest';
 import {getUserRemote, updateUserRemote} from '../../../remote/userRemote';
 import {resetDrawerNavigation} from '../../../utils/resetNav';
 import {updateUserInfoAction} from '../../../store/actions/userAction';
-import {decodeJwt} from '../../../utils/formatters';
 import {useDispatch} from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 

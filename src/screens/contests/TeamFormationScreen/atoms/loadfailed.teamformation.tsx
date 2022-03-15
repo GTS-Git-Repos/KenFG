@@ -15,7 +15,7 @@ interface PropTypes {
   refetch(): any;
 }
 
-export default function NoContent(props: PropTypes) {
+export default function TeamFormationLodFailed(props: PropTypes) {
   const navigation = useNavigation();
   return (
     <View style={[tailwind('h-full')]}>

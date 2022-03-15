@@ -1,25 +1,23 @@
 // goto button for private contest used in contest page that used in contest list screen
 
 import React from 'react';
-import tailwind from '../../../tailwind';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../constants/assets_manifest';
 import {useSelector} from 'react-redux';
 import {getAppThemeSelector} from '../../store/selectors';
 import clr from '../../constants/colors';
 
 interface PropTypes {
-  text?: string;
+  onPressCreateContest(): void;
 }
 
 export default function LinkPrivateContest(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   return (
-    <View style={[ss.root]}>
+    <TouchableOpacity onPress={props.onPressCreateContest} style={[ss.root]}>
       <Text style={[ss.text]}>Private Contest</Text>
       <Icon name="chevron-forward-outline" size={20} color="#d1b45a" />
-    </View>
+    </TouchableOpacity>
   );
 }
 

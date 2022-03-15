@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import {View, Image,StyleSheet, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 
@@ -10,6 +10,8 @@ interface PropTypes {
 }
 
 export default function Switch(props: PropTypes) {
+  console.log(tailwind('bg-dark-3 mx-4 mt-4 mb-2  rounded-lg p-1 flex-row items-center'));
+  
   return (
     <View
       style={[

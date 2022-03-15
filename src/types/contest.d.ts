@@ -16,8 +16,22 @@ export interface ContestPageType {
   filterOnPress(id: string): any;
   sortByOnPress(payload: SortStatusType): void;
   onPressSecondInnings(): void;
+  onPressCreateContest(): void;
   onContestCardPress(contest_key: string): void;
   onPressCreateTeam(): void;
+}
+
+/**
+ * create contest screen type definations
+ */
+export interface CreateContestType {
+  userContests: Array<any>;
+  err: boolean;
+  selected_contest: any;
+  refetch(): void;
+  onPressContestCard(contest_key: string): void;
+  onPressShareContest(contest_key: string): void;
+  wallet_amount: string;
 }
 
 interface SortStatusType {

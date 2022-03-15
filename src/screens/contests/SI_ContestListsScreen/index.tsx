@@ -7,23 +7,21 @@ import React, {
 } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {
-  appColorsSelector,
   isFullMatchSelector,
+  joinModalSelector,
   selectedMatch,
   userInfo,
 } from '../../../store/selectors';
-import SecondInContestListScreen from './second.in.contest.list.screen';
-import ContestScreenLoading from './atoms/screen.loading.contest';
+import SiContestListScreen from './si.contest.list.screen';
 import {TO_TEAMLIST} from '../../../constants/appContants';
-
+import {FlatList} from 'react-native';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useContestList} from '../../../shared_hooks/contest.hooks';
 import {useFocusEffect, useNavigation, useRoute} from '@react-navigation/core';
 import {errorBox, infoBox} from '../../../utils/snakBars';
-
+import {InternetError, ContestScreenLoading} from '../../../sharedComponents';
 import PagerView from 'react-native-pager-view';
 import {joinContestRemote} from '../../../remote/matchesRemote';
-import {View} from 'react-native';
 import {
   toSecondInningsContestList,
   toSwitchTeam,
@@ -37,57 +35,65 @@ import {
   useJoinedContests,
 } from '../../../shared_hooks/contest.hooks';
 import {
-  secondIncontestReducer,
+  contestFilterSelector,
+  contestLoadingSelector,
+  contestReducer,
   matchContestsState,
   sortStatusSelector,
-  allContestsSelector,
-} from './second.in.contest.list.controller';
+  updateContests,
+  updateFilter,
+  updateLoading,
+  updateSort,
+} from './si.contest.list.controller';
+import {allContestsSelector} from './si.contest.list.controller';
 import {TeamFormationMutationType} from '../../../types/match';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 import {updateUserInfo} from '../../../store/actions/userAction';
-import {FlatList} from 'react-native-gesture-handler';
+import {} from 'react-native-gesture-handler';
+import {toContestInfo} from '../../../navigations/contest.links';
+import {SortStatusType} from 'src/types/contest';
+import {updateJoinModalAction} from '../../../store/actions/appActions';
 
-export default function ContestListHOC() {
+export default function SecondInningsHOC() {
   const dispatch = useDispatch();
   const [contestState, contestDispatch] = useReducer(
-    secondIncontestReducer,
+    contestReducer,
     matchContestsState,
   );
+  const CLoading = contestLoadingSelector(contestState);
   const allContests = allContestsSelector(contestState);
   const sortStatus = sortStatusSelector(contestState);
-  const colors = useSelector(appColorsSelector);
+  const contestFilters = contestFilterSelector(contestState);
 
   const navigation = useNavigation<any>();
   const pagerRef = useRef<PagerView>(null);
   const route = useRoute<any>();
 
-  const [showJoinModal, setShowJoinModal] = useState(false);
+  // const [showJoinModal, setShowJoinModal] = useState(false);
   const [showWalletModal, setShowWalletModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const matchSelector: any = useSelector(selectedMatch);
-
-  // set to false, because you already on second innings contests page
   const isFullMatch = false;
-
-  // subscribe redux state
   const userSelector: any = useSelector(userInfo);
+  const joinModal: boolean = useSelector(joinModalSelector);
   const isScreenReady = useIsScreenReady();
 
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const {contests, contestsAPI, refetchContests}: any = useContestList(
+  // api calls data
+
+  const {contests, rfContests, ctstError}: any = useContestList(
     matchSelector.match_key,
     userSelector.mobile,
     isFullMatch,
   );
 
-  const {joined, joinedAPI, joinedAPILive, refetchJoinedContest}: any =
-    useJoinedContests(
-      matchSelector.match_key,
-      userSelector.mobile,
-      isFullMatch,
-    );
+  const {joined, joinedAPI, joinedAPILive, rfJC}: any = useJoinedContests(
+    matchSelector.match_key,
+    userSelector.mobile,
+    isFullMatch,
+  );
 
   const {teams, teamsAPI, teamsAPILive, refetchTeams}: any = useGetTeams(
     matchSelector.match_key,
@@ -96,42 +102,49 @@ export default function ContestListHOC() {
   );
 
   useEffect(() => {
-    if (contestsAPI) {
-      if (contests) {
-        contestDispatch({type: 'UPDATE_CONTESTS', payload: contests});
-      } else {
-        contestDispatch({type: 'UPDATE_CONTESTS', payload: null});
-      }
+    if (contests) {
+      contestDispatch(updateContests(contests));
+      contestDispatch(updateLoading(false));
     }
-  }, [contestsAPI]);
+  }, [contests]);
 
+  // is auto join is in params, <need to refactor it seems like bad practice>
   useEffect(() => {
-    console.log('Contest List Params -->', route.params);
-    if (route.params) {
-      const autoJoinParams = route?.params?.params;
-      console.log(autoJoinParams);
-      if (autoJoinParams?.autoJoin) {
-        setShowJoinModal(true);
-      }
-    }
+    console.log('second innings Contest List Params -->', route.params);
+    // it need to be removed
+    // if (route.params) {
+    //   const autoJoinParams = route?.params?.params;
+    //   console.log(autoJoinParams);
+    //   if (autoJoinParams?.autoJoin) {
+    //     setShowJoinModal(true);
+    //   }
+    // }
   }, []);
 
+  // refetch on focus
   useFocusEffect(
     useCallback(() => {
-      // console.log('Focused');
-      refetchTeams();
-      refetchJoinedContest();
+      refetchPage();
     }, []),
   );
 
+  // refetch the api
   function refetchPage() {
-    refetchContests();
+    rfContests();
     refetchTeams();
-    refetchJoinedContest();
+    rfJC();
   }
 
-  function sortByOnPress(sortBy: any) {
-    contestDispatch({type: 'UPDATE_SORT', payload: sortBy});
+  function sortByOnPress(payload: SortStatusType) {
+    contestDispatch(updateSort(payload));
+  }
+
+  function filterOnPress(id: string) {
+    contestDispatch(updateFilter(id));
+  }
+
+  function onContestCardPress(contest_key: string) {
+    toContestInfo(navigation, contest_key);
   }
 
   const teamPreviewPress = (team_key: any): any => {
@@ -199,6 +212,7 @@ export default function ContestListHOC() {
           joined,
           teams,
         );
+
         if (checkContestJoin.status) {
           toTeamFormationWithAutoJoin(
             navigation,
@@ -224,6 +238,8 @@ export default function ContestListHOC() {
 
   async function joinContestWithTeam() {
     try {
+      // close the join modal popup
+      closeJoinModal();
       const obj = {
         match_key: matchSelector.match_key,
         contest_key: matchSelector.joinContest.contestKey,
@@ -238,8 +254,9 @@ export default function ContestListHOC() {
         errorBox(response.msg, 500);
         return;
       }
-      setShowJoinModal(false);
-      refetchJoinedContest();
+      // refetch my contests(joined) API
+      rfJC();
+      // update user
       dispatch(updateUserInfo(userSelector.mobile));
       // infoBox('Contest Succefully Joined', 500);
     } catch (err) {
@@ -251,60 +268,60 @@ export default function ContestListHOC() {
     setShowWalletModal(true);
   };
 
+  function closeJoinModal() {
+    dispatch(updateJoinModalAction(false));
+    console.log('closejoinmodal');
+  }
+
   function onPressCreateTeam() {
     toTeamFormationNoAutoJoin(navigation);
   }
+  // if contests api network error happended
+  if (ctstError) {
+    return <InternetError referch={refetchPage} />;
+  }
 
-  if (!isScreenReady || !contestsAPI) {
-    return <ContestScreenLoading title={''} />;
+  // if screen is ready or contests API on loading state show loader
+  if (!isScreenReady || CLoading) {
+    return <ContestScreenLoading />;
   }
 
   return (
-    <View style={[{flex: 1}]}>
-      <FlatList
-        refreshing={false}
-        onRefresh={() => refetchPage()}
-        contentContainerStyle={{flex: 1}}
-        data={[1]}
-        renderItem={() => {
-          return (
-            <SecondInContestListScreen
-              userSelector={userSelector}
-              contests={allContests}
-              contestsAPI={contestsAPI}
-              joined={joined}
-              joinedAPI={joinedAPI}
-              joinedAPILive={joinedAPILive}
-              teams={teams}
-              teamsAPI={teamsAPI}
-              teamsAPILive={teamsAPILive}
-              isFullMatch={isFullMatch}
-              teamPreviewPress={teamPreviewPress}
-              teamMutateAction={teamMutateAction}
-              showWalletModal={showWalletModal}
-              setShowWalletModal={setShowWalletModal}
-              sortByOnPress={sortByOnPress}
-              pagerRef={pagerRef}
-              selectedTab={selectedTab}
-              setSelectedTab={setSelectedTab}
-              to={route?.params?.params?.to}
-              showJoinModal={showJoinModal}
-              setShowJoinModal={setShowJoinModal}
-              entryAmount={matchSelector?.joinContest?.entryAmount}
-              joinContestWithTeam={joinContestWithTeam}
-              loading={loading}
-              setLoading={setLoading}
-              proceedToJoin={proceedToJoin}
-              onPressTeamSwitch={onPressTeamSwitch}
-              onPressJoinedContest={onPressJoinedContest}
-              onPressSecondInnings={onPressSecondInnings}
-              openWallet={openWallet}
-              sortStatus={sortStatus}
-              onPressCreateTeam={onPressCreateTeam}
-            />
-          );
-        }}
-      />
-    </View>
+    <SiContestListScreen
+      userSelector={userSelector}
+      contests={allContests}
+      contestFilters={contestFilters}
+      filterOnPress={filterOnPress}
+      ctsLoading={CLoading}
+      onContestCardPress={onContestCardPress}
+      joined={joined}
+      joinedAPI={joinedAPI}
+      joinedAPILive={joinedAPILive}
+      teams={teams}
+      teamsAPI={teamsAPI}
+      teamsAPILive={teamsAPILive}
+      isFullMatch={isFullMatch}
+      joinModal={joinModal}
+      closeJoinModal={closeJoinModal}
+      teamPreviewPress={teamPreviewPress}
+      teamMutateAction={teamMutateAction}
+      showWalletModal={showWalletModal}
+      setShowWalletModal={setShowWalletModal}
+      sortByOnPress={sortByOnPress}
+      pagerRef={pagerRef}
+      selectedTab={selectedTab}
+      setSelectedTab={setSelectedTab}
+      entryAmount={matchSelector?.joinContest?.entryAmount}
+      joinContestWithTeam={joinContestWithTeam}
+      loading={loading}
+      setLoading={setLoading}
+      proceedToJoin={proceedToJoin}
+      onPressTeamSwitch={onPressTeamSwitch}
+      onPressJoinedContest={onPressJoinedContest}
+      onPressSecondInnings={onPressSecondInnings}
+      openWallet={openWallet}
+      sortStatus={sortStatus}
+      onPressCreateTeam={onPressCreateTeam}
+    />
   );
 }

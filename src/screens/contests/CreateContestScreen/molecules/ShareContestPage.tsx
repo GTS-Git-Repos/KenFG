@@ -9,10 +9,9 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {NoDataContests, ContestCard} from '../../../../sharedComponents';
 import assets from '../../../../constants/assets_manifest';
 import {
-  NoContentShared,
   ReferPeopleIcon,
   ShareIcon,
   SocialMediaShare,
@@ -20,13 +19,14 @@ import {
 import ShareWebLink from './ShareWebLink';
 
 interface PropTypes {
+  userContests: Array<any>;
+  selectedContest: null | any;
   pagerRef: any;
   activeIndex: number;
 }
 
 export default function ShareContestPage(props: PropTypes) {
-  
-  function actionPress() {
+  function noContentAction() {
     props?.pagerRef?.current?.setPage(0);
   }
 
@@ -36,15 +36,48 @@ export default function ShareContestPage(props: PropTypes) {
     });
   };
 
-  if (true) {
+  if (props.userContests.length === 0) {
     return (
-      <NoContentShared
+      <NoDataContests
         loading={false}
-        text={'No Contests to share'}
-        subtext="You did't create any contests yet"
-        actionText={'Create a Contest'}
-        actionPress={actionPress}
+        title={'No Contests to share'}
+        subtitle={"You did't create any contests yet"}
+        actionText={'CREATE CONTEST'}
+        noContentAction={noContentAction}
+        error={false}
+        refetch={() => {}}
       />
+    );
+  }
+
+  if (props.selectedContest === null) {
+    // list all contests created by user
+    return (
+      <View style={[tailwind('m-3')]}>
+        {props.userContests.map((item: any) => {
+          return (
+            <ContestCard
+              key={item.key}
+              contest_key={item.key}
+              match_key={item.match_key}
+              title={item.title}
+              filled_spots={0}
+              total_spots={10}
+              occupaid_cent={1}
+              amount_letters={''}
+              amount={''}
+              guaranteed={false}
+              entry={''}
+              max_entry={0}
+              bonus={''}
+              is_practice={false}
+              contest_type={''}
+              proceedToJoin={() => {}}
+              onContestCardPress={() => {}}
+            />
+          );
+        })}
+      </View>
     );
   }
 

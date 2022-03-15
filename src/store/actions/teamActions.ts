@@ -12,10 +12,19 @@ import {
   UPDATE_ERROR_MESSAGE,
   SAVE_ALL_PLAYERS,
   UPDATE_TEAM,
+  UPDATE_LOCK,
 } from './actionTypes';
 
 import {sumOfMustNeedToFillSlots} from '../store_utils';
+
 const log = console.log;
+
+export const updateLock = (payload:boolean) =>{
+  return {
+    type:UPDATE_LOCK,
+    payload
+  }
+}
 
 export const saveAllPlayersAction = (payload: any) => ({
   type: SAVE_ALL_PLAYERS,
@@ -71,10 +80,16 @@ export const updateTeamAction = (payload: any) => ({
 export const updatePlayerAction = (payload: any) => {
   return (dispatch: any, getState: any) => {
     try {
+      // update a lock 
+      dispatch(updateLock(true))
+
       const team = store.getState().team;
       dispatch(updateErrorMsgAction(null));
 
       const {all_players, players, credits_left, team_count} = team;
+
+      const openSlots = 11 - players.length;
+      const must_need = sumOfMustNeedToFillSlots(team_count);
 
       const isExists = players.findIndex(
         (item: any) => item.key === payload.key,
@@ -107,19 +122,10 @@ export const updatePlayerAction = (payload: any) => {
       if (team_count[payload.role].occupaid === team_count[payload.role].max) {
         throw `Maximum ${team_count[payload.role].max} ${payload.role} only`;
       }
-      let openSlots = 11 - players.length;
-      // sum all the must need to fil slots
-      let must_need = sumOfMustNeedToFillSlots(team_count);
-      // check is the must need fill slot greater than open slots DENY the insertion or else allow to increment
-      // log('open slots', openSlots);
-      // log('must_need', must_need);
-      // 3 less than 2
-      // log(team_count)
-      // log(team_count[payload.role].must_need < 0);
+     
       if (openSlots <= must_need) {
         if (team_count[payload.role].must_need <= 0) {
           const message = findARoleNeedToFilled();
-          // log('message', message);
           throw message;
         }
       }
@@ -128,13 +134,16 @@ export const updatePlayerAction = (payload: any) => {
       delete playerObj.recent_performance;
       newPlayerState.push(playerObj);
       dispatch(updatePlayer(newPlayerState));
-      return;
+      
     } catch (err: any) {
       const {error_message} = getState().team;
       const newObj = {...error_message};
       newObj.message = err;
       dispatch(updateErrorMsgAction(newObj));
       return;
+    }
+    finally{
+      dispatch(updateLock(false))  
     }
   };
 };

@@ -26,6 +26,7 @@ export const resetAuthNavigation = async (navigation: any) => {
   );
 };
 
+// not used anywhere, need to remove later
 export const resetSecondInningsContestListNavigation = async (
   navigation: any,
   route_params: any,
@@ -46,6 +47,7 @@ export const resetSecondInningsContestListNavigation = async (
   );
 };
 
+// not used anywhere, need to remove later
 export const resetContestListNavigation = async (
   navigation: any,
   route_params: any,

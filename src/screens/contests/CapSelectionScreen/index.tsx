@@ -45,14 +45,11 @@ export default function CapSelectionHOC() {
   const allPlayers = allPlayersSelector(capsState);
   const sortStatus = sortStatusSelector(capsState);
 
-  const {teams, teamsAPI}: any = useGetTeams(
+  const {teams}: any = useGetTeams(
     matchSelector.match_key,
     userMeta.mobile,
     isFullMatch,
   );
-  console.log('sortStatus >>>', sortStatus);
-
-  // log(JSON.stringify(allPlayers));
 
   useEffect(() => {
     capsDispatch({type: 'UPDATE_PLAYERS', payload: playersByRoleSelector});

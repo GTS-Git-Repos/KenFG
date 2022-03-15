@@ -172,18 +172,12 @@ export default function TeamFormationHOC() {
   };
 
   const navigateToCapSelection = () => {
-    try {
-      if (selectedPlayers.length === 11) {
-        // console.log(route.params);
-        // return
-        navigation.navigate('CapSelectionScreen', {
-          mutation: route.params.mutation,
-        });
-      } else {
-        throw 'Team requires total 11 players';
-      }
-    } catch (err: any) {
-      errorBox(err, 500);
+    if (selectedPlayers.length === 11) {
+      navigation.navigate('CapSelectionScreen', {
+        mutation: route.params.mutation,
+      });
+    } else {
+     errorBox('Team requires total 11 players',0)
     }
   };
 

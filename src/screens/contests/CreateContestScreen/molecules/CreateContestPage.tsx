@@ -12,6 +12,7 @@ import {errorBox, infoBox} from '../../../../utils/snakBars';
 import {createContestRemote} from '../../../../remote/matchesRemote';
 import {toWiningsList} from '../../../../store/actions/navigationActions';
 import {useNavigation} from '@react-navigation/core';
+import {isValidNumber} from '../../../../utils/comman';
 
 interface PropTypes {
   activeIndex: number;
@@ -19,13 +20,11 @@ interface PropTypes {
   refetch(): any;
 }
 
-export default function CreateTeamPage(props: PropTypes) {
+export default function createContestPage(props: PropTypes) {
   const navigation = useNavigation();
   const userInfoSelector: any = useSelector(userInfo);
   const matchSelector: any = useSelector(selectedMatch);
 
-  const [showWinngList, setShowWinngList] = useState(true);
-  const [selectedSwitchTab, setSelectedSwitchTab] = useState(1);
   const [loading, setLoading] = useState(false);
 
   const [contestName, setContestName] = useState('');
@@ -45,17 +44,37 @@ export default function CreateTeamPage(props: PropTypes) {
     toWiningsList(navigation);
   };
 
-  const createContest = async () => {
-    if (
-      !contestName ||
-      !allowedTeams ||
-      !entryFee ||
-      !winners ||
-      !perUserTeam
-    ) {
-      errorBox('All Fields are Required', 0);
+  function validateInput() {
+    const c_name = contestName.replace(/ /g, '');
+    const c_teams = parseInt(allowedTeams);
+    const c_fee = parseInt(entryFee);
+    const c_winners = parseInt(winners);
+    const c_max_team = parseInt(perUserTeam);
+    if (!c_name) {
+      errorBox('Invalid Contest Name !', 0);
       return;
     }
+    if (!isValidNumber(c_teams)) {
+      errorBox('Invalid Number of Teams !', 0);
+      return;
+    }
+    if (!isValidNumber(c_fee)) {
+      errorBox('Invalid Entry fee !', 0);
+      return;
+    }
+    if (!isValidNumber(c_winners)) {
+      errorBox('Invalid Winnings Count !', 0);
+      return;
+    }
+    if (!isValidNumber(c_max_team)) {
+      errorBox('Invalid Team per user data !', 0);
+      return;
+    }
+
+    createContest();
+  }
+
+  const createContest = async () => {
     const obj = {
       player_key: userInfoSelector.mobile,
       mobile: userInfoSelector.mobile,
@@ -69,6 +88,8 @@ export default function CreateTeamPage(props: PropTypes) {
     };
     setLoading(true);
     const response = await createContestRemote(obj);
+    // refetch contest list API
+    props.refetch();
     setLoading(false);
     props.refetch();
     if (!response) {
@@ -98,11 +119,12 @@ export default function CreateTeamPage(props: PropTypes) {
             perUserTeam={perUserTeam}
             setPerUserTeam={setPerUserTeam}
             navigateToWinningsList={navigateToWinningsList}
+            validateInput={validateInput}
           />
         </View>
         {loading && <BlockScreenByLoading />}
       </ScrollView>
-      <TouchableOpacity onPress={createContest} style={[tailwind('m-4')]}>
+      <TouchableOpacity onPress={validateInput} style={[tailwind('m-4')]}>
         <ButtonComponent text={'CREATE & EARN'} />
       </TouchableOpacity>
     </View>

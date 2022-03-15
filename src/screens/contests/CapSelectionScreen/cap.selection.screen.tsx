@@ -24,10 +24,10 @@ import {isPlayerCaptain, isPlayerViceCaptain} from '../../../store/store_utils';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 import {createTeamRemote} from '../../../remote/matchesRemote';
 import {createTeamObjCreator} from '../../../workers/objCreators';
-import {
-  reset2ndInningsNavigation,
-  resetContestListNavigation,
-} from '../../../utils/resetNav';
+// import {
+//   reset2ndInningsNavigation,
+//   resetContestListNavigation,
+// } from '../../../utils/resetNav';
 
 interface PropTypes {
   allPlayers: any;
@@ -101,64 +101,43 @@ export default function CapSelectionScreen(props: PropTypes) {
 
   const saveTeam = async () => {
     try {
-      if (captain_key && vc_key) {
-        const createTeamObj = createTeamObjCreator();
-        // console.log(route.params.mutation);
-        // return;
-        if (route.params.mutation) {
-          // is edit
-          if (route.params.mutation.edit) {
-            props.editTeamAPI(createTeamObj);
-            return;
-          }
-          // is clone
-          if (route.params.mutation.clone) {
-            props.cloneAPI(createTeamObj);
-            return;
-          }
-        }
-        // not in a edit and clone
-        props.setLoading(true);
-        const response: any = await createTeamRemote(createTeamObj);
-        props.setLoading(false);
-        if (response.status) {
-          dispatch(clearTeamAction());
-          // if join contest requested
-          if (matchSelector.joinContest) {
-            // const isFullMatch = matchSelector.joinContest.isFullMatch;
-            dispatch(updateJoinModalAction(true));
-            navigation.dispatch(StackActions.popToTop());
-            return;
-            // if (isFullMatch) {
-            //   resetContestListNavigation(navigation, {
-            //     autoJoin: true,
-            //     match_key: matchSelector.match_key,
-            //     contest_key: matchSelector.joinContest.contestKey,
-            //     team_key: response.data.team_key,
-            //   });
-            // } else {
-            //   reset2ndInningsNavigation(navigation, {
-            //     autoJoin: true,
-            //     match_key: matchSelector.match_key,
-            //     contest_key: matchSelector.joinContest.contestKey,
-            //     team_key: response.data.team_key,
-            //   });
-            // }
-   
-            
-          } else {
-            navigation.dispatch(StackActions.popToTop());
-          }
-          return;
-        } else {
-          setTimeout(() => {
-            errorBox('Failed to create/update a Team', 500);
-          }, 500);
-        }
-      } else {
+      if (!captain_key || !vc_key) {
         errorBox('Please select captain and vice captain', 100);
+        return;
+      }
+
+      const createTeamObj = createTeamObjCreator();
+      if (route.params.mutation) {
+        // is edit
+        if (route.params.mutation.edit) {
+          props.editTeamAPI(createTeamObj);
+          return;
+        }
+        // is clone
+        if (route.params.mutation.clone) {
+          props.cloneAPI(createTeamObj);
+          return;
+        }
+      }
+      // not in a edit and clone
+      props.setLoading(true);
+      const response: any = await createTeamRemote(createTeamObj);
+      props.setLoading(false);
+      if (!response.status) {
+        errorBox('Failed to create/update a Team', 500);
+      }
+      dispatch(clearTeamAction());
+      // if join contest requested
+      if (matchSelector.joinContest) {
+        // const isFullMatch = matchSelector.joinContest.isFullMatch;
+        dispatch(updateJoinModalAction(true));
+        navigation.dispatch(StackActions.popToTop());
+        return;
+      } else {
+        navigation.dispatch(StackActions.popToTop());
       }
     } catch (err) {
+      errorBox('Error 8678574', 500);
       props.setLoading(false);
       log(err);
     }

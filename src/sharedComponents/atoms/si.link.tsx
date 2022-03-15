@@ -2,19 +2,19 @@
 // only visible in full match contest page
 
 import React from 'react';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
-  text?: string;
+  onPressSecondInnings(): void;
 }
 
 export default function SiLink(props: PropTypes) {
   return (
-    <View style={[ss.root]}>
+    <TouchableOpacity onPress={props.onPressSecondInnings} style={[ss.root]}>
       <Text style={[ss.text]}>View Second Innings Contests</Text>
       <Icon name="arrow-forward-outline" size={20} color="#C5A858" />
-    </View>
+    </TouchableOpacity>
   );
 }
 

@@ -141,7 +141,7 @@ function CompletedMatch() {
   return (
     <View style={[ss.team]}>
       <View style={[ss.elipse]}></View>
-      <Text style={[ss.tName, ss.greentxt]}>COMPLTED</Text>
+      <Text style={[ss.tName, ss.greentxt]}>COMPLETED</Text>
     </View>
   );
 }

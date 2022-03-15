@@ -23,19 +23,21 @@ export function covertInputTimeStringToDate(inputTime: string): Date {
   }
 }
 
+// not used anwhere
 export const getCountDown = (inputDate: Date) => {
   try {
     const countDown = intervalToDuration({
       start: inputDate,
       end: new Date(),
     });
-    let timeString = `${countDown.hours}h:${countDown.minutes}:${countDown.seconds}`;
+    const timeString = `${countDown.hours}h:${countDown.minutes}:${countDown.seconds}`;
     return timeString;
   } catch (err) {
     return '00:00:00';
   }
 };
 
+// used in initial screen, for decoding JWT
 export const decodeJwt = (jwt: string) => {
   try {
     const token = jwt_decode(jwt);
@@ -78,3 +80,11 @@ export const isWalletHaveContestAmount = (
     return {status: false};
   }
 };
+
+export function isValidNumber(input: any) {
+  if (Number.isInteger(input)) {
+    return true;
+  } else {
+    return false;
+  }
+}

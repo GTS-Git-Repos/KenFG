@@ -1,3 +1,5 @@
+// not going to use that, utlize contest card shared
+
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text, TouchableOpacity} from 'react-native';

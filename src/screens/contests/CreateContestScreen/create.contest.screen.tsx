@@ -6,10 +6,11 @@ import CreateContestTopBar from './atoms/CreateContestTopBar';
 import CreateContestTabs from './molecules/CreateContestTabs';
 import PagerView from 'react-native-pager-view';
 import {PrivateContestTeams} from '../../../sharedComponents/';
-import CreateTeamPage from './molecules/CreateTeamPage';
+import CreateContestPage from './molecules/CreateContestPage';
 import ShareContestPage from './molecules/ShareContestPage';
 import PrivateContestBanner from './atoms/private.contest.banner';
 import {useSelector} from 'react-redux';
+import {CreateContestType} from '../../../types/contest';
 import {selectedMatch} from '../../../store/selectors';
 import {Modalize} from 'react-native-modalize';
 import AcceptTermsSheet from './atoms/AcceptTermsSheet';
@@ -17,18 +18,7 @@ import JoinPrivateContest from './molecules/join.private.contets';
 import {useCountDown} from '../../../shared_hooks/app.hooks';
 const log = console.log;
 
-interface PropTypes {
-  contests: any;
-  contestsAPI: any;
-  contestAPILive: any;
-  refetch(): any;
-  joinContest(team_key: string): any;
-  onPressContestShare(contest_key: string): any;
-  onPressContestCard(contest_key: string): any;
-  wallet: string;
-}
-
-export default function PrivateContestCreateScreen(props: PropTypes) {
+export default function PrivateContestCreateScreen(props: CreateContestType) {
   const {width} = useWindowDimensions();
   const pagerRef = useRef(null);
 
@@ -36,7 +26,7 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
   const [canCreateContest, setCanCreateContest] = useState(true);
 
   const matchSelector: any = useSelector(selectedMatch);
-  const countDown = useCountDown(matchSelector.start_at, false);
+  const countDown = useCountDown(matchSelector.start_at);
 
   const onPageSelectedAction = (e: any) => {
     setActiveIndex(e.nativeEvent.position);
@@ -52,7 +42,7 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
 
   return (
     <View style={tailwind('h-full bg-dark')}>
-      <CreateContestTopBar wallet={props.wallet} />
+      <CreateContestTopBar wallet={props.wallet_amount} />
 
       <PrivateContestTeams
         team_a={matchSelector.team_a}
@@ -72,24 +62,29 @@ export default function PrivateContestCreateScreen(props: PropTypes) {
         style={{flex: 1}}
         initialPage={0}>
         <View style={[{width: width}]}>
-          <CreateTeamPage
+          <CreateContestPage
             activeIndex={activeIndex}
             pagerRef={pagerRef}
             refetch={props.refetch}
           />
         </View>
         <View style={[{width: width}]}>
-          <ShareContestPage activeIndex={activeIndex} pagerRef={pagerRef} />
+          <ShareContestPage
+            activeIndex={activeIndex}
+            pagerRef={pagerRef}
+            userContests={props.userContests}
+            selectedContest={props.selected_contest}
+          />
         </View>
         <View style={[{width: width}]}>
-          <JoinPrivateContest
+          {/* <JoinPrivateContest
             activeIndex={activeIndex}
             contests={props.contests}
             contestsAPI={props.contestsAPI}
             contestAPILive={props.contestAPILive}
             joinContest={props.joinContest}
             onPressContestCard={props.onPressContestCard}
-          />
+          /> */}
         </View>
       </PagerView>
     </View>

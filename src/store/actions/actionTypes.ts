@@ -22,6 +22,7 @@ export const UPDATE_TEAM_COUNT = 'UPDATE_TEAM_COUNT';
 export const UPDATE_CAPTAIN = 'UPDATE_CAPTAIN';
 export const UPDATE_VC_CAPTAIN = 'UPDATE_VC_CAPTAIN';
 export const CLEAR_TEAM = 'CLEAR_TEAM';
+export const UPDATE_LOCK = 'UPDATE_LOCK';
 
 // match
 export const UPDATE_MY_CONTESTS = 'UPDATE_MATCH_PLAYERS';

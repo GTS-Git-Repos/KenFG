@@ -1,4 +1,4 @@
-// used in full contests and second innings contests
+// used in full contests and second innings contests list page
 // active when no contests from api and no contests matched while filters applied
 
 import React from 'react';
@@ -16,10 +16,13 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 interface PropTypes {
   loading: boolean;
+  isFullMatch: boolean;
   contestFilters: Array<any>;
   filterOnPress(id: string): any;
   onPressCreateTeam(): void;
+  onPressCreateContest(): void;
   noContentAction(): void;
+  onPressSecondInnings(): void;
 }
 
 export default function NoContests(props: PropTypes) {
@@ -31,9 +34,12 @@ export default function NoContests(props: PropTypes) {
           filterOnPress={props.filterOnPress}
           contestFilters={props.contestFilters}
         />
-        <LinkPrC />
+        <LinkPrC onPressCreateContest={props.onPressCreateContest} />
       </View>
-      <SiLink />
+      {props.isFullMatch && (
+        <SiLink onPressSecondInnings={props.onPressSecondInnings} />
+      )}
+
       {props.loading ? (
         <ActivityIndicator size="large" color="#C5A858" />
       ) : (

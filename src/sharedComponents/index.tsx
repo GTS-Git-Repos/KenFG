@@ -12,7 +12,6 @@ import PageLoadingSpinner from './atoms/page.loading.spinnner';
 import SecondaryButton from './atoms/secondaryButton';
 import ProgressbarShared from './atoms/progressbar.shared';
 import WinningsListRank from './atoms/winnings.list.rank';
-import NoContentShared from './atoms/no.content.shared';
 import NoDataContests from './atoms/no.data.contest';
 import ContestScreenLoading from './atoms/contest.screen.loading';
 import NoContests from './atoms/no.contests';
@@ -98,7 +97,6 @@ export {
   TopBarContest,
   MatchTeamCard,
   MyContestPage,
-  NoContentShared,
   FullScreenLoading,
   PageLoadingSpinner,
   ContestCard,

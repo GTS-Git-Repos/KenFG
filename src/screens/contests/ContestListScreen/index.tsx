@@ -52,7 +52,10 @@ import {TeamFormationMutationType} from '../../../types/match';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 import {updateUserInfo} from '../../../store/actions/userAction';
 import {} from 'react-native-gesture-handler';
-import {toContestInfo} from '../../../navigations/contest.links';
+import {
+  toContestInfo,
+  toCreateContest,
+} from '../../../navigations/contest.links';
 import {SortStatusType} from 'src/types/contest';
 import {updateJoinModalAction} from '../../../store/actions/appActions';
 
@@ -110,19 +113,6 @@ export default function ContestListHOC() {
     }
   }, [contests]);
 
-  // is auto join is in params, <need to refactor it seems like bad practice>
-  useEffect(() => {
-    console.log('Contest List Params -->', route.params);
-    // it need to be removed
-    // if (route.params) {
-    //   const autoJoinParams = route?.params?.params;
-    //   console.log(autoJoinParams);
-    //   if (autoJoinParams?.autoJoin) {
-    //     setShowJoinModal(true);
-    //   }
-    // }
-  }, []);
-
   // refetch on focus
   useFocusEffect(
     useCallback(() => {
@@ -159,6 +149,10 @@ export default function ContestListHOC() {
     }
   };
 
+  function onPressCreateContest() {
+    toCreateContest(navigation);
+  }
+
   function onPressSecondInnings() {
     toSecondInningsContestList(navigation, matchSelector);
   }
@@ -173,6 +167,18 @@ export default function ContestListHOC() {
     }
     return;
   };
+
+  const openWallet = () => {
+    setShowWalletModal(true);
+  };
+
+  function closeJoinModal() {
+    dispatch(updateJoinModalAction(false));
+  }
+
+  function onPressCreateTeam() {
+    toTeamFormationNoAutoJoin(navigation);
+  }
 
   const onPressJoinedContest = (contest_key: string): void => {
     console.log('DEPRECATED MOVE TO CONTEST NAVIGATION');
@@ -268,18 +274,7 @@ export default function ContestListHOC() {
       infoBox('Contest Failed to Join !', 1000);
     }
   }
-  const openWallet = () => {
-    setShowWalletModal(true);
-  };
 
-  function closeJoinModal() {
-    dispatch(updateJoinModalAction(false));
-    console.log('closejoinmodal');
-  }
-
-  function onPressCreateTeam() {
-    toTeamFormationNoAutoJoin(navigation);
-  }
   // if contests api network error happended
   if (ctstError) {
     return <InternetError referch={refetchPage} />;
@@ -315,14 +310,12 @@ export default function ContestListHOC() {
       pagerRef={pagerRef}
       selectedTab={selectedTab}
       setSelectedTab={setSelectedTab}
-      // to={route?.params?.params?.to}
-      // showJoinModal={showJoinModal}
-      // setShowJoinModal={setShowJoinModal}
       entryAmount={matchSelector?.joinContest?.entryAmount}
       joinContestWithTeam={joinContestWithTeam}
       loading={loading}
       setLoading={setLoading}
       proceedToJoin={proceedToJoin}
+      onPressCreateContest={onPressCreateContest}
       onPressTeamSwitch={onPressTeamSwitch}
       onPressJoinedContest={onPressJoinedContest}
       onPressSecondInnings={onPressSecondInnings}

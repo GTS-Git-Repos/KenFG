@@ -1,6 +1,7 @@
 /**
  * Contest card, appears in contest list screen contest info page
  * second innings contests
+ * private contest screen share page
  */
 import React from 'react';
 import tailwind from '../../../tailwind';

@@ -118,7 +118,7 @@ export default function SignupScreen() {
           ]}>
           Register to Continue
         </Text>
-
+          
         <View style={[tailwind(' pt-8 pb-4 ')]}>
           <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
             Mobile No
@@ -131,7 +131,12 @@ export default function SignupScreen() {
             onChangeText={e => setMobile(e)}
             style={[
               tailwind('border-b font-bold text-white font-20'),
-              {borderColor: '#8797B14D', height: 40},
+              {
+                borderColor: '#8797B14D',
+                padding: 0,
+                margin: 0,
+                paddingVertical: 5,
+              },
             ]}
           />
           <Text style={[tailwind('font-regular font-12 text-dark-1 pt-2')]}>

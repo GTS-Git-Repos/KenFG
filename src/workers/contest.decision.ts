@@ -57,6 +57,7 @@ export function didIWantToGoTeamsPage(
   return true;
 }
 
+// fucntion that used before joining contest
 export function checksBeforeJoinContest(
   start_time: Date,
   contest: string,

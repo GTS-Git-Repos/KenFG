@@ -11,10 +11,12 @@ import {
   UPDATE_TEAM,
   UPDATE_BLOCKLIST,
   UPDATE_ERROR_MESSAGE,
+  UPDATE_LOCK
 } from '../actions/actionTypes';
 
 
 const initialState = {
+  lock:false,
   all_players: [],
   teams: ['', ''],
   team_a: null,
@@ -35,6 +37,12 @@ interface actionShape {
 
 const Team = (state = initialState, action: actionShape): any => {
   switch (action.type) {
+    case UPDATE_LOCK:{
+      return {
+        ...state,
+        lock:action.payload
+      }
+    }
     case SAVE_ALL_PLAYERS: {
       return {
         ...state,

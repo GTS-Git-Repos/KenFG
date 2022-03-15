@@ -49,9 +49,14 @@ export default function TeamFormationScreen(props: PropTypes) {
   const ErrorMessageState: any = useSelector<any>(
     state => state.team.error_message,
   );
+  const LockState: any = useSelector<any>(
+    state => state.team.lock,
+  );
+
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // show errorState while player selection
   useEffect(() => {
     if (ErrorMessageState?.message) {
       errorBox(ErrorMessageState?.message, 0);
@@ -66,8 +71,10 @@ export default function TeamFormationScreen(props: PropTypes) {
   };
 
   const checkPlayerSelection = (player_key: string, player_role: string) => {
+    // check lock state value for avoid race condition
+    if(LockState === false){
     dispatch(updatePlayerAction({key: player_key, role: player_role}));
-    return;
+    }
   };
 
   const clearTeam = () => {

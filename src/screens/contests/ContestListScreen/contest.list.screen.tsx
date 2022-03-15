@@ -62,6 +62,7 @@ interface PropTypes {
   teamPreviewPress(team_key: string): any;
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
   onPressTeamSwitch(team_key: string, contest_key: string): void;
+  onPressCreateContest():void
   onPressJoinedContest(contest_key: string): void;
   onPressSecondInnings(): any;
   sortByOnPress(payload: SortStatusType): any;
@@ -74,11 +75,10 @@ export default function ContestListScreen(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   const {width} = useWindowDimensions();
 
-  const [selectedFilter, setSelectedFilter] = useState<any>('All');
-
   const matchSelector: any = useSelector(selectedMatch);
 
   const timeStamp = useCountDown(matchSelector.start_at);
+
   // Business logic
   const onPageSelectedAction = (e: any) => {
     props.setSelectedTab(e.nativeEvent.position);
@@ -124,12 +124,13 @@ export default function ContestListScreen(props: PropTypes) {
             proceedToJoin={props.proceedToJoin}
             index={0}
             selectedTab={props.selectedTab}
-            isFullMatch={props.isFullMatch}
+            isFullMatch={true}
             onPressSecondInnings={props.onPressSecondInnings}
             sortStatus={props.sortStatus}
             filterOnPress={props.filterOnPress}
             sortByOnPress={props.sortByOnPress}
             onPressCreateTeam={props.onPressCreateTeam}
+            onPressCreateContest={props.onPressCreateContest}
           />
         </View>
         {/* list all the contests that user joined */}
@@ -162,25 +163,6 @@ export default function ContestListScreen(props: PropTypes) {
           />
         </View>
       </PagerView>
-      {/* old join contest modal */}
-      {/* <Modal
-        // isVisible={props.showJoinModal}
-        isVisible={props.joinModal}
-        animationInTiming={150}
-        animationOutTiming={150}
-        useNativeDriver={true}
-        useNativeDriverForBackdrop={true}
-        hideModalContentWhileAnimating={true}
-        backdropTransitionOutTiming={0}
-        scrollHorizontal={true}>
-        <JoinContestModal
-          setShowJoinModal={props.setShowJoinModal}
-          joinContestWithTeam={props.joinContestWithTeam}
-          entryAmount={props.entryAmount}
-          availableCash={props.userSelector.un_utilized}
-          usableBonus={0}
-        />
-      </Modal> */}
 
       <NewJoinContestModal
         showModal={props.joinModal}

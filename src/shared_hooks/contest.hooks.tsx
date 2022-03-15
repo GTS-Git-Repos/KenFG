@@ -9,6 +9,7 @@ import {
 import {
   getCreatedTeamsRemote,
   getJoinedContestRemote,
+  getPrivateContestsRemote,
   liveMatchMetaRemote,
 } from '../remote/matchesRemote';
 
@@ -52,7 +53,7 @@ export const useGetTeams = (
 };
 
 /**
- * used to get joined contests in the match, 
+ * used to get joined contests in the match,
  * format {contestMeta:{}, joinedTeams:[]}
  * before team selection screen (join contest button pressed)
  * before team switching feature (my Contest, leaderboard)
@@ -75,7 +76,7 @@ export const useJoinedContests = (
       notifyOnChangeProps: ['data', 'isSuccess', 'isError', 'isFetching'],
     },
   );
-  return {joined, joinedAPI, joinedAPILive, errJC,rfJC};
+  return {joined, joinedAPI, joinedAPILive, errJC, rfJC};
 };
 
 export const useMatchMeta = (match_key: string, user_id: string) => {
@@ -115,4 +116,24 @@ export const useContestLeaderboard = (
     ldbErr,
     refetchLeaderBoard,
   };
+};
+
+export const usePrivateContestList = (match_key: string, user_key: string) => {
+  const {
+    data: p_ctst,
+    isSuccess: p_ctst_s,
+    isFetching: p_ctst_f,
+    isError: p_ctst_e,
+
+    refetch: rfp_ctst,
+  } = useQuery(['p_contest', match_key, user_key], getPrivateContestsRemote, {
+    notifyOnChangeProps: [
+      'data',
+      'isSuccess',
+      'isFetching',
+      'isLoading',
+      'isError',
+    ],
+  });
+  return {p_ctst, p_ctst_s, p_ctst_f, p_ctst_e, rfp_ctst};
 };

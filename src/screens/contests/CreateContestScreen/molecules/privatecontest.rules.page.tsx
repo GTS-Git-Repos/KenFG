@@ -1,3 +1,4 @@
+// still not utlized
 import React, {useEffect, useRef, useState} from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
@@ -18,7 +19,7 @@ interface PropTypes {
   pagerRef: any;
 }
 
-export default function CreateTeamPage(props: PropTypes) {
+export default function PrivateContestRulePage(props: PropTypes) {
   const navigation = useNavigation();
 
   return (

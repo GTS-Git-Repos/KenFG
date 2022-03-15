@@ -132,6 +132,7 @@ const ss = StyleSheet.create({
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,
+    width: '33.333333%',
   },
   dactiveTab: {
     borderColor: '#BCA04D',

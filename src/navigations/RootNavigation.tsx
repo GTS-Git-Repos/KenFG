@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {NavigationContainer, DarkTheme} from '@react-navigation/native';
 import {Host} from 'react-native-portalize';
+import ErrorBoundary from '../sharedComponents/molecules/ErrorBoundary';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -64,97 +65,102 @@ export default function RootNavigation() {
   // }, [sessionState]);
 
   return (
-    <NavigationContainer theme={DarkTheme}>
-      <Host>
-        <RootNavigator.Navigator
-          screenOptions={StackConfig}
-          initialRouteName="InitialScreen">
-          <RootNavigator.Screen
-            component={InitialScreen}
-            name="InitialScreen"
-          />
-          <RootNavigator.Screen component={Auth} name="Auth" />
-          <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
-          <RootNavigator.Screen component={More} name="More" />
-          <RootNavigator.Screen component={Contest} name="Contest" />
-          <RootNavigator.Screen
-            component={SecondInningsContest}
-            name="SecondInningsContest"
-          />
-          <RootNavigator.Screen component={Match} name="Match" />
-          <RootNavigator.Screen component={Wallet} name="Wallet" />
-          <RootNavigator.Screen component={Leaderboard} name="Leaderboard" />
+    <ErrorBoundary>
+      <NavigationContainer theme={DarkTheme}>
+        <Host>
+          <RootNavigator.Navigator
+            screenOptions={StackConfig}
+            initialRouteName="InitialScreen">
+            <RootNavigator.Screen
+              component={InitialScreen}
+              name="InitialScreen"
+            />
+            <RootNavigator.Screen component={Auth} name="Auth" />
+            <RootNavigator.Screen component={DrawerNav} name="DrawerNav" />
+            <RootNavigator.Screen component={More} name="More" />
+            <RootNavigator.Screen component={Contest} name="Contest" />
+            <RootNavigator.Screen
+              component={SecondInningsContest}
+              name="SecondInningsContest"
+            />
+            <RootNavigator.Screen component={Match} name="Match" />
+            <RootNavigator.Screen component={Wallet} name="Wallet" />
+            <RootNavigator.Screen component={Leaderboard} name="Leaderboard" />
 
-          <RootNavigator.Screen name="InviteScreen" component={InviteScreen} />
+            <RootNavigator.Screen
+              name="InviteScreen"
+              component={InviteScreen}
+            />
 
-          <RootNavigator.Screen
-            component={NotificationScreen}
-            name="NotificationScreen"
-          />
+            <RootNavigator.Screen
+              component={NotificationScreen}
+              name="NotificationScreen"
+            />
 
-          <RootNavigator.Screen
-            component={LeaderBoardListsScreen}
-            name="LeaderBoardListsScreen"
-          />
-          <RootNavigator.Screen
-            component={MonthlyLeaderBoardScreen}
-            name="MonthlyLeaderBoardScreen"
-          />
+            <RootNavigator.Screen
+              component={LeaderBoardListsScreen}
+              name="LeaderBoardListsScreen"
+            />
+            <RootNavigator.Screen
+              component={MonthlyLeaderBoardScreen}
+              name="MonthlyLeaderBoardScreen"
+            />
 
-          {/* <RootNavigator.Screen
+            {/* <RootNavigator.Screen
             component={CompletedMatchScreen}
             name="CompletedMatchScreen"
           /> */}
-          <RootNavigator.Screen
-            component={ProfileEditScreen}
-            name="ProfileEditScreen"
-          />
-          <RootNavigator.Screen
-            component={AccountProfileScreen}
-            name="AccountProfileScreen"
-          />
-          <RootNavigator.Screen
-            component={AffliatedScreen}
-            name="AffliatedScreen"
-          />
-          <RootNavigator.Screen
-            component={AchievementsScreen}
-            name="AchievementsScreen"
-          />
-          <RootNavigator.Screen
-            component={LeaderProfileScreen}
-            name="LeaderProfileScreen"
-          />
+            <RootNavigator.Screen
+              component={ProfileEditScreen}
+              name="ProfileEditScreen"
+            />
+            <RootNavigator.Screen
+              component={AccountProfileScreen}
+              name="AccountProfileScreen"
+            />
+            <RootNavigator.Screen
+              component={AffliatedScreen}
+              name="AffliatedScreen"
+            />
+            <RootNavigator.Screen
+              component={AchievementsScreen}
+              name="AchievementsScreen"
+            />
+            <RootNavigator.Screen
+              component={LeaderProfileScreen}
+              name="LeaderProfileScreen"
+            />
 
-          <RootNavigator.Screen
-            component={HowToPlayScreen}
-            name="HowToPlayScreen"
-          />
-          <RootNavigator.Screen
-            component={ReferredFriendsListScreen}
-            name="ReferredFriendsListScreen"
-          />
+            <RootNavigator.Screen
+              component={HowToPlayScreen}
+              name="HowToPlayScreen"
+            />
+            <RootNavigator.Screen
+              component={ReferredFriendsListScreen}
+              name="ReferredFriendsListScreen"
+            />
 
-          <RootNavigator.Screen
-            component={DailyLeaderBoardScreen}
-            name="DailyLeaderBoardScreen"
-          />
+            <RootNavigator.Screen
+              component={DailyLeaderBoardScreen}
+              name="DailyLeaderBoardScreen"
+            />
 
-          <RootNavigator.Screen
-            component={UserGoalsScreen}
-            name="UserGoalsScreen"
-          />
+            <RootNavigator.Screen
+              component={UserGoalsScreen}
+              name="UserGoalsScreen"
+            />
 
-          <RootNavigator.Screen
-            component={MyContestPlayersScreen}
-            name="MyContestPlayersScreen"
-          />
-          <RootNavigator.Screen
-            component={PlayerProfileScreen}
-            name="PlayerProfileScreen"
-          />
-        </RootNavigator.Navigator>
-      </Host>
-    </NavigationContainer>
+            <RootNavigator.Screen
+              component={MyContestPlayersScreen}
+              name="MyContestPlayersScreen"
+            />
+            <RootNavigator.Screen
+              component={PlayerProfileScreen}
+              name="PlayerProfileScreen"
+            />
+          </RootNavigator.Navigator>
+        </Host>
+      </NavigationContainer>
+    </ErrorBoundary>
   );
 }
