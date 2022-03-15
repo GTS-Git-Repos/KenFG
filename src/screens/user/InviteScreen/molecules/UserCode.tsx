@@ -1,11 +1,10 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, StyleSheet, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
+import {View, StyleSheet, Text} from 'react-native';
+import {LinkIcon} from '../../../../assets/newIcons';
 
 interface PropTypes {
-  text?: string;
+  code: string;
 }
 
 export default function UserCode(props: PropTypes) {
@@ -22,11 +21,7 @@ export default function UserCode(props: PropTypes) {
         </Text>
       </View>
       <View style={[tailwind('flex-row justify-end'), {flex: 2}]}>
-        <Image
-          resizeMode="contain"
-          source={assets.link}
-          style={[tailwind(''), {width: 20, height: 20}]}
-        />
+        <LinkIcon dT={false} />
       </View>
     </View>
   );

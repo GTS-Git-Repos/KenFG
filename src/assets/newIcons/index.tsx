@@ -16,6 +16,7 @@ import LineupsCap from './svgIcons/lineupscap.icon';
 import HelpIcon from './svgIcons/help.icon';
 import PointsIcon from './svgIcons/points.icon';
 import InfoIcon from './svgIcons/info.icon';
+import LinkIcon from './svgIcons/link.icon';
 import CapIcon from './svgIcons/cap.icon';
 import VCIcon from './svgIcons/vc.icon';
 import BackIcon from './svgIcons/back.icon';
@@ -56,6 +57,7 @@ export {
   HomeBottomTabOff,
   LeaderBottomTabOn,
   HomeBottomTabOn,
+  LinkIcon,
   LeaderBottomTabOff,
   MoreBottomTabOn,
   MoreBottomTabOff,

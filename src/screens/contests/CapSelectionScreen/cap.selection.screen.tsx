@@ -12,7 +12,10 @@ const log = console.log;
 import SortHeaderCap from './atoms/sort.header.capsel';
 import PlayerCapSelection from './molecules/player.cap.selection';
 import CapSelectionAction from './atoms/CapSelectionAction';
-import {updateJoinModalAction} from '../../../store/actions/appActions';
+import {
+  UpdateCreateTeamAction,
+  updateJoinModalAction,
+} from '../../../store/actions/appActions';
 import {useDispatch, useSelector} from 'react-redux';
 import {creditLeft, rolesCount, selectedMatch} from '../../../store/selectors';
 import {
@@ -125,11 +128,15 @@ export default function CapSelectionScreen(props: PropTypes) {
       props.setLoading(false);
       if (!response.status) {
         errorBox('Failed to create/update a Team', 500);
+        return;
       }
       dispatch(clearTeamAction());
       // if join contest requested
       if (matchSelector.joinContest) {
-        // const isFullMatch = matchSelector.joinContest.isFullMatch;
+        // update created team key state
+        // console.log('response.data.team_key',response.data.team_key);
+        
+        dispatch(UpdateCreateTeamAction(response.data.team_key));
         dispatch(updateJoinModalAction(true));
         navigation.dispatch(StackActions.popToTop());
         return;

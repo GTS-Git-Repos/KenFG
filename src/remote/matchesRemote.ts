@@ -14,7 +14,7 @@ import {
   extractJoinedContestAPIResponse,
   normalizeCompareTeamsRemote,
   parseJoinedMatchesAPI,
-} from '../constructors/matchcontest.constructors';
+} from '../constructors/contest.constructors';
 
 // API Routes
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
@@ -28,7 +28,7 @@ const req_players = '/player-credits.php';
 const req_live_match = '/live-match.php';
 const req_my_contest = '/my-contest.php';
 const req_create_contest = '/create-private-contest.php';
-const req_get_private_contest = '/private-contest.php';
+
 const req_matches = '/completed-matches.php';
 const req_edit_team = '/edit-team.php';
 const req_search_contest = '/search-contest.php';
@@ -286,23 +286,7 @@ export const createContestRemote = async (payload: any) => {
   }
 };
 
-export const getPrivateContestsRemote = async (params: any) => {
-  try {
-    const response = await requestServer(
-      METHODS.GET,
-      BASE_URL +
-        `${req_get_private_contest}?m=${params.queryKey[1]}&p=${params.queryKey[2]}`,
-    );
-    if (response.status === 200) {
-      return response.data.data;
-    } else {
-      failedLog('createContestRemote()', response);
-    }
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
+
 
 export const getMatchCommentaryRemote = async (params: any) => {
   try {

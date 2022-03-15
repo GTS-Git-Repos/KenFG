@@ -8,6 +8,7 @@ import React, {
 import {useDispatch, useSelector} from 'react-redux';
 import {
   appColorsSelector,
+  createTeamKeySelector,
   isFullMatchSelector,
   joinModalSelector,
   selectedMatch,
@@ -81,7 +82,11 @@ export default function ContestListHOC() {
   const matchSelector: any = useSelector(selectedMatch);
   const isFullMatch: boolean = useSelector(isFullMatchSelector);
   const userSelector: any = useSelector(userInfo);
+  const createdTeam: any = useSelector(createTeamKeySelector);
   const joinModal: boolean = useSelector(joinModalSelector);
+
+  
+
   const isScreenReady = useIsScreenReady();
 
   const [selectedTab, setSelectedTab] = useState(0);
@@ -253,7 +258,7 @@ export default function ContestListHOC() {
       const obj = {
         match_key: matchSelector.match_key,
         contest_key: matchSelector.joinContest.contestKey,
-        team_key: route.params.params.team_key,
+        team_key: createdTeam,
         player_key: userSelector.mobile,
       };
       setLoading(true);
@@ -270,6 +275,7 @@ export default function ContestListHOC() {
       dispatch(updateUserInfo(userSelector.mobile));
       // infoBox('Contest Succefully Joined', 500);
     } catch (err) {
+      console.log(err);
       setLoading(false);
       infoBox('Contest Failed to Join !', 1000);
     }

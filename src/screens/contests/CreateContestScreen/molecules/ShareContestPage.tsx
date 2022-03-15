@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {NoDataContests, ContestCard} from '../../../../sharedComponents';
 import assets from '../../../../constants/assets_manifest';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   ReferPeopleIcon,
   ShareIcon,
@@ -19,10 +20,14 @@ import {
 import ShareWebLink from './ShareWebLink';
 
 interface PropTypes {
+  isFetching: boolean;
   userContests: Array<any>;
-  selectedContest: null | any;
+  selContest: null | any;
   pagerRef: any;
   activeIndex: number;
+  onPressContestCard(contest_key: string): any;
+  onPressShareContest(contest_key: string): any;
+  proceedToJoin(contest_key: string): any;
 }
 
 export default function ShareContestPage(props: PropTypes) {
@@ -36,10 +41,10 @@ export default function ShareContestPage(props: PropTypes) {
     });
   };
 
-  if (props.userContests.length === 0) {
+  if (props.userContests.length === 0 || props.isFetching) {
     return (
       <NoDataContests
-        loading={false}
+        loading={props.isFetching}
         title={'No Contests to share'}
         subtitle={"You did't create any contests yet"}
         actionText={'CREATE CONTEST'}
@@ -50,31 +55,42 @@ export default function ShareContestPage(props: PropTypes) {
     );
   }
 
-  if (props.selectedContest === null) {
+  if (props.selContest === null) {
     // list all contests created by user
     return (
-      <View style={[tailwind('m-3')]}>
+      <View>
         {props.userContests.map((item: any) => {
           return (
-            <ContestCard
-              key={item.key}
-              contest_key={item.key}
-              match_key={item.match_key}
-              title={item.title}
-              filled_spots={0}
-              total_spots={10}
-              occupaid_cent={1}
-              amount_letters={''}
-              amount={''}
-              guaranteed={false}
-              entry={''}
-              max_entry={0}
-              bonus={''}
-              is_practice={false}
-              contest_type={''}
-              proceedToJoin={() => {}}
-              onContestCardPress={() => {}}
-            />
+            <View key={item.key} style={[styles.card]}>
+              <View style={[{flex: 9, paddingRight: 8}]}>
+                <ContestCard
+                  key={item.key}
+                  contest_key={item.key}
+                  match_key={item.match_key}
+                  title={item.title}
+                  filled_spots={item.filled_spots}
+                  total_spots={item.total_spots}
+                  occupaid_cent={0}
+                  entry={item.entry}
+                  amount_letters={item.prize.amount_letters}
+                  amount={item.prize.amount}
+                  guaranteed={item.guaranteed === 'yes'}
+                  max_entry={item.max_entry}
+                  bonus={item.bonus}
+                  is_practice={item.is_practice}
+                  contest_type={item.contest_type}
+                  onContestCardPress={props.onPressContestCard}
+                  proceedToJoin={props.proceedToJoin}
+                />
+              </View>
+
+              <TouchableOpacity
+                onPress={() => props.onPressShareContest(item.key)}
+                style={[{flex: 1}]}>
+                <Icon name="share" size={40} color="#d1b45a" />
+                <Text style={[styles.shareTxt]}>Share</Text>
+              </TouchableOpacity>
+            </View>
           );
         })}
       </View>
@@ -82,23 +98,27 @@ export default function ShareContestPage(props: PropTypes) {
   }
 
   return (
-    <ScrollView contentContainerStyle={[tailwind('bg-dark-3 px-4 py-4 ')]}>
-      <TopSection />
-      <InputTitle text="Copy Code" />
-      <UserCode />
-      <ReferContactsBtn />
-      <SocialMediaShare />
-
-      <View style={[tailwind('mt-3 mb-2')]}>
-        <InputTitle text="Share WebLink" />
-      </View>
-      <ShareWebLink />
-      <MoreButton moreShareBtn={moreShareBtn} />
-    </ScrollView>
+    <Text style={[tailwind('font-regular text-white font-15')]}>Disabled</Text>
   );
+  // return (
+  //   <ScrollView contentContainerStyle={[tailwind('bg-dark-3 px-4 py-4 ')]}>
+  //     <TopSection />
+  //     <InputTitle text="Copy Code" />
+  //     <UserCode />
+  //     <ReferContactsBtn />
+  //     <SocialMediaShare />
+
+  //     <View style={[tailwind('mt-3 mb-2')]}>
+  //       <InputTitle text="Share WebLink" />
+  //     </View>
+  //     <ShareWebLink />
+  //     <MoreButton moreShareBtn={moreShareBtn} />
+  //   </ScrollView>
+  // );
 }
 
 const TopSection = () => {
+  return null
   return (
     <>
       <Text style={[tailwind('font-bold text-center text-white font-13')]}>
@@ -124,6 +144,7 @@ const InputTitle = (props: any) => {
 };
 
 function UserCode(props: any) {
+  return null
   return (
     <View
       style={[tailwind('flex-row items-center p-3 my-2 mb-4'), styles.border]}>
@@ -179,10 +200,21 @@ function MoreButton(props: any) {
 }
 
 const styles = StyleSheet.create({
+  card: {
+    margin: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   border: {
     borderColor: '#8797B1',
     borderRadius: 2,
     borderStyle: 'dashed',
     borderWidth: 1.3,
+  },
+  shareTxt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 8,
+    color: '#FFFFFF',
+    textAlign: 'center',
   },
 });

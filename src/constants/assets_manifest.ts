@@ -17,7 +17,6 @@ export default {
   chart: require('../assets/icons/chart.png'),
   notify_more: require('../assets/icons/notify_more.png'),
   cash_paper: require('../assets/icons/cash_paper.png'),
-  link: require('../assets/icons/link.png'),
   twitter: require('../assets/icons/twitter.png'),
   more_share: require('../assets/icons/more_share.png'),
   friends: require('../assets/icons/friends.png'),

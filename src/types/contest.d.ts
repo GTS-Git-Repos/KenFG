@@ -25,12 +25,15 @@ export interface ContestPageType {
  * create contest screen type definations
  */
 export interface CreateContestType {
+  isFetching: boolean;
   userContests: Array<any>;
   err: boolean;
-  selected_contest: any;
+  selContest: any;
+  shareSheet:any,
   refetch(): void;
   onPressContestCard(contest_key: string): void;
   onPressShareContest(contest_key: string): void;
+  proceedToJoin(contest_key: string): void;
   wallet_amount: string;
 }
 

@@ -1,3 +1,6 @@
+
+// used in privat contest share sheet
+
 import * as React from 'react';
 import Svg, {SvgProps, Path, Rect} from 'react-native-svg';
 

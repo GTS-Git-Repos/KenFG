@@ -5,11 +5,11 @@ import {useQuery} from 'react-query';
 import {
   contestleaderBoardRemote,
   contestListsRemote,
+  getPrivateContestsRemote,
 } from '../remote/contestRemote';
 import {
   getCreatedTeamsRemote,
   getJoinedContestRemote,
-  getPrivateContestsRemote,
   liveMatchMetaRemote,
 } from '../remote/matchesRemote';
 

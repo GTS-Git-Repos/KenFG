@@ -1,4 +1,4 @@
-import {covertInputTimeStringToDate} from './../utils/comman';
+import {covertInputTimeStringToDate} from '../utils/comman';
 import {normalizeContests} from './utils.constructor';
 import {splitRoleWisePlayersPayload} from './teams.constructor';
 import {FLAG_IMG_URL} from '../constants/appContants';
@@ -16,6 +16,30 @@ export const groupAllContestsAPIRmeote = (payload: any) => {
 
     // build a section list for all contests [MARKED AS LATER]
     return allContests;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
+export const parsePrivateContestAPIRemote = (payload: any) => {
+  try {
+    // if no contest found return empty array
+    const contests:any = []
+    if (payload.length === 0) {
+      return contests
+    }
+    for(const contest of payload){
+      const obj = {...contest};
+      const total_spots = parseInt(obj.total_spots);
+      //TODO: need API requirement
+      obj.filled_spots = 0;
+      obj.total_spots = total_spots;
+      obj.occupaid_cent = 0
+      obj.max_entry = parseInt(obj.max_entry);
+      contests.push(obj)
+    }   
+    return contests
   } catch (err) {
     console.log(err);
     throw err;
@@ -73,7 +97,7 @@ export const extractJoinedContestAPIResponse = (payload: any) => {
   }
 };
 
-// used to normalize api response that used in lobby screen
+// used to normalize api response that used in lobby screen need to change the location
 export const extractDataFromUpcommingMatchesAPI = (
   payload: any,
 ): UpcommingMatchType => {
@@ -89,6 +113,8 @@ export const extractDataFromUpcommingMatchesAPI = (
     for (const u_match of u_matches) {
       const obj = {...u_match};
       obj.start_at = covertInputTimeStringToDate(u_match.teams.start_at);
+      // that team code uppercase need to remove, because teamFlag component will handle that
+      
       obj.teams.a.a_flag = `${FLAG_IMG_URL}${convertTeamCodeToUppercase(
         u_match.teams.a.key,
       )}.png`;

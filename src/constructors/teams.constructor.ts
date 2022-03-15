@@ -3,10 +3,10 @@
 // used to perform a transformation of get players api in team formation
 export const normalizeGetPlayersAPI = (payload: any) => {
   try {
-    let keep = [];
-    let bat = [];
-    let ar = [];
-    let bowl = [];
+    const keep = [];
+    const bat = [];
+    const ar = [];
+    const bowl = [];
 
     for (const player of payload) {
       const playerObj = {...player};

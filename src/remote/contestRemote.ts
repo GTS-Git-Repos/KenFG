@@ -1,13 +1,14 @@
 // API calls related to contests
 
-import {parseContestLeaderBoardAPI} from '../constructors/matchcontest.constructors';
+import {parseContestLeaderBoardAPI, parsePrivateContestAPIRemote} from '../constructors/contest.constructors';
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
-import {groupAllContestsAPIRmeote} from '../constructors/matchcontest.constructors';
+import {groupAllContestsAPIRmeote} from '../constructors/contest.constructors';
 
 const req_edit_contest = '/edit-contest.php';
 const req_contest_leaderboard = '/leaderboard.php';
 const req_contest_list = '/contests.php';
+const req_private_contest = '/private-contest.php';
 
 
 export const contestListsRemote = async (params: any) => {
@@ -25,6 +26,23 @@ export const contestListsRemote = async (params: any) => {
   } catch (err) {
     console.log(err);
     throw err;
+  }
+};
+
+export const getPrivateContestsRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.GET,
+      BASE_URL +
+        `${req_private_contest}?m=${params.queryKey[1]}&p=${params.queryKey[2]}`,
+    );
+    if (response.status === 200) {
+      return parsePrivateContestAPIRemote(response.data.data)
+    } 
+    throw "invalid response"
+  } catch (err) {
+    console.log("getPrivateContestsRemote",err);
+    throw err
   }
 };
 

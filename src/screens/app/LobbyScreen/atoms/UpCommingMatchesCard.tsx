@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { TeamFlag } from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/core';
 import assets from '../../../../constants/assets_manifest';
 import {useDispatch, useSelector} from 'react-redux';
@@ -150,7 +151,8 @@ const Teams = (props: TeamPropShape) => {
         {paddingHorizontal: 16, paddingVertical: 6},
       ]}>
       <View style={[tailwind('')]}>
-        <View style={[styles.flagWrapper, props.dT ? clr.bgd1 : clr.bgGray]}>
+        <TeamFlag teamCode={props.team_a_name}/>
+        {/* <View style={[styles.flagWrapper, props.dT ? clr.bgd1 : clr.bgGray]}>
           <FastImage
             style={{width: 45, height: 25}}
             source={{
@@ -162,7 +164,7 @@ const Teams = (props: TeamPropShape) => {
             // }
             resizeMode={FastImage.resizeMode.contain}
           />
-        </View>
+        </View> */}
         <Text
           numberOfLines={1}
           style={[
@@ -180,19 +182,7 @@ const Teams = (props: TeamPropShape) => {
       </Text>
 
       <View style={[tailwind('')]}>
-        <View style={[styles.flagWrapper, props.dT ? clr.bgd1 : clr.bgGray]}>
-          <FastImage
-            style={{width: 45, height: 25}}
-            source={{
-              uri: props.team_b_flag,
-              priority: FastImage.priority.normal,
-            }}
-            // onError={e =>
-            //   props.set_team_b_flag('http://kenfg.com/images/flag/IND.png')
-            // }
-            resizeMode={FastImage.resizeMode.contain}
-          />
-        </View>
+      <TeamFlag teamCode={props.team_b_name}/>
         <Text
           numberOfLines={1}
           style={[
@@ -208,11 +198,14 @@ const Teams = (props: TeamPropShape) => {
 };
 
 const PrizeandStatus = (props: any) => {
+  // TODO: API data required here
+  const LINEUPS = false
   return (
     <View style={[tailwind('flex-row items-center'), {paddingLeft: 10}]}>
       <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
-        <LineupsCap lineups={false} />
-        {/* <Text
+        <LineupsCap lineups={LINEUPS} />
+        {
+          LINEUPS && <Text
           numberOfLines={1}
           allowFontScaling={true}
           adjustsFontSizeToFit={true}
@@ -221,7 +214,9 @@ const PrizeandStatus = (props: any) => {
             props.dT ? clr.td2 : clr.td1,
           ]}>
           Line ups out
-        </Text> */}
+        </Text>
+        }
+        
       </View>
 
       <Text

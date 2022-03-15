@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/core';
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useEffect, useReducer, useRef, useState} from 'react';
 import {Alert} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {
@@ -22,10 +22,12 @@ import {
   usePrivateContestList,
 } from '../../../shared_hooks/contest.hooks';
 import {toTeamFormationWithAutoJoin} from '../../../store/actions/navigationActions';
+import {Modalize} from 'react-native-modalize';
 
 export default function CreateContestHOC() {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
+  const shareSheet = useRef<Modalize>(null);
   const [contestState, contestDispatch] = useReducer(Reducer, State);
 
   // redux selectors
@@ -48,7 +50,7 @@ export default function CreateContestHOC() {
   // const {contests, contestsAPI, contestAPILive, refetch} =
   //   usePrivateContestList(matchSelector.match_key, userSelector.mobile);
 
-  const {p_ctst, p_ctst_e, rfp_ctst} = usePrivateContestList(
+  const {p_ctst, p_ctst_f, p_ctst_e, rfp_ctst} = usePrivateContestList(
     matchSelector.match_key,
     userSelector.mobile,
   );
@@ -57,43 +59,35 @@ export default function CreateContestHOC() {
     // console.log(p_ctst);
 
     if (p_ctst) {
-      contestDispatch(updateContests(p_ctst)); 
+      contestDispatch(updateContests(p_ctst));
     }
   }, [p_ctst]);
 
   function onPressContestCard(contest_key: string) {
-    console.log(1);
-  }
-
-  function onPressShareContest(contest_key: string) {
     console.log(contest_key);
   }
 
-  function joinContest(contest_key: string) {
-    try {
-      const contest = p_ctst.find((item: any) => item.key === contest_key);
-      if (!contest) {
-        throw new Error('no conest found');
-      }
-      if (contest) {
-        console.log(contest);
-      }
-    } catch (err) {
-      console.log(err);
-    }
+  function onPressShareContest(contest_key: string) {
+    shareSheet?.current?.open();
+    console.log(contest_key);
+  }
 
-    return;
+  function proceedToJoin(contest_key: string) {
+    console.log(contest_key);
   }
 
   return (
     <CreateContestScreen
       userContests={userContests}
       err={p_ctst_e}
-      selected_contest={selContest}
+      selContest={selContest}
       refetch={rfp_ctst}
       onPressContestCard={onPressContestCard}
       onPressShareContest={onPressShareContest}
       wallet_amount={userSelector.un_utilized}
+      proceedToJoin={proceedToJoin}
+      isFetching={p_ctst_f}
+      shareSheet={shareSheet}
     />
   );
 }

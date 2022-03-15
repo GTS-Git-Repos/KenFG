@@ -16,6 +16,7 @@ import {Modalize} from 'react-native-modalize';
 import AcceptTermsSheet from './atoms/AcceptTermsSheet';
 import JoinPrivateContest from './molecules/join.private.contets';
 import {useCountDown} from '../../../shared_hooks/app.hooks';
+import ShareContestSheet from './molecules/share.contest.sheet';
 const log = console.log;
 
 export default function PrivateContestCreateScreen(props: CreateContestType) {
@@ -73,7 +74,11 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
             activeIndex={activeIndex}
             pagerRef={pagerRef}
             userContests={props.userContests}
-            selectedContest={props.selected_contest}
+            selContest={props.selContest}
+            onPressContestCard={props.onPressContestCard}
+            onPressShareContest={props.onPressShareContest}
+            proceedToJoin={props.proceedToJoin}
+            isFetching={props.isFetching}
           />
         </View>
         <View style={[{width: width}]}>
@@ -87,6 +92,19 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
           /> */}
         </View>
       </PagerView>
+
+      {/* share contest bottom sheet */}
+      <Modalize
+        ref={props.shareSheet}
+        useNativeDriver={true}
+        modalTopOffset={100}
+        adjustToContentHeight={true}>
+        <ShareContestSheet
+          contest_code={''}
+          shareViaSMS={() => {}}
+          shareSocialMedia={() => {}}
+        />
+      </Modalize>
     </View>
   );
 }

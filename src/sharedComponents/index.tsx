@@ -51,7 +51,6 @@ import UserIcon from './icons/UserIcon';
 import RankIcon from './icons/RankIcon';
 import ShareIcon from './icons/ShareIcon';
 import ContestBellIcon from './icons/ContestBellIcon';
-import CopyIcon from './icons/CopyIcon';
 import MaleIcon from './icons/MaleIcon';
 import FemaleIcon from './icons/FemaleIcon';
 import PointsIcon from './icons/PointsIcon';
@@ -133,7 +132,6 @@ export {
   CheckBoxIcon,
   ContestBellIcon,
   GoogleIcon,
-  CopyIcon,
   IdleLevel,
   MaleIcon,
   FemaleIcon,
