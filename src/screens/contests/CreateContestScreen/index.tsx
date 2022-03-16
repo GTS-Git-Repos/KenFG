@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/core';
 import React, {useEffect, useReducer, useRef, useState} from 'react';
 import {Linking, Share} from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   createTeamKeySelector,
@@ -32,6 +33,7 @@ import {TO_TEAMLIST} from '../../../constants/appContants';
 import {updateJoinModalAction} from '../../../store/actions/appActions';
 import {joinContestRemote} from '../../../remote/matchesRemote';
 import {updateUserInfo} from '../../../store/actions/userAction';
+import {toContestInfo} from '../../../navigations/contest.links';
 
 export default function CreateContestHOC() {
   const navigation = useNavigation<any>();
@@ -81,7 +83,7 @@ export default function CreateContestHOC() {
   }, [p_ctst]);
 
   function onPressContestCard(contest_key: string) {
-    console.log(contest_key);
+    toContestInfo(navigation, contest_key);
   }
 
   function onPressShareContest(contest_key: string) {
@@ -93,9 +95,17 @@ export default function CreateContestHOC() {
     }
   }
 
-  function onPressCopy(type: string) {
-    if (type === 'sms') {
-      console.log(1);
+  function onPressCopy(contest_key: string, type: string) {
+    const contest = p_ctst.find((item: any) => item.key === contest_key);
+    if (!contest) {
+      errorBox("Can't find the contest,please try again", 0);
+      return;
+    }
+    if (type === 'code') {
+      Clipboard.setString(contest.key);
+    }
+    if (type === 'link') {
+      Clipboard.setString(`http://kenfg.com/invite/${contest.key}`);
     }
     infoBox('Copied to Clipboard !', 0);
   }
@@ -202,11 +212,7 @@ export default function CreateContestHOC() {
       onPressSMSShare={onPressSMSShare}
       onPressMoreShare={onPressMoreShare}
       onEnterShareCode={onEnterShareCode}
-      // joinModal={joinModal}
       userMeta={userMeta}
-      // entryAmount={matchSelector?.joinContest?.entryAmount}
-      // closeJoinModal={closeJoinModal}
-      // joinContestWithTeam={joinContestWithTeam}
     />
   );
 }

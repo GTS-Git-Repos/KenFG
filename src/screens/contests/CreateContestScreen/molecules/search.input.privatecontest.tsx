@@ -18,21 +18,28 @@ interface PropTypes {
 export default function SearchInputPrivateContest(props: PropTypes) {
   return (
     <View style={[ss.root]}>
-      <TextInput
-        value={props.input}
-        placeholder="Enter Contest Code"
-        placeholderTextColor="#FFFFFF5D"
-        onChangeText={e => props.setInput(e)}
-        style={[ss.input]}
-      />
+      <View style={[{flex: 8}]}>
+        <TextInput
+          value={props.input}
+          placeholder="Enter Contest Code"
+          placeholderTextColor="#FFFFFF5D"
+          onChangeText={e => props.setInput(e)}
+          style={[ss.input]}
+        />
+      </View>
 
-      <TouchableOpacity onPress={() => props.setInput('')} style={[ss.space1]}>
-        <Icon name="close-outline" size={20} color="white" />
-      </TouchableOpacity>
+      <View
+        style={[{flex: 2, flexDirection: 'row', justifyContent: 'flex-end'}]}>
+        <TouchableOpacity
+          onPress={() => props.setInput('')}
+          style={[ss.space1]}>
+          <Icon name="close-outline" size={20} color="white" />
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={props.searchContest} style={[ss.space1]}>
-        <Icon name="search-outline" size={20} color="white" />
-      </TouchableOpacity>
+        <TouchableOpacity onPress={props.searchContest} style={[ss.space1]}>
+          <Icon name="search-outline" size={20} color="white" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

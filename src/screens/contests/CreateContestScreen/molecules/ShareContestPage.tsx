@@ -78,7 +78,7 @@ export default function ShareContestPage(props: PropTypes) {
             <TouchableOpacity
               onPress={() => props.onPressShareContest(item.key)}
               style={[{flex: 1}]}>
-              <Icon name="share" size={40} color="#d1b45a" />
+              <Icon name="share-outline" size={40} color="#ffffff" />
               <Text style={[styles.shareTxt]}>Share</Text>
             </TouchableOpacity>
           </View>

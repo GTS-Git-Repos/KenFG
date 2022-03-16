@@ -65,7 +65,6 @@ export default function ContestInfoScreen(props: PropTypes) {
     pageRef.current?.setPage(index);
   };
 
-  // console.log(JSON.stringify(props.leaderBoard));
 
   if (!props.contestInfo || isScreenReady === false) {
     return <ContestInfoPageLoading title={matchSelector.titleString} />;
@@ -85,7 +84,6 @@ export default function ContestInfoScreen(props: PropTypes) {
       />
       <View style={[tailwind('pt-2 bg-primary')]}>
         <ContestCard
-          navigate={() => {}}
           contest_key={props.contestInfo.key}
           match_key={props.contestInfo.match_key}
           title={props.contestInfo.title}
@@ -101,6 +99,9 @@ export default function ContestInfoScreen(props: PropTypes) {
           is_practice={props.contestInfo.is_practice}
           contest_type={props.contestInfo.contest_type}
           proceedToJoin={props.proceedToJoin}
+          onContestCardPress={() => {
+            console.log('disabled on here');
+          }}
         />
       </View>
       <TabsContestInfo

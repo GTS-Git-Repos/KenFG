@@ -10,6 +10,7 @@ import {
   useContestList,
   useGetTeams,
   useJoinedContests,
+  usePrivateContestList,
 } from '../../../shared_hooks/contest.hooks';
 import ContestInfoScreen from './contest.info.screen';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
@@ -34,10 +35,16 @@ export default function ContestInfoHOC() {
   const userSelector: any = useSelector(userInfo);
   const isFullMatch: boolean = useSelector(isFullMatchSelector);
 
+  // contests list
   const {contests}: any = useContestList(
     matchSelector.match_key,
     userSelector.mobile,
     isFullMatch,
+  );
+  // private contests list
+  const {p_ctst, rfp_ctst} = usePrivateContestList(
+    matchSelector.match_key,
+    userSelector.mobile,
   );
 
   const {ldbMeta, ldbLive, ldbErr, refetchLeaderBoard}: any =
@@ -59,7 +66,7 @@ export default function ContestInfoHOC() {
     isFullMatch,
   );
 
-  // load and set the contest info in local state
+  // load and set the contest info in contest list API
   useEffect(() => {
     if (contests) {
       const contestInfo = contests.find(
@@ -67,12 +74,21 @@ export default function ContestInfoHOC() {
       );
       if (contestInfo) {
         setContestInfo(contestInfo);
-      } else {
-        errorBox('Fatal Error', 0);
-        navigation.goBack();
       }
     }
   }, [contests]);
+
+  // load and set the contest info in private contest list API
+  useEffect(() => {
+    if (p_ctst) {
+      const contestInfo = p_ctst.find(
+        (item: any) => item.key === route.params.contest_key,
+      );
+      if (contestInfo) {
+        setContestInfo(contestInfo);
+      }
+    }
+  }, [p_ctst]);
 
   // refetch on focus
   useFocusEffect(

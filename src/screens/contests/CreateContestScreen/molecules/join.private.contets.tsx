@@ -21,7 +21,7 @@ interface PropTypes {
 
 export default function JoinedContestPage(props: PropTypes) {
   const [contest, setContest] = useState<any>(null);
-  const [input, setInput] = useState<any>('164735274498765');
+  const [input, setInput] = useState<any>('');
 
   function searchContest() {
     Keyboard.dismiss()

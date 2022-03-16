@@ -15,7 +15,7 @@ import clr from '../../../../constants/colors';
 
 interface PropTypes {
   contest_code: string;
-  onPressCopy(type: string): any;
+  onPressCopy(contest_key: string, type: string): any;
   onPressSMSShare(): void;
   onPressMoreShare(): void;
 }
@@ -35,7 +35,7 @@ export default function ShareContestSheet(props: PropTypes) {
       <Text style={[ss.subTitle]}>Copy Code</Text>
 
       <TouchableOpacity
-        onPress={() => props.onPressCopy('code')}
+        onPress={() => props.onPressCopy(props.contest_code, 'code')}
         style={[ss.codeContainer]}>
         <Text style={[ss.title]}>{props.contest_code}</Text>
         <LinkIcon dT={true} />
@@ -45,7 +45,7 @@ export default function ShareContestSheet(props: PropTypes) {
       <Text style={[ss.subTitle]}>Share web link</Text>
 
       <TouchableOpacity
-        onPress={() => props.onPressCopy('code')}
+        onPress={() => props.onPressCopy(props.contest_code, 'link')}
         style={[ss.linkContainer]}>
         <Text style={[ss.linktxt]}>kenfg.com/invite/{props.contest_code}</Text>
         <CloneIcon dT={true} />

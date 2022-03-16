@@ -108,18 +108,6 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
           onPressMoreShare={props.onPressMoreShare}
         />
       </Modalize>
-
-      {/* <NewJoinContestModal
-        showModal={props.joinModal}
-        availableCash={props.userMeta.un_utilized}
-        entryAmount={props.entryAmount}
-        usableBonus={0}
-        closeModal={props.closeJoinModal}
-        joinContestWithTeam={props.joinContestWithTeam}
-      /> */}
-
-      {/* shown while contests is joining */}
-      {/* {props.loading && <BlockScreenByLoading />} */}
     </View>
   );
 }
