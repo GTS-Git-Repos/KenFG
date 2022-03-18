@@ -3,7 +3,6 @@ import tailwind from '../../../tailwind';
 import {View, Image, Text, TouchableOpacity, ScrollView} from 'react-native';
 import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/native';
-import contestPlayerStats from '../../constants/mocks/contestPlayerStats.json';
 
 interface PropTypes {
   index: number;
@@ -14,6 +13,8 @@ interface PropTypes {
 
 export default function MatchPlayersStatsPage(props: PropTypes) {
   const navigation = useNavigation<any>();
+
+  return <Text>PAUSED</Text>;
 
   return (
     <ScrollView>

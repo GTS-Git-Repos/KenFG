@@ -14,6 +14,7 @@ import {
   UPDATE_LOCK
 } from '../actions/actionTypes';
 
+// TODO: is team_a, team_b is used anywhere ? I think no, need to refactor laterw
 
 const initialState = {
   lock:false,

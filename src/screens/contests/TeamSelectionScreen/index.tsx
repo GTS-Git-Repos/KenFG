@@ -12,7 +12,7 @@ import {
   useGetTeams,
   useJoinedContests,
 } from '../../../shared_hooks/contest.hooks';
-import {PageLoadingSpinner} from '../../../sharedComponents';
+import {FullScreenLoading} from '../../../sharedComponents';
 import {
   selectTeamsState,
   selectTeamsReducer,
@@ -147,7 +147,7 @@ export default function TeamSelectionHOC() {
   }
 
   if (!isScreenReady || !teams) {
-    return <PageLoadingSpinner title={'Select Team'} />;
+    return <FullScreenLoading title={'Select Team'} />;
   }
 
   return (

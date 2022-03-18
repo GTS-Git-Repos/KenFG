@@ -2,7 +2,8 @@ import {useQuery} from 'react-query';
 import {
   compareTeamsRemote,
   getMatchPointsRemote,
-  liveMatchMetaRemote,
+  joinedMatchesRemote,
+  matchScoreStatRemote,
 } from '../remote/matchesRemote';
 
 export const useCompareTeams = (match_key: string, user_id: string) => {
@@ -36,16 +37,16 @@ export const useMatchPlayersState = (
   return {mpMeta, mpL, mpS, mpE, mpRefetch};
 };
 
-// match score from third party api
-export const useMatchScore = (match_key: string, user_id: string) => {
+// match score and state from third party api
+export const useMatchScoreStat = (match_key: string, user_id: string) => {
   const {
     data: msMeta,
     isLoading: msL,
     isSuccess: msS,
     isFetching: msF,
     isError: msE,
-    refetch: msRefetch,
-  } = useQuery(['match', match_key, user_id], liveMatchMetaRemote, {
+    refetch: msMetaRf,
+  } = useQuery(['match', match_key, user_id], matchScoreStatRemote, {
     notifyOnChangeProps: [
       'data',
       'isLoading',
@@ -53,6 +54,18 @@ export const useMatchScore = (match_key: string, user_id: string) => {
       'isFetching',
       'isError',
     ],
+    cacheTime: 0,
   });
-  return {msMeta, msL, msS, msF, msE, msRefetch};
+  return {msMeta, msL, msS, msF, msE, msMetaRf};
+};
+
+export const useGetUserMatches = (user_id: string, status: string) => {
+  const {
+    data: matches,
+    isLoading: matches_l,
+    isError: matches_e,
+  } = useQuery(['user_matches', user_id, status], joinedMatchesRemote, {
+    notifyOnChangeProps: ['data', 'isLoading', 'isError'],
+  });
+  return {matches, matches_l, matches_e};
 };

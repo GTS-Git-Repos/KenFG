@@ -87,13 +87,13 @@ export default function TeamFormationHOC() {
   useEffect(() => {
     if (playersAPI) {
       // local state dispatch and global state dispatch
-      if (players) {
-        teamFormationDispatch({type: 'UPDATE_PLAYERS', payload: players});
-        dispatch(saveAllPlayersAction(players));
-      } else {
+      if (!players) {
         teamFormationDispatch({type: 'UPDATE_PLAYERS', payload: null});
         dispatch(saveAllPlayersAction(null));
+        return;
       }
+      teamFormationDispatch({type: 'UPDATE_PLAYERS', payload: players});
+      dispatch(saveAllPlayersAction(players));
     }
   }, [playersAPI]);
 
@@ -118,7 +118,7 @@ export default function TeamFormationHOC() {
 
   // sort filters planning
   function onSortAction(sortBy: string) {
-    let payload: any = {
+    const payload: any = {
       sortByPoints: null,
       sortByCredits: null,
       sortBySel: null,
@@ -177,7 +177,7 @@ export default function TeamFormationHOC() {
         mutation: route.params.mutation,
       });
     } else {
-     errorBox('Team requires total 11 players',0)
+      errorBox('Team requires total 11 players', 0);
     }
   };
 

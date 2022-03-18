@@ -1,6 +1,8 @@
-import React from 'react';
+// it will be removed later
+
+import React, {useEffect} from 'react';
 import tailwind from '../../../tailwind';
-import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
+import {View, TouchableOpacity, StyleSheet, Alert, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ButtonComponent from '../atoms/ButtonComponent';
 
@@ -13,6 +15,9 @@ interface PropTypes {
 }
 
 export default function JoinContestModal(props: PropTypes) {
+  useEffect(() => {
+    Alert.alert('DEPRECATED', 'deprecated join contest modal hit');
+  }, []);
   return (
     <View style={[ss.root]}>
       <View style={[ss.frcb]}>

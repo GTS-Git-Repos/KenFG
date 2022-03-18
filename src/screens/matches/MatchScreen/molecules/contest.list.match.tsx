@@ -7,13 +7,15 @@ import MyContestStatus from './MyContestStatus';
 interface PropTypes {
   index: number;
   activeIndex: number;
-  onContestMatchPress(contest_key: string): any;
+  contests: Array<any> | null;
+  err: Array<any>;
+  onContestCardPress(contest_key: string): any;
 }
 
 export default function MyContestPage(props: PropTypes) {
   return (
     <ScrollView style={[{flex: 1}]}>
-      <MyContestStatus onContestMatchPress={props.onContestMatchPress} />
+      <MyContestStatus onContestCardPress={props.onContestCardPress} />
     </ScrollView>
   );
 }

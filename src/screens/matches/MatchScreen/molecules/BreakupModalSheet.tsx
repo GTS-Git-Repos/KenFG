@@ -1,3 +1,5 @@
+// winnigs break up sheet, get the UI design from completed match screen
+
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';

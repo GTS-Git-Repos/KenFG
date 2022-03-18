@@ -1,3 +1,5 @@
+// TODO: group and extract selectors by feature
+
 import {createSelector} from 'reselect';
 import {SelectedMatchType} from '../types/match';
 import {rolesConstraints} from '../constants/appContants';
@@ -91,14 +93,15 @@ export const creditLeft = createSelector(playersState, players => {
     );
     return 100 - usedCredits;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return 0;
   }
 });
 
-// have a information of choosen match, used in contests and team formation
+// have a information of choosen match, 
+// used in contests and team formation
 // the join contest state is used when an user clicks the entry join button
-// it used to track on team formation final nav decistion, and select teams screen
+// it used to track on team formation final decision, and select teams screen
 // caution while working on here [***]
 export const selectedMatch = createSelector(
   SelectedMatchState,
@@ -118,6 +121,7 @@ export const selectedMatch = createSelector(
   },
 );
 
+//TODO: refactor it, it causes performance problems
 export const blockList = createSelector(
   allPlayersState,
   playersState,
@@ -238,7 +242,7 @@ export const blockList = createSelector(
 
       return blockListPlayers;
     } catch (err) {
-      console.log('blockList --->', err);
+      // console.log('blockList --->', err);
       return [];
     }
   },

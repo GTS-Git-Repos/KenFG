@@ -3,7 +3,7 @@ import CompareTeamScreen from './compare.team.screen';
 import mockCompare from '../../../constants/mocks/mockCompareTeam.json';
 import {extractPlayers, totalTeamPoints} from './compare.team.controller';
 import {CompareTeamType} from '../../../types/compareTeam';
-import {useCompareTeams} from '../../../shared_hooks/match_hooks';
+import {useCompareTeams} from '../../../shared_hooks/match.hooks';
 
 interface setCompareTeamType {
   src_player: string;

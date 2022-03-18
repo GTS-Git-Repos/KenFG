@@ -1,20 +1,36 @@
 import React from 'react';
-import tailwind from '../../../../../tailwind';
-import {View, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import {MatchTeamCard} from '../../../../sharedComponents';
 
 interface PropTypes {
+  activeIndex: number;
+  index: number;
   teams?: any;
   status?: string;
 }
 
 export default function MatchMyteamsPage(props: PropTypes) {
+  const isTabActive = props.index === props.activeIndex;
+  if (!isTabActive) {
+    return null;
+  }
   return (
-    <ScrollView style={[tailwind('m-2')]}>
-      <MatchTeamCard teamCode={'T1'} />
-      <MatchTeamCard teamCode={'T2'} />
+    <View style={[ss.root]}>
+      <ScrollView>
+        <MatchTeamCard teamCode={'T1'} />
+        <MatchTeamCard teamCode={'T2'} />
 
-      <View style={[tailwind('h-10')]}></View>
-    </ScrollView>
+        <View style={[ss.space]}></View>
+      </ScrollView>
+    </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    margin: 8,
+  },
+  space: {
+    height: 100,
+  },
+});

@@ -122,7 +122,7 @@ export default function CapSelectionScreen(props: PropTypes) {
           return;
         }
       }
-      // not in a edit and clone
+      // not in a edit and clone, either autojoin or create team
       props.setLoading(true);
       const response: any = await createTeamRemote(createTeamObj);
       props.setLoading(false);

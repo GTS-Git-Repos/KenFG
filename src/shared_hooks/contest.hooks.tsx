@@ -10,7 +10,6 @@ import {
 import {
   getCreatedTeamsRemote,
   getJoinedContestRemote,
-  liveMatchMetaRemote,
 } from '../remote/matchesRemote';
 
 export const useContestList = (
@@ -79,17 +78,6 @@ export const useJoinedContests = (
   return {joined, joinedAPI, joinedAPILive, errJC, rfJC};
 };
 
-export const useMatchMeta = (match_key: string, user_id: string) => {
-  const {
-    data: matchMeta,
-    isSuccess: matchAPI,
-    isFetching: matchAPILive,
-    refetch: refetchMatch,
-  } = useQuery(['match', match_key, user_id], liveMatchMetaRemote, {
-    notifyOnChangeProps: ['data', 'isSuccess', 'isFetching'],
-  });
-  return {matchMeta, matchAPI, matchAPILive, refetchMatch};
-};
 
 export const useContestLeaderboard = (
   match_key: string,

@@ -1,10 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {isFullMatchSelector, userInfo} from '../../../store/selectors';
-import {PageLoadingSpinner} from '../../../sharedComponents';
+import {FullScreenLoading} from '../../../sharedComponents';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
+import {useGetUserMatches} from '../../../shared_hooks/match.hooks';
 import MyMatchesScreen from './my.matches.screen';
-import {useMatches} from './mymatches.workers';
 import {useNavigation} from '@react-navigation/core';
 import {navigateMatchContestsAction} from '../../../store/actions/navigationActions';
 import {updateFullMatchAction} from '../../../store/actions/appActions';
@@ -26,7 +26,10 @@ export default function MyMatchesScreenHOC() {
 
   const [status, setStatus] = useState('notstarted');
 
-  const {matches, matchesAPI}: any = useMatches(userMeta.mobile, status);
+  const {matches, matches_l, matches_e}: any = useGetUserMatches(
+    userMeta.mobile,
+    status,
+  );
 
   useEffect(() => {
     if (matches) {
@@ -62,14 +65,15 @@ export default function MyMatchesScreenHOC() {
   };
 
   if (!isScreenReady) {
-    return <PageLoadingSpinner title={'My Matches'} />;
+    return <FullScreenLoading title={'My Matches'} />;
   }
 
   return (
     <MyMatchesScreen
       pagerRef={pagerRef}
       matches={matches}
-      matchesAPI={matchesAPI}
+      loading={matches_l}
+      error={matches_e}
       setStatus={setStatus}
       isCricket={isCricket}
       setIsCricket={setIsCricket}

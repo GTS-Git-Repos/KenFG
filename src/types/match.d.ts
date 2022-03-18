@@ -64,3 +64,127 @@ export interface MatchCommentaryType {
   team_b_name: string;
   titleString: string;
 }
+export interface MatchScoreStateType {
+  match: Match;
+  matchStatus: string;
+  team_a: TeamMeta;
+  team_b: TeamMeta;
+  score_a: Score[];
+  score_b: Score[];
+  notification: string;
+  striker: Striker | null;
+  nonStriker: NonStriker | null;
+  bowler: Bowler | null;
+  lastOverData: number[];
+  innings: Inning[];
+  xisKey: string[];
+  playersKeys: string[];
+  players: Array<any>;
+}
+
+export interface Match {
+  start_at: number;
+  status: string;
+  winner: any;
+  messages: any[];
+  short_name: string;
+  name: string;
+  sub_title: string;
+  format: string;
+}
+
+export interface TeamMeta {
+  key: string;
+  code: string;
+  name: string;
+  a: string;
+}
+
+
+export interface Score {
+  team_key: string;
+  name: string;
+  runs: number;
+  wickets: number;
+  overs: string;
+  isCompleted: boolean;
+}
+
+export interface Striker {
+  key: string;
+  name: string;
+  runs: number;
+  balls: number;
+}
+
+export interface NonStriker {
+  key: string;
+  name: string;
+  runs: number;
+  balls: number;
+}
+
+export interface Bowler {
+  key: string;
+  name: string;
+  taken_wicket: number;
+  given_runs: number;
+  used_overs: string;
+}
+
+export interface Inning {
+  code: string;
+  is_completed: boolean;
+  runs: number;
+  wickets: number;
+  overs: string;
+  extra: Extra;
+  battersData: BattersDaum[];
+  bowlersData: BowlersDaum[];
+  wicketsData: WicketsDaum[];
+}
+
+export interface Extra {
+  extra: number;
+  bye: number;
+  leg_bye: number;
+  wide: number;
+  no_ball: number;
+  penalty: any;
+}
+
+export interface BattersDaum {
+  name: string;
+  runs: number;
+  balls: number;
+  fours: number;
+  six: number;
+  sr: number;
+  isBatting: boolean;
+  msg: any;
+}
+
+export interface BowlersDaum {
+  name: string;
+  overs: string;
+  runs: number;
+  maider: number;
+  balls: number;
+  wickets: number;
+  economy: number;
+}
+
+export interface WicketsDaum {
+  name: string;
+  overs: string;
+  runs: number;
+  number: number;
+}
+
+export interface MatchScreenType {
+  matchMeta: Omit<MatchScoreStateType, 'players' | 'playersKeys' | 'xisKey'>;
+  contests: Array<any>;
+  teams: Array<any>;
+  commentry: Array<any>;
+  onContestCardPress(contest_key: string): void;
+}

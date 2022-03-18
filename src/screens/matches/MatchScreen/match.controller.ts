@@ -1,5 +1,5 @@
 /**
- * The controller for Live Match
+ * The controller for Match screen
  * not utilized still
  */
 
@@ -9,7 +9,6 @@ import {createSelector} from 'reselect';
 // State
 export const LiveMatchState = {
   selectedTab: 0,
-  matchPlayers: [],
 };
 
 export const MatchReducer = (state: any, action: any) => {
@@ -35,10 +34,6 @@ export const updateSelTab = (payload: number) => ({
   payload,
 });
 
-export const updateMatchPlayer = (payload: any) => ({
-  type: 'UPDATE_MATCH_PLAYERS',
-  payload,
-});
 
 // Selectors
 // const FantasyPlayersState = (state: any) => state.fantasyPlayers;

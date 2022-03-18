@@ -1,11 +1,13 @@
 import {combineReducers} from 'redux';
 
-import app from './appReducer';
-import user from './userReducer';
-import team from './teamReducer';
+import app from './app.reducer';
+import user from './user.reducer';
+import team from './team.reducer';
+import match from './match.reducer';
 
 export default combineReducers({
   app,
   user,
   team,
+  match,
 });

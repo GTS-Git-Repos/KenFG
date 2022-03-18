@@ -1,5 +1,5 @@
 /**
- * used in contest lists screen *My Contests Tab*
+ * used in contest lists screen and second innings contest list *My Contests Tab*
  */
 
 import React, {useState} from 'react';
@@ -10,8 +10,8 @@ import {CapIcon, PencilEditIcon, VCIcon} from '../../assets/newIcons';
 import ProgressBarShared from '../atoms/progressbar.shared';
 import FooterContest from '../atoms/footer.contest';
 import TeamCode from '../atoms/TeamCode';
-import ShareIcon from "../icons/ShareIcon"
-import SwitchIcon from "../icons/SwitchIcon"
+import ShareIcon from '../icons/ShareIcon';
+import SwitchIcon from '../icons/SwitchIcon';
 import {TeamFormationMutationType} from '../../types/match';
 
 interface PropTypes {
@@ -47,26 +47,27 @@ interface TeamInfoTypes {
 }
 
 export default function JoinedContestCard(props: PropTypes) {
-
   const [open, setOpen] = useState(false);
   return (
-    <TouchableOpacity
-      activeOpacity={0.6}
-      onPress={() => props.onPressJoinedContest(props.contest_key)}
-      style={[ss.root]}>
-      <TopSection
-        title={props.contest_name}
-        entry_amount={props.entry_amount}
-      />
-      <View style={[ss.barroot]}>
-        <ProgressBarShared spots={'20'} left={'19'} />
-      </View>
-      <FooterContest
-        amount_letters={props.amount_in_letters}
-        bonus={props.bonus}
-        max_entry={props.max_entry}
-        guaranteed={true}
-      />
+    <View style={[ss.root]}>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => props.onPressJoinedContest(props.contest_key)}>
+        <TopSection
+          title={props.contest_name}
+          entry_amount={props.entry_amount}
+        />
+        <View style={[ss.barroot]}>
+          <ProgressBarShared spots={'20'} left={'19'} />
+        </View>
+        <FooterContest
+          amount_letters={props.amount_in_letters}
+          bonus={props.bonus}
+          max_entry={props.max_entry}
+          guaranteed={true}
+        />
+      </TouchableOpacity>
+
       <View style={[ss.pad8]}>
         <View style={[ss.frbc]}>
           <Text style={[ss.txt]}>
@@ -101,7 +102,7 @@ export default function JoinedContestCard(props: PropTypes) {
         )}
       </View>
       <ShareContest />
-    </TouchableOpacity>
+    </View>
   );
 }
 
@@ -138,7 +139,6 @@ const JoinedTeams = (props: any) => {
 };
 
 const TeamInfo = (props: TeamInfoTypes) => {
-
   return (
     <View style={[ss.teamRow]}>
       <TouchableOpacity

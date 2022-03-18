@@ -8,7 +8,9 @@ import compareTeamMeta from '../constants/mocks/mockCompareTeam.json';
 import {MatchScoreFormat} from '../constructors/match.constructors';
 import {parseJoinedTeamsAPI} from '../constructors/teams.constructor';
 import {normalizeGetPlayersAPI} from '../constructors/teams.constructor';
-// import MockMatchScore from '../constants/mocks/aussl_2022_t20_03_live.json';
+import aus_sl_Live from '../assets/mocks/aussl_2022_t20_03_live.json';
+import rsa_in_Live from '../assets/mocks/rsaind_2021_test_02_completed.json';
+
 import {
   extractDataFromUpcommingMatchesAPI,
   extractJoinedContestAPIResponse,
@@ -54,6 +56,32 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
   }
 };
 
+// the third party API, has scores, innings, players
+export const matchScoreStatRemote = async (params: any) => {
+  try {
+    // console.log(JSON.stringify(MatchScoreFormat(aus_sl_Live)));
+    // return MatchScoreFormat(rsa_in_Live);
+    return MatchScoreFormat(aus_sl_Live);
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_live_match,
+      {
+        match_key: params.queryKey[1],
+        mobile: params.queryKey[2],
+        data_key: 'all',
+      },
+    );
+    if (response.status === 200) {
+      return MatchScoreFormat(response.data.data.data);
+    } else {
+      failedLog('matchScoreStatRemote()', response);
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
 // get the joined matches
 /**
  * used in my matches screen
@@ -71,15 +99,14 @@ export const joinedMatchesRemote = async (params: any) => {
         throw 'failed in parse';
       }
       return matches;
-    } else {
-      throw 'invalid response';
     }
+    throw 'invalid response';
   } catch (err) {
     console.log('joinedMatchesRemote()', err);
-    return false;
+    throw err;
   }
 };
-
+// TODO: move that to contest Remote
 export const searchContestsRemote = async (payload: any) => {
   try {
     const response = await requestServer(
@@ -98,32 +125,11 @@ export const searchContestsRemote = async (payload: any) => {
   }
 };
 
-export const liveMatchMetaRemote = async (params: any) => {
-  try {
-    const response = await requestServer(
-      METHODS.POST,
-      BASE_URL + req_live_match,
-      {
-        match_key: params.queryKey[1],
-        mobile: params.queryKey[2],
-        data_key: 'all',
-      },
-    );
-    if (response.status === 200) {
-      return MatchScoreFormat(response.data.data.data);
-    } else {
-      failedLog('liveMatchMetaRemote()', response);
-    }
-  } catch (err) {
-    console.log(err);
-    throw err;
-  }
-};
-
 export const compareTeamsRemote = async (params: any) => {
   return normalizeCompareTeamsRemote(compareTeamMeta);
 };
 
+// TODO: move that to contest Remote
 export const createTeamRemote = async (payload: any) => {
   try {
     const response = await requestServer(
@@ -144,6 +150,7 @@ export const createTeamRemote = async (payload: any) => {
   }
 };
 
+// TODO: move that to contest Remote
 export const editTeamRemote = async (payload: any): Promise<any> => {
   try {
     const response = await requestServer(
@@ -166,6 +173,7 @@ export const editTeamRemote = async (payload: any): Promise<any> => {
 };
 
 // used in team formation screen, to get players for that match
+// TODO: move that to contest Remote
 export const getMatchPlayersRemote = async (params: any) => {
   try {
     const response = await requestServer(METHODS.POST, BASE_URL + req_players, {
@@ -184,6 +192,7 @@ export const getMatchPlayersRemote = async (params: any) => {
   }
 };
 
+// TODO: move that to contest Remote
 export const getCreatedTeamsRemote = async (params: any) => {
   try {
     const response = await requestServer(
@@ -207,6 +216,8 @@ export const getCreatedTeamsRemote = async (params: any) => {
   }
 };
 
+// TODO: move that to contest Remote
+
 export const getJoinedContestRemote = async (params: any) => {
   try {
     const response = await requestServer(
@@ -229,6 +240,8 @@ export const getJoinedContestRemote = async (params: any) => {
   }
 };
 
+// TODO: move that to contest Remote
+
 export const joinContestRemote = async (payload: any) => {
   console.log('still using join contest 2');
   try {
@@ -249,24 +262,7 @@ export const joinContestRemote = async (payload: any) => {
   }
 };
 
-export const join2ndContestRemote = async (payload: any) => {
-  try {
-    const response = await requestServer(
-      METHODS.POST,
-      BASE_URL + req_join_contest2,
-      payload,
-    );
-    if (response.status === 200) {
-      return {txn: true, msg: 'contest joined successfully'};
-    }
-    if (response.status === 400) {
-      return {txn: false, msg: response.data?.message};
-    }
-    return {txn: false, msg: 'failed to join contest'};
-  } catch (err) {
-    return {txn: false, msg: 'failed to join contest'};
-  }
-};
+// TODO: move that to contest Remote
 
 export const createContestRemote = async (payload: any) => {
   try {
@@ -285,8 +281,6 @@ export const createContestRemote = async (payload: any) => {
     return false;
   }
 };
-
-
 
 export const getMatchCommentaryRemote = async (params: any) => {
   try {

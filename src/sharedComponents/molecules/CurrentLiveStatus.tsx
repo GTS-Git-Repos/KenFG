@@ -1,115 +1,86 @@
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, Text, ScrollView} from 'react-native';
+// import {} from '../../types/match';/
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 
-interface CurrentPlayerStatusShape {
-  striker: BatterShape;
-  nonStriker: BatterShape;
-  bowler: any;
-  lastOverData: any[];
-}
+export default function CurrentLiveStats(props: any) {
+  const HAS_STRIKER = props.striker;
+  const HAS_NON_STRIKER = props.nonStriker;
+  const HAS_BOWLER = props.bowler;
+  const HAS_LAST_OVER = props.lastOverData;
+  const ALL_NONE =
+    !HAS_STRIKER && !HAS_NON_STRIKER && !HAS_BOWLER && !HAS_LAST_OVER;
 
-interface BatterShape {
-  key: string;
-  name: string;
-  runs: number;
-  balls: number;
-}
-interface BowlerShape {
-  key: string;
-  given_runs: number;
-  name: string;
-  taken_wicket: number;
-  used_overs: number;
-}
-
-export default function CurrentLiveStats(props: CurrentPlayerStatusShape) {
-  if (!props.striker && !props.nonStriker && !props.lastOverData) {
+  if (ALL_NONE) {
     return null;
   }
   return (
-    <View style={[tailwind('flex-row my-2')]}>
-      <View style={[tailwind(''), {flex: 4.75}]}>
-        {props.striker && (
-          <View
-            style={[tailwind('flex-row justify-between items-center pb-1')]}>
-            <Text style={[tailwind('font-bold text-white font-13')]}>
-              {props.striker.name}
-            </Text>
-            <View style={[tailwind('flex-row justify-between items-center')]}>
-              <Text style={[tailwind('font-bold text-white font-14')]}>
-                {props.striker.runs}
+    <View style={[ss.root]}>
+      <View style={[ss.batR]}>
+        {HAS_STRIKER && (
+          <View style={[ss.container]}>
+            <View style={[ss.nameC]}>
+              <Text numberOfLines={1} style={[ss.activeTxt]}>
+                {props.striker.name}
               </Text>
-              <Text style={[tailwind('font-bold px-1 text-light font-12')]}>
+            </View>
+            <View style={ss.scoreC}>
+              <Text style={[ss.activeTxt]}>{props.striker.runs}</Text>
+              <Text style={[ss.activeTxt, ss.ph4]}>
                 ({props.striker.balls})
               </Text>
             </View>
           </View>
         )}
 
-        {props.nonStriker && (
-          <View
-            style={[tailwind('flex-row justify-between items-center pb-1')]}>
-            <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-              {props.nonStriker.name}
-            </Text>
-            <View style={[tailwind('flex-row justify-between items-center')]}>
-              <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-                {props.nonStriker.runs}
+        {HAS_NON_STRIKER && (
+          <View style={[ss.container]}>
+            <View style={[ss.nameC]}>
+              <Text numberOfLines={1} style={[ss.txt]}>
+                {props.nonStriker.name}
               </Text>
-              <Text style={[tailwind('font-regular px-1 text-dark-1 font-12')]}>
-                ({props.nonStriker.balls})
-              </Text>
+            </View>
+            <View style={ss.scoreC}>
+              <Text style={[ss.txt]}>{props.nonStriker.runs}</Text>
+              <Text style={[ss.txt, ss.ph4]}>({props.nonStriker.balls})</Text>
             </View>
           </View>
         )}
       </View>
-      <View style={[{flex: 0.25}]}></View>
-      <View style={[tailwind('flex-col justify-between'), {flex: 4.75}]}>
-        {props.bowler && (
-          <CurrentBowlerStats
-            key={props.bowler.key}
-            given_runs={props.bowler.given_runs}
-            name={props.bowler.name}
-            taken_wicket={props.bowler.taken_wicket}
-            used_overs={props.bowler.used_overs}
-          />
+
+      <View style={[ss.space]}></View>
+
+      <View style={[ss.bowlC]}>
+        {HAS_BOWLER && (
+          <View style={[ss.container]}>
+            <View style={[ss.nameC]}>
+              <Text numberOfLines={1} style={[ss.activeTxt]}>
+                {props.bowler.name}
+              </Text>
+            </View>
+            <View style={ss.scoreC}>
+              <Text style={[ss.activeTxt]}>
+                {props.bowler.taken_wicket}/{props.bowler.given_runs}
+              </Text>
+              <Text style={[ss.activeTxt, ss.ph4]}>
+                ({props.bowler.used_overs})
+              </Text>
+            </View>
+          </View>
         )}
-        {props.lastOverData && <OverStats lastOverData={props.lastOverData} />}
+        {props.lastOverData && <OverStats over={props.lastOverData} />}
       </View>
     </View>
   );
 }
-const CurrentBowlerStats = (props: BowlerShape) => {
-  return (
-    <View style={[tailwind('')]}>
-      <View style={[tailwind('flex-row justify-between items-center')]}>
-        <Text
-          numberOfLines={1}
-          style={[tailwind('font-bold text-white font-13'), {flex: 6}]}>
-          {props.name}
-        </Text>
-        <View
-          style={[tailwind('flex-row justify-end items-center'), {flex: 6}]}>
-          <Text style={[tailwind('font-bold text-white font-14')]}>
-            {props.taken_wicket}/{props.given_runs}
-          </Text>
-          <Text style={[tailwind('font-bold px-1 text-light font-14')]}>
-            ({props.used_overs})
-          </Text>
-        </View>
-      </View>
-    </View>
-  );
-};
 
-const OverStats = (props: any) => {
+const OverStats = (props: {over: Array<number>}) => {
   return (
     <View style={[tailwind('')]}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {props.lastOverData.map((item: any, index: number) => {
+        {props.over.map((item: any, index: number) => {
           return item != null ? (
-            <BallStats info={item} key={index} />
+            <BallStats value={item} key={index} />
           ) : (
             <EmptyBall key={index} />
           );
@@ -119,25 +90,23 @@ const OverStats = (props: any) => {
   );
 };
 
-const BallStats = (props: any) => {
+const BallStats = ({value}: any) => {
   return (
     <View
       style={[
-        tailwind('rounded-full flex-row items-center justify-center mr-1'),
+        ss.ballC,
         {
-          width: 20,
-          height: 20,
-          backgroundColor: props.info === 'w' ? 'red' : 'white',
+          backgroundColor: value === 'w' ? 'red' : 'white',
         },
       ]}>
       <Text
         style={[
-          tailwind('font-bold text-center text-black uppercase font-11'),
+          ss.ball,
           {
-            color: props.info === 'w' ? 'white' : 'black',
+            color: value === 'w' ? 'white' : 'black',
           },
         ]}>
-        {props.info}
+        {value}
       </Text>
     </View>
   );
@@ -159,3 +128,69 @@ const EmptyBall = ({}) => {
       ]}></View>
   );
 };
+
+const ss = StyleSheet.create({
+  root: {
+    flexDirection: 'row',
+    marginVertical: 8,
+    // alignItems: 'center',
+  },
+  batR: {
+    flex: 4.75,
+  },
+  bowlC: {
+    flex: 4.75,
+    justifyContent: 'flex-end',
+  },
+  space: {
+    flex: 0.5,
+  },
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    // paddingBottom: 4,
+  },
+  nameC: {
+    flex: 6,
+  },
+  scoreC: {
+    flex: 4,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  activeTxt: {
+    fontFamily: 'gadugi-bold',
+    color: '#FFFFFF',
+    fontSize: 13,
+    paddingBottom: 6,
+  },
+  txt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 13,
+    color: '#8797B1',
+  },
+  frcb: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  ph4: {
+    paddingHorizontal: 2,
+  },
+  ballC: {
+    borderRadius: 999,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 4,
+    width: 20,
+    height: 20,
+  },
+  ball: {
+    fontFamily: 'gadugi-bold',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontSize: 11,
+  },
+});

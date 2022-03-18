@@ -17,11 +17,20 @@ export const MatchScoreFormat = (payload: any) => {
   try {
     const teams = payload.teams;
     const matchStatus = payload.status;
+    const allPlayers = payload.players;
+    const xisKey = [
+      ...payload.squad.a.playing_xi,
+      ...payload.squad.b.playing_xi,
+    ];
+    // const squad = [
+    //   ...payload.squad.a.player_keys,
+    //   ...payload.squad.b.player_keys,
+    // ];
+
     const play = payload.play;
     const live = payload?.play?.live;
     const inningsOrder = play?.innings_order;
     const allInnings = play?.innings;
-    const allPlayers = payload.players;
 
     const playStatus = payload.play_status;
 
@@ -69,7 +78,7 @@ export const MatchScoreFormat = (payload: any) => {
       teams,
       allPlayers,
     );
-    const liveObj = {
+    const finalObj = {
       match: matchMeta,
       matchStatus,
       team_a: teamAMeta,
@@ -82,11 +91,13 @@ export const MatchScoreFormat = (payload: any) => {
       bowler,
       lastOverData,
       innings: inningsData,
+      xisKey,
+      // squad,
     };
-    return liveObj;
+    return finalObj;
   } catch (err) {
     console.log(err);
     log('Failed in <liveMatchStatsFormat>');
-    throw err
+    throw err;
   }
 };

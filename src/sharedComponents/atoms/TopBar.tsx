@@ -2,11 +2,10 @@
  * used in most of the screens as a top bar
  */
 import React from 'react';
-import tailwind from '../../../tailwind';
+
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
-import {appColorsSelector} from '../../store/selectors';
 import {HelpIcon, BackIcon, PointsIcon} from '../../assets/newIcons';
 import {getAppThemeSelector} from '../../store/selectors';
 import clr from '../../constants/colors';
@@ -29,25 +28,22 @@ export default function TopBar(props: Props) {
 
   return (
     <View style={[ss.root, dT ? clr.bgg : clr.bgRed]}>
-      <View style={[tailwind('flex-row items-center')]}>
+      <View style={[ss.frc]}>
         <TouchableOpacity onPress={goBack}>
           <BackIcon dark={dT} />
         </TouchableOpacity>
-        <View style={[tailwind('px-2')]}>
-          <Text style={[tailwind('font-bold font-16'), dT ? clr.tg : clr.tw]}>
-            {props.text}
-          </Text>
+        <View style={[ss.space]}>
+          <Text style={[ss.title, dT ? clr.tg : clr.tw]}>{props.text}</Text>
           {/* teams appeared on team formation, cap selection screen */}
           {props.teams && (
-            <Text
-              style={[tailwind('font-bold text-brown-4 uppercase font-12')]}>
+            <Text style={[ss.teamTxt, dT ? clr.tg : clr.tw]}>
               {props.teams[0]} vs {props.teams[1]}
             </Text>
           )}
         </View>
       </View>
       {/* Links */}
-      <View style={[tailwind('flex-row items-center')]}>
+      <View style={[ss.frc]}>
         {props.helpIcon && (
           <TouchableOpacity style={[ss.links]}>
             <HelpIcon isDarkMode={true} />
@@ -70,7 +66,23 @@ const ss = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 16,
   },
+  frc: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   links: {
     paddingHorizontal: 4,
+  },
+  space: {
+    paddingHorizontal: 16,
+  },
+  title: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 16,
+  },
+  teamTxt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    textTransform: 'uppercase',
   },
 });

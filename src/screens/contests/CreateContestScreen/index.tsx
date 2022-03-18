@@ -128,71 +128,35 @@ export default function CreateContestHOC() {
     });
   }
 
+  // if you change something in here, don't forget copy paste, on
+  //2nd innings and create contest, contest info screen
   async function proceedToJoin(contest_key: string) {
     try {
       const contest = allContests.find((item: any) => item.key === contest_key);
       if (!contest) throw 'no contests';
-      if (contest) {
-        const checkContestJoin = checksBeforeJoinContest(
-          matchSelector.start_at,
-          contest,
-          joined,
-          teams,
-        );
-
-        if (checkContestJoin.status) {
-          toTeamFormationWithAutoJoin(
-            navigation,
-            checkContestJoin.to === TO_TEAMLIST,
-            {
-              contestKey: contest.key,
-              entryAmount: contest.entry,
-              maxTeam: contest.max_entry,
-              isFullMatch: contest.innings === '1',
-            },
-          );
-        } else {
-          throw checkContestJoin.msg;
-        }
-        console.log('checkContestJoin', checkContestJoin);
+      const teamAvailCheck = checksBeforeJoinContest(
+        matchSelector.start_at,
+        contest,
+        joined,
+        teams,
+      );
+      if (!teamAvailCheck.status) {
+        throw 'proceed to join check error';
       }
-      return;
+      toTeamFormationWithAutoJoin(
+        navigation,
+        teamAvailCheck.to === TO_TEAMLIST,
+        {
+          contestKey: contest.key,
+          entryAmount: contest.entry,
+          maxTeam: contest.max_entry,
+          isFullMatch: contest.innings === '1',
+        },
+      );
     } catch (err) {
       console.log('err', err);
     }
-    return;
   }
-
-  // async function joinContestWithTeam() {
-  //   //TODO: this function never called remove that
-  //   try {
-  //     // close the join modal popup
-  //     closeJoinModal();
-  //     const obj = {
-  //       match_key: matchSelector.match_key,
-  //       contest_key: matchSelector.joinContest.contestKey,
-  //       team_key: createdTeam,
-  //       player_key: userMeta.mobile,
-  //     };
-  //     setLoading(true);
-  //     const response = await joinContestRemote(obj);
-  //     setLoading(false);
-  //     // handle failure
-  //     if (!response.txn) {
-  //       errorBox(response.msg, 500);
-  //       return;
-  //     }
-  //     // refetch my contests(joined) API
-  //     rfJC();
-  //     // update user
-  //     dispatch(updateUserInfo(userMeta.mobile));
-  //     infoBox('Contest Succefully Joined', 500);
-  //   } catch (err) {
-  //     console.log(err);
-  //     setLoading(false);
-  //     infoBox('Contest Failed to Join !', 1000);
-  //   }
-  // }
 
   return (
     <CreateContestScreen

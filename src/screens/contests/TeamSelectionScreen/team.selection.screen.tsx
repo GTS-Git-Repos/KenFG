@@ -24,7 +24,6 @@ import CheckBoxSelectedTeam from './molecules/checbox.selectteam';
 import {errorBox, infoBox} from '../../../utils/snakBars';
 import {
   joinContestRemote,
-  join2ndContestRemote,
 } from '../../../remote/matchesRemote';
 import {resetContestListNavigation} from '../../../utils/resetNav';
 import SubTitle from './atoms/subtitle.teamselection';

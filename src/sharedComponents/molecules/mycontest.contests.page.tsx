@@ -37,6 +37,10 @@ export default function MyContestPage(props: PropTypes) {
         actionText={'VIEW CONTESTS'}
         noContentAction={noContentAction}
         loading={!isActiveTab}
+        error={false}
+        refetch={() => {
+          console.log('n/a');
+        }}
       />
     );
   }

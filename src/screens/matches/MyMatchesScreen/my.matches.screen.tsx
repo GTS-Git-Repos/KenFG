@@ -1,14 +1,10 @@
 import React, {useRef, useState} from 'react';
 import {View, Text} from 'react-native';
 import tailwind from '../../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
 import {ContestTypeSwitch, TopBar} from '../../../sharedComponents';
 import PagerView from 'react-native-pager-view';
+import MatchTabPage from './molecules/match.tab.page';
 import MyMatchesTabs from './molecules/MyMatchesTabs';
-import UpcommingPage from './molecules/UpcommingPage';
-import LivePage from './molecules/LivePage';
-import CompletedPage from './molecules/CompletedPage';
 import MatchSwitch from './molecules/match.switch';
 import {getAppThemeSelector} from '../../../store/selectors';
 import clr from '../../../constants/colors';
@@ -19,10 +15,11 @@ const log = console.log;
 interface PropTypes {
   pagerRef: any;
   matches: any;
-  matchesAPI: any;
-  setStatus: any;
+  loading: boolean;
+  error: boolean;
   isCricket: boolean;
   isFullMatch: boolean;
+  setStatus(tabname: string): any;
   onPressMyMatchCard(matche_key: string): any;
   setIsCricket(input: boolean): any;
   onPressMatchType(input: number): any;
@@ -31,10 +28,7 @@ interface PropTypes {
 export default function MyMatches(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
 
-  const navigation = useNavigation();
-  const pageRef = useRef<any>(null);
-
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   const onPageSelectedAction = (e: any) => {
     const position = e.nativeEvent.position;
@@ -47,11 +41,11 @@ export default function MyMatches(props: PropTypes) {
     if (position === 2) {
       props.setStatus('completed');
     }
-    setSelectedTab(e.nativeEvent.position);
+    setActiveTabIndex(e.nativeEvent.position);
   };
 
   const onTabPressed = (index: number) => {
-    pageRef.current?.setPage(index);
+    props.pagerRef.current?.setPage(index);
   };
 
   return (
@@ -62,7 +56,7 @@ export default function MyMatches(props: PropTypes) {
         setIsCricket={props.setIsCricket}
       />
 
-      <MyMatchesTabs active={selectedTab} onTabPressed={onTabPressed} />
+      <MyMatchesTabs active={activeTabIndex} onTabPressed={onTabPressed} />
       <View style={[tailwind('flex-row justify-center pt-3 pb-1')]}>
         <ContestTypeSwitch
           onPressMatchType={props.onPressMatchType}
@@ -71,30 +65,39 @@ export default function MyMatches(props: PropTypes) {
         />
       </View>
       <PagerView
-        ref={pageRef}
+        ref={props.pagerRef}
         onPageSelected={onPageSelectedAction}
         style={{flex: 1}}>
         <View>
-          <UpcommingPage
-            selectedTab={selectedTab}
+          <MatchTabPage
+            index={0}
+            activeTabIndex={activeTabIndex}
+            errorMsg={"You haven't joined any matches"}
             matches={props.matches}
-            matchesAPI={props.matchesAPI}
+            loading={props.loading}
+            error={props.error}
             onPressMyMatchCard={props.onPressMyMatchCard}
           />
         </View>
         <View>
-          <LivePage
-            selectedTab={selectedTab}
+          <MatchTabPage
+            index={1}
+            activeTabIndex={activeTabIndex}
+            errorMsg={"You haven't joined any contests that are live"}
             matches={props.matches}
-            matchesAPI={props.matchesAPI}
+            loading={props.loading}
+            error={props.error}
             onPressMyMatchCard={props.onPressMyMatchCard}
           />
         </View>
         <View>
-          <CompletedPage
-            selectedTab={selectedTab}
+          <MatchTabPage
+            index={2}
+            activeTabIndex={activeTabIndex}
+            errorMsg={'You dont have any completed Contest'}
             matches={props.matches}
-            matchesAPI={props.matchesAPI}
+            loading={props.loading}
+            error={props.error}
             onPressMyMatchCard={props.onPressMyMatchCard}
           />
         </View>

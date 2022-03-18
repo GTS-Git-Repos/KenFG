@@ -324,7 +324,7 @@ const AppVersion = (props: any) => {
           Version 0.1
         </Text>
         <Text style={[tailwind('font-regular py-1 text-dark-1 font-11')]}>
-          3 March : 5:20 PM
+          16 March : 11:40 PM
         </Text>
       </View>
       {/* <View style={[tailwind('justify-end items-end'), {flex: 3}]}>

@@ -48,6 +48,7 @@ export function didIWantToGoTeamsPage(
     // console.log('allTeamsKey', allTeamsKey);
     // console.log('joinedTeamsKey', joinedTeamsKey);
 
+    // is all teams are already joined
     if (allTeamsKey.length === joinedTeamsKey.length) {
       return false;
     } else {
@@ -57,7 +58,7 @@ export function didIWantToGoTeamsPage(
   return true;
 }
 
-// fucntion that used before joining contest
+// fucntion that used check condition before joining contest
 export function checksBeforeJoinContest(
   start_time: Date,
   contest: string,

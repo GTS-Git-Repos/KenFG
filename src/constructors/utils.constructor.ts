@@ -18,8 +18,8 @@ export const calculateTeamScore = (
 ) => {
   try {
     const inningsOrder = payload.play.innings_order;
-    let teamScore = [];
-    for (let innings of inningsOrder) {
+    const teamScore = [];
+    for (const innings of inningsOrder) {
       const {team} = getTeamAndDayFromInningsKey(innings, teams);
       if (team_key === team) {
         const inningsData = payload.play.innings[innings];
@@ -36,15 +36,15 @@ export const calculateTeamScore = (
     return teamScore;
   } catch (err) {
     logError('calculateTeamScore', err);
-    return [{}];
+    return [];
   }
 };
+// not used
+export const StatusOfTheMatch = () => false
 
-export const StatusOfTheMatch = () => {};
-
-export const getNotificationString = (playStatus: string, play: any) => {
+export const getNotificationString = (playStatus: string, play: any):string => {
   if (play.live) {
-    let score = play.live.score;
+    const score = play.live.score;
     if (score.msg_lead_by) {
       return score.msg_lead_by;
     }
@@ -58,7 +58,7 @@ export const getNotificationString = (playStatus: string, play: any) => {
     if (playStatus === 'result') {
       return play.result.msg;
     } else {
-      return 'Match Will be Started';
+      return 'Match Started';
     }
   }
 };
@@ -127,14 +127,14 @@ export const getLastOverData = (recentOver: any[], related_balls: any[]) => {
 };
 // For constructing ScoreCard
 export const getScroeByInnings = (
-  allInnings: any[],
-  inningsOrder: any[],
+  allInnings: Array<any>,
+  inningsOrder: Array<any>,
   teams: any,
   allPlayers: any,
 ) => {
   const inningsData: any = [];
   for (const ikey of inningsOrder) {
-    const innings_t_bowlers = swapInningsKeyForBowler(ikey);
+    const innings_t_bowlers:string = swapInningsKeyForBowler(ikey);
 
     const {code, day} = getTeamAndDayFromInningsKey(ikey, teams);
     const innings_t = allInnings[ikey];
@@ -200,16 +200,17 @@ const getBattersDataByInnings = (
   return battersData;
 };
 
-const swapInningsKeyForBowler = (i_key: string) => {
+const swapInningsKeyForBowler = (i_key: string): string => {
   // swapped because API bowlers innings is diffrent
   const i = i_key.split('_')[0];
   const d = i_key.split('_')[1];
   if (i === 'a') {
     return `${'b'}_${d}`;
   } else {
-    if (i === 'b') {
-      return `${'a'}_${d}`;
-    }
+    return `${'a'}_${d}`;
+    // if (i === 'b') {
+    //   return `${'a'}_${d}`;
+    // }
   }
 };
 

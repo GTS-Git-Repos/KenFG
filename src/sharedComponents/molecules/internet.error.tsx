@@ -9,7 +9,7 @@ import TopBar from '../atoms/TopBar';
 import ButtonComponent from '../atoms/ButtonComponent';
 
 interface PropTypes {
-  referch(): any;
+  refetch(): any;
 }
 
 // full screen no internet error
@@ -32,7 +32,7 @@ export default function InternetError(props: PropTypes) {
           Please check your internet connection and try again
         </Text>
       </View>
-      <TouchableOpacity onPress={props.referch} style={[tailwind('m-4')]}>
+      <TouchableOpacity onPress={props.refetch} style={[tailwind('m-4')]}>
         <ButtonComponent text={'TRY AGAIN'} />
       </TouchableOpacity>
     </View>

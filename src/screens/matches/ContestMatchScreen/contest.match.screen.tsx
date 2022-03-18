@@ -6,9 +6,9 @@ import {
   MatchStat,
   Projection,
   CurrentLiveStatus,
+  FullScreenLoading,
   ExpertsStats,
   MatchPlayersStats,
-  PageLoadingSpinner,
 } from '../../../sharedComponents';
 
 import PagerView from 'react-native-pager-view';
@@ -45,7 +45,7 @@ export default function ContestMatchScreen(props: PropTypes) {
   };
 
   if (isScreenReady === false || !props.matchAPI) {
-    return <PageLoadingSpinner title={'Loading'} />;
+    return <FullScreenLoading title={'Loading'} />;
   }
   if (props.matchAPI && !props.matchMeta) {
     return <Text>Received Scrambled data :(</Text>;

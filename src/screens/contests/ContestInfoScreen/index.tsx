@@ -157,37 +157,34 @@ export default function ContestInfoHOC() {
     }
   }
 
+  // if you change something in here, don't forget copy paste, on
+  //2nd innings and create contest, contest info screen
   async function proceedToJoin(contest_key: string) {
     try {
-      if (contestInfo) {
-        const checkContestJoin = checksBeforeJoinContest(
-          matchSelector.start_at,
-          contestInfo,
-          joined,
-          teams,
-        );
-
-        if (checkContestJoin.status) {
-          toTeamFormationWithAutoJoin(
-            navigation,
-            checkContestJoin.to === TO_TEAMLIST,
-            {
-              contestKey: contestInfo.key,
-              entryAmount: contestInfo.entry,
-              maxTeam: contestInfo.max_entry,
-              isFullMatch: contestInfo.innings === '1',
-            },
-          );
-        } else {
-          throw checkContestJoin.msg;
-        }
-        console.log('checkContestJoin', checkContestJoin);
+      const contest = contestInfo;
+      if (!contest) throw 'no contests';
+      const teamAvailCheck = checksBeforeJoinContest(
+        matchSelector.start_at,
+        contest,
+        joined,
+        teams,
+      );
+      if (!teamAvailCheck.status) {
+        throw 'proceed to join check error';
       }
-      return;
+      toTeamFormationWithAutoJoin(
+        navigation,
+        teamAvailCheck.to === TO_TEAMLIST,
+        {
+          contestKey: contest.key,
+          entryAmount: contest.entry,
+          maxTeam: contest.max_entry,
+          isFullMatch: contest.innings === '1',
+        },
+      );
     } catch (err) {
       console.log('err', err);
     }
-    return;
   }
 
   return (

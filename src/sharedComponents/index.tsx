@@ -8,7 +8,6 @@ import Projection from './atoms/Projection';
 import ExpertsStats from './atoms/ExpertsStats';
 import TeamCode from './atoms/TeamCode';
 import TabsBottomLine from './atoms/TabsBottomLine';
-import PageLoadingSpinner from './atoms/page.loading.spinnner';
 import SecondaryButton from './atoms/secondaryButton';
 import ProgressbarShared from './atoms/progressbar.shared';
 import WinningsListRank from './atoms/winnings.list.rank';
@@ -18,6 +17,7 @@ import NoContests from './atoms/no.contests';
 import TopBarContest from './atoms/topbar.contest';
 import FooterContest from './atoms/footer.contest';
 import TeamFlag from './atoms/team.flag';
+import MatchScoreError from './atoms/match.score.error';
 
 import ContestCard from './molecules/contest.card.shared';
 import TeamsCard from './molecules/TeamsCard';
@@ -77,6 +77,7 @@ export {
   ContestPage,
   SecondaryButton,
   TeamFlag,
+  MatchScoreError,
   MatchCommentary,
   MatchScoreBoard,
   CreateTeamButton,
@@ -97,7 +98,6 @@ export {
   MatchTeamCard,
   MyContestPage,
   FullScreenLoading,
-  PageLoadingSpinner,
   ContestCard,
   TeamCode,
   Projection,

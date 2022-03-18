@@ -1,14 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {View, StyleSheet, Text, useWindowDimensions} from 'react-native';
 import tailwind from '../../../../tailwind';
-import {useNavigation, useRoute} from '@react-navigation/native';
 import {
   TopBar,
   MatchStat,
   Projection,
   CurrentLiveStatus,
-  ExpertsStats,
-  PageLoadingSpinner,
   MatchPlayersStats,
 } from '../../../sharedComponents';
 import Tabs from './atoms/Tabs';
@@ -16,42 +13,21 @@ import PagerView from 'react-native-pager-view';
 import ContestListMatchPage from './molecules/contest.list.match';
 import {MatchCommentary, MatchScoreBoard} from '../../../sharedComponents';
 import MatchMyTeamsPage from './molecules/match.myteams.page';
-import LinearGradient from 'react-native-linear-gradient';
 import {Modalize} from 'react-native-modalize';
+import clr from '../../../constants/colors';
 import BreakupModalSheet from './molecules/BreakupModalSheet';
-import {useSelector} from 'react-redux';
-import {userInfo} from '../../../store/selectors';
-import {useMatchMeta} from '../../../shared_hooks/contest.hooks';
-// import Icon from 'react-native-vector-icons/Ionicons';
+import {MatchScreenType} from '../../../types/match';
 
-const log = console.log;
+export default function MatchScreen(props: MatchScreenType) {
+  const {matchMeta} = props;
+  const teamTag = matchMeta.match.short_name;
 
-interface PropTypes {
-  activeTab: number;
-  contests: Array<any>;
-  teams: Array<any>;
-  commentry: Array<any>;
-  scoreBoard: Array<any>;
-  playerStats: Array<any>;
-  onContestMatchPress(contest_key: string): void;
-}
-
-export default function MatchScreen(props: PropTypes) {
-  const navigation = useNavigation();
-  const route = useRoute<any>();
   const pagerRef = useRef<any>();
-  const breakUpSheet = useRef();
+  const breakUpSheet = useRef(null);
   const {width} = useWindowDimensions();
-
-  const userMeta = useSelector(userInfo);
 
   // Local state
   const [selectedTab, setSelectedTab] = useState(0);
-
-  const {matchMeta, matchAPI}: any = useMatchMeta(
-    route.params.match_key,
-    userMeta.mobile,
-  );
 
   const onTabPressed = (index: number) => {
     pagerRef.current?.setPage(index);
@@ -61,29 +37,10 @@ export default function MatchScreen(props: PropTypes) {
     setSelectedTab(e.nativeEvent.position);
   };
 
-  // need to change that
-  if (!matchAPI) {
-    return <PageLoadingSpinner title={'Loading...'} />;
-  }
-
-  if (matchAPI && !matchMeta) {
-    return (
-      <Text style={[tailwind('font-regular text-white font-15')]}>
-        Failed to Load
-      </Text>
-    );
-  }
-  // log(JSON.stringify(matchMeta.score_b))
-
-  // return null
   return (
-    <View style={tailwind('h-full bg-dark')}>
-      <TopBar
-        text={matchMeta?.match?.short_name}
-        helpIcon={true}
-        ptsIcon={true}
-      />
-      <View style={[tailwind('p-3 bg-dark-3')]}>
+    <View style={ss.root}>
+      <TopBar text={teamTag} helpIcon={true} ptsIcon={true} />
+      <View style={[ss.container]}>
         <MatchStat
           matchStatus={matchMeta.matchStatus}
           team_a={matchMeta.team_a}
@@ -91,9 +48,7 @@ export default function MatchScreen(props: PropTypes) {
           score_a={matchMeta.score_a}
           score_b={matchMeta.score_b}
         />
-        {matchMeta.notification && (
-          <Projection completed={false} msg={matchMeta.notification} />
-        )}
+        <Projection msg={matchMeta.notification} />
 
         <CurrentLiveStatus
           striker={matchMeta.striker}
@@ -116,7 +71,7 @@ export default function MatchScreen(props: PropTypes) {
           <ContestListMatchPage
             index={0}
             activeIndex={selectedTab}
-            onContestMatchPress={props.onContestMatchPress}
+            onContestCardPress={props.onContestCardPress}
           />
         </View>
         <View style={{width: width}}>
@@ -151,13 +106,13 @@ export default function MatchScreen(props: PropTypes) {
 }
 
 const ss = StyleSheet.create({
-  line: {
-    borderTopColor: 'transparent',
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
-    borderBottomColor: '#8797B1',
-    borderWidth: 1,
-    borderStyle: 'solid',
+  root: {
+    height: '100%',
+    backgroundColor: '#0D1320',
+  },
+  container: {
+    padding: 12,
+    backgroundColor: '#172338',
   },
 });
 

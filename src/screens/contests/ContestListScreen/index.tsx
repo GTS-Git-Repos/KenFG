@@ -85,8 +85,6 @@ export default function ContestListHOC() {
   const createdTeam: any = useSelector(createTeamKeySelector);
   const joinModal: boolean = useSelector(joinModalSelector);
 
-  
-
   const isScreenReady = useIsScreenReady();
 
   const [selectedTab, setSelectedTab] = useState(0);
@@ -155,6 +153,8 @@ export default function ContestListHOC() {
   };
 
   function onPressCreateContest() {
+    console.log(1);
+
     toCreateContest(navigation);
   }
 
@@ -186,16 +186,7 @@ export default function ContestListHOC() {
   }
 
   const onPressJoinedContest = (contest_key: string): void => {
-    console.log('DEPRECATED MOVE TO CONTEST NAVIGATION');
-    const contest = joined.find(
-      (item: any) => item.contestMeta.contest_code === contest_key,
-    );
-    if (contest) {
-      // console.log(joined[0].contestMeta.contest_code);
-      navigation.navigate('ContestInfoScreen', {
-        contest_key: joined[0].contestMeta.contest_code,
-      });
-    }
+    toContestInfo(navigation, contest_key);
   };
 
   const onPressTeamSwitch = (team_key: string, contest_key: string): void => {
@@ -216,45 +207,42 @@ export default function ContestListHOC() {
     });
   };
 
+  // if you change something in here, don't forget copy paste, on
+  //2nd innings and create contest, contest info screen
   async function proceedToJoin(contest_key: string) {
     try {
       const contest = contests.find((item: any) => item.key === contest_key);
       if (!contest) throw 'no contests';
-      if (contest) {
-        const checkContestJoin = checksBeforeJoinContest(
-          matchSelector.start_at,
-          contest,
-          joined,
-          teams,
-        );
-
-        if (checkContestJoin.status) {
-          toTeamFormationWithAutoJoin(
-            navigation,
-            checkContestJoin.to === TO_TEAMLIST,
-            {
-              contestKey: contest.key,
-              entryAmount: contest.entry,
-              maxTeam: contest.max_entry,
-              isFullMatch: contest.innings === '1',
-            },
-          );
-        } else {
-          throw checkContestJoin.msg;
-        }
-        console.log('checkContestJoin', checkContestJoin);
+      const teamAvailCheck = checksBeforeJoinContest(
+        matchSelector.start_at,
+        contest,
+        joined,
+        teams,
+      );
+      if (!teamAvailCheck.status) {
+        throw 'proceed to join check error';
       }
-      return;
+      toTeamFormationWithAutoJoin(
+        navigation,
+        teamAvailCheck.to === TO_TEAMLIST,
+        {
+          contestKey: contest.key,
+          entryAmount: contest.entry,
+          maxTeam: contest.max_entry,
+          isFullMatch: contest.innings === '1',
+        },
+      );
     } catch (err) {
       console.log('err', err);
     }
-    return;
   }
 
   async function joinContestWithTeam() {
     try {
       // close the join modal popup
       closeJoinModal();
+      // the match key will be changed,
+      //it would be consistent it read from join contest state
       const obj = {
         match_key: matchSelector.match_key,
         contest_key: matchSelector.joinContest.contestKey,
@@ -283,7 +271,7 @@ export default function ContestListHOC() {
 
   // if contests api network error happended
   if (ctstError) {
-    return <InternetError referch={refetchPage} />;
+    return <InternetError refetch={refetchPage} />;
   }
 
   // if screen is ready or contests API on loading state show loader

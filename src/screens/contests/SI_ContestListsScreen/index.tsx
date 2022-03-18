@@ -164,23 +164,16 @@ export default function SecondInningsHOC() {
     mutationObj: TeamFormationMutationType,
   ) => {
     const team = teams.find((item: any) => item.team_key === team_key);
-    if (team) {
-      toTeamFormationWithMutation(navigation, team_key, team, mutationObj);
+    if (!team) {
+      errorBox('failed to retrieve team', 0);
+      return;
     }
+    toTeamFormationWithMutation(navigation, team_key, team, mutationObj);
     return;
   };
-
+  
   const onPressJoinedContest = (contest_key: string): void => {
-    console.log('DEPRECATED MOVE TO CONTEST NAVIGATION');
-    const contest = joined.find(
-      (item: any) => item.contestMeta.contest_code === contest_key,
-    );
-    if (contest) {
-      // console.log(joined[0].contestMeta.contest_code);
-      navigation.navigate('ContestInfoScreen', {
-        contest_key: joined[0].contestMeta.contest_code,
-      });
-    }
+    toContestInfo(navigation, contest_key);
   };
 
   const onPressTeamSwitch = (team_key: string, contest_key: string): void => {
@@ -278,7 +271,7 @@ export default function SecondInningsHOC() {
   }
   // if contests api network error happended
   if (ctstError) {
-    return <InternetError referch={refetchPage} />;
+    return <InternetError refetch={refetchPage} />;
   }
 
   // if screen is ready or contests API on loading state show loader
