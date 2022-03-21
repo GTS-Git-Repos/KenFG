@@ -72,6 +72,9 @@ export default function MatchScreen(props: MatchScreenType) {
             index={0}
             activeIndex={selectedTab}
             onContestCardPress={props.onContestCardPress}
+            contests={props.contests}
+            err={props.contestsError}
+            loading={props.conestsLoading}
           />
         </View>
         <View style={{width: width}}>

@@ -15,9 +15,13 @@ export default function MatchMyteamsPage(props: PropTypes) {
     return null;
   }
   return (
-    <View style={[ss.root]}>
-      <ScrollView>
+    <View style={ss.root}>
+      <ScrollView >
         <MatchTeamCard teamCode={'T1'} />
+        <MatchTeamCard teamCode={'T2'} />
+        <MatchTeamCard teamCode={'T2'} />
+        <MatchTeamCard teamCode={'T2'} />
+        <MatchTeamCard teamCode={'T2'} />
         <MatchTeamCard teamCode={'T2'} />
 
         <View style={[ss.space]}></View>
@@ -28,9 +32,11 @@ export default function MatchMyteamsPage(props: PropTypes) {
 
 const ss = StyleSheet.create({
   root: {
-    margin: 8,
+    padding: 8,
+    flex: 1,
+    height: '100%',
   },
   space: {
-    height: 100,
+    height: 40,
   },
 });

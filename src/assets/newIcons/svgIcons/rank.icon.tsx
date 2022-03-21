@@ -1,12 +1,13 @@
+// used in my match mcontest card team status, leaderboard profile
 import * as React from 'react';
-import Svg, {Rect, Path} from 'react-native-svg';
+import Svg, {Path} from 'react-native-svg';
 
 interface PropTypes {
   golden: boolean;
 }
 
 function Icon(props: PropTypes) {
-  console.log('moved to new SVG location path');
+
   
   return (
     <Svg width="16" height="16" viewBox="0 0 16 16" fill="none">

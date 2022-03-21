@@ -3,14 +3,14 @@ import {
   UPDATE_MY_CONTESTS,
   UPDATE_MY_TEAMS,
   UPDATE_LOADING,
-  UPDATE_MATCH_PLAYERS,
+  UPDATE_PLAYERS_POINTS,
 } from '../actions/actionTypes';
 
 const initialState = {
   matchMeta: null,
   mycontest: null,
-  myteams: [],
-  match_players: [],
+  myteams: null,
+  match_players: null,
   playersMeta: {},
   xis: [],
   loading: true,
@@ -48,7 +48,7 @@ const Match = (state = initialState, action: actionShape): any => {
         ...state,
         myteams: action.payload,
       };
-    case UPDATE_MATCH_PLAYERS:
+    case UPDATE_PLAYERS_POINTS:
       return {
         ...state,
         match_players: action.payload,

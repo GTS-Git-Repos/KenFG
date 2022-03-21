@@ -10,7 +10,7 @@ import clr from '../../constants/colors';
 interface PropTypes {
   amount_letters: string;
   bonus: string;
-  max_entry: number;
+  max_entry?: number;
   guaranteed: boolean;
 }
 
@@ -34,18 +34,21 @@ export default function ContestFooter(props: PropTypes) {
           </Text>
         </View>
 
+        {props.max_entry ? (
+          <View style={styles.footerItemSpace}>
+            <MIcon dT={true} />
+            <Text numberOfLines={1} style={styles.footerItem}>
+              upto {props.max_entry}
+            </Text>
+          </View>
+        ) : null}
+      </View>
+      {props.guaranteed && (
         <View style={styles.footerItemSpace}>
-          <MIcon dT={true} />
-          <Text numberOfLines={1} style={styles.footerItem}>
-            upto {props.max_entry}
-          </Text>
+          <TickIcon dT={true} />
+          <Text style={styles.footerItem}>Gauranteed</Text>
         </View>
-      </View>
-
-      <View style={styles.footerItemSpace}>
-        <TickIcon dT={true} />
-        <Text style={styles.footerItem}>Gauranteed</Text>
-      </View>
+      )}
     </View>
   );
 }

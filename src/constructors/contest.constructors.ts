@@ -46,6 +46,7 @@ export const parsePrivateContestAPIRemote = (payload: any) => {
   }
 };
 
+// used in my contests tab in contests screen
 export const extractJoinedContestAPIResponse = (payload: any) => {
   try {
     // extract the contests data, by removing the last index
@@ -192,3 +193,21 @@ export const normalizeCompareTeamsRemote = (payload: any) => {
   // if normalize need to do
   return payload;
 };
+
+// used in match screen my contests tab 
+//TODO: teams section not yet done, need to discussed with API team
+export const normalizeMatchUserContets = (payload:any) =>{
+  try{
+    const contests = payload.slice(0, payload.length - 1);
+    // teams will do later after talked with API team
+    if(contests.length === 0){
+      return []
+    }else{
+      return contests
+    }
+    throw "unhanled error happended"
+  }catch(err){
+    console.log(err);
+    throw err
+  }
+}

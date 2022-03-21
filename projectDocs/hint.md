@@ -13,6 +13,15 @@ fontFamily: 'gadugi-normal',
 "bg-dark": {
     "backgroundColor": "#0c1320"
   },    
+
+ "bg-dark-3": {
+    "backgroundColor": "#172338"
+},
+
+"bg-dark-2": {
+    "backgroundColor": "#25385A"
+  },
+   
 "bg-green": {
     "backgroundColor": "#00513B"
   },

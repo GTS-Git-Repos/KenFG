@@ -1,3 +1,5 @@
+// no internet cover full screen
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';

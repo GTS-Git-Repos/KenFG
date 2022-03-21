@@ -183,7 +183,9 @@ export interface WicketsDaum {
 
 export interface MatchScreenType {
   matchMeta: Omit<MatchScoreStateType, 'players' | 'playersKeys' | 'xisKey'>;
-  contests: Array<any>;
+  conestsLoading:boolean,
+  contestsError:boolean,
+  contests: Array<any> | null;
   teams: Array<any>;
   commentry: Array<any>;
   onContestCardPress(contest_key: string): void;

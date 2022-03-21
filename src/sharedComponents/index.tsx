@@ -18,6 +18,7 @@ import TopBarContest from './atoms/topbar.contest';
 import FooterContest from './atoms/footer.contest';
 import TeamFlag from './atoms/team.flag';
 import MatchScoreError from './atoms/match.score.error';
+import StatusIndicator from './atoms/status.indicator';
 
 import ContestCard from './molecules/contest.card.shared';
 import TeamsCard from './molecules/TeamsCard';
@@ -82,6 +83,7 @@ export {
   MatchScoreBoard,
   CreateTeamButton,
   NoDataContests,
+  StatusIndicator,
   InternetError,
   PrivateContestTeams,
   MyTeamsContestPage,

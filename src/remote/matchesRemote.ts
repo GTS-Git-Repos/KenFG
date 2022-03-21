@@ -10,11 +10,13 @@ import {parseJoinedTeamsAPI} from '../constructors/teams.constructor';
 import {normalizeGetPlayersAPI} from '../constructors/teams.constructor';
 import aus_sl_Live from '../assets/mocks/aussl_2022_t20_03_live.json';
 import rsa_in_Live from '../assets/mocks/rsaind_2021_test_02_completed.json';
+import ban_afg_complete from '../assets/mocks/banafg_2022_t20_01_completed.json';
 
 import {
   extractDataFromUpcommingMatchesAPI,
   extractJoinedContestAPIResponse,
   normalizeCompareTeamsRemote,
+  normalizeMatchUserContets,
   parseJoinedMatchesAPI,
 } from '../constructors/contest.constructors';
 
@@ -28,6 +30,7 @@ const req_join_contest2 = '/join-contest2.php';
 const req_players = '/player-credits.php';
 
 const req_live_match = '/live-match.php';
+const req_match_contests = '/my-contest.php';
 const req_my_contest = '/my-contest.php';
 const req_create_contest = '/create-private-contest.php';
 
@@ -56,12 +59,34 @@ export const upcommingMatchesandBannersRemote = async (params: any) => {
   }
 };
 
+// for now use the my contest API, maybe in future the API will change
+export const userMatchContestsRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_my_contest,
+      {
+        match_key: params.queryKey[1],
+        player_key: params.queryKey[2],
+        // isFullMatch: params.queryKey[3] ? 1 : 0,
+      },
+    );
+    if (response.status === 200) {
+      return normalizeMatchUserContets(response.data.data);
+    }
+    throw 'unhandled err';
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
 // the third party API, has scores, innings, players
 export const matchScoreStatRemote = async (params: any) => {
   try {
     // console.log(JSON.stringify(MatchScoreFormat(aus_sl_Live)));
-    // return MatchScoreFormat(rsa_in_Live);
-    return MatchScoreFormat(aus_sl_Live);
+    return MatchScoreFormat(ban_afg_complete);
+    // return MatchScoreFormat(aus_sl_Live);
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_live_match,
@@ -300,20 +325,19 @@ export const getMatchCommentaryRemote = async (params: any) => {
 };
 
 // math players points
-export const getMatchPointsRemote = async (params: any) => {
+export const getMatchPlayerPointsRemote = async (params: any) => {
   try {
     const response = await requestServer(
-      METHODS.GET,
+      METHODS.POST,
       BASE_URL + req_match_points,
     );
     if (response.status === 200) {
       return response.data.data;
-    } else {
-      failedLog('getMatchPointsRemote()', response);
     }
+    throw 'getMatchPlayerPointsRemote unhandled error';
   } catch (err) {
     console.log(err);
-    return false;
+    throw err;
   }
 };
 

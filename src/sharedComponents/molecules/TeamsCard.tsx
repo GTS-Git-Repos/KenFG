@@ -134,7 +134,6 @@ const BottomStats = (props: any) => {
         <Text style={[ss.title]}>WK</Text>
         <Text style={[ss.count]}>{props.keepers}</Text>
       </View>
-
       <View style={[ss.itemRoot]}>
         <Text style={[ss.title]}>BAT</Text>
         <Text style={[ss.count]}>{props.batsman}</Text>

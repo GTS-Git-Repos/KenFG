@@ -1,7 +1,22 @@
-import {HANDLE_ERROR, UPDTAE_MATCH_META} from './actionTypes';
+import {
+  HANDLE_ERROR,
+  UPDTAE_MATCH_META,
+  UPDATE_MY_CONTESTS,
+  UPDATE_PLAYERS_POINTS,
+} from './actionTypes';
 
 export const updateAppError = (payload: string) => ({
   type: HANDLE_ERROR,
+  payload,
+});
+
+export const updateMatchConetstsAction = (payload: Array<any>) => ({
+  type: UPDATE_MY_CONTESTS,
+  payload,
+});
+
+export const updatePlayerPointsAction = (payload: Array<any>) => ({
+  type: UPDATE_PLAYERS_POINTS,
   payload,
 });
 

@@ -1,0 +1,4061 @@
+    {
+      "key": "banafg_2022_t20_01",
+      "name": "Bangladesh vs Afghanistan",
+      "short_name": "BAN vs AFG",
+      "sub_title": "1st T20 Match",
+      "teams": {
+        "a": {
+          "key": "ban",
+          "code": "BAN",
+          "name": "Bangladesh"
+        },
+        "b": {
+          "key": "afg",
+          "code": "AFG",
+          "name": "Afghanistan"
+        }
+      },
+      "start_at": 1646298000,
+      "venue": {
+        "key": "c__stadium__shere_bangla_national_stadium__a20dc",
+        "name": "Shere Bangla National Cricket Stadium",
+        "city": "Dhaka",
+        "country": {
+          "short_code": "BD",
+          "code": "BGD",
+          "name": "Bangladesh",
+          "official_name": "People's Republic of Bangladesh",
+          "is_region": false
+        }
+      },
+      "tournament": {
+        "key": "banafg_2022",
+        "name": "Afghanistan tour of Bangladesh, 2022",
+        "short_name": "BAN vs AFG"
+      },
+      "association": {
+        "key": "c__board__icc__c2ab7ee61",
+        "code": "ICC",
+        "name": "International Cricket Council",
+        "country": null,
+        "parent": null
+      },
+      "metric_group": "MG100",
+      "status": "completed",
+      "winner": "a",
+      "messages": [],
+      "gender": "male",
+      "sport": "cricket",
+      "format": "t20",
+      "title": "Bangladesh vs Afghanistan - 1st T20 Match - Afghanistan tour of Bangladesh, 2022",
+      "play_status": "result",
+      "start_at_local": 1646319600,
+      "toss": {
+        "called": "b",
+        "winner": "a",
+        "elected": "bat"
+      },
+      "play": {
+        "first_batting": "a",
+        "day_number": 1,
+        "overs_per_innings": [
+          20,
+          0
+        ],
+        "reduced_overs": null,
+        "target": {
+          "balls": 120,
+          "runs": 156,
+          "dl_applied": false
+        },
+        "result": {
+          "pom": [
+            "c__player__nasum_ahmed__26997"
+          ],
+          "winner": "a",
+          "result_type": "runs",
+          "msg": "Bangladesh won by 61 runs"
+        },
+        "innings_order": [
+          "a_1",
+          "b_1"
+        ],
+        "innings": {
+          "b_1": {
+            "index": "b_1",
+            "overs": [
+              17,
+              4
+            ],
+            "is_completed": true,
+            "score_str": "94/10 in 17.4",
+            "score": {
+              "runs": 94,
+              "balls": 106,
+              "fours": 9,
+              "sixes": 2,
+              "dot_balls": 57,
+              "run_rate": 5.32
+            },
+            "wickets": 10,
+            "extra_runs": {
+              "extra": 4,
+              "bye": 0,
+              "leg_bye": 1,
+              "wide": 3,
+              "no_ball": 0,
+              "penalty": null
+            },
+            "balls_breakup": {
+              "balls": 106,
+              "dot_balls": 57,
+              "wides": 3,
+              "no_balls": 0
+            },
+            "batting_order": [
+              "hazra_zazai",
+              "rah_gurbaz",
+              "dr_rasooli",
+              "n_zadran",
+              "kar_janat",
+              "m_nabi",
+              "az_omarzai",
+              "ra_khan",
+              "qai_kamawal",
+              "muj_rahman",
+              "f_haq"
+            ],
+            "bowling_order": [
+              "f_haq",
+              "muj_rahman",
+              "ra_khan",
+              "m_nabi",
+              "qai_kamawal",
+              "az_omarzai",
+              "kar_janat"
+            ],
+            "wicket_order": [
+              "rah_gurbaz",
+              "hazra_zazai",
+              "dr_rasooli",
+              "kar_janat",
+              "m_nabi",
+              "n_zadran",
+              "ra_khan",
+              "az_omarzai",
+              "qai_kamawal",
+              "muj_rahman"
+            ],
+            "partnerships": [
+              {
+                "begin_overs": [
+                  0,
+                  1
+                ],
+                "end_overs": [
+                  0,
+                  4
+                ],
+                "player_a_key": "hazra_zazai",
+                "player_a_score": {
+                  "runs": 1,
+                  "balls": 2,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "player_b_key": "rah_gurbaz",
+                "player_b_score": {
+                  "runs": 0,
+                  "balls": 2,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 1,
+                  "balls": 4,
+                  "fours": 0,
+                  "sixes": 0,
+                  "run_rate": 1.5
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  0,
+                  5
+                ],
+                "end_overs": [
+                  2,
+                  1
+                ],
+                "player_a_key": "dr_rasooli",
+                "player_a_score": {
+                  "runs": 2,
+                  "balls": 4,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "player_b_key": "hazra_zazai",
+                "player_b_score": {
+                  "runs": 5,
+                  "balls": 5,
+                  "fours": 1,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 7,
+                  "balls": 9,
+                  "fours": 1,
+                  "sixes": 0,
+                  "run_rate": 4.67
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  2,
+                  2
+                ],
+                "end_overs": [
+                  2,
+                  3
+                ],
+                "player_a_key": "dr_rasooli",
+                "player_a_score": {
+                  "runs": 0,
+                  "balls": 2,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "player_b_key": "n_zadran",
+                "player_b_score": {
+                  "runs": 0,
+                  "balls": 0,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 0,
+                  "balls": 2,
+                  "fours": 0,
+                  "sixes": 0,
+                  "run_rate": 0
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  2,
+                  4
+                ],
+                "end_overs": [
+                  4,
+                  3
+                ],
+                "player_a_key": "kar_janat",
+                "player_a_score": {
+                  "runs": 6,
+                  "balls": 8,
+                  "fours": 1,
+                  "sixes": 0
+                },
+                "player_b_key": "n_zadran",
+                "player_b_score": {
+                  "runs": 6,
+                  "balls": 4,
+                  "fours": 1,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 12,
+                  "balls": 12,
+                  "fours": 2,
+                  "sixes": 0,
+                  "run_rate": 6
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  4,
+                  4
+                ],
+                "end_overs": [
+                  10,
+                  5
+                ],
+                "player_a_key": "m_nabi",
+                "player_a_score": {
+                  "runs": 16,
+                  "balls": 19,
+                  "fours": 2,
+                  "sixes": 0
+                },
+                "player_b_key": "n_zadran",
+                "player_b_score": {
+                  "runs": 19,
+                  "balls": 19,
+                  "fours": 0,
+                  "sixes": 1
+                },
+                "score": {
+                  "runs": 37,
+                  "balls": 38,
+                  "fours": 2,
+                  "sixes": 1,
+                  "run_rate": 5.84
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  10,
+                  6
+                ],
+                "end_overs": [
+                  12,
+                  2
+                ],
+                "player_a_key": "az_omarzai",
+                "player_a_score": {
+                  "runs": 3,
+                  "balls": 6,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "player_b_key": "n_zadran",
+                "player_b_score": {
+                  "runs": 2,
+                  "balls": 3,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 5,
+                  "balls": 9,
+                  "fours": 0,
+                  "sixes": 0,
+                  "run_rate": 3.33
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  12,
+                  3
+                ],
+                "end_overs": [
+                  13,
+                  6
+                ],
+                "player_a_key": "ra_khan",
+                "player_a_score": {
+                  "runs": 1,
+                  "balls": 7,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "player_b_key": "az_omarzai",
+                "player_b_score": {
+                  "runs": 2,
+                  "balls": 3,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 4,
+                  "balls": 10,
+                  "fours": 0,
+                  "sixes": 0,
+                  "run_rate": 2.4
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  14,
+                  1
+                ],
+                "end_overs": [
+                  16,
+                  3
+                ],
+                "player_a_key": "az_omarzai",
+                "player_a_score": {
+                  "runs": 15,
+                  "balls": 9,
+                  "fours": 2,
+                  "sixes": 1
+                },
+                "player_b_key": "qai_kamawal",
+                "player_b_score": {
+                  "runs": 3,
+                  "balls": 6,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 19,
+                  "balls": 15,
+                  "fours": 2,
+                  "sixes": 1,
+                  "run_rate": 7.6
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  16,
+                  4
+                ],
+                "end_overs": [
+                  17,
+                  2
+                ],
+                "player_a_key": "qai_kamawal",
+                "player_a_score": {
+                  "runs": 5,
+                  "balls": 3,
+                  "fours": 1,
+                  "sixes": 0
+                },
+                "player_b_key": "muj_rahman",
+                "player_b_score": {
+                  "runs": 0,
+                  "balls": 2,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 5,
+                  "balls": 5,
+                  "fours": 1,
+                  "sixes": 0,
+                  "run_rate": 6
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  17,
+                  3
+                ],
+                "end_overs": [
+                  17,
+                  4
+                ],
+                "player_a_key": "muj_rahman",
+                "player_a_score": {
+                  "runs": 4,
+                  "balls": 2,
+                  "fours": 1,
+                  "sixes": 0
+                },
+                "player_b_key": "f_haq",
+                "player_b_score": {
+                  "runs": 0,
+                  "balls": 0,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 4,
+                  "balls": 2,
+                  "fours": 1,
+                  "sixes": 0,
+                  "run_rate": 12
+                },
+                "is_completed": true
+              }
+            ]
+          },
+          "a_1": {
+            "index": "a_1",
+            "overs": [
+              20,
+              0
+            ],
+            "is_completed": true,
+            "score_str": "155/8 in 20.0",
+            "score": {
+              "runs": 155,
+              "balls": 120,
+              "fours": 11,
+              "sixes": 3,
+              "dot_balls": 35,
+              "run_rate": 7.75
+            },
+            "wickets": 8,
+            "extra_runs": {
+              "extra": 16,
+              "bye": 5,
+              "leg_bye": 8,
+              "wide": 2,
+              "no_ball": 1,
+              "penalty": null
+            },
+            "balls_breakup": {
+              "balls": 120,
+              "dot_balls": 35,
+              "wides": 2,
+              "no_balls": 1
+            },
+            "batting_order": [
+              "c__player__munim_shahriar__f43a5",
+              "moh_naim",
+              "l_das",
+              "ai_hasan",
+              "m_mahmudullah",
+              "afi_hossain",
+              "ya_ali",
+              "mahedi_hasan",
+              "c__player__nasum_ahmed__26997",
+              "c__player__shoriful_islam__57c37"
+            ],
+            "bowling_order": [
+              "c__player__nasum_ahmed__26997",
+              "mahedi_hasan",
+              "m_rahman",
+              "c__player__shoriful_islam__57c37",
+              "ai_hasan"
+            ],
+            "wicket_order": [
+              "moh_naim",
+              "c__player__munim_shahriar__f43a5",
+              "ai_hasan",
+              "m_mahmudullah",
+              "l_das",
+              "afi_hossain",
+              "ya_ali",
+              "mahedi_hasan"
+            ],
+            "partnerships": [
+              {
+                "begin_overs": [
+                  0,
+                  1
+                ],
+                "end_overs": [
+                  2,
+                  1
+                ],
+                "player_a_key": "c__player__munim_shahriar__f43a5",
+                "player_a_score": {
+                  "runs": 7,
+                  "balls": 8,
+                  "fours": 1,
+                  "sixes": 0
+                },
+                "player_b_key": "moh_naim",
+                "player_b_score": {
+                  "runs": 2,
+                  "balls": 5,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 10,
+                  "balls": 13,
+                  "fours": 1,
+                  "sixes": 0,
+                  "run_rate": 4.62
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  2,
+                  2
+                ],
+                "end_overs": [
+                  4,
+                  6
+                ],
+                "player_a_key": "l_das",
+                "player_a_score": {
+                  "runs": 3,
+                  "balls": 7,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "player_b_key": "c__player__munim_shahriar__f43a5",
+                "player_b_score": {
+                  "runs": 10,
+                  "balls": 10,
+                  "fours": 2,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 15,
+                  "balls": 17,
+                  "fours": 2,
+                  "sixes": 0,
+                  "run_rate": 5.29
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  5,
+                  1
+                ],
+                "end_overs": [
+                  7,
+                  4
+                ],
+                "player_a_key": "l_das",
+                "player_a_score": {
+                  "runs": 16,
+                  "balls": 10,
+                  "fours": 2,
+                  "sixes": 0
+                },
+                "player_b_key": "ai_hasan",
+                "player_b_score": {
+                  "runs": 5,
+                  "balls": 6,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 22,
+                  "balls": 16,
+                  "fours": 2,
+                  "sixes": 0,
+                  "run_rate": 8.25
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  7,
+                  5
+                ],
+                "end_overs": [
+                  10,
+                  5
+                ],
+                "player_a_key": "m_mahmudullah",
+                "player_a_score": {
+                  "runs": 10,
+                  "balls": 7,
+                  "fours": 0,
+                  "sixes": 1
+                },
+                "player_b_key": "l_das",
+                "player_b_score": {
+                  "runs": 23,
+                  "balls": 12,
+                  "fours": 0,
+                  "sixes": 2
+                },
+                "score": {
+                  "runs": 33,
+                  "balls": 19,
+                  "fours": 0,
+                  "sixes": 3,
+                  "run_rate": 10.42
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  10,
+                  6
+                ],
+                "end_overs": [
+                  16,
+                  6
+                ],
+                "player_a_key": "afi_hossain",
+                "player_a_score": {
+                  "runs": 25,
+                  "balls": 23,
+                  "fours": 2,
+                  "sixes": 0
+                },
+                "player_b_key": "l_das",
+                "player_b_score": {
+                  "runs": 18,
+                  "balls": 15,
+                  "fours": 2,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 46,
+                  "balls": 37,
+                  "fours": 4,
+                  "sixes": 0,
+                  "run_rate": 7.46
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  17,
+                  1
+                ],
+                "end_overs": [
+                  17,
+                  2
+                ],
+                "player_a_key": "ya_ali",
+                "player_a_score": {
+                  "runs": 1,
+                  "balls": 1,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "player_b_key": "afi_hossain",
+                "player_b_score": {
+                  "runs": 0,
+                  "balls": 1,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 1,
+                  "balls": 2,
+                  "fours": 0,
+                  "sixes": 0,
+                  "run_rate": 3
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  17,
+                  3
+                ],
+                "end_overs": [
+                  19,
+                  2
+                ],
+                "player_a_key": "ya_ali",
+                "player_a_score": {
+                  "runs": 7,
+                  "balls": 6,
+                  "fours": 1,
+                  "sixes": 0
+                },
+                "player_b_key": "mahedi_hasan",
+                "player_b_score": {
+                  "runs": 4,
+                  "balls": 6,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 20,
+                  "balls": 12,
+                  "fours": 1,
+                  "sixes": 0,
+                  "run_rate": 10
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  19,
+                  3
+                ],
+                "end_overs": [
+                  19,
+                  5
+                ],
+                "player_a_key": "c__player__nasum_ahmed__26997",
+                "player_a_score": {
+                  "runs": 3,
+                  "balls": 2,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "player_b_key": "mahedi_hasan",
+                "player_b_score": {
+                  "runs": 1,
+                  "balls": 1,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 4,
+                  "balls": 3,
+                  "fours": 0,
+                  "sixes": 0,
+                  "run_rate": 8
+                },
+                "is_completed": true
+              },
+              {
+                "begin_overs": [
+                  19,
+                  6
+                ],
+                "end_overs": [
+                  19,
+                  6
+                ],
+                "player_a_key": "c__player__shoriful_islam__57c37",
+                "player_a_score": {
+                  "runs": 4,
+                  "balls": 1,
+                  "fours": 1,
+                  "sixes": 0
+                },
+                "player_b_key": "c__player__nasum_ahmed__26997",
+                "player_b_score": {
+                  "runs": 0,
+                  "balls": 0,
+                  "fours": 0,
+                  "sixes": 0
+                },
+                "score": {
+                  "runs": 4,
+                  "balls": 1,
+                  "fours": 1,
+                  "sixes": 0,
+                  "run_rate": 24
+                },
+                "is_completed": false
+              }
+            ]
+          }
+        },
+        "live": null,
+        "related_balls": {
+          "57ffbbdb-d93a-4d4d-9060-88935b0b7e7e": {
+            "key": "57ffbbdb-d93a-4d4d-9060-88935b0b7e7e",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Azmatullah Omarzai: No runs.",
+            "innings": "b_1",
+            "overs": [
+              15,
+              4
+            ],
+            "batsman": {
+              "player_key": "az_omarzai",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "qai_kamawal",
+            "entry_time": 1646309087.709
+          },
+          "82ef3d45-7ea1-440d-8531-8a0ac329aca6": {
+            "key": "82ef3d45-7ea1-440d-8531-8a0ac329aca6",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Mujeeb Ur Rahman: <b>Wicket!</b>, Caught by Afif Hossain. No runs.",
+            "innings": "b_1",
+            "overs": [
+              17,
+              4
+            ],
+            "batsman": {
+              "player_key": "muj_rahman",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "afi_hossain",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "muj_rahman",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "f_haq",
+            "entry_time": 1646311532.695
+          },
+          "39ec38a5-01b4-43aa-aa7f-3def4ae4eaaa": {
+            "key": "39ec38a5-01b4-43aa-aa7f-3def4ae4eaaa",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Mujeeb Ur Rahman: <b>FOUR</b>.",
+            "innings": "b_1",
+            "overs": [
+              17,
+              3
+            ],
+            "batsman": {
+              "player_key": "muj_rahman",
+              "ball_count": 1,
+              "runs": 4,
+              "is_dot_ball": false,
+              "is_four": true,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 4,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 4,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "f_haq",
+            "entry_time": 1646309775.782
+          },
+          "1a09b6d4-030f-46bc-b92d-3ba9b3f012d4": {
+            "key": "1a09b6d4-030f-46bc-b92d-3ba9b3f012d4",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Mustafizur Rahman to Mujeeb Ur Rahman: No runs.",
+            "innings": "b_1",
+            "overs": [
+              16,
+              5
+            ],
+            "batsman": {
+              "player_key": "muj_rahman",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "m_rahman",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "qai_kamawal",
+            "entry_time": 1646309465.086
+          },
+          "81a088a7-5293-4546-addc-5265e10617b6": {
+            "key": "81a088a7-5293-4546-addc-5265e10617b6",
+            "ball_type": "wide",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Azmatullah Omarzai: wide, 1 run.",
+            "innings": "b_1",
+            "overs": [
+              15,
+              5
+            ],
+            "batsman": {
+              "player_key": "az_omarzai",
+              "ball_count": 0,
+              "runs": 0,
+              "is_dot_ball": false,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 0,
+              "runs": 1,
+              "extras": 1,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 0,
+              "runs": 1,
+              "extras": 1,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "qai_kamawal",
+            "entry_time": 1646309169.732
+          },
+          "d686c2e9-cb70-4a6c-bca5-73b67414d831": {
+            "key": "d686c2e9-cb70-4a6c-bca5-73b67414d831",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Mustafizur Rahman to Qais Ahmad: 1 run.",
+            "innings": "b_1",
+            "overs": [
+              16,
+              2
+            ],
+            "batsman": {
+              "player_key": "qai_kamawal",
+              "ball_count": 1,
+              "runs": 1,
+              "is_dot_ball": false,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "m_rahman",
+              "ball_count": 1,
+              "runs": 1,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 1,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "az_omarzai",
+            "entry_time": 1646309376.581
+          },
+          "349ee999-c21e-406b-a5fb-df2a0fc23bda": {
+            "key": "349ee999-c21e-406b-a5fb-df2a0fc23bda",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Qais Ahmad: No runs.",
+            "innings": "b_1",
+            "overs": [
+              15,
+              1
+            ],
+            "batsman": {
+              "player_key": "qai_kamawal",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "az_omarzai",
+            "entry_time": 1646309001.988
+          },
+          "3d9fad22-9fde-4a91-80a2-830520ad3ae1": {
+            "key": "3d9fad22-9fde-4a91-80a2-830520ad3ae1",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Qais Ahmad: <b>FOUR</b>.",
+            "innings": "b_1",
+            "overs": [
+              17,
+              1
+            ],
+            "batsman": {
+              "player_key": "qai_kamawal",
+              "ball_count": 1,
+              "runs": 4,
+              "is_dot_ball": false,
+              "is_four": true,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 4,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 4,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "muj_rahman",
+            "entry_time": 1646309553.334
+          },
+          "37ba62b3-0cde-49c1-a195-e59b73a4fc24": {
+            "key": "37ba62b3-0cde-49c1-a195-e59b73a4fc24",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Azmatullah Omarzai: No runs.",
+            "innings": "b_1",
+            "overs": [
+              15,
+              6
+            ],
+            "batsman": {
+              "player_key": "az_omarzai",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "qai_kamawal",
+            "entry_time": 1646309218.96
+          },
+          "b28d752d-abb9-4f6d-829c-8f1430223de9": {
+            "key": "b28d752d-abb9-4f6d-829c-8f1430223de9",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Qais Ahmad: <b>Wicket!</b>, Caught by Shoriful Islam. No runs.",
+            "innings": "b_1",
+            "overs": [
+              17,
+              2
+            ],
+            "batsman": {
+              "player_key": "qai_kamawal",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "c__player__shoriful_islam__57c37",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "qai_kamawal",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "muj_rahman",
+            "entry_time": 1646309672.341
+          },
+          "2735ee6e-7190-4ea4-aeaf-24a5173098fa": {
+            "key": "2735ee6e-7190-4ea4-aeaf-24a5173098fa",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Mustafizur Rahman to Qais Ahmad: No runs.",
+            "innings": "b_1",
+            "overs": [
+              16,
+              1
+            ],
+            "batsman": {
+              "player_key": "qai_kamawal",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "m_rahman",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "az_omarzai",
+            "entry_time": 1646309331.883
+          },
+          "c91bf076-4a4b-44e2-bf50-d38957d89bc6": {
+            "key": "c91bf076-4a4b-44e2-bf50-d38957d89bc6",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Mustafizur Rahman to Mujeeb Ur Rahman: No runs.",
+            "innings": "b_1",
+            "overs": [
+              16,
+              6
+            ],
+            "batsman": {
+              "player_key": "muj_rahman",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "m_rahman",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "qai_kamawal",
+            "entry_time": 1646309497.865
+          },
+          "04837bbb-3682-4944-9996-edad4690b3b2": {
+            "key": "04837bbb-3682-4944-9996-edad4690b3b2",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Qais Ahmad: 1 run.",
+            "innings": "b_1",
+            "overs": [
+              15,
+              2
+            ],
+            "batsman": {
+              "player_key": "qai_kamawal",
+              "ball_count": 1,
+              "runs": 1,
+              "is_dot_ball": false,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 1,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 1,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "az_omarzai",
+            "entry_time": 1646309025.258
+          },
+          "f69dc17a-e42c-47de-9c85-ef93cffd284d": {
+            "key": "f69dc17a-e42c-47de-9c85-ef93cffd284d",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Azmatullah Omarzai: <b>SIX</b>.",
+            "innings": "b_1",
+            "overs": [
+              15,
+              5
+            ],
+            "batsman": {
+              "player_key": "az_omarzai",
+              "ball_count": 1,
+              "runs": 6,
+              "is_dot_ball": false,
+              "is_four": false,
+              "is_six": true
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 6,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 6,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "qai_kamawal",
+            "entry_time": 1646309184.624
+          },
+          "df4a6066-249b-43a9-a6e8-04db479501ca": {
+            "key": "df4a6066-249b-43a9-a6e8-04db479501ca",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Mustafizur Rahman to Azmatullah Omarzai: <b>Wicket!</b>, Caught by Mahmudullah. No runs.",
+            "innings": "b_1",
+            "overs": [
+              16,
+              3
+            ],
+            "batsman": {
+              "player_key": "az_omarzai",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "m_rahman",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "m_mahmudullah",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "az_omarzai",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "qai_kamawal",
+            "entry_time": 1646309418.042
+          },
+          "d36ecb08-ecac-430a-b7da-1615452478d2": {
+            "key": "d36ecb08-ecac-430a-b7da-1615452478d2",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Azmatullah Omarzai: <b>FOUR</b>.",
+            "innings": "b_1",
+            "overs": [
+              15,
+              3
+            ],
+            "batsman": {
+              "player_key": "az_omarzai",
+              "ball_count": 1,
+              "runs": 4,
+              "is_dot_ball": false,
+              "is_four": true,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 4,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 4,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "qai_kamawal",
+            "entry_time": 1646309041.189
+          },
+          "5efd4dda-8869-429d-8b21-46a37d412d2e": {
+            "key": "5efd4dda-8869-429d-8b21-46a37d412d2e",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Mustafizur Rahman to Qais Ahmad: 1 run.",
+            "innings": "b_1",
+            "overs": [
+              16,
+              4
+            ],
+            "batsman": {
+              "player_key": "qai_kamawal",
+              "ball_count": 1,
+              "runs": 1,
+              "is_dot_ball": false,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "m_rahman",
+              "ball_count": 1,
+              "runs": 1,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 1,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "fielders": [],
+            "wicket": null,
+            "non_striker_key": "muj_rahman",
+            "entry_time": 1646309454.653
+          },
+          "9a11f8b7-e368-4a51-8fbc-ad7c399d6ca7": {
+            "key": "9a11f8b7-e368-4a51-8fbc-ad7c399d6ca7",
+            "ball_type": "normal",
+            "batting_team": "a",
+            "comment": "Rashid Khan to Munim Shahriar: <b>LBW!</b>. No runs.",
+            "innings": "a_1",
+            "overs": [
+              4,
+              6
+            ],
+            "batsman": {
+              "player_key": "c__player__munim_shahriar__f43a5",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "ra_khan",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [],
+            "wicket": {
+              "player_key": "c__player__munim_shahriar__f43a5",
+              "wicket_type": "lbw"
+            },
+            "non_striker_key": "l_das",
+            "entry_time": 1646299542.307
+          },
+          "c1798210-12af-4831-ba44-77ff77b068ab": {
+            "key": "c1798210-12af-4831-ba44-77ff77b068ab",
+            "ball_type": "normal",
+            "batting_team": "a",
+            "comment": "Fazalhaq Farooqi to Liton Das: <b>Wicket!</b>, Caught by . No runs.",
+            "innings": "a_1",
+            "overs": [
+              16,
+              6
+            ],
+            "batsman": {
+              "player_key": "l_das",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "f_haq",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "az_omarzai",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "l_das",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "afi_hossain",
+            "entry_time": 1646303321.929
+          },
+          "bb44585b-3df5-4d19-ac35-27419a55baa7": {
+            "key": "bb44585b-3df5-4d19-ac35-27419a55baa7",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Nasum Ahmed to Hazratullah Zazai: <b>Wicket!</b>, Caught by Mohammad Naim Sheikh. No runs.",
+            "innings": "b_1",
+            "overs": [
+              2,
+              1
+            ],
+            "batsman": {
+              "player_key": "hazra_zazai",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__nasum_ahmed__26997",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "moh_naim",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "hazra_zazai",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "dr_rasooli",
+            "entry_time": 1646305589.805
+          },
+          "3830d54f-d281-40f9-aa19-b0d5d86d6d6e": {
+            "key": "3830d54f-d281-40f9-aa19-b0d5d86d6d6e",
+            "ball_type": "normal",
+            "batting_team": "a",
+            "comment": "Fazalhaq Farooqi to Mohammad Naim Sheikh: <b>LBW!</b>. No runs.",
+            "innings": "a_1",
+            "overs": [
+              2,
+              1
+            ],
+            "batsman": {
+              "player_key": "moh_naim",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "f_haq",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [],
+            "wicket": {
+              "player_key": "moh_naim",
+              "wicket_type": "lbw"
+            },
+            "non_striker_key": "c__player__munim_shahriar__f43a5",
+            "entry_time": 1646298789.959
+          },
+          "44022863-36e8-4f41-b6cd-61eaa5b5e4f3": {
+            "key": "44022863-36e8-4f41-b6cd-61eaa5b5e4f3",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Nasum Ahmed to Karim Janat: <b>Wicket!</b>, Caught by Mahedi Hasan. No runs.",
+            "innings": "b_1",
+            "overs": [
+              4,
+              3
+            ],
+            "batsman": {
+              "player_key": "kar_janat",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__nasum_ahmed__26997",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "mahedi_hasan",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "kar_janat",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "n_zadran",
+            "entry_time": 1646306294.722
+          },
+          "6f29b096-563b-41c6-b8a8-8394ea2131b7": {
+            "key": "6f29b096-563b-41c6-b8a8-8394ea2131b7",
+            "ball_type": "normal",
+            "batting_team": "a",
+            "comment": "Azmatullah Omarzai to Mahmudullah: <b>LBW!</b>. No runs.",
+            "innings": "a_1",
+            "overs": [
+              10,
+              5
+            ],
+            "batsman": {
+              "player_key": "m_mahmudullah",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "az_omarzai",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [],
+            "wicket": {
+              "player_key": "m_mahmudullah",
+              "wicket_type": "lbw"
+            },
+            "non_striker_key": "l_das",
+            "entry_time": 1646301194.272
+          },
+          "6581a5ef-f594-4457-95e6-1407c948d412": {
+            "key": "6581a5ef-f594-4457-95e6-1407c948d412",
+            "ball_type": "normal",
+            "batting_team": "a",
+            "comment": "Azmatullah Omarzai to Mahedi Hasan: <b>Wicket!</b> Runout by Rahmanullah Gurbaz. 1 run.",
+            "innings": "a_1",
+            "overs": [
+              19,
+              5
+            ],
+            "batsman": {
+              "player_key": "mahedi_hasan",
+              "ball_count": 1,
+              "runs": 1,
+              "is_dot_ball": false,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "az_omarzai",
+              "ball_count": 1,
+              "runs": 1,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 1,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "rah_gurbaz",
+                "is_run_out": true,
+                "is_stumps": false,
+                "is_catch": false,
+                "is_assists": false
+              },
+              {
+                "player_key": "ra_khan",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": false,
+                "is_assists": true
+              }
+            ],
+            "wicket": {
+              "player_key": "mahedi_hasan",
+              "wicket_type": "run_out"
+            },
+            "non_striker_key": "c__player__nasum_ahmed__26997",
+            "entry_time": 1646304364.842
+          },
+          "1f78ce94-7ec1-4434-9f9c-f82c44c806a7": {
+            "key": "1f78ce94-7ec1-4434-9f9c-f82c44c806a7",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Nasum Ahmed to Darwish Rasooli: <b>Bowled!</b>. No runs.",
+            "innings": "b_1",
+            "overs": [
+              2,
+              3
+            ],
+            "batsman": {
+              "player_key": "dr_rasooli",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__nasum_ahmed__26997",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [],
+            "wicket": {
+              "player_key": "dr_rasooli",
+              "wicket_type": "bowled"
+            },
+            "non_striker_key": "n_zadran",
+            "entry_time": 1646305723.984
+          },
+          "a9aaca82-0624-4fd8-b471-ba2c33a5dd7b": {
+            "key": "a9aaca82-0624-4fd8-b471-ba2c33a5dd7b",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shoriful Islam to Rashid Khan: <b>Wicket!</b>, Caught by Yasir Ali Choudhary. No runs.",
+            "innings": "b_1",
+            "overs": [
+              13,
+              6
+            ],
+            "batsman": {
+              "player_key": "ra_khan",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__shoriful_islam__57c37",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "ya_ali",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "ra_khan",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "az_omarzai",
+            "entry_time": 1646308829.753
+          },
+          "36f0dfdc-aed1-4d14-8d08-bd58c8e46740": {
+            "key": "36f0dfdc-aed1-4d14-8d08-bd58c8e46740",
+            "ball_type": "normal",
+            "batting_team": "a",
+            "comment": "Azmatullah Omarzai to Afif Hossain: <b>Wicket!</b>, Caught by . No runs.",
+            "innings": "a_1",
+            "overs": [
+              17,
+              2
+            ],
+            "batsman": {
+              "player_key": "afi_hossain",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "az_omarzai",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "m_nabi",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "afi_hossain",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "ya_ali",
+            "entry_time": 1646303547.832
+          },
+          "77d3e346-4039-48f2-8edf-94c6f395727a": {
+            "key": "77d3e346-4039-48f2-8edf-94c6f395727a",
+            "ball_type": "normal",
+            "batting_team": "a",
+            "comment": "Qais Ahmad to Shakib Al Hasan: <b>Wicket!</b>, Caught by . No runs.",
+            "innings": "a_1",
+            "overs": [
+              7,
+              4
+            ],
+            "batsman": {
+              "player_key": "ai_hasan",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "qai_kamawal",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "muj_rahman",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "ai_hasan",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "l_das",
+            "entry_time": 1646300307.17
+          },
+          "001cae66-f637-4954-9bc0-cdee2c9e8729": {
+            "key": "001cae66-f637-4954-9bc0-cdee2c9e8729",
+            "ball_type": "normal",
+            "batting_team": "a",
+            "comment": "Azmatullah Omarzai to Mahedi Hasan: <b>Wicket!</b> Runout by Rahmanullah Gurbaz. 1 run.",
+            "innings": "a_1",
+            "overs": [
+              19,
+              2
+            ],
+            "batsman": {
+              "player_key": "mahedi_hasan",
+              "ball_count": 1,
+              "runs": 1,
+              "is_dot_ball": false,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "az_omarzai",
+              "ball_count": 1,
+              "runs": 1,
+              "extras": 0,
+              "is_wicket": false
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 1,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "rah_gurbaz",
+                "is_run_out": true,
+                "is_stumps": false,
+                "is_catch": false,
+                "is_assists": false
+              },
+              {
+                "player_key": "ra_khan",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": false,
+                "is_assists": true
+              }
+            ],
+            "wicket": {
+              "player_key": "ya_ali",
+              "wicket_type": "run_out"
+            },
+            "non_striker_key": "ya_ali",
+            "entry_time": 1646304494.097
+          },
+          "e6576f36-7c5d-4b21-9b14-eaa2cfad8f22": {
+            "key": "e6576f36-7c5d-4b21-9b14-eaa2cfad8f22",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shakib Al Hasan to N Zadran: <b>Wicket!</b>, Caught by Munim Shahriar. No runs.",
+            "innings": "b_1",
+            "overs": [
+              12,
+              2
+            ],
+            "batsman": {
+              "player_key": "n_zadran",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "ai_hasan",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "c__player__munim_shahriar__f43a5",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "n_zadran",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "az_omarzai",
+            "entry_time": 1646308406.634
+          },
+          "7f2bdd90-1d3b-4d1b-be6c-77087939e65b": {
+            "key": "7f2bdd90-1d3b-4d1b-be6c-77087939e65b",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Shakib Al Hasan to Mohammad Nabi: <b>Wicket!</b>, Caught by Afif Hossain. No runs.",
+            "innings": "b_1",
+            "overs": [
+              10,
+              5
+            ],
+            "batsman": {
+              "player_key": "m_nabi",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "ai_hasan",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "afi_hossain",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "m_nabi",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "n_zadran",
+            "entry_time": 1646308057.356
+          },
+          "8358d2f5-b0f9-4230-99ea-d79c1e7fd08d": {
+            "key": "8358d2f5-b0f9-4230-99ea-d79c1e7fd08d",
+            "ball_type": "normal",
+            "batting_team": "b",
+            "comment": "Nasum Ahmed to Rahmanullah Gurbaz: <b>Wicket!</b>, Caught by Yasir Ali Choudhary. No runs.",
+            "innings": "b_1",
+            "overs": [
+              0,
+              4
+            ],
+            "batsman": {
+              "player_key": "rah_gurbaz",
+              "ball_count": 1,
+              "runs": 0,
+              "is_dot_ball": true,
+              "is_four": false,
+              "is_six": false
+            },
+            "bowler": {
+              "player_key": "c__player__nasum_ahmed__26997",
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "team_score": {
+              "ball_count": 1,
+              "runs": 0,
+              "extras": 0,
+              "is_wicket": true
+            },
+            "fielders": [
+              {
+                "player_key": "ya_ali",
+                "is_run_out": false,
+                "is_stumps": false,
+                "is_catch": true,
+                "is_assists": false
+              }
+            ],
+            "wicket": {
+              "player_key": "rah_gurbaz",
+              "wicket_type": "caught"
+            },
+            "non_striker_key": "hazra_zazai",
+            "entry_time": 1646305269.165
+          }
+        }
+      },
+      "players": {
+        "c__player__munim_shahriar__f43a5": {
+          "player": {
+            "key": "c__player__munim_shahriar__f43a5",
+            "name": "Munim Shahriar",
+            "jersey_name": "Munim Shahriar",
+            "legal_name": "Munim Shahriar",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "batsman",
+            "roles": [
+              "batsman"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "medium_fast",
+              "bowling_type": null
+            },
+            "skills": [
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 17,
+                  "balls": 18,
+                  "fours": 3,
+                  "sixes": 0,
+                  "dot_balls": 9,
+                  "strike_rate": 94.44
+                },
+                "dismissal": {
+                  "overs": [
+                    4,
+                    6
+                  ],
+                  "team_runs": 25,
+                  "wicket_number": 2,
+                  "msg": "lbw b Rashid Khan",
+                  "ball_key": "9a11f8b7-e368-4a51-8fbc-ad7c399d6ca7"
+                }
+              },
+              "bowling": null,
+              "fielding": {
+                "catches": 1,
+                "stumpings": 0,
+                "runouts": 0
+              }
+            }
+          }
+        },
+        "u_ghani": {
+          "player": {
+            "key": "u_ghani",
+            "name": "Usman Ghani",
+            "jersey_name": "Usman Ghani",
+            "legal_name": "Usman Ghani",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "batsman",
+            "roles": [
+              "batsman"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": null,
+            "skills": [
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": null,
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "l_das": {
+          "player": {
+            "key": "l_das",
+            "name": "Liton Das",
+            "jersey_name": "Liton Das",
+            "legal_name": "Liton Das",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "keeper",
+            "roles": [
+              "keeper"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": null,
+            "skills": [
+              "keep",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 60,
+                  "balls": 44,
+                  "fours": 4,
+                  "sixes": 2,
+                  "dot_balls": 10,
+                  "strike_rate": 136.36
+                },
+                "dismissal": {
+                  "overs": [
+                    16,
+                    6
+                  ],
+                  "team_runs": 126,
+                  "wicket_number": 5,
+                  "msg": "c Azmatullah Omarzai b Fazalhaq Farooqi",
+                  "ball_key": "c1798210-12af-4831-ba44-77ff77b068ab"
+                }
+              },
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "hazra_zazai": {
+          "player": {
+            "key": "hazra_zazai",
+            "name": "Hazratullah Zazai",
+            "jersey_name": "Hazratullah Zazai",
+            "legal_name": "Hazratullah Zazai",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "batsman",
+            "roles": [
+              "batsman"
+            ],
+            "batting_style": "left_hand",
+            "bowling_style": {
+              "arm": "left_arm",
+              "pace": "slow",
+              "bowling_type": "orthodox"
+            },
+            "skills": [
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 6,
+                  "balls": 7,
+                  "fours": 1,
+                  "sixes": 0,
+                  "dot_balls": 4,
+                  "strike_rate": 85.71
+                },
+                "dismissal": {
+                  "overs": [
+                    2,
+                    1
+                  ],
+                  "team_runs": 8,
+                  "wicket_number": 2,
+                  "msg": "c Mohammad Naim Sheikh b Nasum Ahmed",
+                  "ball_key": "bb44585b-3df5-4d19-ac35-27419a55baa7"
+                }
+              },
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "ta_ahmed": {
+          "player": {
+            "key": "ta_ahmed",
+            "name": "Taskin Ahmed",
+            "jersey_name": "Taskin Ahmed",
+            "legal_name": "Taskin Ahmed",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "left_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "fast",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": null,
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "m_rahim": {
+          "player": {
+            "key": "m_rahim",
+            "name": "Mushfiqur Rahim",
+            "jersey_name": "Mushfiqur Rahim",
+            "legal_name": "Mushfiqur Rahim",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "keeper",
+            "roles": [
+              "keeper"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": null,
+            "skills": [
+              "keep",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": null,
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "sha_islam": {
+          "player": {
+            "key": "sha_islam",
+            "name": "Shahidul Islam",
+            "jersey_name": "Shahidul Islam",
+            "legal_name": "Shahidul Islam",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": null,
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "f_haq": {
+          "player": {
+            "key": "f_haq",
+            "name": "Fazalhaq Farooqi",
+            "jersey_name": "Fazalhaq Farooqi",
+            "legal_name": "Fazalhaq Farooqi",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 0,
+                  "balls": 0,
+                  "fours": 0,
+                  "sixes": 0,
+                  "dot_balls": 0,
+                  "strike_rate": 0
+                },
+                "dismissal": null
+              },
+              "bowling": {
+                "score": {
+                  "balls": 24,
+                  "runs": 27,
+                  "economy": 6.75,
+                  "extras": 2,
+                  "wickets": 2,
+                  "maiden_overs": 0,
+                  "overs": [
+                    4,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 11,
+                    "wides": 1,
+                    "no_balls": 1,
+                    "fours": 3,
+                    "sixes": 0
+                  }
+                }
+              },
+              "fielding": null
+            }
+          }
+        },
+        "m_rahman": {
+          "player": {
+            "key": "m_rahman",
+            "name": "Mustafizur Rahman",
+            "jersey_name": "Mustafizur Rahman",
+            "legal_name": "Mustafizur Rahman",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "left_hand",
+            "bowling_style": {
+              "arm": "left_arm",
+              "pace": "medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": null,
+              "bowling": {
+                "score": {
+                  "balls": 18,
+                  "runs": 19,
+                  "economy": 6.33,
+                  "extras": 1,
+                  "wickets": 1,
+                  "maiden_overs": 0,
+                  "overs": [
+                    3,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 9,
+                    "wides": 1,
+                    "no_balls": 0,
+                    "fours": 1,
+                    "sixes": 1
+                  }
+                }
+              },
+              "fielding": null
+            }
+          }
+        },
+        "moh_naim": {
+          "player": {
+            "key": "moh_naim",
+            "name": "Mohammad Naim Sheikh",
+            "jersey_name": "Mohammad Naim Sheikh",
+            "legal_name": "Mohammad Naim Sheikh",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "batsman",
+            "roles": [
+              "batsman"
+            ],
+            "batting_style": "left_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 2,
+                  "balls": 5,
+                  "fours": 0,
+                  "sixes": 0,
+                  "dot_balls": 3,
+                  "strike_rate": 40
+                },
+                "dismissal": {
+                  "overs": [
+                    2,
+                    1
+                  ],
+                  "team_runs": 10,
+                  "wicket_number": 1,
+                  "msg": "lbw b Fazalhaq Farooqi",
+                  "ball_key": "3830d54f-d281-40f9-aa19-b0d5d86d6d6e"
+                }
+              },
+              "bowling": null,
+              "fielding": {
+                "catches": 1,
+                "stumpings": 0,
+                "runouts": 0
+              }
+            }
+          }
+        },
+        "a_zazai": {
+          "player": {
+            "key": "a_zazai",
+            "name": "Afsar Zazai",
+            "jersey_name": "Afsar Zazai",
+            "legal_name": "Afsar Zazai",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "keeper",
+            "roles": [
+              "keeper"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "fast_medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "keep",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": null,
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "f_malik": {
+          "player": {
+            "key": "f_malik",
+            "name": "Fareed Ahmad Malik",
+            "jersey_name": "Fareed Ahmad Malik",
+            "legal_name": "Fareed Ahmad Malik",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "left_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": null,
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "kar_janat": {
+          "player": {
+            "key": "kar_janat",
+            "name": "Karim Janat",
+            "jersey_name": "Karim Janat",
+            "legal_name": "Karim Janat",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "all_rounder",
+            "roles": [
+              "all_rounder"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 6,
+                  "balls": 8,
+                  "fours": 1,
+                  "sixes": 0,
+                  "dot_balls": 5,
+                  "strike_rate": 75
+                },
+                "dismissal": {
+                  "overs": [
+                    4,
+                    3
+                  ],
+                  "team_runs": 20,
+                  "wicket_number": 4,
+                  "msg": "c Mahedi Hasan b Nasum Ahmed",
+                  "ball_key": "44022863-36e8-4f41-b6cd-61eaa5b5e4f3"
+                }
+              },
+              "bowling": {
+                "score": {
+                  "balls": 6,
+                  "runs": 5,
+                  "economy": 5,
+                  "extras": 0,
+                  "wickets": 0,
+                  "maiden_overs": 0,
+                  "overs": [
+                    1,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 1,
+                    "wides": 0,
+                    "no_balls": 0,
+                    "fours": 0,
+                    "sixes": 0
+                  }
+                }
+              },
+              "fielding": null
+            }
+          }
+        },
+        "m_mahmudullah": {
+          "player": {
+            "key": "m_mahmudullah",
+            "name": "Mahmudullah",
+            "jersey_name": "Mahmudullah",
+            "legal_name": "Mahmudullah",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "all_rounder",
+            "roles": [
+              "all_rounder"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "slow",
+              "bowling_type": null
+            },
+            "skills": [
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 10,
+                  "balls": 7,
+                  "fours": 0,
+                  "sixes": 1,
+                  "dot_balls": 2,
+                  "strike_rate": 142.86
+                },
+                "dismissal": {
+                  "overs": [
+                    10,
+                    5
+                  ],
+                  "team_runs": 80,
+                  "wicket_number": 4,
+                  "msg": "lbw b Azmatullah Omarzai",
+                  "ball_key": "6f29b096-563b-41c6-b8a8-8394ea2131b7"
+                }
+              },
+              "bowling": null,
+              "fielding": {
+                "catches": 1,
+                "stumpings": 0,
+                "runouts": 0
+              }
+            }
+          }
+        },
+        "c__player__nasum_ahmed__26997": {
+          "player": {
+            "key": "c__player__nasum_ahmed__26997",
+            "name": "Nasum Ahmed",
+            "jersey_name": "Nasum Ahmed",
+            "legal_name": "Nasum Ahmed",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "left_hand",
+            "bowling_style": {
+              "arm": "left_arm",
+              "pace": "slow",
+              "bowling_type": "orthodox"
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 3,
+                  "balls": 2,
+                  "fours": 0,
+                  "sixes": 0,
+                  "dot_balls": 0,
+                  "strike_rate": 150
+                },
+                "dismissal": null
+              },
+              "bowling": {
+                "score": {
+                  "balls": 24,
+                  "runs": 10,
+                  "economy": 2.5,
+                  "extras": 0,
+                  "wickets": 4,
+                  "maiden_overs": 0,
+                  "overs": [
+                    4,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 17,
+                    "wides": 0,
+                    "no_balls": 0,
+                    "fours": 1,
+                    "sixes": 0
+                  }
+                }
+              },
+              "fielding": null
+            }
+          }
+        },
+        "mahedi_hasan": {
+          "player": {
+            "key": "mahedi_hasan",
+            "name": "Mahedi Hasan",
+            "jersey_name": "Mahedi Hasan",
+            "legal_name": "Mahedi Hasan",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "all_rounder",
+            "roles": [
+              "all_rounder"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "slow",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 5,
+                  "balls": 7,
+                  "fours": 0,
+                  "sixes": 0,
+                  "dot_balls": 0,
+                  "strike_rate": 71.43
+                },
+                "dismissal": {
+                  "overs": [
+                    19,
+                    5
+                  ],
+                  "team_runs": 151,
+                  "wicket_number": 8,
+                  "msg": "runout Rahmanullah Gurbaz",
+                  "ball_key": "6581a5ef-f594-4457-95e6-1407c948d412"
+                }
+              },
+              "bowling": {
+                "score": {
+                  "balls": 18,
+                  "runs": 17,
+                  "economy": 5.67,
+                  "extras": 0,
+                  "wickets": 0,
+                  "maiden_overs": 0,
+                  "overs": [
+                    3,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 8,
+                    "wides": 0,
+                    "no_balls": 0,
+                    "fours": 2,
+                    "sixes": 0
+                  }
+                }
+              },
+              "fielding": {
+                "catches": 1,
+                "stumpings": 0,
+                "runouts": 0
+              }
+            }
+          }
+        },
+        "dr_rasooli": {
+          "player": {
+            "key": "dr_rasooli",
+            "name": "Darwish Rasooli",
+            "jersey_name": "Darwish Rasooli",
+            "legal_name": "Darwish Rasooli",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "batsman",
+            "roles": [
+              "batsman"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "slow",
+              "bowling_type": null
+            },
+            "skills": [
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 2,
+                  "balls": 6,
+                  "fours": 0,
+                  "sixes": 0,
+                  "dot_balls": 5,
+                  "strike_rate": 33.33
+                },
+                "dismissal": {
+                  "overs": [
+                    2,
+                    3
+                  ],
+                  "team_runs": 8,
+                  "wicket_number": 3,
+                  "msg": "bowled b Nasum Ahmed",
+                  "ball_key": "1f78ce94-7ec1-4434-9f9c-f82c44c806a7"
+                }
+              },
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "ra_khan": {
+          "player": {
+            "key": "ra_khan",
+            "name": "Rashid Khan",
+            "jersey_name": "Rashid Khan",
+            "legal_name": "Rashid Khan",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "slow",
+              "bowling_type": "leg_break"
+            },
+            "skills": [
+              "bowl",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 1,
+                  "balls": 7,
+                  "fours": 0,
+                  "sixes": 0,
+                  "dot_balls": 6,
+                  "strike_rate": 14.29
+                },
+                "dismissal": {
+                  "overs": [
+                    13,
+                    6
+                  ],
+                  "team_runs": 66,
+                  "wicket_number": 7,
+                  "msg": "c Yasir Ali Choudhary b Shoriful Islam",
+                  "ball_key": "a9aaca82-0624-4fd8-b471-ba2c33a5dd7b"
+                }
+              },
+              "bowling": {
+                "score": {
+                  "balls": 24,
+                  "runs": 15,
+                  "economy": 3.75,
+                  "extras": 0,
+                  "wickets": 1,
+                  "maiden_overs": 0,
+                  "overs": [
+                    4,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 10,
+                    "wides": 0,
+                    "no_balls": 0,
+                    "fours": 0,
+                    "sixes": 0
+                  }
+                }
+              },
+              "fielding": null
+            }
+          }
+        },
+        "muj_rahman": {
+          "player": {
+            "key": "muj_rahman",
+            "name": "Mujeeb Ur Rahman",
+            "jersey_name": "Mujeeb Ur Rahman",
+            "legal_name": "Mujeeb Ur Rahman",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "slow",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 4,
+                  "balls": 4,
+                  "fours": 1,
+                  "sixes": 0,
+                  "dot_balls": 3,
+                  "strike_rate": 100
+                },
+                "dismissal": {
+                  "overs": [
+                    17,
+                    4
+                  ],
+                  "team_runs": 94,
+                  "wicket_number": 10,
+                  "msg": "c Afif Hossain b Shoriful Islam",
+                  "ball_key": "82ef3d45-7ea1-440d-8531-8a0ac329aca6"
+                }
+              },
+              "bowling": {
+                "score": {
+                  "balls": 18,
+                  "runs": 24,
+                  "economy": 8,
+                  "extras": 1,
+                  "wickets": 0,
+                  "maiden_overs": 0,
+                  "overs": [
+                    3,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 8,
+                    "wides": 1,
+                    "no_balls": 0,
+                    "fours": 4,
+                    "sixes": 0
+                  }
+                }
+              },
+              "fielding": {
+                "catches": 1,
+                "stumpings": 0,
+                "runouts": 0
+              }
+            }
+          }
+        },
+        "afi_hossain": {
+          "player": {
+            "key": "afi_hossain",
+            "name": "Afif Hossain",
+            "jersey_name": "Afif Hossain",
+            "legal_name": "Afif Hossain",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "batsman",
+            "roles": [
+              "batsman"
+            ],
+            "batting_style": "left_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "slow",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 25,
+                  "balls": 24,
+                  "fours": 2,
+                  "sixes": 0,
+                  "dot_balls": 7,
+                  "strike_rate": 104.17
+                },
+                "dismissal": {
+                  "overs": [
+                    17,
+                    2
+                  ],
+                  "team_runs": 127,
+                  "wicket_number": 6,
+                  "msg": "c Mohammad Nabi b Azmatullah Omarzai",
+                  "ball_key": "36f0dfdc-aed1-4d14-8d08-bd58c8e46740"
+                }
+              },
+              "bowling": null,
+              "fielding": {
+                "catches": 2,
+                "stumpings": 0,
+                "runouts": 0
+              }
+            }
+          }
+        },
+        "nu_hasan": {
+          "player": {
+            "key": "nu_hasan",
+            "name": "Nurul Hasan",
+            "jersey_name": "Nurul Hasan",
+            "legal_name": "Nurul Hasan",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "keeper",
+            "roles": [
+              "keeper"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": null,
+            "skills": [
+              "keep",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": null,
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "c__player__shoriful_islam__57c37": {
+          "player": {
+            "key": "c__player__shoriful_islam__57c37",
+            "name": "Shoriful Islam",
+            "jersey_name": "Shoriful Islam",
+            "legal_name": "Shoriful Islam",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "left_hand",
+            "bowling_style": {
+              "arm": "left_arm",
+              "pace": "medium_fast",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 4,
+                  "balls": 1,
+                  "fours": 1,
+                  "sixes": 0,
+                  "dot_balls": 0,
+                  "strike_rate": 400
+                },
+                "dismissal": null
+              },
+              "bowling": {
+                "score": {
+                  "balls": 22,
+                  "runs": 29,
+                  "economy": 7.91,
+                  "extras": 1,
+                  "wickets": 3,
+                  "maiden_overs": 0,
+                  "overs": [
+                    3,
+                    4
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 13,
+                    "wides": 1,
+                    "no_balls": 0,
+                    "fours": 4,
+                    "sixes": 1
+                  }
+                }
+              },
+              "fielding": {
+                "catches": 1,
+                "stumpings": 0,
+                "runouts": 0
+              }
+            }
+          }
+        },
+        "ai_hasan": {
+          "player": {
+            "key": "ai_hasan",
+            "name": "Shakib Al Hasan",
+            "jersey_name": "Shakib Al Hasan",
+            "legal_name": "Shakib Al Hasan",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "all_rounder",
+            "roles": [
+              "all_rounder"
+            ],
+            "batting_style": "left_hand",
+            "bowling_style": {
+              "arm": "left_arm",
+              "pace": "slow",
+              "bowling_type": "orthodox"
+            },
+            "skills": [
+              "bowl",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 5,
+                  "balls": 6,
+                  "fours": 0,
+                  "sixes": 0,
+                  "dot_balls": 3,
+                  "strike_rate": 83.33
+                },
+                "dismissal": {
+                  "overs": [
+                    7,
+                    4
+                  ],
+                  "team_runs": 47,
+                  "wicket_number": 3,
+                  "msg": "c Mujeeb Ur Rahman b Qais Ahmad",
+                  "ball_key": "77d3e346-4039-48f2-8edf-94c6f395727a"
+                }
+              },
+              "bowling": {
+                "score": {
+                  "balls": 24,
+                  "runs": 18,
+                  "economy": 4.5,
+                  "extras": 1,
+                  "wickets": 2,
+                  "maiden_overs": 0,
+                  "overs": [
+                    4,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 11,
+                    "wides": 1,
+                    "no_balls": 0,
+                    "fours": 1,
+                    "sixes": 0
+                  }
+                }
+              },
+              "fielding": null
+            }
+          }
+        },
+        "s_ashraf": {
+          "player": {
+            "key": "s_ashraf",
+            "name": "Sharafuddin Ashraf",
+            "jersey_name": "Sharafuddin Ashraf",
+            "legal_name": "Sharafuddin Ashraf",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "left_arm",
+              "pace": "slow",
+              "bowling_type": "orthodox"
+            },
+            "skills": [
+              "bowl",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": null,
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "ya_ali": {
+          "player": {
+            "key": "ya_ali",
+            "name": "Yasir Ali Choudhary",
+            "jersey_name": "Yasir Ali Choudhary",
+            "legal_name": "Yasir Ali Choudhary",
+            "gender": "male",
+            "nationality": {
+              "short_code": "BD",
+              "code": "BGD",
+              "name": "Bangladesh",
+              "official_name": "People's Republic of Bangladesh",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "batsman",
+            "roles": [
+              "batsman"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "fast_medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 8,
+                  "balls": 7,
+                  "fours": 1,
+                  "sixes": 0,
+                  "dot_balls": 1,
+                  "strike_rate": 114.29
+                },
+                "dismissal": {
+                  "overs": [
+                    19,
+                    2
+                  ],
+                  "team_runs": 147,
+                  "wicket_number": 7,
+                  "msg": "runout Rahmanullah Gurbaz",
+                  "ball_key": "001cae66-f637-4954-9bc0-cdee2c9e8729"
+                }
+              },
+              "bowling": null,
+              "fielding": {
+                "catches": 2,
+                "stumpings": 0,
+                "runouts": 0
+              }
+            }
+          }
+        },
+        "n_zadran": {
+          "player": {
+            "key": "n_zadran",
+            "name": "N Zadran",
+            "jersey_name": "N Zadran",
+            "legal_name": "Najibullah Zadran",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "batsman",
+            "roles": [
+              "batsman"
+            ],
+            "batting_style": "left_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "slow",
+              "bowling_type": null
+            },
+            "skills": [
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 27,
+                  "balls": 26,
+                  "fours": 1,
+                  "sixes": 1,
+                  "dot_balls": 10,
+                  "strike_rate": 103.85
+                },
+                "dismissal": {
+                  "overs": [
+                    12,
+                    2
+                  ],
+                  "team_runs": 62,
+                  "wicket_number": 6,
+                  "msg": "c Munim Shahriar b Shakib Al Hasan",
+                  "ball_key": "e6576f36-7c5d-4b21-9b14-eaa2cfad8f22"
+                }
+              },
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "m_nabi": {
+          "player": {
+            "key": "m_nabi",
+            "name": "Mohammad Nabi",
+            "jersey_name": "Mohammad Nabi",
+            "legal_name": "Mohammad Nabi",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "all_rounder",
+            "roles": [
+              "all_rounder"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "slow",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 16,
+                  "balls": 19,
+                  "fours": 2,
+                  "sixes": 0,
+                  "dot_balls": 9,
+                  "strike_rate": 84.21
+                },
+                "dismissal": {
+                  "overs": [
+                    10,
+                    5
+                  ],
+                  "team_runs": 57,
+                  "wicket_number": 5,
+                  "msg": "c Afif Hossain b Shakib Al Hasan",
+                  "ball_key": "7f2bdd90-1d3b-4d1b-be6c-77087939e65b"
+                }
+              },
+              "bowling": {
+                "score": {
+                  "balls": 12,
+                  "runs": 19,
+                  "economy": 9.5,
+                  "extras": 0,
+                  "wickets": 0,
+                  "maiden_overs": 0,
+                  "overs": [
+                    2,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 3,
+                    "wides": 0,
+                    "no_balls": 0,
+                    "fours": 2,
+                    "sixes": 0
+                  }
+                }
+              },
+              "fielding": {
+                "catches": 1,
+                "stumpings": 0,
+                "runouts": 0
+              }
+            }
+          }
+        },
+        "az_omarzai": {
+          "player": {
+            "key": "az_omarzai",
+            "name": "Azmatullah Omarzai",
+            "jersey_name": "Azmatullah Omarzai",
+            "legal_name": "Azmatullah Omarzai",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "all_rounder",
+            "roles": [
+              "all_rounder"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 20,
+                  "balls": 18,
+                  "fours": 2,
+                  "sixes": 1,
+                  "dot_balls": 9,
+                  "strike_rate": 111.11
+                },
+                "dismissal": {
+                  "overs": [
+                    16,
+                    3
+                  ],
+                  "team_runs": 85,
+                  "wicket_number": 8,
+                  "msg": "c Mahmudullah b Mustafizur Rahman",
+                  "ball_key": "df4a6066-249b-43a9-a6e8-04db479501ca"
+                }
+              },
+              "bowling": {
+                "score": {
+                  "balls": 24,
+                  "runs": 31,
+                  "economy": 7.75,
+                  "extras": 0,
+                  "wickets": 2,
+                  "maiden_overs": 0,
+                  "overs": [
+                    4,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 6,
+                    "wides": 0,
+                    "no_balls": 0,
+                    "fours": 2,
+                    "sixes": 1
+                  }
+                }
+              },
+              "fielding": {
+                "catches": 1,
+                "stumpings": 0,
+                "runouts": 0
+              }
+            }
+          }
+        },
+        "rah_gurbaz": {
+          "player": {
+            "key": "rah_gurbaz",
+            "name": "Rahmanullah Gurbaz",
+            "jersey_name": "Rahmanullah Gurbaz",
+            "legal_name": "Rahmanullah Gurbaz",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "keeper",
+            "roles": [
+              "keeper"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "keep",
+              "bat"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 0,
+                  "balls": 2,
+                  "fours": 0,
+                  "sixes": 0,
+                  "dot_balls": 2,
+                  "strike_rate": 0
+                },
+                "dismissal": {
+                  "overs": [
+                    0,
+                    4
+                  ],
+                  "team_runs": 1,
+                  "wicket_number": 1,
+                  "msg": "c Yasir Ali Choudhary b Nasum Ahmed",
+                  "ball_key": "8358d2f5-b0f9-4230-99ea-d79c1e7fd08d"
+                }
+              },
+              "bowling": null,
+              "fielding": {
+                "catches": 0,
+                "stumpings": 0,
+                "runouts": 2
+              }
+            }
+          }
+        },
+        "nij_masood": {
+          "player": {
+            "key": "nij_masood",
+            "name": "Nijat Masood",
+            "jersey_name": "Nijat Masood",
+            "legal_name": "Nijat Masood",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": null,
+              "bowling": null,
+              "fielding": null
+            }
+          }
+        },
+        "qai_kamawal": {
+          "player": {
+            "key": "qai_kamawal",
+            "name": "Qais Ahmad",
+            "jersey_name": "Qais Ahmad",
+            "legal_name": "Qais Ahmad",
+            "gender": "male",
+            "nationality": {
+              "short_code": "AF",
+              "code": "AFG",
+              "name": "Afghanistan",
+              "official_name": "Islamic Republic of Afghanistan",
+              "is_region": false
+            },
+            "date_of_birth": null,
+            "seasonal_role": "bowler",
+            "roles": [
+              "bowler"
+            ],
+            "batting_style": "right_hand",
+            "bowling_style": {
+              "arm": "right_arm",
+              "pace": "medium",
+              "bowling_type": null
+            },
+            "skills": [
+              "bowl"
+            ]
+          },
+          "score": {
+            "1": {
+              "batting": {
+                "score": {
+                  "runs": 8,
+                  "balls": 9,
+                  "fours": 1,
+                  "sixes": 0,
+                  "dot_balls": 4,
+                  "strike_rate": 88.89
+                },
+                "dismissal": {
+                  "overs": [
+                    17,
+                    2
+                  ],
+                  "team_runs": 90,
+                  "wicket_number": 9,
+                  "msg": "c b Shoriful Islam",
+                  "ball_key": "b28d752d-abb9-4f6d-829c-8f1430223de9"
+                }
+              },
+              "bowling": {
+                "score": {
+                  "balls": 12,
+                  "runs": 21,
+                  "economy": 10.5,
+                  "extras": 0,
+                  "wickets": 1,
+                  "maiden_overs": 0,
+                  "overs": [
+                    2,
+                    0
+                  ],
+                  "balls_breakup": {
+                    "dot_balls": 3,
+                    "wides": 0,
+                    "no_balls": 0,
+                    "fours": 0,
+                    "sixes": 2
+                  }
+                }
+              },
+              "fielding": null
+            }
+          }
+        }
+      },
+      "notes": [],
+      "data_review": {
+        "schedule": true,
+        "venue": true,
+        "result": true,
+        "pom": true,
+        "score": true,
+        "players": true,
+        "playing_xi": true,
+        "score_reviewed_ball_index": [
+          "b_1",
+          [
+            17,
+            4
+          ]
+        ],
+        "team_a": true,
+        "team_b": true,
+        "good_to_close": true,
+        "note": null
+      },
+      "squad": {
+        "a": {
+          "player_keys": [
+            "c__player__munim_shahriar__f43a5",
+            "c__player__shoriful_islam__57c37",
+            "m_mahmudullah",
+            "l_das",
+            "c__player__nasum_ahmed__26997",
+            "ai_hasan",
+            "ya_ali",
+            "m_rahman",
+            "mahedi_hasan",
+            "moh_naim",
+            "ta_ahmed",
+            "nu_hasan",
+            "m_rahim",
+            "sha_islam",
+            "afi_hossain"
+          ],
+          "captain": "m_mahmudullah",
+          "keeper": "l_das",
+          "playing_xi": [
+            "m_mahmudullah",
+            "l_das",
+            "ai_hasan",
+            "c__player__nasum_ahmed__26997",
+            "ya_ali",
+            "c__player__munim_shahriar__f43a5",
+            "afi_hossain",
+            "mahedi_hasan",
+            "moh_naim",
+            "c__player__shoriful_islam__57c37",
+            "m_rahman"
+          ]
+        },
+        "b": {
+          "player_keys": [
+            "a_zazai",
+            "f_malik",
+            "kar_janat",
+            "u_ghani",
+            "hazra_zazai",
+            "nij_masood",
+            "f_haq",
+            "s_ashraf",
+            "dr_rasooli",
+            "ra_khan",
+            "muj_rahman",
+            "az_omarzai",
+            "qai_kamawal",
+            "n_zadran",
+            "m_nabi",
+            "rah_gurbaz"
+          ],
+          "captain": "m_nabi",
+          "keeper": "rah_gurbaz",
+          "playing_xi": [
+            "rah_gurbaz",
+            "hazra_zazai",
+            "n_zadran",
+            "m_nabi",
+            "ra_khan",
+            "az_omarzai",
+            "muj_rahman",
+            "kar_janat",
+            "f_haq",
+            "qai_kamawal",
+            "dr_rasooli"
+          ]
+        }
+      },
+      "estimated_end_date": 1646312400,
+      "completed_date_approximate": 1646309908,
+      "umpires": {
+        "match_umpires": null,
+        "tv_umpires": null,
+        "reserve_umpires": null,
+        "match_referee": null
+      }
+    }

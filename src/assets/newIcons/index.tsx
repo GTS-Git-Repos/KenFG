@@ -49,6 +49,8 @@ import SwapIcon from './svgIcons/swap.icon';
 import PencilEditIcon from './svgIcons/pencil.edit.icon';
 import PlusIcon from './svgIcons/plus.icon';
 import GiftIcon from './svgIcons/gift.icon';
+import RankIcon from './svgIcons/rank.icon';
+
 
 export {
   ContestsBottomTabOff,
@@ -70,6 +72,7 @@ export {
   HelpSideIcon,
   GiftIcon,
   VerifyTick,
+  RankIcon,
   SettingSideIcon,
   CupIcon,
   DollarIcon,
