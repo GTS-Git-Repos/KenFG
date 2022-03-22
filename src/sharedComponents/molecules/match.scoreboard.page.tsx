@@ -1,7 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import tailwind from '../../../tailwind';
-import {View, ScrollView, ActivityIndicator} from 'react-native';
-import TeamScrollBoardByInnings from "./team.scoreboard.innings"
+import {View, ScrollView} from 'react-native';
+import TeamScrollBoardByInnings from './team.scoreboard.innings';
+import StatusIndicator from '../atoms/status.indicator';
 
 const log = console.log;
 
@@ -22,7 +23,9 @@ interface OverallTeamShape {
 }
 
 export default function MatchScoreBoardPage(props: PropTypes) {
-  const scrollRef = useRef<ScrollView>();
+  const ACTIVE = props.index === props.activeIndex;
+
+  const scrollRef = useRef<any>();
   const [openedInnings, setOpenedInnings] = useState<any>(0);
 
   useEffect(() => {
@@ -48,9 +51,10 @@ export default function MatchScoreBoardPage(props: PropTypes) {
     }
   };
 
-  if (props.index !== props.activeIndex) {
-    return <ActivityIndicator color="#0c1320" />;
+  if (!ACTIVE) {
+    return <StatusIndicator loading={true} error={false} />;
   }
+
   return (
     <View>
       <ScrollView ref={scrollRef}>

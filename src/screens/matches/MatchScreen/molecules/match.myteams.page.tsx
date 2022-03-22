@@ -1,28 +1,50 @@
 import React from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
-import {MatchTeamCard} from '../../../../sharedComponents';
+import {StatusIndicator, TeamsCard} from '../../../../sharedComponents';
 
 interface PropTypes {
   activeIndex: number;
   index: number;
-  teams?: any;
+  teams: Array<any> | null;
   status?: string;
+  navigateToPreview(team_key: string): void;
 }
 
 export default function MatchMyteamsPage(props: PropTypes) {
   const isTabActive = props.index === props.activeIndex;
+
   if (!isTabActive) {
-    return null;
+    return <StatusIndicator loading={true} error={false} />;
   }
+
+  if (!props.teams) {
+    return <StatusIndicator loading={true} error={false} />;
+  }
+
   return (
     <View style={ss.root}>
-      <ScrollView >
-        <MatchTeamCard teamCode={'T1'} />
-        <MatchTeamCard teamCode={'T2'} />
-        <MatchTeamCard teamCode={'T2'} />
-        <MatchTeamCard teamCode={'T2'} />
-        <MatchTeamCard teamCode={'T2'} />
-        <MatchTeamCard teamCode={'T2'} />
+      <ScrollView contentContainerStyle={ss.container}>
+        {props.teams.map((item: any) => {
+          return (
+            <TeamsCard
+              key={item.key}
+              team_key={item.key}
+              canModify={false}
+              current={false}
+              cap={item.cap}
+              vc={item.vc}
+              keepers={item.keeper}
+              batsman={item.batsman}
+              all_rounder={item.all_rounder}
+              bowler={item.bowler}
+              team_a={undefined}
+              team_b={undefined}
+              hasPoints={'0'}
+              mutateTeam={() => {}}
+              navigateToPreview={() => {}}
+            />
+          );
+        })}
 
         <View style={[ss.space]}></View>
       </ScrollView>
@@ -32,10 +54,13 @@ export default function MatchMyteamsPage(props: PropTypes) {
 
 const ss = StyleSheet.create({
   root: {
-    padding: 8,
     flex: 1,
     height: '100%',
   },
+  container: {
+    padding: 12,
+  },
+
   space: {
     height: 40,
   },

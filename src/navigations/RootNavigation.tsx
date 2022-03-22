@@ -32,7 +32,6 @@ import DailyLeaderBoardScreen from '../screens/leaderboard/DailyLeaderBoardScree
 // import CompletedMatchScreen from '../screens/matches/CompletedMatchScreen';
 import MonthlyLeaderBoardScreen from '../screens/leaderboard/MonthlyLeaderBoardScreen';
 
-import MyContestPlayersScreen from '../screens/contests/MyContestPlayersScreen';
 import PlayerProfileScreen from '../screens/contests/PlayerProfileScreen';
 
 import InviteScreen from '../screens/user/InviteScreen';
@@ -54,7 +53,7 @@ const StackConfig = {
 };
 
 export default function RootNavigation() {
-  const sessionState = useSelector(state => state.app.sessionState);
+
 
   // useEffect(() => {
   //   if (sessionState === true) {
@@ -150,10 +149,7 @@ export default function RootNavigation() {
               name="UserGoalsScreen"
             />
 
-            <RootNavigator.Screen
-              component={MyContestPlayersScreen}
-              name="MyContestPlayersScreen"
-            />
+
             <RootNavigator.Screen
               component={PlayerProfileScreen}
               name="PlayerProfileScreen"

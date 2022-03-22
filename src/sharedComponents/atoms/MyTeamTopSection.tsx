@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import tailwind from '../../../tailwind';
 import {View, TouchableOpacity, Text} from 'react-native';
@@ -12,6 +14,9 @@ interface PropTypes {
 }
 
 export default function MyTeamsTopSection(props: PropTypes) {
+// DEPRECATED NOT USED
+return null
+
   return (
     <View
       style={[

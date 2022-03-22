@@ -3,6 +3,7 @@ import {
   UPDTAE_MATCH_META,
   UPDATE_MY_CONTESTS,
   UPDATE_PLAYERS_POINTS,
+  UPDATE_USER_TEAMS,
 } from './actionTypes';
 
 export const updateAppError = (payload: string) => ({
@@ -15,10 +16,16 @@ export const updateMatchConetstsAction = (payload: Array<any>) => ({
   payload,
 });
 
+export const updateUserTeamsInMatchAction = (payload: Array<any>) => ({
+  type: UPDATE_USER_TEAMS,
+  payload,
+});
+
 export const updatePlayerPointsAction = (payload: Array<any>) => ({
   type: UPDATE_PLAYERS_POINTS,
   payload,
 });
+
 
 // update that data parsed from 3rd party score API
 // it added match team meta, current score state,scorecard,all players meta
@@ -37,13 +44,13 @@ export const updateMatchMetaAction = (payload: any) => {
     lastOverData: payload.lastOverData,
     innings: payload.innings,
   };
-  // console.log(metaObj);
+  // console.log(Object.keys(payload));
   return {
     type: UPDTAE_MATCH_META,
     payload: {
       matchMeta,
       playersMeta: payload.playersMeta,
-      xis: payload.xis,
+      xis: payload.xisKey,
     },
   };
 };

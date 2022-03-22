@@ -1,100 +1,89 @@
 import React from 'react';
-import tailwind from '../../../tailwind';
-import {View, Image, Text, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/native';
+import StatusIndicator from '../atoms/status.indicator';
 
 interface PropTypes {
   index: number;
   activeIndex: number;
+  players: Array<any> | null;
 }
 
-// disabled for now
+const PLAYERWIDTH = 180;
+const COLWIDTH = 80;
 
 export default function MatchPlayersStatsPage(props: PropTypes) {
+  const ACTIVE = props.index === props.activeIndex;
+
   const navigation = useNavigation<any>();
 
-  return <Text>PAUSED</Text>;
+  if (!ACTIVE) {
+    return <StatusIndicator loading={true} error={false} />;
+  }
+
+  if (!props.players) {
+    return <StatusIndicator loading={false} error={true} />;
+  }
 
   return (
     <ScrollView>
       <Filter />
-
-      <View style={[tailwind('flex-row bg-dark-3')]}>
-        <View style={[tailwind('')]}>
-          <View style={[tailwind('bg-dark-4 p-2'), {width: 150}]}>
-            <Text style={[tailwind('font-regular text-dark-1 px-2 font-12')]}>
-              PLAYERS
-            </Text>
+      <View style={[ss.container]}>
+        <View>
+          <View style={[ss.col1]}>
+            <Text style={[ss.headTxt]}>PLAYERS</Text>
           </View>
-
-          {contestPlayerStats.map((item: any) => {
+          {props.players.map((item: any) => {
             return (
               <TouchableOpacity
                 key={item.name}
-                // nav screen breaks
-                // onPress={() => navigation.navigate('MyContestPlayersScreen')}
-                style={[tailwind('flex-row items-center mt-2'), {width: 150}]}>
+                onPress={() => navigation.navigate('MyMatchPlayerScreen')}
+                style={[ss.pContainer]}>
                 <Image
                   resizeMode="contain"
                   source={assets.player}
-                  style={[{width: 36, height: 36}]}
+                  style={[ss.image]}
                 />
-                <View style={[tailwind('px-2')]}>
-                  <Text
-                    numberOfLines={1}
-                    style={[
-                      tailwind(
-                        'font-bold text-white capitalize font-14 py-0.5',
-                      ),
-                    ]}>
+                <View style={[ss.space]}>
+                  <Text numberOfLines={1} style={[ss.pname]}>
                     {item.name}
                   </Text>
-                  <Text style={[tailwind('font-regular text-dark-1 font-11')]}>
-                    IND-BAT
-                  </Text>
+                  <Text style={[ss.role]}>IND-BAT</Text>
                 </View>
               </TouchableOpacity>
             );
           })}
         </View>
-
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={[tailwind('border-l  border-gray-800')]}>
+        {/* meta */}
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View>
             <TableRow />
-            {contestPlayerStats.map((item: any) => {
+            {props.players.map((item: any) => {
               return (
                 <TouchableOpacity
                   key={item.name}
                   activeOpacity={0.5}
-                  onPress={() => navigation.navigate('MyContestPlayersScreen')}
-                  style={[tailwind('flex-row flex-grow items-center mt-2')]}>
-                  <View style={[tailwind('px-2'), {width: 80}]}>
-                    <Text
-                      style={[tailwind('font-regular text-dark-1 font-14')]}>
-                      {item.points}
-                    </Text>
+                  onPress={() => navigation.navigate('MyMatchPlayerScreen')}
+                  style={[ss.colItemC]}>
+                  <View style={[ss.colItem]}>
+                    <Text style={[ss.metaTxt]}>{item.points}</Text>
                   </View>
-                  <View style={[tailwind(''), {width: 65}]}>
-                    <Text
-                      style={[tailwind('font-regular text-dark-1 font-14')]}>
-                      {item.sell_by} %
-                    </Text>
+                  <View style={[ss.colItem]}>
+                    <Text style={[ss.metaTxt]}>N/A</Text>
                   </View>
-                  <View style={[tailwind(''), {width: 65}]}>
-                    <Text
-                      style={[tailwind('font-regular text-dark-1 font-14')]}>
-                      {item.c_by} %
-                    </Text>
+                  <View style={[ss.colItem]}>
+                    <Text style={[ss.metaTxt]}>N/A</Text>
                   </View>
-                  <View style={[tailwind(''), {width: 62}]}>
-                    <Text
-                      style={[tailwind('font-regular text-dark-1 font-14')]}>
-                      {item.c_by} %
-                    </Text>
+                  <View style={[ss.colItem]}>
+                    <Text style={[ss.metaTxt]}>N/A</Text>
                   </View>
                 </TouchableOpacity>
               );
@@ -102,91 +91,167 @@ export default function MatchPlayersStatsPage(props: PropTypes) {
           </View>
         </ScrollView>
       </View>
-      <View style={[tailwind('h-20')]}></View>
     </ScrollView>
   );
 }
 
 const Filter = () => {
   return (
-    <View style={[tailwind('flex-row m-3 items-center')]}>
-      <View
-        style={[
-          tailwind('flex-row rounded-3xl border border-gray-800'),
-          {flex: 8},
-        ]}>
-        <TouchableOpacity
-          style={[tailwind('bg-secondary rounded-l-3xl p-2 flex-grow')]}>
-          <Text
-            style={[
-              tailwind('font-bold uppercase text-center text-brown-5 font-12'),
-            ]}>
-            By Contest
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[tailwind('p-2 flex-grow border-gray-800 border-r')]}>
-          <Text
-            style={[
-              tailwind('font-bold uppercase text-center text-white font-12'),
-            ]}>
-            By Match
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[tailwind('p-2 flex-grow')]}>
-          <Text
-            style={[
-              tailwind('font-bold uppercase text-center text-white font-12'),
-            ]}>
-            By Teams
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View style={[tailwind(''), {flex: 2}]}></View>
+    <View style={[ss.filterRoot]}>
+      <TouchableOpacity style={[ss.dOption1, ss.dSelOption]}>
+        <Text style={[ss.filTxt, ss.dSelTextClr]}>By Contest</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={[ss.dOption2]}>
+        <Text style={[ss.filTxt]}>By Match</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={[ss.dOption3]}>
+        <Text style={[ss.filTxt]}>By Team</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const TableRow = () => {
   return (
-    <View style={[tailwind('flex-row items-center bg-dark-4 py-2 pl-1')]}>
-      <View
-        style={[
-          tailwind('flex-row justify-between items-center'),
-          {width: 62},
-        ]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-12 uppercase')]}>
-          Points
-        </Text>
+    <View style={[ss.colsC]}>
+      <View style={[ss.col]}>
+        <Text style={[ss.colText]}>Points</Text>
       </View>
-
-      <View
-        style={[
-          tailwind('flex-row justify-between items-center'),
-          {width: 62},
-        ]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-12 uppercase')]}>
-          SEL BY
-        </Text>
+      <View style={[ss.col]}>
+        <Text style={[ss.colText]}>Sel by</Text>
       </View>
-      <View
-        style={[
-          tailwind('flex-row  justify-between items-center'),
-          {width: 62},
-        ]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-12 uppercase')]}>
-          %C by
-        </Text>
+      <View style={[ss.col]}>
+        <Text style={[ss.colText]}>% C by</Text>
       </View>
-      <View
-        style={[
-          tailwind('flex-row justify-between items-center'),
-          {width: 62},
-        ]}>
-        <Text style={[tailwind('font-regular text-dark-1 font-12 uppercase')]}>
-          % VC BY
-        </Text>
+      <View style={[ss.col]}>
+        <Text style={[ss.colText]}>% VC by</Text>
       </View>
     </View>
   );
 };
+
+const ss = StyleSheet.create({
+  filterRoot: {
+    margin: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: 'red',
+  },
+
+  dOption1: {
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
+    width: 120,
+    borderColor: '#25385A',
+    borderWidth: 1,
+    borderRightWidth: 0,
+  },
+  dOption2: {
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    width: 110,
+    borderColor: '#25385A',
+    borderWidth: 1,
+  },
+  dOption3: {
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    width: 110,
+    borderColor: '#25385A',
+    borderWidth: 1,
+    borderLeftWidth: 0,
+    borderTopRightRadius: 20,
+    borderBottomEndRadius: 20,
+  },
+
+  dSelOption: {
+    backgroundColor: '#C5A858',
+  },
+  filTxt: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 12,
+    textTransform: 'uppercase',
+    color: '#FFFFFF',
+    textAlign: 'center',
+  },
+  dSelTextClr: {
+    color: '#3A2B13',
+  },
+  container: {
+    flexDirection: 'row',
+  },
+  col1: {
+    padding: 8,
+    width: PLAYERWIDTH,
+    borderRightColor: '#172338',
+    borderRightWidth: 1,
+  },
+  headTxt: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    textTransform: 'uppercase',
+    fontSize: 12,
+    paddingHorizontal: 12,
+  },
+  pContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: 8,
+    width: PLAYERWIDTH,
+    height: 48,
+    backgroundColor: '#172338',
+    borderRightColor: '#0c1320',
+    borderRightWidth: 1,
+  },
+  image: {
+    width: 36,
+    height: 36,
+  },
+  space: {
+    paddingHorizontal: 8,
+  },
+  pname: {
+    fontFamily: 'gadugi-bold',
+    width: 120,
+    color: '#FFFFFF',
+  },
+  role: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    fontSize: 11,
+  },
+  colsC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+    paddingLeft: 4,
+    backgroundColor: '#0c1320',
+  },
+  col: {
+    width: COLWIDTH,
+  },
+  colText: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    textTransform: 'uppercase',
+    fontSize: 12,
+  },
+  colItemC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 48,
+    backgroundColor: '#172338',
+  },
+  colItem: {
+    width: COLWIDTH,
+    paddingHorizontal: 8,
+  },
+  metaTxt: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    fontSize: 14,
+  },
+});

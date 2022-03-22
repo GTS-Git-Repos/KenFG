@@ -6,8 +6,13 @@ import {
   joinedMatchesRemote,
   matchScoreStatRemote,
   userMatchContestsRemote,
+  userTeamsInMatchRemote,
 } from '../remote/matchesRemote';
-import {updateMatchConetstsAction, updatePlayerPointsAction} from '../store/actions/match.actions';
+import {
+  updateMatchConetstsAction,
+  updatePlayerPointsAction,
+  updateUserTeamsInMatchAction,
+} from '../store/actions/match.actions';
 
 export const useMatchPlayersPointsState = (
   match_key: string,
@@ -17,12 +22,11 @@ export const useMatchPlayersPointsState = (
   const {
     data: mpPoints,
     isLoading: mpL,
-    isSuccess: mpS,
     isError: mpE,
-    refetch: mpRefetch,
-  } = useQuery(['match', match_key,], getMatchPlayerPointsRemote, {
+    refetch: mpRf,
+  } = useQuery(['match', match_key], getMatchPlayerPointsRemote, {
     notifyOnChangeProps: ['data', 'isLoading', 'isFetching', 'isError'],
-    // staleTime: 1000 * 1000,
+    staleTime: 1000 * 1000,
   });
 
   useEffect(() => {
@@ -31,7 +35,7 @@ export const useMatchPlayersPointsState = (
     }
   }, [mpPoints]);
 
-  return {mpPoints, mpL, mpS, mpE, mpRefetch};
+  return {mpPoints, mpL, mpE, mpRf};
 };
 
 // match score and state from third party api
@@ -53,7 +57,6 @@ export const useMatchScoreStat = (match_key: string, user_id: string) => {
     ],
     // cacheTime: 0,
     staleTime: 1000 * 1000,
-
   });
   return {msMeta, msL, msS, msF, msE, msMetaRf};
 };
@@ -65,6 +68,7 @@ export const useGetUserMatches = (user_id: string, status: string) => {
     isError: matches_e,
   } = useQuery(['user_matches', user_id, status], joinedMatchesRemote, {
     notifyOnChangeProps: ['data', 'isLoading', 'isError'],
+    staleTime: 1000 * 1000,
   });
   return {matches, matches_l, matches_e};
 };
@@ -84,8 +88,7 @@ export const useUserMatchContests = (
     userMatchContestsRemote,
     {
       notifyOnChangeProps: ['data', 'isLoading', 'isError'],
-    staleTime: 1000 * 1000,
-
+      staleTime: 1000 * 1000,
     },
   );
   // dispatch to redux
@@ -96,6 +99,34 @@ export const useUserMatchContests = (
   }, [u_contests]);
 
   return {u_contests, u_c_l, u_c_e, u_c_rf};
+};
+
+export const useUserTeamsInMatch = (
+  match_key: string,
+  player_key: string,
+  action?: (data: any) => void,
+) => {
+  const {
+    data: teams,
+    isLoading: team_l,
+    isError: team_e,
+    refetch: team_rf,
+  } = useQuery(
+    ['user_team_match', match_key, [player_key]],
+    userTeamsInMatchRemote,
+    {
+      notifyOnChangeProps: ['data', 'isLoading', 'isError'],
+      // staleTime: 1000 * 1000,
+    },
+  );
+  // dispatch to redux
+  useEffect(() => {
+    if (teams && action) {
+      action(updateUserTeamsInMatchAction(teams));
+    }
+  }, [teams]);
+
+  return {teams, team_l, team_e, team_rf};
 };
 
 export const useCompareTeams = (match_key: string, user_id: string) => {

@@ -6,9 +6,10 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import {
-  useMatchPlayersState,
+  useMatchPlayersPointsState,
   useMatchScoreStat,
   useUserMatchContests,
+  useUserTeamsInMatch,
 } from '../../../shared_hooks/match.hooks';
 import {FlatList, StyleSheet} from 'react-native';
 import MatchScreen from './match.screen';
@@ -21,6 +22,8 @@ import {
   matchContestsSelector,
   matchLoadingSelector,
   matchMetaSelector,
+  matchPlayerPoints,
+  userTeamsInMatchSelector,
 } from '../../../store/selectors/match.selectors';
 
 export default function MatchScreenHOC() {
@@ -32,10 +35,19 @@ export default function MatchScreenHOC() {
   const userMeta = useSelector(userInfo);
   const matchMeta = useSelector(matchMetaSelector);
   const contests = useSelector(matchContestsSelector);
+  const teams = useSelector(userTeamsInMatchSelector)
+  const players = useSelector(matchPlayerPoints);
   const loading = useSelector(matchLoadingSelector);
+
 
   const {msMeta, msE, msMetaRf} = useMatchScoreStat(match_key, userMeta.mobile);
   const {u_c_l, u_c_e} = useUserMatchContests(
+    match_key,
+    userMeta.mobile,
+    dispatch,
+  );
+  const {mpL, mpE, mpRf} = useMatchPlayersPointsState(match_key, dispatch);
+  const {team_l, team_e, team_rf} = useUserTeamsInMatch(
     match_key,
     userMeta.mobile,
     dispatch,
@@ -48,8 +60,8 @@ export default function MatchScreenHOC() {
   }, [msMeta]);
 
   useEffect(() => {
-    // console.log(contests);
-  }, [contests]);
+    console.log(teams);
+  }, [teams]);
 
   function onContestCardPress(contest_key: string) {
     toContestMatch(navigation, match_key, contest_key);
@@ -70,7 +82,8 @@ export default function MatchScreenHOC() {
       conestsLoading={u_c_l}
       contestsError={u_c_e}
       contests={contests}
-      teams={[]}
+      players={players}
+      teams={teams}
       commentry={[]}
       onContestCardPress={onContestCardPress}
     />

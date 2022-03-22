@@ -17,6 +17,9 @@ fontFamily: 'gadugi-normal',
  "bg-dark-3": {
     "backgroundColor": "#172338"
 },
+ bgg: {
+    backgroundColor: '#C5A858',
+},
 
 "bg-dark-2": {
     "backgroundColor": "#25385A"

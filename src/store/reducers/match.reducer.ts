@@ -1,7 +1,7 @@
 import {
   UPDTAE_MATCH_META,
   UPDATE_MY_CONTESTS,
-  UPDATE_MY_TEAMS,
+  UPDATE_USER_TEAMS,
   UPDATE_LOADING,
   UPDATE_PLAYERS_POINTS,
 } from '../actions/actionTypes';
@@ -43,7 +43,7 @@ const Match = (state = initialState, action: actionShape): any => {
         ...state,
         mycontest: action.payload,
       };
-    case UPDATE_MY_TEAMS:
+    case UPDATE_USER_TEAMS:
       return {
         ...state,
         myteams: action.payload,

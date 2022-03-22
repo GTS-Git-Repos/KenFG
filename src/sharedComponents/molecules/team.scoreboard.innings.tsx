@@ -19,9 +19,6 @@ interface HeaderSectionProps {
   overs: string;
   runs: string;
   wickets: string;
-  index: number;
-  isExpanded?: boolean;
-  openInningsTab(index: number): any;
   isCompleted: boolean;
 }
 interface BattersScroreShape {

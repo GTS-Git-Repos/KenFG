@@ -1,3 +1,5 @@
+// player info  from team formation screen
+
 import React from 'react';
 import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
@@ -16,7 +18,7 @@ import {useDispatch} from 'react-redux';
 
 const log = console.log;
 
-export default function MyContestPlayersInfo() {
+export default function PlayerProfileHOC() {
   const route = useRoute<any>();
   const dispatch = useDispatch();
   const navigation = useNavigation();

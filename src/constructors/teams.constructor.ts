@@ -52,11 +52,11 @@ export const normalizeGetPlayersAPI = (payload: any) => {
   }
 };
 
-// used to perform a transformation of joined contests teams
+// used to perform a transformation of joined teams
 export const parseJoinedTeamsAPI = (payload: any) => {
   try {
     const teams = payload.teams;
-
+    // mmmm ? maybe did not want to throw a error instead throw []
     if (!teams) {
       throw 'No Teams';
     }

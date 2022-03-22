@@ -78,7 +78,12 @@ export default function MatchScreen(props: MatchScreenType) {
           />
         </View>
         <View style={{width: width}}>
-          <MatchMyTeamsPage index={1} activeIndex={selectedTab} />
+          <MatchMyTeamsPage
+            index={1}
+            activeIndex={selectedTab}
+            teams={props.teams}
+            navigateToPreview={() => {}}
+          />
         </View>
         <View style={{width: width}}>
           <MatchCommentary index={2} activeIndex={selectedTab} />
@@ -91,7 +96,11 @@ export default function MatchScreen(props: MatchScreenType) {
           />
         </View>
         <View style={{width: width}}>
-          <MatchPlayersStats index={4} activeIndex={selectedTab} />
+          <MatchPlayersStats
+            index={4}
+            activeIndex={selectedTab}
+            players={props.players}
+          />
         </View>
       </PagerView>
 

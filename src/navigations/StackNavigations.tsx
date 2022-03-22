@@ -36,7 +36,9 @@ import MonthlyLeaderBoardScreen from '../screens/leaderboard/MonthlyLeaderBoardS
 // match screen imports
 import MatchScreen from '../screens/matches/MatchScreen';
 import ContestMatchScreen from '../screens/matches/ContestMatchScreen';
+import MyMatchPlayerScreen from '../screens/matches/MyMatchPlayerScreen';
 
+// Auth screens
 import SignupScreen from '../screens/user/SignupScreen';
 
 import FantasyTeamNameScreen from '../screens/leaderboard/FantasyTeamNameScreen';
@@ -247,6 +249,10 @@ export function Match(props: any) {
       <MatchStack.Screen
         name="CompareTeamsScreen"
         component={CompareTeamsScreen}
+      />
+      <MatchStack.Screen
+        name="MyMatchPlayerScreen"
+        component={MyMatchPlayerScreen}
       />
     </MatchStack.Navigator>
   );

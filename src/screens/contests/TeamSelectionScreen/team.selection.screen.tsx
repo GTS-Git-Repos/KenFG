@@ -7,7 +7,6 @@ import {
   BlockScreenByLoading,
   TeamsCard,
   TopBar,
-  JoinContestModal,
   NewJoinContestModal,
 } from '../../../sharedComponents';
 import {updateJoinModalAction} from '../../../store/actions/appActions';
@@ -25,9 +24,7 @@ import {errorBox, infoBox} from '../../../utils/snakBars';
 import {
   joinContestRemote,
 } from '../../../remote/matchesRemote';
-import {resetContestListNavigation} from '../../../utils/resetNav';
 import SubTitle from './atoms/subtitle.teamselection';
-import Modal from 'react-native-modal';
 import {updateUserInfo} from '../../../store/actions/userAction';
 import SelectAllTeams from './molecules/select.all.teams';
 const log = console.log;
@@ -236,29 +233,6 @@ export default function TeamSelectionScreen(props: PropTypes) {
         closeModal={closeJoinModal}
         joinContestWithTeam={joinContestWithTeam}
       />
-
-      {/* <Modal
-        isVisible={props.showJoinModal}
-        animationInTiming={150}
-        animationOutTiming={150}
-        useNativeDriver={true}
-        useNativeDriverForBackdrop={true}
-        hideModalContentWhileAnimating={true}
-        backdropTransitionOutTiming={0}
-        scrollHorizontal={true}>
-        <JoinContestModal
-          setShowJoinModal={props.setShowJoinModal}
-          usableBonus={0}
-          availableCash={
-            parseInt(props.userMeta.un_utilized) +
-            parseInt(props.userMeta.winnings)
-          }
-          joinContestWithTeam={joinContestWithTeam}
-          entryAmount={
-            matchSelector.joinContest.entryAmount * choosenTeams.length
-          }
-        />
-      </Modal> */}
 
       {loading && <BlockScreenByLoading />}
     </View>

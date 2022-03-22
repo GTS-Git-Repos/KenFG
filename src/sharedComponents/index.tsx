@@ -32,7 +32,6 @@ import JoinContestModal from './molecules/join.contest.modal.shared';
 import ContestTypeSwitch from './molecules/contest.type.swicth';
 import PrivateContestTeams from './molecules/private.contest.teams';
 import PriceDistributionSwitch from './molecules/price.distribution.switch';
-import MatchTeamCard from './molecules/match.team.card';
 import MatchPlayersStats from './molecules/match.players.stats.page';
 import WalletHalfModal from './molecules/wallet.half.modal';
 import MatchCommentary from './molecules/match.commentary.page';
@@ -97,7 +96,6 @@ export {
   NewJoinContestModal,
   BottomLine,
   TopBarContest,
-  MatchTeamCard,
   MyContestPage,
   FullScreenLoading,
   ContestCard,

@@ -5,7 +5,10 @@
 import {BASE_URL, METHODS} from '../constants/API_constants';
 import requestServer from '../workers/requestServer';
 import compareTeamMeta from '../constants/mocks/mockCompareTeam.json';
-import {MatchScoreFormat} from '../constructors/match.constructors';
+import {
+  MatchScoreFormat,
+  normalizeUserTeamsInMatch,
+} from '../constructors/match.constructors';
 import {parseJoinedTeamsAPI} from '../constructors/teams.constructor';
 import {normalizeGetPlayersAPI} from '../constructors/teams.constructor';
 import aus_sl_Live from '../assets/mocks/aussl_2022_t20_03_live.json';
@@ -16,9 +19,12 @@ import {
   extractDataFromUpcommingMatchesAPI,
   extractJoinedContestAPIResponse,
   normalizeCompareTeamsRemote,
+} from '../constructors/contest.constructors';
+
+import {
   normalizeMatchUserContets,
   parseJoinedMatchesAPI,
-} from '../constructors/contest.constructors';
+} from '../constructors/match.constructors';
 
 // API Routes
 const req_upcomming_mathces_banner = '/upcoming-matches.php';
@@ -31,6 +37,8 @@ const req_players = '/player-credits.php';
 
 const req_live_match = '/live-match.php';
 const req_match_contests = '/my-contest.php';
+const req_get_teams = '/get-team.php';
+
 const req_my_contest = '/my-contest.php';
 const req_create_contest = '/create-private-contest.php';
 
@@ -73,6 +81,26 @@ export const userMatchContestsRemote = async (params: any) => {
     );
     if (response.status === 200) {
       return normalizeMatchUserContets(response.data.data);
+    }
+    throw 'unhandled err';
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
+export const userTeamsInMatchRemote = async (params: any) => {
+  try {
+    const response = await requestServer(
+      METHODS.POST,
+      BASE_URL + req_get_teams,
+      {
+        match_key: params.queryKey[1],
+        player_key: params.queryKey[2],
+      },
+    );
+    if (response.status === 200) {
+      return normalizeUserTeamsInMatch(response.data.data);
     }
     throw 'unhandled err';
   } catch (err) {
@@ -330,6 +358,9 @@ export const getMatchPlayerPointsRemote = async (params: any) => {
     const response = await requestServer(
       METHODS.POST,
       BASE_URL + req_match_points,
+      {
+        match_key: params.queryKey[1],
+      },
     );
     if (response.status === 200) {
       return response.data.data;

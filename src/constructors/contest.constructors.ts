@@ -146,20 +146,7 @@ export const convertTeamCodeToUppercase = (team_key: string) => {
   return team_key.toUpperCase();
 };
 
-export const parseJoinedMatchesAPI = (payload: any) => {
-  try {
-    const matches = [];
-    for (const match of payload) {
-      const obj = {...match};
-      obj.start_at = covertInputTimeStringToDate(match.teams.start_at);
-      matches.push(obj);
-    }
-    return matches;
-  } catch (err) {
-    console.log('parseJoinedMatchesAPI', err);
-    return false;
-  }
-};
+
 
 export function parseContestLeaderBoardAPI(payload: Array<any>) {
   try {
@@ -194,20 +181,4 @@ export const normalizeCompareTeamsRemote = (payload: any) => {
   return payload;
 };
 
-// used in match screen my contests tab 
-//TODO: teams section not yet done, need to discussed with API team
-export const normalizeMatchUserContets = (payload:any) =>{
-  try{
-    const contests = payload.slice(0, payload.length - 1);
-    // teams will do later after talked with API team
-    if(contests.length === 0){
-      return []
-    }else{
-      return contests
-    }
-    throw "unhanled error happended"
-  }catch(err){
-    console.log(err);
-    throw err
-  }
-}
+
