@@ -6,7 +6,7 @@ interface PropTypes {
 }
 
 function Icon(props: PropTypes) {
-  console.log('moved to new SVG location path');
+  console.log('moved to new SVG location path rank');
   
   return (
     <Svg width="16" height="16" viewBox="0 0 16 16" fill="none">

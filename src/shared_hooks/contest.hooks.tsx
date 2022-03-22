@@ -78,7 +78,7 @@ export const useJoinedContests = (
   return {joined, joinedAPI, joinedAPILive, errJC, rfJC};
 };
 
-
+// move to match hooks later not now
 export const useContestLeaderboard = (
   match_key: string,
   contest_key: string,

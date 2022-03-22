@@ -1,10 +1,9 @@
 import React, {useReducer} from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, ScrollView, FlatList, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {View, FlatList, Text} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import LastUpdatedAt from '../atoms/LastUpdatedAt';
-import {HorizontalProfile, RankIcon} from '../../../../sharedComponents';
+import {RankIcon} from '../../../../assets/newIcons';
 import LeaderBoardProfile from './LeaderBoardProfile';
 import {
   contestMatchState,
@@ -37,6 +36,8 @@ export default function LeaderBoardPage(props: PropTypes) {
   return (
     <View>
       <FlatList
+        refreshing={false}
+        onRefresh={()=>{}}
         ListHeaderComponent={() => {
           return (
             <>

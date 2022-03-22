@@ -31,14 +31,21 @@ export default function MyContestPage(props: PropTypes) {
 
   return (
     <ScrollView style={[ss.root]}>
-      <MyContestStatus
-        onContestCardPress={props.onContestCardPress}
-        contest_code={''}
-        contest_id={''}
-        contest_name={''}
-        contest_team={[]}
-        entry_fee={''}
-      />
+      {props.contests.map(item => {
+        return (
+          <MyContestStatus
+            key={item.contest_code}
+            onContestCardPress={props.onContestCardPress}
+            contest_code={item.contest_code}
+            contest_id={item.contest_id}
+            contest_amount={'N/A'}
+            contest_team={[]}
+            entry_fee={item.entry_fee}
+            spots={'1000'}
+          />
+        );
+      })}
+
       <View style={[ss.space]}></View>
     </ScrollView>
   );

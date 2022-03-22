@@ -7,31 +7,20 @@ import {
   Projection,
   CurrentLiveStatus,
   FullScreenLoading,
-  ExpertsStats,
   MatchPlayersStats,
 } from '../../../sharedComponents';
 
 import PagerView from 'react-native-pager-view';
 import {MatchCommentary, MatchScoreBoard} from '../../../sharedComponents';
-import LiveMatchSeparator from './atoms/LiveMatchSeparator';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import LiveMatchTabs from './atoms/LiveMatchTabs';
 
-import LeaderBoardPage from './molecules/LeaderBoardPage';
+import LeaderBoardPage from './molecules/mc.leaderboard';
 import WinningsPage from './molecules/WinningsPage';
-import LinearGradient from 'react-native-linear-gradient';
 import LiveMatchTopBar from './atoms/LiveMatchTopBar';
+import {ContestMatchScreenType} from '../../../types/match';
 
-// import Icon from 'react-native-vector-icons/Ionicons';
-const log = console.log;
-
-interface PropTypes {
-  matchAPI: any;
-  matchMeta: any;
-  onPressCompareTeam(src_team_key: string, opp_team_key: string): void;
-}
-
-export default function ContestMatchScreen(props: PropTypes) {
+export default function ContestMatchScreen(props: ContestMatchScreenType) {
   const pageRef = useRef<any>(null);
   const isScreenReady = useIsScreenReady();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -43,13 +32,6 @@ export default function ContestMatchScreen(props: PropTypes) {
   const onTabPressed = (index: number) => {
     pageRef.current?.setPage(index);
   };
-
-  if (isScreenReady === false || !props.matchAPI) {
-    return <FullScreenLoading title={'Loading'} />;
-  }
-  if (props.matchAPI && !props.matchMeta) {
-    return <Text>Received Scrambled data :(</Text>;
-  }
 
   return (
     <View style={tailwind('bg-dark h-full')}>
@@ -65,7 +47,6 @@ export default function ContestMatchScreen(props: PropTypes) {
 
         <Projection msg={props.matchMeta.notification} />
 
-        
         <CurrentLiveStatus
           striker={props.matchMeta.striker}
           nonStriker={props.matchMeta.nonStriker}
@@ -82,6 +63,7 @@ export default function ContestMatchScreen(props: PropTypes) {
       <PagerView
         ref={pageRef}
         onPageSelected={onPageSelectedAction}
+        initialPage={0}
         style={{flex: 1}}>
         <View>
           <LeaderBoardPage
@@ -104,7 +86,11 @@ export default function ContestMatchScreen(props: PropTypes) {
           <MatchCommentary index={3} activeIndex={activeIndex} />
         </View>
         <View>
-          <MatchPlayersStats index={4} activeIndex={activeIndex} />
+          <MatchPlayersStats
+            index={4}
+            activeIndex={activeIndex}
+            players={props.players}
+          />
         </View>
       </PagerView>
     </View>

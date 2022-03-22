@@ -1,3 +1,5 @@
+import {NullLiteral} from '@babel/types';
+
 export interface PlayerType {
   key: string;
   name: string;
@@ -100,7 +102,6 @@ export interface TeamMeta {
   a: string;
 }
 
-
 export interface Score {
   team_key: string;
   name: string;
@@ -183,11 +184,20 @@ export interface WicketsDaum {
 
 export interface MatchScreenType {
   matchMeta: Omit<MatchScoreStateType, 'players' | 'playersKeys' | 'xisKey'>;
-  conestsLoading:boolean,
-  contestsError:boolean,
+  conestsLoading: boolean;
+  contestsError: boolean;
   contests: Array<any> | null;
   teams: Array<any> | null;
   commentry: Array<any>;
-  players:Array<any> | null
+  players: Array<any> | null;
   onContestCardPress(contest_key: string): void;
+}
+
+export interface ContestMatchScreenType {
+  matchMeta: Omit<MatchScoreStateType, 'players' | 'playersKeys' | 'xisKey'>;
+  contest: any | null;
+  leaderBoard: null | Array<any>;
+  commentary: null | Array<any>;
+  players: Array<any> | null;
+  onPressCompareTeam(opTeam: any);
 }

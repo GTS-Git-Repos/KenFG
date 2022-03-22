@@ -1,5 +1,6 @@
 import {useEffect} from 'react';
 import {useQuery} from 'react-query';
+import {contestleaderBoardRemote} from '../remote/contestRemote';
 import {
   compareTeamsRemote,
   getMatchPlayerPointsRemote,
@@ -9,6 +10,7 @@ import {
   userTeamsInMatchRemote,
 } from '../remote/matchesRemote';
 import {
+  updateMatchMetaAction,
   updateMatchConetstsAction,
   updatePlayerPointsAction,
   updateUserTeamsInMatchAction,
@@ -30,7 +32,7 @@ export const useMatchPlayersPointsState = (
   });
 
   useEffect(() => {
-    if (mpPoints && action) {
+    if (action && mpPoints) {
       action(updatePlayerPointsAction(mpPoints));
     }
   }, [mpPoints]);
@@ -39,7 +41,11 @@ export const useMatchPlayersPointsState = (
 };
 
 // match score and state from third party api
-export const useMatchScoreStat = (match_key: string, user_id: string) => {
+export const useMatchScoreStat = (
+  match_key: string,
+  user_id: string,
+  action?: (data: any) => void,
+) => {
   const {
     data: msMeta,
     isLoading: msL,
@@ -58,6 +64,13 @@ export const useMatchScoreStat = (match_key: string, user_id: string) => {
     // cacheTime: 0,
     staleTime: 1000 * 1000,
   });
+
+  useEffect(() => {
+    if (action && msMeta) {
+      action(updateMatchMetaAction(msMeta));
+    }
+  }, [msMeta]);
+
   return {msMeta, msL, msS, msF, msE, msMetaRf};
 };
 
@@ -99,6 +112,34 @@ export const useUserMatchContests = (
   }, [u_contests]);
 
   return {u_contests, u_c_l, u_c_e, u_c_rf};
+};
+
+// CONTINUE FROM THAT
+export const useMatchContestLeaderboard = (
+  match_key: string,
+  contest_key: string,
+  user_id: string,
+) => {
+  const {
+    data: ldbMeta,
+    isSuccess: ldbAPI,
+    isFetching: ldbLive,
+    isError: ldbErr,
+    refetch: refetchLeaderBoard,
+  } = useQuery(
+    ['leaderboard', match_key, contest_key, user_id],
+    contestleaderBoardRemote,
+    {
+      notifyOnChangeProps: ['data', 'isSuccess', 'isFetching', 'isError'],
+    },
+  );
+  return {
+    ldbMeta,
+    ldbAPI,
+    ldbLive,
+    ldbErr,
+    refetchLeaderBoard,
+  };
 };
 
 export const useUserTeamsInMatch = (

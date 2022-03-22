@@ -62,7 +62,7 @@ export default function LiveMatchTabs(props: PropTypes) {
       showsHorizontalScrollIndicator={false}
       horizontal
       getItemLayout={getItemLayout}
-      style={[tailwind('bg-dark-3')]}
+      style={[tailwind('bg-dark-3 border-b border-gray-800')]}
       data={DATA}
       renderItem={({item, index}) => {
         return (

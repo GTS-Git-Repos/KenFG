@@ -35,12 +35,15 @@ export default function MatchScreenHOC() {
   const userMeta = useSelector(userInfo);
   const matchMeta = useSelector(matchMetaSelector);
   const contests = useSelector(matchContestsSelector);
-  const teams = useSelector(userTeamsInMatchSelector)
+  const teams = useSelector(userTeamsInMatchSelector);
   const players = useSelector(matchPlayerPoints);
   const loading = useSelector(matchLoadingSelector);
 
-
-  const {msMeta, msE, msMetaRf} = useMatchScoreStat(match_key, userMeta.mobile);
+  const {msE, msMetaRf} = useMatchScoreStat(
+    match_key,
+    userMeta.mobile,
+    dispatch,
+  );
   const {u_c_l, u_c_e} = useUserMatchContests(
     match_key,
     userMeta.mobile,
@@ -54,13 +57,7 @@ export default function MatchScreenHOC() {
   );
 
   useEffect(() => {
-    if (msMeta) {
-      dispatch(updateMatchMetaAction(msMeta));
-    }
-  }, [msMeta]);
-
-  useEffect(() => {
-    console.log(teams);
+    // console.log(teams);
   }, [teams]);
 
   function onContestCardPress(contest_key: string) {

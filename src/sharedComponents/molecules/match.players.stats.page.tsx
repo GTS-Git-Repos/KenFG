@@ -91,6 +91,7 @@ export default function MatchPlayersStatsPage(props: PropTypes) {
           </View>
         </ScrollView>
       </View>
+      <View style={[{height: 40}]}></View>
     </ScrollView>
   );
 }

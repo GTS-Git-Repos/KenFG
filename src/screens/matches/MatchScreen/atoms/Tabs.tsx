@@ -3,7 +3,6 @@ import tailwind from '../../../../../tailwind';
 import {
   View,
   Text,
-  ScrollView,
   TouchableOpacity,
   FlatList,
   useWindowDimensions,
@@ -20,11 +19,11 @@ interface PropTypes {
 const DATA = [
   {
     key: 'winnings',
-    tabName: 'My Contests (1)',
+    tabName: 'My Contests',
   },
   {
     key: 'leaderboard',
-    tabName: 'My Teams(2)',
+    tabName: 'My Teams',
   },
   {
     key: 'ScoreBoard',
@@ -42,7 +41,7 @@ const DATA = [
 
 export default function LiveMatchTabs(props: PropTypes) {
   const flatListRef = useRef<any>();
-  const width = useWindowDimensions('window').width;
+  const width = useWindowDimensions().width;
 
   const TABWIDTH = width / 3;
 
@@ -61,7 +60,7 @@ export default function LiveMatchTabs(props: PropTypes) {
       horizontal
       getItemLayout={getItemLayout}
       showsHorizontalScrollIndicator={false}
-      style={[tailwind('bg-dark-3 px-3')]}
+      style={[tailwind('bg-dark-3 px-3 border-b border-gray-800')]}
       data={DATA}
       renderItem={({item, index}) => {
         return (

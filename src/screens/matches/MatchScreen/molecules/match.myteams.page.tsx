@@ -39,7 +39,7 @@ export default function MatchMyteamsPage(props: PropTypes) {
               bowler={item.bowler}
               team_a={undefined}
               team_b={undefined}
-              hasPoints={'0'}
+              hasPoints={'N/A'}
               mutateTeam={() => {}}
               navigateToPreview={() => {}}
             />
