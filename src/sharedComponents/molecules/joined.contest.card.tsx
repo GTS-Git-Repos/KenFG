@@ -13,6 +13,9 @@ import TeamCode from '../atoms/TeamCode';
 import ShareIcon from '../icons/ShareIcon';
 import SwitchIcon from '../icons/SwitchIcon';
 import {TeamFormationMutationType} from '../../types/match';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   match_key: string;
@@ -48,15 +51,32 @@ interface TeamInfoTypes {
 
 export default function JoinedContestCard(props: PropTypes) {
   const [open, setOpen] = useState(false);
+  const dT = useSelector(getAppThemeSelector);
+
   return (
-    <View style={[ss.root]}>
+    <View style={[ss.root, !dT && ss.lRoot]}>
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => props.onPressJoinedContest(props.contest_key)}>
-        <TopSection
-          title={props.contest_name}
-          entry_amount={props.entry_amount}
-        />
+        <View style={[ss.ts]}>
+          <View style={[ss.frbc]}>
+            <View>
+              <Text style={[ss.headTitle, !dT && clr.td1]}>
+                {props.contest_name}
+              </Text>
+              <Text style={[ss.title, !dT && clr.td1]}>
+                {'\u20B9 '} {props.contest_name}
+              </Text>
+            </View>
+
+            <View>
+              <Text style={[ss.headTitle, !dT && clr.td1]}>Entry</Text>
+              <Text style={[ss.title, !dT && clr.td1]}>
+                {'\u20B9'} {props.entry_amount}
+              </Text>
+            </View>
+          </View>
+        </View>
         <View style={[ss.barroot]}>
           <ProgressBarShared spots={'20'} left={'19'} />
         </View>
@@ -70,11 +90,15 @@ export default function JoinedContestCard(props: PropTypes) {
 
       <View style={[ss.pad8]}>
         <View style={[ss.frbc]}>
-          <Text style={[ss.txt]}>
+          <Text style={[ss.txt, !dT && clr.td1]}>
             Joined with {props.contest_teams.length} teams
           </Text>
           <TouchableOpacity onPress={() => setOpen(!open)}>
-            <Icon name="chevron-up-outline" size={16} color="#FFFFFF80" />
+            <Icon
+              name="chevron-up-outline"
+              size={16}
+              color={dT ? '#FFFFFF80' : 'black'}
+            />
           </TouchableOpacity>
         </View>
 
@@ -105,28 +129,6 @@ export default function JoinedContestCard(props: PropTypes) {
     </View>
   );
 }
-
-const TopSection = (props: any) => {
-  return (
-    <View style={[ss.ts]}>
-      <View style={[ss.frbc]}>
-        <View>
-          <Text style={[ss.headTitle]}>{props.title}</Text>
-          <Text style={[ss.title]}>
-            {'\u20B9 '} {props.title}
-          </Text>
-        </View>
-
-        <View>
-          <Text style={[ss.headTitle]}>Entry</Text>
-          <Text style={[ss.title]}>
-            {'\u20B9'} {props.entry_amount}
-          </Text>
-        </View>
-      </View>
-    </View>
-  );
-};
 
 const JoinedTeams = (props: any) => {
   return (
@@ -199,6 +201,10 @@ const ss = StyleSheet.create({
     backgroundColor: '#172338',
     borderRadius: 6,
     marginBottom: 8,
+    elevation: 7,
+  },
+  lRoot: {
+    backgroundColor: '#FFFFFF',
   },
   ts: {
     paddingVertical: 8,

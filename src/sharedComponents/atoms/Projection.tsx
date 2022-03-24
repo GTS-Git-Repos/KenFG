@@ -1,12 +1,17 @@
 import React from 'react';
 import {StyleSheet, Text} from 'react-native';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   msg: string;
 }
 
 export default function Projection(props: PropTypes) {
-  return <Text style={[ss.txt]}>{props.msg}</Text>;
+  const dT = useSelector(getAppThemeSelector);
+
+  return <Text style={[ss.txt, !dT && clr.td1]}>{props.msg}</Text>;
 }
 
 const ss = StyleSheet.create({

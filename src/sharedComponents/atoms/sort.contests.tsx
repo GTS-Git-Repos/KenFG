@@ -11,9 +11,10 @@ export default function SortContests(
   props: Pick<ContestPageType, 'sortStatus' | 'sortByOnPress'>,
 ) {
   // console.log(props.sortStatus);
+  const dT = useSelector(getAppThemeSelector);
 
   return (
-    <View style={[ss.root]}>
+    <View style={[ss.root, !dT && ss.lRoot]}>
       <TouchableOpacity
         onPress={() =>
           props.sortByOnPress({
@@ -25,7 +26,7 @@ export default function SortContests(
         {props.sortStatus.price !== null && (
           <DownArrowIcon invert={props.sortStatus.price} />
         )}
-        <Text style={[ss.btntxt]}>Total Price</Text>
+        <Text style={[ss.btntxt, !dT && clr.tdgray]}>Total Price</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() =>
@@ -35,7 +36,7 @@ export default function SortContests(
           })
         }
         style={[ss.btn]}>
-        <Text style={[ss.btntxt]}>Entry Fee</Text>
+        <Text style={[ss.btntxt, !dT && clr.tdgray]}>Entry Fee</Text>
         {props.sortStatus.entry !== null && (
           <DownArrowIcon invert={props.sortStatus.entry} />
         )}
@@ -47,12 +48,19 @@ export default function SortContests(
 const ss = StyleSheet.create({
   root: {
     paddingHorizontal: 14,
-    paddingVertical: 6,
+    paddingVertical: 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    borderColor: 'transparent',
     borderTopColor: 'rgba(31, 41, 55, 1)',
     borderBottomColor: 'rgba(31, 41, 55, 1)',
+    borderWidth: 1,
+  },
+  lRoot: {
+    backgroundColor: '#FFFFFF',
+    borderTopColor: 'rgba(135, 151, 177, 0.3)',
+    borderBottomColor: 'rgba(135, 151, 177, 0.3)',
     borderWidth: 1,
   },
   btn: {

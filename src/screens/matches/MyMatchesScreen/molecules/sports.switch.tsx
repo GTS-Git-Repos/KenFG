@@ -101,8 +101,8 @@ const styles = StyleSheet.create({
     borderColor: '#E0E0E0',
     borderStyle: 'solid',
     borderRadius: 1,
-    backgroundColor: '#E0E0E0',
-    borderBottomWidth: 2,
+    backgroundColor: '#FFFFFF',
+    borderBottomWidth: 1,
     paddingTop: 6,
   },
   logoC: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,
-    borderColor: '#E0E0E0',
+    borderColor: '#D8C872',
   },
   dBorder: {
     borderColor: '#BCA04D',

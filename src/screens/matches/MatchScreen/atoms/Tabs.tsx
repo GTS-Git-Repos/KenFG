@@ -4,16 +4,20 @@ import {
   View,
   Text,
   TouchableOpacity,
+  StyleSheet,
   FlatList,
   useWindowDimensions,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import clr from '../../../../constants/colors';
+
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
   text?: string;
   activeIndex: number;
   onTabPressed(index: number): any;
+  dT: boolean;
 }
 
 const DATA = [
@@ -60,11 +64,12 @@ export default function LiveMatchTabs(props: PropTypes) {
       horizontal
       getItemLayout={getItemLayout}
       showsHorizontalScrollIndicator={false}
-      style={[tailwind('bg-dark-3 px-3 border-b border-gray-800')]}
+      style={[ss.root, !props.dT && clr.bgw]}
       data={DATA}
       renderItem={({item, index}) => {
         return (
           <TabItem
+            dT={props.dT}
             key={item.key}
             tabName={item.tabName}
             index={index}
@@ -77,7 +82,7 @@ export default function LiveMatchTabs(props: PropTypes) {
   );
 }
 
-const TabItem = ({tabName, active, index, onTabPressed}) => {
+const TabItem = ({tabName, active, index, onTabPressed, dT}) => {
   const width = useWindowDimensions('window').width;
 
   const TABWIDTH = width / 3;
@@ -86,18 +91,11 @@ const TabItem = ({tabName, active, index, onTabPressed}) => {
       onPress={() => onTabPressed(index)}
       style={[{width: TABWIDTH}, tailwind('')]}>
       <View style={[tailwind('pt-3')]}>
-        <Text
-          style={[
-            tailwind(
-              `${active ? 'font-bold' : 'font-regular'} text-center font-14`,
-            ),
-            {
-              color: active ? '#FFFF' : '#8797B1',
-              letterSpacing: 0.3,
-            },
-          ]}>
-          {tabName}
-        </Text>
+        {dT ? (
+          <Text style={[ss.dtxt, active && ss.daTxt]}>{tabName}</Text>
+        ) : (
+          <Text style={[ss.ltxt, active && ss.laTxt]}>{tabName}</Text>
+        )}
         {active && (
           <LinearGradient
             start={{x: 0, y: 0}}
@@ -109,3 +107,45 @@ const TabItem = ({tabName, active, index, onTabPressed}) => {
     </TouchableOpacity>
   );
 };
+
+const ss = StyleSheet.create({
+  root: {
+    backgroundColor: '#172338',
+    // borderBottomColor: 'rgba(31, 41, 55, 1)',
+    // borderBottomWidth: 1,
+    // borderLeftColor: 'rgba(31, 41, 55, 1)',
+    // borderRightColor: 'rgba(31, 41, 55, 1)',
+    // borderTopColor: 'rgba(31, 41, 55, 1)',
+    paddingHorizontal: 12,
+  },
+  lRoot: {
+    borderColor: '#FFFFFF',
+    // borderBottomColor: 'rgba(31, 41, 55, 1)',
+    // borderBottomWidth: 1,
+    // borderLeftColor: 'rgba(31, 41, 55, 1)',
+    // borderRightColor: 'rgba(31, 41, 55, 1)',
+    // borderTopColor: 'rgba(31, 41, 55, 1)',
+  },
+  dtxt: {
+    fontFamily: 'gadugi-normal',
+    textAlign: 'center',
+    fontSize: 14,
+    letterSpacing: 0.3,
+    color: '#FFFFFF',
+  },
+  ltxt: {
+    fontFamily: 'gadugi-normal',
+    textAlign: 'center',
+    fontSize: 14,
+    letterSpacing: 0.3,
+    color: '#0D1320',
+  },
+  daTxt: {
+    fontFamily: 'gadugi-bold',
+    color: '#FFFFFF',
+  },
+  laTxt: {
+    fontFamily: 'gadugi-bold',
+    color: '#9C181E',
+  },
+});

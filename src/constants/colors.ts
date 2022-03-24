@@ -63,4 +63,7 @@ export default {
   tdgray: {
     color: '#4F4F4F',
   },
+  tgreen: {
+    color: '#00513B',
+  },
 };

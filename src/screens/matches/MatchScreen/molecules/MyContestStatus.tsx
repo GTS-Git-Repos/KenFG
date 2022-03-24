@@ -5,6 +5,9 @@ import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {DownArrowIcon, TopArrowIcon} from '../../../../assets/newIcons';
 import {RankIcon} from '../../../../assets/newIcons';
 import {FooterContest, TeamCode} from '../../../../sharedComponents';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   contest_code: string;
@@ -23,19 +26,22 @@ interface TeamStatusTypes {
   rank: number;
   rising: boolean;
   winningZone: boolean;
+  dT: boolean;
 }
 
 export default function MyMatchContestCard(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
     <TouchableOpacity
       activeOpacity={0.6}
       onPress={() => props.onContestCardPress(props.contest_code)}
-      style={[ss.root]}>
+      style={[ss.root, dT ? clr.bgd2 : clr.bgw]}>
       {/* Top Section */}
       <View style={[ss.tsRoot]}>
         <View style={[ss.ts1]}>
           <Text style={[ss.title]}>Prize Pool</Text>
-          <Text numberOfLines={1} style={[ss.value]}>
+          <Text numberOfLines={1} style={[ss.value, !dT && clr.td1]}>
             {'\u20B9 '}
             {props.contest_amount}
           </Text>
@@ -43,32 +49,25 @@ export default function MyMatchContestCard(props: PropTypes) {
 
         <View style={[ss.ts2]}>
           <Text style={[ss.title]}>Spots</Text>
-          <Text style={[ss.valueDull]}>{props.spots}</Text>
+          <Text style={[ss.valueDull, !dT && clr.td1]}>{props.spots}</Text>
         </View>
         <View style={[ss.ts3]}>
           <Text style={[ss.title]}>Entry</Text>
-          <Text style={[ss.valueDull]}>
+          <Text style={[ss.valueDull, !dT && clr.td1]}>
             {'\u20B9'} {props.entry_fee}
           </Text>
         </View>
       </View>
       <FooterContest amount_letters={'N/A'} bonus={'N/A'} guaranteed={true} />
-      <TeamStatus
-        name={'Naveen'}
-        code={'T2'}
-        points={122}
-        rank={22}
+      {/* <TeamStatus
+        dT={dT}
+        name={'N/A'}
+        code={'N/A'}
+        points={0}
+        rank={0}
         winningZone={true}
-        rising={true}
-      />
-      <TeamStatus
-        name={'Naveen'}
-        code={'T3'}
-        points={122}
-        rank={22}
-        winningZone={false}
         rising={false}
-      />
+      /> */}
     </TouchableOpacity>
   );
 }
@@ -81,7 +80,7 @@ export default function MyMatchContestCard(props: PropTypes) {
 
 const TeamStatus = (props: TeamStatusTypes) => {
   return (
-    <TouchableOpacity style={[ss.teamRoot]}>
+    <TouchableOpacity style={[ss.teamRoot, !props.dT && clr.bgGray]}>
       <View style={[ss.tsRoot]}>
         <Text numberOfLines={1} style={[ss.tname]}>
           Naveen
@@ -106,6 +105,7 @@ const ss = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 12,
     borderRadius: 8,
+    elevation: 5,
   },
   tsRoot: {
     flexDirection: 'row',

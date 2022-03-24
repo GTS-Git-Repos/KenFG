@@ -17,8 +17,12 @@ import {Modalize} from 'react-native-modalize';
 import clr from '../../../constants/colors';
 import BreakupModalSheet from './molecules/BreakupModalSheet';
 import {MatchScreenType} from '../../../types/match';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../store/selectors';
 
 export default function MatchScreen(props: MatchScreenType) {
+  const dT = useSelector(getAppThemeSelector);
+
   const {matchMeta} = props;
   const teamTag = matchMeta.match.short_name;
 
@@ -38,9 +42,9 @@ export default function MatchScreen(props: MatchScreenType) {
   };
 
   return (
-    <View style={ss.root}>
+    <View style={[ss.root, !dT && clr.bgGray]}>
       <TopBar text={teamTag} helpIcon={true} ptsIcon={true} />
-      <View style={[ss.container]}>
+      <View style={[ss.container, !dT && clr.bgGray]}>
         <MatchStat
           matchStatus={matchMeta.matchStatus}
           team_a={matchMeta.team_a}
@@ -59,7 +63,7 @@ export default function MatchScreen(props: MatchScreenType) {
       </View>
 
       <View>
-        <Tabs activeIndex={selectedTab} onTabPressed={onTabPressed} />
+        <Tabs dT={dT} activeIndex={selectedTab} onTabPressed={onTabPressed} />
       </View>
 
       <PagerView

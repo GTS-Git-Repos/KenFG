@@ -28,12 +28,12 @@ import {
 import {useCountDown} from '../../../shared_hooks/app.hooks';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {isFullMatchSelector} from '../../../store/selectors';
-import CreateTeamLoading from './atoms/CreateTeamLoading';
 import LoadFailedTeamFormation from './atoms/loadfailed.teamformation';
 import TeamFormationScreen from './team.formation.screen';
 import {useMatchPlayers} from './teamformation.workers';
 import {Modalize} from 'react-native-modalize';
 import {toPlayerProfile} from '../../../store/actions/navigationActions';
+import {FullScreenLoading} from '../../../sharedComponents';
 const log = console.log;
 
 export default function TeamFormationHOC() {
@@ -186,7 +186,7 @@ export default function TeamFormationHOC() {
   }
 
   if (!isScreenReady || match_players.length === 0) {
-    return <CreateTeamLoading />;
+    return <FullScreenLoading title={''} />;
   }
   return (
     <TeamFormationScreen

@@ -7,15 +7,20 @@
 
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   code: string;
 }
 
 export default function TeamCode(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
-    <View style={[ss.root]}>
-      <Text style={[ss.code]}>{props.code}</Text>
+    <View style={[ss.root, !dT && clr.bgGray]}>
+      <Text style={[ss.code, !dT && clr.td1]}>{props.code}</Text>
     </View>
   );
 }

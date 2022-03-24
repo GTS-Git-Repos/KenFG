@@ -2,8 +2,11 @@
 
 import React from 'react';
 // import tailwind from '../../../tailwind';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, TextPropTypes} from 'react-native';
 import {TeamMeta, Score} from '../../types/match';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
+import {useSelector} from 'react-redux';
 
 interface PropTypes {
   matchStatus: string;
@@ -14,6 +17,7 @@ interface PropTypes {
 }
 
 interface TeamScore {
+  dT: boolean;
   score: Array<Score>;
 }
 
@@ -25,20 +29,26 @@ interface TeamScore {
    */
 
 export default function MatchStat(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
     <View style={[ss.root]}>
       <View style={[ss.teamAC]}>
-        <Text style={[ss.tname]}>{props.team_a.name}</Text>
-        <MatchScore score={props.score_a} />
+        <Text style={[ss.tname, !dT && clr.tdgray]}>{props.team_a.name}</Text>
+        <MatchScore score={props.score_a} dT={dT} />
       </View>
 
       {/* //FIXME: confirm the hard coding a value */}
-      {props.matchStatus === 'completed' ? <Completed /> : <LiveIndicator />}
+      {props.matchStatus === 'completed' ? (
+        <Completed dT={dT} />
+      ) : (
+        <LiveIndicator />
+      )}
 
       {/* team b score */}
       <View style={[ss.teamBC]}>
-        <Text style={[ss.tname]}>{props.team_b.name}</Text>
-        <MatchScore score={props.score_b} />
+        <Text style={[ss.tname, !dT && clr.tdgray]}>{props.team_b.name}</Text>
+        <MatchScore score={props.score_b} dT={dT} />
       </View>
     </View>
   );
@@ -48,8 +58,8 @@ function MatchScore(props: TeamScore) {
   if (props.score.length === 0) {
     return (
       <View style={[ss.cInnings]}>
-        <Text style={[ss.cinS]}>Yet to bat</Text>
-        <Text style={[ss.scoreO]}></Text>
+        <Text style={[ss.cinS, !props.dT && clr.td1]}>Yet to bat</Text>
+        <Text style={[ss.scoreO, !props.dT && clr.tdgray]}></Text>
       </View>
     );
   }
@@ -64,14 +74,14 @@ function MatchScore(props: TeamScore) {
       )}
       {props.score.length > 1 ? (
         <View style={[ss.cInnings]}>
-          <Text style={[ss.score]}>
+          <Text style={[ss.score, !props.dT && clr.td1]}>
             {props.score[1].runs}/{props.score[1].wickets}
           </Text>
           <Text style={[ss.scoreO]}>({props.score[1].overs})</Text>
         </View>
       ) : (
         <View style={[ss.cInnings]}>
-          <Text style={[ss.score]}>
+          <Text style={[ss.score, !props.dT && clr.td1]}>
             {props.score[0].runs}/{props.score[0].wickets}
           </Text>
           <Text style={[ss.scoreO]}>({props.score[0].overs})</Text>
@@ -81,7 +91,7 @@ function MatchScore(props: TeamScore) {
   );
 }
 
-const LiveIndicator = () => {
+const LiveIndicator = (props: any) => {
   return (
     <View style={[ss.cIndtr]}>
       <View style={[ss.dot, {backgroundColor: '#EB5757'}]}></View>
@@ -90,11 +100,11 @@ const LiveIndicator = () => {
   );
 };
 
-const Completed = () => {
+const Completed = (props: any) => {
   return (
     <View style={[ss.cIndtr]}>
       <View style={[ss.dot, {backgroundColor: '#006A4D'}]}></View>
-      <Text style={[ss.completetxt]}>COMPLETED</Text>
+      <Text style={[ss.completetxt, !props.dT && clr.tgreen]}>COMPLETED</Text>
     </View>
   );
 };
