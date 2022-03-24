@@ -4,6 +4,7 @@ import {
   UPDATE_USER_TEAMS,
   UPDATE_LOADING,
   UPDATE_PLAYERS_POINTS,
+  RESET_INITIAL,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -53,6 +54,17 @@ const Match = (state = initialState, action: actionShape): any => {
         ...state,
         match_players: action.payload,
       };
+    case RESET_INITIAL: {      
+      return {
+        matchMeta: null,
+        mycontest: null,
+        myteams: null,
+        match_players: null,
+        playersMeta: {},
+        xis: [],
+        loading: true,
+      };
+    }
     default:
       return state;
   }

@@ -15,7 +15,7 @@ export default function Links(props: PropTypes) {
   const navigation = useNavigation<any>();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate(props.goto)}
+      onPress={() => {}}
       activeOpacity={0.6}
       style={[
         tailwind(

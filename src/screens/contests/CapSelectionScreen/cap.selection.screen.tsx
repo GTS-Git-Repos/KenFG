@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
 import {StackActions, useNavigation, useRoute} from '@react-navigation/native';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 // import assets from 'assets';
 import {TopBar, BlockScreenByLoading} from '../../../sharedComponents';
@@ -43,6 +44,8 @@ interface PropTypes {
 }
 
 export default function CapSelectionScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   const route = useRoute<any>();
@@ -135,7 +138,7 @@ export default function CapSelectionScreen(props: PropTypes) {
       if (matchSelector.joinContest) {
         // update created team key state
         // console.log('response.data.team_key',response.data.team_key);
-        
+
         dispatch(UpdateCreateTeamAction(response.data.team_key));
         dispatch(updateJoinModalAction(true));
         navigation.dispatch(StackActions.popToTop());
@@ -151,11 +154,15 @@ export default function CapSelectionScreen(props: PropTypes) {
   };
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
+    <View style={[tailwind('h-full bg-dark'), !dT && clr.bgGray]}>
       <TopBar text={matchSelector.titleString} helpIcon={true} ptsIcon={true} />
       <ScrollView>
         <View style={[tailwind('px-4 py-3 border-b border-gray-800')]}>
-          <Text style={[tailwind('font-bold text-center text-dark-1 font-13')]}>
+          <Text
+            style={[
+              tailwind('font-bold text-center text-dark-1 font-13'),
+              !dT && clr.td1,
+            ]}>
             Choose your Captain and Vice Captain
           </Text>
           <Text

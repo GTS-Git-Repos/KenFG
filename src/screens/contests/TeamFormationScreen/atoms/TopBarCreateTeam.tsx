@@ -11,12 +11,15 @@ import {
   InfoIcon,
   PointsIcon,
 } from '../../../../assets/newIcons';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   countDown: string;
+  dT: boolean;
 }
 
 export default function TopBarCreateTeam(props: PropTypes) {
+  const dT = props.dT;
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -25,35 +28,31 @@ export default function TopBarCreateTeam(props: PropTypes) {
     navigation.goBack();
   }
   return (
-    <View style={[tailwind('bg-secondary')]}>
-      <View
-        style={[
-          tailwind('flex-row items-center justify-between px-2'),
-          {paddingVertical: 14},
-        ]}>
-        <View style={[tailwind('flex-row items-center')]}>
+    <View style={[dT ? clr.bgg : clr.bgRed]}>
+      <View style={[ss.container]}>
+        <View style={[ss.sec]}>
           <TouchableOpacity onPress={goBack} style={[tailwind('pl-4 px-2')]}>
-            <BackIcon dark={true} />
+            <BackIcon dark={dT} />
           </TouchableOpacity>
-          <Text style={[tailwind('font-bold font-18'), {color: '#614920'}]}>
+          <Text style={[ss.cd, dT ? clr.tg : clr.tw]}>
             {props.countDown} Left
           </Text>
         </View>
-        <View style={[tailwind('flex-row items-center')]}>
+        <View style={[ss.sec]}>
           <Image
             resizeMode="contain"
             source={assets.fantasy_points}
-            style={[tailwind(''), {width: 30, height: 30}]}
+            style={[ss.fpImage]}
           />
           <TouchableOpacity style={[ss.link]}>
-            <InfoIcon isDarkMode={true} />
+            <InfoIcon isDarkMode={dT} />
           </TouchableOpacity>
 
           <TouchableOpacity style={[ss.link]}>
-            <PointsIcon isDarkMode={true} />
+            <PointsIcon isDarkMode={dT} />
           </TouchableOpacity>
           <TouchableOpacity style={[ss.link]}>
-            <HelpIcon isDarkMode={true} />
+            <HelpIcon isDarkMode={dT} />
           </TouchableOpacity>
         </View>
       </View>
@@ -64,5 +63,24 @@ export default function TopBarCreateTeam(props: PropTypes) {
 const ss = StyleSheet.create({
   link: {
     paddingHorizontal: 4,
+  },
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 8,
+    paddingVertical: 14,
+  },
+  sec: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  cd: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 18,
+  },
+  fpImage: {
+    width: 30,
+    height: 30,
   },
 });

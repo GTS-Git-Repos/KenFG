@@ -28,7 +28,7 @@ interface PropTypes {
 export default function NoContests(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   return (
-    <View style={[{height: '100%', backgroundColor: '#FFFFFF'}]}>
+    <View style={[{height: '100%'}, dT ? clr.bgd1 : clr.bgw]}>
       <View style={[ss.troot]}>
         <FiltersContests
           filterOnPress={props.filterOnPress}

@@ -11,13 +11,13 @@ import {
   UPDATE_TEAM,
   UPDATE_BLOCKLIST,
   UPDATE_ERROR_MESSAGE,
-  UPDATE_LOCK
+  UPDATE_LOCK,
 } from '../actions/actionTypes';
 
 // TODO: is team_a, team_b is used anywhere ? I think no, need to refactor laterw
 
 const initialState = {
-  lock:false,
+  lock: false,
   all_players: [],
   teams: ['', ''],
   team_a: null,
@@ -38,11 +38,11 @@ interface actionShape {
 
 const Team = (state = initialState, action: actionShape): any => {
   switch (action.type) {
-    case UPDATE_LOCK:{
+    case UPDATE_LOCK: {
       return {
         ...state,
-        lock:action.payload
-      }
+        lock: action.payload,
+      };
     }
     case SAVE_ALL_PLAYERS: {
       return {

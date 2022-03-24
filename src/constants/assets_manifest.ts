@@ -1,6 +1,5 @@
 export default {
   fantasy_points: require('../assets/icons/fantasy_points.png'),
-  minus: require('../assets/icons/minus.png'),
   comparePlayer: require('../assets/icons/comparePlayer.png'),
   vs: require('../assets/icons/vs.png'),
   levels: require('../assets/icons/levels.png'),

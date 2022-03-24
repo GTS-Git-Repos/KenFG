@@ -4,6 +4,7 @@ import {
   UPDATE_MY_CONTESTS,
   UPDATE_PLAYERS_POINTS,
   UPDATE_USER_TEAMS,
+  RESET_INITIAL,
 } from './actionTypes';
 
 export const updateAppError = (payload: string) => ({
@@ -26,6 +27,9 @@ export const updatePlayerPointsAction = (payload: Array<any>) => ({
   payload,
 });
 
+export const resetToInitialAction = () => ({
+  type: RESET_INITIAL,
+});
 
 // update that data parsed from 3rd party score API
 // it added match team meta, current score state,scorecard,all players meta

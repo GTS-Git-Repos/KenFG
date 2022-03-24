@@ -1,10 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, FlatList, ActivityIndicator, Text} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  ActivityIndicator,
+  Text,
+} from 'react-native';
 import TabCondtion from '../atoms/TabCondtions';
 import SortTabs from '../atoms/SortTabs';
 import Player from './Players';
 import {currentPlayerStatus} from '../../../../store/store_utils';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   filterSheet: any;
@@ -22,20 +29,11 @@ interface PropTypes {
   checkPlayerSelection(player_key: string, player_role: string): void;
   onPressPlayerProfile(player_key: string, player_role: string): any;
   onSortAction(sortBy: string): any;
+  dT: boolean;
 }
 
 export default function Page(props: PropTypes) {
   const position = props.index - props.activeIndex;
-
-  // if (position < -1 || position > 1 || props.activeIndex === props.index) {
-  //   return (
-  //     <ActivityIndicator
-  //       style={[tailwind('mt-10')]}
-  //       size={'large'}
-  //       color="#d1b45a"
-  //     />
-  //   );
-  // }
 
   if (props.index != props.activeIndex) {
     return (
@@ -57,14 +55,16 @@ export default function Page(props: PropTypes) {
 
   return (
     <View>
-      <View style={[tailwind('bg-dark')]}>
+      <View style={[props.dT ? clr.bgd1 : clr.bgGray]}>
         <TabCondtion
+          dT={props.dT}
           text={props.title}
           filterSheet={props.filterSheet}
           filterTeam={props.filterTeam}
         />
 
         <SortTabs
+          dT={props.dT}
           sortStatus={props.sortStatus}
           onSortAction={props.onSortAction}
         />
@@ -74,6 +74,7 @@ export default function Page(props: PropTypes) {
         renderItem={({item}) => {
           return (
             <Player
+              dT={props.dT}
               player_key={item.key}
               teamname={item.team_key}
               isTeam_a={props.team_a_key === item.team_key}
@@ -98,3 +99,7 @@ export default function Page(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {},
+});

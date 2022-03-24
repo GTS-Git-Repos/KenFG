@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import tailwind from '../../../../tailwind';
 import LinearGradient from 'react-native-linear-gradient';
 import PagerView from 'react-native-pager-view';
@@ -20,7 +20,8 @@ import {errorBox} from '../../../utils/snakBars';
 import ClearTeamSheet from './atoms/ClearTeamSheet';
 import FilterByTeamSheet from './atoms/filterByTeam.teamformationSheet';
 import ScrollTabs from './molecules/ScrollTabs';
-import {log} from '../../../utils/logs';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 interface PropTypes {
   players: any;
@@ -38,10 +39,13 @@ interface PropTypes {
   navigateToTeamPreviewScreeen(): any;
   onPressPlayerProfile(player_key: string, player_role: string): any;
   onSortAction(sort_by: string): any;
-  onTeamFilterAction(input:any):any
+  onTeamFilterAction(input: any): any;
 }
 
 export default function TeamFormationScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+  const gradiant = dT ? ['#172338', '#0D1320'] : ['#FFFFFF', '#E0E0E0'];
+
   const pageRef = useRef<PagerView>(null);
   const clearRef = useRef<any>(null);
   const dispatch = useDispatch();
@@ -49,10 +53,7 @@ export default function TeamFormationScreen(props: PropTypes) {
   const ErrorMessageState: any = useSelector<any>(
     state => state.team.error_message,
   );
-  const LockState: any = useSelector<any>(
-    state => state.team.lock,
-  );
-
+  const LockState: any = useSelector<any>(state => state.team.lock);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -72,8 +73,8 @@ export default function TeamFormationScreen(props: PropTypes) {
 
   const checkPlayerSelection = (player_key: string, player_role: string) => {
     // check lock state value for avoid race condition
-    if(LockState === false){
-    dispatch(updatePlayerAction({key: player_key, role: player_role}));
+    if (LockState === false) {
+      dispatch(updatePlayerAction({key: player_key, role: player_role}));
     }
   };
 
@@ -83,22 +84,22 @@ export default function TeamFormationScreen(props: PropTypes) {
   };
 
   return (
-    <View style={tailwind('bg-dark h-full')}>
-      <TopBarCreateTeam countDown={props.countDown} />
-      <LinearGradient colors={['#172338', '#0D1320']}>
-        <LinearGradient colors={['#172338', '#0D1320']}>
-          <MatchStatus text={'MAX 7 PLAYERS FROM A TEAM'} />
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
+      <TopBarCreateTeam dT={dT} countDown={props.countDown} />
+      <LinearGradient colors={gradiant}>
+        <MatchStatus dT={dT} text={'MAX 7 PLAYERS FROM A TEAM'} />
 
-          <TeamInfo
-            teamname1={props.match.team_a}
-            teamname2={props.match.team_b}
-            teamcount1={props.rolesCount[props.match.team_a]}
-            teamcount2={props.rolesCount[props.match.team_b]}
-            credits_left={props.creditsLeft}
-          />
-        </LinearGradient>
+        <TeamInfo
+          dT={dT}
+          teamname1={props.match.team_a}
+          teamname2={props.match.team_b}
+          teamcount1={props.rolesCount[props.match.team_a]}
+          teamcount2={props.rolesCount[props.match.team_b]}
+          credits_left={props.creditsLeft}
+        />
 
         <SelectionIndicator
+          dT={dT}
           clearRef={clearRef}
           count={
             props.rolesCount[props.match.team_a] +
@@ -110,6 +111,7 @@ export default function TeamFormationScreen(props: PropTypes) {
       {/* Tabs */}
       <View>
         <ScrollTabs
+          dT={dT}
           activeIndex={activeIndex}
           onTabPressed={onTabPressed}
           rolesCountSelector={props.rolesCount}
@@ -139,6 +141,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             onPressPlayerProfile={props.onPressPlayerProfile}
             onSortAction={props.onSortAction}
             checkPlayerSelection={checkPlayerSelection}
+            dT={dT}
           />
         </View>
         <View>
@@ -158,6 +161,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             filterTeam={props.filterTeam}
             onPressPlayerProfile={props.onPressPlayerProfile}
             onSortAction={props.onSortAction}
+            dT={dT}
           />
         </View>
         <View>
@@ -177,6 +181,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             filterTeam={props.filterTeam}
             onPressPlayerProfile={props.onPressPlayerProfile}
             onSortAction={props.onSortAction}
+            dT={dT}
           />
         </View>
         <View>
@@ -196,6 +201,7 @@ export default function TeamFormationScreen(props: PropTypes) {
             filterTeam={props.filterTeam}
             onPressPlayerProfile={props.onPressPlayerProfile}
             onSortAction={props.onSortAction}
+            dT={dT}
           />
         </View>
       </PagerView>
@@ -237,3 +243,9 @@ export default function TeamFormationScreen(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+});

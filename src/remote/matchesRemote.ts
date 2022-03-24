@@ -113,7 +113,7 @@ export const userTeamsInMatchRemote = async (params: any) => {
 export const matchScoreStatRemote = async (params: any) => {
   try {
     // console.log(JSON.stringify(MatchScoreFormat(aus_sl_Live)));
-    return MatchScoreFormat(ban_afg_complete);
+    // return MatchScoreFormat(ban_afg_complete);
     // return MatchScoreFormat(aus_sl_Live);
     const response = await requestServer(
       METHODS.POST,

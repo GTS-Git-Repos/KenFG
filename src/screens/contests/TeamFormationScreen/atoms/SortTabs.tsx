@@ -6,43 +6,62 @@ import {DownArrowIcon, TopArrowIcon} from '../../../../assets/newIcons';
 interface PropTypes {
   sortStatus: any;
   onSortAction(sort_by: string): any;
+  dT: boolean;
 }
 
 export default function SortTabs(props: PropTypes) {
   // console.log(props.sortStatus);
 
   return (
-    <View style={[tailwind('flex-row items-center py-2')]}>
-      <View style={[{flex: 2.5}]}></View>
+    <View style={[styles.root]}>
+      <View style={[styles.space]}></View>
 
       <TouchableOpacity
         onPress={() => props.onSortAction('selby')}
         style={[tailwind('flex-row items-center'), {flex: 4}]}>
         <Text style={styles.filterText}>SELECTED BY</Text>
-        {props.sortStatus.sortBySel === false && <DownArrowIcon invert={false} />}
-        {props.sortStatus.sortBySel === true && <TopArrowIcon />}
+        {props.sortStatus.sortBySel === false && (
+          <DownArrowIcon invert={false} />
+        )}
+        {props.sortStatus.sortBySel === true && <DownArrowIcon invert={true} />}
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => props.onSortAction('points')}
         style={[tailwind('flex-row items-center'), {flex: 2}]}>
         <Text style={styles.filterText}>POINTS</Text>
-        {props.sortStatus.sortByPoints === false && <DownArrowIcon invert={false} />}
-        {props.sortStatus.sortByPoints === true && <TopArrowIcon />}
+        {props.sortStatus.sortByPoints === false && (
+          <DownArrowIcon invert={false} />
+        )}
+        {props.sortStatus.sortByPoints === true && (
+          <DownArrowIcon invert={true} />
+        )}
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => props.onSortAction('credits')}
         style={[tailwind('flex-row items-center pr-2'), {flex: 2}]}>
         <Text style={styles.filterText}>CREDITS</Text>
-        {props.sortStatus.sortByCredits === false && <DownArrowIcon invert={false} />}
-        {props.sortStatus.sortByCredits === true && <TopArrowIcon />}
+        {props.sortStatus.sortByCredits === false && (
+          <DownArrowIcon invert={false} />
+        )}
+        {props.sortStatus.sortByCredits === true && (
+          <DownArrowIcon invert={true} />
+        )}
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  root: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+  },
+  space: {
+    flex: 2,
+  },
   filterText: {
     color: '#8797B1',
     fontFamily: 'gadugi-bold',

@@ -16,7 +16,7 @@ import MatchScreen from './match.screen';
 import {toContestMatch} from '../../../navigations/match.links';
 import {useDispatch, useSelector} from 'react-redux';
 import {FullScreenLoading, MatchScoreError} from '../../../sharedComponents';
-import {updateMatchMetaAction} from '../../../store/actions/match.actions';
+import {resetToInitialAction} from '../../../store/actions/match.actions';
 import {userInfo} from '../../../store/selectors';
 import {
   matchContestsSelector,
@@ -38,6 +38,10 @@ export default function MatchScreenHOC() {
   const teams = useSelector(userTeamsInMatchSelector);
   const players = useSelector(matchPlayerPoints);
   const loading = useSelector(matchLoadingSelector);
+
+  useEffect(() => {
+    dispatch(resetToInitialAction());
+  }, []);
 
   const {msE, msMetaRf} = useMatchScoreStat(
     match_key,

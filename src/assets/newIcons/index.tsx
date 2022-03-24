@@ -50,7 +50,7 @@ import PencilEditIcon from './svgIcons/pencil.edit.icon';
 import PlusIcon from './svgIcons/plus.icon';
 import GiftIcon from './svgIcons/gift.icon';
 import RankIcon from './svgIcons/rank.icon';
-
+import MinusIcon from './svgIcons/minus.icon';
 
 export {
   ContestsBottomTabOff,
@@ -74,6 +74,7 @@ export {
   VerifyTick,
   RankIcon,
   SettingSideIcon,
+  MinusIcon,
   CupIcon,
   DollarIcon,
   BankIcon,

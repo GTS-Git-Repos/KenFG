@@ -28,7 +28,7 @@ export const useMatchPlayersPointsState = (
     refetch: mpRf,
   } = useQuery(['match', match_key], getMatchPlayerPointsRemote, {
     notifyOnChangeProps: ['data', 'isLoading', 'isFetching', 'isError'],
-    staleTime: 1000 * 1000,
+    // staleTime: 1000 * 1000,
   });
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export const useMatchScoreStat = (
       'isError',
     ],
     // cacheTime: 0,
-    staleTime: 1000 * 1000,
+    // staleTime: 1000 * 1000,
   });
 
   useEffect(() => {
@@ -81,7 +81,7 @@ export const useGetUserMatches = (user_id: string, status: string) => {
     isError: matches_e,
   } = useQuery(['user_matches', user_id, status], joinedMatchesRemote, {
     notifyOnChangeProps: ['data', 'isLoading', 'isError'],
-    staleTime: 1000 * 1000,
+    // staleTime: 1000 * 1000,
   });
   return {matches, matches_l, matches_e};
 };
@@ -101,7 +101,7 @@ export const useUserMatchContests = (
     userMatchContestsRemote,
     {
       notifyOnChangeProps: ['data', 'isLoading', 'isError'],
-      staleTime: 1000 * 1000,
+      // staleTime: 1000 * 1000,
     },
   );
   // dispatch to redux

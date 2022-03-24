@@ -1,14 +1,14 @@
 import React, {useEffect, useRef} from 'react';
 import tailwind from '../../../../../tailwind';
-import {FlatList, View} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
+import {FlatList, StyleSheet, View} from 'react-native';
 import TabItem from '../atoms/TabItem';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   activeIndex: number;
   rolesCountSelector: any;
   onTabPressed(index: number): any;
+  dT: boolean;
 }
 
 const DATA = [
@@ -31,6 +31,7 @@ const DATA = [
 ];
 
 function ScrollTabs(props: PropTypes) {
+  const dT = props.dT;
   const flatListRef = useRef<any>();
 
   useEffect(() => {
@@ -38,12 +39,11 @@ function ScrollTabs(props: PropTypes) {
   }, [props.activeIndex]);
 
   return (
-    <View style={[tailwind('bg-dark-3 px-4')]}>
+    <View style={[ss.root, dT ? clr.bgd2 : clr.bgw]}>
       <FlatList
         ref={flatListRef}
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={[tailwind('bg-dark-3')]}
         data={DATA}
         renderItem={({item, index}) => {
           return (
@@ -54,6 +54,7 @@ function ScrollTabs(props: PropTypes) {
               active={props.activeIndex === index}
               onTabPressed={props.onTabPressed}
               index={index}
+              dT={dT}
             />
           );
         }}
@@ -61,5 +62,11 @@ function ScrollTabs(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    paddingHorizontal: 16,
+  },
+});
 
 export default React.memo(ScrollTabs);

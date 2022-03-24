@@ -4,6 +4,7 @@ import assets from '../../../../constants/assets_manifest';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   player_key: string;
@@ -19,17 +20,19 @@ interface PropTypes {
   status: number;
   checkPlayerSelection(player_key: string, player_role: string): void;
   onPressPlayerProfile(player_key: string, player_role: string): any;
+  dT: boolean;
 }
 function Player(props: PropTypes) {
+  const dT = props.dT;
   // useRenderCount(`${props.player_key}`);
 
   return (
     <View>
       <View
         style={[
-          tailwind('pt-3 flex-row border-b bg-dark-3 border-gray-800'),
-          props.status === 0 && styles.selectedUser,
-          props.status === -1 && styles.disabledUser,
+          dT ? ss.droot : ss.lroot,
+          props.status === 0 && ss.selectedUser,
+          props.status === -1 && ss.disabledUser,
         ]}>
         {/* Image */}
         <TouchableOpacity
@@ -60,10 +63,10 @@ function Player(props: PropTypes) {
           }
           style={[tailwind('flex-row'), {flex: 8}]}>
           <View style={[tailwind('pl-4'), {flex: 4}]}>
-            <Text numberOfLines={1} style={[styles.pname]}>
+            <Text numberOfLines={1} style={[ss.pname, !dT && clr.td1]}>
               {props.name}
             </Text>
-            <Text numberOfLines={1} style={[styles.pinfo]}>
+            <Text numberOfLines={1} style={[ss.pinfo, !dT && clr.tdgray]}>
               {props.info}
             </Text>
             <View style={[tailwind('flex-row items-center')]}>
@@ -73,9 +76,13 @@ function Player(props: PropTypes) {
                   {backgroundColor: '#B2933D'},
                 ]}></View>
               {props.anounced ? (
-                <Text style={[styles.playerAnounced]}>Anounced</Text>
+                <Text style={[ss.playerAnounced, !dT && clr.tgreen]}>
+                  Anounced
+                </Text>
               ) : (
-                <Text style={styles.playerlastPlayed}>Played Last Match</Text>
+                <Text style={[ss.playerlastPlayed, !dT && clr.tr]}>
+                  Played Last Match
+                </Text>
               )}
             </View>
           </View>
@@ -86,7 +93,11 @@ function Player(props: PropTypes) {
               tailwind('flex-col items-start  justify-center'),
               {flex: 2},
             ]}>
-            <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
+            <Text
+              style={[
+                tailwind('font-regular text-dark-1 font-13'),
+                !dT && clr.td1,
+              ]}>
               {props.points}
             </Text>
           </View>
@@ -97,6 +108,7 @@ function Player(props: PropTypes) {
             <Text
               style={[
                 tailwind('font-bold px-2 text-white text-right font-13'),
+                !dT && clr.td1,
               ]}>
               {props.credits}
             </Text>
@@ -159,7 +171,21 @@ const AddedButton = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
+  droot: {
+    paddingTop: 12,
+    flexDirection: 'row',
+    backgroundColor: '#172338',
+    borderColor: 'rgba(31, 41, 55,1)',
+    borderBottomWidth: 1,
+  },
+  lroot: {
+    paddingTop: 12,
+    flexDirection: 'row',
+    backgroundColor: '#FFFFFF',
+    borderColor: 'rgba(31, 41, 55,0.1)',
+    borderBottomWidth: 1,
+  },
   selectedUser: {
     backgroundColor: '#3C362C',
   },
