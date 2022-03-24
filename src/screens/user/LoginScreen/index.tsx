@@ -6,6 +6,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  StyleSheet,
   Keyboard,
 } from 'react-native';
 import tailwind from '../../../../tailwind';
@@ -18,10 +19,15 @@ import {
 } from '../../../sharedComponents';
 import assets from '../../../constants/assets_manifest';
 import {loginRemote} from '../../../remote/authRemote';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
+import {useSelector} from 'react-redux';
+
 const log = console.log;
 
 export default function LoginScreen() {
   const navigation = useNavigation<any>();
+  const dT = useSelector(getAppThemeSelector);
 
   const [mobile, setMobile] = useState('');
   const [loading, setLoading] = useState(false);
@@ -65,35 +71,26 @@ export default function LoginScreen() {
   };
 
   return (
-    <View style={tailwind('bg-dark h-full')}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <ScrollView
         keyboardShouldPersistTaps="handled"
-        contentContainerStyle={[
-          tailwind('py-9 bg-dark-3'),
-          {paddingHorizontal: 26},
-        ]}>
-        <View style={[tailwind('flex-row items-center justify-center')]}>
+        contentContainerStyle={[ss.inputC, dT ? clr.bgd2 : clr.bgw]}>
+        <View style={[ss.logoc]}>
           <Image
             resizeMode="contain"
             source={assets.logo_new}
-            style={[tailwind(''), {width: 92, height: 28}]}
+            style={[ss.logo]}
           />
         </View>
 
-        <Text
-          style={[
-            tailwind('font-bold text-light pt-9 text-center'),
-            {fontSize: 24},
-          ]}>
-          Welcome Back
-        </Text>
-        <Text style={[tailwind('font-regular text-dark-1 pt-1 text-center')]}>
-          Log in to Continue
+        <Text style={[ss.title, dT ? clr.tw : clr.td1]}>Welcome Back</Text>
+        <Text style={[ss.subText, dT ? clr.tw : clr.td2]}>
+          Login to Continue
         </Text>
 
-        <View style={[tailwind('pt-8 pb-4')]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
-            Enter Mobile Number
+        <View style={[ss.iC]}>
+          <Text style={[ss.label, dT ? clr.tgray : clr.td1]}>
+            Enter Mobile No
           </Text>
           <TextInput
             maxLength={10}
@@ -101,18 +98,19 @@ export default function LoginScreen() {
             onChangeText={e => setMobile(e)}
             keyboardAppearance="dark"
             keyboardType="decimal-pad"
-            style={[
-              tailwind('border-b font-bold text-white font-20'),
-              {borderColor: '#8797B14D', height: 40},
-            ]}
+            style={[ss.input, dT ? clr.tgray : clr.td1]}
           />
         </View>
 
         <TouchableOpacity onPress={onPressAction}>
           <ButtonComponent text={'NEXT'} />
         </TouchableOpacity>
-        <OR />
-        <SocialLogin />
+        <View style={[ss.orC]}>
+          <View style={[ss.line]}></View>
+          <Text style={[ss.ortxt]}>OR</Text>
+          <View style={[ss.line]}></View>
+        </View>
+        <SocialLogin dT={dT} />
       </ScrollView>
       {showHint && <FooterHint />}
 
@@ -121,42 +119,120 @@ export default function LoginScreen() {
   );
 }
 
-const OR = () => {
-  return (
-    <View style={[tailwind('flex-row items-center my-4')]}>
-      <View
-        style={[
-          tailwind(''),
-          {flex: 5, backgroundColor: '#8797B11A', height: 1},
-        ]}></View>
-      <Text
-        style={[
-          tailwind('font-regular text-center font-12 text-dark-1'),
-          {flex: 1.5},
-        ]}>
-        OR
-      </Text>
-      <View
-        style={[
-          tailwind(''),
-          {flex: 5, backgroundColor: '#8797B11A', height: 1},
-        ]}></View>
-    </View>
-  );
-};
-
 const FooterHint = () => {
   const navigation = useNavigation<any>();
+
   return (
-    <View style={[tailwind('p-4 flex-row items-center justify-center')]}>
-      <Text style={[tailwind('font-regular text-light font-15')]}>
-        Dont't have an account ?{' '}
-      </Text>
+    <View style={[ss.footC]}>
+      <Text style={[ss.tcTxt]}>Dont have an account ?</Text>
       <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
-        <Text style={[tailwind('font-bold text-white underline font-15')]}>
-          Register
-        </Text>
+        <Text style={[ss.footLink]}>Register</Text>
       </TouchableOpacity>
     </View>
   );
 };
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+  inputC: {
+    paddingVertical: 24,
+    paddingHorizontal: 26,
+  },
+  logoc: {
+    alignItems: 'center',
+  },
+  logo: {
+    width: 92,
+    height: 28,
+  },
+  title: {
+    fontFamily: 'gadugi-bold',
+    paddingTop: 24,
+    textAlign: 'center',
+    fontSize: 24,
+  },
+  subText: {
+    fontFamily: 'gadugi-normal',
+    paddingTop: 4,
+    textAlign: 'center',
+    fontSize: 12,
+  },
+  iC: {
+    paddingTop: 24,
+    paddingBottom: 16,
+  },
+  label: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 14,
+  },
+  input: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 20,
+    borderColor: '#8797B14D',
+    borderBottomWidth: 1,
+    padding: 0,
+    margin: 0,
+    paddingVertical: 5,
+  },
+  hint: {
+    fontFamily: 'gadugi-normal',
+    paddingTop: 8,
+    fontSize: 12,
+  },
+  inviteC: {
+    paddingTop: 4,
+    paddingBottom: 16,
+  },
+  orC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 16,
+  },
+  line: {
+    flex: 5,
+    height: 1,
+    backgroundColor: '#8797B11A',
+  },
+  ortxt: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    textAlign: 'center',
+    fontSize: 12,
+    flex: 1.5,
+  },
+  tcC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 20,
+  },
+  tcTxt: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    fontSize: 12,
+    paddingHorizontal: 8,
+  },
+  link: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    paddingHorizontal: 4,
+    textDecorationLine: 'underline',
+  },
+  footC: {
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  footLink: {
+    fontFamily: 'gadugi-bold',
+    textDecorationLine: 'underline',
+  },
+  footLink2: {
+    fontFamily: 'gadugi-bold',
+    textDecorationLine: 'underline',
+    textAlign: 'right',
+  },
+});

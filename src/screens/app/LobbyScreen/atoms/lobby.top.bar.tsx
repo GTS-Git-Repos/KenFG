@@ -76,6 +76,9 @@ const ss = StyleSheet.create({
     fontFamily: 'gadugi-bold',
     textTransform: 'uppercase',
     fontSize: 11,
+    textShadowColor: '#5F401C',
+    textShadowOffset: {width: 0, height: 1},
+    textShadowRadius: 0,
   },
   txtAmount: {
     fontFamily: 'gadugi-normal',

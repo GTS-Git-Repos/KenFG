@@ -31,7 +31,7 @@ export default function MatchStatusMyMatch(props: PropTypes) {
     <TouchableOpacity
       onPress={() => props.onPressMyMatchCard(props.match_key)}
       activeOpacity={0.7}
-      style={[ss.root, dT ? clr.bgd2 : clr.bgw]}>
+      style={[ss.root, dT ? ss.dCard : ss.lCard]}>
       <View style={[ss.space1]}>
         {/* Top section */}
         <View style={[ss.topSection]}>
@@ -160,6 +160,18 @@ const ss = StyleSheet.create({
   root: {
     borderRadius: 6,
   },
+  dCard: {
+    backgroundColor: '#172338',
+    borderColor: '#0D1320',
+    borderWidth: 1,
+    elevation: 5,
+  },
+  lCard: {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#E0E0E0',
+    borderWidth: 1,
+    elevation: 5,
+  },
   space1: {
     padding: 12,
   },
@@ -232,6 +244,8 @@ const ss = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
     paddingVertical: 6,
+    borderBottomLeftRadius: 6,
+    borderBottomRightRadius: 6,
   },
   stxt: {
     fontFamily: 'gadugi-normal',

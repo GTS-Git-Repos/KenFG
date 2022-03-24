@@ -33,7 +33,7 @@ export default function UpComingMatchesSlider(props: PropTypes) {
       {props.data.map((item: any) => {
         return (
           <TouchableOpacity
-            activeOpacity={0.7}
+            activeOpacity={0.8}
             onPress={() => props.navigateToMatchContests(item.key)}
             key={item.key}
             style={[tailwind('w-6/12')]}>

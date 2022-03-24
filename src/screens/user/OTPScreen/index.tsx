@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {
   TopBar,
@@ -15,9 +15,15 @@ import {getUserRemote} from '../../../remote/userRemote';
 import {resetDrawerNavigation} from '../../../utils/resetNav';
 import {updateUserInfoAction} from '../../../store/actions/userAction';
 import {useDispatch} from 'react-redux';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
+import {useSelector} from 'react-redux';
+
 const log = console.log;
 
 export default function OTPScreen() {
+  const dT = useSelector(getAppThemeSelector);
+
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
   const dispatch = useDispatch();
@@ -55,7 +61,7 @@ export default function OTPScreen() {
       }
     } catch (err) {
       setTimeout(() => {
-        errorBox('Invalid OTP');
+        errorBox('Invalid OTP', 500);
       }, 500);
     } finally {
       setLoading(false);
@@ -67,29 +73,22 @@ export default function OTPScreen() {
   }, []);
 
   return (
-    <View style={[tailwind('h-full bg-dark')]}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <TopBar text={'OTP'} />
-      <View style={[tailwind('bg-dark-3'), {paddingHorizontal: 36}]}>
-        <View style={[tailwind(''), {paddingVertical: 60}]}>
+      <View style={[ss.inputC, dT ? clr.bgd2 : clr.bgw]}>
+        <View style={[{paddingVertical: 20}]}>
           <View>
-            <Text
-              style={[
-                tailwind('font-bold text-light text-center'),
-                {fontSize: 24},
-              ]}>
+            <Text style={[ss.title, dT ? clr.tw : clr.td1]}>
               Verification Code
             </Text>
-            <Text
-              style={[
-                tailwind('font-regular text-dark-1 pt-1 mx-4 text-center'),
-              ]}>
+            <Text style={[ss.subText, dT ? clr.tw : clr.td2]}>
               We have sent the verification code to your mobile number (
               {route?.params?.otp})
             </Text>
 
             {/* OTP Input */}
             <View style={[tailwind('py-10')]}>
-              <OTPInput value={otp} onChangeText={setOTP} />
+              <OTPInput dT={dT} value={otp} onChangeText={setOTP} />
             </View>
 
             <TouchableOpacity onPress={onPressAction}>
@@ -101,55 +100,110 @@ export default function OTPScreen() {
       {loading && <BlockScreenByLoading />}
     </View>
   );
-
-  return (
-    <View style={tailwind('h-full bg-dark')}>
-      <TopBar text={'OTP'} />
-      <View
-        style={[
-          tailwind('bg-dark-3 rounded px-3 py-7'),
-          {paddingHorizontal: 26},
-        ]}>
-        <View style={[tailwind('flex-row items-center justify-center')]}>
-          <View>
-            <Text
-              style={[
-                tailwind('font-bold text-light pt-9 text-center'),
-                {fontSize: 24},
-              ]}>
-              Verification Code
-            </Text>
-            <Text
-              style={[tailwind('font-regular text-dark-1 pt-1 text-center')]}>
-              We have sent the verification code to your mobile number
-            </Text>
-          </View>
-        </View>
-        <Text
-          style={[
-            tailwind('font-regular text-dark-1 pt-1 text-center font-12 pt-4'),
-          ]}>
-          Your OTP is : {route?.params?.otp}
-        </Text>
-
-        <View
-          style={[
-            tailwind('mb-0 rounded p-1'),
-            {borderBottomColor: '#B2933D'},
-          ]}>
-          <OTPInput value={otp} onChangeText={setOTP} />
-        </View>
-
-        <TouchableOpacity style={[tailwind('my-4')]} onPress={onPressAction}>
-          <ButtonComponent text={'CONTINUE'} />
-        </TouchableOpacity>
-      </View>
-
-      <Text
-        style={[tailwind('font-regular text-light py-3 text-center font-15')]}>
-        did't receive an OTP ?{' '}
-        <Text style={[tailwind('text-green-500 underline')]}>Resend</Text>
-      </Text>
-    </View>
-  );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+  inputC: {
+    paddingVertical: 24,
+    paddingHorizontal: 26,
+  },
+  logoc: {
+    alignItems: 'center',
+  },
+  logo: {
+    width: 92,
+    height: 28,
+  },
+  title: {
+    fontFamily: 'gadugi-bold',
+    paddingTop: 24,
+    textAlign: 'center',
+    fontSize: 24,
+  },
+  subText: {
+    fontFamily: 'gadugi-normal',
+    paddingTop: 4,
+    textAlign: 'center',
+    fontSize: 12,
+    marginHorizontal: 16,
+  },
+  iC: {
+    paddingTop: 24,
+    paddingBottom: 16,
+  },
+  label: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 14,
+  },
+  input: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 20,
+    borderColor: '#8797B14D',
+    borderBottomWidth: 1,
+    padding: 0,
+    margin: 0,
+    paddingVertical: 5,
+  },
+  hint: {
+    fontFamily: 'gadugi-normal',
+    paddingTop: 8,
+    fontSize: 12,
+  },
+  inviteC: {
+    paddingTop: 4,
+    paddingBottom: 16,
+  },
+  orC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 16,
+  },
+  line: {
+    flex: 5,
+    height: 1,
+    backgroundColor: '#8797B11A',
+  },
+  ortxt: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    textAlign: 'center',
+    fontSize: 12,
+    flex: 1.5,
+  },
+  tcC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 20,
+  },
+  tcTxt: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    fontSize: 12,
+    paddingHorizontal: 8,
+  },
+  link: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    paddingHorizontal: 4,
+    textDecorationLine: 'underline',
+  },
+  footC: {
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  footLink: {
+    fontFamily: 'gadugi-bold',
+    textDecorationLine: 'underline',
+  },
+  footLink2: {
+    fontFamily: 'gadugi-bold',
+    textDecorationLine: 'underline',
+    textAlign: 'right',
+  },
+});

@@ -14,9 +14,15 @@ interface PropTypes {
 export default function LinkPrivateContest(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   return (
-    <TouchableOpacity onPress={props.onPressCreateContest} style={[ss.root]}>
-      <Text style={[ss.text]}>Private Contest</Text>
-      <Icon name="chevron-forward-outline" size={20} color="#d1b45a" />
+    <TouchableOpacity
+      onPress={props.onPressCreateContest}
+      style={[ss.root, !dT && ss.lBorder]}>
+      <Text style={[ss.text, dT ? clr.tw : clr.tr]}>Private Contest</Text>
+      <Icon
+        name="chevron-forward-outline"
+        size={20}
+        color={dT ? '#d1b45a' : '#9C181E'}
+      />
     </TouchableOpacity>
   );
 }
@@ -31,6 +37,12 @@ const ss = StyleSheet.create({
     padding: 10,
     borderRadius: 6,
     backgroundColor: '#172338',
+  },
+  dBorder: {},
+  lBorder: {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#9C181E',
+    borderWidth: 1,
   },
   text: {
     fontFamily: 'gadugi-normal',

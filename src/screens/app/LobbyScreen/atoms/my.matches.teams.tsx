@@ -2,84 +2,59 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text, StyleSheet} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
+import {TeamFlag} from '../../../../sharedComponents';
 import clr from '../../../../constants/colors';
 import FastImage from 'react-native-fast-image';
 
 interface PropTypes {
   dT: boolean;
-  team_a: any;
-  team_b: any;
+  team_a: TeamType;
+  team_b: TeamType;
   status: string;
   countDown: string;
 }
 
+interface TeamType {
+  key: string;
+  name: string;
+  code: string;
+}
+
 export default function Teams(props: PropTypes) {
+  console.log(props.status);
+
   return (
-    <View style={[tailwind('flex-row'), {paddingTop: 4}]}>
-      <View style={[tailwind('flex-row'), {flex: 4}]}>
-        <View
-          style={[
-            tailwind('bg-blue-900'),
-            {width: 10, height: 14, top: 24 / 4.3},
-          ]}></View>
+    <View style={[styles.ct]}>
+      <View style={styles.sec1}>
+        <View style={[styles.b1]}></View>
         <View>
-          <View style={[styles.flagWrapper]}>
-            <FastImage
-              style={{width: 45, height: 25}}
-              source={{
-                uri: `http://kenfg.com/images/flag/${props?.team_a?.code?.toUpperCase()}`,
-                priority: FastImage.priority.normal,
-              }}
-              // onError={e =>
-              //   props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
-              // }
-              resizeMode={FastImage.resizeMode.contain}
-            />
-          </View>
+          <TeamFlag teamCode={props.team_a.code} />
           <Text style={[styles.teamCode, props.dT ? clr.tw : clr.td1]}>
             {props.team_a.code}
           </Text>
         </View>
       </View>
 
-      {/* Count down */}
+      {/* status*/}
 
-      <View style={[tailwind('justify-between items-center'), {flex: 4}]}>
-        {props.status === 'completed' ? (
-          <IsCompleted />
-        ) : (
+      <View style={styles.statusC}>
+        {props.status === 'completed' && <IsCompleted dT={props.dT} />}
+        {props.status === 'started' && <IsLive />}
+        {props.status === 'notstarted' && (
           <Text style={[styles.countDownText, props.dT ? clr.tw : clr.td1]}>
             {props.countDown}
           </Text>
         )}
-
-        {/* <IsLive /> */}
       </View>
 
-      <View style={[tailwind('flex-row justify-end'), {flex: 4}]}>
+      <View style={styles.sec2}>
         <View>
-          <View style={[styles.flagWrapper]}>
-            <FastImage
-              style={{width: 45, height: 25}}
-              source={{
-                uri: `http://kenfg.com/images/flag/${props?.team_b?.code?.toUpperCase()}`,
-                priority: FastImage.priority.normal,
-              }}
-              // onError={e =>
-              //   props.set_team_a_flag('http://kenfg.com/images/flag/IND.png')
-              // }
-              resizeMode={FastImage.resizeMode.contain}
-            />
-          </View>
+          <TeamFlag teamCode={props.team_b.code} />
           <Text style={[styles.teamCode, props.dT ? clr.tw : clr.td1]}>
             {props.team_b.code}
           </Text>
         </View>
-        <View
-          style={[
-            tailwind('bg-red-700'),
-            {width: 10, height: 14, top: 25 / 4},
-          ]}></View>
+        <View style={[styles.b2]}></View>
       </View>
     </View>
   );
@@ -87,43 +62,48 @@ export default function Teams(props: PropTypes) {
 
 const IsLive = () => {
   return (
-    <View style={[tailwind('flex-row pt-2 items-center')]}>
-      <Text
-        style={[
-          tailwind('font-regular text-center pr-1 font-10'),
-          {fontSize: 13, color: '#FEFEFF'},
-        ]}>
-        LIVE
-      </Text>
-      <View
-        style={[
-          tailwind('rounded-full'),
-          {backgroundColor: 'green', width: 5, height: 5},
-        ]}></View>
+    <View style={styles.completeC}>
+      <View style={styles.cIndic}></View>
+      <Text style={[styles.cTxt]}>LIVE</Text>
     </View>
   );
 };
 
-const IsCompleted = () => {
+const IsCompleted = (props: any) => {
   return (
-    <View style={[tailwind('flex-row pt-2 items-center')]}>
-      <Text
-        style={[
-          tailwind('font-regular text-center pr-1 font-10'),
-          {fontSize: 13, color: '#FEFEFF'},
-        ]}>
-        COMPLETED
-      </Text>
-      <View
-        style={[
-          tailwind('rounded-full'),
-          {backgroundColor: 'green', width: 5, height: 5},
-        ]}></View>
+    <View style={[styles.completeC]}>
+      <View style={[styles.cIndic]}></View>
+      <Text style={[styles.cTxt]}>COMPLETED</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  ct: {
+    flexDirection: 'row',
+    paddingTop: 4,
+  },
+  sec1: {
+    flexDirection: 'row',
+    flex: 4,
+  },
+  sec2: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    flex: 4,
+  },
+  b1: {
+    backgroundColor: 'red',
+    width: 10,
+    height: 14,
+    top: 6,
+  },
+  b2: {
+    backgroundColor: 'green',
+    width: 10,
+    height: 14,
+    top: 6,
+  },
   flagWrapper: {
     width: 45,
     height: 25,
@@ -138,10 +118,31 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textTransform: 'uppercase',
   },
+  statusC: {
+    alignItems: 'center',
+    flex: 4,
+  },
   countDownText: {
     fontFamily: 'gadugi-bold',
     fontSize: 13,
     paddingTop: 8,
     paddingHorizontal: 4,
+  },
+  completeC: {
+    flexDirection: 'row',
+    paddingTop: 8,
+    alignItems: 'center',
+  },
+  cIndic: {
+    width: 6,
+    height: 6,
+    backgroundColor: '#00513B',
+    marginHorizontal: 4,
+    borderRadius: 6,
+  },
+  cTxt: {
+    textAlign: 'center',
+    fontSize: 11,
+    color: '#00513B',
   },
 });

@@ -7,13 +7,12 @@ import TopBarContest from './topbar.contest';
 import {getAppThemeSelector, selectedMatch} from '../../store/selectors';
 import clr from '../../constants/colors';
 
-
 export default function ContestScreenLoading(props: PropTypes) {
   const match: any = useSelector(selectedMatch);
-  const dT = useSelector(getAppThemeSelector);  
+  const dT = useSelector(getAppThemeSelector);
 
   return (
-    <View style={[ss.root, tailwind('bg-dark-4')]}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <TopBarContest
         dT={dT}
         title={match.titleString}

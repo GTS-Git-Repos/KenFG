@@ -2,74 +2,50 @@
   "tailwindStyleBlock": {
     "scope": "typescriptreact",
     "prefix": "makestyle",
-    "body": [
-      " style={[tailwind('$1')$2]}"
-    ],
+    "body": [" style={[]}"],
     "description": "tailwind Style Basic Block"
   },
   "LocalImage": {
     "scope": "typescriptreact",
     "prefix": "rnimage",
-    "body": [
-      "<Image resizeMode=\"contain\" source={assets.${1}} style={[tailwind(\"w-10 h-10\")]}/>"
-    ],
+    "body": ["<Image resizeMode=\"contain\" source={assets.${1}} style={[]}/>"],
     "description": "Basic Local Image"
   },
   "BasicView": {
     "scope": "typescriptreact",
     "prefix": "rnview",
-    "body": [
-      "<View style={[tailwind(\"flex-row box items-center\")]}>",
-      "   ",
-      "</View>"
-    ],
+    "body": ["<View style={[]}>", "   ", "</View>"],
     "description": "Basic Local Image"
   },
   "BasicText": {
     "scope": "typescriptreact",
     "prefix": "rntext",
-    "body": [
-      "<Text style={[tailwind(\"font-regular text-white font-15\")]}>${1}</Text>"
-    ],
+    "body": ["<Text style={[]}>${1}</Text>"],
     "description": "Basic Local Image"
   },
   "JS Function": {
     "prefix": "jsfun",
-    "body": [
-      "const ${1} = async () =>{",
-      "  ${2}",
-      "}"
-    ],
+    "body": ["const ${1} = async () =>{", "  ${2}", "}"],
     "description": "JS Function"
   },
   "React Use State": {
     "prefix": "rstate",
-    "body": [
-      "const [${1}, ${2}] = useState(${3})"
-    ],
+    "body": ["const [${1}, ${2}] = useState(${3})"],
     "description": "React Use State"
   },
   "Redux UseSelector": {
     "prefix": "rdxselect",
-    "body": [
-      "const ${1}State = useSelector(state => state.user.${1})"
-    ],
+    "body": ["const ${1}State = useSelector(state => state.user.${1})"],
     "description": "Redux UseSelector"
   },
   "use_nav": {
     "prefix": "use_nav",
-    "body": [
-      "const navigation = useNavigation()"
-    ],
+    "body": ["const navigation = useNavigation()"],
     "description": "Redux Use Navigation"
   },
   "React native stylesheet": {
     "prefix": "rnstyles",
-    "body": [
-      "const styles = StyleSheet.create({",
-      "  root:{}",
-      "});"
-    ],
+    "body": ["const ss = StyleSheet.create({", "  root:{}", "});"],
     "description": "React native stylesheet"
   }
 }

@@ -3,6 +3,9 @@ import {View, StyleSheet, Text} from 'react-native';
 import {DownArrowIcon} from '../../assets/newIcons/';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {ContestPageType} from '../../types/contest';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 export default function SortContests(
   props: Pick<ContestPageType, 'sortStatus' | 'sortByOnPress'>,

@@ -53,8 +53,6 @@ const StackConfig = {
 };
 
 export default function RootNavigation() {
-
-
   // useEffect(() => {
   //   if (sessionState === true) {
   //     // block the screen, and show the session was ended,
@@ -148,7 +146,6 @@ export default function RootNavigation() {
               component={UserGoalsScreen}
               name="UserGoalsScreen"
             />
-
 
             <RootNavigator.Screen
               component={PlayerProfileScreen}

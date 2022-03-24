@@ -1,16 +1,14 @@
 import React, {useRef, useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {ContestTypeSwitch, TopBar} from '../../../sharedComponents';
 import PagerView from 'react-native-pager-view';
 import MatchTabPage from './molecules/match.tab.page';
-import MyMatchesTabs from './molecules/MyMatchesTabs';
-import MatchSwitch from './molecules/match.switch';
+import TabsMyMatch from './molecules/tabs.mymatch';
+import SportSwitch from './molecules/sports.switch';
 import {getAppThemeSelector} from '../../../store/selectors';
 import clr from '../../../constants/colors';
 import {useSelector} from 'react-redux';
-
-const log = console.log;
 
 interface PropTypes {
   pagerRef: any;
@@ -49,14 +47,19 @@ export default function MyMatches(props: PropTypes) {
   };
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <TopBar text={'My Matches'} />
-      <MatchSwitch
+      <SportSwitch
         cricketActive={props.isCricket}
         setIsCricket={props.setIsCricket}
+        dT={dT}
       />
 
-      <MyMatchesTabs active={activeTabIndex} onTabPressed={onTabPressed} />
+      <TabsMyMatch
+        active={activeTabIndex}
+        onTabPressed={onTabPressed}
+        dT={dT}
+      />
       <View style={[tailwind('flex-row justify-center pt-3 pb-1')]}>
         <ContestTypeSwitch
           onPressMatchType={props.onPressMatchType}
@@ -105,3 +108,9 @@ export default function MyMatches(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+});

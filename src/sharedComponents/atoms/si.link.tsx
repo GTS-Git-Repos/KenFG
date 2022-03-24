@@ -4,15 +4,24 @@
 import React from 'react';
 import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   onPressSecondInnings(): void;
 }
 
 export default function SiLink(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
-    <TouchableOpacity onPress={props.onPressSecondInnings} style={[ss.root]}>
-      <Text style={[ss.text]}>View Second Innings Contests</Text>
+    <TouchableOpacity
+      onPress={props.onPressSecondInnings}
+      style={[ss.root, !dT && clr.bgw]}>
+      <Text style={[ss.text, !dT && clr.td1]}>
+        View Second Innings Contests
+      </Text>
       <Icon name="arrow-forward-outline" size={20} color="#C5A858" />
     </TouchableOpacity>
   );

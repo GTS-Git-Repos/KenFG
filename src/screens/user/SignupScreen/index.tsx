@@ -3,6 +3,7 @@ import {
   View,
   Text,
   Image,
+  StyleSheet,
   TextInput,
   TouchableOpacity,
   ScrollView,
@@ -11,13 +12,13 @@ import {
   LayoutAnimation,
   Platform,
 } from 'react-native';
-import tailwind from '../../../../tailwind';
-// import {useSelector, useDispatch} from 'react-redux';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import {errorBox, infoBox} from '../../../utils/snakBars';
+import {useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {errorBox} from '../../../utils/snakBars';
 import {signupRemote} from '../../../remote/authRemote';
-// import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../constants/assets_manifest';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 import {
   BlockScreenByLoading,
@@ -27,8 +28,9 @@ import {
 const log = console.log;
 
 export default function SignupScreen() {
+  const dT = useSelector(getAppThemeSelector);
+
   const navigation = useNavigation<any>();
-  const route = useRoute();
 
   if (Platform.OS === 'android') {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -90,72 +92,47 @@ export default function SignupScreen() {
   };
 
   return (
-    <View style={tailwind('bg-dark h-full')}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <ScrollView
         keyboardShouldPersistTaps="handled"
-        contentContainerStyle={[
-          tailwind('py-9 bg-dark-3'),
-          {paddingHorizontal: 26},
-        ]}>
-        <View style={[tailwind('flex-row items-center justify-center')]}>
+        contentContainerStyle={[ss.inputC, dT ? clr.bgd2 : clr.bgw]}>
+        <View style={[ss.logoc]}>
           <Image
             resizeMode="contain"
             source={assets.logo_new}
-            style={[tailwind(''), {width: 92, height: 28}]}
+            style={[ss.logo]}
           />
         </View>
 
-        <Text
-          style={[
-            tailwind('font-bold text-light pt-9 text-center'),
-            {fontSize: 24},
-          ]}>
-          Welcome to KenFG!
-        </Text>
-        <Text
-          style={[
-            tailwind('font-regular text-dark-1 pt-1 text-center font-12'),
-          ]}>
+        <Text style={[ss.title, dT ? clr.tw : clr.td1]}>Welcome to KenFG!</Text>
+        <Text style={[ss.subText, dT ? clr.tw : clr.td2]}>
           Register to Continue
         </Text>
-          
-        <View style={[tailwind(' pt-8 pb-4 ')]}>
-          <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
-            Mobile No
-          </Text>
+
+        <View style={[ss.iC]}>
+          <Text style={[ss.label, dT ? clr.tgray : clr.td1]}>Mobile No</Text>
           <TextInput
             maxLength={10}
             value={mobile}
             keyboardAppearance="dark"
             keyboardType="decimal-pad"
             onChangeText={e => setMobile(e)}
-            style={[
-              tailwind('border-b font-bold text-white font-20'),
-              {
-                borderColor: '#8797B14D',
-                padding: 0,
-                margin: 0,
-                paddingVertical: 5,
-              },
-            ]}
+            style={[ss.input, dT ? clr.tgray : clr.td1]}
           />
-          <Text style={[tailwind('font-regular font-12 text-dark-1 pt-2')]}>
+          <Text style={[ss.hint, dT ? clr.tgray : clr.td2]}>
             You will receive OTP for Verification
           </Text>
         </View>
         {showInvite && (
-          <View style={[tailwind('pt-1 pb-4')]}>
-            <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+          <View style={[ss.inviteC]}>
+            <Text style={[ss.label, dT ? clr.tdgray : clr.td1]}>
               Enter Invite Code
             </Text>
             <TextInput
               maxLength={7}
               value={inviteCode}
               onChangeText={e => setInviteCode(e)}
-              style={[
-                tailwind('border-b font-bold text-light font-20'),
-                {borderColor: '#8797B14D', height: 40},
-              ]}
+              style={[ss.input]}
             />
           </View>
         )}
@@ -163,9 +140,17 @@ export default function SignupScreen() {
         <TouchableOpacity onPress={navigate}>
           <ButtonComponent text={'REGISTER'} />
         </TouchableOpacity>
-        <OR />
-        <SocialLogin />
-        <TC />
+        <View style={[ss.orC]}>
+          <View style={[ss.line]}></View>
+          <Text style={[ss.ortxt]}>OR</Text>
+          <View style={[ss.line]}></View>
+        </View>
+        <SocialLogin dT={dT} />
+        <View style={[ss.tcC]}>
+          <Text style={[ss.tcTxt]}>By registering you agree to the</Text>
+          <Text style={[ss.link]}>T&C</Text>
+          <Text style={[ss.tcTxt]}> of KenFG</Text>
+        </View>
       </ScrollView>
 
       {showHint && <FooterHint openInviteInput={openInviteInput} />}
@@ -175,75 +160,127 @@ export default function SignupScreen() {
   );
 }
 
-const OR = () => {
-  return (
-    <View style={[tailwind('flex-row items-center my-4')]}>
-      <View
-        style={[
-          tailwind(''),
-          {flex: 5, backgroundColor: '#8797B11A', height: 1},
-        ]}></View>
-      <Text
-        style={[
-          tailwind('font-regular text-center font-12 text-dark-1'),
-          {flex: 1.5},
-        ]}>
-        OR
-      </Text>
-      <View
-        style={[
-          tailwind(''),
-          {flex: 5, backgroundColor: '#8797B11A', height: 1},
-        ]}></View>
-    </View>
-  );
-};
-
 const FooterHint = (props: any) => {
   const navigation = useNavigation<any>();
   return (
-    <View style={[tailwind('p-4 flex-row items-center justify-between')]}>
+    <View style={[ss.footC]}>
       <View>
-        <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-          Have a referral Code ?{' '}
-        </Text>
+        <Text style={[ss.tcTxt]}>Have a referral Code ? </Text>
         <TouchableOpacity onPress={props.openInviteInput}>
-          <Text style={[tailwind('font-bold text-white underline font-15')]}>
-            Enter Code
-          </Text>
+          <Text style={[ss.footLink]}>Enter Code</Text>
         </TouchableOpacity>
       </View>
 
       <View>
-        <Text style={[tailwind('font-regular text-dark-1 font-13')]}>
-          Already a user ?{' '}
-        </Text>
+        <Text style={[ss.tcTxt]}>Already a user ? </Text>
         <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-          <Text
-            style={[
-              tailwind('font-bold text-white text-right underline font-15'),
-            ]}>
-            Log in
-          </Text>
+          <Text style={[ss.footLink2]}>Log in</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-const TC = () => {
-  return (
-    <View style={[tailwind('flex-row justify-center items-center pt-5')]}>
-      <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
-        By registering you agree to the
-      </Text>
-      <Text style={[tailwind('font-bold px-1 underline text-white font-12')]}>
-        T&C
-      </Text>
-      <Text style={[tailwind('font-regular text-dark-1 font-12')]}>
-        {' '}
-        of KenFG
-      </Text>
-    </View>
-  );
-};
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+  inputC: {
+    paddingVertical: 24,
+    paddingHorizontal: 26,
+  },
+  logoc: {
+    alignItems: 'center',
+  },
+  logo: {
+    width: 92,
+    height: 28,
+  },
+  title: {
+    fontFamily: 'gadugi-bold',
+    paddingTop: 24,
+    textAlign: 'center',
+    fontSize: 24,
+  },
+  subText: {
+    fontFamily: 'gadugi-normal',
+    paddingTop: 4,
+    textAlign: 'center',
+    fontSize: 12,
+  },
+  iC: {
+    paddingTop: 24,
+    paddingBottom: 16,
+  },
+  label: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 14,
+  },
+  input: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 20,
+    borderColor: '#8797B14D',
+    borderBottomWidth: 1,
+    padding: 0,
+    margin: 0,
+    paddingVertical: 5,
+  },
+  hint: {
+    fontFamily: 'gadugi-normal',
+    paddingTop: 8,
+    fontSize: 12,
+  },
+  inviteC: {
+    paddingTop: 4,
+    paddingBottom: 16,
+  },
+  orC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 16,
+  },
+  line: {
+    flex: 5,
+    height: 1,
+    backgroundColor: '#8797B11A',
+  },
+  ortxt: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    textAlign: 'center',
+    fontSize: 12,
+    flex: 1.5,
+  },
+  tcC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 20,
+  },
+  tcTxt: {
+    fontFamily: 'gadugi-normal',
+    color: '#8797B1',
+    fontSize: 12,
+  },
+  link: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    paddingHorizontal: 4,
+    textDecorationLine: 'underline',
+  },
+  footC: {
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  footLink: {
+    fontFamily: 'gadugi-bold',
+    textDecorationLine: 'underline',
+  },
+  footLink2: {
+    fontFamily: 'gadugi-bold',
+    textDecorationLine: 'underline',
+    textAlign: 'right',
+  },
+});

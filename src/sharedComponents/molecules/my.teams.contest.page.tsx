@@ -54,6 +54,8 @@ export default function MyTeamsPage(props: PropTypes) {
         actionText={'VIEW CONTESTS'}
         noContentAction={noContentAction}
         loading={!isActiveTab}
+        error={false}
+        refetch={() => {}}
       />
     );
   }
@@ -78,6 +80,7 @@ export default function MyTeamsPage(props: PropTypes) {
               vc={item.vc}
               navigateToPreview={navigateToPreview}
               mutateTeam={mutateTeam}
+              hasPoints={false}
             />
           );
         })}

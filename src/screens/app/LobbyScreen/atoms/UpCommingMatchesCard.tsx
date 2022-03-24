@@ -1,23 +1,14 @@
-import React, {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import { TeamFlag } from '../../../../sharedComponents';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {TeamFlag} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/core';
-import assets from '../../../../constants/assets_manifest';
 import {useDispatch, useSelector} from 'react-redux';
 
-import FastImage from 'react-native-fast-image';
 import {LineupsCap, NotificationIcon} from '../../../../assets/newIcons';
 import {useCountDown} from '../../../../shared_hooks/app.hooks';
 import {getAppThemeSelector} from '../../../../store/selectors';
 import clr from '../../../../constants/colors';
-const log = console.log;
 
 interface PropTypes {
   match_key: string;
@@ -110,17 +101,14 @@ export default function UpcommingMatches(props: PropTypes) {
           </View>
 
           <TouchableOpacity
+            activeOpacity={0.5}
             onPress={() => props.onPressNotification(props.match_key)}
             style={[tailwind('flex-row justify-end pt-0.5'), {flex: 1}]}>
             <NotificationIcon sizeSmall={true} outline={true} isDark={dT} />
           </TouchableOpacity>
         </View>
 
-        {/* <View
-          style={[tailwind('mx-2 border-t border-gray-800'), {marginTop: 2}]}>
-        
-        </View> */}
-        <View style={[tailwind(''), {height: 2}]}></View>
+        <View style={[{height: 2}]}></View>
 
         <Teams
           dT={dT}
@@ -151,7 +139,7 @@ const Teams = (props: TeamPropShape) => {
         {paddingHorizontal: 16, paddingVertical: 6},
       ]}>
       <View style={[tailwind('')]}>
-        <TeamFlag teamCode={props.team_a_name}/>
+        <TeamFlag teamCode={props.team_a_name} />
         {/* <View style={[styles.flagWrapper, props.dT ? clr.bgd1 : clr.bgGray]}>
           <FastImage
             style={{width: 45, height: 25}}
@@ -182,7 +170,7 @@ const Teams = (props: TeamPropShape) => {
       </Text>
 
       <View style={[tailwind('')]}>
-      <TeamFlag teamCode={props.team_b_name}/>
+        <TeamFlag teamCode={props.team_b_name} />
         <Text
           numberOfLines={1}
           style={[
@@ -199,24 +187,23 @@ const Teams = (props: TeamPropShape) => {
 
 const PrizeandStatus = (props: any) => {
   // TODO: API data required here
-  const LINEUPS = false
+  const LINEUPS = false;
   return (
     <View style={[tailwind('flex-row items-center'), {paddingLeft: 10}]}>
       <View style={[tailwind('flex-row items-center'), {flex: 6}]}>
         <LineupsCap lineups={LINEUPS} />
-        {
-          LINEUPS && <Text
-          numberOfLines={1}
-          allowFontScaling={true}
-          adjustsFontSizeToFit={true}
-          style={[
-            tailwind('font-regular pr-1 font-10'),
-            props.dT ? clr.td2 : clr.td1,
-          ]}>
-          Line ups out
-        </Text>
-        }
-        
+        {LINEUPS && (
+          <Text
+            numberOfLines={1}
+            allowFontScaling={true}
+            adjustsFontSizeToFit={true}
+            style={[
+              tailwind('font-regular pr-1 font-10'),
+              props.dT ? clr.td2 : clr.td1,
+            ]}>
+            Line ups out
+          </Text>
+        )}
       </View>
 
       <Text

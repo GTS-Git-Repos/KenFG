@@ -4,6 +4,9 @@
 import React, {useState} from 'react';
 
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   contestFilters: Array<any>;
@@ -11,15 +14,26 @@ interface PropTypes {
 }
 
 function FiltersContests(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
     <View style={[ss.root, {flex: 8}]}>
       {props.contestFilters.map((item: any) => {
-        return (
+        return dT ? (
           <TouchableOpacity
             onPress={() => props.filterOnPress(item.id)}
             key={item.id}
             style={[ss.item, item.selected && ss.dSelItem]}>
             <Text style={[ss.text, item.selected && ss.dSeltext]}>
+              {item.name}
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={() => props.filterOnPress(item.id)}
+            key={item.id}
+            style={[ss.item, ss.lItem, item.selected && ss.lSelItem]}>
+            <Text style={[ss.text, ss.ltext, item.selected && ss.lSeltext]}>
               {item.name}
             </Text>
           </TouchableOpacity>
@@ -42,12 +56,22 @@ const ss = StyleSheet.create({
     borderRadius: 100,
     paddingHorizontal: 10,
     paddingVertical: 2,
-    borderColor: 'rgba(31, 41, 55, 1)',
+    borderColor: 'rgba(135, 151, 177, 0.3)',
     borderWidth: 1,
     margin: 2,
   },
+  lItem: {
+    backgroundColor: '#FFFFFF',
+    borderColor: 'rgba(135, 151, 177, 0.3)',
+  },
   dSelItem: {
     backgroundColor: '#d1b45a',
+    borderColor: 'rgba(31, 41, 55, 0.1)',
+  },
+  lSelItem: {
+    borderColor: '#9C181E',
+
+    backgroundColor: '#9C181E',
   },
   text: {
     fontFamily: 'gadugi-normal',
@@ -56,6 +80,12 @@ const ss = StyleSheet.create({
   },
   dSeltext: {
     color: '#0D1320',
+  },
+  lSeltext: {
+    color: '#FFFFFF',
+  },
+  ltext: {
+    color: '#172338',
   },
 });
 

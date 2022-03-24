@@ -6,7 +6,6 @@ import {useCountDown} from '../../../shared_hooks/app.hooks';
 import {
   TopBarContest,
   BlockScreenByLoading,
-  JoinContestModal,
   WalletHalfModal,
   MatchContestTabs,
   NewJoinContestModal,
@@ -62,7 +61,7 @@ interface PropTypes {
   teamPreviewPress(team_key: string): any;
   teamMutateAction(team_key: string, mutation: TeamFormationMutationType): any;
   onPressTeamSwitch(team_key: string, contest_key: string): void;
-  onPressCreateContest():void
+  onPressCreateContest(): void;
   onPressJoinedContest(contest_key: string): void;
   onPressSecondInnings(): any;
   sortByOnPress(payload: SortStatusType): any;

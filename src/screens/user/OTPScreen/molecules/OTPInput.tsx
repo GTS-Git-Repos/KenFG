@@ -7,10 +7,11 @@ import {
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 import tailwind from 'tailwind-rn';
+import clr from '../../../../constants/colors';
 
 const CELL_COUNT = 6;
 
-const App = ({value, onChangeText}) => {
+const App = ({value, onChangeText, dT}) => {
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
@@ -33,7 +34,7 @@ const App = ({value, onChangeText}) => {
             onLayout={getCellOnLayoutHandler(index)}
             key={index}
             style={[styles.cellRoot, isFocused && styles.focusCell]}>
-            <Text style={styles.cellText}>
+            <Text style={[styles.cellText, dT ? clr.tw : clr.td1]}>
               {symbol || (isFocused ? <Cursor /> : null)}
             </Text>
           </View>
@@ -69,7 +70,6 @@ const styles = StyleSheet.create({
     borderBottomColor: '#8797B14D',
   },
   cellText: {
-    color: '#FFF',
     fontSize: 30,
     textAlign: 'center',
     fontFamily: 'gadugi-bold',

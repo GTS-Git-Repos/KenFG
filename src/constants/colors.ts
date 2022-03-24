@@ -4,7 +4,6 @@ export default {
     backgroundColor: '#0D1320',
   },
   // semi dark background
-
   bgd2: {
     backgroundColor: '#172338',
   },
@@ -22,7 +21,7 @@ export default {
   },
   // background light gray color
   bgGray: {
-    backgroundColor: '#E0E0E0',
+    backgroundColor: '#E5E5E5',
   },
   // background red color
   bgRed: {

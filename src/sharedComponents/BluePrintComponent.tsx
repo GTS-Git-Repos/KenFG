@@ -12,6 +12,7 @@ interface PropTypes {
 }
 
 export default function BluePrintComponent(props: PropTypes) {
+
   const dT = useSelector(getAppThemeSelector);
   return (
     <View style={[tailwind('box')]}>

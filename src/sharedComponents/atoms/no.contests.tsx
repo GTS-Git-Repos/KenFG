@@ -28,7 +28,7 @@ interface PropTypes {
 export default function NoContests(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   return (
-    <View style={[{height: '100%'}]}>
+    <View style={[{height: '100%', backgroundColor: '#FFFFFF'}]}>
       <View style={[ss.troot]}>
         <FiltersContests
           filterOnPress={props.filterOnPress}
@@ -44,8 +44,8 @@ export default function NoContests(props: PropTypes) {
         <ActivityIndicator size="large" color="#C5A858" />
       ) : (
         <View style={[ss.noContest]}>
-          <Text style={[ss.txt]}>No Contests found</Text>
-          <Text style={[ss.subText]}>
+          <Text style={[ss.txt, !dT && clr.td1]}>No Contests found</Text>
+          <Text style={[ss.subText, !dT && clr.td1]}>
             There is no contest found try other filters
           </Text>
           <View style={[ss.image]}>

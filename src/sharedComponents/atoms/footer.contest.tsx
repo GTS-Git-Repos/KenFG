@@ -17,11 +17,13 @@ interface PropTypes {
 export default function ContestFooter(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   return (
-    <View style={[styles.footerRoot]}>
+    <View style={[styles.footerRoot, !dT && clr.bgGray]}>
       <View style={styles.footerItemSpace}>
         <View style={styles.footerItemSpace}>
-          <DollarIcon dT={true} />
-          <Text numberOfLines={1} style={styles.footerItem}>
+          <DollarIcon dT={dT} />
+          <Text
+            numberOfLines={1}
+            style={[styles.footerItem, !dT && clr.tdgray]}>
             {'\u20B9 '}
             {props.amount_letters}
           </Text>
@@ -29,7 +31,9 @@ export default function ContestFooter(props: PropTypes) {
 
         <View style={styles.footerItemSpace}>
           <CupIcon dT={true} />
-          <Text numberOfLines={1} style={styles.footerItem}>
+          <Text
+            numberOfLines={1}
+            style={[styles.footerItem, !dT && clr.tdgray]}>
             {props.bonus || '0%'}
           </Text>
         </View>
@@ -37,7 +41,9 @@ export default function ContestFooter(props: PropTypes) {
         {props.max_entry ? (
           <View style={styles.footerItemSpace}>
             <MIcon dT={true} />
-            <Text numberOfLines={1} style={styles.footerItem}>
+            <Text
+              numberOfLines={1}
+              style={[styles.footerItem, !dT && clr.tdgray]}>
               upto {props.max_entry}
             </Text>
           </View>
@@ -46,7 +52,7 @@ export default function ContestFooter(props: PropTypes) {
       {props.guaranteed && (
         <View style={styles.footerItemSpace}>
           <TickIcon dT={true} />
-          <Text style={styles.footerItem}>Gauranteed</Text>
+          <Text style={[styles.footerItem, !dT && clr.tdgray]}>Gauranteed</Text>
         </View>
       )}
     </View>

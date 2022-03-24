@@ -18,6 +18,9 @@ import assets from '../../constants/assets_manifest';
 import {CapIcon, VCIcon, PencilEditIcon} from '../../assets/newIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import CloneIcon from '../icons/CloneIcon';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   team_key: string;
@@ -45,7 +48,7 @@ export default function TeamsCard(props: PropTypes) {
   return (
     <View style={[ss.root]}>
       <ImageBackground
-        imageStyle={{borderTopLeftRadius: 5, borderTopRightRadius: 5}}
+        imageStyle={{borderTopLeftRadius: 8, borderTopRightRadius: 8}}
         style={[{width: '100%'}]}
         source={assets.myTeamsBackground}>
         {/* Header */}
@@ -145,25 +148,27 @@ const CapVC = (props: any) => {
 };
 
 const BottomStats = (props: any) => {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
-    <View style={[ss.bottomRoot]}>
+    <View style={[ss.bottomRoot, !dT && clr.bgw]}>
       <View style={[ss.itemRoot]}>
         <Text style={[ss.title]}>WK</Text>
-        <Text style={[ss.count]}>{props.keepers}</Text>
+        <Text style={[ss.count, !dT && clr.td1]}>{props.keepers}</Text>
       </View>
       <View style={[ss.itemRoot]}>
         <Text style={[ss.title]}>BAT</Text>
-        <Text style={[ss.count]}>{props.batsman}</Text>
+        <Text style={[ss.count, !dT && clr.td1]}>{props.batsman}</Text>
       </View>
 
       <View style={[ss.itemRoot]}>
         <Text style={[ss.title]}>AR</Text>
-        <Text style={[ss.count]}>{props.all_rounder}</Text>
+        <Text style={[ss.count, !dT && clr.td1]}>{props.all_rounder}</Text>
       </View>
 
       <View style={[ss.itemRoot]}>
         <Text style={[ss.title]}>BOWL</Text>
-        <Text style={[ss.count]}>{props.bowler}</Text>
+        <Text style={[ss.count, !dT && clr.td1]}>{props.bowler}</Text>
       </View>
     </View>
   );
@@ -205,6 +210,7 @@ const ss = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 12,
+    elevation: 5,
   },
   itemRoot: {
     alignItems: 'center',
@@ -230,6 +236,8 @@ const ss = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.2)',
     paddingHorizontal: 12,
     paddingVertical: 8,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
     justifyContent: 'center',
   },
   toolbar: {

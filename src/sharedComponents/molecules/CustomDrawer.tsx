@@ -25,7 +25,6 @@ import {
   LeaderSideIcon,
   SettingSideIcon,
   MoreSideIcon,
-  HelpIcon,
   ChatSideIcon,
   HelpSideIcon,
 } from '../../assets/newIcons';
@@ -62,9 +61,9 @@ export default function CustomDrawer(props: any) {
       case 'affliate':
         navigation.navigate('AffliatedScreen');
         return;
-      case "settings":
+      case 'settings':
         navigation.navigate('ProfileEditScreen');
-        return
+        return;
       case 'howtoplay':
         navigation.navigate('HowToPlayScreen');
         return;
@@ -75,7 +74,7 @@ export default function CustomDrawer(props: any) {
         navigation.navigate('More');
         return;
       default:
-        return  
+        return;
     }
   }
 
@@ -165,29 +164,22 @@ export default function CustomDrawer(props: any) {
         hideModalContentWhileAnimating={true}
         backdropTransitionOutTiming={0}
         scrollHorizontal={true}>
-        <View
-          style={[tailwind('p-6 bg-dark-4 rounded border border-gray-900')]}>
-          <Text style={[tailwind('font-bold text-white font-17')]}>
+        <View style={[ss.modalC, dT ? clr.bgd1 : clr.bgw]}>
+          <Text style={[ss.modaltx1, dT ? clr.tw : clr.td1]}>
             Do you want to Logout ?
           </Text>
-          <Text style={[tailwind('pt-2 font-regular text-white font-12')]}>
+          <Text style={[ss.modaltx2, dT ? clr.tw : clr.td1]}>
             This will logged out from the app, Press YES to proceed
           </Text>
 
-          <View style={[tailwind('flex-row items-center justify-end')]}>
-            <TouchableOpacity onPress={logout} style={[tailwind('px-6 pt-2')]}>
-              <Text
-                style={[tailwind('font-bold uppercase text-white font-15')]}>
-                Yes
-              </Text>
+          <View style={[ss.actionC]}>
+            <TouchableOpacity onPress={logout} style={[ss.space1]}>
+              <Text style={[ss.actionTxt, dT ? clr.tw : clr.td1]}>Yes</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => setLogoutModal(false)}
-              style={[tailwind('pt-2')]}>
-              <Text
-                style={[tailwind('font-bold uppercase text-white font-15')]}>
-                No
-              </Text>
+              style={[ss.space2]}
+              onPress={() => setLogoutModal(false)}>
+              <Text style={[ss.actionTxt, dT ? clr.tw : clr.td1]}>No</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -270,17 +262,17 @@ function WalletLink(props: any) {
   return (
     <TouchableOpacity
       onPress={() => props.navigate(props.to)}
-      style={[styles.linkRoot]}>
+      style={[ss.linkRoot]}>
       <View style={[{flex: 2}]}>
         <WalletSideIcon dT={props.dT} />
       </View>
       <View style={[tailwind(''), {flex: 6}]}>
-        <Text style={[styles.linkTxt, props.dT ? clr.tw : clr.td1]}>
+        <Text style={[ss.linkTxt, props.dT ? clr.tw : clr.td1]}>
           My Balance
         </Text>
       </View>
       <View style={[tailwind('items-end'), {flex: 4}]}>
-        <Text style={[styles.linkTxt, props.dT ? clr.tgl : clr.tr]}>
+        <Text style={[ss.linkTxt, props.dT ? clr.tgl : clr.tr]}>
           {'\u20B9 '}
           {props.money}
         </Text>
@@ -290,7 +282,6 @@ function WalletLink(props: any) {
 }
 
 const Links = (props: LinkTypes) => {
-  const navigation = useNavigation<any>();
   const newLocal = 'flex-row items-center py-3 mx-4';
   const newLocal_1 = 'font-regular text-light font-13';
 
@@ -387,15 +378,11 @@ const ReferaAndEarn = (props: any) => {
         <MoneySideIcon dT={props.dT} />
       </View>
       <View style={[tailwind('flex-row  items-center'), {flex: 7}]}>
-        <Text style={[styles.linkTxt, props.dT ? clr.tw : clr.td1]}>
+        <Text style={[ss.linkTxt, props.dT ? clr.tw : clr.td1]}>
           Refer and Earn
         </Text>
         <Text
-          style={[
-            styles.linkTxt,
-            tailwind('px-2'),
-            props.dT ? clr.tgl : clr.td1,
-          ]}>
+          style={[ss.linkTxt, tailwind('px-2'), props.dT ? clr.tgl : clr.td1]}>
           {'\u20B9'} 500
         </Text>
       </View>
@@ -403,14 +390,10 @@ const ReferaAndEarn = (props: any) => {
         <View
           style={[
             tailwind('border px-2 py-1 rounded'),
-            props.dT ? styles.dinvite : styles.linvite,
+            props.dT ? ss.dinvite : ss.linvite,
           ]}>
           <Text
-            style={[
-              styles.linkTxt,
-              props.dT ? clr.tgl : clr.td1,
-              {fontSize: 12},
-            ]}>
+            style={[ss.linkTxt, props.dT ? clr.tgl : clr.td1, {fontSize: 12}]}>
             INVITE
           </Text>
         </View>
@@ -419,7 +402,7 @@ const ReferaAndEarn = (props: any) => {
   );
 };
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
   dinvite: {
     borderColor: '#d1b45a',
   },
@@ -435,5 +418,37 @@ const styles = StyleSheet.create({
   linkTxt: {
     fontFamily: 'gadugi-normal',
     fontSize: 13,
+  },
+  modalC: {
+    padding: 18,
+    borderRadius: 6,
+    borderColor: 'rgba(17, 24, 39,1)',
+    borderWidth: 1,
+  },
+  modaltx1: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 17,
+  },
+  modaltx2: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    paddingTop: 12,
+  },
+  actionC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  actionTxt: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 15,
+    textTransform: 'uppercase',
+  },
+  space1: {
+    paddingHorizontal: 24,
+    paddingTop: 8,
+  },
+  space2: {
+    paddingTop: 8,
   },
 });

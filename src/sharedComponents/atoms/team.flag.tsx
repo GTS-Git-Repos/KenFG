@@ -17,7 +17,7 @@ export default function TeamFlag(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   const URI = `http://kenfg.com/images/flag/${props.teamCode.toUpperCase()}`;
   return (
-    <View style={[ss.flagWrapper]}>
+    <View style={[dT ? ss.dark : ss.light]}>
       <FastImage
         style={ss.flag}
         source={{
@@ -31,11 +31,21 @@ export default function TeamFlag(props: PropTypes) {
 }
 
 const ss = StyleSheet.create({
-  flagWrapper: {
-    width: 45,
-    height: 25,
+  dark: {
+    width: 46,
+    height: 27,
     backgroundColor: '#0c1320',
     borderRadius: 2,
+    borderColor: '#0c13205D',
+    borderWidth: 1,
+  },
+  light: {
+    width: 46,
+    height: 27,
+    backgroundColor: '#E0E0E0',
+    borderRadius: 2,
+    borderColor: '#E0E0E05D',
+    borderWidth: 1,
   },
   flag: {
     width: 45,
