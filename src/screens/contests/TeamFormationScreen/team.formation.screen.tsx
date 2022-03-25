@@ -44,7 +44,7 @@ interface PropTypes {
 
 export default function TeamFormationScreen(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
-  const gradiant = dT ? ['#172338', '#0D1320'] : ['#FFFFFF', '#E0E0E0'];
+  const gradiant = dT ? ['#172338', '#0D1320'] : ['#FFFFFF', '#E5E5E5'];
 
   const pageRef = useRef<PagerView>(null);
   const clearRef = useRef<any>(null);
@@ -220,7 +220,7 @@ export default function TeamFormationScreen(props: PropTypes) {
         adjustToContentHeight={true}
         disableScrollIfPossible={false}
         closeOnOverlayTap={true}>
-        <ClearTeamSheet clearTeam={clearTeam} clearRef={clearRef} />
+        <ClearTeamSheet dT={dT} clearTeam={clearTeam} clearRef={clearRef} />
       </Modalize>
 
       {/* {console.log(props.match)} */}
@@ -231,6 +231,7 @@ export default function TeamFormationScreen(props: PropTypes) {
         modalTopOffset={100}
         adjustToContentHeight={true}>
         <FilterByTeamSheet
+          dT={dT}
           filterSheet={props.filterSheet}
           team_a_key={props.match.team_a}
           team_b_key={props.match.team_b}

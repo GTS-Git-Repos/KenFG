@@ -11,7 +11,7 @@ interface PropTypes {
 function MatchStatus(props: PropTypes) {
   return (
     <View style={[props.dT ? ss.root : ss.lRoot]}>
-      <Text numberOfLines={1} style={[ss.txt, props.dT ? clr.td2 : clr.td1]}>
+      <Text numberOfLines={1} style={[ss.txt, props.dT ? clr.td2 : clr.tdgray]}>
         {props.text}
       </Text>
     </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {DownArrowIcon, TopArrowIcon} from '../../../../assets/newIcons';
+import {DownArrowIcon} from '../../../../assets/newIcons';
 
 interface PropTypes {
   sortStatus: any;
@@ -18,7 +18,7 @@ export default function SortTabs(props: PropTypes) {
 
       <TouchableOpacity
         onPress={() => props.onSortAction('selby')}
-        style={[tailwind('flex-row items-center'), {flex: 4}]}>
+        style={[styles.b1]}>
         <Text style={styles.filterText}>SELECTED BY</Text>
         {props.sortStatus.sortBySel === false && (
           <DownArrowIcon invert={false} />
@@ -69,5 +69,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     textAlign: 'center',
     textTransform: 'uppercase',
+  },
+  b1: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 4,
+    left: 24,
   },
 });

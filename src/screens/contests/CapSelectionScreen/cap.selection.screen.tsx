@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, StyleSheet, Text, ScrollView} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {StackActions, useNavigation, useRoute} from '@react-navigation/native';
 import {getAppThemeSelector} from '../../../store/selectors';
@@ -154,21 +154,14 @@ export default function CapSelectionScreen(props: PropTypes) {
   };
 
   return (
-    <View style={[tailwind('h-full bg-dark'), !dT && clr.bgGray]}>
+    <View style={[tailwind('h-full'), !dT && clr.bgGray]}>
       <TopBar text={matchSelector.titleString} helpIcon={true} ptsIcon={true} />
       <ScrollView>
-        <View style={[tailwind('px-4 py-3 border-b border-gray-800')]}>
-          <Text
-            style={[
-              tailwind('font-bold text-center text-dark-1 font-13'),
-              !dT && clr.td1,
-            ]}>
+        <View style={[ss.root, dT ? ss.dBorder : ss.lBorder]}>
+          <Text style={[ss.title, dT ? clr.tw : clr.td1]}>
             Choose your Captain and Vice Captain
           </Text>
-          <Text
-            style={[
-              tailwind('font-regular text-center text-dark-1 pt-2 font-13'),
-            ]}>
+          <Text style={[ss.subtxt, dT ? clr.td2 : clr.td1]}>
             C Gets 2x Points, VC gets 1.5x Points
           </Text>
         </View>
@@ -194,6 +187,7 @@ export default function CapSelectionScreen(props: PropTypes) {
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
               viceCaptainSelect={viceCaptainSelect}
+              dT={dT}
             />
           );
         })}
@@ -217,6 +211,7 @@ export default function CapSelectionScreen(props: PropTypes) {
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
               viceCaptainSelect={viceCaptainSelect}
+              dT={dT}
             />
           );
         })}
@@ -240,6 +235,7 @@ export default function CapSelectionScreen(props: PropTypes) {
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
               viceCaptainSelect={viceCaptainSelect}
+              dT={dT}
             />
           );
         })}
@@ -262,6 +258,7 @@ export default function CapSelectionScreen(props: PropTypes) {
               is_vice_captain={isPlayerViceCaptain(item.key)}
               captainSelectAction={captainSelectAction}
               viceCaptainSelect={viceCaptainSelect}
+              dT={dT}
             />
           );
         })}
@@ -280,3 +277,29 @@ export default function CapSelectionScreen(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  dBorder: {
+    borderColor: 'rgba(31, 41, 55,1)',
+    borderBottomWidth: 1,
+  },
+  lBorder: {
+    borderColor: 'rgba(31, 41, 55,0.1)',
+    borderBottomWidth: 1,
+  },
+  title: {
+    fontFamily: 'gadugi-bold',
+    textAlign: 'center',
+    fontSize: 13,
+  },
+  subtxt: {
+    fontFamily: 'gadugi-normal',
+    textAlign: 'center',
+    fontSize: 13,
+    paddingTop: 8,
+  },
+});

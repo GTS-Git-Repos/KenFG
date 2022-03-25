@@ -1,10 +1,8 @@
+// 
 import React from 'react';
-import tailwind from '../../../../../tailwind';
-import {View, Image, Text, StyleSheet} from 'react-native';
-import assets from '../../../../constants/assets_manifest';
+import {View, Text, StyleSheet} from 'react-native';
 import {TeamFlag} from '../../../../sharedComponents';
 import clr from '../../../../constants/colors';
-import FastImage from 'react-native-fast-image';
 
 interface PropTypes {
   dT: boolean;
@@ -21,7 +19,6 @@ interface TeamType {
 }
 
 export default function Teams(props: PropTypes) {
-  console.log(props.status);
 
   return (
     <View style={[styles.ct]}>

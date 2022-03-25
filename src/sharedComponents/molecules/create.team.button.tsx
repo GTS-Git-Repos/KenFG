@@ -3,21 +3,26 @@
 import React from 'react';
 import {PlusIcon} from '../../assets/newIcons';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   onPressCreateTeam(): any;
 }
 
 export default function CreateTeamButtom(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
     <View style={[ss.root]}>
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={props.onPressCreateTeam}
         style={[ss.container]}>
-        <View style={[ss.btn]}>
+        <View style={[ss.btn, !dT && clr.bgLgreen]}>
           <PlusIcon />
-          <Text style={[ss.txt]}>Create Team</Text>
+          <Text style={[ss.txt, !dT && clr.tw]}>Create Team</Text>
         </View>
       </TouchableOpacity>
     </View>

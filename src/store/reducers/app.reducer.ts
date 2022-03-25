@@ -8,7 +8,7 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-  darkModeEnabled: true,
+  darkModeEnabled: false,
   error: null,
   ip: null,
   // the match meta will be set when user opened a match,

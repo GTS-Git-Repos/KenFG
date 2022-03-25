@@ -60,10 +60,10 @@ export default function CustomBottomTab({state, descriptors, navigation}: any) {
 
   return (
     <View>
-      {/* <DebugThemeSwitcher
+      <DebugThemeSwitcher
         isDarkModeEnable={isDarkModeEnable}
         changeDarkMode={changeDarkMode}
-      /> */}
+      />
       <View style={[ss.root, dT ? clr.bgg : clr.bgw]}>
         {state.routes.map((route: any, index: number) => {
           const {options} = descriptors[route.key];

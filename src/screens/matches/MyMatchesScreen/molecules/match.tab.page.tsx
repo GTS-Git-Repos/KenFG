@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import MatchStatusCard from './match.status.myMatches';
 import NoMatches from '../atoms/no.matches';
 
@@ -34,11 +34,11 @@ export default function MatchTabPage(props: PropTypes) {
   }
 
   return (
-    <View style={[tailwind('mx-3')]}>
+    <View>
       <ScrollView>
         {props.matches.map((item: any) => {
           return (
-            <View style={[tailwind('my-2')]} key={item.key}>
+            <View style={[ss.space]} key={item.key}>
               <MatchStatusCard
                 match_key={item.key}
                 team_a={item.teams.a}
@@ -55,7 +55,18 @@ export default function MatchTabPage(props: PropTypes) {
             </View>
           );
         })}
+        <View style={[ss.wspace]}></View>
       </ScrollView>
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  space: {
+    marginVertical: 8,
+    marginHorizontal: 12,
+  },
+  wspace: {
+    height: 20,
+  },
+});

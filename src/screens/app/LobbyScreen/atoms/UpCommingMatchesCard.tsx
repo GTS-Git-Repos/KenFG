@@ -67,26 +67,6 @@ export default function UpcommingMatches(props: PropTypes) {
     };
   }, []);
 
-  useEffect(() => {
-    // let interval: any = null;
-    // try {
-    //   set_team_a_flag(props.team_a_flag);
-    //   set_team_b_flag(props.team_b_flag);
-    //   if (isMounted.current) {
-    //     interval = setInterval(() => {
-    //       setCurrentTime(getCountDown(props.start_at));
-    //     }, 1000);
-    //   }
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    // return () => {
-    //   log('Unmounted');
-    //   isMounted.current = false;
-    //   clearInterval(interval);
-    // };
-  }, []);
-
   return (
     <View style={[styles.root]}>
       <View style={[styles.container, dT ? clr.bgd2 : clr.bgw]}>

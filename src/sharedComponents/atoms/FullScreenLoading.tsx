@@ -19,7 +19,7 @@ export default function FullScreenLoading(props: PropTypes) {
     <View style={[ss.root, !dT && clr.bgw]}>
       <TopBar text={props.title} />
       <View style={[ss.space]}>
-        <ActivityIndicator color="#d1b45a" size="large" />
+        <ActivityIndicator color={dT ? '#d1b45a' : '#9C181E'} size="large" />
       </View>
     </View>
   );

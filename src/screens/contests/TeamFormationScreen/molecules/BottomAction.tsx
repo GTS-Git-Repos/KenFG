@@ -1,10 +1,9 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
-import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/core';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   navigateToTeamPreviewScreeen(): any;
@@ -12,42 +11,50 @@ interface PropTypes {
 }
 
 export default function BottomAction(props: PropTypes) {
-  const navigation = useNavigation<any>();
+  const dT = useSelector(getAppThemeSelector);
+
   return (
-    <View style={[tailwind('flex-row items-center justify-center')]}>
+    <View style={[ss.root]}>
       <TouchableOpacity
         onPress={props.navigateToTeamPreviewScreeen}
-        style={[
-          tailwind('px-5 py-3 flex-row m-2 rounded'),
-          {backgroundColor: '#172338', borderTopColor: 'red'},
-          styles.teamPreview,
-        ]}>
-        <Text style={[tailwind('font-bold uppercase text-light font-12')]}>
-          Team Preview
-        </Text>
+        style={[ss.teamPreview, dT ? clr.bgd1 : clr.bgw]}>
+        <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>Team Preview</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={props.navigateToCapSelection}
-        style={[
-          tailwind('px-8 py-3 flex-row  m-2 rounded'),
-          {backgroundColor: '#00513B'},
-        ]}>
-        <Text style={[tailwind('font-bold uppercase text-light font-12')]}>
-          Continue
-        </Text>
+        style={[ss.continue, dT ? clr.bgGreen : clr.bgLgreen]}>
+        <Text style={[ss.txt, clr.tw]}>Continue</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
+  root: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   teamPreview: {
-    borderTopColor: '#006A4D',
-    borderLeftColor: '#006A4D',
-    borderRightColor: '#006A4D',
-    borderBottomColor: '#006A4D',
+    borderColor: '#006A4D',
     borderWidth: 1,
-    borderStyle: 'solid',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    margin: 8,
+    borderRadius: 4,
+  },
+  txt: {
+    fontFamily: 'gadugi-bold',
+    textTransform: 'uppercase',
+    fontSize: 12,
+  },
+  continue: {
+    borderColor: '#006A4D',
+    borderWidth: 1,
+    paddingHorizontal: 32,
+    paddingVertical: 12,
+    margin: 8,
+    borderRadius: 4,
   },
 });

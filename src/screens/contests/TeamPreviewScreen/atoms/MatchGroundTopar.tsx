@@ -1,29 +1,53 @@
 import React from 'react';
-import tailwind from '../../../../../tailwind';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/core';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   name: string;
 }
 
 export default function MatchGroundTopBar(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const navigation = useNavigation();
   return (
     <View>
-      <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        style={[tailwind('flex-row items-center px-3 py-2')]}>
-        <Icon name="close" color="white" size={25} />
-        <Text
-          numberOfLines={1}
-          style={[tailwind('font-semibold px-3 uppercase text-light font-15')]}>
+      <TouchableOpacity onPress={() => navigation.goBack()} style={[ss.btn]}>
+        <Icon name="close" color={dT ? 'white' : 'black'} size={25} />
+        <Text numberOfLines={1} style={[ss.name, dT ? clr.tw : clr.td1]}>
           {props.name}
         </Text>
       </TouchableOpacity>
-      <View style={[tailwind('mx-3 mb-2 border-b border-gray-800')]}></View>
+      <View style={[dT ? ss.dBorder : ss.lBorder]}></View>
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  btn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  name: {
+    fontFamily: 'gadugi-bold',
+    textTransform: 'uppercase',
+    paddingHorizontal: 12,
+    fontSize: 15,
+  },
+  dBorder: {
+    marginHorizontal: 12,
+    marginBottom: 8,
+    borderColor: 'rgba(31, 41, 55,1)',
+  },
+  lBorder: {
+    marginHorizontal: 12,
+    marginBottom: 8,
+    borderColor: 'rgba(31, 41, 55,0.3)',
+  },
+});

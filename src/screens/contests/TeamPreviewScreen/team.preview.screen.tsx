@@ -1,8 +1,17 @@
 import React, {useEffect} from 'react';
-import {View, Text, ImageBackground, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {useRoute} from '@react-navigation/native';
 import assets from '../../../constants/assets_manifest';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 import MatchGroundTopBar from './atoms/MatchGroundTopar';
 import MatchStats from './atoms/MatchStats';
@@ -15,6 +24,7 @@ interface PropTypes {
 
 export default function TeamPreViewScreen(props: PropTypes) {
   const route = useRoute<any>();
+  const dT = useSelector(getAppThemeSelector);
 
   useEffect(() => {
     // log.info(route);
@@ -23,17 +33,18 @@ export default function TeamPreViewScreen(props: PropTypes) {
   // return null
 
   if (route.params.credits_left === 100) {
-    return <NoPlayersSelected />;
+    return <NoPlayersSelected dT={dT} />;
   }
 
   return (
-    <View style={tailwind('h-full bg-dark-4')}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <MatchGroundTopBar name={'Your Team'} />
 
       <MatchStats
         team_a={route.params.team_a}
         team_b={route.params.team_b}
         credits_left={route.params.credits_left}
+        dT={dT}
       />
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <ImageBackground
@@ -78,18 +89,17 @@ export default function TeamPreViewScreen(props: PropTypes) {
   );
 }
 
-// *from* route props is mandatory
-
-const NoPlayersSelected = () => {
+const NoPlayersSelected = (props: any) => {
   const route = useRoute<any>();
   return (
-    <View style={tailwind('h-full bg-dark-4')}>
+    <View style={[ss.root, props.dT ? clr.bgd1 : clr.bgw]}>
       <MatchGroundTopBar name={'Your Team'} />
 
       <MatchStats
         team_a={route.params.team_a}
         team_b={route.params.team_b}
         credits_left={route.params.credits_left}
+        dT={props.dT}
       />
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <ImageBackground
@@ -111,3 +121,9 @@ const NoPlayersSelected = () => {
     </View>
   );
 };
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+});

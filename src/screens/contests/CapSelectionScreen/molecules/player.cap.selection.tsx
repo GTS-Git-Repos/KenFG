@@ -1,7 +1,8 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, Text, TouchableOpacity} from 'react-native';
+import {View, Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   image?: string;
@@ -17,11 +18,13 @@ interface PropTypes {
   seasonRole: string;
   captainSelectAction(player_key: string): any;
   viceCaptainSelect(player_key: string): any;
+  dT: boolean;
 }
 
 export default function PlayerCapSelection(props: PropTypes) {
+  const dT = props.dT;
   return (
-    <View style={[tailwind('bg-dark-3 border-t px-4 border-gray-800')]}>
+    <View style={[dT ? ss.dRoot : ss.lRoot]}>
       <View style={[tailwind('pt-2 flex-row items-center')]}>
         <View style={[tailwind('flex-row'), {flex: 5}]}>
           <Image
@@ -31,14 +34,10 @@ export default function PlayerCapSelection(props: PropTypes) {
           />
 
           <View style={[tailwind('flex-col justify-center ml-6'), {flex: 1}]}>
-            <Text
-              numberOfLines={1}
-              style={[
-                tailwind('font-semibold font-14 overflow-hidden text-light'),
-              ]}>
+            <Text numberOfLines={1} style={[ss.name, dT ? clr.tw : clr.td1]}>
               {props.name}
             </Text>
-            <Text style={[tailwind('font-regular py-1 font-14 text-dark-1')]}>
+            <Text style={[ss.point, dT ? clr.td2 : clr.tdgray]}>
               {props.points}
             </Text>
           </View>
@@ -85,7 +84,7 @@ export default function PlayerCapSelection(props: PropTypes) {
             </TouchableOpacity>
             <Text
               numberOfLines={1}
-              style={[tailwind('font-regular  text-dark-1 py-1 font-15')]}>
+              style={[ss.point, dT ? clr.td2 : clr.tdgray]}>
               {props.c}
             </Text>
           </View>
@@ -124,7 +123,7 @@ export default function PlayerCapSelection(props: PropTypes) {
 
             <Text
               numberOfLines={1}
-              style={[tailwind('font-regular text-dark-1 py-1 font-15')]}>
+              style={[ss.point, dT ? clr.td2 : clr.tdgray]}>
               {props.vc}
             </Text>
           </View>
@@ -210,3 +209,28 @@ const TeamTag = (props: any) => {
     </View>
   );
 };
+
+const ss = StyleSheet.create({
+  dRoot: {
+    paddingHorizontal: 16,
+    borderColor: 'rgba(31, 41, 55,1)',
+    borderTopWidth: 1,
+    backgroundColor: '#172338',
+  },
+  lRoot: {
+    paddingHorizontal: 16,
+    borderColor: 'rgba(31, 41, 55,0.1)',
+    borderTopWidth: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  name: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 14,
+    paddingVertical: 4,
+  },
+  point: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 14,
+    paddingVertical: 4,
+  },
+});
