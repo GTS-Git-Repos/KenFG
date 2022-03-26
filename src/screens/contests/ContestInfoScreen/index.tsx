@@ -15,6 +15,7 @@ import {
 import ContestInfoScreen from './contest.info.screen';
 import {checksBeforeJoinContest} from '../../../workers/contest.decision';
 import {
+  toTeamFormationNoAutoJoin,
   toTeamFormationWithAutoJoin,
   toTeamPreview,
 } from '../../../store/actions/navigationActions';
@@ -96,6 +97,10 @@ export default function ContestInfoHOC() {
       refetch();
     }, []),
   );
+
+  function onPressCreateTeam(){
+    toTeamFormationNoAutoJoin(navigation)
+  }
 
   function openWallet(input: boolean) {
     if (input) {
@@ -202,6 +207,7 @@ export default function ContestInfoHOC() {
       ldbErr={ldbErr}
       lbProfileOnPress={lbProfileOnPress}
       teamSwapOnPress={teamSwapOnPress}
+      onPressCreateTeam={onPressCreateTeam}
     />
   );
 }

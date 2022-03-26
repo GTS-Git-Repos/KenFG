@@ -1,10 +1,12 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {
   TopBarContest,
   ContestCard,
   WalletHalfModal,
+  CreateTeamButton,
+  FullScreenLoading,
 } from '../../../sharedComponents';
 import Modal from 'react-native-modal';
 import {useIsScreenReady, useCountDown} from '../../../shared_hooks/app.hooks';
@@ -12,9 +14,7 @@ import {useSharedValue} from 'react-native-reanimated';
 import {useSelector} from 'react-redux';
 
 import TabsContestInfo from './atoms/TabsContestInfo';
-import CreateTeamButton from './atoms/CreateTeamButton';
 import WinningsList from './molecules/WiningsList';
-import ContestInfoPageLoading from './atoms/ContestInfoPageLoading';
 import ContestLearderBoard from './molecules/contest.leader.boardList';
 
 import PagerView from 'react-native-pager-view';
@@ -39,6 +39,7 @@ interface PropTypes {
   proceedToJoin(contest_key: string): any;
   lbProfileOnPress(player_key: string, teamCode: string): any;
   teamSwapOnPress(teamCode: string): any;
+  onPressCreateTeam(): void;
 }
 
 export default function ContestInfoScreen(props: PropTypes) {
@@ -65,13 +66,12 @@ export default function ContestInfoScreen(props: PropTypes) {
     pageRef.current?.setPage(index);
   };
 
-
   if (!props.contestInfo || isScreenReady === false) {
-    return <ContestInfoPageLoading title={matchSelector.titleString} />;
+    return <FullScreenLoading title={matchSelector.titleString} />;
   }
 
   return (
-    <View style={tailwind('bg-dark h-full')}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       {/* block */}
       <TopBarContest
         title={matchSelector.titleString}
@@ -82,7 +82,7 @@ export default function ContestInfoScreen(props: PropTypes) {
         openWallet={props.openWallet}
         dT={dT}
       />
-      <View style={[tailwind('pt-2 bg-primary')]}>
+      <View style={[ss.space]}>
         <ContestCard
           contest_key={props.contestInfo.key}
           match_key={props.contestInfo.match_key}
@@ -92,23 +92,21 @@ export default function ContestInfoScreen(props: PropTypes) {
           occupaid_cent={props.contestInfo.occupaid_cent}
           amount_letters={props.contestInfo.prize.amount_letters}
           amount={props.contestInfo.prize.amount}
-          guaranteed={props.contestInfo.guaranteed}
+          guaranteed={props.contestInfo.guaranteed === 'yes'}
           entry={props.contestInfo.entry}
           max_entry={props.contestInfo.max_entry}
           bonus={props.contestInfo.bonus}
           is_practice={props.contestInfo.is_practice}
           contest_type={props.contestInfo.contest_type}
           proceedToJoin={props.proceedToJoin}
-          onContestCardPress={() => {
-            console.log('disabled on here');
-          }}
+          onContestCardPress={() => {}}
         />
       </View>
       <TabsContestInfo
         activeIndex={activeIndex}
         onTabPressed={onTabPressed}
         tabOffset={tabOffset}
-        tabs={['Winnings', 'LeaderBoard']}
+        dT={dT}
       />
       {/* end of block */}
       <PagerView
@@ -164,13 +162,8 @@ export default function ContestInfoScreen(props: PropTypes) {
         />
       </Modal>
 
-      <View
-        style={[
-          tailwind(
-            'absolute bottom-0 w-full flex-row items-center justify-center',
-          ),
-        ]}>
-        <CreateTeamButton />
+      <View style={[ss.cTeamBtn]}>
+        <CreateTeamButton onPressCreateTeam={props.onPressCreateTeam} />
       </View>
     </View>
   );
@@ -180,3 +173,20 @@ export default function ContestInfoScreen(props: PropTypes) {
  * match_key:
  * contest_key:  [Route params is mandatory]
  */
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+  space: {
+    paddingTop: 8,
+  },
+  cTeamBtn: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

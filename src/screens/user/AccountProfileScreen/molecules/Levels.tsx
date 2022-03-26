@@ -5,19 +5,19 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // import {BottomLine} from '../../../../sharedComponents';
 import assets from '../../../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/core';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   nextReward: string;
+  dT: boolean;
 }
 
 export default function LevelCard(props: PropTypes) {
   const navigation = useNavigation<any>();
+  const dT = props.dT;
   return (
-    <View style={[tailwind('rounded bg-dark-3 my-2 py-3 px-4 ')]}>
-      <View
-        style={[
-          tailwind('flex-row items-center pb-3 border-t border-gray-800'),
-        ]}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgw]}>
+      <View style={[tailwind('flex-row items-center pb-3')]}>
         <View style={[tailwind('rounded-full'), {width: 15, height: 15}]}>
           <Image
             resizeMode="contain"
@@ -25,15 +25,11 @@ export default function LevelCard(props: PropTypes) {
             style={[tailwind('w-full h-full')]}
           />
         </View>
-        <Text style={[tailwind('font-regular px-2 text-light font-13')]}>
-          Next Rewards :
-        </Text>
-        <Text style={[tailwind('font-bold text-brown-3 pr-2 font-14')]}>
+        <Text style={[ss.title, dT ? clr.tw : clr.td1]}>Next Rewards :</Text>
+        <Text style={[ss.rAmount, dT ? clr.tg : clr.tr]}>
           {props.nextReward}
         </Text>
-        <Text style={[tailwind('font-bold text-white font-14')]}>
-          Cash Bonus
-        </Text>
+        <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>Cash Bonus</Text>
       </View>
       {/* <View style={[tailwind('py-2')]}>
         <BottomLine />
@@ -41,17 +37,42 @@ export default function LevelCard(props: PropTypes) {
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => navigation.navigate('UserGoalsScreen')}
-        style={[tailwind('flex-row justify-between items-center')]}>
-        <Text style={[tailwind('font-regular text-light font-12')]}>
+        style={[ss.linkC]}>
+        <Text style={[ss.lnkTxt, dT ? clr.tw : clr.td1]}>
           View Upcomming Rewards and Levels
         </Text>
-        <Icon name="chevron-forward-outline" size={17} color="white" />
+        <Icon
+          name="chevron-forward-outline"
+          size={17}
+          color={dT ? 'white' : 'black'}
+        />
       </TouchableOpacity>
     </View>
   );
 }
 
 const ss = StyleSheet.create({
+  root: {
+    borderRadius: 4,
+    marginVertical: 4,
+    paddingTop: 12,
+    paddingHorizontal: 8,
+  },
+  title: {
+    fontFamily: 'gadugi-bold',
+    paddingHorizontal: 8,
+    fontSize: 13,
+  },
+  rAmount: {
+    fontFamily: 'gadugi-bold',
+    paddingHorizontal: 4,
+    fontSize: 14,
+    paddingRight: 8,
+  },
+  txt: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 13,
+  },
   shadow: {
     shadowColor: '#fff',
     shadowOffset: {
@@ -61,5 +82,15 @@ const ss = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
     elevation: 4,
+  },
+  linkC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingBottom: 12,
+  },
+  lnkTxt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
   },
 });

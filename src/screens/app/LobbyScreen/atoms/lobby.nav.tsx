@@ -155,6 +155,8 @@ const ss = StyleSheet.create({
     borderTopStartRadius: 8,
     borderTopEndRadius: 8,
     bottom: 6,
+    borderBottomColor: 'rgba(31, 41, 55,0.1)',
+    borderBottomWidth: 1,
   },
   root: {
     borderColor: '#202C43',

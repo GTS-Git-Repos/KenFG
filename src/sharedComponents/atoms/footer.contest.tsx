@@ -16,8 +16,13 @@ interface PropTypes {
 
 export default function ContestFooter(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
+
   return (
-    <View style={[styles.footerRoot, !dT && clr.bgGray]}>
+    <View
+      style={[
+        styles.footerRoot,
+        !dT && {backgroundColor: 'rgba(224, 224, 224, 0.6)'},
+      ]}>
       <View style={styles.footerItemSpace}>
         <View style={styles.footerItemSpace}>
           <DollarIcon dT={dT} />
@@ -49,12 +54,12 @@ export default function ContestFooter(props: PropTypes) {
           </View>
         ) : null}
       </View>
-      {props.guaranteed && (
+      {props.guaranteed ? (
         <View style={styles.footerItemSpace}>
           <TickIcon dT={true} />
           <Text style={[styles.footerItem, !dT && clr.tdgray]}>Gauranteed</Text>
         </View>
-      )}
+      ) : null}
     </View>
   );
 }

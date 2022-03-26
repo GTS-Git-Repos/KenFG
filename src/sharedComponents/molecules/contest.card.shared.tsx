@@ -4,12 +4,12 @@
  * private contest screen share page
  */
 import React from 'react';
-import tailwind from '../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import ProgressBarContestCard from './progressbar.contest';
 import ContestFooter from '../atoms/footer.contest';
-import {appColorsSelector} from '../../store/selectors';
 import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 // type ContestType = 'public' | 'practice';
 
@@ -33,23 +33,26 @@ interface PropTypes {
 }
 
 export default function ContestCard(props: PropTypes) {
-  const clr = useSelector(appColorsSelector);
+  const dT = useSelector(getAppThemeSelector);
 
   return (
     <TouchableOpacity
       activeOpacity={0.5}
-      style={[styles.root, clr.bg_1]}
+      style={[styles.root, dT ? clr.bgd2 : clr.bgw]}
       onPress={() => props.onContestCardPress(props.contest_key)}>
       <View style={styles.content}>
-        <View style={[styles.topSection, tailwind('')]}>
+        <View style={[styles.topSection]}>
           <View>
-            <Text style={[styles.contestTitle, clr.txt_1]}>{props.title}</Text>
-            <Text style={[styles.contestAmount, clr.txt_3]}>
+            <Text style={[styles.contestTitle, dT ? clr.tw : clr.td1]}>
+              {props.title}
+            </Text>
+            <Text style={[styles.contestAmount, dT ? clr.tw : clr.td1]}>
               {'\u20B9 '}
               {props.amount_letters}
             </Text>
           </View>
           <ContestEntryType
+            dT={dT}
             proceedToJoin={props.proceedToJoin}
             contest_type={props.contest_type}
             entry={props.entry}
@@ -59,7 +62,6 @@ export default function ContestCard(props: PropTypes) {
 
         {/* Progress bar */}
         <ProgressBarContestCard
-          isDarkMode={clr.dark}
           total_spots={props.total_spots}
           occupaid_cent={props.occupaid_cent}
           filled_spots={props.filled_spots}
@@ -68,7 +70,7 @@ export default function ContestCard(props: PropTypes) {
       <ContestFooter
         amount_letters={props.amount_letters}
         bonus={props.bonus}
-        guaranteed={props.guaranteed}
+        guaranteed={props.guaranteed} 
         max_entry={props.max_entry}
       />
     </TouchableOpacity>
@@ -78,6 +80,7 @@ export default function ContestCard(props: PropTypes) {
 const ContestEntryType = (props: any) => {
   return (
     <TouchableOpacity onPress={() => props.proceedToJoin(props.contest_key)}>
+      <Text style={[styles.contestTitle, styles.entryTxt]}>Entry</Text>
       <View style={[styles.entryContainer]}>
         <View style={[styles.entryBtn]}>
           {props.entry === 0 ? (
@@ -101,10 +104,10 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   topSection: {
-    alignItems: 'center',
+    // alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 8,
+    paddingVertical: 4,
   },
   content: {
     padding: 16,
@@ -117,14 +120,15 @@ const styles = StyleSheet.create({
   contestAmount: {
     color: 'rgba(255, 255, 255, 1)',
     fontFamily: 'gadugi-bold',
-    paddingVertical: 8,
+    paddingTop: 8,
+    paddingBottom: 12,
+    top:4,
     fontSize: 14,
   },
   entryContainer: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    paddingVertical: 8,
   },
   entryBtn: {
     borderRadius: 4,
@@ -132,6 +136,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     backgroundColor: '#006A4D',
   },
+  entryTxt: {
+    textAlign: 'right',
+    paddingBottom: 6,
+  },
+
   entryAmount: {
     fontFamily: 'gadugi-bold',
     fontSize: 14,

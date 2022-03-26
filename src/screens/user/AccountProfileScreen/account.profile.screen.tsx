@@ -10,11 +10,13 @@ import {
 import tailwind from '../../../../tailwind';
 import {useNavigation} from '@react-navigation/native';
 import assets from '../../../constants/assets_manifest';
-import AccountProfileTopBar from './atoms/AccountProfileTopBar';
 import {
   BlockScreenByLoading,
   FullScreenLoading,
 } from '../../../sharedComponents';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 import UserProfileCard from './atoms/UserProfileCard';
 import LevelCard from './molecules/Levels';
@@ -26,7 +28,6 @@ import PlayerContests from './molecules/PlayerContests';
 import {Modalize} from 'react-native-modalize';
 import {UserMetaType, UserStatsType} from '../../../types/user';
 import {TopBar} from '../../../sharedComponents';
-const log = console.log;
 
 interface PropTypes {
   loading: boolean;
@@ -37,6 +38,8 @@ interface PropTypes {
 }
 
 export default function AccountProfileScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   if (!props.userStat) {
     return <FullScreenLoading title={'User Account'} />;
   }
@@ -44,16 +47,11 @@ export default function AccountProfileScreen(props: PropTypes) {
   return (
     <View style={[tailwind('h-full bg-dark')]}>
       <TopBar text={'User Account'} />
-      {/* <AccountProfileTopBar moreOptionSheet={props.moreOptionSheet} /> */}
-      {/* <View style={[tailwind('bg-secondary'), {height: 15}]}></View> */}
 
-      <View
-        style={[
-          tailwind('bg-dark-4 rounded-2xl'),
-          // {position: 'relative', bottom: 15},
-        ]}>
+      <View style={[dT ? clr.bgd1 : clr.bgGray]}>
         <ScrollView contentContainerStyle={tailwind('px-2')}>
           <UserProfileCard
+            dT={dT}
             image={props.userMeta.profile_img}
             name={props.userMeta.name}
             username={props.userMeta.name}
@@ -61,14 +59,14 @@ export default function AccountProfileScreen(props: PropTypes) {
             level={'0'}
             moreOptionSheet={props.moreOptionSheet}
           />
-          <AccountSubTitle text={'Achivements and reward'} />
-          <LevelCard nextReward={'\u20B9 1000'} />
+          <AccountSubTitle dT={dT} text={'Achivements and reward'} />
+          <LevelCard dT={dT} nextReward={'\u20B9 1000'} />
           <View style={[tailwind('my-2')]}>
-            <AccountSubTitle text={'Career Stats'} />
+            <AccountSubTitle dT={dT} text={'Career Stats'} />
           </View>
-          <Career career={props?.userStat?.career} />
+          <Career dT={dT} career={props?.userStat?.career} />
           <View style={[tailwind('py-3')]}>
-            <AccountSubTitle text={'Recently Played'} />
+            <AccountSubTitle dT={dT} text={'Recently Played'} />
           </View>
           {/* user recently played mathces */}
           {props.userStat.matches.length === 0 && <NoMatchesFound />}
@@ -76,7 +74,10 @@ export default function AccountProfileScreen(props: PropTypes) {
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {props.userStat.matches.map((item: any) => {
               return (
-                <TouchableOpacity key={item.match_key}>
+                <TouchableOpacity
+                  activeOpacity={0.6}
+                  key={item.match_key}
+                  style={[{paddingVertical: 4}]}>
                   <PlayerContests
                     match_key={item.match_key}
                     teams={item.teams}
@@ -84,6 +85,7 @@ export default function AccountProfileScreen(props: PropTypes) {
                     h_points={0}
                     teams_created={item.total_team}
                     kenTeam={0}
+                    dT={dT}
                   />
                 </TouchableOpacity>
               );
@@ -164,7 +166,7 @@ const RemoveProfileLink = (props: any) => {
   );
 };
 
-function NoMatchesFound() {
+function NoMatchesFound(props: any) {
   return (
     <View style={[ss.noMatches]}>
       <Text style={[ss.txt]}>No Matches found</Text>

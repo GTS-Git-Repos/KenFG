@@ -1,27 +1,26 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, Text} from 'react-native';
+import {View, StyleSheet, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
-import {WalletIcon} from '../../../../sharedComponents';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   icon: any;
   title: string;
   subTitle: string;
   selected: boolean;
+  dT: boolean;
 }
 
 export default function FilterLink(props: PropTypes) {
+  const dT = props.dT;
   return (
     <View style={[tailwind('flex-row items-center justify-between p-4')]}>
       <View style={[tailwind('flex-row items-center'), {flex: 8}]}>
         {props.icon}
         <View style={[tailwind('px-2')]}>
-          <Text style={[tailwind('font-bold text-white font-15')]}>
-            {props.title}
-          </Text>
-          <Text style={[tailwind('font-regular text-dark-1 font-11')]}>
+          <Text style={[ss.title, dT ? clr.tw : clr.td1]}>{props.title}</Text>
+          <Text style={[ss.subtxt, dT ? clr.td2 : clr.tdgray]}>
             {props.subTitle}
           </Text>
         </View>
@@ -37,3 +36,14 @@ export default function FilterLink(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  title: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 15,
+  },
+  subtxt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+  },
+});

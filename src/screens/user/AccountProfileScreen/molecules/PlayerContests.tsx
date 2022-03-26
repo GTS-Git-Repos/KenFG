@@ -7,6 +7,7 @@ import assets from '../../../../constants/assets_manifest';
 import {TeamFlag} from '../../../../sharedComponents';
 import {} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
+import clr from '../../../../constants/colors';
 import {errorBox} from '../../../../utils/snakBars';
 
 interface PropTypes {
@@ -16,6 +17,7 @@ interface PropTypes {
   h_points: number;
   teams_created: number;
   kenTeam: number;
+  dT: boolean;
 }
 
 interface TeamsType {
@@ -32,12 +34,12 @@ interface TeamsType {
 }
 
 export default function PlayerContests(props: PropTypes) {
-  console.log(props);
+  const dT = props.dT;
 
-  const navigation = useNavigation<any>();
   return (
-    <View style={[tailwind('rounded bg-dark-3 mr-4')]}>
+    <View style={[ss.root, dT ? clr.bgd2 : clr.bgw]}>
       <TeamSection
+        dT={dT}
         team_a={props.teams.a}
         team_b={props.teams.b}
         match_result={props.match_result}
@@ -46,28 +48,23 @@ export default function PlayerContests(props: PropTypes) {
       <View
         style={[tailwind('flex-row items-center justify-between px-2 pb-2')]}>
         <View>
-          <Text style={[ss.subTitle]}>Highest Point</Text>
-          <Text style={[tailwind('font-regular text-secondary pt-2 font-13')]}>
-            N/A (T1)
+          <Text style={[ss.subTitle, dT ? clr.td2 : clr.td1]}>
+            Highest Point
           </Text>
+          <Text style={[ss.hp, dT ? clr.tgl : clr.tr]}>N/A (T1)</Text>
         </View>
         <View style={[tailwind('')]}>
-          <Text style={[ss.subTitle]}>Teams Created</Text>
-          <Text
-            style={[
-              tailwind('font-regular text-white pt-2 text-right font-13'),
-            ]}>
+          <Text style={[ss.subTitle, dT ? clr.td2 : clr.td1]}>
+            Teams Created
+          </Text>
+          <Text style={[ss.tTeam, dT ? clr.tgl : clr.tr]}>
             {props.teams_created}
           </Text>
         </View>
       </View>
       {/* footer */}
-      <View
-        style={[
-          tailwind('flex-row bg-dark-3 py-2  px-2 items-center'),
-          {backgroundColor: '#121D2E'},
-        ]}>
-        <Text style={[tailwind('font-regular text-light font-12')]}>
+      <View style={[ss.footC, !dT && clr.bgw]}>
+        <Text style={[ss.kenTeam, dT ? clr.tw : clr.td1]}>
           Ken Team: {props.kenTeam || 'N/A'} pts
         </Text>
       </View>
@@ -76,23 +73,30 @@ export default function PlayerContests(props: PropTypes) {
 }
 
 const TeamSection = (props: any) => {
+  const dT = props.dT;
   return (
     <View style={[tailwind('flex-row justify-between pt-3 pb-1 px-2')]}>
       <View>
         <View style={[ss.frc]}>
           <View style={[tailwind('flex-col justify-center items-center')]}>
             <TeamFlag teamCode={props.team_a.code} />
-            <Text style={[ss.teamCode]}>{props.team_a.code}</Text>
+            <Text style={[ss.teamCode, dT ? clr.tw : clr.td1]}>
+              {props.team_a.code}
+            </Text>
           </View>
 
-          <Text style={[ss.vs]}>VS</Text>
+          <Text style={[ss.vs, dT ? clr.tw : clr.td1]}>VS</Text>
 
           <View style={[tailwind('flex-col items-center')]}>
             <TeamFlag teamCode={props.team_b.code} />
-            <Text style={[ss.teamCode]}>{props.team_b.code}</Text>
+            <Text style={[ss.teamCode, dT ? clr.tw : clr.td1]}>
+              {props.team_b.code}
+            </Text>
           </View>
         </View>
-        <Text style={[ss.matchResult]}>{props.match_result || 'N/A'}</Text>
+        <Text style={[ss.matchResult, dT ? clr.tw : clr.td1]}>
+          {props.match_result || 'N/A'}
+        </Text>
       </View>
       <View style={[tailwind('')]}>
         <View style={[tailwind('flex-row pl-12 items-center')]}>
@@ -101,23 +105,20 @@ const TeamSection = (props: any) => {
             source={assets.winning_cup}
             style={{width: 17, height: 17}}
           />
-          <Text
-            style={[
-              tailwind('font-regular text-white text-secondary pl-2 font-15'),
-            ]}>
-            YOU WON
-          </Text>
+          <Text style={[ss.won, dT ? clr.tgl : clr.tr]}>YOU WON</Text>
         </View>
-        <Text
-          style={[tailwind('font-regular text-right py-1 text-white font-15')]}>
-          {'\u20B9'} 0
-        </Text>
+        <Text style={[ss.cash, dT ? clr.tw : clr.td1]}>{'\u20B9'} 0</Text>
       </View>
     </View>
   );
 };
 
 const ss = StyleSheet.create({
+  root: {
+    borderRadius: 4,
+    elevation: 4,
+    marginRight: 16,
+  },
   frc: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -139,7 +140,6 @@ const ss = StyleSheet.create({
     fontFamily: 'gadugi-normal',
     fontSize: 13,
     paddingVertical: 2,
-    color: '#8797B1',
   },
   vs: {
     bottom: 8,
@@ -149,5 +149,37 @@ const ss = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 12,
     position: 'relative',
+  },
+  hp: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 13,
+    paddingTop: 4,
+  },
+  tTeam: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 13,
+    paddingTop: 4,
+    textAlign: 'right',
+  },
+  footC: {
+    flexDirection: 'row',
+    padding: 8,
+    alignItems: 'center',
+    backgroundColor: '#121D2E',
+  },
+  kenTeam: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+  },
+  won: {
+    fontFamily: 'gadugi-normal',
+    paddingLeft: 8,
+    fontSize: 14,
+  },
+  cash: {
+    fontFamily: 'gadugi-normal',
+    paddingVertical: 4,
+    fontSize: 15,
+    textAlign: 'right',
   },
 });

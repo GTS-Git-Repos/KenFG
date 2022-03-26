@@ -16,7 +16,6 @@ import clr from '../../../constants/colors';
 import MatchGroundTopBar from './atoms/MatchGroundTopar';
 import MatchStats from './atoms/MatchStats';
 import CategoryPlayers from './blocks/CategoryPlayers';
-import {log} from '../../../utils/logs';
 
 interface PropTypes {
   onPressPlayerProfile(player_key: string): any;

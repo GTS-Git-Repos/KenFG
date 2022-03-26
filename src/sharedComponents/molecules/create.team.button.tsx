@@ -20,7 +20,7 @@ export default function CreateTeamButtom(props: PropTypes) {
         activeOpacity={0.7}
         onPress={props.onPressCreateTeam}
         style={[ss.container]}>
-        <View style={[ss.btn, !dT && clr.bgLgreen]}>
+        <View style={[ss.btn, dT ? clr.bgGreen : clr.bgLgreen]}>
           <PlusIcon />
           <Text style={[ss.txt, !dT && clr.tw]}>Create Team</Text>
         </View>
@@ -39,7 +39,6 @@ const ss = StyleSheet.create({
     width: '100%',
   },
   container: {
-    borderRadius: 4,
     flexDirection: 'row',
     margin: 8,
     width: '50%',
@@ -51,6 +50,7 @@ const ss = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     paddingVertical: 12,
+    borderRadius: 4,
   },
   txt: {
     color: '#f5feff',

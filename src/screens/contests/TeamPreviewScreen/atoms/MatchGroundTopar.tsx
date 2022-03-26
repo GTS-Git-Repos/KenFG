@@ -43,11 +43,13 @@ const ss = StyleSheet.create({
   dBorder: {
     marginHorizontal: 12,
     marginBottom: 8,
-    borderColor: 'rgba(31, 41, 55,1)',
+    height: 1,
+    backgroundColor: 'rgba(31, 41, 55,1)',
   },
   lBorder: {
     marginHorizontal: 12,
     marginBottom: 8,
-    borderColor: 'rgba(31, 41, 55,0.3)',
+    height: 1,
+    backgroundColor: 'rgba(31, 41, 55,0.1)',
   },
 });

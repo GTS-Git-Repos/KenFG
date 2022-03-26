@@ -21,7 +21,7 @@ export default {
   },
   // background light gray color
   bgGray: {
-    backgroundColor: '#E5E5E5',
+    backgroundColor: 'rgba(245, 245, 245, 1)',
   },
   // background red color
   bgRed: {

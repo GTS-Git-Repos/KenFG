@@ -38,8 +38,10 @@ export default function NoNotification(props: PropTypes) {
   // when not in loading and data length equal to 0
   return (
     <View style={[ss.noContest]}>
-      <Text style={[ss.txt]}>No Notifications found</Text>
-      <Text style={[ss.subText]}>
+      <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>
+        No Notifications found
+      </Text>
+      <Text style={[ss.subText, dT ? clr.tw : clr.td1]}>
         There is no notifications found try other filters
       </Text>
       <View style={[ss.image]}>

@@ -1,18 +1,13 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {
-  View,
-  useWindowDimensions,
-  Text,
-  ScrollView,
-  FlatList,
-} from 'react-native';
+import {View, useWindowDimensions, FlatList} from 'react-native';
 import HeaderLeaderBoard from '../atoms/HeaderLeaderBoard';
 import {ContestTeams} from '../../../../sharedComponents';
-import {useNavigation} from '@react-navigation/native';
-import {errorBox} from '../../../../utils/snakBars';
 import ShareContest from '../atoms/ShareContest';
 import NoLeaderBoardContent from '../atoms/no.leaderboard.content';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../../store/selectors';
+import clr from '../../../../constants/colors';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 interface PropTypes {
@@ -26,17 +21,19 @@ interface PropTypes {
 }
 
 export default function LearderBoard(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   // console.log('leaderboard --->', props.ldbMeta);
   const {width} = useWindowDimensions();
 
   // when an api error is active
   if (props.ldbErr) {
     // need to confirm later, what it means to get 400 response code
-    return <NoLeaderBoardContent loading={false} error={false} />;
+    return <NoLeaderBoardContent dT={dT} loading={false} error={false} />;
   }
   // when an ldbMeta is undefined or api on isFetching state
   if (!props.ldbMeta || props.ldbLive) {
-    return <NoLeaderBoardContent loading={true} error={false} />;
+    return <NoLeaderBoardContent dT={dT} loading={true} error={false} />;
   }
 
   return (

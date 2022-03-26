@@ -1,8 +1,11 @@
+// used in contest info screen
+
 import React from 'react';
-import tailwind from '../../../tailwind';
-import {View, Text} from 'react-native';
-import RankIcon from '../icons/RankIcon';
-// import {RankIcon} from '.';
+import {View, StyleSheet, Text} from 'react-native';
+import {RankIcon} from '../../assets/newIcons';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   rank: string;
@@ -10,23 +13,22 @@ interface PropTypes {
 }
 
 export default function WinningListRankings(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
-    <View style={[tailwind('py-3 bg-dark-3 border-b border-gray-800')]}>
-      <View style={[tailwind('flex-row items-center')]}>
-        <View style={[tailwind('pl-4 text-left w-6/12')]}>
-          <View style={[tailwind('flex-row items-center')]}>
+    <View style={[dT ? ss.droot : ss.lroot]}>
+      <View style={[ss.container]}>
+        <View style={[ss.sec1]}>
+          <View style={[ss.container]}>
             <RankIcon golden={false} />
-            <Text style={[tailwind('font-bold pl-2 font-14 text-white')]}>
+            <Text style={[ss.rank, dT ? clr.tw : clr.tdgray]}>
               {props.rank}
             </Text>
           </View>
         </View>
 
-        <View style={[tailwind('pr-4 w-6/12')]}>
-          <Text
-            style={[
-              tailwind('font-semibold text-right text-gray-200 font-15'),
-            ]}>
+        <View style={[ss.sec2]}>
+          <Text style={[ss.value, dT ? clr.tw : clr.tdgray]}>
             {'\u20B9 '}
             {props.value}
           </Text>
@@ -35,3 +37,40 @@ export default function WinningListRankings(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  droot: {
+    paddingVertical: 12,
+    borderColor: 'rgba(31, 41, 55,1)',
+    borderBottomWidth: 1,
+    backgroundColor: '#172338',
+  },
+  lroot: {
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderColor: 'rgba(31, 41, 55,0.1)',
+    backgroundColor: '#FFFFFF',
+  },
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  sec1: {
+    paddingLeft: 16,
+    width: '50%',
+  },
+  sec2: {
+    paddingRight: 16,
+    width: '50%',
+  },
+  rank: {
+    fontFamily: 'gadugi-bold',
+    paddingLeft: 8,
+    fontSize: 14,
+  },
+  value: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 14,
+    textAlign: 'right',
+  },
+});

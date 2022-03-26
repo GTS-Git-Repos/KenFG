@@ -51,6 +51,7 @@ export default {
   upi: require('../assets/images/upi.png'),
   // crickert and bolwer image
   cricketGame: require('../assets/images/cricketGame.png'),
+  female_profile: require('../assets/images/female_profile.png'),
 
   // flags
   AUS: require('../assets/images/flags/AUS.png'),

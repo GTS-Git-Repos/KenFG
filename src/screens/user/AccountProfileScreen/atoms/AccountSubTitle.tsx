@@ -1,19 +1,25 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
+import {View, StyleSheet, Text} from 'react-native';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   text: string;
+  dT: boolean;
 }
 
 export default function AccountSubTitle(props: PropTypes) {
   return (
     <View style={[tailwind('px-3 py-1')]}>
-      <Text style={[tailwind('font-bold text-dark-1 uppercase font-13')]}>
-        {props.text}
-      </Text>
+      <Text style={[ss.txt, props.dT ? clr.td2 : clr.td1]}>{props.text}</Text>
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  txt: {
+    fontFamily: 'gadugi-bold',
+    textTransform: 'uppercase',
+    fontSize: 13,
+  },
+});

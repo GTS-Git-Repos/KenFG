@@ -1,23 +1,26 @@
+// used in contest info screen leaderboard
 import React from 'react';
-import tailwind from '../../../../../tailwind';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import {View, StyleSheet, Image, Text, ActivityIndicator} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {SecondaryButton} from '../../../../sharedComponents/';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   loading: boolean;
   error: boolean;
+  dT: boolean;
 }
 
 export default function NoLeaderBoardContent(props: PropTypes) {
+  const dT = props.dT;
   // when loading
   if (props.loading) {
     return (
       <View style={[ss.root]}>
-        <ActivityIndicator size={35} color="#C5A858" />
+        <ActivityIndicator size={35} color={dT ? '#C5A858' : '#9C181E'} />
       </View>
     );
   }
@@ -36,13 +39,15 @@ export default function NoLeaderBoardContent(props: PropTypes) {
   // when no results found
   return (
     <View style={[ss.root]}>
-      <Text style={[ss.txtTitle]}>No Team Joined this contest Yet</Text>
+      <Text style={[ss.txtTitle, dT ? clr.tw : clr.td1]}>
+        No Team Joined this contest Yet
+      </Text>
       <Image
         resizeMode="contain"
         source={assets.cricketGame}
         style={{width: '80%', height: 142}}
       />
-      <Text style={[ss.txtSubTitle]}>
+      <Text style={[ss.txtSubTitle, dT ? clr.tw : clr.td1]}>
         Be the first one to join this contest & start winning !
       </Text>
     </View>

@@ -1,67 +1,112 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, TouchableOpacity, Text, useWindowDimensions} from 'react-native';
+import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import Animated, {log, useAnimatedStyle} from 'react-native-reanimated';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
-  tabs: Array<string>;
   tabOffset: any;
   activeIndex: any;
   onTabPressed: any;
+  dT: boolean;
 }
 
 export default function TabsContestInfo(props: PropTypes) {
-  const {width} = useWindowDimensions();
+  const ai = props.activeIndex;
+  const dT = props.dT;
+  // const {width} = useWindowDimensions();
 
-  const rstyle = useAnimatedStyle(() => {
-    return {
-      transform: [{translateX: props.tabOffset.value / 2}],
-    };
-  });
+  // const rstyle = useAnimatedStyle(() => {
+  //   return {
+  //     transform: [{translateX: props.tabOffset.value / 2}],
+  //   };
+  // });
 
   return (
-    <View
-      style={[
-        tailwind('relative bg-dark-3 border-t border-b border-gray-800'),
-      ]}>
+    <View style={[dT ? ss.dRoot : ss.lRoot]}>
       <View style={[tailwind('flex-row items-center')]}>
-        {props.tabs.map((item, index) => {
-          return (
-            <TouchableOpacity
-              // onPress={() => props.onTabPress(index)}
-              onPress={() => props.onTabPressed(index)}
-              key={item}
-              style={[tailwind('w-6/12')]}>
-              <Text
-                style={[
-                  tailwind(
-                    `font-semibold text-gray-200 px-2 py-3 text-center font-15 ${
-                      props.activeIndex === index
-                        ? 'font-bold'
-                        : 'font-regular text-dark-1'
-                    }`,
-                  ),
-                ]}>
-                {item}
-              </Text>
-              {props.activeIndex === index ? (
-                <View
-                  style={[
-                    tailwind(''),
-                    {height: 2},
-                    {backgroundColor: '#816D2E'},
-                  ]}></View>
-              ) : (
-                <View style={{height: 2}} />
-              )}
-            </TouchableOpacity>
-          );
-        })}
+        <TouchableOpacity
+          onPress={() => props.onTabPressed(0)}
+          style={[tailwind('w-6/12')]}>
+          <Text
+            style={[
+              ss.txt,
+              dT ? clr.td2 : clr.td1,
+              ai === 0 && dT ? ss.dActiveTxt : {},
+              ai === 0 && !dT ? ss.lActiveTxt : {},
+            ]}>
+            Winnings
+          </Text>
+          <View
+            style={[
+              ss.border,
+              ai === 0 && dT ? ss.DBorder : {},
+              ai === 0 && !props.dT ? ss.lBorder : {},
+            ]}></View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => props.onTabPressed(1)}
+          style={[tailwind('w-6/12')]}>
+          <Text
+            style={[
+              ss.txt,
+              dT ? clr.td2 : clr.td1,
+              ai === 1 && dT ? ss.dActiveTxt : {},
+              ai === 1 && !dT ? ss.lActiveTxt : {},
+            ]}>
+            Leaderboard
+          </Text>
+          <View
+            style={[
+              ss.border,
+              ai === 1 && dT ? ss.DBorder : {},
+              ai === 1 && !props.dT ? ss.lBorder : {},
+            ]}></View>
+        </TouchableOpacity>
       </View>
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  dRoot: {
+    backgroundColor: '#172338',
+    borderColor: 'rgba(31, 41, 55,1)',
+    borderBottomWidth: 1,
+  },
+  lRoot: {
+    backgroundColor: '#FFFFFF',
+    borderColor: 'rgba(31, 41, 55,0.2)',
+    borderBottomWidth: 1,
+  },
+  txt: {
+    fontFamily: 'gadugi-normal',
+    paddingHorizontal: 8,
+    paddingVertical: 12,
+    textAlign: 'center',
+    fontSize: 15,
+    color: '#8797B1',
+  },
+  dActiveTxt: {
+    fontFamily: 'gadugi-bold',
+    color: '#FFFFFF',
+  },
+  lActiveTxt: {
+    fontFamily: 'gadugi-bold',
+    color: '#9C181E',
+  },
+  border: {
+    height: 2,
+  },
+  DBorder: {
+    backgroundColor: '#816D2E',
+  },
+  lBorder: {
+    backgroundColor: '#9C181E',
+  },
+});
 
 {
   //
