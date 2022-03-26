@@ -8,11 +8,13 @@ import {
   Text,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   input: string;
   setInput(e: any): any;
   searchContest(): any;
+  dT: boolean;
 }
 
 export default function SearchInputPrivateContest(props: PropTypes) {
@@ -22,9 +24,9 @@ export default function SearchInputPrivateContest(props: PropTypes) {
         <TextInput
           value={props.input}
           placeholder="Enter Contest Code"
-          placeholderTextColor="#FFFFFF5D"
+          // placeholderTextColor="#FFFFFF5D"
           onChangeText={e => props.setInput(e)}
-          style={[ss.input]}
+          style={[ss.input, props.dT ? clr.tw : clr.td1]}
         />
       </View>
 
@@ -33,11 +35,19 @@ export default function SearchInputPrivateContest(props: PropTypes) {
         <TouchableOpacity
           onPress={() => props.setInput('')}
           style={[ss.space1]}>
-          <Icon name="close-outline" size={20} color="white" />
+          <Icon
+            name="close-outline"
+            size={20}
+            color={props.dT ? 'white' : 'black'}
+          />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={props.searchContest} style={[ss.space1]}>
-          <Icon name="search-outline" size={20} color="white" />
+          <Icon
+            name="search-outline"
+            size={20}
+            color={props.dT ? 'white' : 'black'}
+          />
         </TouchableOpacity>
       </View>
     </View>

@@ -25,7 +25,7 @@ import EmailIcon from './svgIcons/email.icon';
 import PanCardIcon from './svgIcons/pan.card.icon';
 import BankRoundIcon from './svgIcons/bank.round.icon';
 import VerifyTick from './svgIcons/verify.tick.icon';
-import FootBallIcon from './svgIcons/football.icon';
+import FootBallIcon from './svgIcons/foot.ball.icon';
 import LogoWrapper from './svgIcons/logoWrapper';
 import EditIcon from './svgIcons/edit.icon';
 import WalletSideIcon from './svgIcons/waller.side.icon';
@@ -51,6 +51,7 @@ import PlusIcon from './svgIcons/plus.icon';
 import GiftIcon from './svgIcons/gift.icon';
 import RankIcon from './svgIcons/rank.icon';
 import MinusIcon from './svgIcons/minus.icon';
+import CricketBallIcon from './svgIcons/cricket.ball.icon';
 
 export {
   ContestsBottomTabOff,
@@ -72,6 +73,7 @@ export {
   HelpSideIcon,
   GiftIcon,
   VerifyTick,
+  CricketBallIcon,
   RankIcon,
   SettingSideIcon,
   MinusIcon,

@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import AllowMultipleTeam from '../atoms/AllowMultipleTeam';
 import {ButtonComponent} from '../../../../sharedComponents';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   contestName: string;
@@ -28,14 +29,18 @@ interface PropTypes {
   setPerUserTeam(input: any): any;
   navigateToWinningsList(): any;
   validateInput(): any;
+  dT: boolean;
 }
 
 export default function CreateContestInput(props: PropTypes) {
+  const dT = props.dT;
   return (
     <View>
-      <View style={[ss.root]}>
+      <View style={[ss.root, dT ? clr.bgd2 : clr.bgw]}>
         <View style={[ss.mb20]}>
-          <Text style={[ss.subtitle]}>Contest Name</Text>
+          <Text style={[ss.subtitle, dT ? clr.td2 : clr.td1]}>
+            Contest Name
+          </Text>
 
           <UserInput
             value={props.contestName}
@@ -43,29 +48,34 @@ export default function CreateContestInput(props: PropTypes) {
           />
         </View>
         <View style={[ss.mb20]}>
-          <Text style={[ss.subtitle]}>No of Teams</Text>
+          <Text style={[ss.subtitle, dT ? clr.td2 : clr.td1]}>No of Teams</Text>
 
           <UserInput
             value={props.allowedTeams}
             isNumber={true}
             onChangeText={props.setAllowedTeams}
+            dT={dT}
           />
         </View>
         <View style={[ss.mb20]}>
-          <Text style={[ss.subtitle]}>Entry Fee</Text>
+          <Text style={[ss.subtitle, dT ? clr.td2 : clr.td1]}>Entry Fee</Text>
           <UserInput
             value={props.entryFee}
             isNumber={true}
             onChangeText={props.setEntryFee}
+            dT={dT}
           />
         </View>
         <View style={[ss.winnersContainer]}>
-          <Text style={[ss.subtitle]}>No of Winners</Text>
+          <Text style={[ss.subtitle, dT ? clr.td2 : clr.td1]}>
+            No of Winners
+          </Text>
 
           <UserInput
             value={props.winners}
             isNumber={true}
             onChangeText={props.setWinners}
+            dT={dT}
           />
           <TouchableOpacity
             style={[tailwind('flex-row justify-end pt-2')]}
@@ -75,9 +85,12 @@ export default function CreateContestInput(props: PropTypes) {
             </Text>
           </TouchableOpacity>
         </View>
+        {/* Multiple team */}
+
         <AllowMultipleTeam
           selected={props.allowMultiple}
           setSelected={props.setAllowMultiple}
+          dT={dT}
         />
         <View style={[tailwind('my-5')]}>
           <Text style={[ss.subtitle]}>No. of Teams Allowed Per User</Text>
@@ -93,15 +106,14 @@ export default function CreateContestInput(props: PropTypes) {
   );
 }
 
-
 const UserInput = (props: any) => {
   return (
-    <View style={[tailwind('')]}>
+    <View>
       <TextInput
         value={props.value}
         keyboardType={props.isNumber ? 'number-pad' : 'default'}
         onChangeText={e => props.onChangeText(e)}
-        style={[ss.input]}
+        style={[ss.input, props.dT ? ss.dBorder : ss.lBorder]}
       />
     </View>
   );
@@ -109,7 +121,6 @@ const UserInput = (props: any) => {
 
 const ss = StyleSheet.create({
   root: {
-    backgroundColor: '#172338',
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
     borderTopLeftRadius: 4,
@@ -118,6 +129,7 @@ const ss = StyleSheet.create({
     marginHorizontal: 12,
     paddingVertical: 16,
     paddingHorizontal: 12,
+    elevation: 4,
   },
   mb20: {
     marginBottom: 20,
@@ -131,8 +143,15 @@ const ss = StyleSheet.create({
     margin: 0,
     padding: 0,
   },
+  dBorder: {
+    color: '#FFFFFF',
+    borderBottomColor: 'rgba(31, 41, 55,1)',
+  },
+  lBorder: {
+    color: '#0D1320',
+    borderBottomColor: 'rgba(31, 41, 55,0.2)',
+  },
   subtitle: {
-    color: '#8797B1',
     fontFamily: 'gadugi-normal',
     fontSize: 14,
     paddingBottom: 4,

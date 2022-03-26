@@ -29,7 +29,7 @@ export default function MoreScreen() {
         <TouchableOpacity
           onPress={() => {}}
           activeOpacity={0.6}
-          style={[ss.link]}>
+          style={[ss.link, dT ? ss.dLink : ss.lLink]}>
           <MoneySideIcon dT={dT} />
           <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>
             Fair Play Guidlines
@@ -38,7 +38,7 @@ export default function MoreScreen() {
         <TouchableOpacity
           onPress={() => {}}
           activeOpacity={0.6}
-          style={[ss.link]}>
+          style={[ss.link, dT ? ss.dLink : ss.lLink]}>
           <MoneySideIcon dT={dT} />
           <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>
             Private Contest Code
@@ -47,28 +47,28 @@ export default function MoreScreen() {
         <TouchableOpacity
           onPress={() => {}}
           activeOpacity={0.6}
-          style={[ss.link]}>
+          style={[ss.link, dT ? ss.dLink : ss.lLink]}>
           <MoneySideIcon dT={dT} />
           <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>About Us</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {}}
           activeOpacity={0.6}
-          style={[ss.link]}>
+          style={[ss.link, dT ? ss.dLink : ss.lLink]}>
           <MoneySideIcon dT={dT} />
           <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>Legality</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {}}
           activeOpacity={0.6}
-          style={[ss.link]}>
+          style={[ss.link, dT ? ss.dLink : ss.lLink]}>
           <MoneySideIcon dT={dT} />
           <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>T&C</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {}}
           activeOpacity={0.6}
-          style={[ss.link]}>
+          style={[ss.link, dT ? ss.dLink : ss.lLink]}>
           <MoneySideIcon dT={dT} />
           <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>Join with Us</Text>
         </TouchableOpacity>
@@ -85,8 +85,16 @@ const ss = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
-    borderColor: 'rgba(31, 41, 55,0.05)',
-    borderWidth: 1,
+  },
+  dLink: {
+    borderBottomColor: 'rgba(31, 41, 55,1)',
+    borderBottomWidth: 1,
+    backgroundColor: '#172338',
+  },
+  lLink: {
+    borderBottomColor: 'rgba(31, 41, 55,0.1)',
+    borderBottomWidth: 1,
+    backgroundColor: '#FFFFFF',
   },
   txt: {
     fontFamily: 'gadugi-normal',

@@ -28,6 +28,7 @@ interface PropTypes {
   onPressContestCard(contest_key: string): any;
   onPressShareContest(contest_key: string): any;
   proceedToJoin(contest_key: string): any;
+  dT: boolean;
 }
 
 export default function ShareContestPage(props: PropTypes) {
@@ -78,7 +79,11 @@ export default function ShareContestPage(props: PropTypes) {
             <TouchableOpacity
               onPress={() => props.onPressShareContest(item.key)}
               style={[{flex: 1}]}>
-              <Icon name="share-outline" size={40} color="#ffffff" />
+              <Icon
+                name="share-outline"
+                size={40}
+                color={props.dT ? '#ffffff' : '#00513B'}
+              />
               <Text style={[styles.shareTxt]}>Share</Text>
             </TouchableOpacity>
           </View>

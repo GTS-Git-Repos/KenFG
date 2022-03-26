@@ -4,6 +4,7 @@ import {View, Image, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {LinkIcon} from '../../../../assets/newIcons';
 import assets from '../../../../constants/assets_manifest';
+
 import {
   CloneIcon,
   ReferPeopleIcon,
@@ -18,13 +19,14 @@ interface PropTypes {
   onPressCopy(contest_key: string, type: string): any;
   onPressSMSShare(): void;
   onPressMoreShare(): void;
+  dT: boolean;
 }
 
 export default function ShareContestSheet(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
   return (
-    <View style={[ss.root]}>
-      <Text style={[ss.title]}>Invite Friends</Text>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgw]}>
+      <Text style={[ss.title, dT ? clr.tw : clr.td1]}>Invite Friends</Text>
       <View style={ss.frcc}>
         <Image
           resizeMode="contain"
@@ -32,31 +34,39 @@ export default function ShareContestSheet(props: PropTypes) {
           style={[ss.sImage]}
         />
       </View>
-      <Text style={[ss.subTitle]}>Copy Code</Text>
+      <Text style={[ss.subTitle, dT ? clr.td2 : clr.td1]}>Copy Code</Text>
 
       <TouchableOpacity
         onPress={() => props.onPressCopy(props.contest_code, 'code')}
         style={[ss.codeContainer]}>
-        <Text style={[ss.title]}>{props.contest_code}</Text>
-        <LinkIcon dT={true} />
+        <Text style={[ss.title, dT ? clr.td2 : clr.td1]}>
+          {props.contest_code}
+        </Text>
+        <LinkIcon dT={dT} />
       </TouchableOpacity>
 
-      <Text style={[ss.or]}>OR</Text>
-      <Text style={[ss.subTitle]}>Share web link</Text>
+      <Text style={[ss.or, dT ? clr.td2 : clr.td1]}>OR</Text>
+      <Text style={[ss.subTitle, dT ? clr.td2 : clr.td1]}>Share web link</Text>
 
       <TouchableOpacity
         onPress={() => props.onPressCopy(props.contest_code, 'link')}
         style={[ss.linkContainer]}>
-        <Text style={[ss.linktxt]}>kenfg.com/invite/{props.contest_code}</Text>
-        <CloneIcon dT={true} />
+        <Text style={[ss.linktxt, dT ? clr.td2 : clr.td1]}>
+          kenfg.com/invite/{props.contest_code}
+        </Text>
+        <CloneIcon dT={dT} />
       </TouchableOpacity>
       <TouchableOpacity onPress={props.onPressSMSShare} style={[ss.smsbtn]}>
         <ReferPeopleIcon />
         <Text style={[ss.btntxt]}>Invite Via SMS</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={props.onPressMoreShare} style={[ss.moreBtn]}>
+      <TouchableOpacity
+        onPress={props.onPressMoreShare}
+        style={[ss.moreBtn, dT ? clr.bgd2 : clr.bgGray]}>
         <ShareIcon />
-        <Text style={[ss.btntxt]}>Share on Social Media</Text>
+        <Text style={[ss.btntxt, dT ? clr.td2 : clr.td1]}>
+          Share on Social Media
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -64,8 +74,8 @@ export default function ShareContestSheet(props: PropTypes) {
 
 const ss = StyleSheet.create({
   root: {
-    backgroundColor: '#0c1320',
     padding: 16,
+    borderRadius: 12,
   },
   title: {
     color: 'rgba(255, 255, 255, 1)',

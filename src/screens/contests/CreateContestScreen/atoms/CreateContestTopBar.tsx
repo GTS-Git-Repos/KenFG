@@ -3,38 +3,37 @@ import tailwind from '../../../../../tailwind';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {BackIcon, WalletIcon} from '../../../../assets/newIcons';
 import {useNavigation} from '@react-navigation/native';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   wallet: string;
+  dT: boolean;
 }
 
 export default function CreateContestTopBar(props: PropTypes) {
-
   const navigation = useNavigation();
-
+  const dT = props.dT;
   function goBack() {
     navigation.goBack();
   }
 
   return (
     // <LinearGradient colors={['#BCA04D', '#D8C872']}>
-    <View style={[styles.root]}>
-      <View style={[tailwind('flex-row items-center')]}>
+    <View style={[ss.root, dT ? clr.bgg : clr.bgRed]}>
+      <View style={[ss.frc]}>
         <TouchableOpacity onPress={goBack}>
-          <BackIcon dark={true} />
+          <BackIcon dark={dT} />
         </TouchableOpacity>
         <View style={[tailwind('px-2')]}>
-          <Text style={[tailwind('font-bold text-brown-4 font-16')]}>
-            Private Contest
-          </Text>
+          <Text style={[ss.title, dT ? clr.tg : clr.tw]}>Private Contest</Text>
         </View>
       </View>
       <View>
-        <View style={[tailwind('flex-row items-center'), styles.priceBorder]}>
-          <Text style={[tailwind('font-regular text-brown-5 px-2 font-12')]}>
+        <View style={[ss.frc, dT ? ss.dBorder : ss.lBorder]}>
+          <Text style={[ss.amount, dT ? clr.tg : clr.tw]}>
             {'\u20B9'} {props.wallet}
           </Text>
-          <View style={[tailwind('py-1 px-2'), {backgroundColor: '#B2933D'}]}>
+          <View style={[ss.walletC, dT ? clr.bgg : clr.bgw]}>
             <WalletIcon darkColor={true} outline={true} />
           </View>
         </View>
@@ -44,17 +43,40 @@ export default function CreateContestTopBar(props: PropTypes) {
   );
 }
 
-const styles = StyleSheet.create({
+const ss = StyleSheet.create({
   root: {
     alignItems: 'center',
-    backgroundColor: '#d1b45a',
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 16,
   },
-  priceBorder: {
-    borderColor: '#B2933D',
+
+  frc: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  title: {
+    fontFamily: 'gadugi-bold',
+    paddingHorizontal: 8,
+    fontSize: 16,
+  },
+  amount: {
+    fontFamily: 'gadugi-regular',
+    paddingHorizontal: 8,
+    fontSize: 12,
+  },
+  dBorder: {
+    borderColor: '#C5A858',
     borderRadius: 6,
     borderWidth: 1,
+  },
+  lBorder: {
+    borderColor: '#FFFFFF',
+    borderRadius: 6,
+    borderWidth: 1,
+  },
+  walletC: {
+    paddingVertical: 4,
+    paddingHorizontal: 8,
   },
 });

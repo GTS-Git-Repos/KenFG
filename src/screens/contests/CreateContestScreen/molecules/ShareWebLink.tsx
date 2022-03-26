@@ -1,3 +1,4 @@
+// not used for now
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Image, Text} from 'react-native';

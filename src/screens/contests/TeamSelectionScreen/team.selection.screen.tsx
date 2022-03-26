@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, ScrollView, TouchableOpacity, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import tailwind from '../../../../tailwind';
 import {StackActions, useNavigation} from '@react-navigation/native';
 import {
@@ -10,6 +17,8 @@ import {
   NewJoinContestModal,
 } from '../../../sharedComponents';
 import {updateJoinModalAction} from '../../../store/actions/appActions';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 import {
   isFullMatchSelector,
@@ -21,9 +30,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import Info from './atoms/info.teamselection';
 import CheckBoxSelectedTeam from './molecules/checbox.selectteam';
 import {errorBox, infoBox} from '../../../utils/snakBars';
-import {
-  joinContestRemote,
-} from '../../../remote/matchesRemote';
+import {joinContestRemote} from '../../../remote/matchesRemote';
 import SubTitle from './atoms/subtitle.teamselection';
 import {updateUserInfo} from '../../../store/actions/userAction';
 import SelectAllTeams from './molecules/select.all.teams';
@@ -44,6 +51,8 @@ interface PropTypes {
 }
 
 export default function TeamSelectionScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
@@ -148,7 +157,12 @@ export default function TeamSelectionScreen(props: PropTypes) {
   return (
     <View style={tailwind('h-full bg-dark')}>
       <TopBar text={'Select Team'} />
-      <Info selectText={props.selectText} />
+      {/* <Info selectText={props.selectText} /> */}
+      <View style={[tailwind('p-3 bg-dark-3')]}>
+        <Text style={[tailwind('font-regular text-white font-14')]}>
+          {props.selectText}
+        </Text>
+      </View>
       <SelectAllTeams
         disabled={props.maxTeams <= props.teams.length}
         maxTeams={props.maxTeams}
@@ -238,3 +252,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {},
+});

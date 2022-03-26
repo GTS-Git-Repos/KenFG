@@ -13,11 +13,13 @@ import {createContestRemote} from '../../../../remote/matchesRemote';
 import {toWiningsList} from '../../../../store/actions/navigationActions';
 import {useNavigation} from '@react-navigation/core';
 import {isValidNumber} from '../../../../utils/comman';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   activeIndex: number;
   pagerRef: any;
   refetch(): any;
+  dT:boolean
 }
 
 export default function createContestPage(props: PropTypes) {
@@ -120,6 +122,7 @@ export default function createContestPage(props: PropTypes) {
             setPerUserTeam={setPerUserTeam}
             navigateToWinningsList={navigateToWinningsList}
             validateInput={validateInput}
+            dT={props.dT}
           />
         </View>
         {loading && <BlockScreenByLoading />}

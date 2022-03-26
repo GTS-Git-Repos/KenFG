@@ -13,6 +13,8 @@ import clr from '../../../../constants/colors';
 
 const dT = useSelector(getAppThemeSelector);
 
+dT ? clr.tw : clr.td1
+
 text-dark-1:
 color: "#8797B1"
 

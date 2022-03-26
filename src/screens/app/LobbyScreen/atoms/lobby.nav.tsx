@@ -2,7 +2,11 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
-import {NotificationIcon} from '../../../../assets/newIcons';
+import {
+  CricketBallIcon,
+  FootBallIcon,
+  NotificationIcon,
+} from '../../../../assets/newIcons';
 import {useNavigation} from '@react-navigation/core';
 import {useSelector} from 'react-redux';
 import {getAppThemeSelector} from '../../../../store/selectors';
@@ -24,7 +28,6 @@ export default function LobbyNav(props: PropTypes) {
         <View style={[tailwind('pt-2'), ss.root]}>
           <View style={[tailwind('flex-row mx-6')]}>
             <LobbyUserInfo dT={dT} name={props.name} />
-
             <Cricket
               dT={dT}
               cricket={props.cricket}
@@ -32,7 +35,7 @@ export default function LobbyNav(props: PropTypes) {
             />
             <FootBall
               dT={dT}
-              cricket={props.cricket}
+              isFootBall={!props.cricket}
               setCricket={props.setCricket}
             />
             <NotificationBell dT={dT} dot={true} />
@@ -68,11 +71,7 @@ const Cricket = (props: any) => {
         props.cricket ? ss.activeBorder : {},
       ]}>
       <View style={[tailwind('flex-row justify-center')]}>
-        <Image
-          resizeMode="contain"
-          source={props.cricket ? assets.cricket_on : assets.cricket_off}
-          style={[{width: 20, height: 20}]}
-        />
+        <CricketBallIcon dT={props.dT} active={props.cricket} />
       </View>
       {props.dT ? (
         <Text style={[ss.sportName, props.cricket ? clr.tgl : clr.td2]}>
@@ -94,21 +93,22 @@ const FootBall = (props: any) => {
       style={[
         tailwind('mx-2'),
         {flex: 3.25},
-        props.cricket ? {} : ss.activeBorder,
+        props.isFootBall ? ss.activeBorder : {},
       ]}>
       <View style={[tailwind('flex-row justify-center')]}>
-        <Image
+        <FootBallIcon dT={props.dT} active={props.isFootBall} />
+        {/* <Image
           resizeMode="contain"
           source={props.cricket ? assets.football_off : assets.football_on}
           style={[{width: 20, height: 20}]}
-        />
+        /> */}
       </View>
       {props.dT ? (
-        <Text style={[ss.sportName, !props.cricket ? clr.tgl : clr.td2]}>
+        <Text style={[ss.sportName, props.isFootBall ? clr.tgl : clr.td2]}>
           FootBall
         </Text>
       ) : (
-        <Text style={[ss.sportName, !props.cricket ? clr.tr : clr.tdgray]}>
+        <Text style={[ss.sportName, props.isFootBall ? clr.tr : clr.tdgray]}>
           FootBall
         </Text>
       )}

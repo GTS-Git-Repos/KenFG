@@ -33,7 +33,8 @@ export default {
   },
   // text dark color
   td1: {
-    color: '#0D1320',
+    // color: '#0D1320',
+    color: '#172338',
   },
   // text semi dark color
   td2: {

@@ -1,6 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Text, ActivityIndicator, Keyboard} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  Keyboard,
+} from 'react-native';
 import PrivateContestCard from './private.contest.card';
 import {FlatList} from 'react-native-gesture-handler';
 import SearchInput from './search.input.privatecontest';
@@ -11,20 +17,23 @@ import {useSelector} from 'react-redux';
 import {selectedMatch} from '../../../../store/selectors';
 import {errorBox} from '../../../../utils/snakBars';
 import {ContestCard} from '../../../../sharedComponents';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   activeIndex: number;
   allContests: any;
   onPressContestCard(contest_key: string): any;
   proceedToJoin(contest_key: string): any;
+  dT: boolean;
 }
 
 export default function JoinedContestPage(props: PropTypes) {
+  const dT = props.dT;
   const [contest, setContest] = useState<any>(null);
   const [input, setInput] = useState<any>('');
 
   function searchContest() {
-    Keyboard.dismiss()
+    Keyboard.dismiss();
     const contest = props.allContests.find((item: any) => item.key === input);
     if (contest) {
       setContest(contest);
@@ -35,11 +44,12 @@ export default function JoinedContestPage(props: PropTypes) {
   }
 
   return (
-    <View style={[tailwind('p-2 h-full bg-dark')]}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <SearchInput
         input={input}
         setInput={setInput}
         searchContest={searchContest}
+        dT={dT}
       />
       {contest && (
         <ContestCard
@@ -102,3 +112,10 @@ renderItem={({item}) => {
 keyExtractor={item => item.key}
 /> */
 }
+
+const ss = StyleSheet.create({
+  root: {
+    padding: 8,
+    height: '100%',
+  },
+});

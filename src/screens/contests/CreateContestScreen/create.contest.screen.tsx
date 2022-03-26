@@ -1,15 +1,10 @@
 import React, {useRef, useState} from 'react';
-import {View, useWindowDimensions} from 'react-native';
+import {View, StyleSheet, useWindowDimensions} from 'react-native';
 import tailwind from '../../../../tailwind';
-import {useNavigation} from '@react-navigation/native';
 import CreateContestTopBar from './atoms/CreateContestTopBar';
 import CreateContestTabs from './molecules/CreateContestTabs';
 import PagerView from 'react-native-pager-view';
-import {
-  BlockScreenByLoading,
-  NewJoinContestModal,
-  PrivateContestTeams,
-} from '../../../sharedComponents/';
+import {PrivateContestTeams} from '../../../sharedComponents/';
 import CreateContestPage from './molecules/CreateContestPage';
 import ShareContestPage from './molecules/ShareContestPage';
 import PrivateContestBanner from './atoms/private.contest.banner';
@@ -21,11 +16,15 @@ import AcceptTermsSheet from './atoms/AcceptTermsSheet';
 import JoinPrivateContest from './molecules/join.private.contets';
 import {useCountDown} from '../../../shared_hooks/app.hooks';
 import ShareContestSheet from './molecules/share.contest.sheet';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
+
 const log = console.log;
 
 export default function PrivateContestCreateScreen(props: CreateContestType) {
   const {width} = useWindowDimensions();
   const pagerRef: any = useRef(null);
+  const dT = useSelector(getAppThemeSelector);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [canCreateContest, setCanCreateContest] = useState(true);
@@ -46,19 +45,21 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
   // }
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
-      <CreateContestTopBar wallet={props.wallet_amount} />
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
+      <CreateContestTopBar dT={dT} wallet={props.wallet_amount} />
 
       <PrivateContestTeams
         team_a={matchSelector.team_a}
         team_b={matchSelector.team_b}
         start_at={countDown}
         match_name={matchSelector.name}
+        dT={dT}
       />
 
       <CreateContestTabs
         activeIndex={activeIndex}
         onTabPressed={onTabPressed}
+        dT={dT}
       />
 
       <PagerView
@@ -71,6 +72,7 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
             activeIndex={activeIndex}
             pagerRef={pagerRef}
             refetch={props.refetch}
+            dT={dT}
           />
         </View>
         <View style={[{width: width}]}>
@@ -83,6 +85,7 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
             onPressShareContest={props.onPressShareContest}
             proceedToJoin={props.proceedToJoin}
             isFetching={props.isFetching}
+            dT={dT}
           />
         </View>
         <View style={[{width: width}]}>
@@ -91,6 +94,7 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
             allContests={props.allContests}
             onPressContestCard={props.onPressContestCard}
             proceedToJoin={props.proceedToJoin}
+            dT={dT}
           />
         </View>
       </PagerView>
@@ -106,6 +110,7 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
           onPressCopy={props.onPressCopy}
           onPressSMSShare={props.onPressSMSShare}
           onPressMoreShare={props.onPressMoreShare}
+          dT={dT}
         />
       </Modalize>
     </View>
@@ -150,3 +155,9 @@ export default function PrivateContestCreateScreen(props: CreateContestType) {
 //     </View>
 //   );
 // };
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+});

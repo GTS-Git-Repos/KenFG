@@ -1,19 +1,14 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {
-  View,
-  Image,
-  Text,
-  TouchableOpacityBase,
-  TouchableOpacity,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
+import {View, Text, TouchableOpacity} from 'react-native';
+
 import {CheckBoxIcon} from '../../../../sharedComponents';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   selected: any;
   setSelected(bool: boolean): any;
+  dT: boolean;
 }
 
 export default function AllowMultipleTeam(props: PropTypes) {
@@ -21,7 +16,11 @@ export default function AllowMultipleTeam(props: PropTypes) {
     <TouchableOpacity
       onPress={() => props.setSelected(!props.selected)}
       style={[tailwind('flex-row items-center justify-between')]}>
-      <Text style={[tailwind('font-regular text-white font-14')]}>
+      <Text
+        style={[
+          tailwind('font-regular font-14'),
+          props.dT ? clr.td2 : clr.td1,
+        ]}>
         Allow Multiple Teams
       </Text>
       <CheckBoxIcon selected={props.selected} />
