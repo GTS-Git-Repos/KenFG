@@ -4,17 +4,19 @@ import {View, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import {ReferPeopleIcon} from '../../../../sharedComponents';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
-  text?: string;
+  dT: boolean;
 }
 
 export default function ReferPhoneContacts(props: PropTypes) {
   return (
     <View
       style={[
-        tailwind('rounded bg-green flex-row items-center justify-center'),
+        tailwind('rounded flex-row items-center justify-center'),
         {paddingVertical: 14, marginBottom: 16},
+        props.dT ? clr.bgGreen : clr.bgLgreen,
       ]}>
       <ReferPeopleIcon />
       <Text

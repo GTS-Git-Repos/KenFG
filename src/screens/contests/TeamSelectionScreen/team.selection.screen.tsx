@@ -155,11 +155,11 @@ export default function TeamSelectionScreen(props: PropTypes) {
   }
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
+    <View style={[ss.root, dT ? clr.bgd1 : clr.bgGray]}>
       <TopBar text={'Select Team'} />
       {/* <Info selectText={props.selectText} /> */}
-      <View style={[tailwind('p-3 bg-dark-3')]}>
-        <Text style={[tailwind('font-regular text-white font-14')]}>
+      <View style={[ss.infoC, dT ? clr.bgd1 : clr.bgw]}>
+        <Text style={[ss.infoTxt, dT ? clr.tw : clr.td1]}>
           {props.selectText}
         </Text>
       </View>
@@ -169,6 +169,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
         availableTeams={props.availableTeams.length}
         selectTeams={choosenTeams.length}
         selectAllPress={selectAllPress}
+        dT={dT}
       />
       <ScrollView>
         {props.availableTeams.map((item: any) => {
@@ -176,7 +177,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
             <View
               key={item.team_key}
               style={[tailwind('flex-row mx-2 mt-2 items-center')]}>
-              <View style={[tailwind(''), {flex: 9}]}>
+              <View style={[{flex: 9}]}>
                 <TeamsCard
                   team_a={item.team_a}
                   team_b={item.team_b}
@@ -191,6 +192,7 @@ export default function TeamSelectionScreen(props: PropTypes) {
                   vc={item.vc}
                   navigateToPreview={props.teamCardPress}
                   mutateTeam={() => {}}
+                  hasPoints={false}
                 />
               </View>
               <TouchableOpacity
@@ -199,6 +201,8 @@ export default function TeamSelectionScreen(props: PropTypes) {
                 <CheckBoxSelectedTeam
                   team_key={item.team_key}
                   choosenTeams={choosenTeams}
+        dT={dT}
+
                 />
               </TouchableOpacity>
             </View>
@@ -254,5 +258,14 @@ export default function TeamSelectionScreen(props: PropTypes) {
 }
 
 const ss = StyleSheet.create({
-  root: {},
+  root: {
+    height: '100%',
+  },
+  infoC: {
+    padding: 12,
+  },
+  infoTxt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 14,
+  },
 });

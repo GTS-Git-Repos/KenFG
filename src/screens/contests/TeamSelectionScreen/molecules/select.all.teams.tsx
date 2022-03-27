@@ -1,7 +1,7 @@
 import React from 'react';
-import tailwind from '../../../../../tailwind';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {RadioButton} from '../../../../sharedComponents';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   availableTeams: number;
@@ -9,14 +9,16 @@ interface PropTypes {
   maxTeams: number;
   selectTeams: number;
   selectAllPress(): any;
+  dT: boolean;
 }
 
 export default function SelectAllTeams(props: PropTypes) {
+  const dT = props.dT;
   if (props.maxTeams < props.availableTeams) {
     return null;
   }
   return (
-    <View style={[styles.root]}>
+    <View style={[styles.root, dT ? clr.bgd2 : clr.bgw, !dT && styles.lRoot]}>
       <TouchableOpacity
         disabled={props.disabled}
         onPress={props.selectAllPress}
@@ -33,12 +35,14 @@ export default function SelectAllTeams(props: PropTypes) {
 const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
-    backgroundColor: '#172338',
     borderColor: 'rgba(31, 41, 55, 1)',
     borderTopWidth: 2,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     padding: 12,
+  },
+  lRoot: {
+    borderColor: 'rgba(31, 41, 55, 0.1)',
   },
   linkBtn: {
     flexDirection: 'row',

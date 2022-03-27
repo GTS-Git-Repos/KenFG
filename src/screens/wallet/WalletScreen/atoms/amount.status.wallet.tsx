@@ -41,7 +41,7 @@ export default function AmountStatusWallet(props: PropTypes) {
       />
       <Section
         text="Winnings"
-        verified={false}
+        verified={true}
         amount={props.winnigs}
         dT={props.dT}
       />
@@ -82,7 +82,7 @@ const Section = (props: any) => {
 };
 const VerifyNow = (props: any) => {
   return (
-    <TouchableOpacity style={[ss.btn]}>
+    <TouchableOpacity  style={[ss.btn]}>
       <Text style={[ss.subtxt, props.dT ? clr.tw : clr.tdgray]}>
         Verify Now
       </Text>

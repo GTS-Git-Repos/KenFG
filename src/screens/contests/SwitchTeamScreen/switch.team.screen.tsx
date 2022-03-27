@@ -8,8 +8,9 @@ import {
   RadioButton,
   BlockScreenByLoading,
 } from '../../../sharedComponents';
-const log = console.log;
-
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 import TeamSwitch from './components/TeamSwitch';
 
 interface PropTypes {
@@ -25,10 +26,17 @@ interface PropTypes {
 }
 
 export default function SwitchTeamScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
-    <View style={tailwind('bg-dark h-full')}>
+    <View style={[tailwind('h-full'), dT ? clr.bgd1 : clr.bgGray]}>
       <TopBar text={'Switch Teams'} />
-      <Text style={[tailwind('font-regular text-white p-3 bg-dark-3 font-14')]}>
+      <Text
+        style={[
+          tailwind('font-regular p-3 font-14'),
+          dT ? clr.bgd1 : clr.bgw,
+          dT ? clr.tw : clr.td1,
+        ]}>
         Choose a Team to Replace {props.old_team_key}
       </Text>
       <ScrollView>
@@ -52,6 +60,7 @@ export default function SwitchTeamScreen(props: PropTypes) {
                   vc={item.vc}
                   navigateToPreview={() => {}}
                   mutateTeam={() => {}}
+                  hasPoints={false}
                 />
               </View>
               <TouchableOpacity
@@ -66,7 +75,12 @@ export default function SwitchTeamScreen(props: PropTypes) {
         })}
 
         {props.unavailableTeams.length > 0 && (
-          <SubTitle text="Already Joined" />
+          <View style={[tailwind('m-2')]}>
+            <Text
+              style={[tailwind('font-bold font-14'), dT ? clr.tw : clr.td1]}>
+              Already Joined
+            </Text>
+          </View>
         )}
         {props.unavailableTeams.map((item: any) => {
           return (
@@ -85,63 +99,20 @@ export default function SwitchTeamScreen(props: PropTypes) {
                 vc={item.vc}
                 navigateToPreview={() => {}}
                 mutateTeam={() => {}}
+                hasPoints={false}
               />
             </View>
           );
         })}
       </ScrollView>
 
-      {/* <FlatList
-        data={props.teams}
-        renderItem={({item}) => {
-          return (
-            <View
-              key={item.team_key}
-              style={[tailwind('flex-row mx-2 items-center')]}>
-              <View style={[tailwind(''), {flex: 8.5}]}>
-                <TeamsCard
-                  team_a={item.team_a}
-                  team_b={item.team_b}
-                  team_key={item.team_key}
-                  canModify={false}
-                  current={false}
-                  keepers={item.keepers}
-                  batsman={item.batsman}
-                  all_rounder={item.all_rounder}
-                  bowler={item.bowler}
-                  cap={item.cap}
-                  vc={item.vc}
-                  navigateToPreview={() => {}}
-                  mutateTeam={() => {}}
-                />
-              </View>
-              <TouchableOpacity
-                onPress={() => {
-                  props.setSelectedTeam(item.team_key);
-                }}
-                style={[tailwind('flex-row justify-center'), {flex: 1.5}]}>
-                <RadioButton selected={props.selectedTeam === item.team_key} />
-              </TouchableOpacity>
-            </View>
-          );
-        }}
-      /> */}
       <TeamSwitch
+        dT={dT}
         old={props.old_team_key}
         current={props.selectedTeam}
         onPressSwitchTeam={props.onPressSwitchTeam}
       />
       {props.switchTeam.isLoading && <BlockScreenByLoading />}
-    </View>
-  );
-}
-
-function SubTitle(props: any) {
-  return (
-    <View style={[tailwind('m-2')]}>
-      <Text style={[tailwind('font-bold text-white font-14')]}>
-        {props.text}
-      </Text>
     </View>
   );
 }

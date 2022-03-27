@@ -1,5 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import tailwind from '../../../../tailwind';
 // import {useSelector, useDispatch} from 'react-redux';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
@@ -23,7 +29,11 @@ import {decodeJwt} from '../../../utils/comman';
 import {updateUserInfoAction} from '../../../store/actions/userAction';
 import AllowSMS from './atoms/AllowSMS';
 import ThemeSwitch from './molecules/theme.switch';
+
 import NumberInput from './molecules/NumberInput';
+
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 const log = console.log;
 
@@ -33,6 +43,8 @@ interface PropTypes {
 }
 
 export default function ProfileEditScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -109,7 +121,7 @@ export default function ProfileEditScreen(props: PropTypes) {
   };
 
   return (
-    <View style={tailwind('h-full bg-dark-3')}>
+    <View style={[ss.root, dT ? clr.bgd2 : clr.bgd2]}>
       <TopBar text={'My Info & Settings'} />
       <KeyboardAwareScrollView
         keyboardShouldPersistTaps="handled"
@@ -168,7 +180,10 @@ export default function ProfileEditScreen(props: PropTypes) {
           <ErrorHint text="Password is required and length should be 4 to 50" />
         )} */}
 
-        <ThemeSwitch darkModeState={props.darkModeState} onColorThemePress={props.onColorThemePress} />
+        <ThemeSwitch
+          darkModeState={props.darkModeState}
+          onColorThemePress={props.onColorThemePress}
+        />
 
         <InputTitle text={'Date of Birth'} />
         <Dob
@@ -287,3 +302,9 @@ export default function ProfileEditScreen(props: PropTypes) {
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+});

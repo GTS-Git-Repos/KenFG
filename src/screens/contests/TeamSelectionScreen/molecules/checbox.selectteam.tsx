@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 interface PropTypes {
   team_key: string;
   choosenTeams: any;
+  dT: boolean;
 }
 
 export default function CheckBoxSelectedTeam(props: PropTypes) {
@@ -19,10 +20,11 @@ export default function CheckBoxSelectedTeam(props: PropTypes) {
       setSelected(false);
     }
   }, [props.choosenTeams]);
-
-  return selected ? (
-    <Icon name="checkbox-outline" size={24} color="#D8C872" />
-  ) : (
-    <Icon name="square-outline" size={24} color="#D8C872" />
+  return (
+    <Icon
+      name={selected ? 'checkbox-outline' : 'square-outline'}
+      size={24}
+      color={props.dT ? '#D8C872' : '#9C181E'}
+    />
   );
 }

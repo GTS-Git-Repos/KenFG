@@ -59,7 +59,7 @@ export default function SwitchTeamHOC() {
       setSelectedTeam(route.params.old_team_key);
 
       const existedTeams = route.params.existedTeams;
-    
+
       const availableTeams = [];
       const unavailableTeams = [];
       for (const team of teams) {
@@ -77,6 +77,10 @@ export default function SwitchTeamHOC() {
   }, [teams]);
 
   function onPressSwitchTeam() {
+    if (route.params.old_team_key === selectedTeam) {
+      errorBox('please choose New Team', 0);
+      return;
+    }
     switchTeam.mutate({
       match_key: matchMeta.match_key,
       contest_key: route.params.contest_key,

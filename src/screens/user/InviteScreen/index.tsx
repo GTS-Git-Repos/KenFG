@@ -11,45 +11,55 @@ import UserCode from './molecules/UserCode';
 import ReferContacts from './atoms/ReferContacts';
 import {SocialMediaShare} from '../../../sharedComponents';
 import FriendsListLink from './atoms/FriendsListLink';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 const log = console.log;
 
 export default function InviteScreen() {
+  const dT = useSelector(getAppThemeSelector);
+
   const navigation = useNavigation();
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
+    <View style={[tailwind('h-full'), dT ? clr.bgd1 : clr.bgGray]}>
       <TopBar text="Invite Friends" />
-      <InfoContent />
+      <InfoContent dT={dT} />
       <View style={[tailwind('my-1')]} />
-      <View style={[tailwind('bg-dark-3 p-4')]}>
-        <UserCode />
-        <ReferContacts />
-        <SocialMediaShare />
-        <MoreOption />
+      <View style={[tailwind('p-4'), dT ? clr.bgd1 : clr.bgGray]}>
+        <UserCode dT={dT} code={''} />
+        <ReferContacts dT={dT} />
+        <SocialMediaShare dT={dT} />
+        <MoreOption dT={dT} />
       </View>
-      <FriendsListLink />
+      <FriendsListLink  dT={dT} />
     </View>
   );
 }
 
-const MoreOption = () => {
+const MoreOption = (props: any) => {
   return (
     <View
       style={[
-        tailwind('flex-row bg-dark-3 mt-4 items-center justify-center'),
+        tailwind('flex-row mt-4 items-center justify-center'),
         {paddingVertical: 10},
-        styles.link,
+        props.dT ? styles.dBorder : styles.lBorder,
+        props.dT ? clr.bgd1 : clr.bgw,
       ]}>
+      {/* FIXME: move to SVG */}
       <Image
         resizeMode="contain"
         source={assets.more_share}
         style={[{width: 18, height: 18}]}
       />
       <Text
-        style={[tailwind('font-regular px-2 text-white font-15 uppercase')]}>
+        style={[
+          tailwind('font-regular px-2 font-15 uppercase'),
+          props.dT ? clr.tw : clr.td1,
+        ]}>
         More Options
       </Text>
     </View>
@@ -57,9 +67,13 @@ const MoreOption = () => {
 };
 
 const styles = StyleSheet.create({
-  link: {
-    borderColor: '#8797B14D',
-    borderWidth: 1,
-    borderRadius: 2,
+  dBorder: {
+    borderBottomColor: 'rgba(31, 41, 55,1)',
+    borderBottomWidth: 1,
+  },
+  lBorder: {
+    borderBottomColor: 'rgba(31, 41, 55,0.1)',
+    borderBottomWidth: 1,
+    elevation: 3,
   },
 });

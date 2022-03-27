@@ -1,8 +1,10 @@
 // used in Account profile screen and ....
 // in match screen
+// switch team screen
+// team formation screen
 
 import React from 'react';
-import {View, Dimensions, StyleSheet, ActivityIndicator} from 'react-native';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import TopBar from '../atoms/TopBar';
 import {useSelector} from 'react-redux';
 import {getAppThemeSelector} from '../../store/selectors';

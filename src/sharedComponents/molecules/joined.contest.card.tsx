@@ -39,6 +39,7 @@ interface PropTypes {
 }
 
 interface TeamInfoTypes {
+  dT: boolean;
   contest_key: string;
   team_key: string;
   code: string;
@@ -105,11 +106,12 @@ export default function JoinedContestCard(props: PropTypes) {
         <JoinedTeams teams={props.contest_teams} />
 
         {open && (
-          <View style={[ss.teamContainer]}>
+          <View style={[ss.tc, dT ? clr.bgd1 : clr.bgw]}>
             {props.joinedTeam.map((item: any, index: number) => {
               return (
-                <View key={index} style={[ss.spaceTeams]}>
+                <View key={index} style={[ss.spaceTeams, !dT && ss.lTBoottom]}>
                   <TeamInfo
+                    dT={dT}
                     contest_key={props.contest_key}
                     team_key={item.teamCode}
                     code={item.teamCode}
@@ -125,7 +127,12 @@ export default function JoinedContestCard(props: PropTypes) {
           </View>
         )}
       </View>
-      <ShareContest />
+      <View style={[ss.shrRoot, dT ? clr.bgGreen : clr.bgLgreen]}>
+        <Text style={[ss.txt, clr.tw]}>
+          Share this contest with your friends
+        </Text>
+        <ShareIcon />
+      </View>
     </View>
   );
 }
@@ -141,24 +148,27 @@ const JoinedTeams = (props: any) => {
 };
 
 const TeamInfo = (props: TeamInfoTypes) => {
+  const dT = props.dT;
   return (
     <View style={[ss.teamRow]}>
       <TouchableOpacity
         onPress={() => props.teamPreviewPress(props.team_key)}
         style={[ss.teamPreviewTouch]}>
-        <View style={[ss.teamCodeBox]}>
-          <Text style={[ss.teamKey]}>{props.team_key}</Text>
+        <View style={[ss.teamCodeBox, dT ? clr.bgd1 : clr.bgGray]}>
+          <Text style={[ss.teamKey, dT ? clr.tw : clr.td1]}>
+            {props.team_key}
+          </Text>
         </View>
         <View style={[tailwind('px-2')]}>
           <View style={[tailwind('flex-row items-center ')]}>
-            <CapIcon white={false} />
-            <Text style={[tailwind('font-regular px-1 text-white font-14')]}>
+            <CapIcon white={dT} />
+            <Text style={[ss.cNmae, dT ? clr.tw : clr.td1]}>
               {props.cap.name}
             </Text>
           </View>
           <View style={[tailwind('flex-row pt-1 items-center')]}>
-            <VCIcon white={false} />
-            <Text style={[tailwind('font-regular px-1 text-white font-14')]}>
+            <VCIcon white={dT} />
+            <Text style={[ss.cNmae, dT ? clr.tw : clr.td1]}>
               {props.v_c.name}
             </Text>
           </View>
@@ -171,7 +181,7 @@ const TeamInfo = (props: TeamInfoTypes) => {
           onPress={() =>
             props.teamMutateAction(props.team_key, {edit: true, clone: false})
           }>
-          <PencilEditIcon dT={true} />
+          <PencilEditIcon dT={dT} background={!dT} />
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -179,18 +189,9 @@ const TeamInfo = (props: TeamInfoTypes) => {
           onPress={() =>
             props.onPressTeamSwitch(props.team_key, props.contest_key)
           }>
-          <SwitchIcon />
+          <SwitchIcon  dT={dT} />
         </TouchableOpacity>
       </View>
-    </View>
-  );
-};
-
-const ShareContest = () => {
-  return (
-    <View style={[ss.shrRoot]}>
-      <Text style={[ss.txt]}>Share this contest with your friends</Text>
-      <ShareIcon />
     </View>
   );
 };
@@ -201,10 +202,13 @@ const ss = StyleSheet.create({
     backgroundColor: '#172338',
     borderRadius: 6,
     marginBottom: 8,
-    elevation: 7,
+    elevation: 4,
   },
   lRoot: {
     backgroundColor: '#FFFFFF',
+    borderColor: 'rgba(31, 41, 55,0.1)',
+    borderWidth: 1,
+    borderRadius: 8,
   },
   ts: {
     paddingVertical: 8,
@@ -217,8 +221,12 @@ const ss = StyleSheet.create({
     paddingBottom: 4,
     borderColor: 'transparent',
     borderBottomColor: 'rgba(31, 41, 55,1)',
-    borderWidth: 1,
+    borderBottomWidth: 1,
     paddingHorizontal: 8,
+  },
+  lTBoottom: {
+    borderBottomColor: 'rgba(31, 41, 55,0.2)',
+    borderBottomWidth: 1,
   },
   barroot: {
     paddingHorizontal: 12,
@@ -264,14 +272,9 @@ const ss = StyleSheet.create({
     fontFamily: 'gadugi-normal',
     fontSize: 14,
   },
-  teamContainer: {
-    backgroundColor: '#0D1320',
+  tc: {
     borderRadius: 4,
-    borderBottomColor: '#8797B14D',
-    borderTopColor: '#8797B14D',
-    borderLeftColor: '#8797B14D',
-    borderRightColor: '#8797B14D',
-    borderStyle: 'solid',
+    borderColor: '#8797B14D',
     borderWidth: 1,
   },
   teamRow: {
@@ -299,5 +302,10 @@ const ss = StyleSheet.create({
     fontFamily: 'gadugi-normal',
     fontSize: 12,
     textTransform: 'uppercase',
+  },
+  cNmae: {
+    fontFamily: 'gadugi-normal',
+    paddingHorizontal: 4,
+    fontSize: 14,
   },
 });

@@ -4,7 +4,7 @@
 
 import React from 'react';
 import tailwind from '../../../tailwind';
-import {View, ActivityIndicator, ScrollView} from 'react-native';
+import {View, FlatList, ScrollView} from 'react-native';
 import NoDataContests from '../atoms/no.data.contest';
 import JoinedContestCard from './joined.contest.card';
 import {TeamFormationMutationType} from '../../types/match';
@@ -44,6 +44,40 @@ export default function MyContestPage(props: PropTypes) {
       />
     );
   }
+
+  return (
+    <FlatList
+      contentContainerStyle={{margin: 12}}
+      data={props.joined}
+      renderItem={({item}) => {
+        return (
+          <JoinedContestCard
+            match_key={item.contestMeta.match_key}
+            contest_key={item.contestMeta.contest_code}
+            contest_name={item.contestMeta.contest_name}
+            amount_in_letters={item.contestMeta.contest_name}
+            entry_amount={item.contestMeta.entry_fee}
+            max_entry={item.contestMeta.entry_fee}
+            max_entry_reached={false}
+            slots={0}
+            filled_slots={0}
+            bonus={''}
+            isGuaranteed={false}
+            contest_teams={item.contestMeta.contest_team}
+            joinedTeam={item.joinedTeam}
+            teamPreviewPress={props.teamPreviewPress}
+            teamMutateAction={props.teamMutateAction}
+            onPressTeamSwitch={props.onPressTeamSwitch}
+            onPressJoinedContest={props.onPressJoinedContest}
+          />
+        );
+      }}
+      keyExtractor={item => item.contestMeta.contest_code}
+      ListFooterComponent={() => {
+        return <View style={[tailwind('h-20')]}></View>;
+      }}
+    />
+  );
 
   return (
     <ScrollView contentContainerStyle={[tailwind('m-3')]}>

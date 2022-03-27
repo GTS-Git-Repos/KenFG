@@ -6,6 +6,8 @@ import {useSelector, useDispatch} from 'react-redux';
 // import {useNavigation} from '@react-navigation/native';
 import EnterAmountAddCash from './molecules/enteramount.addcash';
 import SubTitleAddCash from './atoms/subtitle.addcash';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 import {
   ButtonComponent,
@@ -27,18 +29,24 @@ interface PropTypes {
 }
 
 export default function AddCashScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const userMeta = useSelector(userInfo);
   const [code, setCode] = useState('');
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
+    <View style={[tailwind('h-full'), dT ? clr.bgd1 : clr.bgGray]}>
       <TopBar text={'Add Cash'} />
       <ScrollView>
-        <EnterAmountAddCash amount={props.amount} setAmount={props.setAmount} />
-        <SubTitleAddCash text={'Coupon Codes'} />
-        <EnterCouponAddCash code={code} setCode={setCode} />
-        <CouponCardAddCash />
-        <CouponCardAddCash />
+        <EnterAmountAddCash
+          dT={dT}
+          amount={props.amount}
+          setAmount={props.setAmount}
+        />
+        <SubTitleAddCash dT={dT} text={'Coupon Codes'} />
+        <EnterCouponAddCash dT={dT} code={code} setCode={setCode} />
+        <CouponCardAddCash dT={dT} />
+        <CouponCardAddCash dT={dT} />
       </ScrollView>
       <TouchableOpacity
         onPress={() =>

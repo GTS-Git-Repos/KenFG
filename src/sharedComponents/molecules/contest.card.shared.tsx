@@ -70,7 +70,7 @@ export default function ContestCard(props: PropTypes) {
       <ContestFooter
         amount_letters={props.amount_letters}
         bonus={props.bonus}
-        guaranteed={props.guaranteed} 
+        guaranteed={props.guaranteed}
         max_entry={props.max_entry}
       />
     </TouchableOpacity>
@@ -78,11 +78,15 @@ export default function ContestCard(props: PropTypes) {
 }
 
 const ContestEntryType = (props: any) => {
+  const dT = props.dT;
   return (
     <TouchableOpacity onPress={() => props.proceedToJoin(props.contest_key)}>
-      <Text style={[styles.contestTitle, styles.entryTxt]}>Entry</Text>
+      <Text
+        style={[styles.contestTitle, styles.entryTxt, dT ? clr.tw : clr.td1]}>
+        Entry
+      </Text>
       <View style={[styles.entryContainer]}>
-        <View style={[styles.entryBtn]}>
+        <View style={[styles.entryBtn,]}>
           {props.entry === 0 ? (
             <Text style={[styles.entryAmount]}>Join</Text>
           ) : (
@@ -122,7 +126,7 @@ const styles = StyleSheet.create({
     fontFamily: 'gadugi-bold',
     paddingTop: 8,
     paddingBottom: 12,
-    top:4,
+    top: 4,
     fontSize: 14,
   },
   entryContainer: {

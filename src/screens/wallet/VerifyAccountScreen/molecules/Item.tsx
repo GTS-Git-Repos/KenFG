@@ -9,6 +9,7 @@ import {
   BankRoundIcon,
   VerifyTick,
 } from '../../../../assets/newIcons';
+import clr from '../../../../constants/colors';
 
 type Option = 'mobile' | 'email' | 'pancard' | 'bank';
 
@@ -19,33 +20,37 @@ interface PropTypes {
   preverifiedvalue: string;
   verified: boolean;
   action(): any;
+  dT: boolean;
 }
 
 export default function VerifyContent(props: PropTypes) {
+  const dT = props.dT;
   return (
-    <View style={[ss.root]}>
-      {props.type === 'mobile' && <MobileIcon />}
-      {props.type === 'email' && <EmailIcon />}
-      {props.type === 'pancard' && <PanCardIcon />}
-      {props.type === 'bank' && <BankRoundIcon />}
+    <View style={[ss.root, dT ? clr.bgd2 : clr.bgw, !dT && ss.lBottom]}>
+      {props.type === 'mobile' && <MobileIcon dT={dT} />}
+      {props.type === 'email' && <EmailIcon dT={dT} />}
+      {props.type === 'pancard' && <PanCardIcon dT={dT} />}
+      {props.type === 'bank' && <BankRoundIcon dT={dT} />}
       <View style={[tailwind('px-4 mr-4'), {flex: 7}]}>
-        <Text style={[ss.title]}>{props.title}</Text>
+        <Text style={[ss.title, dT ? clr.tw : clr.td1]}>{props.title}</Text>
 
         {props.verified ? (
-          <Text style={[ss.value]}>{props.value}</Text>
+          <Text style={[ss.value, dT ? clr.tw : clr.td1]}>{props.value}</Text>
         ) : (
-          <Text style={ss.subTitle}>{props.preverifiedvalue}</Text>
+          <Text style={[ss.subTitle]}>{props.preverifiedvalue}</Text>
         )}
       </View>
       {props.verified ? (
         <TouchableOpacity style={[ss.button, ss.selectedButton]}>
-          <VerifyTick verified={true} />
+          <VerifyTick verified={true} dT={false} />
           <Text style={[ss.text]}>Verified</Text>
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity onPress={props.action} style={ss.button}>
-          <VerifyTick verified={false} />
-          <Text style={[ss.text]}>VERIFY</Text>
+        <TouchableOpacity
+          onPress={props.action}
+          style={[ss.button, dT ? clr.bgd1 : clr.bgw]}>
+          <VerifyTick verified={false} dT={false} />
+          <Text style={[ss.text, dT ? clr.tw : clr.td1]}>VERIFY</Text>
         </TouchableOpacity>
       )}
     </View>
@@ -55,10 +60,13 @@ export default function VerifyContent(props: PropTypes) {
 const ss = StyleSheet.create({
   root: {
     alignItems: 'center',
-    backgroundColor: '#172338',
     flexDirection: 'row',
     paddingVertical: 8,
     paddingHorizontal: 16,
+  },
+  lBottom: {
+    borderBottomColor: 'rgba(31, 41, 55,0.1)',
+    borderBottomWidth: 1,
   },
   title: {
     color: '#f5feff',

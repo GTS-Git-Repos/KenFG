@@ -6,6 +6,9 @@ import {View, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ButtonComponent from '../atoms/ButtonComponent';
 import Modal from 'react-native-modal';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   showModal: boolean;
@@ -17,6 +20,8 @@ interface PropTypes {
 }
 
 export default function NewJoinContestModal(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   if (!props.showModal) {
     return null;
   }
@@ -31,36 +36,42 @@ export default function NewJoinContestModal(props: PropTypes) {
       hideModalContentWhileAnimating={true}
       backdropTransitionOutTiming={0}
       scrollHorizontal={true}>
-      <View style={[ss.root]}>
+      <View style={[ss.root, dT ? clr.bgd1 : clr.bgw]}>
         <View style={[ss.frcb]}>
-          <Text style={[ss.confirmtxt]}>Confirmation</Text>
+          <Text style={[ss.confirmtxt, dT ? clr.tw : clr.td1]}>
+            Confirmation
+          </Text>
           <TouchableOpacity onPress={props.closeModal}>
-            <Icon name="close" size={25} color="white" />
+            <Icon name="close" size={25} color={dT ? 'white' : '#0D1320'} />
           </TouchableOpacity>
         </View>
         {/* Available cash */}
         <View style={[ss.fr]}>
-          <Text style={[ss.txt]}>
+          <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>
             Amount Added (Unutilised) + winnings = {'\u20B9 '}
             {props.availableCash}
           </Text>
         </View>
 
         <View style={[ss.container, {paddingBottom: 0}]}>
-          <Text style={[ss.boldtxt]}>Entry</Text>
-          <Text style={[ss.boldtxt]}>
+          <Text style={[ss.boldtxt, dT ? clr.tw : clr.td1]}>Entry</Text>
+          <Text style={[ss.boldtxt, dT ? clr.tw : clr.td1]}>
             {'\u20B9'} {props.entryAmount || 0}
           </Text>
         </View>
 
         <View style={[ss.container]}>
-          <Text style={[ss.boldtxt]}>Usable Cash Bonus</Text>
-          <Text style={[ss.boldtxt]}>- {'\u20B9'} 0</Text>
+          <Text style={[ss.boldtxt, dT ? clr.tw : clr.td1]}>
+            Usable Cash Bonus
+          </Text>
+          <Text style={[ss.boldtxt, dT ? clr.tw : clr.td1]}>
+            - {'\u20B9'} 0
+          </Text>
         </View>
 
         <View style={[ss.container]}>
-          <Text style={[ss.boldtxt, tailwind('text-secondary')]}>To Pay</Text>
-          <Text style={[ss.boldtxt, tailwind('text-secondary')]}>
+          <Text style={[ss.boldtxt, dT ? clr.tgl : clr.tr]}>To Pay</Text>
+          <Text style={[ss.boldtxt, dT ? clr.tgl : clr.tr]}>
             {'\u20B9'} {props.entryAmount | 0}
           </Text>
         </View>
@@ -76,7 +87,6 @@ export default function NewJoinContestModal(props: PropTypes) {
 
 const ss = StyleSheet.create({
   root: {
-    backgroundColor: '#172338',
     borderRadius: 4,
     padding: 16,
   },
@@ -89,18 +99,15 @@ const ss = StyleSheet.create({
     flexDirection: 'row',
   },
   confirmtxt: {
-    color: '#f5feff',
     fontFamily: 'gadugi-normal',
     fontSize: 15,
     textTransform: 'uppercase',
   },
   txt: {
-    color: 'rgba(209, 213, 219, 1)',
     fontFamily: 'gadugi-normal',
     fontSize: 10,
   },
   boldtxt: {
-    color: '#f5feff',
     fontFamily: 'gadugi-bold',
     fontSize: 15,
   },
