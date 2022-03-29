@@ -19,7 +19,7 @@ export default function FriendsListLink(props: PropTypes) {
       onPress={() => navigation.navigate('ReferredFriendsListScreen')}
       style={[
         tailwind('mt-4 p-3 flex-row items-center justify-between'),
-        dT ? clr.bgd1 : clr.bgw,
+        dT ? clr.bgd2 : clr.bgw,
         {elevation: 4},
       ]}>
       <View style={[tailwind('flex-row items-center')]}>
@@ -40,10 +40,15 @@ export default function FriendsListLink(props: PropTypes) {
         <Text
           style={[
             tailwind('font-regular px-2 rounded-full px-2 py-1 font-15'),
+            dT ? clr.tw : clr.td1,
           ]}>
           20
         </Text>
-        <Icon name="chevron-forward-outline" size={18} color="white" />
+        <Icon
+          name="chevron-forward-outline"
+          size={18}
+          color={props.dT ? 'white' : 'black'}
+        />
       </View>
     </TouchableOpacity>
   );

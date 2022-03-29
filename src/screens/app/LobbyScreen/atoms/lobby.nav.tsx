@@ -69,6 +69,7 @@ const Cricket = (props: any) => {
         tailwind('mx-2'),
         {flex: 3.25},
         props.cricket ? ss.activeBorder : {},
+        props.dT ? ss.dBdr : ss.lBdr,
       ]}>
       <View style={[tailwind('flex-row justify-center')]}>
         <CricketBallIcon dT={props.dT} active={props.cricket} />
@@ -94,6 +95,7 @@ const FootBall = (props: any) => {
         tailwind('mx-2'),
         {flex: 3.25},
         props.isFootBall ? ss.activeBorder : {},
+        props.dT ? ss.dBdr : ss.lBdr,
       ]}>
       <View style={[tailwind('flex-row justify-center')]}>
         <FootBallIcon dT={props.dT} active={props.isFootBall} />
@@ -174,6 +176,12 @@ const ss = StyleSheet.create({
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,
+  },
+  dBdr: {
+    borderColor: '#BCA04D',
+  },
+  lBdr: {
+    borderColor: '#9C181E',
   },
   nDot: {
     backgroundColor: 'rgba(239, 68, 68, 1)',

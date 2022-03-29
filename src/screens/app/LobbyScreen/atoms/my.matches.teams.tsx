@@ -1,4 +1,4 @@
-// 
+//
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TeamFlag} from '../../../../sharedComponents';
@@ -19,7 +19,6 @@ interface TeamType {
 }
 
 export default function Teams(props: PropTypes) {
-
   return (
     <View style={[styles.ct]}>
       <View style={styles.sec1}>
@@ -35,8 +34,8 @@ export default function Teams(props: PropTypes) {
       {/* status*/}
 
       <View style={styles.statusC}>
-        {props.status === 'completed' && <IsCompleted dT={props.dT} />}
-        {props.status === 'started' && <IsLive />}
+        {props.status === 'completed' && <IsCompleted dT={props.dT}/>}
+        {props.status === 'started' && <IsLive dT={props.dT} />}
         {props.status === 'notstarted' && (
           <Text style={[styles.countDownText, props.dT ? clr.tw : clr.td1]}>
             {props.countDown}
@@ -57,11 +56,11 @@ export default function Teams(props: PropTypes) {
   );
 }
 
-const IsLive = () => {
+const IsLive = (props: any) => {
   return (
     <View style={styles.completeC}>
       <View style={styles.cIndic}></View>
-      <Text style={[styles.cTxt]}>LIVE</Text>
+      <Text style={[styles.cTxt, props.dT ? clr.tw : clr.tr]}>LIVE</Text>
     </View>
   );
 };
@@ -70,7 +69,9 @@ const IsCompleted = (props: any) => {
   return (
     <View style={[styles.completeC]}>
       <View style={[styles.cIndic]}></View>
-      <Text style={[styles.cTxt]}>COMPLETED</Text>
+      <Text style={[styles.cTxt, props.dT ? clr.tw : clr.tgreen]}>
+        COMPLETED
+      </Text>
     </View>
   );
 };

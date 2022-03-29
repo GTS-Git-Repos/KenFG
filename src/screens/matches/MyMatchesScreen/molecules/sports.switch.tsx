@@ -3,6 +3,11 @@ import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {errorBox} from '../../../../utils/snakBars';
 import assets from '../../../../constants/assets_manifest';
 import clr from '../../../../constants/colors';
+import {
+  CricketBallIcon,
+  FootBallIcon,
+  NotificationIcon,
+} from '../../../../assets/newIcons';
 
 interface PropTypes {
   dT: boolean;
@@ -38,11 +43,12 @@ const FootBall = (props: any) => {
       onPress={() => errorBox('Football Comming Soon !', 0)}
       style={[styles.option, props.cricket ? {} : styles.activeBorder]}>
       <View style={[styles.logoC]}>
-        <Image
+        <FootBallIcon dT={props.dT} active={!props.cricket} />
+        {/* <Image
           resizeMode="contain"
           source={props.cricket ? assets.football_off : assets.football_on}
           style={[{width: 20, height: 20}]}
-        />
+        /> */}
       </View>
       <Text
         style={[
@@ -61,11 +67,12 @@ const Cricket = (props: any) => {
       onPress={() => props.setCricket(true)}
       style={[styles.option, props.cricket ? styles.activeBorder : {}]}>
       <View style={[styles.logoC]}>
-        <Image
+        <CricketBallIcon dT={props.dT} active={props.cricket} />
+        {/* <Image
           resizeMode="contain"
           source={props.cricket ? assets.cricket_on : assets.cricket_off}
           style={[styles.logo]}
-        />
+        /> */}
       </View>
       {props.dT ? (
         <Text

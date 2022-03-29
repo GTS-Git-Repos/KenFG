@@ -2,6 +2,9 @@ import React, {useEffect} from 'react';
 import tailwind from '../../../tailwind';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   topSection: HeaderSectionProps;
@@ -20,6 +23,10 @@ interface HeaderSectionProps {
   runs: string;
   wickets: string;
   isCompleted: boolean;
+  dT: boolean;
+  isExpanded: boolean;
+  index: number;
+  openInningsTab(index: number): any;
 }
 interface BattersScroreShape {
   name: string;
@@ -31,6 +38,7 @@ interface BattersScroreShape {
   msg: string;
   inningsStatus: boolean;
   isBatting: string;
+  dT: boolean;
 }
 
 interface WicketsShape {
@@ -38,6 +46,7 @@ interface WicketsShape {
   number: string;
   overs: string;
   runs: string;
+  dT: boolean;
 }
 
 interface BowlerScoreShape {
@@ -49,6 +58,7 @@ interface BowlerScoreShape {
   wickets: string;
   economy: string;
   isBowling: string;
+  dT: boolean;
 }
 interface ExtrasShape {
   extra: string;
@@ -57,9 +67,12 @@ interface ExtrasShape {
   wide: string;
   no_ball: string;
   penalty: string;
+  dT: boolean;
 }
 
 export default function TeamScoreBoardInnings(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   useEffect(() => {
     // console.log(props.topSection);
   }, []);
@@ -67,6 +80,7 @@ export default function TeamScoreBoardInnings(props: PropTypes) {
   return (
     <View style={[tailwind('')]}>
       <InningsHeaderSection
+        dT={dT}
         key={props.topSection.key}
         code={props.topSection.code}
         overs={props.topSection.overs}
@@ -81,12 +95,14 @@ export default function TeamScoreBoardInnings(props: PropTypes) {
         <View>
           <View>
             <RoleHeader
+              dT={dT}
               title="Batter"
               headers={['R', 'B', '4s', '6s', 'S/R']}
             />
             {props.battersData.map((item: any, index: number) => {
               return (
                 <BattersScrore
+                  dT={dT}
                   key={index}
                   name={item.name}
                   runs={item.runs}
@@ -102,6 +118,7 @@ export default function TeamScoreBoardInnings(props: PropTypes) {
             })}
 
             <Extras
+              dT={dT}
               extra={props.extra.extra}
               bye={props.extra.bye}
               leg_bye={props.extra.leg_bye}
@@ -111,6 +128,7 @@ export default function TeamScoreBoardInnings(props: PropTypes) {
             />
             {/* <YetToBat /> */}
             <TotalScore
+              dT={dT}
               overs={props.topSection.overs}
               runs={props.topSection.runs}
               wickets={props.topSection.wickets}
@@ -120,6 +138,7 @@ export default function TeamScoreBoardInnings(props: PropTypes) {
           {props.bowlersData.length > 1 && (
             <View>
               <RoleHeader
+                dT={dT}
                 title="Bowler"
                 headers={['O', 'M', 'R', 'W', 'Eco']}
               />
@@ -127,6 +146,7 @@ export default function TeamScoreBoardInnings(props: PropTypes) {
                 (item: BowlerScoreShape, index: number) => {
                   return (
                     <BowlerScore
+                      dT={dT}
                       key={index}
                       name={item.name}
                       overs={item.overs}
@@ -144,11 +164,16 @@ export default function TeamScoreBoardInnings(props: PropTypes) {
           )}
 
           <View style={[tailwind('pb-5')]}>
-            <RoleHeader title="Fall of Wickets" headers={['Score', 'Over']} />
+            <RoleHeader
+              dT={dT}
+              title="Fall of Wickets"
+              headers={['Score', 'Over']}
+            />
 
             {props.wicketsData.map((item: WicketsShape, index: number) => {
               return (
                 <WicketsScore
+                  dT={dT}
                   key={index}
                   name={item.name}
                   number={item.number}
@@ -165,15 +190,14 @@ export default function TeamScoreBoardInnings(props: PropTypes) {
 }
 
 const InningsHeaderSection = (props: HeaderSectionProps) => {
+  const dT = props.dT;
   return (
     <TouchableOpacity
       onPress={() => props.openInningsTab(props.index)}
-      style={[ss.inningsheader]}>
+      style={[ss.inningsheader, dT ? ss.dIH : ss.lIh]}>
       <View style={[tailwind('flex-row items-center pl-4 pr-1'), {flex: 6}]}>
-        <Text style={[tailwind('font-bold text-white uppercase font-14')]}>
-          {props.code}
-        </Text>
-        {!props.isCompleted && <IsBatttingTag />}
+        <Text style={[ss.tCode, clr.tw]}>{props.code}</Text>
+        {!props.isCompleted && <IsBatttingTag dT={dT} />}
       </View>
 
       <View
@@ -207,8 +231,9 @@ const InningsHeaderSection = (props: HeaderSectionProps) => {
 };
 
 const RoleHeader = (props: any) => {
+  const dT = props.dT;
   return (
-    <View style={[ss.roleHeader]}>
+    <View style={[ss.roleHeader, dT ? ss.dEx : ss.lEx]}>
       <View style={[tailwind(''), {flex: 6}]}>
         <Text style={[tailwind('font-bold px-2 text-dark-1 font-15')]}>
           {props.title}
@@ -236,40 +261,48 @@ const RoleHeader = (props: any) => {
 };
 
 const BattersScrore = (props: BattersScroreShape) => {
+  const dT = props.dT;
   return (
-    <View
-      style={[
-        tailwind('flex-row py-2 bg-dark-3 px-2 border-b border-gray-800'),
-      ]}>
+    <View style={[ss.batScore, dT ? ss.dBS : ss.lBS]}>
       <View style={[tailwind(''), {flex: 6}]}>
         <View style={[tailwind('px-2')]}>
-          <Text
-            numberOfLines={1}
-            style={[tailwind('font-bold text-light font-14')]}>
+          <Text numberOfLines={1} style={[ss.batName, dT ? clr.tw : clr.td1]}>
             {props.name}
           </Text>
           {props.isBatting && props.inningsStatus === false ? (
-            <IsActive text="Batting" />
+            <IsActive dT={dT} text="Batting" />
           ) : (
-            <WicketText msg={props.msg} />
+            <WicketText dT={dT} msg={props.msg} />
           )}
         </View>
       </View>
       <View style={[tailwind('flex-row'), {flex: 6}]}>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreBold}>{props.runs}</Text>
+          <Text style={[ss.scoreBold, dT ? clr.tw : clr.td1]}>
+            {props.runs}
+          </Text>
         </View>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreText}>{props.balls}</Text>
+          <Text style={[ss.scoreText, dT ? clr.td2 : clr.td1]}>
+            {props.balls}
+          </Text>
         </View>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreText}>{props.fours}</Text>
+          <Text style={[ss.scoreText, dT ? clr.td2 : clr.td1]}>
+            {props.fours}
+          </Text>
         </View>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreText}>{props.six}</Text>
+          <Text style={[ss.scoreText, dT ? clr.td2 : clr.td1]}>
+            {props.six}
+          </Text>
         </View>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreText}>{props.sr}</Text>
+          <Text
+            numberOfLines={1}
+            style={[ss.scoreText, dT ? clr.td2 : clr.td1]}>
+            {props.sr}
+          </Text>
         </View>
       </View>
     </View>
@@ -277,16 +310,14 @@ const BattersScrore = (props: BattersScroreShape) => {
 };
 
 const BowlerScore = (props: BowlerScoreShape) => {
+  const dT = props.dT;
   return (
-    <View
-      style={[
-        tailwind('flex-row py-2 bg-dark-3 px-2 border-b border-gray-800'),
-      ]}>
+    <View style={[tailwind('flex-row py-2 px-2'), dT ? ss.dEx : ss.lEx]}>
       <View style={[tailwind(''), {flex: 6}]}>
         <View style={[tailwind('px-2')]}>
           <Text
             numberOfLines={1}
-            style={[tailwind('font-bold text-light font-14')]}>
+            style={[tailwind('font-bold font-14'), dT ? clr.tw : clr.td1]}>
             {props.name}
           </Text>
           {props.isBowling && <IsActive text="Bowling" />}
@@ -294,19 +325,29 @@ const BowlerScore = (props: BowlerScoreShape) => {
       </View>
       <View style={[tailwind('flex-row'), {flex: 6}]}>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreBold}>{props.overs}</Text>
+          <Text style={[ss.scoreBold, dT ? clr.tw : clr.td1]}>
+            {props.overs}
+          </Text>
         </View>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreBold}>{props.maider}</Text>
+          <Text style={[ss.scoreBold, dT ? clr.tw : clr.td1]}>
+            {props.maider}
+          </Text>
         </View>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreBold}>{props.runs}</Text>
+          <Text style={[ss.scoreBold, dT ? clr.tw : clr.td1]}>
+            {props.runs}
+          </Text>
         </View>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreBold}>{props.wickets}</Text>
+          <Text style={[ss.scoreBold, dT ? clr.tw : clr.td1]}>
+            {props.wickets}
+          </Text>
         </View>
-        <View style={ss.scoreTextView}>
-          <Text style={ss.scoreBold}>{props.economy}</Text>
+        <View style={[ss.scoreTextView]}>
+          <Text numberOfLines={1} style={[ss.scoreBold, dT ? clr.tw : clr.td1]}>
+            {props.economy}
+          </Text>
         </View>
       </View>
     </View>
@@ -314,28 +355,29 @@ const BowlerScore = (props: BowlerScoreShape) => {
 };
 
 const WicketsScore = (props: WicketsShape) => {
+  const dT = props.dT;
   return (
-    <View
-      style={[
-        tailwind('flex-row py-2 bg-dark-3 px-2 border-b border-gray-800'),
-      ]}>
+    <View style={[tailwind('flex-row py-2 px-2'), dT ? ss.dEx : ss.lEx]}>
       <View style={[tailwind(''), {flex: 6}]}>
         <View style={[tailwind('px-2')]}>
           <Text
             numberOfLines={1}
-            style={[tailwind('font-bold text-light font-14')]}>
+            dT={dT}
+            style={[tailwind('font-bold font-14'), dT ? clr.tw : clr.td1]}>
             {props.name}
           </Text>
         </View>
       </View>
       <View style={[tailwind('flex-row'), {flex: 6}]}>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreBold}>
+          <Text style={[ss.scoreBold, dT ? clr.tw : clr.td1]}>
             {props.runs}/{props.number}
           </Text>
         </View>
         <View style={ss.scoreTextView}>
-          <Text style={ss.scoreText}>{props.overs}</Text>
+          <Text numberOfLines={1} style={[ss.scoreText, dT ? clr.tw : clr.td1]}>
+            {props.overs}
+          </Text>
         </View>
       </View>
     </View>
@@ -343,12 +385,19 @@ const WicketsScore = (props: WicketsShape) => {
 };
 
 const Extras = (props: ExtrasShape) => {
+  const dT = props.dT;
   return (
-    <View style={[ss.extrasRoot]}>
+    <View style={[ss.extrasRoot, dT ? ss.dEx : ss.lEx]}>
       <View style={[tailwind(''), {flex: 6}]}>
         <View style={[tailwind('px-2')]}>
-          <Text style={[tailwind('font-bold text-light font-14')]}>Extras</Text>
-          <Text style={[tailwind('font-regular py-2 text-dark-1 font-12')]}>
+          <Text style={[tailwind('font-bold font-14'), dT ? clr.tw : clr.td1]}>
+            Extras
+          </Text>
+          <Text
+            style={[
+              tailwind('font-regular py-2 font-12'),
+              dT ? clr.td2 : clr.td1,
+            ]}>
             {`nb ${props.no_ball ?? 0}, wd ${props.wide ?? 0}, b0 ${
               props.bye ?? 0
             },lb ${props.leg_bye}, pen ${props.penalty ?? 0}`}
@@ -357,7 +406,7 @@ const Extras = (props: ExtrasShape) => {
       </View>
       <View style={[tailwind(''), {flex: 6}]}>
         <View style={[tailwind('flex-col px-4 justify-center')]}>
-          <Text style={[tailwind(`font-bold font-14 text-white`)]}>
+          <Text style={[tailwind(`font-bold font-14`), dT ? clr.td2 : clr.td1]}>
             {props.extra}
           </Text>
         </View>
@@ -367,18 +416,29 @@ const Extras = (props: ExtrasShape) => {
 };
 
 const TotalScore = (props: any) => {
+  const dT = props.dT;
   return (
-    <View style={[ss.extrasRoot]}>
+    <View style={[ss.extrasRoot, dT ? ss.dEx : ss.lEx]}>
       <View style={[tailwind(''), {flex: 6}]}>
         <View style={[tailwind('px-2')]}>
-          <Text style={[tailwind('font-bold text-light font-14')]}>Total</Text>
-          <Text style={[tailwind('font-regular py-2 text-dark-1 font-12')]}>
+          <Text style={[tailwind('font-bold font-14'), dT ? clr.tw : clr.td1]}>
+            Total
+          </Text>
+          <Text
+            style={[
+              tailwind('font-regular py-2 font-12'),
+              dT ? clr.td2 : clr.td1,
+            ]}>
             {`${props.wickets} Wickets ${props.overs} overs`}
           </Text>
         </View>
       </View>
       <View style={[tailwind(''), {flex: 6}]}>
-        <Text style={[tailwind('font-bold text-white text-center font-13')]}>
+        <Text
+          style={[
+            tailwind('font-bold text-center font-13'),
+            dT ? clr.tw : clr.td1,
+          ]}>
           {props.runs}
         </Text>
       </View>
@@ -401,10 +461,14 @@ const YetToBat = () => {
   );
 };
 
-const IsBatttingTag = () => {
+const IsBatttingTag = (props: any) => {
   return (
     <View style={[tailwind('rounded-full bg-dark-4 px-1 py-0.5 mx-2')]}>
-      <Text style={[tailwind('font-regular text-dark-1 font-10')]}>
+      <Text
+        style={[
+          tailwind('font-regular text-dark-1 font-10'),
+          props.dT ? clr.td2 : clr.tw,
+        ]}>
         Batting
       </Text>
     </View>
@@ -415,8 +479,8 @@ const IsActive = (props: any) => {
   return (
     <Text
       style={[
-        tailwind('font-regular pt-2 text-secondary font-12'),
-        {color: '#816D2E'},
+        tailwind('font-regular pt-2 font-12'),
+        props.dT ? clr.tgl : clr.td1,
       ]}>
       {props.text}
     </Text>
@@ -425,7 +489,11 @@ const IsActive = (props: any) => {
 
 const WicketText = (props: any) => {
   return (
-    <Text style={[tailwind('font-regular text-dark-1 font-11 mt-1')]}>
+    <Text
+      style={[
+        tailwind('font-regular font-11 mt-1'),
+        props.dT ? clr.td2 : clr.td1,
+      ]}>
       {props.msg}
     </Text>
   );
@@ -434,19 +502,34 @@ const WicketText = (props: any) => {
 const ss = StyleSheet.create({
   inningsheader: {
     alignItems: 'center',
-    borderColor: 'rgba(31, 41, 55, 1)',
     borderBottomWidth: 1,
     flexDirection: 'row',
     paddingVertical: 12,
+  },
+  dIH: {
     backgroundColor: '#362F20',
+    borderColor: 'rgba(31, 41, 55, 1)',
+  },
+  lIh: {
+    backgroundColor: '#9C181E',
+    borderColor: 'rgba(31, 41, 55, -.1)',
+  },
+  tCode: {
+    fontFamily: 'gadugi-bold',
+    textTransform: 'uppercase',
+    fontSize: 14,
   },
   roleHeader: {
-    backgroundColor: '#0D1320',
     borderBottomWidth: 1,
-    borderColor: 'rgba(31, 41, 55, 1)',
     flexDirection: 'row',
     paddingVertical: 12,
     paddingHorizontal: 8,
+  },
+  rdHd: {
+    backgroundColor: '#0D1320',
+  },
+  lRhd: {
+    backgroundColor: '#FFFFFF',
   },
   scoreTextView: {
     alignItems: 'center',
@@ -468,11 +551,34 @@ const ss = StyleSheet.create({
   },
   extrasRoot: {
     alignItems: 'center',
-    backgroundColor: '#172338',
-    borderColor: 'rgba(31, 41, 55, 1)',
     borderBottomWidth: 1,
     flexDirection: 'row',
     paddingHorizontal: 8,
     paddingTop: 8,
+  },
+  dEx: {
+    backgroundColor: '#172338',
+    borderColor: 'rgba(31, 41, 55, 1)',
+  },
+  lEx: {
+    backgroundColor: '#FFFFFF',
+    borderColor: 'rgba(31, 41, 55, 0.1)',
+  },
+  batScore: {
+    flexDirection: 'row',
+    padding: 8,
+    borderBottomWidth: 1,
+  },
+  dBS: {
+    borderColor: 'rgba(31, 41, 55, 1)',
+    backgroundColor: '#172338',
+  },
+  lBS: {
+    backgroundColor: '#FFFFFF',
+    borderColor: 'rgba(31, 41, 55, 0.1)',
+  },
+  batName: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 14,
   },
 });

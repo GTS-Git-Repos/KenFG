@@ -1,67 +1,69 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, Text} from 'react-native';
+import {View, StyleSheet, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
-import {RankIcon} from '../../../../sharedComponents';
+import {RankIcon, WinningsListRank} from '../../../../sharedComponents';
 import ContestWinningsInfo from '../atoms/ContestWinningsInfo';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   index: number;
   activeIndex: number;
+  dT: boolean;
 }
 
 export default function WinningsPage(props: PropTypes) {
+  const dT = props.dT;
   if (props.index !== props.activeIndex) {
     return null;
   }
   return (
-    <View style={[tailwind('')]}>
-      <ContestWinningsInfo />
-      <TableHeader />
-      <TableData rank="1" prize="3,44,343" />
-      <TableData rank="2" prize="2,44,343" />
-      <TableData rank="3" prize="1,44,343" />
-      <TableData rank="4" prize="44,343" />
-      <TableData rank="5" prize="4,343" />
+    <View>
+      <ContestWinningsInfo dT={dT} />
+      <TableHeader dT={dT} />
+      <WinningsListRank rank={'1'} value={'1,333,33'} />
+      <WinningsListRank rank={'2'} value={'76,332'} />
+      <WinningsListRank rank={'3-6'} value={'5,333'} />
+      <WinningsListRank rank={'6-15'} value={'333'} />
     </View>
   );
 }
 
-const TableHeader = () => {
+const TableHeader = (props: any) => {
   return (
     <View
       style={[
-        tailwind(
-          'px-4 py-2  bg-dark-4 flex-row items-center justify-between border-b border-t border-gray-800 ',
-        ),
+        tailwind('px-4 py-2  flex-row items-center justify-between'),
+        props.dT ? ss.dRoot : ss.lRoot,
       ]}>
-      <Text style={[tailwind('font-regular text-dark-1 font-14')]}>Rank</Text>
-      <Text style={[tailwind('font-regular text-dark-1 font-14')]}>
+      <Text
+        style={[
+          tailwind('font-regular font-14'),
+          props.dT ? clr.td2 : clr.td1,
+        ]}>
+        Rank
+      </Text>
+      <Text
+        style={[
+          tailwind('font-regular font-14'),
+          props.dT ? clr.td2 : clr.td1,
+        ]}>
         Winnings
       </Text>
     </View>
   );
 };
 
-const TableData = (props: any) => {
-  return (
-    <View
-      style={[
-        tailwind(
-          'px-4 py-2 bg-dark-3 flex-row items-center justify-between border-t border-gray-800',
-        ),
-      ]}>
-      <View style={[tailwind('flex-row items-center')]}>
-        <RankIcon golden={false} />
-        <Text style={[tailwind('font-bold px-2 text-white font-14')]}>
-          {props.rank}
-        </Text>
-      </View>
-
-      <Text style={[tailwind('font-bold text-white font-14')]}>
-        {props.prize}
-      </Text>
-    </View>
-  );
-};
+const ss = StyleSheet.create({
+  dRoot: {
+    backgroundColor: '#0c1320',
+    borderColor: 'rgba(31, 41, 55,0.1)',
+    borderBottomWidth: 1,
+  },
+  lRoot: {
+    backgroundColor: '#FFFFFF',
+    borderColor: 'rgba(31, 41, 55,0.1)',
+    borderBottomWidth: 1,
+  },
+});

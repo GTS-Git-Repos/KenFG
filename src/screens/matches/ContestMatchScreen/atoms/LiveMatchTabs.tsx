@@ -11,11 +11,13 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 // import Icon from 'react-native-vector-icons/Ionicons';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   text?: string;
   activeIndex: number;
   onTabPressed(index: number): any;
+  dT: boolean;
 }
 
 const DATA = [
@@ -62,11 +64,12 @@ export default function LiveMatchTabs(props: PropTypes) {
       showsHorizontalScrollIndicator={false}
       horizontal
       getItemLayout={getItemLayout}
-      style={[tailwind('bg-dark-3 border-b border-gray-800')]}
+      style={[props.dT ? styles.dRoot : styles.lRoot]}
       data={DATA}
       renderItem={({item, index}) => {
         return (
           <TabItem
+            dT={props.dT}
             key={item.key}
             tabName={item.tabName}
             index={index}
@@ -79,24 +82,21 @@ export default function LiveMatchTabs(props: PropTypes) {
   );
 }
 
-const TabItem = ({tabName, active, index, onTabPressed}) => {
+const TabItem = ({tabName, active, index, onTabPressed, dT}) => {
   return (
     <TouchableOpacity
       onPress={() => onTabPressed(index)}
       style={[{width: 120}, tailwind('')]}>
       <View style={[tailwind('pt-3')]}>
-        <Text
-          style={[
-            tailwind(
-              `text-center font-14 ${active ? 'font-bold' : 'font-regular'}`,
-            ),
-            {
-              color: active ? '#FFFF' : '#8797B1',
-              letterSpacing: 0.3,
-            },
-          ]}>
-          {tabName}
-        </Text>
+        {dT ? (
+          <Text style={[styles.dTxt, active ? clr.tw : clr.td2]}>
+            {tabName}
+          </Text>
+        ) : (
+          <Text style={[styles.lTxt, active ? clr.tr : clr.td2]}>
+            {tabName}
+          </Text>
+        )}
         {active && (
           <LinearGradient
             start={{x: 0, y: 0}}
@@ -122,5 +122,29 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderRadius: 1,
     borderBottomWidth: 2,
+  },
+  dRoot: {
+    borderColor: 'rgba(31, 41, 55,1)',
+    borderBottomWidth: 1,
+    backgroundColor: '#172338',
+  },
+  lRoot: {
+    borderColor: 'rgba(31, 41, 55,0.1)',
+    borderBottomWidth: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  dTxt: {
+    textAlign: 'center',
+    fontFamily: 'gadugi-bold',
+    fontSize: 14,
+    color: '#FFFFFF',
+    letterSpacing: 0.3,
+  },
+  lTxt: {
+    textAlign: 'center',
+    fontFamily: 'gadugi-bold',
+    fontSize: 14,
+    color: '#0D1320',
+    letterSpacing: 0.3,
   },
 });

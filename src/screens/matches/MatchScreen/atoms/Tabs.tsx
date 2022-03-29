@@ -64,7 +64,7 @@ export default function LiveMatchTabs(props: PropTypes) {
       horizontal
       getItemLayout={getItemLayout}
       showsHorizontalScrollIndicator={false}
-      style={[ss.root, !props.dT && clr.bgw]}
+      style={[!props.dT && clr.bgw, props.dT ? ss.dRoot : ss.lRoot]}
       data={DATA}
       renderItem={({item, index}) => {
         return (
@@ -109,22 +109,15 @@ const TabItem = ({tabName, active, index, onTabPressed, dT}) => {
 };
 
 const ss = StyleSheet.create({
-  root: {
+  dRoot: {
+    borderColor: 'rgba(31, 41, 55,1)',
+    borderBottomWidth: 1,
     backgroundColor: '#172338',
-    // borderBottomColor: 'rgba(31, 41, 55, 1)',
-    // borderBottomWidth: 1,
-    // borderLeftColor: 'rgba(31, 41, 55, 1)',
-    // borderRightColor: 'rgba(31, 41, 55, 1)',
-    // borderTopColor: 'rgba(31, 41, 55, 1)',
-    paddingHorizontal: 12,
   },
   lRoot: {
-    borderColor: '#FFFFFF',
-    // borderBottomColor: 'rgba(31, 41, 55, 1)',
-    // borderBottomWidth: 1,
-    // borderLeftColor: 'rgba(31, 41, 55, 1)',
-    // borderRightColor: 'rgba(31, 41, 55, 1)',
-    // borderTopColor: 'rgba(31, 41, 55, 1)',
+    borderColor: 'rgba(31, 41, 55,0.1)',
+    borderBottomWidth: 1,
+    backgroundColor: '#FFFFFF',
   },
   dtxt: {
     fontFamily: 'gadugi-normal',

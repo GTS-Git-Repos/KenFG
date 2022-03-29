@@ -3,6 +3,9 @@ import tailwind from '../../../tailwind';
 import {View, ScrollView} from 'react-native';
 import TeamScrollBoardByInnings from './team.scoreboard.innings';
 import StatusIndicator from '../atoms/status.indicator';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 const log = console.log;
 
@@ -23,6 +26,8 @@ interface OverallTeamShape {
 }
 
 export default function MatchScoreBoardPage(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const ACTIVE = props.index === props.activeIndex;
 
   const scrollRef = useRef<any>();

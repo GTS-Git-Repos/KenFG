@@ -6,7 +6,6 @@ import {
   MatchStat,
   Projection,
   CurrentLiveStatus,
-  FullScreenLoading,
   MatchPlayersStats,
 } from '../../../sharedComponents';
 
@@ -19,10 +18,14 @@ import LeaderBoardPage from './molecules/mc.leaderboard';
 import WinningsPage from './molecules/WinningsPage';
 import LiveMatchTopBar from './atoms/LiveMatchTopBar';
 import {ContestMatchScreenType} from '../../../types/match';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 export default function ContestMatchScreen(props: ContestMatchScreenType) {
+  const dT = useSelector(getAppThemeSelector);
+
   const pageRef = useRef<any>(null);
-  const isScreenReady = useIsScreenReady();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const onPageSelectedAction = (e: any) => {
@@ -34,9 +37,9 @@ export default function ContestMatchScreen(props: ContestMatchScreenType) {
   };
 
   return (
-    <View style={tailwind('bg-dark h-full')}>
-      <LiveMatchTopBar text={props.matchMeta?.match?.short_name} />
-      <View style={[tailwind('p-3 bg-dark-3')]}>
+    <View style={[tailwind('h-full'), dT ? clr.bgd1 : clr.bgGray]}>
+      <LiveMatchTopBar dT={dT} text={props.matchMeta?.match?.short_name} />
+      <View style={[tailwind('p-3'), dT ? clr.bgd2 : clr.bgGray]}>
         <MatchStat
           team_a={props.matchMeta.team_a}
           team_b={props.matchMeta.team_b}
@@ -57,7 +60,11 @@ export default function ContestMatchScreen(props: ContestMatchScreenType) {
       </View>
 
       <View>
-        <LiveMatchTabs activeIndex={activeIndex} onTabPressed={onTabPressed} />
+        <LiveMatchTabs
+          dT={dT}
+          activeIndex={activeIndex}
+          onTabPressed={onTabPressed}
+        />
       </View>
 
       <PagerView
@@ -67,13 +74,14 @@ export default function ContestMatchScreen(props: ContestMatchScreenType) {
         style={{flex: 1}}>
         <View>
           <LeaderBoardPage
+            dT={dT}
             onPressCompareTeam={props.onPressCompareTeam}
             index={0}
             activeIndex={activeIndex}
           />
         </View>
         <View>
-          <WinningsPage index={1} activeIndex={activeIndex} />
+          <WinningsPage dT={dT} index={1} activeIndex={activeIndex} />
         </View>
         <View>
           <MatchScoreBoard

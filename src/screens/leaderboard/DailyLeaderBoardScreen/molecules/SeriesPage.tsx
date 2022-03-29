@@ -7,16 +7,19 @@ import SelectSeries from './SelectSeries';
 import LeaderProfile from './LeaderProfile';
 import SeriesHeader from '../atoms/SeriesHeader';
 import Tabs from '../atoms/Tabs';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   showPoints: boolean;
+  dT: boolean;
 }
 
 export default function SeriesPage(props: PropTypes) {
   return (
     <ScrollView>
-      <SeriesHeader />
+      <SeriesHeader dT={props.dT} />
       <LeaderProfile
+        dT={props.dT}
         levelStatus={true}
         isFirst={false}
         isSecond={false}
@@ -26,6 +29,7 @@ export default function SeriesPage(props: PropTypes) {
         showteams={true}
       />
       <LeaderProfile
+        dT={props.dT}
         levelStatus={null}
         isFirst={true}
         isSecond={false}
@@ -35,6 +39,7 @@ export default function SeriesPage(props: PropTypes) {
         showteams={true}
       />
       <LeaderProfile
+        dT={props.dT}
         levelStatus={true}
         isFirst={false}
         isSecond={true}
@@ -44,6 +49,7 @@ export default function SeriesPage(props: PropTypes) {
         showteams={true}
       />
       <LeaderProfile
+        dT={props.dT}
         levelStatus={false}
         isFirst={false}
         isSecond={false}

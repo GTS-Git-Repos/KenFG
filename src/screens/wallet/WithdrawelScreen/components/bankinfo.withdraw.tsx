@@ -23,7 +23,8 @@ export default function BankInfo(props: PropTypes) {
       <View style={[{flex: 8}]}>
         <Text
           style={[
-            tailwind('font-regular font-15', props.dT ? clr.tw : clr.td1),
+            tailwind('font-regular font-15'),
+            props.dT ? clr.tw : clr.td1,
           ]}>
           {props.bankname}
         </Text>

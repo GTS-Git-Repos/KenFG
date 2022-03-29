@@ -1,80 +1,90 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import {View, Image, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
 import LinearGradient from 'react-native-linear-gradient';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   selectedTab: number;
   onTabPressed: any;
+  dT: boolean;
 }
 
 export default function Tabs(props: PropTypes) {
+  const dT = props.dT;
   return (
-    <View
-      style={[
-        tailwind('flex-row bg-dark-3 items-center border-b border-gray-800'),
-      ]}>
-      <TouchableOpacity
-        onPress={() => props.onTabPressed(0)}
-        style={[tailwind(''), {flex: 4}]}>
-        <Tab tabText={'Upcomming'} active={props.selectedTab === 0} />
-        {props.selectedTab === 0 ? (
-          <BottomLine />
-        ) : (
-          <View style={{height: 2}} />
-        )}
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => props.onTabPressed(1)}
-        style={[tailwind(''), {flex: 4}]}>
-        <Tab tabText={'Live'} active={props.selectedTab === 1} />
-        {props.selectedTab === 1 ? (
-          <BottomLine />
-        ) : (
-          <View style={{height: 2}} />
-        )}
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => props.onTabPressed(2)}
-        style={[tailwind(''), {flex: 4}]}>
-        <Tab tabText={'Completed'} active={props.selectedTab === 2} />
-        {props.selectedTab === 2 ? (
-          <BottomLine />
-        ) : (
-          <View style={{height: 2}} />
-        )}
-      </TouchableOpacity>
+    <View style={[ss.root, dT ? clr.bgd2 : clr.bgw]}>
+      {['Upcomming', 'Live', 'Completed'].map((item: string, index: number) => {
+        return (
+          <TouchableOpacity
+            onPress={() => props.onTabPressed(index)}
+            key={item}
+            style={[
+              ss.btn,
+              props.selectedTab === index && ss.activeTab,
+              props.selectedTab === index && !props.dT ? ss.lActiveTab : {},
+            ]}>
+            {dT ? (
+              <Text
+                style={[
+                  ss.txt,
+                  props.selectedTab === index ? clr.tgl : clr.tw,
+                ]}>
+                {item}
+              </Text>
+            ) : (
+              <Text
+                style={[
+                  ss.txt,
+                  props.selectedTab === index ? clr.tr : clr.td1,
+                ]}>
+                {item}
+              </Text>
+            )}
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 }
 
-const Tab = (props: any) => {
-  return (
-    <View style={[tailwind('pt-4 pb-3')]}>
-      <Text
-        style={[
-          tailwind(
-            `font-regular text-center text-dark-1 font-14 ${
-              props.active ? 'font-bold text-white' : ''
-            }`,
-          ),
-        ]}>
-        {props.tabText}
-      </Text>
-    </View>
-  );
-};
-
-const BottomLine = () => {
-  return (
-    <LinearGradient
-      start={{x: 0, y: 0}}
-      end={{x: 1, y: 0}}
-      style={[tailwind('')]}
-      colors={['#816D2E', '#614920']}>
-      <View style={[tailwind(''), {height: 2}]}></View>
-    </LinearGradient>
-  );
-};
+const ss = StyleSheet.create({
+  root: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  // tabContainer: {
+  //   borderColor: '#172338',
+  //   borderStyle: 'solid',
+  //   borderRadius: 1,
+  //   borderBottomWidth: 2,
+  // },
+  activeTab: {
+    borderColor: '#BCA04D',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+  lActiveTab: {
+    borderColor: '#9C181E',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+  btn: {
+    flex: 4,
+    paddingVertical: 12,
+    borderColor: 'rgba(31, 41, 55,0.2)',
+    borderStyle: 'solid',
+    borderRadius: 1,
+    borderBottomWidth: 2,
+  },
+  txt: {
+    fontFamily: 'gadugi-bold',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontSize: 13,
+  },
+});

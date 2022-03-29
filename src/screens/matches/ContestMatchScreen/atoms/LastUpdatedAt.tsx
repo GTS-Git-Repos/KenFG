@@ -3,22 +3,27 @@ import tailwind from '../../../../../tailwind';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import assets from '../../../../constants/assets_manifest';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   updatedAt: string;
   enableCompareState(): any;
+  dT: boolean;
 }
 
 export default function LastUpdatedAt(props: PropTypes) {
+  const dT = props.dT;
   return (
     <View
       style={[
-        tailwind('bg-dark-3 mt-3 py-3 flex-row items-center justify-between'),
+        tailwind('mt-3 py-3 flex-row items-center justify-between'),
+        dT ? clr.bgd2 : clr.bgw,
       ]}>
       <Text
         style={[
-          tailwind('font-regular pl-3 text-light font-11'),
+          tailwind('font-regular pl-3 font-11'),
           {letterSpacing: 0.5},
+          dT ? clr.tw : clr.td1,
         ]}>
         Points last updated at {props.updatedAt} overs
       </Text>

@@ -1,25 +1,18 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {
-  View,
-  Image,
-  TextInput,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import assets from '../../../../constants/assets_manifest';
+import {View, TextInput, StyleSheet} from 'react-native';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   value: any;
   onChangeText: any;
   onBlur: any;
+  dT: boolean;
 }
 
 export default function InputBox(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row bg-dark-3  items-center'), styles.root]}>
+    <View style={[styles.root, props.dT ? clr.bgd2 : clr.bgd2]}>
       <View
         style={[
           {
@@ -44,11 +37,11 @@ export const In = () => {
 
 const styles = StyleSheet.create({
   root: {
-    borderTopColor: 'transparent',
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
     borderBottomColor: '#8797B14D',
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderStyle: 'solid',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 4,
   },
 });

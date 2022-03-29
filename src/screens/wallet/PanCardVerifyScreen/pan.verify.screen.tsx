@@ -62,6 +62,7 @@ export default function PanVerifyScreen(props: PropTypes) {
                 ss.textInput,
                 dT ? ss.dborder : ss.lborder,
                 dT ? clr.tw : clr.td1,
+                !dT && clr.bgw,
               ]}
               value={props.name}
               onChangeText={(e: any) => props.setName(e)}
@@ -78,6 +79,7 @@ export default function PanVerifyScreen(props: PropTypes) {
                 ss.textInput,
                 dT ? ss.dborder : ss.lborder,
                 dT ? clr.tw : clr.td1,
+                !dT && clr.bgw,
               ]}
               value={props.pan}
               onChangeText={(e: any) => props.setPan(e)}
@@ -91,7 +93,11 @@ export default function PanVerifyScreen(props: PropTypes) {
             <InputTitle text="Date of Birth" dT={dT} />
             <TouchableOpacity
               onPress={() => props.setOpenDate(true)}
-              style={[ss.textInput, dT ? ss.dborder : ss.lborder]}>
+              style={[
+                ss.textInput,
+                dT ? ss.dborder : ss.lborder,
+                !dT && clr.bgw,
+              ]}>
               <Text style={[ss.dobText, dT ? clr.tw : clr.td1]}>
                 {props.dob && format(props.dob, 'dd-MM-yyyy')}
               </Text>
@@ -114,7 +120,7 @@ export default function PanVerifyScreen(props: PropTypes) {
           {props.error.target === 'image' && (
             <ErrorInput msg={props.error.msg} />
           )}
-          <Instruction />
+          <Instruction dT={dT} />
         </View>
       </ScrollView>
 
@@ -146,7 +152,11 @@ function ImageUpload(props: any) {
   return (
     <TouchableOpacity
       onPress={props.openLibrary}
-      style={[ss.imageIContainer, props.dT ? ss.dborder : ss.lborder]}>
+      style={[
+        ss.imageIContainer,
+        props.dT ? ss.dborder : ss.lborder,
+        !props.dT && clr.bgw,
+      ]}>
       <Icon name="image" size={20} color={props.dT ? 'lightgray' : '#9C181E'} />
       <Text
         style={[
@@ -165,6 +175,7 @@ function ImageUploaded(props: any) {
         tailwind('justify-between'),
         ss.imageIContainer,
         props.dT ? ss.dborder : ss.lborder,
+        !props.dT && clr.bgw,
       ]}>
       <TouchableOpacity
         onPress={props.openLibrary}
@@ -221,7 +232,11 @@ function InputTitle(props: any) {
 function Instruction(props: any) {
   return (
     <View style={[ss.inputContainer]}>
-      <Text style={[tailwind('font-bold uppercase text-white font-13')]}>
+      <Text
+        style={[
+          tailwind('font-bold uppercase font-13'),
+          props.dT ? clr.tw : clr.td1,
+        ]}>
         Important
       </Text>
       <View style={[tailwind('flex-row items-center pt-3')]}>
@@ -253,11 +268,11 @@ const ss = StyleSheet.create({
   root: {},
   inputContainer: {
     padding: 4,
-    borderRadius: 4,
+    borderRadius: 2,
     marginBottom: 8,
   },
   textInput: {
-    borderRadius: 8,
+    borderRadius: 6,
     borderWidth: 1,
     padding: 6,
     marginTop: 8,
@@ -266,7 +281,7 @@ const ss = StyleSheet.create({
     borderColor: 'rgba(255, 255, 255,0.2)',
   },
   lborder: {
-    borderColor: '#9C181E',
+    borderColor: 'rgba(31, 41, 55,0.1)',
   },
   imageIContainer: {
     flexDirection: 'row',

@@ -1,4 +1,6 @@
-// used in contest info screen
+// used in contest info screen,
+// private contest winnings screen
+
 
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';

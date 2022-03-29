@@ -5,6 +5,8 @@ import assets from '../../../../constants/assets_manifest';
 import LastUpdatedAt from '../atoms/LastUpdatedAt';
 import {RankIcon} from '../../../../assets/newIcons';
 import LeaderBoardProfile from './LeaderBoardProfile';
+import clr from '../../../../constants/colors';
+
 import {
   contestMatchState,
   contestMatchReducer,
@@ -14,6 +16,7 @@ import {
 interface PropTypes {
   index: number;
   activeIndex: number;
+  dT: boolean;
   onPressCompareTeam(src_team_key: string, opp_team_key: string): void;
 }
 
@@ -37,15 +40,16 @@ export default function LeaderBoardPage(props: PropTypes) {
     <View>
       <FlatList
         refreshing={false}
-        onRefresh={()=>{}}
+        onRefresh={() => {}}
         ListHeaderComponent={() => {
           return (
             <>
               <LastUpdatedAt
+                dT={props.dT}
                 updatedAt={'1.3'}
                 enableCompareState={enableCompareState}
               />
-              <Tabs />
+              <Tabs dT={props.dT} />
               {isComparisonActive && <SelectOpTeamInfo />}
             </>
           );
@@ -54,6 +58,7 @@ export default function LeaderBoardPage(props: PropTypes) {
         renderItem={({item}) => {
           return (
             <LeaderBoardProfile
+              dT={props.dT}
               image={''}
               name={item.name}
               teamCode={item.teamCode}
@@ -71,7 +76,7 @@ export default function LeaderBoardPage(props: PropTypes) {
   );
 }
 
-const SelectOpTeamInfo = () => {
+const SelectOpTeamInfo = (props:any) => {
   return (
     <View style={[tailwind('bg-red-600 p-3')]}>
       <Text style={[tailwind('font-regular text-white font-15')]}>
@@ -81,9 +86,14 @@ const SelectOpTeamInfo = () => {
   );
 };
 
-const Tabs = () => {
+const Tabs = (props: any) => {
+  const dT = props.dT;
   return (
-    <View style={[tailwind('flex-row px-4 py-3 items-center bg-dark-4')]}>
+    <View
+      style={[
+        tailwind('flex-row px-4 py-3 items-center'),
+        dT ? clr.bgd1 : clr.bgGray,
+      ]}>
       <View style={[{flex: 5}]}>
         <Text
           style={[

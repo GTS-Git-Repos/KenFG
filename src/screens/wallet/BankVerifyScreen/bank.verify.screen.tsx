@@ -8,6 +8,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import tailwind from '../../../../tailwind';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -16,8 +19,6 @@ import {
   TopBar,
   BlockScreenByLoading,
 } from '../../../sharedComponents';
-
-const log = console.log;
 
 interface PropTypes {
   acno: any;
@@ -42,16 +43,18 @@ interface PropTypes {
 const TEXTCOLOR = '#8797B1';
 
 export default function PanVerifyScreen(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   return (
-    <View style={tailwind('h-full bg-dark')}>
+    <View style={[ss.root, dT ? clr.bgd2 : clr.bgGray]}>
       <TopBar text={'Verify Bank Account'} />
       <ScrollView keyboardShouldPersistTaps="handled">
         <View style={[tailwind('p-3')]}>
           <View style={[ss.inputContainer]}>
             {/* Account Number */}
-            <InputTitle text="Account Number" />
+            <InputTitle dT={dT} text="Account Number" />
             <TextInput
-              style={[ss.textInput]}
+              style={[ss.textInput, !dT && ss.lRoot, !dT && clr.bgw]}
               value={props.acno}
               maxLength={18}
               keyboardType="decimal-pad"
@@ -65,7 +68,7 @@ export default function PanVerifyScreen(props: PropTypes) {
           <View style={[ss.inputContainer]}>
             <InputTitle text="Retype Account Number" />
             <TextInput
-              style={[ss.textInput]}
+              style={[ss.textInput, !dT && ss.lRoot, !dT && clr.bgw]}
               value={props.reacno}
               maxLength={18}
               keyboardType="decimal-pad"
@@ -79,7 +82,7 @@ export default function PanVerifyScreen(props: PropTypes) {
           <View style={[ss.inputContainer]}>
             <InputTitle text="IFSC Code" />
             <TextInput
-              style={[ss.textInput]}
+              style={[ss.textInput, !dT && ss.lRoot, !dT && clr.bgw]}
               value={props.ifsc}
               maxLength={11}
               onChangeText={(e: any) => props.setIfsc(e)}
@@ -92,7 +95,7 @@ export default function PanVerifyScreen(props: PropTypes) {
           <View style={[ss.inputContainer]}>
             <InputTitle text="Bank Name" />
             <TextInput
-              style={[ss.textInput]}
+              style={[ss.textInput, !dT && ss.lRoot, !dT && clr.bgw]}
               value={props.name}
               maxLength={25}
               onChangeText={(e: any) => props.setName(e)}
@@ -105,7 +108,7 @@ export default function PanVerifyScreen(props: PropTypes) {
           <View style={[ss.inputContainer]}>
             <InputTitle text="Branch Name" />
             <TextInput
-              style={[ss.textInput]}
+              style={[ss.textInput, !dT && ss.lRoot, !dT && clr.bgw]}
               value={props.branch}
               maxLength={25}
               onChangeText={(e: any) => props.setBranch(e)}
@@ -118,7 +121,7 @@ export default function PanVerifyScreen(props: PropTypes) {
           <View style={[ss.inputContainer]}>
             <InputTitle text="State" />
             <TextInput
-              style={[ss.textInput]}
+              style={[ss.textInput, !dT && ss.lRoot, !dT && clr.bgw]}
               value={props.state}
               maxLength={25}
               onChangeText={(e: any) => props.setState(e)}
@@ -131,17 +134,18 @@ export default function PanVerifyScreen(props: PropTypes) {
           {/* Image  */}
           {props.image ? (
             <ImageUploaded
+              dT={dT}
               openLibrary={props.openLibrary}
               removeImage={props.removeImage}
             />
           ) : (
-            <ImageUpload openLibrary={props.openLibrary} />
+            <ImageUpload dT={dT} openLibrary={props.openLibrary} />
           )}
           {props.error.target === 'image' && (
             <ErrorInput msg={props.error.msg} />
           )}
 
-          <Instruction />
+          <Instruction dT={dT} />
         </View>
       </ScrollView>
       <TouchableOpacity
@@ -177,15 +181,19 @@ function ErrorInput(props: any) {
 function Instruction(props: any) {
   return (
     <View style={[ss.inputContainer]}>
-      <Text style={[tailwind('font-bold uppercase text-white font-13')]}>
+      <Text
+        style={[
+          tailwind('font-bold uppercase font-13'),
+          props.dT ? clr.tw : clr.td1,
+        ]}>
         Important
       </Text>
       <View style={[tailwind('flex-row items-center pt-3')]}>
         <Icon name="ellipse" size={8} color="gray" />
         <Text
           style={[
-            tailwind('font-regular mx-1 text-red-500 px-0.5 font-12'),
-            {color: TEXTCOLOR},
+            tailwind('font-regular mx-1 px-0.5 font-12'),
+            props.dT ? clr.td2 : clr.td1,
           ]}>
           Review your details before submitting your documents permanently
         </Text>
@@ -196,7 +204,7 @@ function Instruction(props: any) {
         <Text
           style={[
             tailwind('font-regular mx-1 text-red-500 px-0.5 font-12'),
-            {color: TEXTCOLOR},
+            props.dT ? clr.td2 : clr.td1,
           ]}>
           Password protected files will be rejected
         </Text>
@@ -206,9 +214,15 @@ function Instruction(props: any) {
 }
 function ImageUpload(props: any) {
   return (
-    <TouchableOpacity onPress={props.openLibrary} style={[ss.imageIContainer]}>
-      <Icon name="image" size={20} color="lightgray" />
-      <Text style={[tailwind('font-regular mx-2 text-white font-13')]}>
+    <TouchableOpacity
+      onPress={props.openLibrary}
+      style={[ss.imageIContainer, !props.dT && ss.lRoot, !props.dT && clr.bgw]}>
+      <Icon name="image" size={20} color={props.dT ? 'lightgray' : 'gray'} />
+      <Text
+        style={[
+          tailwind('font-regular mx-2 font-13'),
+          props.dT ? clr.tw : clr.td1,
+        ]}>
         UPLOAD BANK PROOF
       </Text>
     </TouchableOpacity>
@@ -216,19 +230,33 @@ function ImageUpload(props: any) {
 }
 function ImageUploaded(props: any) {
   return (
-    <View style={[tailwind('justify-between'), ss.imageIContainer]}>
+    <View
+      style={[
+        tailwind('justify-between'),
+        ss.imageIContainer,
+        props.dT ? clr.bgd2 : clr.bgw,
+        !props.dT && ss.lRoot,
+      ]}>
       <TouchableOpacity
         onPress={props.openLibrary}
         style={[tailwind('flex-row items-center')]}>
-        <Icon name="link" size={20} color="lightgray" />
-        <Text style={[tailwind('font-regular mx-2 text-white font-13')]}>
+        <Icon name="link" size={20} color={props.dT ? 'lightgray' : 'gray'} />
+        <Text
+          style={[
+            tailwind('font-regular mx-2 font-13'),
+            props.dT ? clr.tw : clr.td1,
+          ]}>
           IMAGE SELECTED
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={props.removeImage}
         style={[tailwind('flex-row items-center')]}>
-        <Text style={[tailwind('font-regular text-white font-11 uppercase')]}>
+        <Text
+          style={[
+            tailwind('font-regular font-10 uppercase'),
+            props.dT ? clr.tw : clr.td1,
+          ]}>
           Clear
         </Text>
         <Icon name="close" size={15} color="gray" />
@@ -237,16 +265,10 @@ function ImageUploaded(props: any) {
   );
 }
 
-{
-  /* <EnterAmountAddCash />
-<SubTitleAddCash text={'Coupon Codes'} />
-<EnterCouponAddCash code={code} setCode={setCode} />
-<CouponCardAddCash />
-<CouponCardAddCash /> */
-}
-
 const ss = StyleSheet.create({
-  root: {},
+  root: {
+    height: '100%',
+  },
   inputContainer: {
     padding: 4,
     borderRadius: 4,
@@ -254,11 +276,14 @@ const ss = StyleSheet.create({
   },
   textInput: {
     borderColor: 'rgba(31, 41, 55,1)',
-    borderRadius: 2,
+    borderRadius: 4,
     borderWidth: 1,
     padding: 6,
     marginTop: 8,
     color: '#FFFFFF',
+  },
+  lRoot: {
+    borderColor: 'rgba(31, 41, 55,0.1)',
   },
   imageIContainer: {
     flexDirection: 'row',

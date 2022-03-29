@@ -1,18 +1,16 @@
 import React, {useRef, useState} from 'react';
-import {View, ScrollView, Text} from 'react-native';
-import tailwind from '../../../../tailwind';
+import {View, ScrollView, StyleSheet, Text} from 'react-native';
 // import {useSelector, useDispatch} from 'react-redux';
 import {TopBar} from '../../../sharedComponents';
 import {useIsScreenReady} from '../../../shared_hooks/app.hooks';
 import {useNavigation} from '@react-navigation/native';
 import Tabs from './atoms/Tabs';
-import SelectSeries from './molecules/SelectSeries';
-import SeriesHeader from './atoms/SeriesHeader';
 import PagerView from 'react-native-pager-view';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../../store/selectors';
+import clr from '../../../constants/colors';
 
-import LeaderProfile from './molecules/LeaderProfile';
 import SeriesPage from './molecules/SeriesPage';
-import WeeklyPage from './molecules/WeeklyPage';
 // import assets from 'assets';
 // import {TopBar} from 'components';
 // import Icon from 'react-native-vector-icons/Ionicons';
@@ -21,7 +19,8 @@ const log = console.log;
 
 export default function LeaderBoardScreen() {
   const navigation = useNavigation();
-  const pagerRef = useRef();
+  const pagerRef = useRef<any>();
+  const dT = useSelector(getAppThemeSelector);
 
   const [selectedTab, setSelectedTab] = useState(0);
 
@@ -33,9 +32,9 @@ export default function LeaderBoardScreen() {
   };
 
   return (
-    <View style={tailwind('h-full bg-dark')}>
+    <View style={[ss.root, dT ? clr.bgd2 : clr.bgGray]}>
       <TopBar text={'Daily LeaderBoard'} />
-      <Tabs selectedTab={selectedTab} onTabPressed={onTabPressed} />
+      <Tabs selectedTab={selectedTab} onTabPressed={onTabPressed} dT={dT} />
       {/* <SelectSeries /> */}
 
       <PagerView
@@ -43,15 +42,21 @@ export default function LeaderBoardScreen() {
         onPageSelected={onPageSelectedAction}
         style={[{flex: 1}]}>
         <View>
-          <SeriesPage showPoints={true} />
+          <SeriesPage dT={dT} showPoints={true} />
         </View>
         <View>
-          <SeriesPage showPoints={true} />
+          <SeriesPage dT={dT} showPoints={true} />
         </View>
         <View>
-          <SeriesPage showPoints={false} />
+          <SeriesPage dT={dT} showPoints={false} />
         </View>
       </PagerView>
     </View>
   );
 }
+
+const ss = StyleSheet.create({
+  root: {
+    height: '100%',
+  },
+});

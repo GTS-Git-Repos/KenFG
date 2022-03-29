@@ -10,6 +10,9 @@ import {
 import assets from '../../constants/assets_manifest';
 import {useNavigation} from '@react-navigation/native';
 import StatusIndicator from '../atoms/status.indicator';
+import {useSelector} from 'react-redux';
+import {getAppThemeSelector} from '../../store/selectors';
+import clr from '../../constants/colors';
 
 interface PropTypes {
   index: number;
@@ -21,6 +24,8 @@ const PLAYERWIDTH = 180;
 const COLWIDTH = 80;
 
 export default function MatchPlayersStatsPage(props: PropTypes) {
+  const dT = useSelector(getAppThemeSelector);
+
   const ACTIVE = props.index === props.activeIndex;
 
   const navigation = useNavigation<any>();
@@ -35,7 +40,7 @@ export default function MatchPlayersStatsPage(props: PropTypes) {
 
   return (
     <ScrollView>
-      <Filter />
+      {/* <Filter /> */}
       <View style={[ss.container]}>
         <View>
           <View style={[ss.col1]}>
@@ -46,17 +51,19 @@ export default function MatchPlayersStatsPage(props: PropTypes) {
               <TouchableOpacity
                 key={item.name}
                 onPress={() => navigation.navigate('MyMatchPlayerScreen')}
-                style={[ss.pContainer]}>
+                style={[ss.pContainer, dT ? ss.dPC : ss.lPC]}>
                 <Image
                   resizeMode="contain"
                   source={assets.player}
                   style={[ss.image]}
                 />
                 <View style={[ss.space]}>
-                  <Text numberOfLines={1} style={[ss.pname]}>
+                  <Text
+                    numberOfLines={1}
+                    style={[ss.pname, dT ? clr.tw : clr.td1]}>
                     {item.name}
                   </Text>
-                  <Text style={[ss.role]}>IND-BAT</Text>
+                  <Text style={[ss.role, clr.td2]}>IND-BAT</Text>
                 </View>
               </TouchableOpacity>
             );
@@ -65,25 +72,33 @@ export default function MatchPlayersStatsPage(props: PropTypes) {
         {/* meta */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View>
-            <TableRow />
+            <TableRow dT={dT} />
             {props.players.map((item: any) => {
               return (
                 <TouchableOpacity
                   key={item.name}
                   activeOpacity={0.5}
                   onPress={() => navigation.navigate('MyMatchPlayerScreen')}
-                  style={[ss.colItemC]}>
+                  style={[ss.colItemC, dT ? clr.bgd2 : clr.bgw]}>
                   <View style={[ss.colItem]}>
-                    <Text style={[ss.metaTxt]}>{item.points}</Text>
+                    <Text style={[ss.metaTxt, dT ? clr.td2 : clr.td1]}>
+                      {item.points}
+                    </Text>
                   </View>
                   <View style={[ss.colItem]}>
-                    <Text style={[ss.metaTxt]}>N/A</Text>
+                    <Text style={[ss.metaTxt, dT ? clr.td2 : clr.td1]}>
+                      N/A
+                    </Text>
                   </View>
                   <View style={[ss.colItem]}>
-                    <Text style={[ss.metaTxt]}>N/A</Text>
+                    <Text style={[ss.metaTxt, dT ? clr.td2 : clr.td1]}>
+                      N/A
+                    </Text>
                   </View>
                   <View style={[ss.colItem]}>
-                    <Text style={[ss.metaTxt]}>N/A</Text>
+                    <Text style={[ss.metaTxt, dT ? clr.td2 : clr.td1]}>
+                      N/A
+                    </Text>
                   </View>
                 </TouchableOpacity>
               );
@@ -113,7 +128,8 @@ const Filter = () => {
   );
 };
 
-const TableRow = () => {
+const TableRow = (props: any) => {
+  const dT = props.dT;
   return (
     <View style={[ss.colsC]}>
       <View style={[ss.col]}>
@@ -139,7 +155,6 @@ const ss = StyleSheet.create({
     alignItems: 'center',
     borderColor: 'red',
   },
-
   dOption1: {
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -203,9 +218,16 @@ const ss = StyleSheet.create({
     paddingTop: 8,
     width: PLAYERWIDTH,
     height: 48,
-    backgroundColor: '#172338',
     borderRightColor: '#0c1320',
     borderRightWidth: 1,
+  },
+  dPC: {
+    backgroundColor: '#172338',
+    borderColor: 'rgba(31, 41, 55,1)',
+  },
+  lPC: {
+    backgroundColor: '#FFFFFF',
+    borderColor: 'rgba(31, 41, 55,0.1)',
   },
   image: {
     width: 36,
@@ -229,7 +251,7 @@ const ss = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 8,
     paddingLeft: 4,
-    backgroundColor: '#0c1320',
+    // backgroundColor: '#0c1320',
   },
   col: {
     width: COLWIDTH,

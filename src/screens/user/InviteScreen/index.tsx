@@ -35,7 +35,7 @@ export default function InviteScreen() {
         <SocialMediaShare dT={dT} />
         <MoreOption dT={dT} />
       </View>
-      <FriendsListLink  dT={dT} />
+      <FriendsListLink dT={dT} />
     </View>
   );
 }
@@ -45,9 +45,9 @@ const MoreOption = (props: any) => {
     <View
       style={[
         tailwind('flex-row mt-4 items-center justify-center'),
-        {paddingVertical: 10},
+        {paddingVertical: 10, borderRadius: 4},
         props.dT ? styles.dBorder : styles.lBorder,
-        props.dT ? clr.bgd1 : clr.bgw,
+        props.dT ? clr.bgd2 : clr.bgw,
       ]}>
       {/* FIXME: move to SVG */}
       <Image

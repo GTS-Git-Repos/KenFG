@@ -51,13 +51,17 @@ const Link = (props: any) => {
         props.dT ? clr.bgd1 : clr.bgw,
         // styles.link,
       ]}>
-        {/* remove image */}
+      {/* remove image */}
       <Image
         resizeMode="contain"
         source={props.icon}
         style={[{width: 18, height: 18}]}
       />
-      <Text style={[tailwind('font-regular px-2 font-15 uppercase'), clr.td1]}>
+      <Text
+        style={[
+          tailwind('font-regular px-2 font-15 uppercase'),
+          props.dT ? clr.tw : clr.td1,
+        ]}>
         {props.name}
       </Text>
     </View>

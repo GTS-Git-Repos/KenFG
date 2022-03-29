@@ -1,11 +1,16 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
-import {View, Image, Text} from 'react-native';
+import {View, Image, StyleSheet, Text} from 'react-native';
 import assets from '../../../../constants/assets_manifest';
-import {DownArrowIcon, TopArrowIcon} from '../../../../assets/newIcons';
-import {IdleLevel, RankIcon, TeamCode} from '../../../../sharedComponents';
+import {
+  DownArrowIcon,
+  RankIcon,
+  TopArrowIcon,
+} from '../../../../assets/newIcons';
+import {IdleLevel, TeamCode} from '../../../../sharedComponents';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import clr from '../../../../constants/colors';
 
 interface PropTypes {
   levelStatus: any;
@@ -15,6 +20,7 @@ interface PropTypes {
   type: number;
   showPoints: boolean;
   showteams: boolean;
+  dT: boolean;
 }
 export default function LeaderProfile(props: PropTypes) {
   const navigation = useNavigation<any>();
@@ -40,11 +46,7 @@ export default function LeaderProfile(props: PropTypes) {
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={navigate}
-      style={[
-        tailwind(
-          'px-4 py-3 bg-dark-3 border-b border-gray-800 flex-row items-center',
-        ),
-      ]}>
+      style={[props.dT ? ss.dRoot : ss.lRoot]}>
       <View style={[tailwind('flex-row items-center'), {flex: 7}]}>
         <View style={[tailwind(''), {width: 40, height: 40}]}>
           <Image
@@ -54,11 +56,19 @@ export default function LeaderProfile(props: PropTypes) {
           />
         </View>
         <View style={[tailwind('px-2')]}>
-          <Text style={[tailwind('font-regular uppercase text-white font-14')]}>
+          <Text
+            style={[
+              tailwind('font-regular uppercase font-14'),
+              props.dT ? clr.tw : clr.td1,
+            ]}>
             Kairo
           </Text>
           <View style={[tailwind('flex-row items-center py-1')]}>
-            <Text style={[tailwind('font-regular text-white font-12')]}>
+            <Text
+              style={[
+                tailwind('font-regular font-12'),
+                props.dT ? clr.tw : clr.td1,
+              ]}>
               98678
             </Text>
             <Text
@@ -118,111 +128,46 @@ export default function LeaderProfile(props: PropTypes) {
             style={[tailwind('flex-row items-center justify-end'), {flex: 1}]}>
             {props.levelStatus === null ? <IdleLevel /> : null}
             {props.levelStatus === true ? <TopArrowIcon /> : null}
-            {props.levelStatus === false ? <DownArrowIcon /> : null}
+            {props.levelStatus === false ? (
+              <DownArrowIcon invert={false} />
+            ) : null}
           </View>
         )}
-      </View>
-    </TouchableOpacity>
-  );
-
-  return (
-    <TouchableOpacity
-      activeOpacity={0.5}
-      onPress={navigate}
-      style={[
-        tailwind(
-          'px-4 py-3 bg-dark-3 border-b border-gray-800 flex-row items-center',
-        ),
-      ]}>
-      <View style={[tailwind('flex-row items-center'), {flex: 7}]}>
-        <View style={[tailwind(''), {width: 40, height: 40}]}>
-          <Image
-            resizeMode="contain"
-            source={assets.person}
-            style={[tailwind('w-full h-full')]}
-          />
-        </View>
-        <View style={[tailwind('px-2')]}>
-          <Text style={[tailwind('font-regular uppercase text-white font-14')]}>
-            Kairo
-          </Text>
-          <View style={[tailwind('flex-row items-center py-1')]}>
-            <Text style={[tailwind('font-regular text-white font-12')]}>
-              98678
-            </Text>
-            <Text
-              style={[
-                tailwind('font-regular uppercase px-2 text-dark-1 font-12'),
-              ]}>
-              Points
-            </Text>
-          </View>
-          <View style={[tailwind('flex-row items-center flex-wrap')]}></View>
-        </View>
-      </View>
-
-      <View style={[tailwind('flex-row items-center justify-end'), {flex: 4}]}>
-        <View style={[tailwind('')]}>
-          {props.isFirst && (
-            <Image
-              resizeMode="contain"
-              source={assets.prize1}
-              style={[{width: 39, height: 33}]}
-            />
-          )}
-          {props.isSecond && (
-            <Image
-              resizeMode="contain"
-              source={assets.prize2}
-              style={[{width: 39, height: 33}]}
-            />
-          )}
-          {props.isThird && (
-            <Image
-              resizeMode="contain"
-              source={assets.prize3}
-              style={[{width: 39, height: 33}]}
-            />
-          )}
-        </View>
-
-        {!props.isFirst && !props.isSecond && !props.isThird && (
-          <View style={[tailwind('flex-row items-center px-2')]}>
-            <RankIcon golden={true} />
-            <Text style={[tailwind('font-regular text-white font-14')]}>
-              10
-            </Text>
-          </View>
-        )}
-        {props.showPoints ? (
-          <View>
-            {props.levelStatus == null && (
-              <View style={[tailwind('pl-1')]}>
-                <IdleLevel />
-              </View>
-            )}
-            {props.levelStatus === true && (
-              <View style={[tailwind('pl-1')]}>
-                <TopArrowIcon />
-              </View>
-            )}
-            {props.levelStatus === false && (
-              <View style={[tailwind('pl-1')]}>
-                <DownArrowIcon />
-              </View>
-            )}
-          </View>
-        ) : null}
       </View>
     </TouchableOpacity>
   );
 }
 
-const RankPoints = () => {
+const RankPoints = (props: any) => {
   return (
     <View style={[tailwind('flex-row items-center')]}>
       <RankIcon golden={true} />
-      <Text style={[tailwind('font-regular pl-1 text-white font-14')]}>10</Text>
+      <Text
+        style={[
+          tailwind('font-regular pl-1 font-14'),
+          props.dT ? clr.tw : clr.td1,
+        ]}>
+        10
+      </Text>
     </View>
   );
 };
+
+const ss = StyleSheet.create({
+  dRoot: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    backgroundColor: '#0c1320',
+  },
+  lRoot: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    backgroundColor: '#FFFFFF',
+    borderColor: 'rgba(31, 41, 55,0.1)',
+    borderTopWidth: 1,
+  },
+});
