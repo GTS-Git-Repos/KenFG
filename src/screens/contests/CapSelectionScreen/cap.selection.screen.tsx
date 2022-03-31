@@ -129,8 +129,8 @@ export default function CapSelectionScreen(props: PropTypes) {
       props.setLoading(true);
       const response: any = await createTeamRemote(createTeamObj);
       props.setLoading(false);
-      if (!response.status) {
-        errorBox('Failed to create/update a Team', 500);
+      if (response.status === false) {
+        errorBox('Failed to create/update a Team errcode:34242', 500);
         return;
       }
       dispatch(clearTeamAction());
@@ -154,7 +154,7 @@ export default function CapSelectionScreen(props: PropTypes) {
   };
 
   return (
-    <View style={[tailwind('h-full'), !dT && clr.bgGray]}>
+    <View style={[tailwind('h-full'), dT ? clr.bgd1 : clr.bgGray]}>
       <TopBar text={matchSelector.titleString} helpIcon={true} ptsIcon={true} />
       <ScrollView>
         <View style={[ss.root, dT ? ss.dBorder : ss.lBorder]}>
@@ -286,10 +286,12 @@ const ss = StyleSheet.create({
   dBorder: {
     borderColor: 'rgba(31, 41, 55,1)',
     borderBottomWidth: 1,
+    backgroundColor: '#172338',
   },
   lBorder: {
     borderColor: 'rgba(31, 41, 55,0.1)',
     borderBottomWidth: 1,
+    backgroundColor: 'rgba(245, 245, 245, 1)',
   },
   title: {
     fontFamily: 'gadugi-bold',

@@ -112,21 +112,21 @@ export default function LoginScreen() {
         </View>
         <SocialLogin dT={dT} />
       </ScrollView>
-      {showHint && <FooterHint />}
+      {showHint && <FooterHint dT={dT} />}
 
       {loading && <BlockScreenByLoading />}
     </View>
   );
 }
 
-const FooterHint = () => {
+const FooterHint = (props: any) => {
   const navigation = useNavigation<any>();
 
   return (
     <View style={[ss.footC]}>
       <Text style={[ss.tcTxt]}>Dont have an account ?</Text>
       <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
-        <Text style={[ss.footLink]}>Register</Text>
+        <Text style={[ss.footLink, props.dT ? clr.tw : clr.td2]}>Register</Text>
       </TouchableOpacity>
     </View>
   );

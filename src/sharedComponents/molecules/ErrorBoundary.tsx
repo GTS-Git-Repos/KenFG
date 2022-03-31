@@ -23,7 +23,10 @@ class ErrorBoundary extends React.Component {
       return (
         <View style={[tailwind('h-full bg-white')]}>
           <Text style={[tailwind('font-regular text-center font-20 p-4')]}>
-            Unexpected error happpend
+            Unexpected error happpend,
+          </Text>
+          <Text style={[tailwind('font-regular text-center font-10')]}>
+            Release Date: 30-3-2022
           </Text>
           <ScrollView>
             <Text
@@ -51,8 +54,6 @@ class ErrorBoundary extends React.Component {
           </TouchableOpacity>
         </View>
       );
-
-    
     }
     return this.props.children;
   }

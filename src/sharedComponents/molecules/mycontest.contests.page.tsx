@@ -72,7 +72,8 @@ export default function MyContestPage(props: PropTypes) {
           />
         );
       }}
-      keyExtractor={item => item.contestMeta.contest_code}
+      keyExtractor={item => Math.random().toString()}
+      //  keyExtractor={item => item.contestMeta.contest_code}
       ListFooterComponent={() => {
         return <View style={[tailwind('h-20')]}></View>;
       }}

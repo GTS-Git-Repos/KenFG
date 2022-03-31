@@ -182,7 +182,7 @@ export const compareTeamsRemote = async (params: any) => {
   return normalizeCompareTeamsRemote(compareTeamMeta);
 };
 
-// TODO: move that to contest Remote
+// TODO: move that to contest Remote in later
 export const createTeamRemote = async (payload: any) => {
   try {
     const response = await requestServer(

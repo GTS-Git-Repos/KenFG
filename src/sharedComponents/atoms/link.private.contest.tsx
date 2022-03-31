@@ -32,6 +32,7 @@ const ss = StyleSheet.create({
     flex: 2,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     borderColor: '#d1b45a',
     borderWidth: 1,
     padding: 10,
@@ -47,7 +48,7 @@ const ss = StyleSheet.create({
   text: {
     fontFamily: 'gadugi-normal',
     color: '#C5A858',
-    fontSize: 12,
+    fontSize: 10,
     paddingRight: 2,
   },
 });

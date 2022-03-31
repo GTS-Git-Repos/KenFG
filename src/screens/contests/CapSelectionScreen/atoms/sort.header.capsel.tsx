@@ -15,7 +15,7 @@ export default function SortHeader(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
 
   return (
-    <View style={[tailwind('flex-row items-center'), !dT && clr.bgw]}>
+    <View style={[tailwind('flex-row items-center'), dT ? clr.bgd1 : clr.bgw]}>
       <TouchableOpacity
         onPress={() =>
           props.sortByAction({

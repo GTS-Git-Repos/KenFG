@@ -1,3 +1,5 @@
+// winnings list from private contest screen
+
 import React from 'react';
 import {View, Text} from 'react-native';
 import {
@@ -40,7 +42,7 @@ export default function WinningsListScreen() {
   ];
 
   return (
-    <View style={[tailwind('h-full'), dT ? clr.bgd2 : clr.bgGray]}>
+    <View style={[tailwind('h-full'), dT ? clr.bgd1 : clr.bgGray]}>
       <TopBar text={'Private Contest Winnings'} />
 
       <PrivateContestTeams

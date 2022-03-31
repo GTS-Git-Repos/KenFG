@@ -105,8 +105,8 @@ export const updatePlayerAction = (payload: any) => {
       const player = all_players[0][payload.role].find(
         (item: any) => item.key === payload.key,
       );
-
-      if (players.length === 11) {
+        // is 11 Player
+      if (players.length >= 11) {
         throw '11 Players selected Tap Continue';
       }
 

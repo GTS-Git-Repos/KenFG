@@ -43,6 +43,7 @@ export default function CreateContestInput(props: PropTypes) {
           </Text>
 
           <UserInput
+            dT={dT}
             value={props.contestName}
             onChangeText={props.setContestName}
           />
@@ -93,9 +94,12 @@ export default function CreateContestInput(props: PropTypes) {
           dT={dT}
         />
         <View style={[tailwind('my-5')]}>
-          <Text style={[ss.subtitle]}>No. of Teams Allowed Per User</Text>
+          <Text style={[ss.subtitle, dT ? clr.td2 : clr.td1]}>
+            No. of Teams Allowed Per User
+          </Text>
 
           <UserInput
+            dT={dT}
             value={props.perUserTeam}
             isNumber={true}
             onChangeText={props.setPerUserTeam}

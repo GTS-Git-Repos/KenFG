@@ -117,7 +117,7 @@ export default function SignupScreen() {
             keyboardAppearance="dark"
             keyboardType="decimal-pad"
             onChangeText={e => setMobile(e)}
-            style={[ss.input, dT ? clr.tgray : clr.td1]}
+            style={[ss.input, dT ? clr.tw : clr.td1]}
           />
           <Text style={[ss.hint, dT ? clr.tgray : clr.td2]}>
             You will receive OTP for Verification
@@ -125,14 +125,14 @@ export default function SignupScreen() {
         </View>
         {showInvite && (
           <View style={[ss.inviteC]}>
-            <Text style={[ss.label, dT ? clr.tdgray : clr.td1]}>
+            <Text style={[ss.label, dT ? clr.tw : clr.td1]}>
               Enter Invite Code
             </Text>
             <TextInput
               maxLength={7}
               value={inviteCode}
               onChangeText={e => setInviteCode(e)}
-              style={[ss.input]}
+              style={[ss.input, ss.input, dT ? clr.tw : clr.td1]}
             />
           </View>
         )}
@@ -148,12 +148,12 @@ export default function SignupScreen() {
         <SocialLogin dT={dT} />
         <View style={[ss.tcC]}>
           <Text style={[ss.tcTxt]}>By registering you agree to the</Text>
-          <Text style={[ss.link]}>T&C</Text>
+          <Text style={[ss.link, dT ? clr.tw : clr.td1]}>T&C</Text>
           <Text style={[ss.tcTxt]}> of KenFG</Text>
         </View>
       </ScrollView>
 
-      {showHint && <FooterHint openInviteInput={openInviteInput} />}
+      {showHint && <FooterHint dT={dT} openInviteInput={openInviteInput} />}
 
       {loading && <BlockScreenByLoading />}
     </View>
@@ -167,14 +167,18 @@ const FooterHint = (props: any) => {
       <View>
         <Text style={[ss.tcTxt]}>Have a referral Code ? </Text>
         <TouchableOpacity onPress={props.openInviteInput}>
-          <Text style={[ss.footLink]}>Enter Code</Text>
+          <Text style={[ss.footLink, props.dT ? clr.tw : clr.td2]}>
+            Enter Code
+          </Text>
         </TouchableOpacity>
       </View>
 
       <View>
         <Text style={[ss.tcTxt]}>Already a user ? </Text>
         <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-          <Text style={[ss.footLink2]}>Log in</Text>
+          <Text style={[ss.footLink2, props.dT ? clr.tw : clr.td2]}>
+            Log in
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
