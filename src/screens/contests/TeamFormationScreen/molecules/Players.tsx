@@ -5,6 +5,12 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import clr from '../../../../constants/colors';
+import {
+  KeeperPlayer,
+  BatsmanPlayer,
+  AllRounderPlayer,
+  BowlerPlayer,
+} from '../../../../assets/newIcons';
 
 interface PropTypes {
   player_key: string;
@@ -43,7 +49,19 @@ function Player(props: PropTypes) {
         onPress={() => props.onPressPlayerProfile(props.player_key, props.role)}
         activeOpacity={0.5}
         style={[ss.imageC]}>
-        <Image resizeMode="contain" source={assets.player} style={[ss.image]} />
+        {props.role === 'keeper' && (
+          <KeeperPlayer color={props.isTeam_a ? '#3498db' : '#107706'} />
+        )}
+        {props.role === 'batsman' && (
+          <BatsmanPlayer color={props.isTeam_a ? '#3498db' : '#107706'} />
+        )}
+        {props.role === 'all_rounder' && (
+          <AllRounderPlayer color={props.isTeam_a ? '#3498db' : '#107706'} />
+        )}
+        {props.role === 'bowler' && (
+          <BowlerPlayer color={props.isTeam_a ? '#3498db' : '#107706'} />
+        )}
+
         <TeamBadge name={props.teamname} team_a={props.isTeam_a} />
         {/* For Debug */}
         {/* <Text

@@ -22,7 +22,6 @@ interface PropTypes {
   banners: Array<any>;
   upcomming: Array<any>;
   isFullMatch: boolean;
-  appColors: any;
   onPressMatchType(match_type: number): void;
   onPressNotification(match_key: string): void;
 }
@@ -55,7 +54,6 @@ export default function LobbyScreen(props: PropTypes) {
   return (
     <View style={[styles.root, dT ? clr.bgd1 : clr.bgGray, {flex: 1}]}>
       <LobbyTopBar
-        appColors={props.appColors}
         amount={userInfoState.un_utilized}
       />
       <LobbyNav

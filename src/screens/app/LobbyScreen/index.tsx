@@ -3,11 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import tailwind from '../../../../tailwind';
 import {FlatList, View} from 'react-native';
 import {updateFullMatchAction} from '../../../store/actions/appActions';
-import {
-  userInfo,
-  isFullMatchSelector,
-  appColorsSelector,
-} from '../../../store/selectors';
+import {userInfo, isFullMatchSelector} from '../../../store/selectors';
 import LobbyScreenLoading from './atoms/lobbyscreen.loading';
 import LobbyScreen from './lobby.screen';
 import {useLobbyMeta} from './lobby.controller';
@@ -21,7 +17,6 @@ export default function LobbyScreenHOC() {
   const dT = useSelector(getAppThemeSelector);
   const dispatch = useDispatch();
   const notificationSheet = useRef<Modalize>(null);
-  const appColors = useSelector(appColorsSelector);
   const userSelector = useSelector(userInfo);
   const isFullMatch = useSelector(isFullMatchSelector);
 
@@ -68,7 +63,6 @@ export default function LobbyScreenHOC() {
             banners={lobbyMeta.banners}
             upcomming={lobbyMeta.upcomming}
             isFullMatch={isFullMatch}
-            appColors={appColors}
             onPressMatchType={onPressMatchType}
             onPressNotification={onPressNotification}
           />

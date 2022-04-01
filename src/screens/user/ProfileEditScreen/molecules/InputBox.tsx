@@ -2,17 +2,18 @@ import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, TextInput, StyleSheet} from 'react-native';
 import clr from '../../../../constants/colors';
+import {AppThemeType} from '../../../../types/app';
 
 interface PropTypes {
   value: any;
   onChangeText: any;
   onBlur: any;
-  dT: boolean;
+  tm: AppThemeType;
 }
 
 export default function InputBox(props: PropTypes) {
   return (
-    <View style={[styles.root, props.dT ? clr.bgd2 : clr.bgd2]}>
+    <View style={[styles.root]}>
       <View
         style={[
           {
@@ -23,7 +24,10 @@ export default function InputBox(props: PropTypes) {
           value={props.value}
           onChangeText={props.onChangeText}
           onBlur={props.onBlur}
-          style={[tailwind('flex-grow p-0 text-white font-14')]}
+          style={[
+            tailwind('flex-grow font-regular p-0 font-14'),
+            props.tm.txt2,
+          ]}
         />
       </View>
       <View style={[tailwind(''), {flex: 3}]}></View>

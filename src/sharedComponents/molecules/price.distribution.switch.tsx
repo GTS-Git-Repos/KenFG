@@ -1,7 +1,6 @@
 // used in contest info screen
 
 import React from 'react';
-import tailwind from '../../../tailwind';
 import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
 import {getAppThemeSelector} from '../../store/selectors';
@@ -48,38 +47,6 @@ export default function PriceDistributionSwitch(props: PropTypes) {
           </>
         )}
       </View>
-
-      {/* <View
-        onPress={() => props.action(props.priceDist)}
-        style={[ss.frc]}>
-        <View style={[ss.sec1, ss.lRoot]}>
-          <Text
-            style={[
-              tailwind('font-bold text-center text-white font-13'),
-              props.priceDist && ss.selectedText,
-            ]}>
-            Max
-          </Text>
-        </View>
-        <TouchableOpacity
-          onPress={() => props.action(props.priceDist)}
-          style={[
-            tailwind(
-              `rounded-r-xl  py-1 ${
-                !props.priceDist ? 'bg-secondary' : 'bg-dark-3'
-              }`,
-            ),
-            {width: 80},
-          ]}>
-          <Text
-            style={[
-              tailwind('font-bold text-center text-white uppercase font-13'),
-              !props.priceDist && ss.selectedText,
-            ]}>
-            Current
-          </Text>
-        </TouchableOpacity>
-      </TouchableOpacity> */}
     </View>
   );
 }

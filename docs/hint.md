@@ -10,6 +10,8 @@ fontFamily: "gadugi-bold"
 
 import {getAppThemeSelector} from '../../../../store/selectors';
 import clr from '../../../../constants/colors';
+import {appTheme} from '../../../store/selectors/app.selector';
+const tm = useSelector(appTheme);
 
 const dT = useSelector(getAppThemeSelector);
 

@@ -6,12 +6,14 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import assets from '../../../../constants/assets_manifest';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {format} from 'date-fns';
+import {AppThemeType} from '../../../../types/app';
 
 interface PropTypes {
   bday: any;
   setBday(val: any): any;
   openDate: boolean;
   setOpenDate(value: boolean): any;
+  tm: AppThemeType;
 }
 
 export default function Dob(props: PropTypes) {
@@ -31,8 +33,8 @@ export default function Dob(props: PropTypes) {
     <View>
       <TouchableOpacity
         onPress={() => props.setOpenDate(true)}
-        style={[tailwind('flex-row bg-dark-3 items-center'), styles.root]}>
-        <Text style={[tailwind('font-regular text-light font-14')]}>
+        style={[styles.root]}>
+        <Text style={[styles.bTxt, props.tm.txt2]}>
           {format(props.bday, 'dd-MM-yyyy')}
         </Text>
       </TouchableOpacity>
@@ -52,12 +54,12 @@ export default function Dob(props: PropTypes) {
 
 const styles = StyleSheet.create({
   root: {
-    borderTopColor: 'transparent',
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
     borderBottomColor: '#8797B14D',
     paddingTop: 3,
-    borderWidth: 1,
-    borderStyle: 'solid',
+    borderBottomWidth: 1,
+  },
+  bTxt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 14,
   },
 });

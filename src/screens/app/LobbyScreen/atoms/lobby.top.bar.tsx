@@ -7,9 +7,9 @@ import {WalletIcon, LogoWrapper} from '../../../../assets/newIcons';
 import {useSelector} from 'react-redux';
 import {getAppThemeSelector} from '../../../../store/selectors';
 import clr from '../../../../constants/colors';
+
 interface PropTypes {
   amount: string;
-  appColors: any;
 }
 
 export default function LobbyTopBar(props: PropTypes) {

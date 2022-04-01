@@ -17,7 +17,7 @@ export default function BottomAction(props: PropTypes) {
     <View style={[ss.root]}>
       <TouchableOpacity
         onPress={props.navigateToTeamPreviewScreeen}
-        style={[ss.teamPreview, dT ? clr.bgd1 : clr.bgw]}>
+        style={[ss.teamPreview, dT ? clr.bgd2 : clr.bgw]}>
         <Text style={[ss.txt, dT ? clr.tw : clr.td1]}>Team Preview</Text>
       </TouchableOpacity>
 

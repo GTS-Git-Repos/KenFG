@@ -187,58 +187,45 @@ export default function CustomDrawer(props: any) {
 
 const UserInfo = (props: any) => {
   const navigation = useNavigation<any>();
+
   return (
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={() => navigation.navigate('AccountProfileScreen')}
-      style={[
-        tailwind('px-4 flex-row items-center py-2 pt-6'),
-        props.dT ? clr.bgd1 : clr.bgGray,
-      ]}>
-      <View style={[tailwind('flex-row items-center'), {flex: 9}]}>
-        <View style={[tailwind(''), {flex: 3}]}>
-          <View style={[tailwind('rounded-full'), {width: 60, height: 60}]}>
+      style={[ss.proot, props.dT ? clr.bgd1 : clr.bgGray]}>
+      <View style={[ss.prC]}>
+        <View style={[ss.imgC]}>
+          <View style={[ss.imgBox]}>
             <Image
               resizeMode="contain"
               source={assets.user_temp_profile}
-              style={[tailwind('w-full h-full')]}
+              style={[ss.img]}
             />
           </View>
-          <View style={[tailwind('absolute bottom-0 right-0')]}>
+          <View style={[ss.editC]}>
             <EditIcon dT={props.dT} />
           </View>
         </View>
 
-        <View style={[tailwind('pl-3'), {flex: 7}]}>
+        <View style={[ss.pctnt]}>
           <Text
             numberOfLines={1}
-            style={[
-              tailwind('font-bold font-15'),
-              props.dT ? clr.tw : clr.td1,
-            ]}>
+            style={[ss.name, props.dT ? clr.tw : clr.td1]}>
             {props.name}
           </Text>
           <Text
             numberOfLines={1}
-            style={[
-              tailwind('font-regular py-1 font-12'),
-              props.dT ? clr.tw : clr.td1,
-            ]}>
+            style={[ss.fullname, props.dT ? clr.tw : clr.td1]}>
             {props.name}
           </Text>
-          <View style={[tailwind('flex-row items-center py-0.5')]}>
-            <View style={[tailwind('rounded-full'), {width: 16, height: 16}]}>
-              <Image
-                resizeMode="contain"
-                source={assets.levels}
-                style={[tailwind('w-full h-full')]}
-              />
-            </View>
-            <Text
-              style={[
-                tailwind('font-regular px-1 font-13'),
-                props.dT ? clr.tw : clr.td1,
-              ]}>
+          <View style={[ss.levelRoot]}>
+            <Image
+              resizeMode="contain"
+              source={assets.levels}
+              style={[ss.lvlImg]}
+            />
+
+            <Text style={[ss.lvlTxt, props.dT ? clr.tw : clr.td1]}>
               Level 001
             </Text>
           </View>
@@ -447,5 +434,60 @@ const ss = StyleSheet.create({
   },
   space2: {
     paddingTop: 8,
+  },
+  proot: {
+    paddingHorizontal: 16,
+    paddingTop: 24,
+    paddingBottom: 8,
+  },
+  prC: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 9,
+  },
+  imgC: {
+    flex: 3,
+  },
+  imgBox: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+  },
+  img: {
+    width: 60,
+    height: 60,
+  },
+  editC: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+  },
+  pctnt: {
+    paddingLeft: 12,
+    flex: 7,
+  },
+  name: {
+    fontFamily: 'gadugi-bold',
+    fontSize: 15,
+  },
+  fullname: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 12,
+    paddingVertical: 4,
+  },
+  levelRoot: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 2,
+  },
+  lvlImg: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+  },
+  lvlTxt: {
+    fontFamily: 'gadugi-normal',
+    fontSize: 13,
+    paddingHorizontal: 4,
   },
 });

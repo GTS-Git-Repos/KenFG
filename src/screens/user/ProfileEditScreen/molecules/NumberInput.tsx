@@ -1,16 +1,18 @@
 import React from 'react';
 import tailwind from '../../../../../tailwind';
 import {View, TextInput, StyleSheet} from 'react-native';
+import {AppThemeType} from '../../../../types/app';
 
 interface PropTypes {
   value: any;
   onChangeText: any;
   onBlur: any;
+  tm: AppThemeType;
 }
 
 export default function NumberInput(props: PropTypes) {
   return (
-    <View style={[tailwind('flex-row bg-dark-3  items-center'), styles.root]}>
+    <View style={[tailwind('flex-row items-center'), styles.root]}>
       <View
         style={[
           {
@@ -22,7 +24,7 @@ export default function NumberInput(props: PropTypes) {
           keyboardType="number-pad"
           onChangeText={props.onChangeText}
           onBlur={props.onBlur}
-          style={[tailwind('flex-grow p-0 text-white font-14')]}
+          style={[tailwind('flex-grow p-0 font-14'), props.tm.txt2]}
         />
       </View>
       <View style={[tailwind(''), {flex: 3}]}></View>

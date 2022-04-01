@@ -31,20 +31,6 @@ export const getAppThemeSelector = createSelector(DarkModeState, darkMode => {
   return darkMode;
 });
 
-// NOT USED IN ANYWHERE NEED TO REMOVE
-export const appColorsSelector = createSelector(DarkModeState, darkMode => {
-  if (darkMode) {
-    return {
-      dark: true,
-      ...APP_COLORS.darkMode,
-    };
-  } else {
-    return {
-      dark: false,
-      ...APP_COLORS.lightMode,
-    };
-  }
-});
 
 export const userInfo = createSelector<any, any, UserMetaType>(
   UserState,

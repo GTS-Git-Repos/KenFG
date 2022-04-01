@@ -52,8 +52,15 @@ import GiftIcon from './svgIcons/gift.icon';
 import RankIcon from './svgIcons/rank.icon';
 import MinusIcon from './svgIcons/minus.icon';
 import CricketBallIcon from './svgIcons/cricket.ball.icon';
+import KeeperPlayer from './svgIcons/keeper.player';
+import BatsmanPlayer from './svgIcons/batsman.player';
+import AllRounderPlayer from './svgIcons/allrounder.player';
+import BowlerPlayer from './svgIcons/bowler.player';
 
 export {
+  BatsmanPlayer,
+  AllRounderPlayer,
+  BowlerPlayer,
   ContestsBottomTabOff,
   ContestsBottomTabOn,
   InfoSquareGrayIcon,
@@ -72,6 +79,7 @@ export {
   LeaderSideIcon,
   HelpSideIcon,
   GiftIcon,
+  KeeperPlayer,
   VerifyTick,
   CricketBallIcon,
   RankIcon,

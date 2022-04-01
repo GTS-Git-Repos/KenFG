@@ -34,6 +34,7 @@ import NumberInput from './molecules/NumberInput';
 
 import {getAppThemeSelector} from '../../../store/selectors';
 import clr from '../../../constants/colors';
+import {appTheme} from '../../../store/selectors/app.selector';
 
 const log = console.log;
 
@@ -44,6 +45,7 @@ interface PropTypes {
 
 export default function ProfileEditScreen(props: PropTypes) {
   const dT = useSelector(getAppThemeSelector);
+  const tm = useSelector(appTheme);
 
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -121,13 +123,12 @@ export default function ProfileEditScreen(props: PropTypes) {
   };
 
   return (
-    <View style={[ss.root, dT ? clr.bgd2 : clr.bgd2]}>
+    <View style={[ss.root, tm.bg2]}>
       <TopBar text={'My Info & Settings'} />
       <KeyboardAwareScrollView
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={tailwind('p-3')}>
-        <InputTitle dT={dT} text={'Name'} />
-
+        <InputTitle tm={tm} text={'Name'} />
         <Controller
           control={control}
           rules={{
@@ -136,7 +137,12 @@ export default function ProfileEditScreen(props: PropTypes) {
             maxLength: 50,
           }}
           render={({field: {onChange, onBlur, value}}) => (
-            <InputBox dT={dT}  value={value} onChangeText={onChange} onBlur={onBlur} />
+            <InputBox
+              tm={tm}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
           )}
           name="name"
         />
@@ -145,7 +151,7 @@ export default function ProfileEditScreen(props: PropTypes) {
           <ErrorHint text="Name is required and length should be 4 to 50" />
         )}
 
-        <InputTitle dT={dT}  text={'Email'} />
+        <InputTitle tm={tm} text={'Email'} />
 
         <Controller
           control={control}
@@ -155,7 +161,12 @@ export default function ProfileEditScreen(props: PropTypes) {
             maxLength: 50,
           }}
           render={({field: {onChange, onBlur, value}}) => (
-            <InputBox dT={dT}  value={value} onChangeText={onChange} onBlur={onBlur} />
+            <InputBox
+              tm={tm}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
           )}
           name="email"
         />
@@ -181,27 +192,28 @@ export default function ProfileEditScreen(props: PropTypes) {
         )} */}
 
         <ThemeSwitch
+          
           darkModeState={props.darkModeState}
           onColorThemePress={props.onColorThemePress}
-          
         />
 
-        <InputTitle dT={dT}  text={'Date of Birth'} />
+        <InputTitle tm={tm} text={'Date of Birth'} />
         <Dob
+          tm={tm}
           openDate={openDate}
           setOpenDate={setOpenDate}
           bday={bday}
           setBday={setBday}
         />
 
-        <InputTitle dT={dT}  text={'Gender'} />
-        <GenderSelection dT={dT}  isMale={isMale} setIsMale={setIsMale} />
+        <InputTitle tm={tm} text={'Gender'} />
+        <GenderSelection tm={tm} isMale={isMale} setIsMale={setIsMale} />
 
         {/* <PrivacySettings /> */}
 
         {/* <AllowSMS />  */}
 
-        <InputTitle  dT={dT}  text={'Address'} />
+        <InputTitle tm={tm} text={'Address'} />
         <Controller
           control={control}
           rules={{
@@ -210,15 +222,20 @@ export default function ProfileEditScreen(props: PropTypes) {
             maxLength: 50,
           }}
           render={({field: {onChange, onBlur, value}}) => (
-            <InputBox dT={dT}  value={value} onChangeText={onChange} onBlur={onBlur} />
+            <InputBox
+              tm={tm}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
           )}
           name="address"
         />
         {errors.address && (
-          <ErrorHint dT={dT}  text="Address is required and length should be 4 to 50" />
+          <ErrorHint text="Address is required and length should be 4 to 50" />
         )}
 
-        <InputTitle dT={dT}  text={'City'} />
+        <InputTitle tm={tm} text={'City'} />
         <Controller
           control={control}
           rules={{
@@ -227,7 +244,12 @@ export default function ProfileEditScreen(props: PropTypes) {
             maxLength: 50,
           }}
           render={({field: {onChange, onBlur, value}}) => (
-            <InputBox dT={dT}  value={value} onChangeText={onChange} onBlur={onBlur} />
+            <InputBox
+              tm={tm}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
           )}
           name="city"
         />
@@ -235,7 +257,7 @@ export default function ProfileEditScreen(props: PropTypes) {
           <ErrorHint text="City is required and length should be 4 to 50" />
         )}
 
-        <InputTitle dT={dT}  text={'Pin Code'} />
+        <InputTitle tm={tm} text={'Pin Code'} />
         <Controller
           control={control}
           rules={{
@@ -245,6 +267,7 @@ export default function ProfileEditScreen(props: PropTypes) {
           }}
           render={({field: {onChange, onBlur, value}}) => (
             <NumberInput
+              tm={tm}
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
@@ -256,7 +279,7 @@ export default function ProfileEditScreen(props: PropTypes) {
           <ErrorHint text="Pincode is required and length should be 4 to 50" />
         )}
 
-        <InputTitle dT={dT}  text={'State'} />
+        <InputTitle tm={tm} text={'State'} />
         <Controller
           control={control}
           rules={{
@@ -265,7 +288,12 @@ export default function ProfileEditScreen(props: PropTypes) {
             maxLength: 50,
           }}
           render={({field: {onChange, onBlur, value}}) => (
-            <InputBox dT={dT} value={value} onChangeText={onChange} onBlur={onBlur} />
+            <InputBox
+              tm={tm}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
           )}
           name="state"
         />
@@ -273,7 +301,7 @@ export default function ProfileEditScreen(props: PropTypes) {
           <ErrorHint text="State is required and length should be 4 to 50" />
         )}
 
-        <InputTitle dT={dT} text={'Country'} />
+        <InputTitle tm={tm} text={'Country'} />
         <Controller
           control={control}
           rules={{
@@ -282,7 +310,12 @@ export default function ProfileEditScreen(props: PropTypes) {
             maxLength: 50,
           }}
           render={({field: {onChange, onBlur, value}}) => (
-            <InputBox value={value} onChangeText={onChange} onBlur={onBlur} />
+            <InputBox
+              tm={tm}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
           )}
           name="country"
         />
