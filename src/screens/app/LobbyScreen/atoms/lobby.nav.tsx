@@ -193,7 +193,7 @@ const ss = StyleSheet.create({
     top: 0,
   },
   sportName: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 11,
     letterSpacing: 1.3,
     lineHeight: 16,

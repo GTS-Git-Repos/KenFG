@@ -24,7 +24,7 @@ const ss = StyleSheet.create({
     paddingHorizontal: 57,
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 16,
     textAlign: 'center',
     color: '#FFFFFF',

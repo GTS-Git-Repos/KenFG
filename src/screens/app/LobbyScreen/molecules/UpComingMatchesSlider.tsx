@@ -58,7 +58,7 @@ export default function UpComingMatchesSlider(props: PropTypes) {
 
 const styles = StyleSheet.create({
   infoText: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     textAlign: 'center',
     paddingVertical: 20,

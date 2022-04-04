@@ -29,7 +29,7 @@ const ss = StyleSheet.create({
     borderBottomWidth: 1,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textAlign: 'center',
     fontSize: 12,
     letterSpacing: 0.5,

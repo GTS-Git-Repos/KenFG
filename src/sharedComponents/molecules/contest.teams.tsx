@@ -196,7 +196,7 @@ const ss = StyleSheet.create({
     paddingHorizontal: 12,
     color: '#FFFFFF',
     flexGrow: 1,
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     maxWidth: 100,
   },

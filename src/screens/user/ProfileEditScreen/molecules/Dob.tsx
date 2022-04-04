@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   bTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
   },
 });

@@ -79,7 +79,7 @@ const ss = StyleSheet.create({
   },
   title: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 16,
     textAlign: 'center',
   },
@@ -106,13 +106,13 @@ const ss = StyleSheet.create({
   },
   subTitle: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     paddingBottom: 4,
   },
   or: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingTop: 4,
     textAlign: 'center',
@@ -129,7 +129,7 @@ const ss = StyleSheet.create({
   },
   linktxt: {
     color: '#FFFFFF',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
   },
   smsbtn: {
@@ -153,7 +153,7 @@ const ss = StyleSheet.create({
   },
   btntxt: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     paddingHorizontal: 12,
     textTransform: 'uppercase',

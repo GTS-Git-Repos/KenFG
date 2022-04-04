@@ -117,13 +117,13 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   contestTitle: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     textTransform: 'capitalize',
   },
   contestAmount: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingTop: 8,
     paddingBottom: 12,
     top: 4,
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
 
   entryAmount: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     textAlign: 'center',
     color: '#FFFFFF',

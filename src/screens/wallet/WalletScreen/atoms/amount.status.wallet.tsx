@@ -116,12 +116,12 @@ const ss = StyleSheet.create({
     paddingVertical: 12,
   },
   subtxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingBottom: 6,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textAlign: 'center',
     fontSize: 24,
   },
@@ -134,7 +134,7 @@ const ss = StyleSheet.create({
     paddingVertical: 16,
   },
   baltxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 18,
   },
   btn: {

@@ -172,12 +172,12 @@ const ss = StyleSheet.create({
     height: 70,
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#FFFFFF',
     fontSize: 14,
   },
   value: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#FFFFFF',
     fontSize: 16,
     paddingVertical: 6,
@@ -196,7 +196,7 @@ const ss = StyleSheet.create({
     flexGrow: 1,
   },
   name: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#FFFFFF',
     fontSize: 24,
     paddingVertical: 12,
@@ -220,7 +220,7 @@ const ss = StyleSheet.create({
     alignItems: 'flex-end',
   },
   headTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#FFFFFF',
     fontSize: 14,
   },
@@ -232,19 +232,19 @@ const ss = StyleSheet.create({
     borderBottomWidth: 1,
   },
   scoreTitle: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#8797B1',
     fontSize: 14,
   },
   actS: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#FFFFFF',
     fontSize: 15,
     // textAlign:"center"
     paddingHorizontal: 24,
   },
   point: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#FFFFFF',
     fontSize: 15,
     textAlign: 'right',

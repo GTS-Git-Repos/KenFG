@@ -24,7 +24,7 @@ export default function Points(props: PropTypes) {
 const ss = StyleSheet.create({
   pointsText: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     paddingVertical: 4,
     textAlign: 'center',
@@ -35,7 +35,7 @@ const ss = StyleSheet.create({
   },
   point: {
     color: '#d1b45a',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 24,
   },
   ptsSeparator: {

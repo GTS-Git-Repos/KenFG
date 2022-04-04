@@ -80,18 +80,18 @@ const ss = StyleSheet.create({
   },
   confirmtxt: {
     color: '#f5feff',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 15,
     textTransform: 'uppercase',
   },
   txt: {
     color: 'rgba(209, 213, 219, 1)',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 10,
   },
   boldtxt: {
     color: '#f5feff',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 15,
   },
   container: {

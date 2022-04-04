@@ -27,7 +27,7 @@ export default function EarningsTitle(props: PropTypes) {
 
 const ss = StyleSheet.create({
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
   },
 });

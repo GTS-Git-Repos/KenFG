@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   footerItem: {
     maxWidth: 100,
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     paddingHorizontal: 6,
     textTransform: 'capitalize',

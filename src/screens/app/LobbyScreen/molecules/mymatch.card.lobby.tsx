@@ -104,7 +104,7 @@ const ss = StyleSheet.create({
     paddingTop: 4,
   },
   matchName: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 11,
     textAlign: 'left',
   },
@@ -114,14 +114,14 @@ const ss = StyleSheet.create({
     textAlign: 'right',
   },
   metaValue: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     paddingLeft: 2,
     paddingRight: 2,
   },
-  metaText: {fontFamily: 'gadugi-normal', fontSize: 11},
+  metaText: {fontFamily: 'Gadugi-Normal', fontSize: 11},
   metaSeperator: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 11,
     paddingLeft: 2,
     paddingRight: 2,
@@ -132,7 +132,7 @@ const ss = StyleSheet.create({
     paddingVertical: 2,
   },
   statusTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 11,
     textAlign: 'center',
   },

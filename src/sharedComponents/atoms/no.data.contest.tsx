@@ -73,7 +73,7 @@ export default function NoDataContest(props: PropTypes) {
 
 const ss = StyleSheet.create({
   title: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     textAlign: 'center',
   },

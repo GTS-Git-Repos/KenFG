@@ -45,7 +45,7 @@ const ss = StyleSheet.create({
     borderRadius: 4,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textTransform: 'uppercase',
     fontSize: 12,
   },

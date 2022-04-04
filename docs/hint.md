@@ -5,8 +5,8 @@
 1. iccwwc_2022_g2
 2. wieng_2022_t20_03
 
-fontFamily: 'gadugi-normal',
-fontFamily: "gadugi-bold"
+fontFamily: 'Gadugi-Normal',
+fontFamily: "Gadugi-Bold"
 
 import {getAppThemeSelector} from '../../../../store/selectors';
 import clr from '../../../../constants/colors';

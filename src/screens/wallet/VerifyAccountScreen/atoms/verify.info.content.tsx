@@ -38,11 +38,11 @@ const ss = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 13,
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 9,
     paddingTop: 4,
   },

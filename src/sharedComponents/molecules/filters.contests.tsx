@@ -74,7 +74,7 @@ const ss = StyleSheet.create({
     backgroundColor: '#9C181E',
   },
   text: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     color: '#FFFFFF',
   },
@@ -141,11 +141,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   privateContest: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
   },
   siText: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     textAlign: 'center',
   },

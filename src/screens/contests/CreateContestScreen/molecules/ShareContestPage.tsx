@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.3,
   },
   shareTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 8,
     color: '#FFFFFF',
     textAlign: 'center',

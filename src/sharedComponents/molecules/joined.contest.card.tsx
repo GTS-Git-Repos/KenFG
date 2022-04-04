@@ -243,7 +243,7 @@ const ss = StyleSheet.create({
   },
   headTitle: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     textTransform: 'capitalize',
   },
@@ -253,7 +253,7 @@ const ss = StyleSheet.create({
   },
   title: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 15,
     paddingTop: 4,
     textTransform: 'capitalize',
@@ -269,7 +269,7 @@ const ss = StyleSheet.create({
   },
   txt: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
   },
   tc: {
@@ -299,12 +299,12 @@ const ss = StyleSheet.create({
   },
   teamKey: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     textTransform: 'uppercase',
   },
   cNmae: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingHorizontal: 4,
     fontSize: 14,
   },

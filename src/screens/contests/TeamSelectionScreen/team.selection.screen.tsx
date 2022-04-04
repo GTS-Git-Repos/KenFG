@@ -265,7 +265,7 @@ const ss = StyleSheet.create({
     padding: 12,
   },
   infoTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
   },
 });

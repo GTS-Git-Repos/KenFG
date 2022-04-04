@@ -299,7 +299,7 @@ const AppVersion = (props: any) => {
           Version 0.1
         </Text>
         <Text style={[tailwind('font-regular py-1 text-dark-1 font-11')]}>
-          28 March : 8:45 PM
+          1 April : 8:25 PM
         </Text>
       </View>
       {/* <View style={[tailwind('justify-end items-end'), {flex: 3}]}>
@@ -400,7 +400,7 @@ const ss = StyleSheet.create({
     paddingVertical: 12,
   },
   linkTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
   },
   modalC: {
@@ -410,11 +410,11 @@ const ss = StyleSheet.create({
     borderWidth: 1,
   },
   modaltx1: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 17,
   },
   modaltx2: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingTop: 12,
   },
@@ -424,7 +424,7 @@ const ss = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   actionTxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 15,
     textTransform: 'uppercase',
   },
@@ -467,11 +467,11 @@ const ss = StyleSheet.create({
     flex: 7,
   },
   name: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 15,
   },
   fullname: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingVertical: 4,
   },
@@ -486,7 +486,7 @@ const ss = StyleSheet.create({
     borderRadius: 8,
   },
   lvlTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     paddingHorizontal: 4,
   },

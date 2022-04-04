@@ -66,7 +66,7 @@ const ss = StyleSheet.create({
   input: {
     color: 'rgba(255, 255, 255, 1)',
     flexGrow: 1,
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 16,
     margin: 0,
     paddingHorizontal: 12,

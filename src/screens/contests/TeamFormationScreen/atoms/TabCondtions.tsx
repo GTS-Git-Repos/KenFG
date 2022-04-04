@@ -48,7 +48,7 @@ const ss = StyleSheet.create({
     borderBottomWidth: 1,
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
   },
   space1: {

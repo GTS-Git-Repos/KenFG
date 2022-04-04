@@ -38,12 +38,12 @@ const ss = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   ltxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     textAlign: 'left',
   },
   rtxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     textAlign: 'right',
   },

@@ -185,7 +185,7 @@ const ss = StyleSheet.create({
     marginBottom: 2,
   },
   teamName: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     textTransform: 'uppercase',
     textAlign: 'center',
     paddingHorizontal: 16,
@@ -195,7 +195,7 @@ const ss = StyleSheet.create({
   teamCount: {
     borderRadius: 4,
     color: '#FFFFFF',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 20,
     paddingHorizontal: 8,
     paddingVertical: 4,
@@ -220,12 +220,12 @@ const ss = StyleSheet.create({
   },
   title: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
   },
   count: {
     color: '#FFFFFF',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     paddingHorizontal: 8,
   },
@@ -245,7 +245,7 @@ const ss = StyleSheet.create({
   },
 
   teamKey: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     color: '#FFFFFF',
     textTransform: 'uppercase',
@@ -286,7 +286,7 @@ const ss = StyleSheet.create({
   },
   playerName: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 11,
     width: 50,
     textAlign: 'center',

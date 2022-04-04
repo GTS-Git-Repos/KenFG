@@ -71,7 +71,7 @@ const ss = StyleSheet.create({
   },
   tn: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     paddingVertical: 6,
     textTransform: 'uppercase',
@@ -88,7 +88,7 @@ const ss = StyleSheet.create({
   },
   count: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 20,
   },
   cs: {

@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     height: 20,
   },
   sportTxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textAlign: 'center',
     paddingHorizontal: 8,
     textTransform: 'uppercase',

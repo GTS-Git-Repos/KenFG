@@ -70,18 +70,18 @@ const ss = StyleSheet.create({
   },
   title: {
     color: '#f5feff',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
   },
   value: {
     paddingTop: 4,
     color: '#f5feff',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
   },
   subTitle: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingTop: 4,
   },
@@ -101,7 +101,7 @@ const ss = StyleSheet.create({
   },
   text: {
     color: '#FFFFFF',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingHorizontal: 4,
   },

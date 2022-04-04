@@ -28,14 +28,14 @@ const ss = StyleSheet.create({
     paddingHorizontal: 16,
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 17,
     paddingBottom: 4,
     paddingTop: 4,
     color: '#FFFFFF',
   },
   subTitle: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     color: '#8797B1',
   },

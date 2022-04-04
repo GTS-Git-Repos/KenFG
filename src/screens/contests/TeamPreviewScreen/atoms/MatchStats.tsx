@@ -88,26 +88,26 @@ const ss = StyleSheet.create({
     paddingVertical: 4,
   },
   count: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 20,
   },
   total: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingHorizontal: 6,
   },
   crtxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 20,
     textAlign: 'right',
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 10,
     color: '#8797B1',
     textTransform: 'uppercase',
   },
   txt2: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 10,
     color: '#8797B1',
     textTransform: 'uppercase',
@@ -120,12 +120,12 @@ const ss = StyleSheet.create({
     flex: 6,
   },
   tcount: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 20,
     paddingHorizontal: 4,
   },
   tname: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     textTransform: 'uppercase',
     textAlign: 'center',

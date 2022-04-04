@@ -97,7 +97,7 @@ const ss = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingHorizontal: 12,
     fontSize: 13,
   },

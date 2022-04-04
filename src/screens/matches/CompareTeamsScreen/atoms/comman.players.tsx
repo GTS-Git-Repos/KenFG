@@ -72,13 +72,13 @@ export default function CommanPlayers(props: PropTypes) {
 const ss = StyleSheet.create({
   name: {
     color: '#FFFFFF',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     width: 80,
   },
   role: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingVertical: 4,
   },
@@ -92,7 +92,7 @@ const ss = StyleSheet.create({
   },
   playerPoint: {
     color: '#FFFFFF',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 15,
     textAlign: 'center',
   },

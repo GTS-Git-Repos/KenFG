@@ -47,7 +47,7 @@ const ss = StyleSheet.create({
     flex: 4.7,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingHorizontal: 12,
     fontSize: 14,
   },

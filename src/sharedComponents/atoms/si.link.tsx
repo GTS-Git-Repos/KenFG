@@ -49,7 +49,7 @@ const ss = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   text: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#C5A858',
     fontSize: 12,
     paddingRight: 8,

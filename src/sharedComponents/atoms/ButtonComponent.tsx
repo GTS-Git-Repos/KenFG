@@ -28,7 +28,7 @@ const ss = StyleSheet.create({
     justifyContent: 'center',
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     color: '#FFFFFF',
   },

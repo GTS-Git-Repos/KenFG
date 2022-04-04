@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 8,
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 13,
   },
 
@@ -161,13 +161,13 @@ const styles = StyleSheet.create({
   },
   optionText: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     paddingTop: 4,
   },
   teamKey: {
     textTransform: 'uppercase',
     fontSize: 13,
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
   },
 });

@@ -37,7 +37,7 @@ const ss = StyleSheet.create({
     borderTopRightRadius: 8,
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 13,
   },
 });

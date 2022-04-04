@@ -18,7 +18,7 @@ export default function AccountSubTitle(props: PropTypes) {
 
 const ss = StyleSheet.create({
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textTransform: 'uppercase',
     fontSize: 13,
   },

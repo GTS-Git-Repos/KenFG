@@ -52,12 +52,12 @@ const ss = StyleSheet.create({
     marginHorizontal: 16,
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 15,
     paddingHorizontal: 12,
   },
   subTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingTop: 2,
     paddingHorizontal: 12,

@@ -294,12 +294,12 @@ const ss = StyleSheet.create({
     backgroundColor: 'rgba(245, 245, 245, 1)',
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textAlign: 'center',
     fontSize: 13,
   },
   subtxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     textAlign: 'center',
     fontSize: 13,
     paddingTop: 8,

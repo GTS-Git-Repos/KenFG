@@ -82,7 +82,7 @@ const ss = StyleSheet.create({
     backgroundColor: '#E5E5E5',
   },
   count: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textAlign: 'center',
     fontSize: 10,
     color: '#FFFFFF',

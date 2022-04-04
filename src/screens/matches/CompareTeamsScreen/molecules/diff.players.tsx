@@ -94,13 +94,13 @@ export default function DiffPlayers(props: PropTypes) {
 const ss = StyleSheet.create({
   name: {
     color: '#FFFFFF',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     width: 75,
   },
   role: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingVertical: 4,
   },
@@ -111,7 +111,7 @@ const ss = StyleSheet.create({
   },
   playerPoint: {
     color: '#FFFFFF',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     paddingTop: 4,
     textAlign: 'center',

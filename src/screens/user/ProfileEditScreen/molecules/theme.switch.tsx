@@ -93,11 +93,11 @@ const ss = StyleSheet.create({
     textTransform: 'uppercase',
   },
   title: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textAlign: 'center',
     fontSize: 13,
   },

@@ -45,13 +45,13 @@ const ss = StyleSheet.create({
     paddingHorizontal: 12,
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingBottom: 14,
     fontSize: 16,
     textAlign: 'center',
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingBottom: 8,
     textAlign: 'center',
     fontSize: 13,
@@ -64,7 +64,7 @@ const ss = StyleSheet.create({
     borderRadius: 4,
   },
   actxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textTransform: 'uppercase',
     textAlign: 'center',
     fontSize: 12,

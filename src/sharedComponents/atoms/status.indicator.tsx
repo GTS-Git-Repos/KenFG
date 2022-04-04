@@ -54,14 +54,14 @@ const ss = StyleSheet.create({
     paddingHorizontal: 40,
   },
   errTitle: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#FFFFFF',
     textAlign: 'center',
     fontSize: 20,
   },
   errTxt: {
     paddingVertical: 16,
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#FFFFFF',
     textAlign: 'center',
     fontSize: 16,

@@ -52,7 +52,7 @@ const ss = StyleSheet.create({
     height: '100%',
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     padding: 16,
     textTransform: 'uppercase',

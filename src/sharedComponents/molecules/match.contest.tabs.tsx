@@ -147,12 +147,12 @@ const ss = StyleSheet.create({
     borderBottomWidth: 2,
   },
   text: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     textAlign: 'center',
   },
   activeText: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 13,
     textAlign: 'center',
   },

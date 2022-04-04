@@ -95,6 +95,6 @@ const ss = StyleSheet.create({
   txt: {
     textAlign: 'center',
     fontSize: 14,
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
   },
 });

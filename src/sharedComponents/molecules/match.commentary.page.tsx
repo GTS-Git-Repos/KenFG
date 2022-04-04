@@ -124,7 +124,7 @@ const Title = (props: any) => {
         style={[
           tailwind('font-bold text-center text-brown-5 font-12'),
           {
-            fontFamily: 'gadugi-gras',
+            fontFamily: 'Gadugi-Gras',
             lineHeight: 20,
             paddingRight: 3,
           },

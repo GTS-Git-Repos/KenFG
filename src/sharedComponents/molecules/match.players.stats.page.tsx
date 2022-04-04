@@ -187,7 +187,7 @@ const ss = StyleSheet.create({
     backgroundColor: '#C5A858',
   },
   filTxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     textTransform: 'uppercase',
     color: '#FFFFFF',
@@ -206,7 +206,7 @@ const ss = StyleSheet.create({
     borderRightWidth: 1,
   },
   headTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#8797B1',
     textTransform: 'uppercase',
     fontSize: 12,
@@ -237,12 +237,12 @@ const ss = StyleSheet.create({
     paddingHorizontal: 8,
   },
   pname: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     width: 120,
     color: '#FFFFFF',
   },
   role: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#8797B1',
     fontSize: 11,
   },
@@ -257,7 +257,7 @@ const ss = StyleSheet.create({
     width: COLWIDTH,
   },
   colText: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#8797B1',
     textTransform: 'uppercase',
     fontSize: 12,
@@ -273,7 +273,7 @@ const ss = StyleSheet.create({
     paddingHorizontal: 8,
   },
   metaTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#8797B1',
     fontSize: 14,
   },

@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   t_name: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 9,
     textAlign: 'center',
   },
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     padding: 2,
   },
   countDown: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 10,
     paddingLeft: 4,
     textAlign: 'center',

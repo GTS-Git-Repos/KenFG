@@ -91,14 +91,14 @@ const ss = StyleSheet.create({
   },
   teamCode: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     textAlign: 'right',
     textTransform: 'uppercase',
   },
   matchname: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     textTransform: 'uppercase',
     textAlign: 'center',

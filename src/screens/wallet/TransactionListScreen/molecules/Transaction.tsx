@@ -71,11 +71,11 @@ const ss = StyleSheet.create({
     paddingVertical: 12,
   },
   amount: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 15,
   },
   subText: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
   },
   details: {
@@ -85,7 +85,7 @@ const ss = StyleSheet.create({
   },
 
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     paddingTop: 4,
     paddingBottom: 12,

@@ -55,7 +55,7 @@ const ss = StyleSheet.create({
     paddingTop: 12,
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
   },
 });

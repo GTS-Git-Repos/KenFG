@@ -45,7 +45,7 @@ const ss = StyleSheet.create({
     paddingTop: 12,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textAlign: 'center',
     fontSize: 13,
     color: '#8797B1',

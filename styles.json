@@ -9,13 +9,13 @@
     "borderLeftColor": "rgba(239, 68, 68, var(--tw-border-opacity))"
   },
   "font-regular": {
-    "fontFamily": "gadugi-normal"
+    "fontFamily": "Gadugi-Normal"
   },
   "font-semibold": {
-    "fontFamily": "gadugi-gras"
+    "fontFamily": "Gadugi-Gras"
   },
   "font-bold": {
-    "fontFamily": "gadugi-bold"
+    "fontFamily": "Gadugi-Bold"
   },
   "bg-primary": {
     "backgroundColor": "#172339"

@@ -135,7 +135,7 @@ const ss = StyleSheet.create({
     alignItems: 'flex-end',
   },
   tname: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#FFFFFF',
     fontSize: 14,
   },
@@ -145,22 +145,22 @@ const ss = StyleSheet.create({
     paddingVertical: 2,
   },
   cinS: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     color: '#8797B1',
   },
   cinO: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 9,
     color: '#8797B1',
   },
   score: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#FFFFFF',
     fontSize: 20,
   },
   scoreO: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     color: '#8797B1',
     paddingLeft: 6,
@@ -177,14 +177,14 @@ const ss = StyleSheet.create({
     height: 7,
   },
   completetxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#FFFFFF',
     textTransform: 'uppercase',
     paddingHorizontal: 6,
     fontSize: 11,
   },
   liveTxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: 'red',
     fontSize: 13,
     paddingHorizontal: 4,

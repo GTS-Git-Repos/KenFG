@@ -135,14 +135,14 @@ const styles = StyleSheet.create({
   },
   dTxt: {
     textAlign: 'center',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     color: '#FFFFFF',
     letterSpacing: 0.3,
   },
   lTxt: {
     textAlign: 'center',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     color: '#0D1320',
     letterSpacing: 0.3,

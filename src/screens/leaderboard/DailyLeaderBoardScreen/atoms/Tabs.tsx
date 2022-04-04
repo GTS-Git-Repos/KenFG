@@ -82,7 +82,7 @@ const ss = StyleSheet.create({
     borderBottomWidth: 2,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textAlign: 'center',
     textTransform: 'uppercase',
     fontSize: 13,

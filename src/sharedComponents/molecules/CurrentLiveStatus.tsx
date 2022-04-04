@@ -160,13 +160,13 @@ const ss = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   activeTxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#FFFFFF',
     fontSize: 13,
     paddingBottom: 6,
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     color: '#8797B1',
   },
@@ -188,7 +188,7 @@ const ss = StyleSheet.create({
     height: 20,
   },
   ball: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textAlign: 'center',
     textTransform: 'uppercase',
     fontSize: 11,

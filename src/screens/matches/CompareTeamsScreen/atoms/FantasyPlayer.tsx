@@ -98,7 +98,7 @@ export default function FantasyPlayer(props: PropTypes) {
 
 const ss = StyleSheet.create({
   playerName: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingVertical: 8,
     color: '#FFFFFF',
     fontSize: 18,
@@ -115,7 +115,7 @@ const ss = StyleSheet.create({
   },
   teamKey: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     paddingHorizontal: 4,
     textTransform: 'uppercase',

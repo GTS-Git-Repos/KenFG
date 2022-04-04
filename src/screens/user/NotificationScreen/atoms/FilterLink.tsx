@@ -39,11 +39,11 @@ export default function FilterLink(props: PropTypes) {
 
 const ss = StyleSheet.create({
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 15,
   },
   subtxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
   },
 });

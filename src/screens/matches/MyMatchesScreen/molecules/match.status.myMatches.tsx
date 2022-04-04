@@ -109,7 +109,7 @@ function Lineups(props: any) {
           style={[
             ss.tName,
             ss.greentxt,
-            {fontFamily: 'gadugi-bold', paddingRight: 6},
+            {fontFamily: 'Gadugi-Bold', paddingRight: 6},
           ]}>
           Lineups Out
         </Text>
@@ -149,7 +149,7 @@ function CompletedMatch() {
 function Won(props: any) {
   return (
     <View style={[{}]}>
-      <Text style={[ss.tName, ss.greentxt, {fontFamily: 'gadugi-bold'}]}>
+      <Text style={[ss.tName, ss.greentxt, {fontFamily: 'Gadugi-Bold'}]}>
         You Won {'\u20B9'} 500
       </Text>
     </View>
@@ -176,7 +176,7 @@ const ss = StyleSheet.create({
     padding: 12,
   },
   tourName: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     color: '#8797B1',
     maxWidth: 200,
@@ -198,7 +198,7 @@ const ss = StyleSheet.create({
     justifyContent: 'space-between',
   },
   tName: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
   },
   tsc: {
@@ -223,7 +223,7 @@ const ss = StyleSheet.create({
   },
   teamCode: {
     textTransform: 'uppercase',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 16,
     paddingHorizontal: 8,
     maxWidth: 100,
@@ -248,12 +248,12 @@ const ss = StyleSheet.create({
     borderBottomRightRadius: 6,
   },
   stxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingHorizontal: 2,
     fontSize: 12,
   },
   number: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingRight: 2,
     fontSize: 13,
   },

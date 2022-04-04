@@ -59,18 +59,18 @@ const ss = StyleSheet.create({
     paddingHorizontal: 8,
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingHorizontal: 8,
     fontSize: 13,
   },
   rAmount: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingHorizontal: 4,
     fontSize: 14,
     paddingRight: 8,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 13,
   },
   shadow: {
@@ -90,7 +90,7 @@ const ss = StyleSheet.create({
     paddingBottom: 12,
   },
   lnkTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
   },
 });

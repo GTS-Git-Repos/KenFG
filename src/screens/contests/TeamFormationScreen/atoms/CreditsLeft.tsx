@@ -39,16 +39,16 @@ const ss = StyleSheet.create({
     alignItems: 'center',
   },
   count: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 26,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     paddingHorizontal: 4,
   },
   tx2: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     textAlign: 'right',
   },

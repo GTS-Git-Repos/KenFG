@@ -184,7 +184,7 @@ const ss = StyleSheet.create({
     elevation: 4,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 10,
     paddingTop: 4,
     textAlign: 'center',

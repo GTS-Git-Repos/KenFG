@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   cellText: {
     fontSize: 30,
     textAlign: 'center',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
   },
   focusCell: {
     borderBottomColor: '#816D2E',

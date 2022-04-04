@@ -52,13 +52,13 @@ const ss = StyleSheet.create({
     height: 200,
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 20,
     color: '#FFFFFF',
     textAlign: 'center',
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingVertical: 12,
     color: '#FFFFFF',
     fontSize: 13,

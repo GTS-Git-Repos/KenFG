@@ -224,12 +224,12 @@ const ss = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   name: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     paddingVertical: 4,
   },
   point: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     paddingVertical: 4,
   },

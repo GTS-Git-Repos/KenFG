@@ -91,16 +91,16 @@ const ss = StyleSheet.create({
     borderRadius: IMAGESIZE / 2,
   },
   name: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 16,
   },
   fullname: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingVertical: 4,
   },
   levelNum: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingHorizontal: 6,
     fontSize: 13,
   },

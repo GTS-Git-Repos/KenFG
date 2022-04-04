@@ -142,7 +142,7 @@ const ss = StyleSheet.create({
     borderBottomColor: 'rgba(55, 65, 81, 1)',
     borderBottomWidth: 1,
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 20,
     margin: 0,
     padding: 0,
@@ -156,7 +156,7 @@ const ss = StyleSheet.create({
     borderBottomColor: 'rgba(31, 41, 55,0.2)',
   },
   subtitle: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
     paddingBottom: 4,
   },

@@ -35,7 +35,7 @@ const ss = StyleSheet.create({
     paddingVertical: 8,
   },
   name: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textTransform: 'uppercase',
     paddingHorizontal: 12,
     fontSize: 15,

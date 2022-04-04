@@ -82,7 +82,7 @@ const ss = StyleSheet.create({
     borderBottomWidth: 1,
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingHorizontal: 8,
     paddingVertical: 12,
     textAlign: 'center',
@@ -90,11 +90,11 @@ const ss = StyleSheet.create({
     color: '#8797B1',
   },
   dActiveTxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#FFFFFF',
   },
   lActiveTxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#9C181E',
   },
   border: {

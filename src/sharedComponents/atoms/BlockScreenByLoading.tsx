@@ -41,7 +41,7 @@ const ss = StyleSheet.create({
     marginHorizontal: 24,
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingHorizontal: 16,
     color: '#FFFFFF',
     textAlign: 'center',

@@ -99,16 +99,16 @@ const ss = StyleSheet.create({
     flexDirection: 'row',
   },
   confirmtxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 15,
     textTransform: 'uppercase',
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 10,
   },
   boldtxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 15,
   },
   container: {

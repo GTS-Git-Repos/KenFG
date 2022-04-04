@@ -16,7 +16,7 @@ export default function Projection(props: PropTypes) {
 
 const ss = StyleSheet.create({
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#FFFFFF',
     textAlign: 'center',
     fontSize: 13,

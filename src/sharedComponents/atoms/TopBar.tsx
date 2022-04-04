@@ -77,11 +77,11 @@ const ss = StyleSheet.create({
     paddingHorizontal: 16,
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 16,
   },
   teamTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     textTransform: 'uppercase',
   },

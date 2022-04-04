@@ -196,7 +196,7 @@ const ss = StyleSheet.create({
   },
   txt: {
     fontSize: 16,
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#FFFFFF',
   },
   noMatchImage: {

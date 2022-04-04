@@ -35,7 +35,7 @@ const ss = StyleSheet.create({
   },
   code: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     textTransform: 'uppercase',
   },

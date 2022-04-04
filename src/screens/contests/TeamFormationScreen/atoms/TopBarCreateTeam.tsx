@@ -76,7 +76,7 @@ const ss = StyleSheet.create({
     alignItems: 'center',
   },
   cd: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 18,
   },
   fpImage: {

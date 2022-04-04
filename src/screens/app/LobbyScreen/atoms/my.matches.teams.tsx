@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   teamCode: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     paddingBottom: 2,
     paddingTop: 2,
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     flex: 4,
   },
   countDownText: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 13,
     paddingTop: 8,
     paddingHorizontal: 4,

@@ -515,7 +515,7 @@ const ss = StyleSheet.create({
     borderColor: 'rgba(31, 41, 55, -.1)',
   },
   tCode: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textTransform: 'uppercase',
     fontSize: 14,
   },
@@ -539,13 +539,13 @@ const ss = StyleSheet.create({
   },
   scoreText: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     textAlign: 'center',
   },
   scoreBold: {
     color: '#FFFFFF',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     textAlign: 'center',
   },
@@ -578,7 +578,7 @@ const ss = StyleSheet.create({
     borderColor: 'rgba(31, 41, 55, 0.1)',
   },
   batName: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
   },
 });

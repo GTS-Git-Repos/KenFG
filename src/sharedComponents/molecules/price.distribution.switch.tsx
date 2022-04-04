@@ -89,12 +89,12 @@ const ss = StyleSheet.create({
     textTransform: 'uppercase',
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textTransform: 'uppercase',
     fontSize: 13,
   },
   txt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textAlign: 'center',
     fontSize: 13,
   },

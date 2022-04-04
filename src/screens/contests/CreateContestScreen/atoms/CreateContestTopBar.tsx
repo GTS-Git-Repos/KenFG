@@ -56,7 +56,7 @@ const ss = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingHorizontal: 8,
     fontSize: 16,
   },

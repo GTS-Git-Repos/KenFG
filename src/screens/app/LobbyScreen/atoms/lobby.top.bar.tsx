@@ -73,7 +73,7 @@ const ss = StyleSheet.create({
     alignItems: 'center',
   },
   txtbal: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textTransform: 'uppercase',
     fontSize: 11,
     textShadowColor: '#5F401C',
@@ -81,7 +81,7 @@ const ss = StyleSheet.create({
     textShadowRadius: 0,
   },
   txtAmount: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     textAlign: 'right',
   },

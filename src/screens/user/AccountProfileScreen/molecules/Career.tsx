@@ -116,12 +116,12 @@ const ss = StyleSheet.create({
     alignItems: 'center',
   },
   txt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#8797B1',
     fontSize: 13,
   },
   wr: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     paddingVertical: 8,
     alignItems: 'center',
@@ -143,13 +143,13 @@ const ss = StyleSheet.create({
     backgroundColor: '#9C181E',
   },
   txtT1: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     textAlign: 'right',
     textTransform: 'uppercase',
   },
   txt2: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     paddingVertical: 8,
     textAlign: 'right',
@@ -165,7 +165,7 @@ const ss = StyleSheet.create({
     borderRightWidth: 1,
   },
   valueTitle: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
   },
   tright: {
@@ -175,7 +175,7 @@ const ss = StyleSheet.create({
     textAlign: 'center',
   },
   valueCount: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 15,
     marginTop: 8,
   },

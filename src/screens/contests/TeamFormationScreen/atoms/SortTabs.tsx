@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   filterText: {
     color: '#8797B1',
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 12,
     paddingHorizontal: 8,
     textAlign: 'center',

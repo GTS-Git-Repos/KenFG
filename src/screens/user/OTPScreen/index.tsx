@@ -118,13 +118,13 @@ const ss = StyleSheet.create({
     height: 28,
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingTop: 24,
     textAlign: 'center',
     fontSize: 24,
   },
   subText: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingTop: 4,
     textAlign: 'center',
     fontSize: 12,
@@ -135,11 +135,11 @@ const ss = StyleSheet.create({
     paddingBottom: 16,
   },
   label: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 14,
   },
   input: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 20,
     borderColor: '#8797B14D',
     borderBottomWidth: 1,
@@ -148,7 +148,7 @@ const ss = StyleSheet.create({
     paddingVertical: 5,
   },
   hint: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     paddingTop: 8,
     fontSize: 12,
   },
@@ -167,7 +167,7 @@ const ss = StyleSheet.create({
     backgroundColor: '#8797B11A',
   },
   ortxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#8797B1',
     textAlign: 'center',
     fontSize: 12,
@@ -180,13 +180,13 @@ const ss = StyleSheet.create({
     paddingVertical: 20,
   },
   tcTxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#8797B1',
     fontSize: 12,
     paddingHorizontal: 8,
   },
   link: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingHorizontal: 4,
     textDecorationLine: 'underline',
@@ -198,11 +198,11 @@ const ss = StyleSheet.create({
     justifyContent: 'center',
   },
   footLink: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textDecorationLine: 'underline',
   },
   footLink2: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     textDecorationLine: 'underline',
     textAlign: 'right',
   },

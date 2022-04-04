@@ -38,7 +38,7 @@ export default function ProgressBarShared(props: PropTypes) {
 
 const ss = StyleSheet.create({
   spottxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
   },
 });

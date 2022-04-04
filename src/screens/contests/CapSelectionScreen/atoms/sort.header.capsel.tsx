@@ -73,7 +73,7 @@ const ss = StyleSheet.create({
   },
   headText: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     paddingRight: 4,
     textTransform: 'uppercase',

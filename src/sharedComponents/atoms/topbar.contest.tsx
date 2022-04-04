@@ -78,13 +78,13 @@ const ss = StyleSheet.create({
     paddingTop: 8,
   },
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     textTransform: 'uppercase',
     width: 140,
   },
   subtitle: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 10,
     paddingTop: 4,
     width: 100,

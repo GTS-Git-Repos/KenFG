@@ -62,13 +62,13 @@ const ss = StyleSheet.create({
   },
   txtTitle: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 15,
     textAlign: 'center',
   },
   txtSubTitle: {
     color: 'rgba(255, 255, 255, 1)',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     textAlign: 'center',
   },

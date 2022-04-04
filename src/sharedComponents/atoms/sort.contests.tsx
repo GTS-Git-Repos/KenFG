@@ -70,7 +70,7 @@ const ss = StyleSheet.create({
 
   btntxt: {
     color: '#8797B1',
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 13,
     paddingHorizontal: 8,
   },

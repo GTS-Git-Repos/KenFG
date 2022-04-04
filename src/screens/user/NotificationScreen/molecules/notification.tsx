@@ -69,12 +69,12 @@ const ss = StyleSheet.create({
   },
 
   title: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingVertical: 4,
     fontSize: 12,
   },
   time: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     fontSize: 12,
     paddingVertical: 4,
   },

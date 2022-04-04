@@ -120,25 +120,25 @@ const ss = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   dtxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     textAlign: 'center',
     fontSize: 14,
     letterSpacing: 0.3,
     color: '#FFFFFF',
   },
   ltxt: {
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     textAlign: 'center',
     fontSize: 14,
     letterSpacing: 0.3,
     color: '#0D1320',
   },
   daTxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#FFFFFF',
   },
   laTxt: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#9C181E',
   },
 });

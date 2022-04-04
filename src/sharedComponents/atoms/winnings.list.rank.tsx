@@ -66,12 +66,12 @@ const ss = StyleSheet.create({
     width: '50%',
   },
   rank: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     paddingLeft: 8,
     fontSize: 14,
   },
   value: {
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     fontSize: 14,
     textAlign: 'right',
   },

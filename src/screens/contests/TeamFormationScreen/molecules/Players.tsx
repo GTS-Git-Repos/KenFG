@@ -212,7 +212,7 @@ const ss = StyleSheet.create({
   },
   pname: {
     fontSize: 13,
-    fontFamily: 'gadugi-bold',
+    fontFamily: 'Gadugi-Bold',
     color: '#FFFFFF',
     paddingBottom: 2,
   },
@@ -224,12 +224,12 @@ const ss = StyleSheet.create({
   },
   playerlastPlayed: {
     fontSize: 9,
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#d1b45a',
   },
   playerAnounced: {
     fontSize: 9,
-    fontFamily: 'gadugi-normal',
+    fontFamily: 'Gadugi-Normal',
     color: '#00513B',
   },
   imageC: {
